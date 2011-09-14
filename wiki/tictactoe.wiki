@@ -1,0 +1,23 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+= Background =
+
+{{{
+int[][] pos=new int[3][3];
+    int cnt,val,a,b,c=1,d=1,diff=1,vs=1;
+    char let;
+    String pl1="You",pl2="Computer";
+    Random rnd=new Random();
+    boolean turn=true;
+}}}
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
