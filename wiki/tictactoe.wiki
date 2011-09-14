@@ -1,4 +1,3 @@
-
 이 예제는 여러분들이 어떻게 자신의 프로젝트를 보여주어야 하는지 가르쳐주는 샘플 페이지입니다.
 
 출처 : http://www.codeproject.com/KB/java/tictactoe.aspx?fid=1580219&fr=9
@@ -26,12 +25,8 @@ int[][] pos=new int[3][3];
 
 = About the Author =
 
-I was a C# developer initially...
-But the urge to write True Platform Independent applications drove me to code in Java Lately.
-The IDEs I use are #develop and NetBeans.
+I was a C# developer initially... But the urge to write True Platform Independent applications drove me to code in Java Lately.The IDEs I use are #develop and NetBeans.
  
-BE(Computers)Mumbai University.
-ME(ETC-Microelectronics)In Progress.
-Member since Wednesday, March 28, 2007 (4 years, 5 months) 
-
+ * BE(Computers)Mumbai University.
+ * ME(ETC-Microelectronics) In Progress.
 
