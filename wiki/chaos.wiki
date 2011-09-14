@@ -1,0 +1,36 @@
+#summary One-sentence summary of this page.
+
+= Ukiki =
+
+Chaos in the sky Ukiki.
+
+
+= I don`t know. =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+/*
+Bicycle bicycle = new Bicycle(10, 10, 1);
+bicycle.setCadence(10);
+*/
+/*
+public Bicycle(int startCadence, int startSpeed, int startGear) {
+	gear = startGear;
+	cadence = startCadence;
+	speed = startSpeed;
+}
+*/
+public Bicycle() {
+	gear = 1;
+	cadence = 10;
+	speed = 0;
+}
+Bicycle yourBike = new Bicycle(30, 0, 0);
+
+
+int a = 3;
+int b = 3;
+int c = 3;
