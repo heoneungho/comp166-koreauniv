@@ -1,0 +1,31 @@
+#summary 408실습실에 JAVA 개발환경 구축하기
+
+= Install JDK =
+
+배포판에서 제공하는 openjdk 또는 oracle의 jdk를 설치한다. openjdk가 jdk를 따라가는 형국이므로 jdk를 설치하면 더욱 많은 기능을 이용할 수 있다.
+
+* openjdk 설치하는법 *
+
+ 1. 소프트웨어 관리자에서 openjdk를 검색한다.
+ 1. check를 하고 apply를 클릭한다
+
+* jdk 설치하는 법 *
+
+ 1. openjdk를 제거한다.
+ 1. /usr/bin/java, /usr/bin/javac를 제거한다.
+ 1. [http://download.oracle.com/otn-pub/java/jdk/7/jdk-7-linux-x64.rpm]를 다운받는다.
+ 1. /usr/bin에 java와 javac파일이 생성되었는지 확인한다
+{{{
+ls -al /usr/bin/java*
+}}}
+ 1. java와 javac파일이 생성되지 않았다면 다음명령어를 통해 symbolic link를 생성한다.
+{{{
+ln -s /usr/java/default/bin/java /usr/bin/java
+ln -s /usr/java/default/bin/javac /usr/bin/javac
+}}}
+
+
+= Install eclipse =
+
+ 1. [http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/indigo/R/eclipse-java-indigo-linux-gtk-x86_64.tar.gz] 에서 eclipse를 다운받는다.
+ 1. 바탕화면에 압축을 푼다
