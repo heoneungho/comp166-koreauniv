@@ -11,10 +11,6 @@
 
 * jdk 설치하는 법 *
 
- 1. openjdk를 제거한다.
-{{{
-rpm -e openjdk
-}}}
  1. /usr/bin/java, /usr/bin/javac를 제거한다.
 {{{
 rm /usr/bin/java
