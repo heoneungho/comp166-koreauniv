@@ -12,8 +12,12 @@
 * jdk 설치하는 법 *
 
  1. openjdk를 제거한다.
+{{{
+rpm -e openjdk
+}}}
  1. /usr/bin/java, /usr/bin/javac를 제거한다.
  1. [http://download.oracle.com/otn-pub/java/jdk/7/jdk-7-linux-x64.rpm]를 다운받는다.
+ 1. 다운받은 rpm을 설치한다. (마우스 우클릭)
  1. /usr/bin에 java와 javac파일이 생성되었는지 확인한다
 {{{
 ls -al /usr/bin/java*
