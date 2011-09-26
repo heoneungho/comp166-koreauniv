@@ -37,7 +37,7 @@ play() : 게임의 첫화면을 보여주는 일을 한다.
 
 =Help=
 
-채정민 교수님
+채정민 교수님 도와주실 거라 믿습니다..........
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
