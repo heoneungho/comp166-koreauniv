@@ -1,0 +1,36 @@
+#summary One-sentence summary of this page.
+2011190727 김성운
+
+= Introduction =
+
+이 프로그램은 말 그대로 글자 따라쓰기 게임입니다.  게임 방법은 2분정도의 시간을 준 뒤 그 시간내에 화면에 나타난 글자를 따라써서 얼마나 더 많은 문장을 따라 쓰냐에 따라 점수 득점으로 결과를 냅니다.  
+
+= Background =
+
+씨언어와 지금 배우고있는 중인 자바를 활용해서 이 프로젝트를 완성해 평가받아야 하기때문이다.
+
+= Using the Code =
+
+이 게임을 만들기 위한 코드
+
+*
+
+이 게임을 만들기 위한 함수
+
+reset() : 이 함수는 게임을 재시작할 수 있게 초기화 시키는 일을 한다.
+Input() :  이 함수는 따라써야할 문장을 입력하는 일을 한다.
+Output() :  이 함수는 따라써야할 문장을 보여주는 일을 한다.
+time() : 이 함수는 2분이라는 시간을 측정해서 시간이 되면 게임을 종료시키는 일을  한다.
+check() : 이 함수는 따라 쓴 문장이 따라써야할 문장과 같은 지 비교하는 일을 한다.
+help() : 이 함수는 게임이 어떻게 돌아가는 지를 알려주는 일을 한다.
+score() : 이 함수는 점수를 책정해서 1위 ~ 10위의 시간기록을 나타내주는 일을 한다.
+compare() : 이 함수는 따라써야할 문장과 입력받은 문장이 맞는지를 비교해서 틀릴 시 재입력하게 하는 일을 한다.
+
+=Help=
+
+채정민 교수님
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
