@@ -1,0 +1,27 @@
+2011190709 이종화
+
+
+= Introduction =
+
+용자의 마왕을 잡기 위한 최후의 발악을 간단하게 만들어 봤습니다.
+
+= Background =
+
+항상 만들고 싶었던 이상적인 게임을 만들기 위한 준비단계
+
+= Details =
+
+public class Game안에
+class Character와 class Monster, class Battle,  class Story가 큰틀을 이루며
+Character안에 hp,mp,atk,def,cri,acu,eva의 스탯과 skill, item의 종속적 class를 추가,
+이를 Story클래스가 불러와서 Battle 클래스를 이용, 전투를 이행한다.
+맵이동은 차후 추가할 예정.
+
+캐릭터는 성장가능
+
+save기능 없음
+
+메인페이지 및, 기본 시스템은 합작으로 구성.
+그외 세부적인 요소 및 스토리는 각자 구성.
+
+= Using the Code=
