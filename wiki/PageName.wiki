@@ -1,0 +1,27 @@
+#summary 동방프로젝트 자작 어레인지 - 2011190701 김도형
+
+= Introduction =
+
+
+
+= Background = 
+
+제대로 된 게임을 만들기 위한 준비단계
+
+= Details =
+
+public class GAME 안에
+
+class Character와 class Enemy, class Battle, class Story, class Skill 로 구성
+각 캐릭터의 스탯은 변수로 class Character에 종속
+
+캐릭터는 성장가능
+
+save기능 없음
+
+메인페이지 및, 기본 시스템은 합작으로 구성. 
+
+그외 세부적인 요소 및 스토리는 각자 구성. 
+
+추후 진척상황에 따라 변동예정
+= Using the Code =
