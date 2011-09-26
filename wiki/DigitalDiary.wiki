@@ -6,6 +6,6 @@
 
 = Details =
 
-class january, class february ~~~~ class december 을 만들고
+class january 부터 class december 까지 만들고
 각 월 안에 요일,시간을 만들어 넣습니다 ( 아직 배운게 없어서 디테일하게 구상을 못하겠네요).
 실제 다이어리에선 없는 기능들을 생각하여 추가시킬 예정입니다.
