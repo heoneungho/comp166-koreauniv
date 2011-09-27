@@ -1,4 +1,4 @@
-#labels 2011190706김영기
+#labels 2011190706,김영기
 간단한 게임
 
 = Introduction =
@@ -8,7 +8,10 @@
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+class game을 만들고 그안에 class room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
+
+각각의 class안에 게임에서 필요한 세부적인 사항들을 포함시키거나 call 시킵니다.
+
+
+
+*아이템과 컴퓨터 인공지능의 추가여부는 아직 정하지 않았습니다.
