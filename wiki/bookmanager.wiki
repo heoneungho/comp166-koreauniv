@@ -1,14 +1,14 @@
 #summary One-sentence summary of this page.
-#labels ㅁ
+#labels 노재현
 
 = Introduction =
+도서관리 프로그램
 
-Add your content here.
+도서를 검색하여 대출가능 여부를 알려주는 프로그램
 
 
 = Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+도서를 등록하여 검색을 통해서 검색된 책이 대출중인지 대출가능한지를 
+알려주는 프로그램을 만들어 보고자 한다.
+차후 java를 배우고 실력이 향상 된다면 대출가능여부외의 다른 기능들도 
+추가할 예정이다. 
