@@ -8,9 +8,9 @@
 
 = Details =
 
-class game을 만들고 그안에 room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
+room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
 
-각각의 class안에 게임에서 필요한 세부적인 사항들을 포함시키거나 call 시킵니다.
+각각의 항목 안에 게임에서 필요한 세부적인 사항들을 포함시키거나 call 시킵니다.
 
 
 
