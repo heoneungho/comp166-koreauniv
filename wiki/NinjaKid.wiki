@@ -1,5 +1,4 @@
 #labels 2011190706,김영기
-
 간단한 게임
 
 = Introduction =
@@ -9,7 +8,7 @@
 
 = Details =
 
-class game을 만들고 그안에 class room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
+class game을 만들고 그안에 room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
 
 각각의 class안에 게임에서 필요한 세부적인 사항들을 포함시키거나 call 시킵니다.
 
