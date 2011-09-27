@@ -1,4 +1,4 @@
-#summary One-공학용 계산기
+#summary 공학용 계산기-2011190722 김민승
 
 
 = Introduction =
