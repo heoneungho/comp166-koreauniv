@@ -1,11 +1,21 @@
-#summary One-sentence summary of this page.
+#summary One-공학용 계산기
+
 
 = Introduction =
 
-Add your content here.
+전형적인 공학용 계산기입니다. 일반 계산기보다 더 추가된 기능이 있습니다.
 
+= Background =
+
+이과생이고 컴퓨터 과학 개론 등을 공부하다 보면 일반 계산기로는 부족하다는 느낌이 많이 들기 때문에 보다 더 편리하고 유용한 공학용 계산기를 생각하게 되었습니다. 
 
 = Details =
+
+사칙연산과 같은 여러 간단한 연산들도 가능하고 sin, cos, tan 계산 및 10진법에서  2진법,8진법,12진법 등으로 변환 등을 하도록 만들 예정입니다.
+
+= Using the Code=
+
+javascript 의 Math 객체에 관한 메서드를 활용하여 만들 예정이고 좀더 자세히 알아보고 만들 예정입니다.
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
