@@ -1,0 +1,31 @@
+#summary 단순한 게임
+
+= Introduction =
+
+포켓몬에도 있는 이동모션조차 없는 단순한 게임.
+
+= Background =
+
+만들고 싶은 게임의 수준에 도달하기위한 준비단계
+
+= Details =
+
+public class Game안에
+class Character와 class Enemy, class Battle,  class Story로 구성
+
+Character 클래스 안에 스테이터스를 변수로 입력
+
+난이도 선택 가능(적 스테이터스의 변화)
+캐릭터는 성장가능
+
+save불가
+
+메인페이지 및, 기본 시스템은 합작으로 구성.
+그외 세부적인 요소 및 스토리는 각자 구성.
+
+= Using the Code=
+
+일단 그래픽이 많이 들어갈 듯함
+
+= Work With =
+이종화
