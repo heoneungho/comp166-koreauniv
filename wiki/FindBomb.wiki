@@ -1,5 +1,5 @@
 #labels 2011190707김나윤
-# 지뢰찾기ee
+# 지뢰찾기
 
 = Introduction =
 
