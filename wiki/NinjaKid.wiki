@@ -1,4 +1,5 @@
 #labels 2011190706,김영기
+
 간단한 게임
 
 = Introduction =
