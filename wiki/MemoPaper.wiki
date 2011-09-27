@@ -11,7 +11,9 @@
 
 = Details =
 
-class memoPaper 안에 main method를 넣고 그 method안에 input method를 넣어서 사용자의 입력을 받도록 합니다. 또한 windows의 메모장과 다르게 중요하다 생각되는 부분은 색을 다르게 변화할 수 있고, 한페이지의 분량이 가득차면 자동으로 페이지가 넘어가는 기능을 가지고 있습니다.
+class memoPaper 안에 main method를 넣고 그 method안에 input method를 넣어서 사용자의 입력을 받도록 합니다.
+ 또한 windows의 메모장과 다르게 중요하다 생각되는 부분은 색을 다르게 변화시킬 수 있는 changeColor method가 main method안에 있다. 또한 한페이지의 분량이 가득차면 자동으로 페이지가 넘어가는 nextPage method을 가지고 있습니다.
+필기를 다하면 저장할 수 있는 saveMemo method와 불러올 수 있는 loadMemo method를 가지고 있습니다. 
 
 = Using the Code =
 
