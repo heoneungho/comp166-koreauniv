@@ -1,0 +1,14 @@
+#labels 2011190706김영기
+간단한 게임
+
+= Introduction =
+
+상대방의 위치를 추리하여 찾아내서 공격하여, 상대방의 게이지를 전부 없애면 승리하는 게임.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
