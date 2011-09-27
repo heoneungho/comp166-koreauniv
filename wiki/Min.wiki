@@ -1,4 +1,5 @@
-#summary 공학용 계산기-2011190722 김민승
+#summary 공학용 계산기
+#labels 2011190722김민승
 
 
 = Introduction =
