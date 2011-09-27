@@ -14,4 +14,4 @@ room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
 
 
 
-*아이템과 컴퓨터 인공지능의 추가여부는 아직 정하지 않았습니다.
+//아이템과 컴퓨터 인공지능의 추가여부는 아직 정하지 않았습니다.
