@@ -1,3 +1,4 @@
+#labels 2011190712HANEun-young
 # 칼로리 계산기
 
 = Introduction =
@@ -10,4 +11,12 @@
 
 = Details =
 
-  자신이 하루에 섭취한 음식의 칼로리를 검색하여 누적한다. 하루 칼로리 권장량에서 
+  자신이 하루에 섭취한 음식의 칼로리와 운동의 칼로리를 검색하여 누적한다. 그리고 하루의 권장 칼로리와 비교한 비율을 확인한다.
+
+= Using the Code =
+
+  input()
+  output()
+  today()
+  exercise()
+  food()
