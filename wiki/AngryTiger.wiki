@@ -1,0 +1,32 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+옛날 옛적 고려시대 이야기입니다.
+이상한 새가 자꾸 날아들었습니다.
+호랑이는 화가 났습니다.
+그 새의 이름은 연새였습니다.
+
+깝치는 연새를 가위바위보로 이겨서 무찌르는 게임입니다.
+
+= Background =
+
+이번 고연전을 계기로 호랑이와 독수리를 이용해 angry bird 게임처럼 간단하면서 재미난 게임을 만들어 보려 합니다.
+
+= Details =
+
+화난 호랑이와 깝치는 연새가 가위바위보를 합니다.
+호랑이와 연새는 각각 목숨이 어느정도 있습니다.
+이길 경우 상대방의 목숨을 하나 가져갑니다.
+비길 경우는 목숨의 변화는 없습니다.
+질 경우 목숨을 하나 뺏깁니다.
+
+= Using the Code =
+
+AngryTiger class와 StupidEagle class를 만들고 class life로 목숨을 나타냅니다.
+그 다음 가위바위보게임에 대한 자세한 코딩은 추후에 더 공부해서 올리겠습니다.
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
