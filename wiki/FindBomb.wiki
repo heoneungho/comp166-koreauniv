@@ -16,14 +16,13 @@
 
 = Using the Code =
 
+ rand() : 지뢰 랜덤으로 선택
  
- rand()
+ arr55 : 배열 5*5 
  
- arr55[[]][] 
+ arr77 : 배열 7*7
  
- arr77[][]
- 
- arr99[][]
+ arr99 : 배열 9*9
 
   
  
