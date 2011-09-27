@@ -7,16 +7,13 @@
 따라서 효율적으로 필기할 수 있는 메모장을 만들고자 한다.
 
 = Background =
-좀 더 효율적인 필기를 하기 위해서.
+
+평소에 windows에 있는 메모장을 자주 사용하는데 그때마다  중요한 내용을 색을 구분했으면 좋겠다고 생각하였다.  
 
 = Details =
 
-class memoPaper 안에 main method를 넣고 그 method안에 input method를 넣어서 사용자의 입력을 받도록 합니다.
- 또한 windows의 메모장과 다르게 중요하다 생각되는 부분은 색을 다르게 변화시킬 수 있는 changeColor method가 main method안에 있다. 또한 한페이지의 분량이 가득차면 자동으로 페이지가 넘어가는 nextPage method을 가지고 있습니다.
-필기를 다하면 저장할 수 있는 saveMemo method와 불러올 수 있는 loadMemo method를 가지고 있습니다. 
+class memoPaper 안에 main method를 넣고 그 method안에 input method를 넣어서 사용자의 입력을 받도록 합니다. 또한 windows의 메모장과 다르게 중요하다 생각되는 부분은 색을 다르게 변화시킬 수 있는 changeColor method가 main method안에 있다. 또한 한페이지의 분량이 가득차면 자동으로 페이지가 넘어가는 nextPage method을 가지고 있습니다.필기를 다하면 저장할 수 있는 saveMemo method와 불러올 수 있는 loadMemo method를 가지고 있습니다. 
 
 = Using the Code =
 
-
-
-= About the Author =
+구체적인 code는 class memoPaper안에 main method,  input method, changeColor method, nextPage method,  saveMemo method, 그리고  loadMemo method가 들어가있는것만 생각해보았다. 
