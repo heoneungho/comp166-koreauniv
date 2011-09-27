@@ -8,7 +8,7 @@
 
 = Details =
 
-room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
+class를 사용하여 room, position, myTurn, comTurn, movement, attack, signal을 만듭니다.
 
 각각의 항목 안에 게임에서 필요한 세부적인 사항들을 포함시키거나 call 시킵니다.
 
