@@ -15,6 +15,17 @@ During my exploration of Java and C#, I found some interesting similarities and 
 = Using the Code  =
 
 {{{
+class People {
+    // 이름
+    public int name;
+
+    // 운동한다
+    public void Exercise(Inst inst)
+    {
+
+    }
+}
+
 int[][] pos=new int[3][3];
     int cnt,val,a,b,c=1,d=1,diff=1,vs=1;
     char let;
@@ -29,4 +40,3 @@ I was a C# developer initially... But the urge to write True Platform Independen
  
  * BE(Computers)Mumbai University.
  * ME(ETC-Microelectronics) In Progress.
-
