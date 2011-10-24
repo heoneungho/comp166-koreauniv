@@ -23,6 +23,7 @@ do.Goto();
              }
 
 }
+
 public class Year {
 
 Month1 Apr,Jun,Sep,Nov = new Month1();
@@ -38,6 +39,7 @@ Month3 Feb = new Month3();
               }
 }
 
+
 public class Month1 {
 
 Day 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 = new Day();
@@ -47,6 +49,8 @@ Day 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,2
 일 하나를 선택
              }
 }
+
+
 
 public class Month2 {
 
@@ -59,6 +63,8 @@ Day
               }
 }
 
+
+
 public class Month3 {
 
 Day
@@ -69,6 +75,8 @@ Day
 일 하나를 선택
               }
 }
+
+
 
 public class Day {
 
