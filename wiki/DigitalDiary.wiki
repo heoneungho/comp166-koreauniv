@@ -12,9 +12,13 @@ public class DiaryStart {
 Year do = new Year();
 
 do.Goto();
+
 해당 달.Goto();
+
 해당 일.GetMemo();
+
 해당 일.PrintMemo();
+
 
              }
 
@@ -22,8 +26,11 @@ do.Goto();
 public class Year {
 
 Month1 Apr,Jun,Sep,Nov = new Month1();
+
 Month2 Jan,Mar,May,Jul,Aug,Oct,Dec = new Month2();
+
 Month3 Feb = new Month3();
+
 
 해당 달 Goto() {
 
