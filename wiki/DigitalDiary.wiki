@@ -6,6 +6,13 @@
 
 = Details =
 
+추가적인 기능은 일단 기본적인 Diary를 완성시키고서 생각하기로했습니다(그냥 Diary만드는 것도 만만치않을것 같더군요)
+
+클래스목록 : DiaryStart,Year,Month1,Month2,Month3,Day
+
+
+
+
 public class DiaryStart {
      public static void main(String [] args){
 
