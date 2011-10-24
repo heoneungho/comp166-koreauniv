@@ -90,7 +90,7 @@ void GetMemo {
 
 void PrintMemo {
 
-메모 출력
+해당 월,일 출력하고 메모출력
 
                }
 }
