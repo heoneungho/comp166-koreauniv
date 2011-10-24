@@ -80,13 +80,13 @@ Day
 
 public class Day {
 
-void SelfCheck {
+void SelfCheck() {
 
 자신의 월,일을 체크
 
 }
 
-void GetMemo {
+void GetMemo() {
 
 메모 받음.
 만약 해당 월,일에 입력된 메모가 있다면 
@@ -94,7 +94,7 @@ void GetMemo {
 
                }
 
-void PrintMemo {
+void PrintMemo() {
 
 해당 월,일 출력하고 메모출력
 
