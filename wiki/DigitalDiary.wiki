@@ -62,10 +62,15 @@ Day 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,2
 Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 30){
 
 System.out.println("일을 선택하세요 ");
+
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 int i = br.readLine();
+
 Day a = new Day();
+
 Day a = Day i;
+
 return a;  // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
              }
@@ -75,16 +80,24 @@ return a;  // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
 public class Month2 {
 
+
 Day
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 = new Day();
 
+
 Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 31){
 
+
 System.out.println("일을 선택하세요 ");
+
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 int i = br.readLine();
+
 Day a = new Day();
+
 Day a = Day i;
+
 return a;   // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
 
@@ -96,16 +109,23 @@ return a;   // 사용자에게 일을 입력 받고 그 값을 return해줍니�
 
 public class Month3 {
 
+
 Day
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 = new Day();
 
 Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 29){
 
+
 System.out.println("일을 선택하세요 ");
+
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 int i = br.readLine();
+
 Day a = new Day();
+
 Day a = Day i;
+
 return a;    // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
               }
@@ -118,6 +138,7 @@ public class Day {
 String GetMemo() {
 
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 String keyboard = br.readLine();
 
 return keyboard;  // 사용자에게 문자열을 입력받고 그 값을 return해줍니다
@@ -126,8 +147,11 @@ return keyboard;  // 사용자에게 문자열을 입력받고 그 값을 return
 
 void PrintMemo(String c,Month a,Day b) {
 
+
 System.out.println("%s",a);
+
 System.out.println("%d",b);
+
 System.out.println("%s",c);
 
 //해당 월,일 출력하고 메모출력합니다
