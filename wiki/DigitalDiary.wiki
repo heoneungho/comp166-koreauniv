@@ -20,11 +20,17 @@ Year do = new Year();
 
 do.Goto();
 
-해당 달.Goto();
+Month a = new Month();
+      a = do.Goto();
 
-해당 일.GetMemo();
+(do.Goto()).Goto();
 
-해당 일.PrintMemo();
+Day b = new Day();
+    b = ((do.Goto()).Goto());
+
+String c = ((do.Goto()).Goto()).GetMemo();
+
+((do.Goto()).Goto()).PrintMemo(c,a,b);
 
 
              }
@@ -40,9 +46,11 @@ Month2 Jan,Mar,May,Jul,Aug,Oct,Dec = new Month2();
 Month3 Feb = new Month3();
 
 
-해당 달 Goto() {
+Month Goto() {
 
-달 하나를 선택
+System.out.prinln("달을 선택하세요 " );
+// 아직 해결못한 부분 .. 3개의 Month를 어떻게 하나의 return값으로 받아야 할지 모르겠네요 
+
               }
 }
 
@@ -51,9 +59,15 @@ public class Month1 {
 
 Day 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 = new Day();
 
-해당 일 Goto(){
+Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 30){
 
-일 하나를 선택
+System.out.println("일을 선택하세요 ");
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+int i = br.readLine();
+Day a = new Day();
+Day a = Day i;
+return a;  // 사용자에게 일을 입력 받고 그 값을 return해줍니다
+
              }
 }
 
@@ -64,9 +78,17 @@ public class Month2 {
 Day
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 = new Day();
 
-해당 일 Goto(){
+Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 31){
 
-일 하나를 선택
+System.out.println("일을 선택하세요 ");
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+int i = br.readLine();
+Day a = new Day();
+Day a = Day i;
+return a;   // 사용자에게 일을 입력 받고 그 값을 return해줍니다
+
+
+
               }
 }
 
@@ -77,9 +99,15 @@ public class Month3 {
 Day
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 = new Day();
 
-해당 일 Goto(){
+Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 29){
 
-일 하나를 선택
+System.out.println("일을 선택하세요 ");
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+int i = br.readLine();
+Day a = new Day();
+Day a = Day i;
+return a;    // 사용자에게 일을 입력 받고 그 값을 return해줍니다
+
               }
 }
 
@@ -87,23 +115,22 @@ Day
 
 public class Day {
 
-void SelfCheck() {
+String GetMemo() {
 
-자신의 월,일을 체크
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String keyboard = br.readLine();
+
+return keyboard;  // 사용자에게 문자열을 입력받고 그 값을 return해줍니다
 
 }
 
-void GetMemo() {
+void PrintMemo(String c,Month a,Day b) {
 
-메모 받음.
-만약 해당 월,일에 입력된 메모가 있다면 
-지우고 새로쓸것인지 추가로 쓸 것인지 그대로 둘 것인지 물어봄.
+System.out.println("%s",a);
+System.out.println("%d",b);
+System.out.println("%s",c);
 
-               }
-
-void PrintMemo() {
-
-해당 월,일 출력하고 메모출력
+//해당 월,일 출력하고 메모출력합니다
 
                }
 }
