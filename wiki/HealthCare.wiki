@@ -31,21 +31,21 @@
                    (3) 변화율 출력 : 초기부터 현재까지 입력한 키의 data를 불러오
                                       고 증가율 출력
 2) public static Weight
-          *state : 자신의 키, 몸무게, 주기
-           *method (1) 정상체중 출력 : 키를 통해 정상 체중 계산, 출력
+          state : 자신의 키, 몸무게, 주기
+           method (1) 정상체중 출력 : 키를 통해 정상 체중 계산, 출력
                     (2) 평균과의 차이를 나타냄
                     (3) 변화율 출력 : 초기부터 현재까지 입력한 체중을의 data를                                불러오고 증감률 출력        
                     (4) 비만도 측정 : 비만도를 계산하여 저체중, 정상, 과체중, 경도비만, 고도비만 중 어디에 속하는지 알려줌
 
 3) public static Colesterol
-           *state : 현재 콜레스테롤 수치
-            *method : 콜레스테롤 수치의 변화율 출력
+           state : 현재 콜레스테롤 수치
+            method : 콜레스테롤 수치의 변화율 출력
 
 4) public static AbdomObesity
-           *state : 허리둘레, 엉덩이둘레, 성별
-            *method : 복부비만도 계산하여 출력
+           state : 허리둘레, 엉덩이둘레, 성별
+            method : 복부비만도 계산하여 출력
 
 5) public static BodyFatPerc
-           *state : 성별, 허리둘레, 엉덩이둘레, 몸무게, 키
-           *method : 체지방률 계산
+          state : 성별, 허리둘레, 엉덩이둘레, 몸무게, 키
+           method : 체지방률 계산
        
