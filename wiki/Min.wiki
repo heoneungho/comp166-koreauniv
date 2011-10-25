@@ -26,8 +26,7 @@ final int PREV_PUSH_OPERATOR = 1;
 final int PREV_PUSH_EQUAL = 2;
 
    JTextField resultBox, memoryState; // 결과창과 메모리상태창
-
-      Button[] calcButton; 
+        Button[] calcButton; 
 
 
    boolean isBelowZero; // 현재 소수점 밑인지 아닌지 플래그
