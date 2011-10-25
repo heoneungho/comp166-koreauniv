@@ -13,16 +13,20 @@
 = Details =
 
  배열 선택(5*5, 7*7, 9*9) 후 지뢰 찾기
+ 지뢰찾는 방법은 블럭을 선택해서 나오는 숫자를 유추해서 지뢰를 찾는다.
+ (지뢰빼고 다 선택하면 됨)
 
 = Using the Code =
 
- rand() : 지뢰 랜덤으로 선택
- 
- arr55 : 배열 5*5 
- 
- arr77 : 배열 7*7
- 
- arr99 : 배열 9*9
+public class FindBombGame {
+   public static void main(String args) {
+     
 
-  
+public class FindBomb {
+   int[] locationBlocks;
+   
+
+public class GameHelper {
+
+ 
  
