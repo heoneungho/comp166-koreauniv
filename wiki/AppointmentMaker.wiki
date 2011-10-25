@@ -14,11 +14,11 @@
 = Class List =
 
 -FirstSet - 초기설정을 합니다. 약속을 잡을 기간은 얼마나 정할것인지, 사용자는 몇 명인지 등을 설정합니다.
--MakeAppointment - 메인함수를 위치시킵니다.
--InputSchedule - 사용자 개인마다 스케쥴을 입력받습니다.
--CompareSchedule - 사용자들마다 겹치는 시간을 제외합니다.
--OutputSchedule - 결과를 보여줍니다.
--SetInterface - 기본적인 인터페이스를 설정합니다. 
--Help - 목적과 사용방법들을 알려줍니다.
+-MakeAppointment- 메인함수를 위치시킵니다.
+-InputSchedule- 사용자 개인마다 스케쥴을 입력받습니다.
+-CompareSchedule- 사용자들마다 겹치는 시간을 제외합니다.
+-OutputSchedule- 결과를 보여줍니다.
+-SetInterface- 기본적인 인터페이스를 설정합니다. 
+-Help- 목적과 사용방법들을 알려줍니다.
 
 = Details =
