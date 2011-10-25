@@ -25,7 +25,5 @@ save불가
 
 = Using the Code=
 
-일단 그래픽이 많이 들어갈 듯함
-
 = Work With =
 이종화
