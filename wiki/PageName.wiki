@@ -8,17 +8,23 @@ Details
 public class player1
 {
 	int sum1;
-	Scanner stln = new Scanner(System.in);
-	int ax= stdln.nextlnt();
-	sum1 = 0;
+	
+        Scanner stln = new Scanner(System.in);
+	
+        int ax= stdln.nextlnt();
+	
+        sum1 = 0;
 }
 
 public class player2
 {
 	int sum2;
-	Scanner stln = new Scanner(System.in);
-	int ay = stdln.nextlnt();
-	sum2 = 0;
+	
+        Scanner stln = new Scanner(System.in);
+	
+        int ay = stdln.nextlnt();
+	
+        sum2 = 0;
 
 }
 
@@ -27,24 +33,36 @@ public class nunchigame
 	public static void main(String[]args)
 	{
 		player1 score1 = new player1();
-		int m = score1.ax;
-		palyer2 socre2 = new player2();
-		int n = score2.by;
-		int x = 0;
+		
+                int m = score1.ax;
+		
+                palyer2 socre2 = new player2();
+		
+                int n = score2.by;
+		
+                int x = 0;
 		
 	while(x < 3){
 	
 	if( m > n)
-	{sum2 = sum2 + n}
-	else
-	{sum1 = sum1 + m}
-	x = x + 1;
-	}
+	
+        {sum2 = sum2 + n}
+	
+        else
+	
+        {sum1 = sum1 + m}
+	
+        x = x + 1;
+	
+}
 	
 	if( sum1 > sum2)
-	{system.out.print("플레이어 1이 승리했습니다.");}
-	else
-	{system.out.print("플레이어 2가 승리했습니다.");}
+	
+        {system.out.print("플레이어 1이 승리했습니다.");}
+	
+        else
+	
+        {system.out.print("플레이어 2가 승리했습니다.");}
 	
 }
 }
