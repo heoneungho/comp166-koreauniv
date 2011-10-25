@@ -33,15 +33,23 @@ week[4].name = "다섯번째주“;
 <week[0]에는 1~5일, week[1]에는 6~12, week[2]에는 13~19,
 week[3]에는 20~26, week[4]에는 27~30일이 속해있음 > 아직 코드못짰어요.
 
+
 }
 }
 class PlanForDay {
 각day에 대해 new DayOfNovember선언
+
 그것을 이용하여 day의 내용(plan)을 적는다 
+
 }
+
 class PlanForWeek{
+
 각 week에 대해 new WeekOfNovember선언
+
 그것을 이용하여 week의 내용(plan)을 적는다
+
 }
+
 밑에 두 개의 class는 아직 어떻게 짜야할지 잘 모르겠어요 .. ㅠㅠ
  
