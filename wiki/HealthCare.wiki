@@ -22,10 +22,11 @@
 
 = Code =
 클래스 목록 : Height, Weight, Colesterol, AbdomObesity, BodyFatPerc 
-1) public static Height
-         *state : 자신의 키, 나이, 평균 키, 주기
 
-        *method  (1) 평균출력 : 나이를 입력받아 정상적인 키를 출력
+1) public static Height
+         state : 자신의 키, 나이, 평균 키, 주기
+
+        method  (1) 평균출력 : 나이를 입력받아 정상적인 키를 출력
                    (2) 평균과의 차이를 +/- 값으로 나타냄
                    (3) 변화율 출력 : 초기부터 현재까지 입력한 키의 data를 불러오
                                       고 증가율 출력
