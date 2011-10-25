@@ -7,10 +7,40 @@
 
 = Details =
 
-class game 안에
+class game:게임을 시작하고 장소를 정하고 등등 메인문이 들어갈 클래스입니다.
+class rule:게임의 규칙을 정해줍니다.
+class box: 박스를 설정해줍니다.
+class stage:게임이 펼쳐질 장소를 설정해줍니다.
 
-난이도를 선택할수있는 클래스와
+public class game{
+public static void main (String[] args) {
+		     
+	 }
+}
 
-각각의 단계를 선택할수 있는 클래스를 만듭니다
+public class rule{
 
-세부 사항은 아직 안정해졌습니다.
+	boolean reset = false;
+	boolean pause = false;
+	boolean start = false;
+	boolean stop = false;
+	boolean next = false;
+	
+
+
+}
+
+public class box{
+
+	Box Hbox = new Box();
+	Box Vbox = new Box();
+	Box Tbox = new Box();
+}
+
+public class stage{
+	
+	Stage[] stage = new Stage[30];
+
+
+
+}
