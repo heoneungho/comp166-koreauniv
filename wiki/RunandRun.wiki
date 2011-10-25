@@ -47,7 +47,8 @@ public class player{
  int score = 0;
  string name;
  
- public void Moving() {//플레이어의 움직임을 관리한다.
+ public void Moving() {
+  //플레이어의 움직임을 관리한다.
  }
 }
 
@@ -63,10 +64,12 @@ public class Road{
  int Obstaclewidth;
  int Obstaclelocation;
 
- public void Roadexist{//길의위치및종류를결정한다.
+ public void Roadexist{
+  //길의위치및종류를결정한다.
  }
  
- public void Obstacleexist{//장애물의위치및종류를결정한다
+ public void Obstacleexist{
+  //장애물의위치및종류를결정한다
  }
 }
 
@@ -76,8 +79,6 @@ public class Runandrun{
  //게임설정및 여러가지를 실행한다.(기밀사항이라 밝힐수없음)
 
 }
-
-
 
 
 
