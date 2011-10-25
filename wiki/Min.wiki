@@ -16,33 +16,24 @@
 
 = Using the Code=
 
-class QuestionThree extends Frame implements ActionListener, KeyListener
-
+class QuestionThree extends Frame implements ActionListener, KeyListener 
 {
-   final int PREV_PUSH_NUMBER = 0;
-   final int PREV_PUSH_OPERATOR = 1;
-   final int PREV_PUSH_EQUAL = 2;
+final int PREV_PUSH_NUMBER = 0; 
+final int PREV_PUSH_OPERATOR = 1;
+final int PREV_PUSH_EQUAL = 2;
 
-   JTextField resultBox, memoryState; // 결과창과 메모리상태창
-   Button[] calcButton; 
+JTextField resultBox, memoryState; // 결과창과 메모리상태창
+Button[] calcButton; 
 
-   boolean isBelowZero; // 현재 소수점 밑인가 아닌가의 플래그
+boolean isBelowZero; // 현재 소수점 밑인지 아닌지 플래그
+double number, result; // 연산에 쓰이는 두 변수
+double memory; // 메모리 변수
+int zeroLocation; // 소숫점이 찍힌 자리수
+char preOperator; // 이전에 누른 연산자 버퍼
 
-   double number, result; // 연산에 쓰이는 두 변수
+int checkStatus; // 이전에 무엇을 수행했는지 기억하는 변수
 
-   double memory; // 메모리 변수
-
-   int zeroLocation; // 소숫점이 찍힌 자리수
-
-   char preOperator; // 이전에 누른 연산자 기억(버퍼)
-
-   int checkStatus; // 이전에 무엇을 수행했는지 기억하는 변수
-
-
-   final Color BACKGROUND = new Color( 192, 192, 192 );
-
-
-
+final Color BACKGROUND = new Color( 192, 192, 192 );
 
 
 Add your content here.  Format your content with:
