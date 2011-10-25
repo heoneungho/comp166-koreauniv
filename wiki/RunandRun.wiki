@@ -1,14 +1,87 @@
 #labels 2011190710윤창진
-
 =소개=
 
 진짜로 재밌는 게임 ㅎㅎ
 
 한번하면 벗어나올 수 없는 게임
 
++추가내용)
+
+플레이어가 달리면서
+
+점수가 오른다
+
+초반에는 그냥 평지지만
+
+곡선형태의 길도 있고
+
+장애물도 나타난다
+
+방향키를 이용해서
+
+다양한 방식으로 주인공을 살려야한다
+
+길에서 벗어나면 낭떠러지!
+
+과연 주인공은 이길을 벗어날수 있을까!
+
 = 디테일! =
 
-이것은 어떤 한 인물(아직 구체적으로 정하진 못함)이 달리는 게임이다 :
-  * 달린만큼의 거리를 수치화하여 점수로 설정한다
-  * 달리는 도중에 장애물이 나타나서 그것을 통과해야 계속 달릴수 있다.
-  * 장애물에 걸리면 그대로 게임 오버.
+클래스 : Gamelauncher.class, Player.class, Road.class, Runandrun.class
+
+
+Gamelauncher.class : 게임시작을 위한 클래스
+
+public class Gamelauncher {
+ public static void main (string[] args) {
+  Runandrun game = new Runandrun();
+  game.Startgame();
+ }
+}
+
+
+
+Player.class : 플레이어의정보가 담겨있는 클래스
+
+public class player{
+ int score = 0;
+ string name;
+ 
+ public void Moving() {//플레이어의 움직임을 관리한다.
+ }
+}
+
+Road.class : 길의 종류, 장애물의 종류 등의 정보가 담겨있는 클래스
+
+public class Road{
+ int Roadwidth;
+ int Roadtype;
+ int Roadlength;
+ int Roadlocation;
+ int Obstacletype;
+ int Obstaclelength;
+ int Obstaclewidth;
+ int Obstaclelocation;
+
+ public void Roadexist{//길의위치및종류를결정한다.
+ }
+ 
+ public void Obstacleexist{//장애물의위치및종류를결정한다
+ }
+}
+
+Runandrun.class : 실제게임은 모두 이곳에서 진행된다
+
+public class Runandrun{
+ //게임설정및 여러가지를 실행한다.(기밀사항이라 밝힐수없음)
+
+}
+
+
+
+
+
+
+
+
+
