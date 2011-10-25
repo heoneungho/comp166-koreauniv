@@ -8,6 +8,7 @@
 
 추가적인 기능은 일단 기본적인 Diary를 완성시키고서 생각하기로했습니다(그냥 Diary만드는 것도 만만치않을것 같더군요)
 
+
 클래스목록 : DiaryStart,Year,Month1,Month2,Month3,Day
 
 
@@ -69,7 +70,7 @@ int i = br.readLine();
 
 Day a = new Day();
 
-Day a = Day i;
+a = i;
 
 return a;  // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
@@ -96,7 +97,7 @@ int i = br.readLine();
 
 Day a = new Day();
 
-Day a = Day i;
+a = i;
 
 return a;   // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
@@ -124,7 +125,7 @@ int i = br.readLine();
 
 Day a = new Day();
 
-Day a = Day i;
+ a = i;
 
 return a;    // 사용자에게 일을 입력 받고 그 값을 return해줍니다
 
