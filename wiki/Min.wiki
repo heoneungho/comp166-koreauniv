@@ -17,6 +17,7 @@
 = Using the Code=
 
 class QuestionThree extends Frame implements ActionListener, KeyListener
+
 {
    final int PREV_PUSH_NUMBER = 0;
    final int PREV_PUSH_OPERATOR = 1;
@@ -34,6 +35,8 @@ class QuestionThree extends Frame implements ActionListener, KeyListener
    int checkStatus; // 이전에 무엇을 수행했는지 기억하는 변수
 
    final Color BACKGROUND = new Color( 192, 192, 192 );
+
+
 
 
 
