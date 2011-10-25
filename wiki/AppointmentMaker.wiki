@@ -22,5 +22,3 @@
 -Help- 목적과 사용방법들을 알려줍니다.
 
 = Details =
-
-publie class 
