@@ -22,7 +22,9 @@ class QuestionThree extends Frame implements ActionListener, KeyListener
 {
 
 final int PREV_PUSH_NUMBER = 0; 
+
 final int PREV_PUSH_OPERATOR = 1;
+
 final int PREV_PUSH_EQUAL = 2;
 
    JTextField resultBox, memoryState; // 결과창과 메모리상태창
