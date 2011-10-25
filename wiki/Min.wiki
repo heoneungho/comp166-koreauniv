@@ -20,6 +20,7 @@ class QuestionThree extends Frame implements ActionListener, KeyListener
 
 
 {
+
 final int PREV_PUSH_NUMBER = 0; 
 final int PREV_PUSH_OPERATOR = 1;
 final int PREV_PUSH_EQUAL = 2;
@@ -27,6 +28,7 @@ final int PREV_PUSH_EQUAL = 2;
    JTextField resultBox, memoryState; // 결과창과 메모리상태창
 
    Button[] calcButton; 
+
 
    boolean isBelowZero; // 현재 소수점 밑인지 아닌지 플래그
 
@@ -37,6 +39,7 @@ final int PREV_PUSH_EQUAL = 2;
    int zeroLocation; // 소숫점이 찍힌 자리수
 
    char preOperator; // 이전에 누른 연산자 버퍼
+
 
 
    int checkStatus; // 이전에 무엇을 수행했는지 기억하는 변수
