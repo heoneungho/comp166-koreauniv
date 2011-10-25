@@ -10,4 +10,166 @@ PC방 아르바이트를 할때 요금계산을 컴퓨터가 다 해주니 너�
 
 = Details =
 
-사용시간에 따른 요금계산을 해주는 프로그램으로써 앞으로 JAVA공부를 계속 해가면서 세부적인 내용을 수정해 가고자 한다.
+사용시간에 따른 요금계산을 해주는 프로그램이다.
+프로그램은 크게 사용자가 4~5가지의 설정을 할수있게 만들려고 하는데, 구상중인 바로는 첫째로 pc방의 pc갯수를 입력할수 있다. 둘째로는 각 pc의 cpu나 ram등 사양을 입력할수 있다. 셋째로는 각 pc의 사용시작과 사용종료를 입력할수 있다. 현재구상중인 마지막 단계는 pc방에서 자주사용되는 부가서비스인 컵라면이나 음료수의 소모여부도 가격계산에 포함하는 것이다.
+
+= code =
+
+클래스는 크게 PC매니져 클래스와 PC정보 클래스 두가지로 구현하려고 한다.
+클래스는 아직 pc매니져 클래스는 구상단계이며
+pc정보 클래스는 미비하지만 작업해보았다.
+
+public class PCinfo
+{
+	private int iId;                                   //pc번호
+	private String str_CPU;                            //CPU
+	private String str_Memory;                         //메모리
+	private String str_HDD;                            //HDD
+	private String str_GPCard;                         //Graphic Card
+	private long lStart;                               //PC 시작
+	private long lStop;                                //PC 종료
+	private int iTotal;                                
+	private int iPay;
+	private String using; 
+	private int count;
+	private String svcname[] = new String [50];        //이름 문자열 크기
+	private int svcTotal; 
+	private int sTotal;
+	private int siTotal;
+	private int svcmoney[] = new int[50];             //서비스 추가물품 값 정수형 크기
+
+	public PCinfo()     //pc정보 초기화
+	{
+		iId=0;
+		str_CPU=" ";
+		str_Memory=" ";
+		str_HDD=" ";
+		str_GPCard=" ";
+		lStart=0;
+		lStop=0;
+		iTotal=0;
+		iPay=0;
+		using="빈좌석";
+		count=0;
+		svcTotal=0;
+		sTotal=0;
+		siTotal=0;
+			
+	}
+
+	/*pc 정보 입력*/
+	public void setPCinfo(int id, String CPU, String Memory, String HDD, String GPCard)  
+	{
+		iId=id;
+		str_CPU=CPU;
+		str_Memory=Memory;
+		str_HDD=HDD;
+		str_GPCard=GPCard;
+	}
+	
+	/*사용중인지 빈좌석인지 출력*/
+	public String using()            
+	{
+		return using;
+	}
+	public void use(String used)
+	{
+		using=used;
+	}
+	
+	/*시작 시간*/
+	public void start(long time)     
+	{
+		lStart = time;
+	}
+	
+	/*종료 시간*/
+	public int stop(long time)      
+	{
+		lStop = time;
+		iPay = (int)((lStop-lStart)/60000*20);
+		iTotal=+iPay;
+		return iPay;
+	}
+	
+	/*pc정보 출력*/
+	public void printpc()   
+	{
+		System.out.print("[CPU]"+ str_CPU +" [Memory] "+ str_Memory +" [HDD] "+ str_HDD +" [Graphic] "+str_GPCard);
+	}
+	public int getTime()   
+	{
+		int time;
+		return time=(int)(lStop-lStart)/60000;
+	}
+	public int servicenum()
+	{
+		return count;
+	}
+	public int Servicetotal()
+	{
+		return sTotal;
+	}
+
+	/*서비스 추가 문자열을svcname[]배열에 넣음*/
+	public void servicename(String name) 
+	{
+		svcname[count] = name;
+	}
+	public String servicemenu(int i)
+	{
+		return svcname[i];
+	}
+
+	/*시간 합계*/
+	public int siTotal()    
+	{
+		siTotal = sTotal+iTotal;
+		return siTotal;
+	}
+	
+	/*서비스 추가 값 합계*/
+	public void servicemoney(int money)  
+	{
+        sTotal += money;
+        svcmoney[count]=money;
+        count++;
+	}
+	
+	/*추가된 서비스 값들 출력*/
+	public void svcprintTotal(long time)   
+	{
+		lStop = time;
+		int iPay=0;
+		if(count!=0)
+		{
+			iPay=(int)((lStop-lStart)/60000*20);
+			iTotal=+iPay;
+			System.out.print("("+ iTotal +"+");
+		}
+		for(int i=0 ; i<=count-1 ; i++)
+		{
+			if(i==count-1)
+			{
+				System.out.print(svcmoney[i]+")");
+			}
+			else
+			{
+				System.out.print(svcmoney[i]+" + ");
+			}
+		}
+	}
+	public int getTotal()  
+	{
+		iTotal=(int)(lStop-lStart)/60000*20;
+		if(iTotal<0)
+		{
+			iTotal=0;
+		}
+		int money=iTotal+sTotal;
+		return money;
+	}
+	
+	
+	
+}
