@@ -57,6 +57,7 @@ public class memoPaper {
 
      public static void main(String[] args) {
 	
+      loadMemo();
 	int i;	
 	string word;
 	int[][] array;
@@ -72,7 +73,7 @@ public class memoPaper {
 	nextPage(array);
 	
 	changeColor (word);
-     
+     saveMemo();
     }
   }
 public class changeColor (string word) {
@@ -87,6 +88,14 @@ public void nextPage (int [][] array;) {
 public class setnewPaper() {
 	int[][] array;
 	array = new int[1000][1000];
+}
+
+public class saveMemo() {
+	//내용을 저장한다.
+}
+
+public class loadMemo() {
+	//저장한 내용을 불러온다. 
 }
 saveMemo class와 loadMemo class는 소스코드를 봐도 안 배운 내용이 있기 때문에 무슨 내용인지 모르고 생각하기 힘들다고 느껴서 교수님께 여쭤볼 예정입니다. 
 	
