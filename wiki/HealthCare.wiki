@@ -17,7 +17,8 @@
 6) 체지방률 측정, 수치 변화
 
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Background =
+12살 차이나는 동생이 자라는 것을 지켜보면서 얼마나 성장하고 있는지, 앞으로 얼마나 클지 수치로 확인하고 싶은 생각으로 이 프로그램을 구상했습니다. 또한 요즘 건강에 
+관심이 많은 사람들이 증가하고 있는 만큼 충분히 유용한 프로그램이라고 판단했습니다.
+
+ 
