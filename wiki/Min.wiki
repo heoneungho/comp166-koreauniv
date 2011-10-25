@@ -27,7 +27,7 @@ final int PREV_PUSH_EQUAL = 2;
 
    JTextField resultBox, memoryState; // 결과창과 메모리상태창
 
-   Button[] calcButton; 
+      Button[] calcButton; 
 
 
    boolean isBelowZero; // 현재 소수점 밑인지 아닌지 플래그
@@ -38,7 +38,7 @@ final int PREV_PUSH_EQUAL = 2;
 
    int zeroLocation; // 소숫점이 찍힌 자리수
 
-   char preOperator; // 이전에 누른 연산자 버퍼
+   char preOperator; // 이전에 누른 연산자 기억(버퍼)
 
 
 
