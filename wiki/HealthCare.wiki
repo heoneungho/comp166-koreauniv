@@ -1,21 +1,22 @@
-#summary One-sentence summary of this page.
 #labels 2011190708서현아
 2011190708 서현아-HealthCare
 = Introduction =
 가장 큰 idea는 건강과 질병입니다.
 여러가지 category로 나눠서 연령대 별로 주의 해야하는 건강에 대해
-간편하고, 수치로 나타내 정확히 파악할 수 있도록 하는게 목적입니다.
+주기적인 수치로 나타내 꾸준히 파악할 수 있도록 하는게 목적입니다.
 
 
 
 = Details =
-구상한 application들을 나열해 보겠습니다.
-1) 비만도 측정
-2) 복부비만 측정
-3) 칼로리-섭취한 칼로리, 소모한 칼로리........
-4) 키, 몸무게 증감률/평균
 
-이외에도 건강에 관련된 것들에 대해 추가해 나갈 계획입니다.
+1) 키, 몸무게 증감률
+2) 키, 몸무게 평균과의 차이- 비만도
+3) 칼로리-섭취한 칼로리, 소모한 칼로리
+4) 콜레스테롤 수치 변화
+5) 복부비만 측정, 수치 변화
+6) 체지방률 측정, 수치 변화
+
+
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
