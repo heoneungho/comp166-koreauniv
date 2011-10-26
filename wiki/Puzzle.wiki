@@ -22,7 +22,8 @@ public class setting{
        public static void main(String [] args){
 
   int total=9; // 1~9 숫자를 순서대로 정사각형안에 표시
-  int prenum // 원래 위치번호
+  
+  int prenum; // 원래 위치번호
  
    public void divide{
    }// 숫자 하나당 구간 갖기, 9개 인스턴스 발생
