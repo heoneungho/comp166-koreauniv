@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
 #labels 2011190724최우형
+#성적관리프로그램 by 최우형
 
 = Introduction =
 이것은 자신의 학점과 성적을 보다 쉽고 빠르게 한눈에 볼수 있는 프로그램 입니다.
