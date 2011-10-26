@@ -24,11 +24,11 @@
 
 = Using the Code =
 
-Class : Player, life, RSP, GameLauncher
+Class : Player, GameLauncher
 
 Player class를 만들고 AngryTiger와 StupidEagle 객체를 만듭니다.
-life class로 목숨을 나타냅니다. 
-RSP class로 가위바위보 게임을 표현합니다.
+life로 Player의 목숨 상태를 나타냅니다. 
+RockScissorsPaper(가위바위보) 함수를 만들어 가위바위보 게임을 표현합니다.
 GameLauncher class로 실행파일을 만듭니다.
 
 Add your content here.  Format your content with:
