@@ -14,10 +14,53 @@
 대출가능여부외의 다른 기능들도 
 추가할 예정이다. 
 
+------------------------------------------------------------
+2차 계획
 
-= Using the Code= 
-java.utll
-java.io
-java.awt
-javax.swing
-등의 클래스를 이용할 예정이다.
+GUI창 사용
+
+새로운 책은 추가. 저자명과 책의 제목을 입력 받는다.
+
+책 대출,반납. 사용자로부터 대출자 이름, 저자명, 책제목을 입력받는다.
+
+저자명으로 책을 검색 
+
+제목으로 책을 검색할 수 있다
+
+도서관이 보유한 모든 책의 목록(저자명, 제목, 대출상태)를 출력하는 기능을 제공
+
+//일단... 출력 관련 윈도우, J
+Option JFrame은 고객, 저자, 책이름을 받기 위한 창이다
+class JOption extends JDialog implements ActionListener{
+	private Font myFont = new Font("self", Font.BOLD, 14);// 카드의 폰트 설정
+	private JTextArea[] Texts = new JTextArea[3];
+	private String ReturnString[] = {"", "", "", ""};
+	private JLabel[] Labels = new JLabel[4];
+	private String LabelString[] = {"이  름  :", "저자명  :", "책제목  :", ""};
+	private JPanel[] SubPanel = new JPanel[5];
+	private JButton Check = new JButton("확인");
+	private JButton Cancel = new JButton("취소");
+	private JPanel RootPanel = new JPanel();
+	JOption(Frame parent, String title, int OptionNumber){
+		super(parent, title, true);
+		int index = 0;
+		switch (OptionNumber) {
+		case 0:
+			setTitle("새로운 책 추가");
+			LabelString[3] = "새로운 책의 저자명과 책의 제목을 입력하시오!!";
+			index = 1;
+			Texts[0] = new JTextArea();
+			break;
+		case 1:
+			setTitle("대  출");
+			LabelString[3] = "본인의 이름과 책의 저자명, 제목을 입력하시오!!";
+			break;
+		case 2:
+			setTitle("반  납");
+			LabelString[3] = "본인의 이름과 책의 저자명, 제목을 입력하시오!!";
+			break;
+		}
+
+	...............
+이런식으로 해나갈 예정
+	
