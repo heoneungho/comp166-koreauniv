@@ -31,3 +31,27 @@ CLASS 짜기
 7. 상어밥이 되지 않은 사람 ( GOOD !) class
 
 8. GAME OVER class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
