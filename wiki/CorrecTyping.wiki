@@ -12,21 +12,17 @@
 
 이 게임을 만들기 위한 클래스
 
-Reset() : 이 클래스는 게임을 재시작할 수 있게 초기화 시키는 일을 한다.
-
 Input() :  이 클래스는 따라써야할 문장을 입력하는 일을 한다.
 
 Output() :  이 클래스는 따라써야할 문장을 보여주는 일을 한다.
 
 Time() : 이 클래스는 3분이라는 시간을 측정해서 시간이 되면 게임을 종료시키는 일을  한다.
 
-Check() : 이 클래스는 따라 쓴 문장이 따라써야할 문장과 같은 지 비교하는 일을 한다.
-
 Gamehelper() : 이 클래스는 게임이 어떻게 돌아가는 지를 알려주는 일을 한다.
 
 Gamescore() : 이 클래스는 점수를 책정해주는 일을 한다.
 
-Compare() : 이 클래스는 check()를 이어받아 따라써야할 문장과 입력받은 문장이 맞는지를 비교해서 틀릴 시 재입력하게 하는 일을 한다.
+Compare() : 이 클래스는 따라 쓴 문장이 따라써야할 문장과 같은 지 비교하는 일을 한다. 따라써야할 문장과 입력받은 문장이 맞는지를 비교해서 틀릴 시 재입력하게 하는 일을 한다.
 
 Gameplay() : 게임의 첫화면을 보여주는 일을 한다.
 
@@ -35,6 +31,40 @@ Gameplay() : 게임의 첫화면을 보여주는 일을 한다.
 게임이 실행되면 Gamehelper() 화면이 뜨면서 게임의 실행방법과 어떻게 돌아가는지를 알려준다. 그 후에 게임을 할려면 p를 누르라고 지시한다.  p를 클릭 시 Gameplay()가 실행되면서 게임은 시작된다.  게임이 시작되면서 Time()이 2분에서부터 0초로 떨어진다. Output()이 문장을 보여주면 Input()이 게임을 하는 사용자가 문장을 입력받는다.   Check()이 Output()과 Input()의 문장을 비교한 후 Compare()로 맞으면 Gamescore()가 점수를 1점올리면서 다음 입력해야 할 문장을 보여준다.  2분이 지나면 게임은 자동적으로 끝나며 점수가 측정된다.
 
 =Using Code=
+
+public class CorrectTyping{
+               
+}
+
+public class Gameplay() {
+
+}
+
+private void Input() {
+
+}
+
+private void Output() {
+
+}
+
+private void Compare() {
+
+}
+
+public class Gamescore {
+
+}
+
+public class Time {
+
+}
+
+public class Gamehelper {
+
+}
+
+
 
 =Help=
 
