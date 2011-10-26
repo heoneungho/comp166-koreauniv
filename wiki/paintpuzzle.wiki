@@ -118,7 +118,7 @@ protected void shuffle() //조각 섞는 메쏘드.
 
 {
 
-boolean exist[] = new boolean[24];
+boolean exist[] = new boolean[3];
 
 Random random = new Random();
 
