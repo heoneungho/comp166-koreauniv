@@ -9,7 +9,7 @@ Details
 스케쥴의 입력뿐만아니라 수정까지 가능하고 또 주단위와 월단위로 스케쥴을 정리할수 있는 프로그램을 만들 예정입니다 
 11월달의 달력을 만들고 각각의 일에 메모를 할수있도록
 
-클래스목록:Day , Week , PlanForDay, PlanForWeek
+클래스목록:Day , Week , Time, PlanForTime, PlanForDay, PlanForWeek
 
  class Day {
 String name;
@@ -40,6 +40,12 @@ week[3]에는 20~26, week[4]에는 27~30일이 속해있음 > 아직 코드못�
 
 }
 }
+class Time {
+TimeOfDay [] time = new TimeOfDay[4];
+time[0].
+
+
+ 
 class PlanForDay {
 각day에 대해 new DayOfNovember선언
 
