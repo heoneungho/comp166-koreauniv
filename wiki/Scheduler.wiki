@@ -1,3 +1,4 @@
+#labels 2011190731조승희
 #Summery 2011190731 조승희
 
 
@@ -5,9 +6,56 @@
 
 = Introduction =
 
-제가 만들 프로그램은 'Scheduler + Diary' 입니다. 싸이월드의 다이어리처럼 자신의 일정이나 그에 관한 메모나 짧은 일기를 쓸 수 있는 프로그램입니다.
-
+제가 만들 프로그램은 'Scheduler + Diary' 입니다. 싸이월드의 다이어리와 같이 오늘의 일정이나 일기를 입력해서 기록할 수 있는 프로그램입니다.
 
 = Details =
 
-기본적은 형태는 Scheduler입니다.  자신의 일정, 간단한 메모나 일기를 쓸 수 있습니다. 그 뿐만아니라 기념일을 입력하면 오늘이 D-day몇일인지도 알 수 있도록 만들 것입니다. 추가적으로 다른 기능들도 생각하여서 다기능 Scheduler를 만들 것입니다. 
+이 프로그램은 크게 두가지로 나눌 수 있습니다. 하나는 Schedul을 입력하고 출력하는 것이고, 다른 하나는 Diary를 입력하고 출력하는 것입니다. 
+
+//전체 스케줄을 관리한다. 날짜를 입력받으면 그 날짜에 대한 스케줄을 찾아서 출력해준다.
+public class Schedule{
+ public static void InputDate(String[] args){
+ }
+ public static void FindSchedule(){
+ }
+ public static void OutputSchedule(){
+ }
+}
+
+//하나의 일정을 기록한다. 일정에는 내용, 시간, 장소를 입력할 수 있다.
+public class TodaySchedule{
+ public static void InputContent(String[] args){
+ }
+ public static void InputTime(String[] args){
+ }
+ public static void InputPlace(String[] args){
+ }
+}
+
+//전체 다이어리를 관리한다. 날짜를 입력받으면 그 날짜에 대한 다이어리를 찾아서 출력해준다.
+public class Diary{
+ public static void InputDate(String[] args){
+ }
+ public static void FindDiary(){
+ }
+ public static void OutputDiary(){
+ }
+}
+
+//하나의 다이어리를 기록한다. 다이어리에는 날씨, 기분, 내용을 입력할 수 있다.
+public class TodayDiary{
+ public static void InputWeather(String[] args){
+ }
+ pulic static void InputContent(String[] args){
+ }
+ public static void InputFeeling(String[] args){
+ }
+}
+
+//전체 프로그램을 관리한다. 일정이나 다이어리 중 하나를 선택하면 그것을 불러온다.
+public class Whole{
+ public static void choice(String[] args){
+ }
+ public static void Call(){
+ }
+}
