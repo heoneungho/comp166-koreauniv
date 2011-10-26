@@ -18,3 +18,45 @@
 3.MakeSchedule - main함수가 들어갑니다. 개개인의 스케쥴을 통해 중복되는 시간을 제외하고 보여줍니다.
 
 = Using the code =
+
+public class InputPeople{
+
+	int[] users;
+	
+	public void setSchedule(users.length){
+
+			
+
+	}//사람 수에 따라 스케쥴표를 만듭니다.	
+
+}
+
+public class MakePersonalSchedule{
+
+	public setTime{
+
+	}//기간을 정합니다.
+
+	public inputSchedule{
+
+	} //개별적인 스케쥴을 입력합니다.
+	
+
+}
+
+public class MakeSchedule{
+
+	public static void main(String[] args){
+
+	}
+
+	void compareSchedule{
+
+	}//각각의 스케쥴을 비교합니다. 
+
+	void makeOneSchedule{
+
+	
+	}//중복되는 시간을 제외하고 스케쥴을 만듭니다.
+
+}
