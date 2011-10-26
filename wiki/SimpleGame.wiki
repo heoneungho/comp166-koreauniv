@@ -1,4 +1,5 @@
 #summary 단순한 게임
+#labels 2011190701김도형
 
 = Introduction =
 
@@ -24,6 +25,7 @@ save불가
 그외 세부적인 요소 및 스토리는 각자 구성.
 
 = Using the Code=
+
 
 = Work With =
 이종화
