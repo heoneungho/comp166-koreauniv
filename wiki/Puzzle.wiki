@@ -35,7 +35,7 @@ public class setting{
 
 pulbic class gamer{
 
-   int num // 현재 위치번호
+   int num; // 현재 위치번호
 
    public int mix{
    }// 섞기,랜덤으로 위치 바꾸기
