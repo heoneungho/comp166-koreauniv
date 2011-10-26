@@ -10,6 +10,9 @@ CPU스케줄러를 만들어보고 싶습니다 OS텀으로 만들때 java로 �
 = Using code =
 
 -프로세스에 대한 정보를 담을 클래스
+
 -각각의 알고리즘(FCFS, PRIORITY ROUND ROBIN등)에 대한 클래스
+
 -간트차트를 그릴 클래스
+
 - visualizaion을 위한 스윙에 관한 클래스(이부분은 잘 모르겠습니다 조언 부탁드립니다)
