@@ -25,3 +25,9 @@ CLASS 짜기
 4. 사람의 그림완성 class
 
 5. 단어칸 class
+
+6. 상어밥이된 사람 ( BAD !) class
+
+7. 상어밥이 되지 않은 사람 ( GOOD !) class
+
+8. GAME OVER class
