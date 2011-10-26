@@ -21,4 +21,4 @@
 -SetInterface- 기본적인 인터페이스를 설정합니다. 
 -Help- 목적과 사용방법들을 알려줍니다.
 
-= Use the code =
+= Using the code =
