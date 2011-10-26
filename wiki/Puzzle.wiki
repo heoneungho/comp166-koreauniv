@@ -3,20 +3,40 @@
 
 = Introduction =
 
-그림을 정사각형 여러 개로 쪼갠후 위치를 섞은 상태에서 시작해, 
-
-그림 조각을 이동시켜 원래 그림을 맞추는 기본 퍼즐.
+숫자를 뒤섞고 바꿔가며 원래 위치 찾기
 
 
 = Background =
 
-일단 그림 퍼즐이지만, 다른 퍼즐도 가능하다면...
-
+일단 숫자퍼즐이지만, 가능하다면 
 
 = Details =
 
-조각의 이동은 빈 칸과 인접한 조각을 마우스로 클릭하면,
+이동은 서로 바꿀 두 숫자를 선택하는것으로
 
-빈 칸과 조각의 위치가 바뀌는 형태.
+= Using the Code =
 
-몇 수 되돌리기, 시간제한, 난이도 등의 기능 예상.
+public class setting{
+       public static void main(String [] args){
+
+  int total=9; // 1~9 숫자를 순서대로 정사각형안에 표시
+  int prenum // 원래 위치번호
+ 
+   public void divide{
+   }// 숫자 하나당 구간 갖기, 9개 인스턴스 발생
+
+   public int position{
+   }// 위치정하기 1~9번 원래 위치 매기기
+}
+
+
+pulbic class gamer{
+
+   int num // 현재 위치번호
+
+   public int mix{
+   }// 섞기,랜덤으로 위치 바꾸기
+   
+   public void swit{
+   }// 게이머가 선택해 위치 바꾸기, 원래 위치 맞을때까지 반복
+}
