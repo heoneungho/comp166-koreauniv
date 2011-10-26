@@ -1,0 +1,35 @@
+#summary One-sentence summary of this page.
+#labels 2011190724최우형
+
+= Introduction =
+이것은 자신의 학점과 성적을 보다 쉽고 빠르게 한눈에 볼수 있는 프로그램 입니다.
+
+= Details =
+제가 늘 성적이 안좋다보니 성적표라도 제대로 보고 싶어서 이 프로그랩을 만들게 되었습니다.
+
+=Using the Code=
+import java.util.*;
+
+class Datainput
+{
+ String name;
+ int java, data, comp, sum;
+ double ave;
+ int rank;
+
+ public Datainput(String name, int java, int data, int comp, int sum, double ave, int rank)
+ {
+  this.name = name;
+  this.java = java;
+  this.data = data;
+  this.comp = comp;
+  this.sum = sum;
+  this.ave = ave;
+  this.rank = rank;
+ }
+}
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
