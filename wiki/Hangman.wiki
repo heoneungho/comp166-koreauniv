@@ -13,6 +13,10 @@
 
 
 
+
+
+
+
 CLASS 짜기
 
 
@@ -39,4 +43,3 @@ CLASS 짜기
 11. 상어밥이 되지 않은 사람 ( GOOD !) class
 
 12. GAME OVER class
-
