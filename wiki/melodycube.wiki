@@ -12,8 +12,12 @@ java로 쓰여진 멜로디큐브입니다.
 = Details =
 
 -10*10의 사각형은 클릭을 하면 1, 다시 클릭하면 0으로 1의 값일 때 소리가 난다.
+
 -각 행별로 서로 다른 음의 높이를 갖고 있다.
+
 -프로그램은 1열, 2열, 3열 순으로 각 열의 사각형을 순서대로 읽고 마치 오르골이 돌아가듯 그에 맞는 소리를 낸다. 
+
+-cube 클래스와 table 클래스의 funchion
 
 public class cube{
 
@@ -27,3 +31,26 @@ if(onoff=true) {
 }
 }
 
+public class table {
+
+int i=0;
+
+public static void main {
+
+cube c00 = new cube();
+cube c01 = new cube();
+.
+.
+cube c99 = new cube();
+
+while(){
+
+//ci0~ci9의 playsound를 동시에 실행
+
+i++;
+
+if(i>9){
+i=0; 
+}
+}
+}
