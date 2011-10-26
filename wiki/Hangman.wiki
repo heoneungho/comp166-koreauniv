@@ -22,36 +22,21 @@ CLASS 짜기
 
 3. 상어 움직임 class
 
-4. 사람의 그림완성 class
+4. 단어칸 class
 
-5. 단어칸 class
+5.사용자의 맞추는 과정 class
 
-6. 상어밥이된 사람 ( BAD !) class
+6. 맞은경우 틀린경우 class
 
-7. 상어밥이 되지 않은 사람 ( GOOD !) class
+7. 사람의 그림완성 class
 
-8. GAME OVER class
+8.맞은 단어 표시 class
 
+9.틀린 단어 표시 class
 
+10. 상어밥이된 사람 ( BAD !) class
 
+11. 상어밥이 되지 않은 사람 ( GOOD !) class
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+12. GAME OVER class
 
