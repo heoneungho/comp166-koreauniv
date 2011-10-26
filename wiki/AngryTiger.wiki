@@ -24,8 +24,12 @@
 
 = Using the Code =
 
-AngryTiger class와 StupidEagle class를 만들고 class life로 목숨을 나타냅니다. 그리고 RSP class 로 가위바위보 게임을 표현합니다.
-그 다음 가위바위보게임에 대한 자세한 코딩은 추후에 더 공부해서 올리겠습니다.
+Class : Player, life, RSP, GameLauncher
+
+Player class를 만들고 AngryTiger와 StupidEagle 객체를 만듭니다.
+life class로 목숨을 나타냅니다. 
+RSP class로 가위바위보 게임을 표현합니다.
+GameLauncher class로 실행파일을 만듭니다.
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
