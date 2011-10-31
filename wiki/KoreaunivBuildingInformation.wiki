@@ -21,6 +21,7 @@ GUI 방식으로 구현하여 나타낸다.
 
 = Using the Code =
 
+{{{
 import java.io.*;
 
 class time {
@@ -90,6 +91,8 @@ public class Mainclass {
 		}
 	}
 }
+
+}}}
 
 // GUI 방식으로 구현하는 것을 좀 더 공부를 해서 완성시키도록 하겠습니다.
 
