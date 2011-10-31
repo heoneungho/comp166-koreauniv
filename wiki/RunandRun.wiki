@@ -31,18 +31,18 @@
 
 
 Gamelauncher.class : 게임시작을 위한 클래스
-
+{{{
 public class Gamelauncher {
  public static void main (string[] args) {
   Runandrun game = new Runandrun();
   game.Startgame();
  }
 }
-
+}}}
 
 
 Player.class : 플레이어의정보가 담겨있는 클래스
-
+{{{
 public class player{
  int score = 0;
  string name;
@@ -51,9 +51,9 @@ public class player{
   //플레이어의 움직임을 관리한다.
  }
 }
-
+}}}
 Road.class : 길의 종류, 장애물의 종류 등의 정보가 담겨있는 클래스
-
+{{{
 public class Road{
  int Roadwidth;
  int Roadtype;
@@ -72,16 +72,14 @@ public class Road{
   //장애물의위치및종류를결정한다
  }
 }
-
+}}}
 Runandrun.class : 실제게임은 모두 이곳에서 진행된다
-
+{{{
 public class Runandrun{
  //게임설정및 여러가지를 실행한다.(기밀사항이라 밝힐수없음)
 
 }
-
-
-
+}}}
 
 
 
