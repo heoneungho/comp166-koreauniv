@@ -65,12 +65,11 @@ public class FindBomb { // 실제 FindBomb 객체
    private string bomb;  
         // 블럭의 위치를 지정한 arraylist, Bomb의 구분을 짓는 문자열 변수
 
-   public void setLocationCells(ArrayList loc) // Bomb의 위치를 바꾸는 메소드
+   public void setLocationCells(ArrayList loc) // 실행 할 때마다 Bomb의 위치를 바꾸는 메소드
 
    public void inBomb(String bomb)
 
-   public String checkBlock(String userInput) 
-        //사용자가 입력한 블럭이 Bomb인지 아닌지 확인
+   public String checkBlock(String userInput) //사용자가 입력한 블럭이 Bomb인지 아닌지 확인
 
    }
    
