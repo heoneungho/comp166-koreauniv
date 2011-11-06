@@ -23,24 +23,32 @@ import java.util.*;
 
 
 public class FindBombGame {  // 게임 클래스
+
    
    private GameHelper helper = new GameHelper();
-   private ArrayList<FindBomb> FindBombsList = new ArrayList<DotCom>;
+   private ArrayList<FindBomb> FindBombsList = new ArrayList<FindBomb>;
    private int checkblock = 0;
+
 
    private void setUpGame()  // FindBomb객체 만들고 위치 지정
 
+
    private void startPlaying() // 사용자의 입력을 받음 
+
 
    private void checkUserGuess(String userGuess)
         // 사용자가 선택한 블럭이 지뢰인지 아닌지 확인함
 
+
    private void finishGame() // 게임 결과를 알려주는 메시지 출력
 
+
    public static void main(String[] args) {
+
        FindBombGame game = new FindBombGame();
        game.setUpGame();
        game.startPlaying();
+
      }
      
 }
@@ -51,6 +59,7 @@ public class FindBombGame {  // 게임 클래스
 {{{
 
 public class FindBomb { // 실제 FindBomb 객체
+
    
    private ArrayList<String> locationCalls;
    private string bomb;  
@@ -73,9 +82,12 @@ public class FindBomb { // 실제 FindBomb 객체
 
 public class GameHelper {  // 보조 클래스
 
+
    public String getUserInput(String prompt) // 사용자의 입력을 받음
 
    public ArrayList <String> placeBomb(int size) // Bomb의 위치를 지정함 
+
+   }
 
 }}}
 
