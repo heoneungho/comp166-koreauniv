@@ -27,16 +27,25 @@
 Class : player, GameLauncher, AngryTiger
 
 Player class를 만들고 AngryTiger와 StupidEagle 객체를 만듭니다.
-life로 Player의 목숨 상태를 나타냅니다. 
+
+life로 Player의 목숨 상태를 나타냅니다.
+
 RockScissorsPaper(RSP, 가위바위보) 함수를 만들어 가위바위보 게임을 표현합니다.
+
 GameLauncher class로 실행파일을 만듭니다.
 
+
+
 public class Gamelauncher {
+
     public static void main (string[] args) {
+
     AngryTiger game = new AngryTiger();
 
     game.Startgame();  }
 }
+
+
 
 public class player {
     int life = 5;
@@ -45,16 +54,20 @@ public class player {
     player StupidEagle = new player;
 
     public void RSP() {
+
     //플레이어의 가위바위보 담당.
 
     int Rock;
     int Scissors;
     int Paper;
+
     }
 }
 
 public class AngryTiger {
+
     //게임 진행 class
+
 }
 
 Add your content here.  Format your content with:
