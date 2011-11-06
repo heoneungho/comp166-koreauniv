@@ -26,6 +26,36 @@ save불가
 = Using the Code=
 
 1. PlayerCharacter.class
+{{{
+import java.io.*;
+public class PlayerCharacter implements Serializable	{        ///직렬화
+	String name;
+	int HP;
+	int MP;
+	int ATK;
+	int EVA;
+	String[] Spells;
+	
+	public PlayerCharacter(String n, int h, int m, int a, int e, String[] s)	{
+		name = n;
+		HP = h;
+		MP = m;
+		ATK = a;
+		EVA = e;
+		Spells = s;
+	}
+	public String getName()	{
+		/// 캐릭터 이름을 받아온다.
+	}
+	public int getHP()	{
+		/// 숫자형태의 수치를 받아온다.(이외의 것은 생략함)
+	}
+	public String getSpells()	{
+		String spellList = "";
+               /// 기술명을 받아온다
+	}
+}
+}}}
 
 = Work With =
 이종화
