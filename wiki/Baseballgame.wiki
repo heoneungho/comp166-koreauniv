@@ -27,30 +27,42 @@
 3. 게임을 끝낸다.
     A. 승자, 횟수를 출력하고 게임을 끝낸다.
 
-맞춰야 하는 숫자개수(3~5개)를 선택하는 클래스(startgame)와 컴퓨터가 상대방의 숫자를 추측하는 과정을 수행하는 클래스 그리고 숫자조합을 입력하였을 때 스트라이크, 볼, 아웃을 알려주는 클래스를 각각 만든다.
-gamestyle를 선택하는 클래스에서 gamestyle을 입력받고 그 개수 만큼 임의의 숫자 조합을 만드는 method 그리고 사용자에게서 숫자 조합을 입력 받는 method를 각각 만든다.
-상대방의 숫자를 추측하는 과정을 수행하는 클래스(guessnum)에서는 각각의 상황에 맞게 컴퓨터는 최선의 판단을 하여 사용자의 숫자를 맞추는 method를 만든다.
-숫자 조합을 입력하였을 때 스트라이크, 볼 아웃을 알려주는 클래스(result)를 만든다. 사용자가 숫자조합을 입력하였을 때 스트라이크, 볼, 아웃을 알려주는 method와
-컴퓨터가 사용자의 숫자를 맞추기 위해 임의의 숫자조합을 입력한 뒤 스트라이크, 볼, 아웃을 알려주는 method를 만든다. 
-
 =Using code=
 
-public class startgame {
-  int gamestyle;
-  
-  system.out.println("Enter a games tyle(3, 4, 5)");
-  scanf("%d", &gamestyle);   //자바에서 입력을 받는 방법을 아직 몰라서 scanf로
-                                 //작성하였다.
 
-  ....        //아직 자바가 익숙치않아서 좀 더 익숙해진 후에 소스코드를
-                //올릴 수 있도록 하겠습니다.
+public class Game {  //gamestyle을 선택하고, 게임이 진행되는 클래스이다.
+	
+	private int size, trycount, count, strike, ball, condition;
+	private String[] answer, dInput;
+	private String output;	
+	
+	public Game() {}
+	
+	public void setDefault() {
+		size = trycount = count = condition = 0;
+	}
+         public void makeAnswer() { //게임 스타일을 선택하고 난수생성		
+	answer = new String[size];
+        }
+	
+	public void playing(String input) { 
+		dInput = new String[size];
+		strike = ball = 0;
+        }
+	public int getSize() { 
+		return size;
+	}
 
-  }
+	public int getTrycount() {
+		return trycount;
+	}
 
-public class guessnum {
+	public int getCondition() {
+		return condition;
+	}
 
- }
-
-public class result {
+	public String getOutput() {
+		return output;
+	}
 
 }
