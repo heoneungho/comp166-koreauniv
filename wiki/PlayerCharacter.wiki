@@ -1,0 +1,42 @@
+import java.io.*;
+public class PlayerCharacter implements Serializable	{       ///직렬화
+	String name;
+	int HP;
+	int MP;
+	int ATK;
+	int EVA;
+	String[] Spells;
+	
+	public PlayerCharacter(String n, int h, int m, int a, int e, String[] s)	{
+		name = n;
+		HP = h;
+		MP = m;
+		ATK = a;
+		EVA = e;
+		Spells = s;
+	}
+	
+	public String getName()	{
+		return name;
+	}
+	public int getHP()	{
+		return HP;
+	}
+	public int getMP()	{
+		return MP;
+	}
+	public int getATK()	{
+		return ATK;
+	}
+	public int getEVA()	{
+		return EVA;
+	}
+	public String getSpells()	{
+		String spellList = "";
+		
+		for	(int i = 0; i < Spells.length; i++)	{
+			spellList += Spells[i] + " "; 
+		}
+		return spellList;
+	}
+}
