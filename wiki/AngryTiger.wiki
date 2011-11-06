@@ -31,13 +31,16 @@ life로 Player의 목숨 상태를 나타냅니다.
 RockScissorsPaper(RSP, 가위바위보) 함수를 만들어 가위바위보 게임을 표현합니다.
 GameLauncher class로 실행파일을 만듭니다.
 
+///
 public class Gamelauncher {
     public static void main (string[] args) {
     AngryTiger game = new AngryTiger();
 
     game.Startgame();  }
 }
+///
 
+///
 public class Player {
     int life = 5;
 
@@ -48,11 +51,13 @@ public class Player {
     int Paper;
     }
 }
+///
 
+///
 public class AngryTiger {
     //게임 진행 class
 }
-
+///
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
