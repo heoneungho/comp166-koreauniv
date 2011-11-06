@@ -42,15 +42,20 @@ public class Gamelauncher {
 
     AngryTiger game = new AngryTiger();
 
-    game.Startgame();  }
+    game.Startgame();
+
+    }
+
 }
 
 
 
 public class player {
+
     int life = 5;
 
     player AngryTiger = new player;
+
     player StupidEagle = new player;
 
     public void RSP() {
@@ -58,10 +63,13 @@ public class player {
     //플레이어의 가위바위보 담당.
 
     int Rock;
+
     int Scissors;
+
     int Paper;
 
     }
+
 }
 
 public class AngryTiger {
