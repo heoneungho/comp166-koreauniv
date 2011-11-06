@@ -12,7 +12,7 @@
 
 = Details =
 
- 배열 선택(5*5, 7*7, 9*9) 후 지뢰 찾기
+ 
  지뢰찾는 방법은 블럭을 선택해서 나오는 숫자를 유추해서 지뢰를 찾는다.
  (지뢰빼고 다 선택하면 됨)
 
@@ -65,11 +65,13 @@ public class FindBomb { // 실제 FindBomb 객체
    private string bomb;  
         // 블럭의 위치를 지정한 arraylist, Bomb의 구분을 짓는 문자열 변수
 
-   public void setLocationCells(ArrayList loc) // 실행 할 때마다 Bomb의 위치를 바꾸는 메소드
+   public void setLocationCells(ArrayList loc) // 실행 할 때마다 Bomb의 위치를 바꾸어줌
 
    public void inBomb(String bomb)
 
    public String checkBlock(String userInput) //사용자가 입력한 블럭이 Bomb인지 아닌지 확인
+
+   public String showNumber(String userInput) // 선택한 블럭 주위에 Bomb가 몇 개있는지 숫자로 나타냄  
 
    }
    
@@ -85,6 +87,8 @@ public class GameHelper {  // 보조 클래스
    public String getUserInput(String prompt) // 사용자의 입력을 받음
 
    public ArrayList <String> placeBomb(int size) // Bomb의 위치를 지정함 
+
+   
 
    }
 
