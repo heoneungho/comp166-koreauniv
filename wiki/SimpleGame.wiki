@@ -56,6 +56,44 @@ public class PlayerCharacter implements Serializable	{        ///직렬화
 	}
 }
 }}}
+2. PCData.java
+{{{
+public class PCData {
+	public static void main(String [] args)	{
+		PlayerCharacter one = new PlayerCharacter();   ///각 캐릭터의 성질 입력
+		PlayerCharacter two = new PlayerCharacter();
+		PlayerCharacter three = new PlayerCharacter();
+		
+		try	{
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("Game.ser"));
+			os.writeObject(one);
+			os.writeObject(two);
+			os.writ력eObject(three);
+			os.close();
+		}	catch(IOException ex)	{
+			ex.printStackTrace();
+		}
+		one = null;
+		two = null;
+		three = null;
+		
+		try	{
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream("Game.ser"));
+			PlayerCharacter oneRestore = (PlayerCharacter) is.readObject();
+			PlayerCharacter twoRestore = (PlayerCharacter) is.readObject();
+			PlayerCharacter threeRestore = (PlayerCharacter) is.readObject();
+		}	catch(Exception ex)	{
+			ex.printStackTrace();
+		}
+	}
+}
+}}}
+
+3. Enemy. java
+4. EData.java
+위의 두 클래스 파일과 같은 방식
+
+5. Battle.java
 
 = Work With =
 이종화
