@@ -56,7 +56,9 @@ class Character  {
 public class Maze_Go {
    private int way;
    
- 
+   Maze mazing = new Maze();
+   mazing.Make_Maze(/*유저 입력값 2개를 받는다*/);
 
+   
 }
 }}}
