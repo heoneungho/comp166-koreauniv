@@ -17,6 +17,8 @@ PC방 아르바이트를 할때 요금계산을 컴퓨터가 다 해주니 너�
 
 화면에 출력하기 위해서 window class를 제작하였는데 기존의 주차관리 코드의 출력화면을 보고 변형하여 적용하였습니다.
 
+{{{
+
 /**
  * 
  */
@@ -627,3 +629,5 @@ public class PcWindow extends JFrame implements ActionListener, ItemListener,
 
 	}
 }
+
+}}}
