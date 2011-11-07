@@ -7,130 +7,77 @@
 명화 검색 프로그램에서 명화를 로드해서 조각을 나눠 맞추는 간단한 게임으로 계획을 수정했습니다.
 
 = Details =
+{{{
+import java.awt.*;
 
-import java.awt.Image;
+import java.util.*;
 
-import java.awt.Insets;
-
-import java.awt.Graphics;
-
-import java.awt.MediaTracker;
-
-import java.awt.event.ActionEvent;
-
-import java.awt.event.ActionListener;
-
-import java.util.Random;
-
-import java.awt.Toolkit;
-
-import java.net.URL;
+import javax.swing.*;
+import java.io.*;
 
 
-import javax.swing.Icon;
+}}}
+ - 필요할 것으로 예상되는 패키지 - Head First Java GUI 부분 12, 13, 14장 공부중입니다.
 
-import javax.swing.ImageIcon;
+필요한 변수들
 
-import javax.swing.JApplet;
+{{{
+      ArrayList<String> files ; // 사용자가 파일 제목(String)을 저장하는 것을 저장할 ArrayList
 
-import javax.swing.JButton;
-
-//필요할 걸로 예상되는 class들....
-
-public class XPuzzle extends JApplet implements ActionListener
-
-{
-
-ImageIcon[][] sprites;
-
-JButton[][] cell;
-
-int moving, slice = 2; //2*2의 배열을 이용한 그림 퍼즐
-
-JButton b;
+      int level; //사용자가 그림을 level*level으로 조각낼 수 있게 입력을 받는다. 조각이 많을 수록 어려우므로 level의 의미를 부여함.
+      int numOfhits;//사용자가 몇번이나 조각을 옮겼는지 확인
+      String grade;//사용자의 numOfhits에 따라 grade를 부여
+      String result;//현재 결과 - ,다 맞추었는지 아직 완성이 덜되었는지를 저장해두는 문자열.
+       Gamehelper gh = new GameHelper();//game helper 호출
 
 
-public XPuzzle() {
+}}}
 
-b = new JButton("조각 섞기");
+gamehelper class -  조각을 섞고, 사용자의 입력을 받아서, 그림이 완성되면 finishgame()을 호출.
+{{{
 
-b.addActionListener(new ActionListener() {
+public class GameHelper{
+  public void shuffle(){
+ }//조각 섞는 메쏘드 - api에 있음.
 
-public void actionPerformed(ActionEvent e) {
+public String checkYourself(){
+    return result;
 
-shuffle();
+if(result == "Complete!"){
+  finishGame();
+ }//조각이 다 맞춰졌는지 확인
 
+
+
+}//end of GameHelper
+}}}
+
+
+public class PuzzleGame{다
+{{{
+  public void menu(){
+
+//메뉴는 1. 게임시작, 2. 그림추가 3. 그림삭제 4.종료 4가지를 보여주고 입력을 받아서 원하는 행동을 한다.
+
+//메뉴의 번호를 입력받는다.
+  int choice = Integer.ParseInt(String [] args);
+
+if( choice ==1){
+  startGame(); // 
+}else if(choice ==2 ){
+  ArraryList의 이름.add();
+}else if(choice == 3){
+  ArraryList의 이름.remove();
+}else if(choice ==4){
+  return ;
 }
 
-}}
+public void startGame(){
 
-
-
-// 원본 이미지를 가져오는 메소드
-
-protected Image loadImage(String filename)
-
-{
-
-Image sourceImage = null;
-
-try
-
-{
-
-URL url = new URL(getDocumentBase(),filename);
-
-sourceImage = Toolkit.getDefaultToolkit().getImage(url);
-
-} catch(Exception e)
-
-{
-
-sourceImage = null;
-
-System.out.println("Image ("+filename +") not found !");
+  String level =  helper.getUserInput("레벨 입력");
+ }//게임을 시작한다.
 
 }
+}//end of puzzle game 
+}}}
 
-if(sourceImage != null)
-
-{
-
-try {
-
-MediaTracker tracker = new MediaTracker(this);
-
-tracker.addImage(sourceImage, 0);
-
-tracker.waitForID(0);
-
-} catch(Exception e) {e.printStackTrace(); } //eclipse error처리 기능으로 일단....  error처리를 했습니다.
-
-}
-
-return sourceImage;
-
-}
-
-//원본 이미지를 가져오고, 결과값 -이미지 리턴
-
-protected void shuffle() //조각 섞는 메쏘드.
-
-{
-
-boolean exist[] = new boolean[3];
-
-Random random = new Random();
-
-int max = slice*slice -1;
-
-for (int i = 0; i < slice; i++) {
-
-for(int j =0; j <slice; j++){
-
-....미완성
-}
-
-//actionlistener..??이론...공부
-action event를 받기위한 interface. 버튼을 누르면 click event가 발생이 되고 이 발생된 click event를 actionListener가 받게 되는것. 
-해당 component에 actionListener를 등록을 해주어야 actionListener가 귀를 귀울이고 어떤 event가 발생되는지를 들어준다.
