@@ -11,6 +11,7 @@ Up Down 게임
 
 {{{
 [CODE]
+import java.lang.Math;
 
 public class UpdownGame {
    public void main(String[] args) {
