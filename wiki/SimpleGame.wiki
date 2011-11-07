@@ -69,6 +69,7 @@ public class PCData {
 			PlayerCharacter oneRestore = (PlayerCharacter) is.readObject();
 			PlayerCharacter twoRestore = (PlayerCharacter) is.readObject();
 			PlayerCharacter threeRestore = (PlayerCharacter) is.readObject();
+                        is.close();
 		}	catch(Exception ex)	{
 			ex.printStackTrace();
 		}
