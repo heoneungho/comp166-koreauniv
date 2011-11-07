@@ -25,7 +25,6 @@ import java.util.*;
 public class Maze {
  
     private int location;
-    private int way;
     private rooms[][];
 
     public void GetLocation(int userInput) {
@@ -39,15 +38,25 @@ public class Maze {
 }
 
 class Character  {
-   int hp;
-   int atk;
-   int def;
-   
+  private int hp;
+   private int atk;
+  private int def;
+ 
+   public status(int hp_1,int atk_1, int def_1) {
+   hp = hp_1;
+   atk = atk_1;
+   def = def_1;
    }
 
+  public call_status(int hp_2, int atk_2, int def_2) {
+  hp_2 = hp;
+  atk_2 = atk;
+  def_2 = def;
+}
 public class Maze_Go {
+   private int way;
    
-   
+ 
 
 }
 }}}
