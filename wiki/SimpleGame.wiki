@@ -11,7 +11,7 @@
 
 = Details =
 
-class GameHeper, class Character와 class Enemy, class Battle,  class Story 등으로 구성
+class GameHeper, class Character와 class Enemy, class Stage 등으로 구성
 
 Character 클래스 안에 스테이터스를 변수로 입력
 
@@ -82,7 +82,7 @@ public class PCData {
 4. EData.java
 위의 두 클래스 파일과 같은 방식
 
-5. Battle.java
+5. Stage.java
 {{{
 
 
