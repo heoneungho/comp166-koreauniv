@@ -8,5 +8,48 @@
 
   -이 프로그램은 전자 가계부로써 달력의 특정 날짜를 선택하여 매일 그 날의 수입/지출을 입력(input)하고 나중에 한달 간의 총 수입/지출을 출력(output)해준다.
   -이전 달 대비 지출이 상승할 시에는 경고를 주어 지출을 제한하게 한다. 
-  
-  다른 기능은 추후에 추가하겠습니다.
+     
+{{{
+public class BookInfo {
+	String title;
+	int money1;
+	int money2;
+	int money3;
+	int money4;
+	public BookInfo()
+	{
+			this.title = title;   //수입 또는 지출한 내역의 이름
+			this.money1 = money1; // 수입
+			this.money2 = money2; // 지출출
+			this.money3 = money3; //총 수입
+			this.money4 = money4; //총 지출
+	}
+	
+	public void PrintData()
+	{
+			System.out.println("제목:"+title+"수입"+money1+"지출"+money2+"총수입"+ money3+"총지출"+money4);
+	}
+}
+
+public class BookManager {    //가계부 관리하는 클래스로 데이터의 입력,출력, 찾기,삭제, 프로그램 종료를 관리한다.
+
+	public void Menuview()
+	{
+		System.out.println("1.데이터 입력");
+		System.out.println("2.데이터 출력");
+		System.out.println("3.데이터 찾기");
+		System.out.println("4.데이터 삭제");
+		System.out.println("5.프로그램 종료");
+	}
+	public void InputData() //수입, 지출 입력
+	{
+	}
+	public void OutputData()// 수입, 지출, 총수입, 총지출 출력
+	{
+	}
+        public void SearchData()// 데이터 찾기
+        {기
+        }
+        public void DeleteData()// 데이터 지우기
+}
+}}}
