@@ -25,7 +25,9 @@ int Length = range.length; // 길이를 설정
 
 int rand = (int) (Math.random()*Length); // 난수를 결정함 으로써 the number 설정
 
+int i;
 
+for(i=0;i<5;i++){
         Scanner sc = new Scanner(System.in);    // 키보드로 입력 받는 객체 생성
         System.out.println( Guess the number ! );
 
@@ -46,5 +48,5 @@ if(rand > input )
 System.out.println(  " The number is higher than yours ! ); //the number 가 input 보다 클경우 이를 알려줌
       
 }
-
+}
 }}}
