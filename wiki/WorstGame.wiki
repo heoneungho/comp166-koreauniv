@@ -19,7 +19,35 @@ save기능 없음
 그외 세부적인 요소 및 스토리는 각자 구성.
 
 = Using the Code=
+{{{
 import java.util.*;
 
 public class Maze {
+ 
+    private int location;
+    private int way;
+    private rooms[][];
+
+    public void GetLocation(int userInput) {
+    location = userInput;
+    }
     
+   public void Make_Maze(int n, int m) {
+   rooms[n][m] (/*룸 갯수 정의*/);
+   //나중에
+   }   
+}
+
+class Character  {
+   int hp;
+   int atk;
+   int def;
+   
+   }
+
+public class Maze_Go {
+   
+   
+
+}
+}}}
