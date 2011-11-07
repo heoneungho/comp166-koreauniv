@@ -38,7 +38,7 @@ GameLauncher class로 실행파일을 만듭니다.
 
 public class Gamelauncher {
 
-    public static void main (string[] args) {
+    public static void main (String[] args) {
 
     AngryTiger game = new AngryTiger();
 
@@ -54,9 +54,9 @@ public class player {
 
     int life = 5;
 
-    player AngryTiger = new player;
+    player AngryTiger = new player(name, life);
 
-    player StupidEagle = new player;
+    player StupidEagle = new player(name, life);
 
     public void RSP() {
 
