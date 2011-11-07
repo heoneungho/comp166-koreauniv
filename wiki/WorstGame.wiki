@@ -70,17 +70,15 @@ class Character  {
 public class Maze_Go {
    private int way;
    private int rooms[10][10];
-   private int ex1, ex2, num, count;
-   ex1 = 0;
-   ex2 = 0;
-   count = 1;
+   private  num;
  
     Maze mazing = new Maze();
     mazing.location[0][0] = rooms[0][0];
 
     public void Maze_Make() {
     num = (Math.random () * 70 + 30);
-        while(count < 400) {
+        for(int ex1 = 0; ex1 < 10; ex++1)
+             for(int ex2 = 0;ex2 < 10;ex2++)    {
 
         if(num % (ex1 * ex2) == 0) 
             mazing.Way_Make(ex1,ex2,ex2,ex1 0, 1, 2, -1);   
@@ -88,7 +86,6 @@ public class Maze_Go {
         if(((num * (ex1 + ex2)) % 2 == 0) &&ex1 <= 6 && ex2 > 1)
             mazing.Way_Make(ex1,ex2, ex1+4, ex2-1, -1, 1, -1, 3); 
 
-    count++;
     }
 
 public class Monster{
