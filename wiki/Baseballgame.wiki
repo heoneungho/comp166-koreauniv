@@ -29,7 +29,7 @@
 
 =Using code=
 
-
+{{{
 public class Game {  //gamestyle을 선택하고, 게임이 진행되는 클래스이다.
 	
 	private int size, trycount, count, strike, ball, condition;
@@ -66,3 +66,4 @@ public class Game {  //gamestyle을 선택하고, 게임이 진행되는 클래�
 	}
 
 }
+}}}
