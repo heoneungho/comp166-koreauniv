@@ -14,8 +14,25 @@ Up Down 게임
 import java.lang.Math;
 import java.util.Scanner;
 
-public class UpdownGame {
-   public void main(String[] args) {
+
+ public static void main(String[] args) {
+ 
+  updowngame UD = ( new updowngame() ); // 메모리를 할당합니다
+ 
+   UD.UpDownGame(); // 함수 호출
+ 
+  System.out.println("GAME OVER"); 
+ }
+ 
+
+
+
+
+
+
+
+
+   public void UpDownGame() {
 
 String[] range = { "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19",
 "20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40",
@@ -27,10 +44,11 @@ int Length = range.length; // 길이를 설정
 
 int rand = (int) (Math.random()*Length); // 난수를 결정함 으로써 the number 설정
 
-int i;
 
-for(i=0;i<5;i++){
         Scanner sc = new Scanner(System.in);    // 키보드로 입력 받는 객체 생성
+int i;
+for(i=0;i<5;i++){
+
         System.out.println( Guess the number ! );
 
 
@@ -38,10 +56,10 @@ for(i=0;i<5;i++){
 
 
 
-if ( rand == input )  
- System.out.println(  " LUCKY ! LUCKY !" );    // 같을경우 GAME OVER
-break ;  // 게임 종료
-
+if ( rand == input )  {
+ System.out.println(  " LUCKY ! LUCKY !" );    // 같을경우
+  i=i+4;  // for문 탈출
+}
 
 if(rand > input ) 
 System.out.println(  " The number is lower than yours ! ); // the number 가 input 보다 클경우 이를 알려줌
@@ -49,6 +67,6 @@ System.out.println(  " The number is lower than yours ! ); // the number 가 inp
 if(rand > input ) 
 System.out.println(  " The number is higher than yours ! ); //the number 가 input 보다 클경우 이를 알려줌
       
-}
+
 }
 }}}
