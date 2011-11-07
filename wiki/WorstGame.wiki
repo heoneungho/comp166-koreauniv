@@ -71,7 +71,9 @@ public class Maze_Go {
    private int way;
    private int rooms[10][10];
    private int ex1, ex2, num, count;
-
+   ex1 = 0;
+   ex2 = 0;
+   count = 1;
  
     Maze mazing = new Maze();
     mazing.location[0][0] = rooms[0][0];
