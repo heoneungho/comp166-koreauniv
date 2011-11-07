@@ -60,7 +60,7 @@ public class PuzzleGame{다
 //메뉴는 1. 게임시작, 2. 그림추가 3. 그림삭제 4.종료 4가지를 보여주고 입력을 받아서 원하는 행동을 한다.
 
 //메뉴의 번호를 입력받는다.
-  int choice = Integer.ParseInt(String [] args);
+  int choice = Integer.parseInt(String [] args);
 
 if( choice ==1){
   startGame(); // 
@@ -80,4 +80,3 @@ public void startGame(){
 }
 }//end of puzzle game 
 }}}
-
