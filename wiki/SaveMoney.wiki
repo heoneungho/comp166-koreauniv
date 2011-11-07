@@ -53,3 +53,4 @@ public class BookManager {    //가계부 관리하는 클래스로 데이터의
         public void DeleteData()// 데이터 지우기
 }
 }}}
+ 지난 달과의 총 수입, 총 지출을 비교하여 돈을 절약할 수 있도록 하는 class 를 추가할 것입니다. 조언부탁드려요 ㅜㅜ
