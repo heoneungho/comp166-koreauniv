@@ -25,7 +25,7 @@ save불가
 
 = Using the Code=
 
-1. PlayerCharacter.class
+1. PlayerCharacter.java
 {{{
 import java.io.*;
 public class PlayerCharacter implements Serializable	{        ///직렬화
@@ -65,19 +65,6 @@ public class PCData {
 		PlayerCharacter three = new PlayerCharacter();
 		
 		try	{
-			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("Game.ser"));
-			os.writeObject(one);
-			os.writeObject(two);
-			os.writ력eObject(three);
-			os.close();
-		}	catch(IOException ex)	{
-			ex.printStackTrace();
-		}
-		one = null;
-		two = null;
-		three = null;
-		
-		try	{
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream("Game.ser"));
 			PlayerCharacter oneRestore = (PlayerCharacter) is.readObject();
 			PlayerCharacter twoRestore = (PlayerCharacter) is.readObject();
@@ -90,10 +77,14 @@ public class PCData {
 }}}
 
 3. Enemy. java
+
 4. EData.java
 위의 두 클래스 파일과 같은 방식
 
 5. Battle.java
+{{{
 
+
+}}}
 = Work With =
 이종화
