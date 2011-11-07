@@ -8,6 +8,8 @@ Up Down 게임
 사용자가 말한 숫자보다 the number 가 큰지, 작은지를 알려주어 범위를 좁혀가며
 숫자를 맞추는 게임입니다. 횟수에는 제한이 있습니다.
 
+
+{{{
 [CODE]
 
 public class UpdownGame {
@@ -42,3 +44,5 @@ if(rand > input )
 System.out.println(  " The number is higher than yours ! ); //the number 가 input 보다 클경우 이를 알려줌
       
 }
+
+}}}
