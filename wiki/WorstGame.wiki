@@ -31,21 +31,21 @@ public class Maze {
     return location[userInput1][userInput2];
     }
 
-    public void Way(int ex1, int ex2, int n1, int n2, int ,3, int n4) {
-    
-    if(n1 == 0) 
-    location[1][1] = temp.rooms[ex1][ex2];
-    if(n2 == 1)
-    location[1][1] = temp.rooms[ex1][ex2];
-    if(n3 == 2)
-    location[1][1] = temp.rooms[ex1][ex2];
-    if(n4 == 3)
-    location[1][1] = temp.rooms[ex1][ex2];
+    public void Way_Make(int ex1, int ex2, int ex1_1, int ex2_2, int n1, int n2, int n3, int n4)  {
+//rooms[ex1][ex2] 에서 rooms[ex1_1][ex2_2] 로 통하는 길을 만드는 함수
+
+    if(n1 == 0) {
+    temp.rooms[ex1][ex2]
     }
-
-    public void Way_Make(int ex1, int ex2, int ex1_1, int ex2_2)  {
-
-
+    if(n2 == 1) {
+    temp.rooms[ex1][ex2]
+    }
+    if(n3 == 2) {
+    temp.rooms[ex1][ex2]
+    }    
+    if(n4 == 3) {
+    temp.rooms[ex1][ex2]
+    }
 
    }
 }
@@ -69,7 +69,7 @@ class Character  {
 }
 public class Maze_Go {
    private int way;
-   private rooms[10][10];
+   private int rooms[10][10];
    private int ex1, ex2, num, count;
 
  
