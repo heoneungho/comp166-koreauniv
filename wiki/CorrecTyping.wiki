@@ -32,7 +32,7 @@ public class Blackjet{
                
 }
 
-public class GameHelper() {
+public class GameHelper{
 
 }
 
