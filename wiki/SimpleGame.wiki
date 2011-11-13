@@ -87,5 +87,3 @@ public class PCData {
 
 
 }}}
-= Work With =
-이종화
