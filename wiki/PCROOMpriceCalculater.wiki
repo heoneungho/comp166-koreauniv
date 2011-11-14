@@ -11,623 +11,352 @@ PC방 아르바이트를 할때 요금계산을 컴퓨터가 다 해주니 너�
 = Details =
 
 사용시간에 따른 요금계산을 해주는 프로그램이다.
-프로그램을 시작하면 main window가 화면상에 나타나는데 일단 90개의 컴퓨터가 있는 PC방 환경을 구현하였습니다. 각각의 자리에 손님이 들어오면 나이별로 요금을 지정하여 PC방 cardnumber로 자리를 배정하게 되며, 1시간의 기본요금과 추후 부과되는 30분당 요금을 사용자가 설정할수 있게 구현하였습니다. 또한 content메뉴에서 총 매출액이나 사용시간, 사용자의 나이 등 각종 정보를 detail하게 파악할 수 있도록 구현하려고 합니다.
+프로그램을 시작하면 첫번째로 PC의 갯수를 입력받습니다. 그 후 각 PC에 대해 CPU, MEMORY, 그래픽카드 등 사양을 입력하고, 사용일자를 입력받습니다.
+그 후에 이제 각 PC의 사용이 시작될때 마다 자리를 할당하고 사용시간을 계산하게 됩니다.
+기본적으로 PC방에서 수입은 추가서비스(라면, 음료수) 등이 큰 비중을 차지하기 때문에 추가서비스도 계산가능하도록 메뉴항목에 추가하였습니다.
+아직 GUI를 배우지 않아 구현이 힘들어서 GUI는 사용하지 않도록 하겠습니다.
 
-= code =
-
-화면에 출력하기 위해서 window class를 제작하였는데 기존의 주차관리 코드의 출력화면을 보고 변형하여 적용하였습니다.
+= code =.
 
 {{{
 
-/**
- * 
- */
-package pak;
+/********PCinfo*********/
+public class PCinfo
+{
+	private int iId;                                   //pc번호
+	private String str_CPU;                            //CPU
+	private String str_Memory;                         //메모리
+	private String str_HDD;                            //HDD
+	private String str_GPCard;                         //Graphic Card
+	private long lStart;                               //PC 시작
+	private long lStop;                                //PC 종료
+	private int iTotal;                                
+	private int iPay;
+	private String using; 
+	private int count;
+	private String svcname[] = new String [50];        //이름 문자열 크기
+	private int svcTotal; 
+	private int sTotal;
+	private int siTotal;
+	private int svcmoney[] = new int[50];             //서비스 추가물품 값 정수형 크기
 
-/**
- * @author xkht1031x
- *
- */
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
-
-import java.text.SimpleDateFormat;
-
-@SuppressWarnings("serial")
-class mainWindow extends JFrame implements Runnable, ActionListener {
-	JTextField blank;// 상단의 시계표시를 위해 공백을 만드는 텍스트필드
-	public JButton Btn[] = new JButton[150];// 자리 버튼
-	JTextArea condition;// 상황판 텍스트 에어리어
-	JButton configBtn;// 요금설정 버튼
-	String currentDate = "";// 현재 날짜를 저장
-	String currentTime = "";// 현재 시간을 저장
-	JButton history;// 내역보기 버튼
-	int jariNumber;// 자리번호
-	JButton notUseBtn[] = new JButton[100];// 사용하지 않는 버튼(자리 사이사이의 버튼)
-	readFile obj = new readFile();// 파일을 읽어들임
-	JPanel pan1;// 판넬1
-	JPanel pan2;// 판넬2
-	JPanel pan3;// 판넬3
-
-	// 생성자
-	public mainWindow() {
-		setTitle("PcRoomPriceCalcuLator");// 제목표시줄
-		setSize(1000, 700);// 사이즈
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료버튼 클릭시 종료함
-		pan1();// 메소드 호출
-		pan2();// 메소드 호출
-		pan3();// 메소드 호출
-		gridInit();// 메소드 호출
-		setVisible(true);// 창을 보여줌
-		setResizable(false);// 크기변경 불가
+	public PCinfo()     //pc정보 초기화
+	{
+		iId=0;
+		str_CPU=" ";
+		str_Memory=" ";
+		str_HDD=" ";
+		str_GPCard=" ";
+		lStart=0;
+		lStop=0;
+		iTotal=0;
+		iPay=0;
+		using="빈좌석";
+		count=0;
+		svcTotal=0;
+		sTotal=0;
+		siTotal=0;
+			
 	}
 
-	@SuppressWarnings("deprecation")
-	// 버튼 이벤트
-	public void actionPerformed(ActionEvent e) {
+	/*pc 정보 입력*/
+	public void setPCinfo(int id, String CPU, String Memory, String HDD, String GPCard)  
+	{
+		iId=id;
+		str_CPU=CPU;
+		str_Memory=Memory;
+		str_HDD=HDD;
+		str_GPCard=GPCard;
+	}
+	
+	/*사용중인지 빈좌석인지 출력*/
+	public String using()            
+	{
+		return using;
+	}
+	public void use(String used)
+	{
+		using=used;
+	}
+	
+	/*시작 시간*/
+	public void start(long time)     
+	{
+		lStart = time;
+	}
+	
+	/*종료 시간*/
+	public int stop(long time)      
+	{
+		lStop = time;
+		iPay = (int)((lStop-lStart)/60000*20);
+		iTotal=+iPay;
+		return iPay;
+	}
+	
+	/*pc정보 출력*/
+	public void printpc()   
+	{
+		System.out.print("[CPU]"+ str_CPU +" [Memory] "+ str_Memory +" [HDD] "+ str_HDD +" [Graphic] "+str_GPCard);
+	}
+	public int getTime()   
+	{
+		int time;
+		return time=(int)(lStop-lStart)/60000;
+	}
+	public int servicenum()
+	{
+		return count;
+	}
+	public int Servicetotal()
+	{
+		return sTotal;
+	}
 
-		if (e.getSource() == configBtn) {// 요금설정 버튼
-			new config();// 요금설정 클래스 실행
-		} else if (e.getSource() == history) {// 내역보기 버튼
-			new logWindow();// 내역보기 클래스 실행
-		} else if (Integer.parseInt(e.getActionCommand()) >= 0// 버튼의 이름을 정수형태로
-																// 변환하여
-				&& Integer.parseInt(e.getActionCommand()) <= Btn.length) {// 0~150사이의
-																			// 숫자면
-			jariNumber = Integer.parseInt(e.getActionCommand());// 자리번호 변수에 저장하고
-			new PcWindow(jariNumber);// 그것을 매개변수로 PC사용 창 띄우기
-			dispose();// 창을 닫음
-		} else {// 0~150사이의 숫자가 아닐시에는
-			for (int i = 1; i < Btn.length; i++) {// 버튼을 처음부터 끝까지 검색
-				String temp = Btn[i].getLabel();// temp에 버튼의 라벨을 저장
-				int temp2 = Integer.parseInt(temp);// temp1에 저장한 라벨을 정수형태로 변환하여
-													// 저장해 둠
-				if (temp2 == Integer.parseInt(e.getActionCommand())) {
-					// temp2에 저장해둔 라벨과 액션이벤트로 들어온 매개변수가 같다면
-					// PC가 사용되고 있는 자리가 바로 그 자리 이므로
-					jariNumber = i;// 자리번호는 i
-					break;// 루프를 나옴
-				}
+	/*서비스 추가 문자열을svcname[]배열에 넣음*/
+	public void servicename(String name) 
+	{
+		svcname[count] = name;
+	}
+	public String servicemenu(int i)
+	{
+		return svcname[i];
+	}
+
+	/*시간 합계*/
+	public int siTotal()    
+	{
+		siTotal = sTotal+iTotal;
+		return siTotal;
+	}
+	
+	/*서비스 추가 값 합계*/
+	public void servicemoney(int money)  
+	{
+        sTotal += money;
+        svcmoney[count]=money;
+        count++;
+	}
+	
+	/*추가된 서비스 값들 출력*/
+	public void svcprintTotal(long time)   
+	{
+		lStop = time;
+		int iPay=0;
+		if(count!=0)
+		{
+			iPay=(int)((lStop-lStart)/60000*20);
+			iTotal=+iPay;
+			System.out.print("("+ iTotal +"+");
+		}
+		for(int i=0 ; i<=count-1 ; i++)
+		{
+			if(i==count-1)
+			{
+				System.out.print(svcmoney[i]+")");
 			}
-			new UseEndWindow(jariNumber);// 자리번호를 매개변수로 PC사용종료 창 띄움
-			dispose();// 창을 닫음
+			else
+			{
+				System.out.print(svcmoney[i]+" + ");
+			}
 		}
 	}
-
-	@SuppressWarnings("deprecation")
-	// 버튼을 생성하는 메소드
-	public void gridInit() {
-		for (int i = 1; i <= 15; i++) {
-			pan2.add(Btn[i] = new JButton(i + ""));
-			Btn[i].addActionListener(this);
+	public int getTotal()  
+	{
+		iTotal=(int)(lStop-lStart)/60000*20;
+		if(iTotal<0)
+		{
+			iTotal=0;
 		}
-		for (int i = 1; i <= 15; i++) {
-			pan2.add(notUseBtn[i] = new JButton(""));
-			notUseBtn[i].setEnabled(false);
-		}
-		for (int i = 16; i <= 45; i++) {
-			pan2.add(Btn[i] = new JButton(i + ""));
-			Btn[i].addActionListener(this);
-		}
-		for (int i = 16; i <= 30; i++) {
-			pan2.add(notUseBtn[i] = new JButton(""));
-			notUseBtn[i].setEnabled(false);
-		}
-		for (int i = 46; i <= 75; i++) {
-			pan2.add(Btn[i] = new JButton(i + ""));
-			Btn[i].addActionListener(this);
-		}
-		for (int i = 31; i <= 45; i++) {
-			pan2.add(notUseBtn[i] = new JButton(""));
-			notUseBtn[i].setEnabled(false);
-		}
-		for (int i = 76; i <= 90; i++) {
-			pan2.add(Btn[i] = new JButton(i + ""));
-			Btn[i].addActionListener(this);
-		}
-		// 여기까지 버튼 생성
-		int i = 0;
-		// PC가 사용되고 있는 자리의 라벨과 색깔을 바꿈
-		while (i < obj.length) {// 객체의 length 변수만큼 loop
-			int temp = Integer.parseInt(obj.jariNumber[i]);// 파일에 저장된 자리번호를
-															// temp에 정수형태로 저장
-			Btn[temp].setLabel(obj.PcNumber[i]);// 자리번호의 버튼의 라벨을PC번호로 바꿈
-			Btn[temp].setForeground(new Color(255, 0, 0));// 색깔을 붉은색으로 바꿈
-			i++;
-		}
+		int money=iTotal+sTotal;
+		return money;
 	}
+	
+	
+	
+}
 
-	@Override
-	// 상단의 시계를 그리는 메소드
-	public void paint(Graphics g) {
-		g.setColor(Color.black);// 사각형색 검정
-		g.fillRect(0, 0, 1500, 100);// 0,0을 기준으로 1500,100 만큼 사각형을 채움
-		g.setColor(Color.white);// 글자색 흰색
-		Font f1 = new Font("돋움", Font.BOLD, 24);// 폰트 생성
-		g.setFont(f1);// 폰트 설정
-		g.drawString(currentDate, 400, 50);// 날짜를 띄움
-		g.drawString(currentTime, 410, 90);// 시간을 띄움
 
-	}
+/***** PCManager*******/
 
-	// 상단 판넬
-	public void pan1() {
-		pan1 = new JPanel();// 판넬1 생성
-		pan1.add(blank = new JTextField());// 상단의 시계표시를 위해 공백을 만드는 텍스트필드
-		blank.setPreferredSize(new Dimension(900, 70));// 공백 사이즈
-		blank.setEnabled(false);// 비활성화
-		add(pan1, "North");// 판넬1 부착
-	}
+import java.util.Date;          //Date 함수 쓰기 위해 import
+import java.io.*;
+//import java.util.ArrayList;
 
-	// 중앙 버튼부분 판넬
-	public void pan2() {
-		pan2 = new JPanel();// 패널 생성
-		GridLayout layout = new GridLayout(9, 1);// 그리드 레이아웃 생성
-		pan2.setLayout(layout);// 레이아웃 설정
-		add(pan2);// 판넬2 부착
-	}
-
-	// 하단 상황판 부분 판넬
-	public void pan3() {
-		pan3 = new JPanel();// 패널 생성
-		pan3.add(condition = new JTextArea());// 상황판을 생성
-		for (int i = 0; i < 11; i++) {// 상황판에 message 클래스에 저장된 메세지를 출력함
-			condition.append(message.message[i]);
+public class PCManager {
+	public static void main(String[] args)
+	{
+		
+		boolean bFalg = true;
+		String str_Date=" ";           //관리 일자 문자열
+		String svcname=" ";
+		int imenu=0;
+		Date d;
+		int servicetotal=0;
+		int svcmn=0;
+		int siTotal = 0;
+		String today= " ";
+		
+		
+		DataInputStream dis = new DataInputStream(System.in);    //문자열 입력 받기 위해//
+		
+		/*관리 일자 입력*/
+		try
+		{
+			System.out.print("1.관리일자를 입력 하세요 : ");
+			str_Date=dis.readLine();
+		
+		}catch(Exception e){
+		};
+		
+	
+		/*보유 컴퓨터  대수 입력*/
+		try
+		{
+			System.out.print("보유 컴퓨터 대수를 입력 하세요 :  ");
+			imenu=Integer.parseInt(dis.readLine());
+		}catch(Exception e){
 		}
-		condition.setPreferredSize(new Dimension(700, 200));// 상황판 사이즈
-		condition.setEditable(false);// 편집 불가
-		pan3.add(history = new JButton("content"));// 버튼 부착
-		pan3.add(configBtn = new JButton("pricesetting"));// 버튼 부착
-		history.addActionListener(this);// 액션리스너 추가
-		configBtn.addActionListener(this);// 액션리스터 추가
-		add(pan3, "South");// 판넬3 부착
+	
+	PCinfo pc[] = new PCinfo[imenu];
+	
+	for(int id=1; id<pc.length+1 ; id++)
+	{
+		String str_CPU=" ";
+		String str_Memory=" ";
+		String str_HDD=" ";
+		String str_GPCard=" ";
+		
+		System.out.println(id + "번 좌석");
+		try{
+			System.out.print(">>CPU : ");
+			str_CPU = dis.readLine();
+			System.out.print(">>Memory : ");
+			str_Memory = dis.readLine();
+			System.out.print(">>HDD : ");
+			str_HDD = dis.readLine();
+			System.out.print(">>Graphic Card : ");
+			str_GPCard = dis.readLine();
+		}catch(Exception e){
+		}
+		pc[id-1]=new PCinfo();
+		pc[id-1].setPCinfo(id, str_CPU, str_Memory, str_HDD, str_GPCard);
 	}
-
-	// 스레드 실행 부분
-	public void run() {
-		while (true) {// 반복문
-			Date d = new Date();// 날짜 객체 생성
-			SimpleDateFormat date = new SimpleDateFormat("yyyy year MM month dd day");// 형식
-																			// 지정
-			SimpleDateFormat time = new SimpleDateFormat("hh hour mm minute ss second");// 형식 지정
-			currentDate = date.format(d);// 현재 날짜를 위에 저장해둔 형식으로 문자열 저장
-			currentTime = time.format(d);// 현재 시간을 위에 저장해둔 형식으로 문자열 저장
+	/*do while문 (do문 먼저 한번 실행)*/
+	do{
+		System.out.println("\n======================================\n");
+		System.out.println("1.좌석배정");
+		System.out.println("2.정산");
+		System.out.println("3.추가 서비스");
+		System.out.println("4.매출정보");
+		System.out.println("5.종료");
+		System.out.println("\n======================================\n");
+		System.out.print("메뉴의 번호를 선택하세요(1-5) : ");
+		
+		try
+		{
+			imenu = Integer.parseInt(dis.readLine());
+		}catch(Exception e)
+		{
+			System.out.println("1-5까지의 숫자로 입력해 주세요");
+			continue;
+		}
+		
+		
+		switch(imenu)
+		{
+		/*좌석 배정*/
+		case 1:                         
 			try {
-				Thread.sleep(500);// 0.5초 텀을 두고
-				repaint();// 다시그리기를 반복
-			} catch (InterruptedException e) {
+				System.out.println("[좌석 배정]");
+			for(int id=0; id<pc.length; id++) {
+				System.out.print("PC "+(id+1)+ " 번 : "+pc[id].using());
+				pc[id].printpc();
+				System.out.println();
 			}
+			
+			System.out.print(">> 빈좌석 중에서 배정하세요. 좌석번호 : ");
+			imenu = Integer.parseInt(dis.readLine());
+			System.out.print(imenu+"번 좌석이 배정되었습니다. 그리고 컴퓨터 사용이 시작되었습니다.");
+		}catch(Exception e){
+			continue;
 		}
-	}
-}
-
-======================================
-
-package pak;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.StringTokenizer;
-
-import javax.swing.*;
-
-@SuppressWarnings("serial")
-public class UseEndWindow extends JFrame implements ActionListener, time {
-	GridBagConstraints c;
-	JButton cancel;
-	String PcNumber;
-	String PcSelect;
-	CheckboxGroup cbg;
-	String charge;
-	JButton confirm;
-	String inTime;
-	String jariNumber;
-	Checkbox large;
-	Checkbox medium;
-	readFile obj = new readFile();
-	JPanel pan1;
-	JPanel pan2;
-	JPanel pan3;
-	String usetime;
-	StringTokenizer parse;
-	String printPcrunningTime;
-	String printPcvoidTime;
-	String pt[];
-	int ptInt[];
-	Checkbox small;
-	String temp[] = new String[5];
-	int temp1;
-	int temp2;
-	int temp3;
-	JTextField tf0;
-	JTextField tf1;
-	JTextField tf2;
-	JTextField tf3;
-	JTextField tf4;
-	JTextField tf5;
-	JTextField tf6;
-	String unusetime;
-	String upt[];
-	int uptInt[];
-	Checkbox verySmall;
-
-	// 생성자
-	public UseEndWindow(int jariNumber) {
-		for (int i = 0; i < obj.length; i++) {// 매개변수로 들어온 자리번호를 저장된 파일에서 검색
-			if (jariNumber == Integer.parseInt(obj.jariNumber[i])) {// 자리번호가 같다면
-				temp1 = i;// 그 배열의 번호를 temp1에 저장해둠
-				break;
+		d = new Date();
+		pc[imenu-1].start(d.getTime());
+		pc[imenu-1].use("사용중");
+		break;
+				
+		/*정산*/
+		case 2:
+			try{
+				System.out.print(">> 좌석 번호를 입력하세요 : ");
+				imenu = Integer.parseInt(dis.readLine());
+			}catch(Exception e){
+				continue;
 			}
-		}
-		this.PcSelect = obj.PcSelect[temp1];// 위에서 찾은 배열의 번호를 이용하여 변수 설정
-		this.PcNumber = obj.PcNumber[temp1];// 위에서 찾은 배열의 번호를 이용하여 변수 설정
-		this.jariNumber = "" + jariNumber;// 자리번호 설
-		this.usetime = obj.usetime[temp1];// 위에서 찾은 배열의 번호를 이용하여 변수 설정
-		this.printPcrunningTime = ConvertTime(usetime);// 위에서 찾은 배열의 번호를 이용하여 변수 설정
-		this.unusetime = "" + year + "/" + month + "/" + day + "/" + hour
-				+ "/" + min;// 현재 시간을 시작시간으로 저장
-		this.printPcvoidTime = ConvertTime(unusetime);// 저장한 종료시간을 출력용 시작시간으로
-														// 변환
-		this.inTime = "" + intime();// 사용시간을 계산
-		this.charge = "" + charge();// 요금을 계산
-		setTitle("finish");// 타이틀
-		setSize(250, 300);// 사이즈
-		setLocation(350, 250);// 창이 뜬느 위치
-		setVisible(true);// 보이도록함
-		setResizable(false);// 크기 변경 불가
-		pan1();// 메소드 호출
-	}
-
-	@Override
-	// 버튼이벤트
-	public void actionPerformed(ActionEvent ae) {
-		if (ae.getSource() == confirm) {// 확인 버튼
-			new writeFile(jariNumber, PcSelect, PcNumber, usetime,
-					unusetime, inTime, charge);// 위에서 저장한 변수들을 매개변수로 하여 파일에 쓰는
-												// 클래스로 넘겨줌
-			new message(jariNumber, PcSelect, PcNumber, printPcrunningTime,
-					printPcvoidTime, inTime, charge);// 상황판에 메세지를 출력
-			dispose();// 창을 닫음
-		} else if (ae.getSource() == cancel) {// 취소 버튼
-			dispose();// 창을 닫음
-		}
-		mainWindow cl = new mainWindow();
-		Thread th = new Thread(cl);
-		th.start();// 스레드를 새로 실행
-	}
-
-	// 요금 설정
-	// c[0]~c[12]==요금을 저장해 둔 변수
-	public int charge() {
-		if (PcSelect.equals("1~10")) {// 사용자 나이가 10세미만
-			if (intime() < 60) {// 사용 시간이 60분 미만일시
-				return obj.c[0];// 저장된 요금 리턴
-			} else if (intime() <= 60) {// 60분 이상일시
-				if ((((intime() - 60) / 30 + 1) * obj.c[1]) + obj.c[0] < obj.c[2]) {// 계산된
-																					// 요금이
-																					// 최대요금보다
-																					// 작으면
-					return (((intime() - 60) / 30 + 1) * obj.c[1]) + obj.c[0];// 계산된
-																				// 요금
-																				// 리턴
-				} else if ((((intime() - 60) / 30 + 1) * obj.c[1]) + obj.c[0] > obj.c[2]) {// 계산된
-																							// 요금이
-																							// 최대요금보다
-																							// 크면
-					return obj.c[2];// 최대요금 리턴
-				}
+			
+			servicetotal = pc[imenu-1].servicenum();
+			d = new Date();
+			System.out.println("[정산]");
+			System.out.println(">> 컴퓨터 사용 요금은  "+pc[imenu-1].stop(d.getTime())+" 원 입니다. (사용시간 : "+ pc[imenu-1].getTime()+"분)");
+			System.out.println(">> 추가 서비스 요금은 "+pc[imenu-1].Servicetotal()+" 원 입니다.");
+			System.out.print("     추가 서비스 내역은 ");
+			pc[imenu-1].use("빈좌석");
+			
+			for(int i=0; i<servicetotal; i++)               //서비시 내역 출력
+			{
+				System.out.print("["+pc[imenu-1].servicemenu(i)+"]");
 			}
-
+			System.out.println(" 입니다.");
+			System.out.println("총 사용금액은  "+pc[imenu-1].siTotal()+"원 입니다.");
+			System.out.println("이제 좌석번호 "+ imenu + "번은 빈 좌석입니다.");
+			break;	
+		
+		/*서비스 추가*/
+		case 3:
+			try{
+			System.out.print(">> 좌석 번호를 입력하세요 : ");
+			imenu = Integer.parseInt(dis.readLine());
+			System.out.print(">> 서비스의 이름을 입력하세요 : ");
+			svcname = new String(dis.readLine().getBytes("8859_1"),"KSC5601");  //서비스 이름이 한글일수도 있기  때문에//
+			System.out.print(">> 서비스의 금액을 입력하세요 : ");
+			svcmn = Integer.parseInt(dis.readLine());
+		}catch(Exception e){
+			continue;
 		}
-		// 아래는 위의 계산방법과 동일함
-		else if (PcSelect.equals("11~15")) {
-			if (intime() < 60) {
-				return obj.c[3];
-			} else if (intime() <= 60) {
-				if ((((intime() - 60) / 30 + 1) * obj.c[4]) + obj.c[3] < obj.c[5]) {
-					return (((intime() - 60) / 30 + 1) * obj.c[4]) + obj.c[3];
-				} else if ((((intime() - 60) / 30 + 1) * obj.c[4]) + obj.c[3] > obj.c[5]) {
-					return obj.c[5];
-				}
+		pc[imenu-1].servicename(svcname);
+		pc[imenu-1].servicemoney(svcmn);
+		break;
+		
+		/*매출 정보*/
+		case 4:
+			siTotal = 0;
+			System.out.println("[매출정보 ]");
+			Date t=new Date();
+			for(int id=0;id<pc.length; id++){
+				pc[id].stop(t.getTime());
+				System.out.print("PC "+(id+1)+ " 번 : "+pc[id].getTotal()+"원");
+				pc[id].svcprintTotal(t.getTime());
+				System.out.println();
+				siTotal = siTotal + pc[id].siTotal();
 			}
-		} else if (PcSelect.equals("16~20")) {
-			if (intime() < 60) {
-				return obj.c[6];
-			} else if (intime() <= 60) {
-				if ((((intime() - 60) / 30 + 1) * obj.c[7]) + obj.c[6] < obj.c[8]) {
-					return (((intime() - 60) / 30 + 1) * obj.c[7]) + obj.c[6];
-				} else if ((((intime() - 60) / 30 + 1) * obj.c[7]) + obj.c[6] > obj.c[8]) {
-					return obj.c[8];
-				}
-			}
-		} else if (PcSelect.equals("21~")) {
-			if (intime() < 60) {
-				return obj.c[9];
-			} else if (intime() <= 60) {
-				if ((((intime() - 60) / 30 + 1) * obj.c[10]) + obj.c[9] < obj.c[11]) {
-					return (((intime() - 60) / 30 + 1) * obj.c[10]) + obj.c[9];
-				} else if ((((intime() - 60) / 30 + 1) * obj.c[10]) + obj.c[9] > obj.c[11]) {
-					return obj.c[11];
-				}
-			}
+			System.out.println(today+" 현재 총매출액은  "+siTotal+ "원입니다.");
+			break;
+			
+		/*5 입력시 boolean 이 false로 while 문 종료*/
+		case 5:       
+			bFalg = false;
+			break;
+		default:
+			break;
 		}
-		return 0;
+		
+	}while(bFalg);
+		
+		
 	}
+	
 
-	// 저장된 시간을 화면출력용 시간으로 바꾸는 메소드
-	private String ConvertTime(String time) {
-		StringTokenizer parse = new StringTokenizer(time, "/");// 토크나이저로 저장된 시간을
-																// 나눈후
-		temp[0] = parse.nextToken();// 배열에 각각 저장
-		temp[1] = parse.nextToken();
-		temp[2] = parse.nextToken();
-		temp[3] = parse.nextToken();
-		temp[4] = parse.nextToken();
-		String printTime = temp[0] + "yaer " + temp[1] + "month " + temp[2] + "day "
-				+ temp[3] + "hour " + temp[4] + "minute";// 다시 출력용 시간으로 합침
-		return printTime;
-	}
-
-	// PC사용시간을 계산
-	public int intime() {
-		pt = new String[5];
-		ptInt = new int[5];
-		upt = new String[5];
-		uptInt = new int[5];
-		StringTokenizer parse1 = new StringTokenizer(usetime, "/");// 시작시간을
-																	// 토크나이저로 나눔
-		StringTokenizer parse2 = new StringTokenizer(unusetime, "/");// 종료시간을
-																		// 토크나이저로
-																		// 나눔
-		for (int i = 0; i < 5; i++) {
-			pt[i] = parse1.nextToken();// 시작시간 토큰 저장
-			ptInt[i] = Integer.parseInt(pt[i]);// 토큰을 정수형태로 변환
-			upt[i] = parse2.nextToken();// 종료 시간토큰 저장
-			uptInt[i] = Integer.parseInt(upt[i]);// 토큰을 정수형태로 변환
-		}
-		temp2 = (ptInt[2] * 1440) + (ptInt[3] * 60) + (ptInt[4]);// 시작시간을 분 단위로
-																	// 저장
-		temp3 = (uptInt[2] * 1440) + (uptInt[3] * 60) + (uptInt[4]);// 종료시간을 분
-																	// 단위로 저장
-		return temp3 - temp2;// 시작시간-종료시간=총시간 리턴
-	}
-
-	// 그리드백 레이아웃을 손쉽게 사용하기위해 만듬
-	public void layout(Component obj, int x, int y, int width, int height) {
-		c.gridx = x; // 시작위치 x
-		c.gridy = y; // 시작위치 y
-		c.gridwidth = width; // 컨테이너 너비
-		c.gridheight = height; // 컨테이너 높이
-		add(obj, c);
-	}
-
-	// 판넬
-	public void pan1() {
-		GridBagLayout gridbag = new GridBagLayout();// 그리드백 레이아웃 생성
-		setLayout(gridbag);// 레이아웃 설정
-		c = new GridBagConstraints();// 그리드백 레이아웃을 제어하는 객체
-		c.fill = GridBagConstraints.BOTH; // 전체를 채움
-		tf0 = new JTextField(PcSelect);// PC종류 텍스트필드
-		tf1 = new JTextField(PcNumber);// PC번호 텍스트필드
-		tf2 = new JTextField(jariNumber);// 자리번호 텍스트필드
-		tf3 = new JTextField(printPcrunningTime);// 시작시간
-		tf4 = new JTextField(printPcvoidTime);// 종료시간
-		tf5 = new JTextField(inTime);// 사용시간
-		tf6 = new JTextField(charge);// 요금
-		confirm = new JButton("enter");// 확인버튼
-		cancel = new JButton("cancel");// 취소버튼
-		confirm.addActionListener(this);
-		cancel.addActionListener(this);// 액션리스너 등록
-		layout(new Label("age"), 0, 0, 1, 2); // 라벨 부착
-		layout(tf0, 1, 1, 4, 1);// PC종류 텍스트필드 부착
-		layout(new Label("cardnumber"), 0, 2, 1, 1);// 라벨부착
-		layout(tf1, 1, 2, 4, 1);// PC번호 텍스트필드 부착
-		layout(new Label("seatnumber"), 0, 3, 1, 1);// 라벨부착
-		layout(tf2, 1, 3, 4, 1);// 자리번호 텍스트필드 부착
-		layout(new Label("startT"), 0, 4, 1, 1);// 라벨 부착
-		layout(tf3, 1, 4, 4, 1);// 시작시간 텍스트필드 부착
-		layout(new Label("finishT"), 0, 5, 1, 1);// 라벨부착
-		layout(tf4, 1, 5, 4, 1);// 종료시간 텍스트필드 부착
-		layout(new Label("totalT"), 0, 6, 1, 1);// 라벨 부착
-		layout(tf5, 1, 6, 4, 1);// 총시간 텍스트필드 부착
-		layout(new Label("price"), 0, 7, 1, 1);// 라벨부착
-		layout(tf6, 1, 7, 4, 1);// 요금 텍스트필드 부착
-		layout(new Label(""), 1, 8, 1, 1);// 한칸 공백
-		layout(new Label("finish?"), 1, 9, 4, 1);// 라벨 부착
-		layout(confirm, 1, 10, 2, 1);// 확인버튼 부착
-		layout(cancel, 3, 10, 2, 1);// 취소버튼 부착
-		tf0.setEditable(false);
-		tf1.setEditable(false);
-		tf2.setEditable(false);
-		tf3.setEditable(false);
-		tf4.setEditable(false);
-		tf5.setEditable(false);
-		tf6.setEditable(false);// 텍스트 필드 편집이 불가
-
-	}
-}
-
-========================================================
-
-package pak;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.StringTokenizer;
-
-import javax.swing.*;
-
-@SuppressWarnings("serial")
-public class PcWindow extends JFrame implements ActionListener, ItemListener,
-		time {
-	GridBagConstraints c;
-	JButton cancel;
-	String PcNumber = "";
-	String PcSelect = "";
-	CheckboxGroup cbg;
-	JButton confirm;
-	String jariNumber = "";
-	Label label1;
-	Label label2;
-	Label label3;
-	Checkbox large;
-	Checkbox medium;
-	readFile obj = new readFile();
-	JPanel pan1;
-	JPanel pan2;
-	JPanel pan3;
-	String usetime = "";
-	String printPcrunningTime = "";
-	Checkbox small;
-	String[] temp = new String[5];
-	JTextField tf1;
-	JTextField tf2;
-	Checkbox verySmall;
-
-	// 생성자
-	public PcWindow(int jariNumber) {
-		this.jariNumber = "" + jariNumber;
-		setTitle("start");// 제목표시줄
-		setSize(400, 250);// 사이즈
-		setLocation(350, 250);// 창이 뜨는 위치
-		setVisible(true);// 창을 보이도록 설정
-		setResizable(false);// 크기 변경 불가
-		pan1();
-
-	}
-
-	// 액션이벤트
-	public void actionPerformed(ActionEvent ae) {
-		if (ae.getSource() == confirm) {// 확인버튼
-			PcNumber = tf1.getText();// PC 번호를 텍스트박스에서 받음
-			jariNumber = tf2.getText();// 자리번호를 텍스트박으에서 받음
-			try {// PC번호가 숫자가 아닐시 다이얼로그 창 띄우서 메세지 출력
-				Integer.parseInt(PcNumber);
-			} catch (java.lang.NumberFormatException e2) {
-				JOptionPane.showMessageDialog(null, "card number up 4number");
-				return;
-			}
-			if (PcSelect.equals("")) {// PC 선택이 비어있을시 메세지 출력
-				JOptionPane.showMessageDialog(null, "select age");
-				return;
-			} else if (PcNumber.length() < 4) {// 카드번호가 4자리보다 적을시 메세지 출력
-				JOptionPane.showMessageDialog(null, "card number up 4number");
-				return;
-			} else {// PC 사용시작
-				for (int i = 0; i < 120; i++) {// PC가 이미 사용되고있는지 검색하고 사용되고 있으면
-					try { // 메세지 출력
-						if (PcNumber.equals(obj.PcNumber[i])) {
-							JOptionPane.showMessageDialog(null,
-									"aleady occupy");
-							return;
-						}
-					} catch (java.lang.ArrayIndexOutOfBoundsException e) {
-					} catch (java.lang.NullPointerException e1) {
-					}
-				}
-			}
-			// PC 사용시작
-			usetime = " " + year + " / " + month + " / " + day + " / " + hour + " / "
-					+ min;// 사용시작 시간을 저장
-			printPcrunningTime = ConvertTime(usetime);// 화면 출력용 시작시간을 저장
-			new writeFile(jariNumber, PcSelect, PcNumber, usetime, "-", "-",
-					"-");// 파일에 쓰는 클래스로 매개변수롤 넘겨줌
-			new message(jariNumber, PcSelect, PcNumber, printPcrunningTime);// 메세지
-																			// 출력
-																			// 클래스로
-																			// 매개변수를
-																			// 넘겨줌
-			dispose();// 창 닫음
-		} else if (ae.getSource() == cancel) {// 취소 버튼
-			dispose();// 창 닫음
-		}
-		mainWindow cl = new mainWindow();
-		Thread th = new Thread(cl);
-		th.start();// 스레드를 재실행
-	}
-
-	// 저장된 시간을 화면출력용 시간으로 바꾸는 메소드
-	private String ConvertTime(String time) {
-		StringTokenizer parse = new StringTokenizer(time, "/");// 토크나이저로 저장된 시간을
-																// 나눈후
-		temp[0] = parse.nextToken();// 배열에 각각 저장
-		temp[1] = parse.nextToken();
-		temp[2] = parse.nextToken();
-		temp[3] = parse.nextToken();
-		temp[4] = parse.nextToken();
-		String printTime = temp[0] + " year " + temp[1] + " month " + temp[2] + " day "
-				+ temp[3] + " hour " + temp[4] + " minute ";// 다시 출력용 시간으로 합침
-		return printTime;
-	}
-
-	@Override
-	// 체크박스 이벤트
-	public void itemStateChanged(ItemEvent ie) {
-		// Pc를 선택함
-		if (ie.getSource() == verySmall) {
-			PcSelect = "~10";
-		} else if (ie.getSource() == small) {
-			PcSelect = "11~15";
-		} else if (ie.getSource() == medium) {
-			PcSelect = "16~20";
-		} else if (ie.getSource() == large) {
-			PcSelect = "21~";
-		}
-
-	}
-
-	// 그리드백 레이아웃을 손쉽게 사용하기위해 만듬
-	public void layout(Component obj, int x, int y, int width, int height) {
-		c.gridx = x; // 시작위치 x
-		c.gridy = y; // 시작위치 y
-		c.gridwidth = width; // 컨테이너 너비
-		c.gridheight = height; // 컨테이너 높이
-		add(obj, c);
-	}
-
-	// 판넬
-	public void pan1() {
-		GridBagLayout gridbag = new GridBagLayout();// 그리드백 레이아웃 생성
-		setLayout(gridbag);// 레이아웃 설정
-		c = new GridBagConstraints();// 그리드백 레이아웃을 제어하는 객체
-		c.fill = GridBagConstraints.BOTH; // 전체를 채움
-		CheckboxGroup cbg = new CheckboxGroup();// 체크박스 그룹
-		verySmall = new Checkbox("~10", cbg, false);
-		small = new Checkbox("11~15", cbg, false);
-		medium = new Checkbox("16~20", cbg, false);
-		large = new Checkbox("21~", cbg, false);// 체크박스를 생성
-		tf1 = new JTextField();// Pc번호 텍스트필드
-		tf2 = new JTextField(jariNumber);// 자리번호 텍스트필드
-		confirm = new JButton("OK");// 확인버튼
-		cancel = new JButton("cancle");// 취소버튼
-		confirm.addActionListener(this);// 액션리스너 등록
-		cancel.addActionListener(this);// 액션리스너 등록
-		layout(new Label("age"), 0, 0, 1, 2); // 라벨 부착
-		layout(verySmall, 1, 1, 1, 1);//
-		layout(small, 2, 1, 1, 1);//
-		layout(medium, 3, 1, 1, 1);//
-		layout(large, 4, 1, 1, 1);// 체크박스 부착
-		verySmall.addItemListener(this);//
-		small.addItemListener(this);//
-		medium.addItemListener(this);//
-		large.addItemListener(this);// 아이템 리스너 등록
-		layout(new Label("Cardnumber"), 0, 2, 1, 1);// 라벨 부착
-		layout(tf1, 1, 2, 4, 1);// 텍스트필드 부착
-		layout(new Label("Seatnumber"), 0, 3, 1, 1);// 라벨 부착
-		layout(tf2, 1, 3, 4, 1);// 텍스트필드 부착
-		layout(new Label(""), 1, 4, 1, 1);// 한칸 공백
-		layout(new Label("Start?"), 1, 5, 4, 1);// 라벨 부착
-		layout(confirm, 1, 6, 2, 1);// 확인버튼 부착
-		layout(cancel, 3, 6, 2, 1);// 취소버튼 부착
-		tf2.setEditable(false);// 자리번호 텍스트필드 편집 불가
-
-	}
 }
 
 }}}
