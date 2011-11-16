@@ -62,10 +62,10 @@ if ( rand == input )  {
 }
 
 if(rand > input ) 
-System.out.println(  " The number is lower than yours ! ); // the number 가 input 보다 클경우 이를 알려줌
+System.out.println(  " The number is lower than yours ! "); // the number 가 input 보다 클경우 이를 알려줌
 
 if(rand > input ) 
-System.out.println(  " The number is higher than yours ! ); //the number 가 input 보다 클경우 이를 알려줌
+System.out.println(  " The number is higher than yours !" ); //the number 가 input 보다 클경우 이를 알려줌
       
 
 }
