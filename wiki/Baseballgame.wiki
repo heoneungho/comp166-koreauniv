@@ -8,62 +8,104 @@
 
 =Background=
 
- 친구들과 이면지 한장과 볼펜만 있으면 재미있게 즐길 수 있는 베이스볼 게임을 내가 만들어 낸 인공 지능을 넣은 컴퓨터와 게임을 즐길 수 있도록 하겠다.
+ 친구들과 이면지 한장과 볼펜만 있으면 재미있게 즐길 수 있는 베이스볼게임을 컴퓨터를 통해 컴퓨터가 내주는 수준별 문제로 즐길 수 있도록 하겠다.
 
 = Details =
 
- 3~5개의 숫자를 사용자가 원하는대로 설정할 수 있으며, 컴퓨터에게 인공지능을 넣어 사용자와 플레이를 할 수 있도록 구축할 것이다.  
-
-1. 사용자가 게임을 시작시킨다.
+ 3~5개의 숫자를 사용자가 원하는대로 설정할 수 있으며, 컴퓨터가 문제를 만들어서 사용자가 그 문제를 맞추는 방식의 게임을 만든다.
     A. 맞춰야 할 숫자 개수(gamestyle)를 선택한다.
-    B. 맞춰야 할 숫자 개수(gamestyle)대로 임의의 숫자 조합을 만든다.
-    C. 사용자가 컴퓨터가 맞춰야 할 임의의 숫자 조합을 만들어서 입력한다.
-2. 게임이 본격적으로 시작된다.
-    A. 사용자가 gamestyle 에 맞는 숫자조합을 입력한다.
-    B. 스트라이크, 볼, 아웃, 시도 횟수를 알려준다.
-    C. 컴퓨터가 gamestyle 에 맞는 숫자조합을 입력한다.
-    D. 스트라이크, 볼, 아웃을 알려준다.
-    E. A~D과정이 반복되다가 3스트라이크가 나오면 게임이 종료된다.
-3. 게임을 끝낸다.
-    A. 승자, 횟수를 출력하고 게임을 끝낸다.
-
+    B. 사용자가 gamestyle 에 맞는 숫자조합을 입력한다.
+    C. 스트라이크, 볼, 아웃, 시도 횟수를 알려준다.
+    D. A~D과정이 반복되다가 3스트라이크가 나오면 게임이 종료된다.
+    E. 지정한 횟수안에 맞추었으면 congraturation을 출력하며 게임이 종료된다.
 =Using code=
 
 {{{
-public class Game {  //gamestyle을 선택하고, 게임이 진행되는 클래스이다.
-	
-	private int size, trycount, count, strike, ball, condition;
-	private String[] answer, dInput;
-	private String output;	
-	
-	public Game() {}
-	
-	public void setDefault() {
-		size = trycount = count = condition = 0;
-	}
-         public void makeAnswer() { //게임 스타일을 선택하고 난수생성		
-	answer = new String[size];
-        }
-	
-	public void playing(String input) { 
-		dInput = new String[size];
-		strike = ball = 0;
-        }
-	public int getSize() { 
-		return size;
+public class Game {
+		
+		private int size, trycount, count, strike, ball, condition;
+		private String[] answer, dInput;
+		private String output;	
+		
+		public Game() {}
+		
+		public void setDefault() {
+			size = trycount = count = condition = 0;
+		}
+		
+			answer = new String[size];
+			for(int i=0; set.size()<size; i++) {
+					set.add((int)((Math.random()*9) + 1)); 
+					continue;
+				}
+				set.add((int)(Math.random()*9));				
+			}
+			Iterator it = set.iterator();
+			
+			while(it.hasNext()) {				
+				answer[i] = Integer.toString((Integer)it.next());			
+				i++;
+			}
+		}
+		
+		public void playing(String input) {
+			dInput = new String[size];
+			
+			strike = ball = 0;
+			
+			for(int i=0; i<size; i++)
+				dInput[i] = input.substring(i, i+1);	
+				
+			for(int i=0; i<size; i++) {
+				for(int j=0; j<size; j++) {
+					if(answer[i].equals(dInput[j]) && i==j) {
+						strike++;
+						break;
+					}
+					if(answer[i].equals(dInput[j])) {
+						ball++;
+						break;
+					}
+				}
+			}
+			
+			output = input + " : " + strike + "strike, " + ball + "ball!";
+			
+			if(strike == size) {
+				output = input + " : correct!! trial" + count + ".";
+				condition = 1;
+			}			
+			
+			if(count >= trycount) { 
+				output = "over the trial!";
+				condition = 2;
+			}			
+		}
+
+		public int getSize() {
+			return size;
+		}
+
+		public int getTrycount() {
+			return trycount;
+		}
+
+		public int getCondition() {
+			return condition;
+		}
+
+		public String getOutput() {
+			return output;
+		}
+
+		public void setSize(int size) {
+			this.size = size;
+		}
+
+		public void setTrycount(int trycount) {
+			this.trycount = trycount;
+		}
 	}
 
-	public int getTrycount() {
-		return trycount;
-	}
-
-	public int getCondition() {
-		return condition;
-	}
-
-	public String getOutput() {
-		return output;
-	}
-
-}
+ 
 }}}
