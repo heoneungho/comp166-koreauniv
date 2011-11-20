@@ -24,7 +24,8 @@ import java.util.*;
 
 public class Maze {
  
-    private int location[1][1];
+    private int location[][];
+    location = new int[10][10];
     Maze_go temp = new Maze_go();
 
     public int GetLocation(int userInput1, int userInput2) {
@@ -69,15 +70,16 @@ class Character  {
 }
 public class Maze_Go {
    private int way;
-   private int rooms[10][10];
-   private  num;
+   private int rooms[][];
+   private int num;
  
     Maze mazing = new Maze();
+    rooms = new int[10][10];
     mazing.location[0][0] = rooms[0][0];
 
     public void Maze_Make() {
     num = (Math.random () * 70 + 30);
-        for(int ex1 = 0; ex1 < 10; ex++1)
+        for(int ex1 = 0; ex1 < 10; ex1++)
              for(int ex2 = 0;ex2 < 10;ex2++)    {
 
         if(num % (ex1 * ex2) == 0) 
@@ -86,6 +88,7 @@ public class Maze_Go {
         if(((num * (ex1 + ex2)) % 2 == 0) &&ex1 <= 6 && ex2 > 1)
             mazing.Way_Make(ex1,ex2, ex1+4, ex2-1, -1, 1, -1, 3); 
 
+        if//will add more
     }
 
 public class Monster{
