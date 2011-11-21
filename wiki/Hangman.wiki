@@ -68,7 +68,7 @@ public class UpAndDownGame {
 
      public void startGuessNumber() {
       System.out.println("Start" + count + "th choose.");
-      System.out.println("Type the number " + minNumber + "to" + maxNumber + ");
+      System.out.println("Type the number " + minNumber + "to" + maxNumber );
      }
 
      private void loseMessage() {
