@@ -197,7 +197,7 @@ public class Maze() {
             else   {
                  System.out.println(rooms[a-1][b-1]+ " " +rooms[a][b-1]+ " " +rooms[a+1][b-1]);
                  System.out.println(rooms[a-1][b]+ " " +rooms[a][b]+ " " +rooms[a+1][b]);
-                 System.out.println(rooms[a-1][b+1] " " +rooms[a][b+1]+ " " +rooms[a+1][b+1]);
+                 System.out.println(rooms[a-1][b+1]+ " " +rooms[a][b+1]+ " " +rooms[a+1][b+1]);
                       }
 
    }
@@ -215,7 +215,8 @@ public class TestMazeDrive {
 
    //그 후엔 미로를 보여주며 길을 지나가게 한다. 미로를 통과하면 클리어
 
-
+   int userInput = helper.getUserInput("Where do you want to go");
+   
    
 
 
