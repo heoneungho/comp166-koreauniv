@@ -12,7 +12,7 @@
 
 = Details =
 
- 3~5개의 숫자를 사용자가 원하는대로 설정할 수 있으며, 컴퓨터가 문제를 만들어서 사용자가 그 문제를 맞추는 방식의 게임을 만든다.
+ 3개의 숫자를 사용자가 원하는대로 설정할 수 있으며, 컴퓨터가 문제를 만들어서 사용자가 그 문제를 맞추는 방식의 게임을 만든다.
     A. 맞춰야 할 숫자 개수(gamestyle)를 선택한다.
     B. 사용자가 gamestyle 에 맞는 숫자조합을 입력한다.
     C. 스트라이크, 볼, 아웃, 시도 횟수를 알려준다.
@@ -55,7 +55,7 @@ public class Baseball {
 	   }
 	  }
 	 
-	  UserInput = new int[3];  // 유저의 입력부분도 같이 초기화시켜야 한다.
+	  UserInput = new int[3];  // 유저의 입력 부분 초기화
 
 	 }
 
@@ -141,14 +141,14 @@ public class BaseballTest {
 
 	  baseball = new Baseball( number ); // 인자가 1개(일차원배열)인 생성자 작동
 
-	  int UserInput[] = new int[3];
+	  int UserInput[] = new int[3];도 같이 
 
 	  System.out.println("---------- START BASEBALLGAME ----------");
 	  while( baseball.isRun() )
 	  {
 	   System.out.print("Input 3 integers");
 	   
-	   // 키보드로 3개 숫자를 입력받는다.
+	   // 키보드로 3개 숫자를 입력받음.
 	   
 	   strLine = stdin.readLine(); 
 
@@ -156,7 +156,7 @@ public class BaseballTest {
 	   
 	   for (int i=0; i<UserInput.length; i++)
 	   {
-	    //main에 있는 UserInput에 값 집어넣는다.
+	    //main에 있는 UserInput에 값을 넣음.
 	    UserInput[i]=Character.digit(strLine.charAt(i),10);
 	   }
 
