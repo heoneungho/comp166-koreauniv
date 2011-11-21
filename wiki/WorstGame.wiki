@@ -116,4 +116,109 @@ public class TestMazeGame {
 
 
 }
+
+
+미로를 그냥 미리 만들어진거로 하기 위해 코드를 다시 짜겠습니다.
+
+import java.util.*;
+
+public class Maze() {
+
+   public int rooms[][];
+   rooms = new int[15][21];
+   rooms[15][21] = {{1,2,2,1,1,1,2,2,2,2,1,2,2,2,2},
+                                 {1,2,2,1,2,2,2,2,2,2,1,1,1,2,2},
+                                 {1,1,1,1,1,1,1,1,1,2,1,2,1,2,2},
+                                 {2,2,2,2,2,2,2,2,1,2,1,2,1,2,2},
+                                 {2,1,1,1,2,2,2,2,1,1,1,2,1,2,2},
+                                 {2,2,2,1,1,1,1,1,1,2,2,2,2,2,2},
+                                 {1,1,1,2,1,2,2,2,2,2,2,2,1,1,1},
+                                 {1,2,1,2,1,1,1,1,1,1,1,2,1,2,1},
+                                 {1,2,1,2,1,2,2,2,2,2,1,2,1,2,1},
+                                 {1,2,1,2,1,1,1,1,1,2,1,2,1,2,1},
+                                 {1,2,1,2,2,2,2,2,1,2,1,2,1,2,1},
+                                 {1,2,1,1,1,1,1,1,1,2,1,2,1,2,1},
+                                 {1,2,2,2,2,2,2,2,2,2,1,2,1,2,1},
+                                 {1,2,1,1,1,1,1,1,1,1,1,2,1,2,1},
+                                 {1,2,2,1,2,2,2,2,2,2,2,2,1,2,1},
+                                 {1,2,2,1,1,1,1,1,1,2,2,2,1,2,1},
+                                 {1,2,2,2,2,2,2,2,2,2,2,2,1,2,1},
+                                 {1,1,1,1,1,1,1,1,1,1,1,1,1,2,1},
+                                 {1,2,2,2,2,1,2,2,2,2,2,2,2,2,1},
+                                 {1,2,2,2,2,1,2,2,2,2,2,2,2,2,1},
+                                 {1,1,1,1,2,1,1,1,1,1,1,1,1,2,1}};
+   public int location;
+   public int get;
+
+   public void Maze_limit(int arr[][], int a, int b) {
+   if(a == 0 || a == 14)   {
+      if(b == 0 || b == 20)   {
+         if( a == 0 && b == 0)   {
+            System.out.println( rooms[a][b]+ " " +rooms[a+1][b]);
+            System.out.println( rooms[a][b+1]+ " " + rooms[a+1][b+1]);
+                                               }
+         if( a == 0 && b == 20)  {
+           System.out.println( rooms[a][b-1]+ " " +rooms[a+1][b-1]);
+           System.out.println( rooms[a][b]+ " " +rooms[a+1][b]);
+                                               }
+         if(a == 14 && b == 0)  {
+            System.out.println(rooms[a-1][b]+ " " +rooms[a][b]);
+            System.out.println(rooms[a-1][b + 1]+ " " +rooms[a][b+1]);
+                                               }
+         if(a == 14 &&7 b == 20) {
+            System.out.println(rooms[a-1][b-1]+ " " + rooms[a][b-1]);
+            System.out.println(rooms[a-1][b]+ " " rooms[a][b]);
+                                                }
+                                           }
+        else      {
+            if(a == 0) {
+            System.out.println(rooms[a][b-1]+ " " +rooms[a+1][b-1]);
+            System.out.println(rooms[a][b]+ " " +rooms[a+1][b]);
+            System.out.println(rooms[a][b+1]+ " " +rooms[a+1][b+1]);
+                             }
+            else          {
+            System.out.println(rooms[a-1][b-1]+ " " +rooms[a][b-1]);
+            System.out.println(rooms[a-1][b]+ " " +rooms[a][b]);
+            System.out.println(rooms[a-1][b+1]+ " " +rooms[a][b+1]);
+                            }
+                     }
+                }
+         else {
+            if(b == 0 || b == 20)   {
+                 if(b == 0)  {
+                     System.out.println(rooms[a-1][b] +  " "  +rooms[a][b]+ " " +rooms[a+1][b]);
+                     System.out.println(rooms[a-1][b+1] + " " +rooms[a][b+1]+ " " +rooms[a+1][b+1]);
+                                   }
+                  else          {
+                     System.out.println(rooms[a-1][b-1]+ " " +rooms[a][b-1]+ " " +rooms[a+1][b-1]);
+                     System.out.println(rooms[a-1][b] + " " +rooms[a][b]+ " " + rooms[a+1][b]);
+                                   }
+                                               }
+            else   {
+                 System.out.println(rooms[a-1][b-1]+ " " +rooms[a][b-1]+ " " +rooms[a+1][b-1]);
+                 System.out.println(rooms[a-1][b]+ " " +rooms[a][b]+ " " +rooms[a+1][b]);
+                 System.out.println(rooms[a-1][b+1] " " +rooms[a][b+1]+ " " +rooms[a+1][b+1]);
+                      }
+
+   }
+
+public class Interface {
+
+   
+
+}
+
+public class TestMazeDrive {
+   
+   Maze.1p = new Maze();
+   //유저가 게임을 시작하면 인터페이스를 불러와 여러가지를 띄우고 물어본다.
+
+   //그 후엔 미로를 보여주며 길을 지나가게 한다. 미로를 통과하면 클리어
+
+
+   
+
+
+   }
+
 }}}
