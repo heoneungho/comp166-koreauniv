@@ -146,7 +146,7 @@ public class Maze {
 	   if(locationA == 0 || locationA == 14)   {
 	      if(locationB == 0 || locationB == 20)   {
 	         if( locationA == 0 && locationB == 0)   {
-	        	 		System.out.println(" We will only show part of the maze you are in, so you have to think well to get out of here.");
+	        	System.out.println(" We will only show part of the maze you are in, so you have to think well to get out of here.");
 	        	System.out.println( "P " +rooms[locationA+1][locationB]);
 	            System.out.println( rooms[locationA][locationB+1]+ " " + rooms[locationA+1][locationB+1]);
 	                                               }
