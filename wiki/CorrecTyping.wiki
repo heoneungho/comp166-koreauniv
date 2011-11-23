@@ -14,7 +14,6 @@
 
 Blackjet() : 블랙젯 게임을 실행시키는 메인 클래스
 GameHelper() : 게임을 도와주고 변수들을 초기화시켜주는 클래스
-Readw() : 키보드 입력을 받아주는 클래스
 
 이 게임을 위한 함수
 
@@ -31,40 +30,17 @@ Turn() : 유저가 카드를 더 받을 시에 p, 아니면 q를 누르게 하�
 
 =Using Code=
 
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Readw {	
-	public static void main(String[] args) throws IOException	{
-			InputStreamReader word = new InputStreamReader(System.in);
-			
-			BufferedReader in = new BufferedReader(word);
-			
-			String words;
-			while(true) {
-			System.out.println("Enter St is Start, Qq is Quit the game, Hh is Help");
-			words = in.readLine();
-			
-			if(words == "St")	
-				StartGame();
-				break;
-			
-			if(words == "Qq")
-				break;
-			
-			if(words == "Hh")
-				GameHelper();
-				break;
-			}
-	}
-}
-
 public class Blackjet {
-	Player p1; // 플레이어와 딜러를 변수를 만든다.
-	Dealer d1;
-	
-	public static void main (String[] args)	{
+
+	private void setUp()	{
+		Player p1; // 플레이어와 딜러를 변수를 만든다.
+		Dealer d1;
+		
 		p1 = new Player(); // 플레이어와 딜러의 객체를 생성하고 변수를 대입한다.
 		d1 = new Dealer();
 		
@@ -78,8 +54,33 @@ public class Blackjet {
 		int rand2 = (int) (Math.random() * 4);
 		
 		String pharse = card2[rand2] + " " + card[rand1]; // 카드 종류를 믹스 시켰다.
-		
-	}
+		}
+	
+		public static void main(String[] args) throws IOException	{
+				InputStreamReader word = new InputStreamReader(System.in);
+				
+				BufferedReader in = new BufferedReader(word);
+				
+				String words;
+				while(true) {
+				System.out.println("Enter St is Start, Qq is Quit the game, Hh is Help");
+				words = in.readLine();
+				
+				if(words == "St")	
+					StartGame();
+					break;
+				
+				if(words == "Qq")
+					break;
+				
+				if(words == "Hh")
+					GameHelper();
+					break;
+				}
+		}
+	
+	private void 
+
 }
 
 public class GameHelper{
