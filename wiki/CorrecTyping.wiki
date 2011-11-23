@@ -32,11 +32,9 @@ Turn() : 유저가 카드를 더 받을 시에 p, 아니면 q를 누르게 하�
 
 import java.util.*;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Blackjet {
-
+	
 	private void setUp()	{
 		Player p1; // 플레이어와 딜러를 변수를 만든다.
 		Dealer d1;
@@ -56,36 +54,56 @@ public class Blackjet {
 		String pharse = card2[rand2] + " " + card[rand1]; // 카드 종류를 믹스 시켰다.
 		}
 	
-		public static void main(String[] args) throws IOException	{
-				InputStreamReader word = new InputStreamReader(System.in);
-				
-				BufferedReader in = new BufferedReader(word);
-				
-				String words;
+		getInput(words) = new getInput(words);
+		
 				while(true) {
 				System.out.println("Enter St is Start, Qq is Quit the game, Hh is Help");
 				words = in.readLine();
 				
 				if(words == "St")	
-					StartGame();
+					User();
 					break;
 				
 				if(words == "Qq")
 					break;
 				
 				if(words == "Hh")
-					GameHelper();
+					Help();
 					break;
 				}
 		}
+
+	private void User()	{
+		
+	}
 	
-	private void 
+	private void Dealer()	{
+		
+	}
 
 }
 
-public class GameHelper{
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
+public class Gamehelper {	
+
+		public String getInput(String word)	{
+			String inputLine = null;
+			try	{
+				BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+				inputLine = is.readLine();
+				if(inputLine.length()== 0) return null;
+			}	catch	(IOException e)	{
+				System.out.println("OException : " + e);
+			}
+			return inputLine.toLowerCase();
+		}
+		
+		
 }
+
 
 
 
