@@ -30,8 +30,26 @@ Turn() : 유저가 카드를 더 받을 시에 p, 아니면 q를 누르게 하�
 
 =Using Code=
 
-public class Blackjet{
-               
+public class Blackjet {
+	Player p1; // 플레이어와 딜러를 변수를 만든다.
+	Dealer d1;
+	
+	public static void main (String[] args)	{
+		p1 = new Player(); // 플레이어와 딜러의 객체를 생성하고 변수를 대입한다.
+		d1 = new Dealer();
+		
+		int sum1 = 0; // 플레이어와 딜러의 숫자 합을 저장할 변수를 만든다.
+		int sum2 = 0;
+		
+		int card[] = {'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'}; // 카드 1~ 13지정
+		String[] card2 = {"Spade", "Clover", "Diamond", "Heart" }; // 카드 종류
+		
+		int rand1 = (int) (Math.random() * 13);
+		int rand2 = (int) (Math.random() * 4);
+		
+		String pharse = card2[rand2] + " " + card[rand1]; // 카드 종류를 믹스 시켰다.
+		
+	}
 }
 
 public class GameHelper{
