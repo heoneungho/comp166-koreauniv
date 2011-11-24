@@ -17,9 +17,6 @@
 
 save기능 없음
 
-메인페이지 및, 기본 시스템은 합작으로 구성.
-그외 세부적인 요소 및 스토리는 각자 구성.
-
 = Using the Code=
 {{{
 
@@ -146,13 +143,85 @@ public class Character {
 		}
 	}
 }
-public class Battle {
+import java.io.IOException;
 
+public class Battle {
+	public int hp_p, atk_p, def_p, cri_p;
+	int hp_m, atk_m, def_m, cri_m;
+	int playerC, tmp;
+	public int potionCount = 10;
+	Maze reseter = new Maze();
 	
-	public void callBattle(int level)	{
-		
+	
+	public void callBattle(int level) throws IOException	{
+		System.out.println("You've encountered the Moster!!! You have to fight it off to keep on going!!");
+		hp_p = 1000;
+		atk_p = 90 + (int)(Math.random() * 20 +1);
+		def_p = 70;
+		cri_p = 100 *(int)Math.random();
+		hp_m = 60*level+ (int)(Math.random() * 20 +1);
+		atk_m = 7*level;
+		def_m = 5*level;
+		cri_m = 8*level *(int)Math.random();
+		while((hp_p != 0) && (hp_m != 0))	{
+			System.out.println("________________________________________________________________________________________");
+			System.out.println("Your hp :\nhp_p = " +hp_p+"\n");
+			System.out.println("Monster's hp :\nhp_m = " +hp_m+"\n");
+			System.out.println("Choose your behavior\nType the number of behavior you want to do\n\n\n1. Attack\n2.Defence Position. \n3. Drink Potion\n");
+			playerC = (int)System.in.read();
+			System.in.read();
+			System.in.read();
+			Battlepage(playerC);
+			System.out.println("________________________________________________________________________________________");
+		}
 	}
+	
+	public void Battlepage(int playerC) {
+		if(playerC == 1)	{
+			if(cri_p >= 70)	{
+				System.out.println("Critical attack!! You dealt '"+(atk_p*2 - def_m)+"' damage to the monster\n");
+				hp_m = hp_m - (atk_p *2 - def_m);
+			}
+			else {
+			System.out.println("You chose to attack! You dealt '"+(atk_p - def_m)+"' damage to the monster\n");
+			hp_m = hp_m - (atk_p - def_m);
+			}
+		}
+		if(playerC == 2)	{
+			System.out.println("Your defence duobles!");
+			def_p *=2;
+		}
+		if(playerC == 3)	{
+			if(potionCount > 0)	{
+			System.out.println("You drank potion and you recovered 200 hp!!");
+			potionCount--;
+			hp_p += 200;
+			if(hp_p >1000)
+				hp_p = 1000;
+			}
+			else
+				System.out.println("You are out of potions");
+		}
+		
+		System.out.println("Now it's Monster's turn to attack!\n");
+		if(cri_m >= 70)	{
+			System.out.println("Critical attack!! Monster dealt '"+(atk_m*2 - def_p)+"' damage to you\n");
+			hp_p = hp_p - (atk_m *2 - def_p);
+						}
+		else	{
+			System.out.println("Monster chose to attack! Monster dealt '"+(atk_m - def_p)+"' damage to you\n");
+			hp_p = hp_p - (atk_m - def_p);
+				}
+		if(hp_p>0)
+			System.out.println("You won the battle!! Please preceed\n");
+		if(hp_m>0)	{
+			System.out.println("You lost the battle!! Your game will be reseted\n");
+			reseter.locationA = 1;
+			reseter.locationB = 1;
+		}
+		}
 }
+
 public class Boss extends Character {
 	public void BossMon()	{
 		level = 30;
