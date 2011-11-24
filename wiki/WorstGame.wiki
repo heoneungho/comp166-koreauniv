@@ -22,180 +22,42 @@ save기능 없음
 
 = Using the Code=
 {{{
-import java.util.*;
 
 public class Maze {
- 
-    private int location[][];
-    location = new int[10][10];
-    Maze_go temp = new Maze_go();
-
-    public int GetLocation(int userInput1, int userInput2) {
-    return location[userInput1][userInput2];
-    }
-
-    public void Way_Make(int ex1, int ex2, int ex1_1, int ex2_2, int n1, int n2, int n3, int n4)  {
-//rooms[ex1][ex2] 에서 rooms[ex1_1][ex2_2] 로 통하는 길을 만드는 함수
-
-    if(n1 == 0) {
-    temp.rooms[ex1][ex2]
-    }
-    if(n2 == 1) {
-    temp.rooms[ex1][ex2]
-    }
-    if(n3 == 2) {
-    temp.rooms[ex1][ex2]
-    }    
-    if(n4 == 3) {
-    temp.rooms[ex1][ex2]
-    }
-
-   }
-}
-
-class Character  {
-  private int hp;
-   private int atk;
-  private int def;
- 
-   public status(int hp_1,int atk_1, int def_1) {
-   hp = hp_1;
-   atk = atk_1;
-   def = def_1;
-   }
-
-  public call_status(int hp_2, int atk_2, int def_2) {
-  hp_2 = hp;
-  atk_2 = atk;
-  def_2 = def;
-  }
-}
-public class Maze_Go {
-   private int way;
-   private int rooms[][];
-   private int num;
- 
-    Maze mazing = new Maze();
-    rooms = new int[10][10];
-    mazing.location[0][0] = rooms[0][0];
-
-    public void Maze_Make() {
-    num = (Math.random () * 70 + 30);
-        for(int ex1 = 0; ex1 < 10; ex1++)
-             for(int ex2 = 0;ex2 < 10;ex2++)    {
-
-        if(num % (ex1 * ex2) == 0) 
-            mazing.Way_Make(ex1,ex2,ex2,ex1 0, 1, 2, -1);   
-
-        if(((num * (ex1 + ex2)) % 2 == 0) &&ex1 <= 6 && ex2 > 1)
-            mazing.Way_Make(ex1,ex2, ex1+4, ex2-1, -1, 1, -1, 3); 
-
-        if//will add more
-    }
-
-public class Monster{
-
-
-
-}
-
-public class Battle{
-
-
-}
-
-public class Story{
-
-
-}
-
-class Boss extends Monster{
-
-}
-
-public class TestMazeGame {
-
-
-
-}
-
-
-미로를 그냥 미리 만들어진거로 하기 위해 코드를 다시 짜겠습니다.
-
-public class Maze {
-	public int rooms[][] = 
-		{	{1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-			{2,2,1,2,1,2,1,2,2,2,2,2,2,2,2,2,2,1,2,2,1},
-			{2,2,1,2,1,2,1,1,1,1,1,1,2,1,2,2,2,1,2,2,1},
-			{1,1,1,2,1,1,2,2,2,2,2,1,2,1,1,1,2,1,2,2,1},
-			{1,2,1,2,2,1,1,1,1,1,2,1,2,1,2,1,2,1,2,2,2},
-			{1,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,1,1,1,1},
-			{2,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1},
-			{2,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1},
-			{2,2,1,1,1,1,2,1,2,1,1,1,2,1,2,1,2,1,2,2,1},
-			{2,2,2,2,1,2,2,1,2,2,2,2,2,1,2,2,2,1,2,2,1},
-			{1,1,1,1,1,2,2,1,1,1,1,1,1,1,2,2,2,1,2,2,1},
-			{2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,1},
-			{2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1},
-			{2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-			{2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+	public char rooms[][] = 
+		{	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+			{2,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'M',2},
+			{2,2,2,1,2,1,2,1,2,2,2,2,2,2,2,2,2,2,1,2,2,1,2},
+			{2,2,2,1,2,1,2,1,1,1,1,1,1,2,1,2,2,2,1,2,2,1,2},
+			{2,1,1,'M',2,1,1,2,2,2,2,2,1,2,1,1,1,2,1,2,2,1,2},
+			{2,1,2,1,2,2,1,1,1,1,1,2,1,2,1,2,1,2,1,2,2,2,2},
+			{2,1,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,'M',1,1,1,2},
+			{2,2,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2},
+			{2,2,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2},
+			{2,2,2,1,1,'M',1,2,1,2,1,1,1,2,1,2,1,2,1,2,2,1,2},
+			{2,2,2,2,2,1,2,2,1,2,2,2,2,2,1,2,2,2,1,2,2,1,2},
+			{2,1,'T',1,1,1,2,2,1,1,1,1,1,1,1,2,2,2,1,2,2,1,2},
+			{2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,1,2},
+			{2,2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,'B','G'},
+			{2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+			{2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2},
+			{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}};
 		
+
 		
-		
-	   public int locationA,locationB = 0;
+	   public int locationA = 1;
+	   public int locationB = 1;
+	   
+	  
 
 	   public void Maze_limit() {
-	   if(locationA == 0 || locationA == 14)   {
-	      if(locationB == 0 || locationB == 20)   {
-	         if( locationA == 0 && locationB == 0)   {
-	        	System.out.println(" We will only show part of the maze you are in, so you have to think well to get out of here.");
-	        	System.out.println( "P " +rooms[locationA+1][locationB]);
-	            System.out.println( rooms[locationA][locationB+1]+ " " + rooms[locationA+1][locationB+1]);
-	                                               }
-	         if( locationA == 0 && locationB == 20)  {
-	           System.out.println( rooms[locationA][locationB-1]+ " " +rooms[locationA+1][locationB-1]);
-	           System.out.println( "P " +rooms[locationA+1][locationB]);
-	                                               }
-	         if(locationA == 14 && locationB == 0)  {
-	            System.out.println(rooms[locationA-1][locationB]+ " P");
-	            System.out.println(rooms[locationA-1][locationB + 1]+ " " +rooms[locationA][locationB+1]);
-	                                               }
-	         if(locationA == 14 && locationB == 20) {
-	            System.out.println(rooms[locationA-1][locationB-1]+ " " + rooms[locationA][locationB-1]);
-	            System.out.println(rooms[locationA-1][locationB]+ " P");
-	         										}
-	      																			}
-	        else      {
-	            if(locationA == 0) {
-	            System.out.println(rooms[locationA][locationB-1]+ " " +rooms[locationA+1][locationB-1]);
-	            System.out.println("P " +rooms[locationA+1][locationB]);
-	            System.out.println(rooms[locationA][locationB+1]+ " " +rooms[locationA+1][locationB+1]);
-	            													}
-	            else          {
-	            System.out.println(rooms[locationA-1][locationB-1]+ " " +rooms[locationA][locationB-1]);
-	            System.out.println(rooms[locationA-1][locationB]+ " P");
-	            System.out.println(rooms[locationA-1][locationB+1]+ " " +rooms[locationA][locationB+1]);
-	            															}
-	        											}
-	   																	}
-	         else {
-	            if(locationB == 0 || locationB == 20)   {
-	                 if(locationB == 0)  {
-	                     System.out.println(rooms[locationA-1][locationB] +  " P " +rooms[locationA+1][locationB]);
-	                     System.out.println(rooms[locationA-1][locationB+1] + " " +rooms[locationA][locationB+1]+ " " +rooms[locationA+1][locationB+1]);
-	                 																}
-	                  else          {
-	                     System.out.println(rooms[locationA-1][locationB-1]+ " " +rooms[locationA][locationB-1]+ " " +rooms[locationA+1][locationB-1]);
-	                     System.out.println(rooms[locationA-1][locationB] + " P " + rooms[locationA+1][locationB]);
-	                  																		}
-	            																					}
-	            else   {
+	  
 	                 System.out.println(rooms[locationA-1][locationB-1]+ " " +rooms[locationA][locationB-1]+ " " +rooms[locationA+1][locationB-1]);
 	                 System.out.println(rooms[locationA-1][locationB]+ " P " +rooms[locationA+1][locationB]);
 	                 System.out.println(rooms[locationA-1][locationB+1]+ " " +rooms[locationA][locationB+1]+ " " +rooms[locationA+1][locationB+1]);
 	            										} 
-	         							}
-}
+	         							
+
 	   public void Maze_alter(char userinput) {
 	
 		   if(userinput == 'a')
@@ -207,7 +69,7 @@ public class Maze {
 		   	if(userinput == 'w')
 		   			locationB--;
 		   	
-		   	if(((locationA < 0 || locationB < 0)||(locationA >14) || (locationB > 20)) || (rooms[locationA][locationB] == 2))	{
+		   	if(rooms[locationA][locationB] == 43)	{
 		   			System.out.println("Error, you cannot go there");
 		   					if(userinput == 'a')
 		   						locationA++;
@@ -220,29 +82,87 @@ public class Maze {
 		   	}
 		   
 	   			}
-	   }
 
+}
 import java.io.IOException;
 
-
-public class MazeTestDrive {
+public class MazTestDrive {
 	public static char userinput;
 	public static void main(String [] args) throws IOException	{
 		Maze mazing = new Maze();
+		Character player1 = new Character();
+		Boss player2 = new Boss();
+		 int tempA = 0;
+		 int tempB = 0;
+			
+			for(tempA = 0; tempA < 17; tempA++)	{
+				for(tempB= 0;tempB < 23; tempB++)	{
+					if(mazing.rooms[tempA][tempB] == 1)
+						mazing.rooms[tempA][tempB] = 32;
+					if(mazing.rooms[tempA][tempB] == 2)
+						mazing.rooms[tempA][tempB] =43;
+				}
+			}
+			
 			System.out.println("This is Maze game. You have to figure out how to get out of here");
-			System.out.println("'1' is the path, and '2' is the wall, and you are 'P'You cannot go through the wall");
-   while((mazing.locationA + mazing.locationB) != 34)	{
+			System.out.println("Empty space is the path, and '+' is the wall, and you are 'P'. You cannot go through the wall");
+   while(mazing.rooms[mazing.locationA][mazing.locationB] != 71)	{
 	   System.out.println("_____________________________________________________________________________");
-	   	mazing.Maze_limit();
+	   mazing.Maze_limit();
 	   System.out.println("if you want to go up, press 'w', down 's', left 'a', and right 'd'");
 	   userinput = (char)System.in.read();
 	   System.in.read();
 	   System.in.read();
 	   mazing.Maze_alter(userinput);
+	   player1.Monster();
+	   player2.BossMon();
+	   player1.Trapcard();
    	}
    System.out.println("Congratulations!! You have cleared the game");
 }
+
 }
+
+public class Character {
+
+	Maze characterize = new Maze();
+	Battle caller = new Battle();
+	int counter = 0;
+	int level;
+	
+	public void Monster() {
+		level = 10;
+		if(characterize.rooms[characterize.locationA][characterize.locationB] == 'M') {
+			caller.callBattle(level);
+		}
+	}
+	
+	public void Trapcard(){
+		if((characterize.rooms[characterize.locationA][characterize.locationB] == 'T') && (counter == 0))	{
+			System.out.println("You fall in to the trap!! You go to the start line.");
+			characterize.locationA = 1;
+			characterize.locationB = 1;
+			counter++;
+		}
+	}
+}
+public class Battle {
+
+	
+	public void callBattle(int level)	{
+		
+	}
+}
+public class Boss extends Character {
+	public void BossMon()	{
+		level = 30;
+		if(characterize.rooms[characterize.locationA][characterize.locationB] == 'B') {
+			caller.callBattle(level);
+			
+		}
+	}
+}
+
 
 //이제 소리도 넣고 다른 여러가지 기능을 넣을겁니다. 일단 텍스트상에서의 미로는 구현이 완료되었습니다.
 }}}
