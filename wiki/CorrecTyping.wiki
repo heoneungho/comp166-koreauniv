@@ -42,14 +42,30 @@ public class Blackjet	{
 	
 public String select()	{
 		
-		String card[] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};// 카드 1~ 13지정
-		String[] card2 = {"Spade", "Clover", "Diamond", "Heart" }; // 카드 종류
+		String card[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "A", "J", "Q", "K"};// 카드 1~ 13지정
+		String card2[] = {"♠", "♧", "◆", "♡" }; // 카드 종류
 	
 		int rand1 = (int) (Math.random() * 13);
 		int rand2 = (int) (Math.random() * 4);
-
-		String pharse = card2[rand2] + " " + card[rand1]; // 카드 종류를 믹스 시켰다.
+		
+		int a = Integer.parseInt(card[rand1]);
+		
+		if(a > 10)
+			a = 10;
+	
+		int c = 0;
+		c ++;
+		int b = 0;
+		
+		if(c % 2 == 1)
+			b = sum1(a);
+		else
+			b = sum2(a);
+		
+		String pharse = card2[rand2] + " " + card[rand1] +" " + "카드를 뽑았습니다. "+ "  "+  "지금까지 카드 숫자의 합은" + " " +b + "입니다."; // 카드 종류를 믹스 시켰다.
+		
 		return pharse;
+		
 	}
 	
 	public void GamePlay()	{
@@ -63,14 +79,36 @@ public String select()	{
 	private void Player(int p)	{
 		if(p == 1)	{
 		int a = 0;
-		int sum1 = 0;
+		
 		while	(a<2)	{
 			a++;
 			String s = select();
-			System.out.println("Player가 " +  s +"카드를 뽑았습니다.");
+			System.out.println("Player가 " +  s);
 			}
 		}
+		
 		if(p == 2)	{
+			int c = sum1(0);
+			
+			if(c < 21)	{
+				System.out.println("카드를 더 뽑으시려면 1번, 더 이상 안 뽑으시려면 2번을 누르세요.");
+				String s = Read.getInput("Enter a number");
+				int a = Integer.parseInt(s);
+					if(a == 1)	{
+						select();
+						Player(2);
+					}
+					if(a == 2)
+						finish();
+			}
+			
+			if(c == 21)	{
+				System.out.println("Player가 이겼습니다.");
+			}
+			
+			if(c > 21)	{
+				System.out.println("Player가 패배하였습니다.");
+			}
 			
 		}
 	}
@@ -78,20 +116,40 @@ public String select()	{
 	private void Dealer(int q)	{
 		if(q == 1)	{
 		int a = 0;
-		int sum2 = 0;
+		
 		while	(a<2)	{
 			a++;
 			String s = select();
-			System.out.println("Dealer가 " +  s +"카드를 뽑았습니다.");
+			System.out.println("Dealer가 " +  s);
 			}
 		}
+		
 		if(q == 2)	{
-			
+			if(sum1(0) > sum2(0))
+				select();
+			if(sum2(0) > 21)
+				System.out.println("Dealer가 패배하셨습니다.");
 		}
+		
 	}
 	
-	private void turn()	{
-		
+	private void finish()	{
+		if(sum1(0) > sum2(0))
+			System.out.println("Player가 Dealer를 이겼습니다.");
+		else
+			System.out.println("Player가 Dealer에게 패배하였습니다.");
+	}
+	
+	private int sum1(int a)	{
+		int sum = 0;
+		sum += a;
+		return sum;
+	}
+	
+	private int sum2(int a)	{
+		int sum = 0;
+		sum += a;
+		return sum;
 	}
 	
 	public void GameStart()	{
@@ -129,6 +187,7 @@ public static void main (String[] args)	{
 		game.GameStart();
 	}
 }
+
 
 
 import java.io.*;
