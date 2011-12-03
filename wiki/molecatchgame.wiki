@@ -18,19 +18,31 @@ LView 클래스
 package molecatch;
 
 import javax.swing.*;
+
 import javax.swing.Timer;
+
 import java.awt.*;
+
 import java.awt.event.*;
+
 import java.util.*;
-public class LView extends JPanel implements MouseListener, ActionListener
+
+public class LView extends JPanel implements MouseListener,
+ ActionListener
 {
 
 	int m_x = 100;
+
 	int m_y = 100;
+
 	int m_w = 50;
+
 	int m_h = 50;
+
 	int m_score = 0;
+
 	int m_timer = 10;
+
     Timer t1, t2;
 
     Random m_rand = new Random();
@@ -38,9 +50,13 @@ public class LView extends JPanel implements MouseListener, ActionListener
     public LView()
      {
         this.addMouseListener(this);
+
         t1 = new Timer(1000, this);
+
         t1.start();
+
         t2 = new Timer(500, this);
+
         t2.start();
 
     }
@@ -52,6 +68,7 @@ public class LView extends JPanel implements MouseListener, ActionListener
         //g.drawString("Mole", 10, 10);
 
         g.drawRect(m_x, m_y, 50, 50);
+
         g.drawString("score : "+m_score+ "    time : "+m_timer, 10, 10);
     }
 
@@ -62,7 +79,9 @@ public class LView extends JPanel implements MouseListener, ActionListener
     public void mousePressed(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
         int x, y;
+
         x = e.getX();
+
         y = e.getY();
 
         if(m_x <= x && x <= m_x+m_w)
@@ -98,7 +117,9 @@ public class LView extends JPanel implements MouseListener, ActionListener
             else if(m_timer <= 0)
             {
                 t1.stop();
+
                 t2.stop();
+
                 JOptionPane.showMessageDialog(this, "game over ~~!!", "molecatch", JOptionPane.INFORMATION_MESSAGE);
             }
             repaint();
