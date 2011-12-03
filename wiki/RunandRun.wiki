@@ -15,7 +15,7 @@ BGM도 있어요!
 
 클래스 : CJtuner.class, BassTuner.class, GuitarTuner.class, ViolinTuner.class, Chello.class, BGM.class
 
-
+{{{
 import javax.swing.*;
 
 import javax.swing.event.AncestorListener;
@@ -440,6 +440,7 @@ public void actionPerformed(ActionEvent e) {
 
 }
 
+}}}
 
 
 
@@ -471,8 +472,7 @@ public void actionPerformed(ActionEvent e) {
 
 
 
-
-
+{{{
 
 import javax.sound.midi.MidiEvent;
 
@@ -695,6 +695,7 @@ public class BGM {
 }
 
 
+}}}
 
 
 
@@ -743,8 +744,7 @@ public class BGM {
 
 
 
-
-
+{{{
 
 import javax.swing.*;
 
@@ -960,6 +960,7 @@ public class ChelloTuner implements ActionListener {
 
 
 
+}}}
 
 
 
@@ -986,8 +987,7 @@ public class ChelloTuner implements ActionListener {
 
 
 
-
-
+{{{
 
 
 import javax.swing.*;
@@ -1311,6 +1311,7 @@ public class CJtuner implements ActionListener {
 
 
 	
+}}}
 
 
 
@@ -1337,8 +1338,7 @@ public class CJtuner implements ActionListener {
 
 
 
-
-
+{{{
 
 
 
@@ -1851,6 +1851,7 @@ public class GuitarTuner implements ActionListener {
 
 
 
+}}}
 
 
 
@@ -1877,8 +1878,7 @@ public class GuitarTuner implements ActionListener {
 
 
 
-
-
+{{{
 
 
 
@@ -2093,3 +2093,5 @@ public class ViolinTuner implements ActionListener {
 
 
 	}
+
+}}}
