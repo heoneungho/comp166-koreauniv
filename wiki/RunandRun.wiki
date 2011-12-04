@@ -1,444 +1,166 @@
 #labels 2011190710윤창진
 =소개=
 
-진짜로 재밌는 튜너 ㅎㅎ
-
-한번하면 벗어나올 수 없는 튜너
-
-이 어플리케이션엔
-
 베이스, 기타, 바이올린, 첼로 등의 튜너가 있습니다.
 
 BGM도 있어요!
 
 = 디테일! =
 
-클래스 : CJtuner.class, BassTuner.class, GuitarTuner.class, ViolinTuner.class, Chello.class, BGM.class
+클래스 : CJtuner.class, BassTuner.class, GuitarTuner.class, ViolinTuner.class, Chello.class, BGM.class, Instrument.class
 
 {{{
 import javax.swing.*;
-
 import javax.swing.event.AncestorListener;
-
 import javax.sound.midi.*;
-
-
-
 import java.awt.BorderLayout;
-
 import java.awt.Color;
-
 import java.awt.Font;
-
 import java.awt.event.*;
 
-
-
-public class BassTuner implements ActionListener {
-
+public class BassTuner extends Instrument  implements ActionListener {
 	JButton buttonE,buttonA,buttonD,buttonG;
-
 	JFrame frame;
-
 	JLabel label;
-
-
+	int k = 12;
 
 	public void go(){
-
 		
-
 		JFrame frame = new JFrame();
-
-		
-
 		Font bigFont =  new Font("serif",Font.BOLD, 28);
-
 		
 
-		buttonE = new JButton("E!   ");
-
+		label = new JLabel("    Sound");
+		label.setForeground(Color.WHITE);
+		label.setFont(bigFont);
+		
+		buttonE = new JButton("E sound   ");
 		buttonE.addActionListener(new EListener());
-
 		buttonE.setBackground(Color.black);
-
 		buttonE.setForeground(Color.white);
-
 		buttonE.setFont(bigFont);
 
-
-
-		buttonA = new JButton("A!   ");
-
+		buttonA = new JButton("A sound   ");
 		buttonA.addActionListener(new AListener());
-
 		buttonA.setBackground(Color.black);
-
 		buttonA.setForeground(Color.white);
-
 		buttonA.setFont(bigFont);
 
-
-
-
-
-
-
-		buttonD = new JButton("D!   ");
-
+		buttonD = new JButton("D sound   ");
 		buttonD.addActionListener(new DListener());
-
 		buttonD.setBackground(Color.black);
-
 		buttonD.setForeground(Color.white);
-
 		buttonD.setFont(bigFont);
-
-
-
-
-
 		
-
-		buttonG = new JButton("G!   ");
-
+		buttonG = new JButton("G sound   ");
 		buttonG.addActionListener(new GListener());
-
 		buttonG.setBackground(Color.black);
-
 		buttonG.setForeground(Color.white);
-
 		buttonG.setFont(bigFont);
 
-
-
 		JPanel Tunerpanel = new JPanel();
-
-		Tunerpanel.setBackground(Color.white);
-
+		Tunerpanel.setBackground(Color.BLACK);
 		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
-
-		
-
+		Tunerpanel.add(label);
 		Tunerpanel.add(buttonE);
-
 		Tunerpanel.add(buttonA);
-
 		Tunerpanel.add(buttonD);
-
 		Tunerpanel.add(buttonG);
-
 		
-
 		
-
 		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(150,300);
-
 		frame.setVisible(true);
-
-}
-
-/*
-
-	public void actionPerformed(ActionEvent event){
-
-	try{
-
-		Sequencer sequencer = MidiSystem.getSequencer();
-
-		sequencer.open();
-
-		
-
-		Sequence seq = new Sequence(Sequence.PPQ,4);
-
-		Track track = seq.createTrack();
-
-		
-
-		for(int i = 5;i<100;i+=12){
-
-			
-
-			track.add(makeEvent(144,1,i,100,i));
-
-			track.add(makeEvent(128,1,i,100,i+2));
-
-
-
-			track.add(makeEvent(144,1,i+4,100,i+4));
-
-			track.add(makeEvent(128,1,i+4,100,i+6));
-
-
-
-			track.add(makeEvent(144,1,i+7,100,i+8));
-
-			track.add(makeEvent(128,1,i+7,100,i+10));
-
-			
-
-		}
-
-		
-
-		track.add(makeEvent(144,1,16,100,1));
-
-		track.add(makeEvent(128,1,16,100,50));
-
-		
-
-		sequencer.setSequence(seq);
-
-		sequencer.setTempoInBPM(220);
-
-		sequencer.start();
-
-	}catch(Exception ex){ex.printStackTrace();}		
-
-}
-
-*/
-
+	}
 	
-
 	class EListener implements ActionListener{
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
 
-
-
 			
-
-			track.add(makeEvent(144,1,16,100,1));
-
-			track.add(makeEvent(128,1,16,100,50));
-
+			track.add(makeEvent(144,1,16+k,100,1));
+			track.add(makeEvent(128,1,16+k,100,50));
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
 
-
-
-		}
-
-		
-
-		
-
+		}		
 	}
-
 	
-
 	class AListener implements ActionListener{
-
-
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
-
 			
-
 						
-
-			track.add(makeEvent(144,1,21,100,1));
-
-			track.add(makeEvent(128,1,21,100,50));
-
+			track.add(makeEvent(144,1,21+k,100,1));
+			track.add(makeEvent(128,1,21+k,100,50));
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
-
-
-
-		}
-
-		
-
-		
-
-		
-
+		}		
 	}
-
 	
-
 	class DListener implements ActionListener{
-
-
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
-
 			
-
 						
-
-			track.add(makeEvent(144,1,26,100,1));
-
-			track.add(makeEvent(128,1,26,100,50));
-
+			track.add(makeEvent(144,1,26+k,100,1));
+			track.add(makeEvent(128,1,26+k,100,50));
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
-
-
-
 		}
-
-		
-
-		
-
 	}
-
 	
-
 	class GListener implements ActionListener{
-
-
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
-
 			
 
-
-
-			track.add(makeEvent(144,1,31,100,1));
-
-			track.add(makeEvent(128,1,31,100,50));
-
+			track.add(makeEvent(144,1,31+k,100,1));
+			track.add(makeEvent(128,1,31+k,100,50));
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
-
-
-
 		}
-
-		
-
-		
-
 	}
 
-	
-
-
-
-public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
-
-	MidiEvent event = null;
-
-	try{
-
-		ShortMessage a = new ShortMessage();
-
-		a.setMessage(comd,chan,one,two);
-
-		event = new MidiEvent(a,tick);
-
-			
-
-	}catch(Exception e){ }
-
-		return event;
-
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		// TODO Auto-generated method stub
 	}
-
-
-
-
-
-@Override
-
-public void actionPerformed(ActionEvent e) {
-
-	// TODO Auto-generated method stub
-
-	
-
 }
 
-
-
-
-
-}
 
 }}}
 
@@ -474,224 +196,374 @@ public void actionPerformed(ActionEvent e) {
 
 {{{
 
+
 import javax.sound.midi.MidiEvent;
-
 import javax.sound.midi.MidiSystem;
-
 import javax.sound.midi.Sequence;
-
 import javax.sound.midi.Sequencer;
-
 import javax.sound.midi.ShortMessage;
-
 import javax.sound.midi.Track;
 
 
-
-
-
 public class BGM {
+	public void introplay(){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+			int i=0,j = 36;
+			
+			for(;j<96;j++){
 
-	public void play(){
+				track.add(makeEvent(144,1,j,100,i));
+				track.add(makeEvent(128,1,j,100,i+3));
+				i++;
+			}
+				
+			for(;j>48;j--){
+
+				track.add(makeEvent(144,1,j,100,i));
+				track.add(makeEvent(128,1,j,100,i+3));
+				i++;
+			}
+			
+			
+			for(;j<72;j++){
+
+				track.add(makeEvent(144,1,j,100,i));
+				track.add(makeEvent(128,1,j,100,i+3));
+				i++;
+			}
+			
+			for(;j>36;j--){
+
+				track.add(makeEvent(144,1,j,100,i));
+				track.add(makeEvent(128,1,j,100,i+3));
+				i++;
+			}
+			
+			track.add(makeEvent(144,1,60,100,i));
+			track.add(makeEvent(128,1,60,100,i+3));
+			
+
+			track.add(makeEvent(144,1,64,100,i));
+			track.add(makeEvent(128,1,64,100,i+3));
+			
+
+			track.add(makeEvent(144,1,67,100,i));
+			track.add(makeEvent(128,1,67,100,i+3));
+			
+			i+=4;
+
+			track.add(makeEvent(144,1,60,100,i));
+			track.add(makeEvent(128,1,60,100,i+3));
+			
+
+			track.add(makeEvent(144,1,64,100,i));
+			track.add(makeEvent(128,1,64,100,i+3));
+			
+
+			track.add(makeEvent(144,1,67,100,i));
+			track.add(makeEvent(128,1,67,100,i+3));
+
+			i+=4;
+			
+			track.add(makeEvent(144,1,60,100,i));
+			track.add(makeEvent(128,1,60,100,i+3));
+			
+
+			track.add(makeEvent(144,1,64,100,i));
+			track.add(makeEvent(128,1,64,100,i+3));
+			
+
+			track.add(makeEvent(144,1,67,100,i));
+			track.add(makeEvent(128,1,67,100,i+3));
+			
+			i+=4;
+			
+			track.add(makeEvent(144,1,60,100,i));
+			track.add(makeEvent(128,1,60,100,i+3));
+			
+
+			track.add(makeEvent(144,1,64,100,i));
+			track.add(makeEvent(128,1,64,100,i+3));
+			
+
+			track.add(makeEvent(144,1,67,100,i));
+			track.add(makeEvent(128,1,67,100,i+3));
+			
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}		
+	}
+
+	
+	public void JK(){
 
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
-
-			int i = 12;
-
-			for(;i<104;){
-
-				
-
-				track.add(makeEvent(144,1,i,100,i));
-
-				track.add(makeEvent(128,1,i,100,i+3));
-
-
-
-				track.add(makeEvent(144,1,i+4,100,i+4));
-
-				track.add(makeEvent(128,1,i+4,100,i+7));
-
-
-
-				track.add(makeEvent(144,1,i+7,100,i+8));
-
-				track.add(makeEvent(128,1,i+7,100,i+11));
-
-				i+=12;
-
-			}
-
-			for(int j = 104;j>12;j-=12){
-
-
-
-				track.add(makeEvent(144,1,j+7,100,i));
-
-				track.add(makeEvent(128,1,j+7,100,i+3));
-
-
-
-				track.add(makeEvent(144,1,j+4,100,i+4));
-
-				track.add(makeEvent(128,1,j+4,100,i+7));
-
-				
-
-				track.add(makeEvent(144,1,j,100,i+8));
-
-				track.add(makeEvent(128,1,j,100,i+11));
-
-				i+=12;
-
-			}
-
-
-
-			track.add(makeEvent(144,1,60,100,i));
-
-			track.add(makeEvent(128,1,60,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,64,100,i));
-
-			track.add(makeEvent(128,1,64,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,67,100,i));
-
-			track.add(makeEvent(128,1,67,100,i+3));
-
-			
-
-			i+=4;
-
-
-
-			track.add(makeEvent(144,1,60,100,i));
-
-			track.add(makeEvent(128,1,60,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,64,100,i));
-
-			track.add(makeEvent(128,1,64,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,67,100,i));
-
-			track.add(makeEvent(128,1,67,100,i+3));
-
-
-
-			i+=4;
-
-			
-
-			track.add(makeEvent(144,1,60,100,i));
-
-			track.add(makeEvent(128,1,60,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,64,100,i));
-
-			track.add(makeEvent(128,1,64,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,67,100,i));
-
-			track.add(makeEvent(128,1,67,100,i+3));
-
-			
-
-			i+=4;
-
-			
-
-			track.add(makeEvent(144,1,60,100,i));
-
-			track.add(makeEvent(128,1,60,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,64,100,i));
-
-			track.add(makeEvent(128,1,64,100,i+3));
-
-			
-
-
-
-			track.add(makeEvent(144,1,67,100,i));
-
-			track.add(makeEvent(128,1,67,100,i+3));
-
-			
-
-			
-
-			sequencer.setSequence(seq);
-
-			sequencer.setTempoInBPM(220);
-
-			sequencer.start();
-
-		}catch(Exception ex){ex.printStackTrace();}		
-
+			int i=0;
+		
+		track.add(makeEvent(144,1,62,100,i));
+		track.add(makeEvent(128,1,62,100,i+1));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+1));
+		track.add(makeEvent(144,1,54,100,i));
+		track.add(makeEvent(128,1,54,100,i+1));
+		track.add(makeEvent(144,1,47,100,i));
+		track.add(makeEvent(128,1,47,100,i+1));
+		track.add(makeEvent(144,1,35,100,i));
+		track.add(makeEvent(128,1,35,100,i+1));
+
+		i++;
+		track.add(makeEvent(144,1,61,100,i));
+		track.add(makeEvent(128,1,21,100,i+1));
+		track.add(makeEvent(144,1,53,100,i));
+		track.add(makeEvent(128,1,53,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+1));
+		track.add(makeEvent(144,1,60,100,i));
+		track.add(makeEvent(128,1,60,100,i+1));
+
+		i++;
+		track.add(makeEvent(144,1,61,100,i));
+		track.add(makeEvent(144,1,52,100,i+1));
+		track.add(makeEvent(144,1,45,100,i));
+		track.add(makeEvent(144,1,32,100,i+1));
+
+		track.add(makeEvent(128,1,61,100,i+4));
+		track.add(makeEvent(128,1,52,100,i+4));
+		track.add(makeEvent(128,1,45,100,i+4));
+		track.add(makeEvent(128,1,32,100,i+4));
+		
+		i+=2;
+
+		track.add(makeEvent(144,1,73,100,i));
+		track.add(makeEvent(128,1,73,100,i+1));//잠
+		i+=1;
+
+		track.add(makeEvent(144,1,73,100,i));
+		track.add(makeEvent(128,1,73,100,i+1));//자
+		i+=1;
+
+		track.add(makeEvent(144,1,71,100,i));
+		track.add(makeEvent(128,1,71,100,i+2));//는
+		
+		track.add(makeEvent(144,1,59,100,i));
+		track.add(makeEvent(128,1,59,100,i+2));
+		
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+2));
+		
+		track.add(makeEvent(144,1,43,100,i));
+		track.add(makeEvent(128,1,43,100,i+4));
+		
+		track.add(makeEvent(144,1,31,100,i));
+		track.add(makeEvent(128,1,31,100,i+4));
+		i++;
+
+		track.add(makeEvent(144,1,64,100,i));
+		track.add(makeEvent(128,1,64,100,i+1));
+		
+		i++;
+		track.add(makeEvent(144,1,59,100,i));
+		track.add(makeEvent(128,1,59,100,i+1));
+		
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+2));
+		
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+2));
+		i++;
+
+		track.add(makeEvent(144,1,62,100,i));
+		track.add(makeEvent(128,1,62,100,i+4));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+4));
+		track.add(makeEvent(144,1,42,100,i));
+		track.add(makeEvent(128,1,42,100,i+4));
+		track.add(makeEvent(144,1,30,100,i));
+		track.add(makeEvent(128,1,30,100,i+4));
+		i+=2;
+
+		track.add(makeEvent(144,1,66,100,i));
+		track.add(makeEvent(128,1,66,100,i+1));//하
+		i++;
+		track.add(makeEvent(144,1,68,100,i));
+		track.add(makeEvent(128,1,68,100,i+1));//늘
+		i++;
+		track.add(makeEvent(144,1,71,100,i));
+		track.add(makeEvent(128,1,71,100,i+1));//님
+		i++;
+		track.add(makeEvent(144,1,71,100,i));
+		track.add(makeEvent(128,1,71,100,i+1));//이
+		track.add(makeEvent(144,1,64,100,i));
+		track.add(makeEvent(128,1,64,100,i+2));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+2));
+		track.add(makeEvent(144,1,40,100,i));
+		track.add(makeEvent(128,1,40,100,i+5));
+		track.add(makeEvent(144,1,28,100,i));
+		track.add(makeEvent(128,1,28,100,i+5));
+		
+		i++;
+		
+		track.add(makeEvent(144,1,69,100,i));
+		track.add(makeEvent(128,1,69,100,i+2));//여
+		
+		i++;
+		
+
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+1));
+		i++;
+		
+
+		track.add(makeEvent(144,1,53,100,i));
+		track.add(makeEvent(128,1,53,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+1));
+		i++;
+		
+
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+4));
+		track.add(makeEvent(144,1,53,100,i));
+		track.add(makeEvent(128,1,53,100,i+4));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+4));
+		i+=2;
+
+		track.add(makeEvent(144,1,73,100,i));
+		track.add(makeEvent(128,1,73,100,i+1));//이
+		i+=1;
+
+		track.add(makeEvent(144,1,73,100,i));
+		track.add(makeEvent(128,1,73,100,i+1));//제
+		i+=1;
+
+
+		track.add(makeEvent(144,1,71,100,i));
+		track.add(makeEvent(128,1,71,100,i));//그
+
+		track.add(makeEvent(144,1,64,100,i));
+		track.add(makeEvent(128,1,64,100,i+2));
+
+		track.add(makeEvent(144,1,59,100,i));
+		track.add(makeEvent(128,1,59,100,i+2));
+		
+		i+=1;
+
+		track.add(makeEvent(144,1,64,100,i));
+		track.add(makeEvent(128,1,64,100,i+2));//만
+		i+=1;
+
+		track.add(makeEvent(144,1,64,100,i));
+		track.add(makeEvent(128,1,64,100,i+1));
+
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+1));
+		
+		i++;
+		
+
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+1));
+		
+		i++;
+		track.add(makeEvent(144,1,62,100,i));
+		track.add(makeEvent(128,1,62,100,i+4));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+4));
+		track.add(makeEvent(144,1,54,100,i));
+		track.add(makeEvent(128,1,54,100,i+4));
+		i+=2;
+
+		track.add(makeEvent(144,1,66,100,i));
+		track.add(makeEvent(128,1,66,100,i+1));//일
+		i++;
+		track.add(makeEvent(144,1,68,100,i));
+		track.add(makeEvent(128,1,68,100,i+1));//어
+		i++;
+		track.add(makeEvent(144,1,71,100,i));
+		track.add(makeEvent(128,1,71,100,i+1));//나
+		i++;
+		track.add(makeEvent(144,1,69,100,i));
+		track.add(makeEvent(128,1,69,100,i+2));//요
+		
+		track.add(makeEvent(144,1,61,100,i));
+		track.add(makeEvent(128,1,61,100,i+1));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+1));
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+1));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+1));
+		i++;
+
+		track.add(makeEvent(144,1,62,100,i));
+		track.add(makeEvent(128,1,62,100,i+1));
+		track.add(makeEvent(144,1,57,100,i));
+		track.add(makeEvent(128,1,57,100,i+1));
+		track.add(makeEvent(144,1,54,100,i));
+		track.add(makeEvent(128,1,54,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,64,100,i));
+		track.add(makeEvent(128,1,64,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,61,100,i));
+		track.add(makeEvent(128,1,61,100,i+4));
+		track.add(makeEvent(144,1,52,100,i));
+		track.add(makeEvent(128,1,52,100,i+4));
+		i+=2;
+
+		track.add(makeEvent(144,1,73,100,i));
+		track.add(makeEvent(128,1,73,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,76,100,i));
+		track.add(makeEvent(128,1,76,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,78,100,i));
+		track.add(makeEvent(128,1,78,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,76,100,i));
+		track.add(makeEvent(128,1,76,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,78,100,i));
+		track.add(makeEvent(128,1,78,100,i+1));
+		i++;
+		track.add(makeEvent(144,1,81,100,i));
+		track.add(makeEvent(128,1,81,100,i+4));
+		
+		
+		sequencer.setSequence(seq);
+		sequencer.setTempoInBPM(35);
+		sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}	
+		
 	}
-
-
-
-		public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
-
-				MidiEvent event = null;
-
-				try{
-
-					ShortMessage a = new ShortMessage();
-
-					a.setMessage(comd,chan,one,two);
-
-					event = new MidiEvent(a,tick);
-
-						
-
-				}catch(Exception e){ }
-
-					return event;
-
-				}
-
+	public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
+		MidiEvent event = null;
+		try{
+			ShortMessage a = new ShortMessage();
+			a.setMessage(comd,chan,one,two);
+			event = new MidiEvent(a,tick);
+		}catch(Exception e){ }
+		return event;
+	}
 }
 
 
@@ -746,566 +618,404 @@ public class BGM {
 
 {{{
 
+
+
+
+
 import javax.swing.*;
-
 import javax.swing.event.AncestorListener;
-
 import javax.sound.midi.*;
-
-
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
-
 import java.awt.Font;
-
 import java.awt.event.*;
 
-
-
-public class ChelloTuner implements ActionListener {
-
-	JButton buttonE,buttonA,buttonD,buttonC;
-
+public class ChelloTuner extends Instrument implements ActionListener {
+	JButton buttonE,buttonA,buttonD,buttonG;
 	JFrame frame;
-
 	JLabel label;
 
-
-
 	public void go(){
-
+		
 		JFrame frame = new JFrame();
-
-		
-
 		Font bigFont =  new Font("serif",Font.BOLD, 28);
-
 		
 
-		buttonE = new JButton("E!   ");
-
-		buttonE.addActionListener( this);
-
+		label = new JLabel("    Sound");
+		label.setForeground(Color.WHITE);
+		label.setFont(bigFont);
+		
+		
+		buttonE = new JButton("E sound   ");
+		buttonE.addActionListener(new EListener());
 		buttonE.setBackground(Color.black);
-
 		buttonE.setForeground(Color.white);
-
 		buttonE.setFont(bigFont);
 
-
-
-		buttonA = new JButton("A!   ");
-
-		buttonA.addActionListener( this);
-
+		buttonA = new JButton("A sound   ");
+		buttonA.addActionListener(new AListener());
 		buttonA.setBackground(Color.black);
-
 		buttonA.setForeground(Color.white);
-
 		buttonA.setFont(bigFont);
 
-
-
-
-
-
-
-		buttonD = new JButton("D!   ");
-
-		buttonD.addActionListener( this);
-
+		buttonD = new JButton("D sound ");
+		buttonD.addActionListener(new DListener());
 		buttonD.setBackground(Color.black);
-
 		buttonD.setForeground(Color.white);
-
 		buttonD.setFont(bigFont);
-
-
-
-
-
 		
-
-		buttonC = new JButton("C!   ");
-
-		buttonC.addActionListener( this);
-
-		buttonC.setBackground(Color.black);
-
-		buttonC.setForeground(Color.white);
-
-		buttonC.setFont(bigFont);
-
-
+		buttonG = new JButton("G sound   ");
+		buttonG.addActionListener(new GListener());
+		buttonG.setBackground(Color.black);
+		buttonG.setForeground(Color.white);
+		buttonG.setFont(bigFont);
 
 		JPanel Tunerpanel = new JPanel();
-
-		Tunerpanel.setBackground(Color.white);
-
+		Tunerpanel.setBackground(Color.BLACK);
 		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
-
-		
-
+		Tunerpanel.add(label);
 		Tunerpanel.add(buttonE);
-
 		Tunerpanel.add(buttonA);
-
 		Tunerpanel.add(buttonD);
-
-		Tunerpanel.add(buttonC);
-
+		Tunerpanel.add(buttonG);
 		
-
 		
-
 		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(150,300);
-
 		frame.setVisible(true);
-
-}
-
-	public void actionPerformed(ActionEvent event){
-
-		buttonE.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-		buttonA.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-		buttonD.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-		buttonC.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-	try{
-
-		Sequencer sequencer = MidiSystem.getSequencer();
-
-		sequencer.open();
-
-		
-
-		Sequence seq = new Sequence(Sequence.PPQ,4);
-
-		Track track = seq.createTrack();
-
-		
-
-		for(int i = 5;i<61;i+=4){
-
+	}
+	class EListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
 			
-
-			track.add(makeEvent(144,1,i,100,i));
-
-			track.add(makeEvent(128,1,i,100,i+2));
-
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+			
+			track.add(makeEvent(144,1,40,100,1));
+			track.add(makeEvent(128,1,40,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
 		}
-
-		
-
-		sequencer.setSequence(seq);
-
-		sequencer.setTempoInBPM(220);
-
-		sequencer.start();
-
-	}catch(Exception ex){ex.printStackTrace();}		
-
-}
-
-
-
-	public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
-
-			MidiEvent event = null;
-
-			try{
-
-				ShortMessage a = new ShortMessage();
-
-				a.setMessage(comd,chan,one,two);
-
-				event = new MidiEvent(a,tick);
-
-					
-
-			}catch(Exception e){ }
-
-				return event;
-
-			}
-
-		
-
-
-
 	}
 
+	class AListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{{
-
-
-import javax.swing.*;
-
-import javax.sound.midi.*;
-
-import javax.swing.*;
-
-import javax.sound.midi.*;
-
-import java.awt.*;
-
-import java.awt.event.*;
-
-
-
-public class CJtuner implements ActionListener {
-
-	
-
-	
-
-	public static void main(String[] args){
-
-		
-
-		CJtuner gui = new CJtuner();
-
-	
-
-		BGM hysteria = new BGM();
-
-		
-
-		hysteria.play();
-
-		gui.go();
-
+			track.add(makeEvent(144,1,45,100,1));
+			track.add(makeEvent(128,1,45,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
 	}
-
 	
 
+	class DListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+
+			track.add(makeEvent(144,1,50,100,1));
+			track.add(makeEvent(128,1,50,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
+	}
 	
+	class GListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
 
-	public void go(){
-
-		JFrame frame = new JFrame();
-
-		JPanel Tunerpanel = new JPanel();
-
-		Tunerpanel.setBackground(Color.white);
-
-		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
-
-		
-
-		Font bigFont =  new Font("serif",Font.BOLD, 28);
-
-		
-
-		JLabel Title = new JLabel(" Choose!");
-
-		Title.setFont(bigFont);
-
-		
-
-		
-
-		JButton Bassbutton = new JButton("Bass    ");
-
-		Bassbutton.addActionListener(new BassListener());
-
-		Bassbutton.setBackground(Color.black);
-
-		Bassbutton.setForeground(Color.white);
-
-		Bassbutton.setFont(bigFont);
-
-		
-
-		JButton Guitarbutton = new JButton("Guitar ");
-
-		Guitarbutton.addActionListener(new GuitarListener());
-
-		Guitarbutton.setBackground(Color.black);
-
-		Guitarbutton.setForeground(Color.white);
-
-		Guitarbutton.setFont(bigFont);
-
-
-
-		JButton Violinbutton = new JButton("Violin  ");
-
-		Violinbutton.addActionListener(new ViolinListener());
-
-		Violinbutton.setBackground(Color.black);
-
-		Violinbutton.setForeground(Color.white);
-
-		Violinbutton.setFont(bigFont);
-
-
-
-		JButton Chellobutton = new JButton("Chello  ");
-
-		Chellobutton.addActionListener(new ChelloListener());
-
-		Chellobutton.setBackground(Color.black);
-
-		Chellobutton.setForeground(Color.white);
-
-		Chellobutton.setFont(bigFont);
-
-		
-
-		Bassbutton.addActionListener(this);
-
-		Guitarbutton.addActionListener(this);
-
-		Violinbutton.addActionListener(this);
-
-		Chellobutton.addActionListener(this);
-
-		
-
-		JLabel Tunerlabel = new JLabel("                 Choose the tuner~!"); 
-
-		Tunerlabel.setFont(bigFont);
-
-		
-
-
-
-		Tunerpanel.add(Title);
-
-		Tunerpanel.add(Bassbutton);
-
-		Tunerpanel.add(Guitarbutton);
-
-		Tunerpanel.add(Violinbutton);
-
-		Tunerpanel.add(Chellobutton);
-
-		
-
-		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		frame.setSize(150,300);
-
-		frame.setVisible(true);
-
-		
-
-		
-
+			track.add(makeEvent(144,1,55,100,1));
+			track.add(makeEvent(128,1,55,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
 	}
 
 	@Override
-
-	public void actionPerformed(ActionEvent arg0) {
-
+	public void actionPerformed(ActionEvent event) {
 		// TODO Auto-generated method stub
-
-		
-
 	}
-
-	
-
-	
-
-	
-
-		/*button.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-				try{
-
-					Sequencer sequencer = MidiSystem.getSequencer();
-
-					sequencer.open();
-
-					
-
-					Sequence seq = new Sequence(Sequence.PPQ,4);
-
-					Track track = seq.createTrack();
-
-					
-
-					for(int i = 5;i<61;i+=4){
-
-						
-
-						track.add(makeEvent(144,1,i,100,i));
-
-						track.add(makeEvent(128,1,i,100,i+2));
-
-					}
-
-					BassTuner Bass = new BassTuner();
-
-					sequencer.setSequence(seq);
-
-					sequencer.setTempoInBPM(220);
-
-					sequencer.start();
-
-				}catch(Exception ex){ex.printStackTrace();}		
-
-			}
-
-	
-
-	public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
-
-			MidiEvent event = null;
-
-			try{
-
-				ShortMessage a = new ShortMessage();
-
-				a.setMessage(comd,chan,one,two);
-
-				event = new MidiEvent(a,tick);
-
-					
-
-			}catch(Exception e){ }
-
-				return event;
-
-				*/
-
-			
-
-
-
-	class BassListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent event){
-
-			BassTuner Bass = new BassTuner();
-
-			Bass.go();
-
-			}
-
-		}
-
-		class GuitarListener implements ActionListener{
-
-			public void actionPerformed(ActionEvent event){
-
-
-
-				GuitarTuner Guitar = new GuitarTuner();
-
-				Guitar.go();
-
-				
-
-			}
-
-		}
-
-
-
-			class ViolinListener implements ActionListener{
-
-				public void actionPerformed(ActionEvent event){
-
-
-
-					ViolinTuner Violin = new ViolinTuner();
-
-					Violin.go();
-
-					
-
-				}
-
-			
-
-			
-
-		}
-
-
-
-			class ChelloListener implements ActionListener{
-
-				public void actionPerformed(ActionEvent event){
-
-
-
-					ChelloTuner Chello = new ChelloTuner();
-
-					Chello.go();				
-
-				}
-
-			
-
-			
-
-		}
-
-			
-
 }
 
+
+
+
+
+}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{{
+
+
+
+import javax.swing.*;
+import javax.sound.midi.*;
+import javax.swing.*;
+import javax.sound.midi.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CJtuner implements ActionListener {
+	Font bigFont =  new Font("serif",Font.BOLD, 28);
+	Font BIGFont = new Font("serif",Font.BOLD,40);
+	
+	public static void main(String[] args){
+		
+		CJtuner gui = new CJtuner();
+	
+		gui.start();
+		BGM intro = new BGM();
+		
+		intro.introplay();
+		
+	}
+	public void start(){
+		JFrame starting = new JFrame();
+		JPanel spanel = new JPanel();
+		spanel.setBackground(Color.BLACK);
+		spanel.setLayout(new BoxLayout(spanel, BoxLayout.Y_AXIS));
+		
+		JLabel start1 = new JLabel("              WELCOME!");
+		JLabel start2 = new JLabel("            This application is the tuner");
+		JLabel start22 = new JLabel("      to tune Bass,Guitar,Chello,Violin.");
+		JLabel start3 = new JLabel("                     It is very fantastic.");
+		JLabel start4 = new JLabel("                                                                         WARNING");
+		JLabel start5 = new JLabel("                                                        If you use this illegarly, you die!");
+		JLabel start6 = new JLabel("                                                                    Just use freely!");
+		JLabel null1 = new JLabel("  k                   ");
+		JLabel null2 = new JLabel("  k                  ");
+		JLabel null3 = new JLabel("  k                  ");
+		JLabel null4 = new JLabel("  k                  ");
+		JLabel null5 = new JLabel("  k                  ");
+		JLabel null6 = new JLabel("  k                  ");
+		
+		JButton sbutton = new JButton("Start");
+		sbutton.setFont(bigFont);
+		sbutton.setForeground(Color.WHITE);
+		sbutton.setBackground(Color.black);
+		sbutton.addActionListener(new sbuttonL());
+		
+		
+		
+		start1.setFont(BIGFont);
+		start2.setFont(bigFont);
+		start22.setFont(bigFont);
+		start3.setFont(bigFont);
+
+		null1.setFont(BIGFont);
+		null2.setFont(BIGFont);
+		null3.setFont(BIGFont);
+		null4.setFont(BIGFont);
+		null5.setFont(BIGFont);
+		null6.setFont(BIGFont);
+		
+		
+		start1.setForeground(Color.white);
+		start2.setForeground(Color.white);
+		start22.setForeground(Color.white);
+		start3.setForeground(Color.white);
+		start4.setForeground(Color.red);
+		start5.setForeground(Color.red);
+		start6.setForeground(Color.red);
+		null1.setForeground(Color.black);
+		null2.setForeground(Color.black);
+		null3.setForeground(Color.black);
+		null4.setForeground(Color.black);
+		null5.setForeground(Color.black);
+		null6.setForeground(Color.black);
+		
+		
+		
+		spanel.add(start1);
+		spanel.add(null1);
+		spanel.add(start2);
+		spanel.add(start22);
+		spanel.add(start3);
+		spanel.add(null2);
+		spanel.add(null3);
+		spanel.add(null4);
+	
+		spanel.add(null5);
+		spanel.add(null6);
+		spanel.add(start4);		
+		spanel.add(start5);
+		spanel.add(start6);
+		
 		
 
+		starting.getContentPane().add(BorderLayout.CENTER,spanel);
+		starting.getContentPane().add(BorderLayout.SOUTH,sbutton);
+		starting.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		starting.setSize(500,700);
+		starting.setVisible(true);
+		
+	}
+	
+	public void go(){
+		JFrame frame = new JFrame();
+		JPanel Tunerpanel = new JPanel();
+		Tunerpanel.setBackground(Color.BLACK);
+		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
+		
+		
+		
+		JLabel Title = new JLabel(" Choose!");
+		Title.setFont(bigFont);
+		Title.setForeground(Color.red);
+		
+		
+		JButton Bassbutton = new JButton("Bass      ");
+		Bassbutton.addActionListener(new BassListener());
+		Bassbutton.setBackground(Color.black);
+		Bassbutton.setForeground(Color.white);
+		Bassbutton.setFont(bigFont);
+		
+		JButton Guitarbutton = new JButton("Guitar ");
+		Guitarbutton.addActionListener(new GuitarListener());
+		Guitarbutton.setBackground(Color.black);
+		Guitarbutton.setForeground(Color.white);
+		Guitarbutton.setFont(bigFont);
+
+		JButton Violinbutton = new JButton("Violin  ");
+		Violinbutton.addActionListener(new ViolinListener());
+		Violinbutton.setBackground(Color.black);
+		Violinbutton.setForeground(Color.white);
+		Violinbutton.setFont(bigFont);
+
+		JButton Chellobutton = new JButton("Chello  ");
+		Chellobutton.addActionListener(new ChelloListener());
+		Chellobutton.setBackground(Color.black);
+		Chellobutton.setForeground(Color.white);
+		Chellobutton.setFont(bigFont);
+		
+		Bassbutton.addActionListener(this);
+		Guitarbutton.addActionListener(this);
+		Violinbutton.addActionListener(this);
+		Chellobutton.addActionListener(this);
+		
+		JLabel Tunerlabel = new JLabel("                 Choose the tuner~!"); 
+		Tunerlabel.setFont(bigFont);
+		
+
+		Tunerpanel.add(Title);
+		Tunerpanel.add(Bassbutton);
+		Tunerpanel.add(Guitarbutton);
+		Tunerpanel.add(Violinbutton);
+		Tunerpanel.add(Chellobutton);
+		
+		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(120,300);
+		frame.setVisible(true);
+		
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	class sbuttonL implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			BGM start = new BGM();
+			start.JK();
+			
+			CJtuner starter = new CJtuner();
+			starter.go();
+		}
+	}
+	
+	class BassListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			Instrument Bass = new BassTuner();
+			Bass.go();
+		}
+	}
+	class GuitarListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+				Instrument Guitar = new GuitarTuner();
+				Guitar.go();
+	
+		}
+	}
+
+	class ViolinListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+
+			Instrument Violin = new ViolinTuner();
+			Violin.go();
+			}
+	}
+
+	class ChelloListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			Instrument Chello = new ChelloTuner();
+			Chello.go();				
+		}
+	}
+			
+}
+		
 	
 
+
+	
 
 
 
@@ -1348,507 +1058,394 @@ public class CJtuner implements ActionListener {
 
 
 
-
-
-
-
 import javax.swing.*;
-
 import javax.swing.event.AncestorListener;
-
 import javax.sound.midi.*;
-
-
-
-
-
+import java.util.*;
 import java.awt.BorderLayout;
-
 import java.awt.Color;
-
 import java.awt.Font;
-
 import java.awt.event.*;
 
-
-
-public class GuitarTuner implements ActionListener {
-
+public class GuitarTuner extends Instrument implements ActionListener {
 	JButton buttonE,buttonA,buttonD,buttonG,buttonB,buttonE2;
-
 	JFrame frame;
-
 	JLabel label;
 
-
-
 	public void go(){
-
-		JFrame frame = new JFrame();
-
+		JFrame frame = new JFrame();		
 		
-
 		Font bigFont =  new Font("serif",Font.BOLD, 28);
-
+		
 		
 
-		buttonE = new JButton("E!   ");
-
+		label = new JLabel("    Sound");
+		label.setForeground(Color.WHITE);
+		label.setFont(bigFont);
+		
+		buttonE = new JButton("E sound   ");
 		buttonE.addActionListener(new EListener());
-
 		buttonE.setBackground(Color.black);
-
 		buttonE.setForeground(Color.white);
-
 		buttonE.setFont(bigFont);
 
-
-
-		buttonA = new JButton("A!   ");
-
+		buttonA = new JButton("A sound   ");
 		buttonA.addActionListener(new AListener());
-
 		buttonA.setBackground(Color.black);
-
 		buttonA.setForeground(Color.white);
-
 		buttonA.setFont(bigFont);
-
-
-
-
-
-
-
-		buttonD = new JButton("D!   ");
-
+		
+		buttonD = new JButton("D sound   ");
 		buttonD.addActionListener(new DListener());
-
 		buttonD.setBackground(Color.black);
-
 		buttonD.setForeground(Color.white);
-
 		buttonD.setFont(bigFont);
 
-
-
-
-
-		
-
-		buttonG = new JButton("G!   ");
-
+		buttonG = new JButton("G sound   ");
 		buttonG.addActionListener(new GListener());
-
 		buttonG.setBackground(Color.black);
-
 		buttonG.setForeground(Color.white);
-
 		buttonG.setFont(bigFont);
 
-
-
-
-
-		buttonB = new JButton("B!   ");
-
+		buttonB = new JButton("B sound   ");
 		buttonB.addActionListener(new BListener());
-
 		buttonB.setBackground(Color.black);
-
 		buttonB.setForeground(Color.white);
-
 		buttonB.setFont(bigFont);
-
 		
-
-
-
-		buttonE2 = new JButton("E!   ");
-
+		buttonE2 = new JButton("E sound   ");
 		buttonE2.addActionListener(new E2Listener());
-
 		buttonE2.setBackground(Color.black);
-
 		buttonE2.setForeground(Color.white);
-
 		buttonE2.setFont(bigFont);
-
 		
-
-		
-
 		JPanel Tunerpanel = new JPanel();
-
-		Tunerpanel.setBackground(Color.white);
-
+		Tunerpanel.setBackground(Color.BLACK);
 		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
-
-		
-
+		Tunerpanel.add(label);
 		Tunerpanel.add(buttonE);
-
 		Tunerpanel.add(buttonA);
-
 		Tunerpanel.add(buttonD);
-
 		Tunerpanel.add(buttonG);
-
 		Tunerpanel.add(buttonB);
-
 		Tunerpanel.add(buttonE2);
-
-		
-
-		
-
+				
 		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
-
-
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		frame.setSize(150,300);
-
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(140,400);
 		frame.setVisible(true);
-
-}
-
-	class EListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent event){
-
-		try{
-
-			Sequencer sequencer = MidiSystem.getSequencer();
-
-			sequencer.open();
-
-			
-
-			Sequence seq = new Sequence(Sequence.PPQ,4);
-
-			Track track = seq.createTrack();
-
-
-
-			
-
-			track.add(makeEvent(144,1,40,100,1));
-
-			track.add(makeEvent(128,1,40,100,50));
-
-			
-
-			sequencer.setSequence(seq);
-
-			sequencer.setTempoInBPM(220);
-
-			sequencer.start();
-
-		}catch(Exception ex){ex.printStackTrace();}
-
-
-
-		}
-
-		
-
-		
-
 	}
-
-
+	class EListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+			
+			track.add(makeEvent(144,1,40,100,1));
+			track.add(makeEvent(128,1,40,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
+	}
 
 	class AListener implements ActionListener{
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
-
-
-
-			
 
 			track.add(makeEvent(144,1,45,100,1));
-
 			track.add(makeEvent(128,1,45,100,50));
-
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
-
-
-
 		}
-
-		
-
-		
-
 	}
-
 	
-
-
 
 	class DListener implements ActionListener{
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
-
-
-
-			
 
 			track.add(makeEvent(144,1,50,100,1));
-
 			track.add(makeEvent(128,1,50,100,50));
-
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
-
-
-
 		}
-
-		
-
-		
-
 	}
-
 	
-
-
-
 	class GListener implements ActionListener{
-
 		public void actionPerformed(ActionEvent event){
-
 		try{
-
 			Sequencer sequencer = MidiSystem.getSequencer();
-
 			sequencer.open();
-
 			
-
 			Sequence seq = new Sequence(Sequence.PPQ,4);
-
 			Track track = seq.createTrack();
 
+			track.add(makeEvent(144,1,55,100,1));
+			track.add(makeEvent(128,1,55,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
+	}
+	
+	class BListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+			
+			track.add(makeEvent(144,1,59,100,1));
+			track.add(makeEvent(128,1,59,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
+	}
+	
+	class E2Listener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+
+			track.add(makeEvent(144,4,64,100,1));
+			track.add(makeEvent(128,4,64,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		// TODO Auto-generated method stub
+	}
+}
 
 
+
+
+
+
+
+
+
+
+
+
+}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{{
+
+import javax.swing.*;
+import javax.swing.event.AncestorListener;
+import javax.sound.midi.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+
+public class ViolinTuner extends Instrument implements ActionListener {
+	JButton buttonE,buttonA,buttonD,buttonG;
+	JFrame frame;
+	JLabel label;
+
+	public void go(){
+		
+		JFrame frame = new JFrame();
+		Font bigFont =  new Font("serif",Font.BOLD, 28);
+		
+		label = new JLabel("    Sound");
+		label.setForeground(Color.WHITE);
+		label.setFont(bigFont);
+		
+		
+		buttonE = new JButton("E sound   ");
+		buttonE.addActionListener(new EListener());
+		buttonE.setBackground(Color.black);
+		buttonE.setForeground(Color.white);
+		buttonE.setFont(bigFont);
+
+		buttonA = new JButton("A sound   ");
+		buttonA.addActionListener(new AListener());
+		buttonA.setBackground(Color.black);
+		buttonA.setForeground(Color.white);
+		buttonA.setFont(bigFont);
+
+		buttonD = new JButton("D sound   ");
+		buttonD.addActionListener(new DListener());
+		buttonD.setBackground(Color.black);
+		buttonD.setForeground(Color.white);
+		buttonD.setFont(bigFont);
+		
+		buttonG = new JButton("G sound   ");
+		buttonG.addActionListener(new GListener());
+		buttonG.setBackground(Color.black);
+		buttonG.setForeground(Color.white);
+		buttonG.setFont(bigFont);
+
+		JPanel Tunerpanel = new JPanel();
+		Tunerpanel.setBackground(Color.BLACK);
+		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
+		Tunerpanel.add(label);
+		Tunerpanel.add(buttonG);
+		Tunerpanel.add(buttonD);
+		Tunerpanel.add(buttonA);
+		Tunerpanel.add(buttonE);
+		
+		
+		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(150,300);
+		frame.setVisible(true);
+	}
+	
+	class EListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+
+			
+			track.add(makeEvent(144,1,76,100,1));
+			track.add(makeEvent(128,1,76,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+
+		}		
+	}
+	
+	class AListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+			
+						
+			track.add(makeEvent(144,1,69,100,1));
+			track.add(makeEvent(128,1,69,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}		
+	}
+	
+	class DListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
+			
+						
+			track.add(makeEvent(144,1,62,100,1));
+			track.add(makeEvent(128,1,62,100,50));
+			
+			sequencer.setSequence(seq);
+			sequencer.setTempoInBPM(220);
+			sequencer.start();
+		}catch(Exception ex){ex.printStackTrace();}
+		}
+	}
+	
+	class GListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+		try{
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();
 			
 
 			track.add(makeEvent(144,1,55,100,1));
-
 			track.add(makeEvent(128,1,55,100,50));
-
 			
-
 			sequencer.setSequence(seq);
-
 			sequencer.setTempoInBPM(220);
-
 			sequencer.start();
-
 		}catch(Exception ex){ex.printStackTrace();}
-
-
-
 		}
-
-		
-
-		
-
 	}
-
-	
-
-
-
-	class BListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent event){
-
-		try{
-
-			Sequencer sequencer = MidiSystem.getSequencer();
-
-			sequencer.open();
-
-			
-
-			Sequence seq = new Sequence(Sequence.PPQ,4);
-
-			Track track = seq.createTrack();
-
-
-
-			
-
-			track.add(makeEvent(144,1,59,100,1));
-
-			track.add(makeEvent(128,1,59,100,50));
-
-			
-
-			sequencer.setSequence(seq);
-
-			sequencer.setTempoInBPM(220);
-
-			sequencer.start();
-
-		}catch(Exception ex){ex.printStackTrace();}
-
-
-
-		}
-
-		
-
-		
-
-	}
-
-	
-
-
-
-	class E2Listener implements ActionListener{
-
-		public void actionPerformed(ActionEvent event){
-
-		try{
-
-			Sequencer sequencer = MidiSystem.getSequencer();
-
-			sequencer.open();
-
-			
-
-			Sequence seq = new Sequence(Sequence.PPQ,4);
-
-			Track track = seq.createTrack();
-
-
-
-			
-
-			track.add(makeEvent(144,1,64,100,1));
-
-			track.add(makeEvent(128,1,64,100,50));
-
-			
-
-			sequencer.setSequence(seq);
-
-			sequencer.setTempoInBPM(220);
-
-			sequencer.start();
-
-		}catch(Exception ex){ex.printStackTrace();}
-
-
-
-		}
-
-		
-
-		
-
-	}
-
-
-
-	public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
-
-			MidiEvent event = null;
-
-			try{
-
-				ShortMessage a = new ShortMessage();
-
-				a.setMessage(comd,chan,one,two);
-
-				event = new MidiEvent(a,tick);
-
-					
-
-			}catch(Exception e){ }
-
-				return event;
-
-			}
-
-
 
 	@Override
-
-	public void actionPerformed(ActionEvent e) {
-
+	public void actionPerformed(ActionEvent event) {
 		// TODO Auto-generated method stub
-
-		
-
 	}
-
-		
-
-
-
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 }}}
@@ -1873,225 +1470,30 @@ public class GuitarTuner implements ActionListener {
 
 
 
-
-
-
-
-
 {{{
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.swing.*;
-
 import javax.swing.event.AncestorListener;
-
 import javax.sound.midi.*;
 
-
-
 import java.awt.BorderLayout;
-
 import java.awt.Color;
-
 import java.awt.Font;
-
 import java.awt.event.*;
 
-
-
-public class ViolinTuner implements ActionListener {
-
-	JButton buttonE,buttonA,buttonD,buttonC;
-
-	JFrame frame;
-
-	JLabel label;
-
-
-
-	public void go(){
-
-		JFrame frame = new JFrame();
-
-		Font bigFont =  new Font("serif",Font.BOLD, 28);
-
-		
-
-		buttonE = new JButton("E!   ");
-
-		buttonE.addActionListener( this);
-
-		buttonE.setBackground(Color.black);
-
-		buttonE.setForeground(Color.white);
-
-		buttonE.setFont(bigFont);
-
-
-
-		buttonA = new JButton("A!   ");
-
-		buttonA.addActionListener( this);
-
-		buttonA.setBackground(Color.black);
-
-		buttonA.setForeground(Color.white);
-
-		buttonA.setFont(bigFont);
-
-
-
-
-
-
-
-		buttonD = new JButton("D!   ");
-
-		buttonD.addActionListener( this);
-
-		buttonD.setBackground(Color.black);
-
-		buttonD.setForeground(Color.white);
-
-		buttonD.setFont(bigFont);
-
-
-
-
-
-		
-
-		buttonC = new JButton("C!   ");
-
-		buttonC.addActionListener( this);
-
-		buttonC.setBackground(Color.black);
-
-		buttonC.setForeground(Color.white);
-
-		buttonC.setFont(bigFont);
-
-
-
-		JPanel Tunerpanel = new JPanel();
-
-		Tunerpanel.setBackground(Color.white);
-
-		Tunerpanel.setLayout(new BoxLayout(Tunerpanel, BoxLayout.Y_AXIS));
-
-		
-
-		Tunerpanel.add(buttonE);
-
-		Tunerpanel.add(buttonA);
-
-		Tunerpanel.add(buttonD);
-
-		Tunerpanel.add(buttonC);
-
-		
-
-		
-
-		frame.getContentPane().add(BorderLayout.WEST,Tunerpanel);
-
-
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		frame.setSize(150,300);
-
-		frame.setVisible(true);
-
-}
-
-	public void actionPerformed(ActionEvent event){
-
-	buttonE.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-	buttonA.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-	buttonD.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-	buttonC.setText("Bam Bam Bam Bam Bam Bam Bam~");
-
-	
-
-	try{
-
-		Sequencer sequencer = MidiSystem.getSequencer();
-
-		sequencer.open();
-
-		
-
-		Sequence seq = new Sequence(Sequence.PPQ,4);
-
-		Track track = seq.createTrack();
-
-		
-
-		for(int i = 5;i<61;i+=4){
-
-			
-
-			track.add(makeEvent(144,1,i,100,i));
-
-			track.add(makeEvent(128,1,i,100,i+2));
-
-		}
-
-		
-
-		sequencer.setSequence(seq);
-
-		sequencer.setTempoInBPM(220);
-
-		sequencer.start();
-
-	}catch(Exception ex){ex.printStackTrace();}		
-
-}
-
-
-
+public abstract class Instrument implements ActionListener {
+	public abstract void actionPerformed(ActionEvent event);
+	public abstract void go();
 	public static MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
-
 			MidiEvent event = null;
-
 			try{
-
 				ShortMessage a = new ShortMessage();
-
 				a.setMessage(comd,chan,one,two);
-
 				event = new MidiEvent(a,tick);
-
 					
-
 			}catch(Exception e){ }
-
 				return event;
-
 			}
-
 		
-
-
 
 	}
-
 }}}
