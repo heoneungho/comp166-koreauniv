@@ -21,13 +21,14 @@ save기능 없음
 {{{
 
 
+
 public class Maze {
 	public char rooms[][] = 
 		{	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
 			{2,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'M',2},
 			{2,2,2,1,2,1,2,1,2,2,2,2,2,2,2,2,2,2,1,2,2,1,2},
 			{2,2,2,1,2,1,2,1,1,1,1,1,1,2,1,2,2,2,1,2,2,1,2},
-			{2,1,1,'M',2,1,1,2,2,2,2,2,1,2,1,1,1,2,1,2,2,1,2},
+			{2,1,1,'B',2,1,1,2,2,2,2,2,1,2,1,1,1,2,1,2,2,1,2},
 			{2,1,2,1,2,2,1,1,1,1,1,2,1,2,1,2,1,2,1,2,2,2,2},
 			{2,1,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,'M',1,1,1,2},
 			{2,2,2,1,2,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,1,2},
@@ -94,10 +95,11 @@ public class Character {
 
 	Battle caller = new Battle();
 	int level;
+	boolean battle_definer;
 	
 	public void Monster() throws IOException {
 		level = 10;
-			caller.callBattle(level);
+			battle_definer = caller.callBattle(level);
 	}
 	
 	public void Trapcard(){
@@ -113,17 +115,21 @@ public class Battle {
 	int playerC, tmp;
 	public int potionCount = 10;
 	Maze reseter = new Maze();
+	boolean battle_win;
 	
 	
-	public void callBattle(int level) throws IOException	{
+	public boolean callBattle(int level) throws IOException	{
 		System.out.println("You've encountered the Moster!!! You have to fight it off to keep on going!!");
 		hp_p = 1000;
-		atk_p = 150 + (int)(Math.random() * 20 +1);
 		def_p = 70;
 		hp_m = 70*level+ (int)(Math.random() * 20 +1);
-		atk_m = 12*level+ (int)(Math.random() * 20 +1);
 		def_m = 5*level;
+		
+		
 		while(true)	{
+			battle_win = false;
+			atk_p = 150 + (int)(Math.random() * 20 +1);
+			atk_m = 12*level+ (int)(Math.random() * 20 +1);
 			System.out.println("________________________________________________________________________________________");
 			System.out.println("Your hp :\nhp_p = " +hp_p+"\n");
 			System.out.println("Monster's hp :\nhp_m = " +hp_m+"\n");
@@ -133,10 +139,12 @@ public class Battle {
 			System.in.read();
 			Battlepage(playerC ,level);
 			System.out.println("________________________________________________________________________________________");
-			if(hp_p <=0)
-				break;;
-			if(hp_m <=0)
-				break;
+			if(hp_p <=0)	{
+				return battle_win;
+			}
+			if(hp_m <=0)	{
+			return battle_win = true;	
+			}
 		}
 	}
 	
@@ -189,8 +197,9 @@ public class Battle {
 			System.out.println("You won the battle!! Please proceed\n");
 			reseter.rooms[reseter.locationA][reseter.locationB] = 32;
 		}
-		if(hp_p<0)
+		if(hp_p<0)	{
 			System.out.println("You lost the battle!! Your game will be reseted\n");
+		}
 		}
 }
 
@@ -201,7 +210,7 @@ import java.io.IOException;
 public class Boss extends Character {
 	public void BossMon() throws IOException	{
 		level = 25;
-			caller.callBattle(level);
+			battle_definer = caller.callBattle(level);
 	}
 }
 
@@ -212,7 +221,6 @@ public class MazTestDrive {
 	public static void main(String [] args) throws IOException	{
 		Maze mazing = new Maze();
 		Character player1 = new Character();
-		Battle battler = new Battle();
 		Boss player2 = new Boss();
 		 int tempA = 0;
 		 int tempB = 0;
@@ -236,20 +244,23 @@ public class MazTestDrive {
 	   System.in.read();
 	   System.in.read();
 	   mazing.Maze_alter(userinput);
+	 
 	   if(mazing.rooms[mazing.locationA][mazing.locationB]== 77)	{
 	   player1.Monster();
-	   if(battler.hp_m <0)
+	   if(player1.battle_definer == true)
 	   mazing.rooms[mazing.locationA][mazing.locationB]= 32;
-	   if(battler.hp_p <= 0)
+	   else
 		   mazing.Maze_reseter();
 	   }
+	   
 	   if(mazing.rooms[mazing.locationA][mazing.locationB]== 66 )	{
 	   player2.BossMon();
-	   if(battler.hp_m <0)
+	   if(player1.battle_definer == true)
 	   mazing.rooms[mazing.locationA][mazing.locationB]= 32;
-	   if(battler.hp_p <= 0)
+	   else
 		   mazing.Maze_reseter();
 	   }
+	   
 	   if(mazing.rooms[mazing.locationA][mazing.locationB]== 84 )	{
 	   player1.Trapcard();
 	   mazing.Maze_reseter();
@@ -259,6 +270,8 @@ public class MazTestDrive {
 }
 
 }
+
+
 
 
 
