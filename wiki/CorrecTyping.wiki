@@ -2,29 +2,51 @@
 
 = Introduction =
 
-블랙젯 게임으로 바꿨습니다. Blackjet game = 숫자 21에 가까울 수록 이기는 게임 카드 두장을 미리 받고 User와 Dealer의 21에 가까워지는 머리싸움 게임, 참고로 도박성이 있을수 있어서 배팅은 하진 않겠습니다. ( 돈걸어서 딜러가 파산나면 이기는 게임형식으로 진행하려다가 복잡해질 것 같아서 뺀 것은 아닙니다. ㅎㅎ)
+블랙젯 게임으로 바꿨습니다. Blackjack game = 숫자 21에 가까울 수록 이기는 게임 카드 두장을 미리 받고 User와 Dealer의 21에 가까워지면 이기는 게임입니다. 돈걸어서 딜러가 파산나면 이기는 게임형식으로 진행했습니다.
 
 = Background =
 
-씨언어와 지금 배우고있는 중인 자바를 활용해서 이 프로젝트를 완성해 평가받아야 하기 때문이다.
+씨언어와 지금 배우고있는 중인 자바를 활용해서 이 프로젝트를 완성해 평가받아야 하기 때문이다. 
 
 = Detail =
+사실 쉬운 줄 알았는데 입력받는 것이랑 카드 결과랑 돈의 여부를 주고 하는 것 때문에 코딩이 복잡했고 너무 힘들었습니다.
 
 이 게임을 만들기 위한 클래스
 
+BlackJack{} = 블랙잭 게임을 실행시키는 메인 클래스
+Card{} = 카드의 문양을 넣는 클래스
+Cards{} = 카드 배열 선언(A ~ K), A, J, Q, K의 숫자 값 11이나 10을 설정하는 클래스
+CardSet{} = 카드 중복이 되지않게 선언하고 카드갯수 52개와 랜덤으로 뽑는 것을 설정하는 클래스
 
 이 게임을 위한 함수
 
+BlackJack{} 내의 함수
+BlackJack() = 블랙잭의 객체 선언과 기본요소 초기화 및 블랙잭 게임을 실행
+init() = 초기화시킨다.
+callGame() = 게임실행을 불러온다.
+startGame() = 게임을 시작시킨다.
+showMoney() = 보유한 금액을 보여준다.
+showCard() = 보유한 카드를 보여준다.
+getValue() = 문자열 카드의 가치를 때때마다 조정시켜주는 함수
+getResult() = 유저와 딜러의 승부를 결정해주는 함수
+InputMoney() = 보유금액을 확인해주고 걸 수있는 정도의 돈을 유저가 설정할 수 있게 도와주는 함수
+InputString() = 가장 중요한 함수. 입력을 받아주는 함수
+getMoney() = 돈을 가져온다.
+Help() = 도움말을 보여주는 함수
+addMoney() = 돈을 더해준다.
+minusMoney() = 돈을 빼준다.
+addCard() = 카드를 더해준다.
+initCard() = 승부마다 카드를 초기화 해준다.
 
-
-이 게임이 돌아가는 순서
+남은 클래스의 함수들은 따로 화면을 보여주며 설명함.
 
 
 =Using Code=
+
 import java.io.BufferedReader; // 자바의 입출력 받기 위한 것
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Vector;
+import java.io.InputStreamReader; 
+import java.util.Vector; // Vector 요소의 사용을 위해 가져옴
 
 public class BlackJack {
 	private CardSet card = null; // 값들을 초기화 시킨다.
