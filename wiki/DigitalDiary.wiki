@@ -7,6 +7,7 @@
 = Details =
 
 추가적인 기능은 일단 기본적인 Diary를 완성시키고서 생각하기로했습니다(그냥 Diary만드는 것도 만만치않을것 같더군요)
+GUI는 추후에 추가시킬 예정입니다. 일단 다형성 확보에 첫번째 목적을 두었습니다.
 
 
 클래스목록 : Diary,DiaryStart,Year,Month,Month1,Month2,Month3,Day,Memo
