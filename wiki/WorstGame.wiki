@@ -104,10 +104,9 @@ public class Character {
 	
 	public void Trapcard(){
 			System.out.println("You fall in to the trap!! You go to the start line.");
+			Sound_trap.Trap_sound();
 	}
 }
-
-import java.io.IOException;
 
 public class Battle {
 	public int hp_p, atk_p, def_p, cri_p;
@@ -138,6 +137,7 @@ public class Battle {
 			System.in.read();
 			System.in.read();
 			Battlepage(playerC ,level);
+			Sounder.Sound_pro();
 			System.out.println("________________________________________________________________________________________");
 			if(hp_p <=0)	{
 				return battle_win;
@@ -204,6 +204,7 @@ public class Battle {
 }
 
 
+
 import java.io.IOException;
 
 
@@ -244,6 +245,7 @@ public class MazTestDrive {
 	   System.in.read();
 	   System.in.read();
 	   mazing.Maze_alter(userinput);
+	   Sounder.Sound_pro();
 	 
 	   if(mazing.rooms[mazing.locationA][mazing.locationB]== 77)	{
 	   player1.Monster();
@@ -271,6 +273,84 @@ public class MazTestDrive {
 
 }
 
+
+
+import javax.sound.midi.*;
+
+public class Sounder {
+
+	public static void Sound_pro()	{
+		Sounder mini = new Sounder();
+		mini.play();
+	}
+	
+	void play()	{
+		try	{
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			
+			Track track = seq.createTrack();
+			
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 9, 60, 100);
+			MidiEvent noteOn = new MidiEvent(a, 1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128, 1, 44, 100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff);
+			
+			player.setSequence(seq);
+			
+			player.start();
+			
+		}catch (Exception ex)	{
+			ex.printStackTrace();
+		}
+	}
+}
+
+import javax.sound.midi.*;
+
+public class Sound_trap extends Sounder {
+	
+	public static void Trap_sound()	{
+		Sound_trap minim = new Sound_trap();
+		int counter;
+		for(counter = 40;counter<80;counter++)
+		minim.play(counter);
+	}
+	void play(int changer)	{
+		try	{
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			
+			Track track = seq.createTrack();
+			
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 9, changer, 100);
+			MidiEvent noteOn = new MidiEvent(a, 1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128, 1, 44, 100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff);
+			
+			player.setSequence(seq);
+			
+			player.start();
+			
+		}catch (Exception ex)	{
+			ex.printStackTrace();
+		}
+	}
+}
 
 
 
