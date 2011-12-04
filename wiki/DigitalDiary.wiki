@@ -9,153 +9,332 @@
 추가적인 기능은 일단 기본적인 Diary를 완성시키고서 생각하기로했습니다(그냥 Diary만드는 것도 만만치않을것 같더군요)
 
 
-클래스목록 : DiaryStart,Year,Month1,Month2,Month3,Day
+클래스목록 : Diary,DiaryStart,Year,Month,Month1,Month2,Month3,Day,Memo
 
 
 
+
+{{{
+
+public abstract class Diary {
+	public abstract Diary go();
+}
+
+import java.util.Scanner;
+public class Year extends Diary{
+	
+		Month1 Feb = new Month1();
+		Month2 Apr = new Month2();
+		Month2 Jun = new Month2();
+		Month2 Sep = new Month2();
+		Month2 Nov = new Month2();
+		Month3 Jan = new Month3();
+		Month3 Mar = new Month3();
+		Month3 May = new Month3();
+		Month3 Jul = new Month3();
+		Month3 Aug = new Month3();
+		Month3 Oct = new Month3();
+		Month3 Dec = new Month3();
+	
+	public Diary go(Month1 Feb,Month2 Apr,Month2 Jun,Month2 Sep,Month2 Nov,Month3 Jan,Month3 Mar,Month3 May,Month3 Jul,Month3 Aug,Month3 Oct,Month3 Dec)
+	{
+		
+		Month[] Months = new Month[13];
+		
+		Months[1] = Jan;
+		Months[2] = Feb;
+		Months[3] = Mar;
+		Months[4] = Apr;
+		Months[5] = May;
+		Months[6] = Jun;
+		Months[7] = Jul;
+		Months[8] = Aug;
+		Months[9] = Sep;
+		Months[10]= Oct;
+		Months[11]= Nov;
+		Months[12]= Dec;
+		System.out.println("달을 입력하세요:");
+		Scanner s1 = new Scanner(System.in);
+        int b = s1.nextInt();
+        Month a = Months[b];
+        return a;
+	}
+	
+	public Diary go() {
+		
+		return null;
+	}
+}
+
+public abstract class Month extends Diary {
+	
+		Day one = new Day();
+		Day two = new Day();
+		Day three = new Day();
+		Day four = new Day();
+		Day five = new Day();
+		Day six = new Day();
+		Day seven = new Day();
+		Day eight = new Day();
+		Day nine = new Day();
+		Day ten = new Day();
+		Day eleven = new Day();
+		Day twelve = new Day();
+		Day thirteen = new Day();
+		Day fourteen = new Day();
+		Day fifteen = new Day();
+		Day sixteen = new Day();
+		Day seventeen = new Day();
+		Day eighteen = new Day();
+		Day ninteen = new Day();
+		Day twenty = new Day();
+		Day twentyone = new Day();
+		Day twentytwo = new Day();
+		Day twentythree = new Day();
+		Day twentyfour = new Day();
+		Day twentyfive = new Day();
+		Day twentysix = new Day();
+		Day twentyseven = new Day();
+		Day twentyeight = new Day();
+		Day twentynine = new Day();
+		Day thirty = new Day();
+		Day thirtyone = new Day();
+		
+		public abstract Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone);
+		
+}
+
+import java.util.Scanner;
+public class Month1 extends Month {
+	
+	public Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone)
+	{
+		Day[] Days;
+		Days = new Day[30];
+		Days[1] = one;
+		Days[2] = two;
+		Days[3] = three;
+		Days[4] = four;
+		Days[5] = five;
+		Days[6] = six;
+		Days[7] = seven;
+		Days[8] = eight;
+		Days[9] = nine;
+		Days[10] = ten;
+		Days[11]= eleven;
+		Days[12]= twelve;
+		Days[13]= thirteen;
+		Days[14]= fourteen;
+		Days[15]= fifteen;
+		Days[16]= sixteen;
+		Days[17]= seventeen;
+		Days[18]= eighteen;
+		Days[19]= ninteen;
+		Days[20]= twenty;
+		Days[21]= twentyone;
+		Days[22]= twentytwo;
+		Days[23]= twentythree;
+		Days[24]= twentyfour;
+		Days[25]= twentyfive;
+		Days[26]= twentysix;
+		Days[27]= twentyseven;
+		Days[28]= twentyeight;
+		Days[29]= twentynine;
+		System.out.println("일을 입력하세요:");
+		Scanner s1 = new Scanner(System.in);
+        int b = s1.nextInt();
+        Day a = Days[b];
+        return a;
+	}
+	
+	public Diary go() {
+	
+		return null;
+	}
+}
+
+import java.util.Scanner;
+public class Month2 extends Month {
+	
+	public Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone)
+	{
+		Day[] Days;
+		Days = new Day[31];
+		Days[1] = one;
+		Days[2] = two;
+		Days[3] = three;
+		Days[4] = four;
+		Days[5] = five;
+		Days[6] = six;
+		Days[7] = seven;
+		Days[8] = eight;
+		Days[9] = nine;
+		Days[10] = ten;
+		Days[11]= eleven;
+		Days[12]= twelve;
+		Days[13]= thirteen;
+		Days[14]= fourteen;
+		Days[15]= fifteen;
+		Days[16]= sixteen;
+		Days[17]= seventeen;
+		Days[18]= eighteen;
+		Days[19]= ninteen;
+		Days[20]= twenty;
+		Days[21]= twentyone;
+		Days[22]= twentytwo;
+		Days[23]= twentythree;
+		Days[24]= twentyfour;
+		Days[25]= twentyfive;
+		Days[26]= twentysix;
+		Days[27]= twentyseven;
+		Days[28]= twentyeight;
+		Days[29]= twentynine;
+		Days[30]= thirty;
+		System.out.println("일을 입력하세요:");
+		Scanner s1 = new Scanner(System.in);
+        int b = s1.nextInt();
+        Day a = Days[b];
+        return a;
+	}
+	
+	public Diary go() {
+		
+		return null;
+	}
+}
+
+import java.util.Scanner;
+public class Month3 extends Month{
+	
+	public Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone)
+	{
+		Day[] Days;
+		Days = new Day[32];
+		Days[1] = one;
+		Days[2] = two;
+		Days[3] = three;
+		Days[4] = four;
+		Days[5] = five;
+		Days[6] = six;
+		Days[7] = seven;
+		Days[8] = eight;
+		Days[9] = nine;
+		Days[10] = ten;
+		Days[11]= eleven;
+		Days[12]= twelve;
+		Days[13]= thirteen;
+		Days[14]= fourteen;
+		Days[15]= fifteen;
+		Days[16]= sixteen;
+		Days[17]= seventeen;
+		Days[18]= eighteen;
+		Days[19]= ninteen;
+		Days[20]= twenty;
+		Days[21]= twentyone;
+		Days[22]= twentytwo;
+		Days[23]= twentythree;
+		Days[24]= twentyfour;
+		Days[25]= twentyfive;
+		Days[26]= twentysix;
+		Days[27]= twentyseven;
+		Days[28]= twentyeight;
+		Days[29]= twentynine;
+		Days[30]= thirty;
+		Days[31]= thirtyone;
+		System.out.println("일을 입력하세요:");
+		Scanner s1 = new Scanner(System.in);
+        int b = s1.nextInt();
+        Day a = Days[b];
+        return a;
+	}
+	
+	public Diary go() {
+		
+		return null;
+	}
+}
+
+import java.io.*;
+import java.util.Scanner;
+
+
+public class Day extends Diary implements Memo {
+
+	String[] i = new String[1];
+	
+	
+	
+	public Diary go() {
+		return null;
+	}
+	public String GetMemo(String[] i) {
+		if( i[0]!=null ){
+			System.out.println("이미 일정이 있습니다. 일정을 수정하시겠습니까? Y/N : ");
+			char c;
+			try {
+				c = (char) System.in.read();
+				if( c == 'Y'){
+					   System.out.print("일정을 입력하세요: ");
+					   Scanner  scan  =  new  Scanner (System.in);
+				       i[0] = scan.next();
+			           return i[0];
+				}
+				else if( c == 'N'){
+					return i[0];
+				}
+				else{
+				       System.out.print(" Error ! ");
+				}
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}	
+		}  
+		else{
+		   System.out.print("일정을 입력하세요: ");
+	       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		   try {
+			i[0] = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	       return i[0];
+		}
+		return null;
+	}
+		
+	       		
+	
+
+	public void PrintMemo(String i) {
+		System.out.printf("%s",i);
+		System.out.println(" ");
+	}
+	
+	
+	
+
+}
+
+public interface Memo {
+	public abstract String GetMemo(String[] i);
+	public abstract void PrintMemo(String i);
+}
 
 public class DiaryStart {
-     public static void main(String [] args){
 
-Year do = new Year();
-
-do.Goto();
-
-Month a = new Month();
-      a = do.Goto();
-
-(do.Goto()).Goto();
-
-Day b = new Day();
-    b = ((do.Goto()).Goto());
-
-String c = ((do.Goto()).Goto()).GetMemo();
-
-((do.Goto()).Goto()).PrintMemo(c,a,b);
-
-
-             }
+	public static void main(String[] args){
+		Year A = new Year();
+		for(int i=0; ;  ){
+			
+		
+		
+		Month B = (Month) A.go(A.Feb,A.Apr,A.Jun,A.Sep,A.Nov,A.Jan,A.Mar,A.May,A.Jul,A.Aug,A.Oct,A.Dec);
+		Day C = (Day) B.go(B.one,B.two,B.three,B.four,B.five,B.six,B.seven,B.eight,B.nine,B.ten,B.eleven,B.twelve,B.thirteen,B.fourteen,B.fifteen,B.sixteen,B.seventeen,B.eighteen,B.ninteen,B.twenty,B.twentyone,B.twentytwo,B.twentythree,B.twentyfour,B.twentyfive,B.twentysix,B.twentyseven,B.twentyeight,B.twentynine,B.thirty,B.thirtyone);
+	    C.PrintMemo(C.GetMemo(C.i));
+	    }
+	}
 
 }
 
-public class Year {
-
-Month1 Apr,Jun,Sep,Nov = new Month1();
-
-Month2 Jan,Mar,May,Jul,Aug,Oct,Dec = new Month2();
-
-Month3 Feb = new Month3();
-
-
-Month Goto() {
-
-System.out.prinln("달을 선택하세요 " );
-// 아직 해결못한 부분 .. 3개의 Month를 어떻게 하나의 return값으로 받아야 할지 모르겠네요 
-
-              }
-}
-
-
-public class Month1 {
-
-Day 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 = new Day();
-
-Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 30){
-
-System.out.println("일을 선택하세요 ");
-
-BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-int i = br.readLine();
-
-Day a = new Day();
-
-a = i;
-
-return a;  // 사용자에게 일을 입력 받고 그 값을 return해줍니다
-
-             }
-}
-
-
-
-public class Month2 {
-
-
-Day
-1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 = new Day();
-
-
-Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 31){
-
-
-System.out.println("일을 선택하세요 ");
-
-BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-int i = br.readLine();
-
-Day a = new Day();
-
-a = i;
-
-return a;   // 사용자에게 일을 입력 받고 그 값을 return해줍니다
-
-
-
-              }
-}
-
-
-
-public class Month3 {
-
-
-Day
-1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 = new Day();
-
-Day Goto(Day 1,Day 2,Day 3,Day 4,Day 5,Day 6,Day 7,Day 8,Day 9‥‥Day 29){
-
-
-System.out.println("일을 선택하세요 ");
-
-BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-int i = br.readLine();
-
-Day a = new Day();
-
- a = i;
-
-return a;    // 사용자에게 일을 입력 받고 그 값을 return해줍니다
-
-              }
-}
-
-
-
-public class Day {
-
-String GetMemo() {
-
-BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-String keyboard = br.readLine();
-
-return keyboard;  // 사용자에게 문자열을 입력받고 그 값을 return해줍니다
-
-}
-
-void PrintMemo(String c,Month a,Day b) {
-
-
-System.out.println("%s",a);
-
-System.out.println("%d",b);
-
-System.out.println("%s",c);
-
-//해당 월,일 출력하고 메모출력합니다
-
-               }
-}
+}}}
