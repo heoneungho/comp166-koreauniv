@@ -25,13 +25,12 @@ package baseball;
 public class Baseball {
     
     
-     // 필드
      int Question[]; // 문제
      int UserInput[]; // 유저의 입력
      int StrikeCount; // 스트라이크
      int BallCount;  // 볼
-     int TryCount=1;   //trail 
-     int OutCount=1;
+     int TryCount=1;   //trial 
+     int OutCount=1;  //아웃
      
      Baseball()  
      {
@@ -117,6 +116,7 @@ public class Baseball {
      }
     }
 }
+package baseball;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -147,7 +147,7 @@ public class BaseballTest {
       int UserInput[] = new int[3];
 
       System.out.println("---------- START BASEBALLGAME ----------");
-      System.out.println("You have ONLY 7 Trails");
+      System.out.println("You have ONLY 7 Trils");
       System.out.println("GOOD LUCK\n");
       while( baseball.isRun() )
       {
@@ -160,7 +160,7 @@ public class BaseballTest {
         		  System.out.println("Game over!!!!!!!!!!!!!!!");
         	  	  System.exit(0);
           }
-   	   System.out.println(baseball.TryCount+"trail");
+   	   System.out.println(baseball.TryCount+"trial");
 
     	  System.out.print("Input 3 integers");
        
@@ -187,8 +187,5 @@ public class BaseballTest {
     	  System.out.println("Congratulations^ㅡ^!!!!");
      }
     
-}
-
-
- 
+} 
 }}}
