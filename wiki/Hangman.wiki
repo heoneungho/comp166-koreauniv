@@ -9,7 +9,9 @@ Up Down 게임
 숫자를 맞추는 게임입니다. 횟수에는 5번의 제한이 있습니다.
 
 
-{{{package UpAndDownGame;
+{{{
+
+package UpAndDownGame;
 import javax.swing.*;
 import javax.sound.midi.*;
 import java.awt.*;
@@ -172,10 +174,14 @@ public class UpAndDownGameStarter {
 }
 
 */
+
 }}}
 
 
-{{{package UpAndDownGame;
+{{{
+
+
+package UpAndDownGame;
 import javax.swing.*;
 
  
@@ -286,7 +292,14 @@ public class UpAndDownGame {
      }
 
 }
+
+
 }}}
+
+
+{{{
+
+
 package UpAndDownGame;
 
  
@@ -628,11 +641,7 @@ public class UpAndDownGameSound {
   
 }
 
- 
 
 
-
-
-{{{
 
 }}}
