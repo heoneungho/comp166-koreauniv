@@ -8,13 +8,12 @@
 
 =Background=
 
- 친구들과 이면지 한장과 볼펜만 있으면 재미있게 즐길 수 있는 베이스볼게임을 컴퓨터를 통해 컴퓨터가 내주는 수준별 문제로 즐길 수 있도록 하겠다.
+ 친구들과 이면지 한장과 볼펜만 있으면 재미있게 즐길 수 있는 베이스볼게임을 컴퓨터를 통해 컴퓨터가 내주는 문제로 즐길 수 있도록 하겠다.
 
 = Details =
-
- 3개의 숫자를 사용자가 원하는대로 설정할 수 있으며, 컴퓨터가 문제를 만들어서 사용자가 그 문제를 맞추는 방식의 게임을 만든다.
-    A. 맞춰야 할 숫자 개수(gamestyle)를 선택한다.
-    B. 사용자가 gamestyle 에 맞는 숫자조합을 입력한다.
+컴퓨터가 문제를 만들어서 사용자가 그 문제를 맞추는 방식의 게임을 만든다.
+    A. 컴퓨터가 난수를 만들어서 임의의 3개의 숫자 조합을 만든다.
+    B. 사용자가 숫자조합을 입력한다.
     C. 스트라이크, 볼, 아웃, 시도 횟수를 알려준다.
     D. A~D과정이 반복되다가 3스트라이크가 나오면 congraturation을 출력하며 게임이 종료된다.
    
@@ -24,96 +23,100 @@
 package baseball;
 
 public class Baseball {
-	
-	
-	 // 필드
-	 int Question[]; // 문제
-	 int UserInput[]; // 유저의 입력
-	 int StrikeCount; // 스트라이크
-	 int BallCount;  // 볼
-	 int TryCount;
+    
+    
+     // 필드
+     int Question[]; // 문제
+     int UserInput[]; // 유저의 입력
+     int StrikeCount; // 스트라이크
+     int BallCount;  // 볼
+     int TryCount=1;   //trail 
+     int OutCount=1;
+     
+     Baseball()  
+     {
 
-	 Baseball()  //default 생성자
-	 {
+     }
 
-	 }
+     Baseball(int arr[]) // 배열값을 받는 생성자
+     {
+      Question = new int[3];
 
-	 Baseball(int arr[]) // 배열값을 받는 생성자
-	 {
-	  Question = new int[3];
+      for(int i = 0 ; i < Question.length ; i++) 
+      {
+       Question[i] = (int)(Math.random()*9)+1; // 랜덤함수 사용1~9까지
+       for(int j = 0 ; j < i ; j++)
+       {
+        if(Question[i]==Question[j])  // 중복을 제거 하기위해 비교
+        {
+         i--;       // 중복이 되면 다시 난수 생성
+         break;
+        }
+       }
+      }
+     
+      UserInput = new int[3];  // 유저의 입력부분도 같이 초기화시켜야 한다.
 
-	  for(int i = 0 ; i < Question.length ; i++) 
-	  {
-	   Question[i] = (int)(Math.random()*9)+1; // 랜덤함수 사용1~9까지
-	   for(int j = 0 ; j < i ; j++)
-	   {
-	    if(Question[i]==Question[j])  // 중복을 제거 하기위해 비교
-	    {
-	     i--;       // 중복이 되면 다시 난수 생성
-	     break;
-	    }
-	   }
-	  }
-	 
-	  UserInput = new int[3];  // 유저의 입력 부분 초기화
+     }
 
-	 }
+     void SetUserInput(int UserInput[])
+     {
+      for(int i=0 ; i < UserInput.length ; i++)
+       this.UserInput[i] = UserInput[i];
 
-	 void SetUserInput(int UserInput[])
-	 {
-	  for(int i=0 ; i < UserInput.length ; i++)
-	   this.UserInput[i] = UserInput[i];
+      TryCount++;
+    
+     }
 
-	  TryCount++;
-	 }
+     int CountStrike()
+     {
+      StrikeCount=0;
+      for(int i = 0; i<Question.length ; i++)
+      {
+       if( Question[i] == UserInput[i])
+        StrikeCount++;    
+      }
 
-	 int CountStrike()
-	 {
-	  StrikeCount=0;
-	  for(int i = 0; i<Question.length ; i++)
-	  {
-	   if( Question[i] == UserInput[i])
-	    StrikeCount++;    
-	  }
+      return StrikeCount;
+     }
 
-	  return StrikeCount;
-	 }
+     int CountBall()
+     {
+      BallCount=0;
+      for(int i = 0 ; i < Question.length ; i++)
+      {
+       for(int j = 0 ; j < Question.length ; j++)
+       {
+        if(Question[i] == UserInput[j] && i !=j )
+         BallCount++;
+       }
+      }
 
-	 int CountBall()
-	 {
-	  BallCount=0;
-	  for(int i = 0 ; i < Question.length ; i++)
-	  {
-	   for(int j = 0 ; j < Question.length ; j++)
-	   {
-	    if(Question[i] == UserInput[j] && i !=j )
-	     BallCount++;
-	   }
-	  }
-
-	  return BallCount;
-	 }
+      return BallCount;
+     }
 
 
-	 boolean isRun() // 반복 작동
-	 {
-	  /*
-	  if( StrikeCount ==  3)
-	   return false;
-	  else
-	   return true;
-	  */
-	  // 위와 같은 말
-	  // 참이면 ? 다음 false 리턴 거짓이면 : 다음 true 리턴
-	  return (StrikeCount == 3) ? false : true; 
-	 }
+     boolean isRun() // 반복 작동
+     {
+     
+      if( StrikeCount ==  3)
+       return false;
+      else
+       return true;
 
-	 void disPlay()
-	 {
-	  System.out.print(TryCount+"trail "+ StrikeCount +"S " + BallCount +"B \n");
-	 }
-	}
-package baseball;
+     }
+
+     void disPlay()
+     {
+    	 if(StrikeCount == 0 && BallCount == 0) {
+    		 System.out.println(OutCount + " Out");
+    		 OutCount++;
+    	 }
+    	 else {
+      System.out.print(StrikeCount +"S " + BallCount +"B \n\n");
+     }
+    }
+}
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -122,55 +125,70 @@ import java.io.InputStreamReader;
 
 
 public class BaseballTest {
-	public static void main(String[] args) throws IOException
-	 {
+    public static void main(String[] args) throws IOException
+     { 
 
-	  // 키보드로부터 입력받기 위한 객체 선언 및 생성
+      // 키보드로부터 입력받기 위한 객체 선언 및 생성
 
-	  BufferedReader stdin = new BufferedReader(
-	          new InputStreamReader(System.in));
+      BufferedReader stdin = new BufferedReader(
+              new InputStreamReader(System.in));
 
-	  String strLine = null;
+      String strLine = null;
 
 
-	  Baseball baseball;  // 객체 선언 -- 참조(Reference)변수 선언
+      Baseball baseball;  // 객체 선언 -- 참조(Reference)변수 선언
 
-	  int number[] = new int[3];
+      int number[] = new int[3];
 
-	  baseball = new Baseball(); // 객체 생성 (내부적으로 생성자 작동)
+      baseball = new Baseball(); // 객체 생성 (내부적으로 생성자 작동)
 
-	  baseball = new Baseball( number ); // 인자가 1개(일차원배열)인 생성자 작동
+      baseball = new Baseball( number ); // 인자가 1개(일차원배열)인 생성자 작동
 
-	  int UserInput[] = new int[3];도 같이 
+      int UserInput[] = new int[3];
 
-	  System.out.println("---------- START BASEBALLGAME ----------");
-	  while( baseball.isRun() )
-	  {
-	   System.out.print("Input 3 integers");
-	   
-	   // 키보드로 3개 숫자를 입력받음.
-	   
-	   strLine = stdin.readLine(); 
+      System.out.println("---------- START BASEBALLGAME ----------");
+      System.out.println("You have ONLY 7 Trails");
+      System.out.println("GOOD LUCK\n");
+      while( baseball.isRun() )
+      {
 
-	   //문자를 10진수 숫자로 바꾸기 위해 사용
-	   
-	   for (int i=0; i<UserInput.length; i++)
-	   {
-	    //main에 있는 UserInput에 값을 넣음.
-	    UserInput[i]=Character.digit(strLine.charAt(i),10);
-	   }
+          if(baseball.TryCount == 7) {
+        	  System.out.println("\n-------It's the LAST trials!!!!!--------");
+          }
+          if(baseball.TryCount > 7) {
+        	  for(int k=0; k<10; k++)
+        		  System.out.println("Game over!!!!!!!!!!!!!!!");
+        	  	  System.exit(0);
+          }
+   	   System.out.println(baseball.TryCount+"trail");
 
-	   baseball.SetUserInput(UserInput);
+    	  System.out.print("Input 3 integers");
+       
+       // 키보드로 3개 숫자를 입력받는다.
+       
+       strLine = stdin.readLine(); 
 
-	   baseball.CountStrike();
-	   baseball.CountBall();
+       //문자를 10진수 숫자로 바꾸기 위해 사용
+       
+       for (int i=0; i<UserInput.length; i++)
+       {
+    	   //main에 있는 UserInput에 값 집어넣는다.
+        UserInput[i]=Character.digit(strLine.charAt(i),10);
+       }
+      
+       baseball.SetUserInput(UserInput);
 
-	   baseball.disPlay();
-	  }
-	  System.out.println("Congratulations^ㅡ^!!!!");
-	 }
-	
+       baseball.CountStrike();
+       baseball.CountBall();
+
+       baseball.disPlay();
+      }
+    //  if(baseball.StrikeCount ==3)
+    	  System.out.println("Congratulations^ㅡ^!!!!");
+     }
+    
 }
+
 
  
 }}}
