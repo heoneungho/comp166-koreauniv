@@ -136,7 +136,7 @@ public class BaseballTest {
       String strLine = null;
 
 
-      Baseball baseball;  // 객체 선언 -- 참조(Reference)변수 선언
+      Baseball baseball;  // 객체 선언
 
       int number[] = new int[3];
 
