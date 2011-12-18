@@ -6,20 +6,37 @@
 
 = Details =
 
-추가적인 기능은 일단 기본적인 Diary를 완성시키고서 생각하기로했습니다(그냥 Diary만드는 것도 만만치않을것 같더군요)
-GUI는 추후에 추가시킬 예정입니다. 일단 다형성 확보에 첫번째 목적을 두었습니다.
+제 다이어리에는 일정입력/ 일정보기(일) / 일정보기(월) / 메모장 / 종료  5개의 메뉴가 있습니다.
 
+1.일정입력 : 사용자가 월,일을 입력후 일정을 직접 입력합니다.
+만약 해당 날짜에 추가적인 일정을 입력하고 싶을 시 해당 날짜를 한번 더 치면
+기존의 일정에다 추가로 일정을 추가할 것인지, 일정을 삭제하고 새로 일정을 추가 할 것인지 물어봅니다.
 
-클래스목록 : Diary,DiaryStart,Year,Month,Month1,Month2,Month3,Day,Memo
+2.일정보기(일) :  사용자에게 입력받은 날짜(월,일) 에 쓰여진 스케쥴을 출력해줍니다.
+
+3.일정보기(월) :  사용자에게 월을 입력받고, 해당 월에 있는 모든 스케쥴을 출력해줍니다.
+(ex - 5일  : 10시 기상
+       13일 : 2시 친구와 밥약속)
+
+4.메모장  : 간단한 메모장을 띄웁니다.
+
+5.종료    : 다이어리를 닫습니다.
+
+또한 각 메뉴를 활성시킬때마다 사운드가 들리도록 해봤습니다. 사운드의 주제는 호러입니다.
+
+클래스목록 : Diary,DiaryStart,Year,Month,Month1,Month2,Month3,Day,Memo,FunctionGui
+
 
 
 
 
 {{{
 
+
 public abstract class Diary {
 	public abstract Diary go();
 }
+
 
 import java.util.Scanner;
 public class Year extends Diary{
@@ -36,8 +53,9 @@ public class Year extends Diary{
 		Month3 Aug = new Month3();
 		Month3 Oct = new Month3();
 		Month3 Dec = new Month3();
+		Month[] Month1 = {Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec};
 	
-	public Diary go(Month1 Feb,Month2 Apr,Month2 Jun,Month2 Sep,Month2 Nov,Month3 Jan,Month3 Mar,Month3 May,Month3 Jul,Month3 Aug,Month3 Oct,Month3 Dec)
+	public Diary go()
 	{
 		
 		Month[] Months = new Month[13];
@@ -61,14 +79,14 @@ public class Year extends Diary{
         return a;
 	}
 	
-	public Diary go() {
-		
-		return null;
-	}
+	
+	
 }
 
+
+
 public abstract class Month extends Diary {
-	
+	    
 		Day one = new Day();
 		Day two = new Day();
 		Day three = new Day();
@@ -100,15 +118,20 @@ public abstract class Month extends Diary {
 		Day twentynine = new Day();
 		Day thirty = new Day();
 		Day thirtyone = new Day();
+		Day[] Day1 = {one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,ninteen,twenty,twentyone,twentytwo,twentythree,twentyfour,twentyfive,twentysix,twentyseven,twentyeight,twentynine,thirty,thirtyone};
 		
-		public abstract Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone);
+		public abstract Diary go();
 		
 }
+
+
+
+
 
 import java.util.Scanner;
 public class Month1 extends Month {
 	
-	public Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone)
+	public Diary go()
 	{
 		Day[] Days;
 		Days = new Day[30];
@@ -140,24 +163,12 @@ public class Month1 extends Month {
 		Days[26]= twentysix;
 		Days[27]= twentyseven;
 		Days[28]= twentyeight;
-		Days[29]= twentynine;
-		System.out.println("일을 입력하세요:");
-		Scanner s1 = new Scanner(System.in);
-        int b = s1.nextInt();
-        Day a = Days[b];
-        return a;
-	}
-	
-	public Diary go() {
-	
-		return null;
-	}
-}
+
 
 import java.util.Scanner;
 public class Month2 extends Month {
 	
-	public Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone)
+	public Diary go()
 	{
 		Day[] Days;
 		Days = new Day[31];
@@ -198,16 +209,15 @@ public class Month2 extends Month {
         return a;
 	}
 	
-	public Diary go() {
-		
-		return null;
-	}
+	
 }
+
+
 
 import java.util.Scanner;
 public class Month3 extends Month{
 	
-	public Diary go(Day one,Day two,Day three,Day four,Day five,Day six,Day seven,Day eight,Day nine,Day ten,Day eleven,Day twelve,Day thirteen,Day fourteen,Day fifteen,Day sixteen,Day seventeen,Day eighteen,Day ninteen,Day twenty,Day twentyone,Day twentytwo,Day twentythree,Day twentyfour,Day twentyfive,Day twentysix,Day twentyseven,Day twentyeight,Day twentynine,Day thirty,Day thirtyone)
+	public Diary go()
 	{
 		Day[] Days;
 		Days = new Day[32];
@@ -249,11 +259,10 @@ public class Month3 extends Month{
         return a;
 	}
 	
-	public Diary go() {
-		
-		return null;
+	
 	}
-}
+
+
 
 import java.io.*;
 import java.util.Scanner;
@@ -261,27 +270,35 @@ import java.util.Scanner;
 
 public class Day extends Diary implements Memo {
 
-	String[] i = new String[1];
-	
+	String[] i = new String[100];
+	int d = 0;
 	
 	
 	public Diary go() {
 		return null;
 	}
-	public String GetMemo(String[] i) {
-		if( i[0]!=null ){
-			System.out.println("이미 일정이 있습니다. 일정을 수정하시겠습니까? Y/N : ");
+	public void GetMemo() {
+		if( i[d]!=null ){
+			System.out.println("이미 일정이 있습니다. 일정추가-1 / 일정 모두 삭제 및 수정-2 : ");
 			char c;
 			try {
 				c = (char) System.in.read();
-				if( c == 'Y'){
-					   System.out.print("일정을 입력하세요: ");
+				if( c == '2'){
+					   for( int q = 0; i[q] != null; q++){
+					   i[q] = null;	   
+					   }
+					   d = 0;				
+					   System.out.print("새로운 일정을 입력하세요: ");
 					   Scanner  scan  =  new  Scanner (System.in);
-				       i[0] = scan.next();
-			           return i[0];
+				       i[d] = scan.next();
+			           
 				}
-				else if( c == 'N'){
-					return i[0];
+				else if( c == '1'){
+				d++;
+				System.out.print("추가 일정을 입력하세요: ");
+			    Scanner  scan  =  new  Scanner (System.in);
+			    i[d] = scan.next();
+					
 				}
 				else{
 				       System.out.print(" Error ! ");
@@ -295,21 +312,22 @@ public class Day extends Diary implements Memo {
 		   System.out.print("일정을 입력하세요: ");
 	       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		   try {
-			i[0] = br.readLine();
+			i[d] = br.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	       return i[0];
+	       
 		}
-		return null;
-	}
+		}
 		
 	       		
 	
 
-	public void PrintMemo(String i) {
-		System.out.printf("%s",i);
+	public void PrintMemo() {
+		for(int a=0; i[a] != null ; a++){
+		System.out.printf("%s",i[a]);
 		System.out.println(" ");
+		}
 	}
 	
 	
@@ -317,25 +335,280 @@ public class Day extends Diary implements Memo {
 
 }
 
+
+
 public interface Memo {
-	public abstract String GetMemo(String[] i);
-	public abstract void PrintMemo(String i);
+	public abstract void GetMemo();
+	public abstract void PrintMemo();
 }
+
+
+
 
 public class DiaryStart {
 
 	public static void main(String[] args){
-		Year A = new Year();
-		for(int i=0; ;  ){
+		  
+			FunctionGui gui = new FunctionGui();
+			gui.start();
+			
+				
 			
 		
-		
-		Month B = (Month) A.go(A.Feb,A.Apr,A.Jun,A.Sep,A.Nov,A.Jan,A.Mar,A.May,A.Jul,A.Aug,A.Oct,A.Dec);
-		Day C = (Day) B.go(B.one,B.two,B.three,B.four,B.five,B.six,B.seven,B.eight,B.nine,B.ten,B.eleven,B.twelve,B.thirteen,B.fourteen,B.fifteen,B.sixteen,B.seventeen,B.eighteen,B.ninteen,B.twenty,B.twentyone,B.twentytwo,B.twentythree,B.twentyfour,B.twentyfive,B.twentysix,B.twentyseven,B.twentyeight,B.twentynine,B.thirty,B.thirtyone);
-	    C.PrintMemo(C.GetMemo(C.i));
 	    }
+}
+
+import javax.sound.midi.*;
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Scanner;
+
+public class FunctionGui {
+
+	JFrame frame;
+	JFrame frame1;
+	
+	Year A = new Year();
+	public void start(){
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton button1 = new JButton(" 종료 ");
+		button1.addActionListener(new Listener1());
+		JButton button2 = new JButton(" 일정 입력 하기 ");
+		button2.addActionListener(new Listener2());
+		JButton button3 = new JButton(" 메모 하기 ");
+		button3.addActionListener(new Listener3());
+		JButton button4 = new JButton(" 일정 보기 (일) ");
+		button4.addActionListener(new Listener5());
+		JButton button5 = new JButton(" 일정 보기(월) ");
+		button5.addActionListener(new Listener6());
+		JPanel panel = new JPanel();
+		panel.add(button2);
+		panel.add(button4);
+		panel.add(button5);
+		panel.add(button3);
+		panel.add(button1);
+		frame.getContentPane().add(panel);
+		frame.setSize(300,110);
+		frame.setVisible(true);
+		
+		frame1 = new JFrame();
+		JPanel panel1 = new JPanel();
+		JTextArea text = new JTextArea(15,30);
+		text.setText(" 작성하세요. ");
+		panel1.add(text);
+		frame1.getContentPane().add(panel1);
+		frame1.setSize(400,350);
+		JButton button6 = new JButton(" 이전 ");
+		button6.addActionListener(new Listener4());
+		panel1.add(button6);
+		
+	}
+	class Listener1 implements ActionListener {
+	   public void actionPerformed(ActionEvent event){
+		  
+		   try {
+			Sequencer sori = MidiSystem.getSequencer();
+			 sori.open();
+			 Sequence seq = new Sequence(Sequence.PPQ,4);
+			 Track track = seq.createTrack();
+			 
+			 ShortMessage a = new ShortMessage();
+			 a.setMessage(144,1,10,100);
+			 MidiEvent SoriOn = new MidiEvent(a,1);
+             track.add(SoriOn);
+             
+             ShortMessage b = new ShortMessage();
+             b.setMessage(128,1,10,100);
+             MidiEvent SoriOff = new MidiEvent(b,16);
+             track.add(SoriOff);
+             
+             sori.setSequence(seq);
+             sori.start();
+		   }
+		   catch( Exception ex ) {
+			   ex.printStackTrace();
+		   }
+		  
+		frame.setVisible(false);
+	   }
+	}
+	class Listener2 implements ActionListener {
+	   public void actionPerformed(ActionEvent event){
+		   
+		   	try {
+				Sequencer sori = MidiSystem.getSequencer();
+				 sori.open();
+				 Sequence seq = new Sequence(Sequence.PPQ,4);
+				 Track track = seq.createTrack();
+				 
+				 ShortMessage a = new ShortMessage();
+				 a.setMessage(144,1,23,100);
+				 MidiEvent SoriOn = new MidiEvent(a,1);
+	             track.add(SoriOn);
+	             
+	             ShortMessage b = new ShortMessage();
+	             b.setMessage(128,1,23,100);
+	             MidiEvent SoriOff = new MidiEvent(b,16);
+	             track.add(SoriOff);
+	             
+	             sori.setSequence(seq);
+	             sori.start();
+			   }
+			   catch( Exception ex ) {
+				   ex.printStackTrace();
+			   }
+		   	frame.setVisible(false);
+		   	Month B = (Month) A.go();
+			Day C = (Day) B.go();
+			C.GetMemo();
+				
+			frame.setVisible(true);
+		   	
+		   	
+	   }
+	}
+	class Listener3 implements ActionListener {
+		public void actionPerformed(ActionEvent event){
+		
+			try{
+			Sequencer sori = MidiSystem.getSequencer();
+			 sori.open();
+			 Sequence seq = new Sequence(Sequence.PPQ,4);
+			 Track track = seq.createTrack();
+			 
+			 ShortMessage a = new ShortMessage();
+			 a.setMessage(144,1,2,100);
+			 MidiEvent SoriOn = new MidiEvent(a,1);
+            track.add(SoriOn);
+            
+            ShortMessage b = new ShortMessage();
+            b.setMessage(128,1,2,100);
+            MidiEvent SoriOff = new MidiEvent(b,16);
+            track.add(SoriOff);
+            
+            sori.setSequence(seq);
+            sori.start();
+		   }
+		   catch( Exception ex ) {
+			   ex.printStackTrace();
+		   }
+			frame.setVisible(false);
+			frame1.setVisible(true);
+			
+		}
+	}
+	class Listener4 implements ActionListener {
+        public void actionPerformed(ActionEvent event){
+        	try{
+    			Sequencer sori = MidiSystem.getSequencer();
+    			 sori.open();
+    			 Sequence seq = new Sequence(Sequence.PPQ,4);
+    			 Track track = seq.createTrack();
+    			 
+    			 ShortMessage a = new ShortMessage();
+    			 a.setMessage(144,1,1,100);
+    			 MidiEvent SoriOn = new MidiEvent(a,1);
+                track.add(SoriOn);
+                
+                ShortMessage b = new ShortMessage();
+                b.setMessage(128,1,1,100);
+                MidiEvent SoriOff = new MidiEvent(b,16);
+                track.add(SoriOff);
+                
+                sori.setSequence(seq);
+                sori.start();
+    		   }
+    		   catch( Exception ex ) {
+    			   ex.printStackTrace();
+    		   }
+        	frame1.setVisible(false);
+        	frame.setVisible(true);
+        	
+        }
+		
+	}
+	class Listener5 implements ActionListener {
+		public void actionPerformed(ActionEvent event){
+        	try{
+    			Sequencer sori = MidiSystem.getSequencer();
+    			 sori.open();
+    			 Sequence seq = new Sequence(Sequence.PPQ,4);
+    			 Track track = seq.createTrack();
+    			 
+    			 ShortMessage a = new ShortMessage();
+    			 a.setMessage(144,1,4,100);
+    			 MidiEvent SoriOn = new MidiEvent(a,1);
+                track.add(SoriOn);
+                
+                ShortMessage b = new ShortMessage();
+                b.setMessage(128,1,4,100);
+                MidiEvent SoriOff = new MidiEvent(b,16);
+                track.add(SoriOff);
+                
+                sori.setSequence(seq);
+                sori.start();
+    		   }
+    		   catch( Exception ex ) {
+    			   ex.printStackTrace();
+    		   }
+        	frame.setVisible(false);
+		   	Month B = (Month) A.go();
+			Day C = (Day) B.go();
+			C.PrintMemo();
+			frame.setVisible(true);
+        	
+	        }
+    }
+	class Listener6 implements ActionListener {
+		public void actionPerformed(ActionEvent event){
+			try{
+    			Sequencer sori = MidiSystem.getSequencer();
+    			 sori.open();
+    			 Sequence seq = new Sequence(Sequence.PPQ,4);
+    			 Track track = seq.createTrack();
+    			 
+    			 ShortMessage a = new ShortMessage();
+    			 a.setMessage(144,1,3,100);
+    			 MidiEvent SoriOn = new MidiEvent(a,1);
+                track.add(SoriOn);
+                
+                ShortMessage b = new ShortMessage();
+                b.setMessage(128,1,3,100);
+                MidiEvent SoriOff = new MidiEvent(b,16);
+                track.add(SoriOff);
+                
+                sori.setSequence(seq);
+                sori.start();
+    		   }
+    		   catch( Exception ex ) {
+    			   ex.printStackTrace();
+    		   }
+			   frame.setVisible(false);
+			   System.out.println("달을 입력하세요:");
+			   Scanner s1 = new Scanner(System.in);
+		       int b = s1.nextInt();
+		       Month B = A.Month1[b-1];
+		       
+		       for( int c = 0; c<31; c++){
+		    	   for(int d = 0;  B.Day1[c].i[d] != null ; d++){
+		    	   
+		    		   System.out.printf("%d일 : %s",c+1,B.Day1[c].i[d]);
+		    		   System.out.println(" ");
+		    	   }
+		    	   
+		    	   }
+		       frame.setVisible(true);
+		       }
+		       
+		}
 	}
 
-}
+
+
+
 
 }}}
