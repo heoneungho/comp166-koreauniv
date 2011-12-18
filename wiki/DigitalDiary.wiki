@@ -34,7 +34,7 @@
 
 
 public abstract class Diary {
-	public abstract Diary go();
+	public abstract Diary go(); 
 }
 
 
@@ -53,7 +53,7 @@ public class Year extends Diary{
 		Month3 Aug = new Month3();
 		Month3 Oct = new Month3();
 		Month3 Dec = new Month3();
-		Month[] Month1 = {Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec};
+		Month[] Month1 = {Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec}; // Month들 만들고 배열또한 선언해줍니다(월별 일정보기에 이용)
 	
 	public Diary go()
 	{
@@ -119,7 +119,7 @@ public abstract class Month extends Diary {
 		Day thirty = new Day();
 		Day thirtyone = new Day();
 		Day[] Day1 = {one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,ninteen,twenty,twentyone,twentytwo,twentythree,twentyfour,twentyfive,twentysix,twentyseven,twentyeight,twentynine,thirty,thirtyone};
-		
+		// 역시 월별 일정보기에 이용하기 위해 배열로 묶어줍니다.
 		public abstract Diary go();
 		
 }
@@ -163,7 +163,16 @@ public class Month1 extends Month {
 		Days[26]= twentysix;
 		Days[27]= twentyseven;
 		Days[28]= twentyeight;
-
+		Days[29]= twentynine;
+		System.out.println("일을 입력하세요:");
+		Scanner s1 = new Scanner(System.in);
+        int b = s1.nextInt();
+        Day a = Days[b];
+        return a;
+	}
+	
+	
+}
 
 import java.util.Scanner;
 public class Month2 extends Month {
@@ -270,7 +279,7 @@ import java.util.Scanner;
 
 public class Day extends Diary implements Memo {
 
-	String[] i = new String[100];
+	String[] i = new String[100]; //충분한 공간확보를 위해 배열의 size를 100으로 지정해줍니다.
 	int d = 0;
 	
 	
@@ -278,7 +287,7 @@ public class Day extends Diary implements Memo {
 		return null;
 	}
 	public void GetMemo() {
-		if( i[d]!=null ){
+		if( i[d]!=null ){  //현재 배열의 값에 일정이 있을 경우
 			System.out.println("이미 일정이 있습니다. 일정추가-1 / 일정 모두 삭제 및 수정-2 : ");
 			char c;
 			try {
@@ -287,7 +296,7 @@ public class Day extends Diary implements Memo {
 					   for( int q = 0; i[q] != null; q++){
 					   i[q] = null;	   
 					   }
-					   d = 0;				
+					   d = 0;	// i[0]부터 null 값이 아닌 모든 값을 리셋해줍니다.그리고 배열은 다시 i[0]으로 위치시킵니다.			
 					   System.out.print("새로운 일정을 입력하세요: ");
 					   Scanner  scan  =  new  Scanner (System.in);
 				       i[d] = scan.next();
@@ -297,20 +306,20 @@ public class Day extends Diary implements Memo {
 				d++;
 				System.out.print("추가 일정을 입력하세요: ");
 			    Scanner  scan  =  new  Scanner (System.in);
-			    i[d] = scan.next();
+			    i[d] = scan.next(); // 기존 일정을 그대로 두고 다음 스트링인 i[d]에 일정을 입력받습니다.
 					
 				}
 				else{
-				       System.out.print(" Error ! ");
+				       System.out.print(" Error ! ");  //1이나 2가 아닌 값을 받았을 시 error 메세지를 출력합니다.
 				}
 			} catch (IOException e1) {
 				
 				e1.printStackTrace();
 			}	
 		}  
-		else{
+		else{                // i[d]가 null일 경우. 즉 일정이 없을 경우.
 		   System.out.print("일정을 입력하세요: ");
-	       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		   try {
 			i[d] = br.readLine();
 		} catch (IOException e) {
@@ -324,7 +333,7 @@ public class Day extends Diary implements Memo {
 	
 
 	public void PrintMemo() {
-		for(int a=0; i[a] != null ; a++){
+		for(int a=0; i[a] != null ; a++){   // i[0] 부터 쭉  null이 나오기 전까지 print시켜줍니다.
 		System.out.printf("%s",i[a]);
 		System.out.println(" ");
 		}
@@ -350,11 +359,7 @@ public class DiaryStart {
 	public static void main(String[] args){
 		  
 			FunctionGui gui = new FunctionGui();
-			gui.start();
-			
-				
-			
-		
+			gui.start();	
 	    }
 }
 
@@ -367,15 +372,15 @@ import java.util.Scanner;
 
 public class FunctionGui {
 
-	JFrame frame;
-	JFrame frame1;
+	JFrame frame;        // 메인 프레임
+	JFrame frame1;       // 메모장 용 프레임1
 	
-	Year A = new Year();
+	Year A = new Year();  // 다이어리에 사용할 Year 객체 생성
 	public void start(){
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton button1 = new JButton(" 종료 ");
+		JButton button1 = new JButton(" 종료 ");    // 버튼 5개 만들고 리스너와 연결
 		button1.addActionListener(new Listener1());
 		JButton button2 = new JButton(" 일정 입력 하기 ");
 		button2.addActionListener(new Listener2());
@@ -407,10 +412,10 @@ public class FunctionGui {
 		panel1.add(button6);
 		
 	}
-	class Listener1 implements ActionListener {
+	class Listener1 implements ActionListener {   // 종료 버튼에 대한 콜백 함수
 	   public void actionPerformed(ActionEvent event){
 		  
-		   try {
+		   try {                              // 버튼 클릭시 소리 나게 설정
 			Sequencer sori = MidiSystem.getSequencer();
 			 sori.open();
 			 Sequence seq = new Sequence(Sequence.PPQ,4);
@@ -433,13 +438,13 @@ public class FunctionGui {
 			   ex.printStackTrace();
 		   }
 		  
-		frame.setVisible(false);
+		frame.setVisible(false);           // 프레임을 닫습니다.
 	   }
 	}
-	class Listener2 implements ActionListener {
-	   public void actionPerformed(ActionEvent event){
+	class Listener2 implements ActionListener {  // 일정 입력버튼에 대한 콜백함수
+	   public void actionPerformed(ActionEvent event){ 
 		   
-		   	try {
+		   	try {                     // 소리 설정해줍니다.
 				Sequencer sori = MidiSystem.getSequencer();
 				 sori.open();
 				 Sequence seq = new Sequence(Sequence.PPQ,4);
@@ -461,20 +466,20 @@ public class FunctionGui {
 			   catch( Exception ex ) {
 				   ex.printStackTrace();
 			   }
-		   	frame.setVisible(false);
-		   	Month B = (Month) A.go();
+		   	frame.setVisible(false); // 메인 프레임을 닫고 콘솔 화면으로 넘어갑니다.
+		   	Month B = (Month) A.go(); 
 			Day C = (Day) B.go();
-			C.GetMemo();
+			C.GetMemo();             // 월,일을 입력받고 일정을 입력합니다. 다형성이 성립되있기 때문에 입력한 일정은 계속 유지됩니다.
 				
-			frame.setVisible(true);
+			frame.setVisible(true);  // 입력을 마쳤으니 다시 메인 프레임을 불러옵니다.
 		   	
 		   	
 	   }
 	}
-	class Listener3 implements ActionListener {
+	class Listener3 implements ActionListener {   // 메모 버튼에 대한 콜백 함수
 		public void actionPerformed(ActionEvent event){
 		
-			try{
+			try{                     // 소리 설정
 			Sequencer sori = MidiSystem.getSequencer();
 			 sori.open();
 			 Sequence seq = new Sequence(Sequence.PPQ,4);
@@ -496,14 +501,14 @@ public class FunctionGui {
 		   catch( Exception ex ) {
 			   ex.printStackTrace();
 		   }
-			frame.setVisible(false);
-			frame1.setVisible(true);
+			frame.setVisible(false);      // 메인 프레임을 닫고
+			frame1.setVisible(true);      // 메모장 프레임을 띄웁니다.
 			
 		}
 	}
-	class Listener4 implements ActionListener {
+	class Listener4 implements ActionListener {   // 메모장 내 '이전' 버튼에 대한 콜백함수
         public void actionPerformed(ActionEvent event){
-        	try{
+        	try{                                  // 소리 설정해줍니다.
     			Sequencer sori = MidiSystem.getSequencer();
     			 sori.open();
     			 Sequence seq = new Sequence(Sequence.PPQ,4);
@@ -525,15 +530,15 @@ public class FunctionGui {
     		   catch( Exception ex ) {
     			   ex.printStackTrace();
     		   }
-        	frame1.setVisible(false);
-        	frame.setVisible(true);
+        	frame1.setVisible(false);           // 메모장을 닫습니다.       
+        	frame.setVisible(true);             // 메인 프레임을 엽니다.
         	
         }
 		
 	}
-	class Listener5 implements ActionListener {
-		public void actionPerformed(ActionEvent event){
-        	try{
+	class Listener5 implements ActionListener {   // 일정보기(일) 에 대한 콜백함수
+		public void actionPerformed(ActionEvent event){ 
+        	try{                                     // 소리 설정
     			Sequencer sori = MidiSystem.getSequencer();
     			 sori.open();
     			 Sequence seq = new Sequence(Sequence.PPQ,4);
@@ -555,16 +560,16 @@ public class FunctionGui {
     		   catch( Exception ex ) {
     			   ex.printStackTrace();
     		   }
-        	frame.setVisible(false);
-		   	Month B = (Month) A.go();
+        	frame.setVisible(false);           // 메인 프레임을 닫고 콘솔화면을 띄웁니다.
+		   	Month B = (Month) A.go();        
 			Day C = (Day) B.go();
-			C.PrintMemo();
-			frame.setVisible(true);
+			C.PrintMemo();              // 월,일 입력받고 일정을 출력합니다.
+			frame.setVisible(true);     // 입력이 끝났으니 메인 프레임을 불러옵니다.
         	
 	        }
     }
-	class Listener6 implements ActionListener {
-		public void actionPerformed(ActionEvent event){
+	class Listener6 implements ActionListener {  // 일정보기(월) 버튼에 대한 콜백함수
+		public void actionPerformed(ActionEvent event){ //소리설정
 			try{
     			Sequencer sori = MidiSystem.getSequencer();
     			 sori.open();
@@ -587,13 +592,13 @@ public class FunctionGui {
     		   catch( Exception ex ) {
     			   ex.printStackTrace();
     		   }
-			   frame.setVisible(false);
-			   System.out.println("달을 입력하세요:");
+			   frame.setVisible(false);     // 메인 프레임을 닫고 콘솔화면으로 넘어갑니다.
+			   System.out.println("달을 입력하세요:");  // 일정을 볼 달을 입력받습니다.
 			   Scanner s1 = new Scanner(System.in);
 		       int b = s1.nextInt();
-		       Month B = A.Month1[b-1];
+		       Month B = A.Month1[b-1];             // Year객체 A안에서 입력받은 달을 지정합니다.
 		       
-		       for( int c = 0; c<31; c++){
+		       for( int c = 0; c<31; c++){         // 입력받은 달의 1일부터 마지막 일 까지 일정을 출력합니다.
 		    	   for(int d = 0;  B.Day1[c].i[d] != null ; d++){
 		    	   
 		    		   System.out.printf("%d일 : %s",c+1,B.Day1[c].i[d]);
@@ -601,7 +606,7 @@ public class FunctionGui {
 		    	   }
 		    	   
 		    	   }
-		       frame.setVisible(true);
+		       frame.setVisible(true);           // 다시 메인 프레임을 띄웁니다.
 		       }
 		       
 		}
