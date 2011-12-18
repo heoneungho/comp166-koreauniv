@@ -399,7 +399,7 @@ public class FunctionGui {
 		frame.setSize(300,110);
 		frame.setVisible(true);
 		
-		frame1 = new JFrame();
+		frame1 = new JFrame();         // 메모장 생성
 		JPanel panel1 = new JPanel();
 		JTextArea text = new JTextArea(15,30);
 		text.setText(" 작성하세요. ");
