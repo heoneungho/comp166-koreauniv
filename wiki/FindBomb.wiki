@@ -233,7 +233,7 @@ public class MineGUI extends JPanel implements ActionListener {
 	flagImage	= new ImageIcon("D:/java/Mine/Img/flag.gif");
    }
 
-  // timer, 남은 지뢰, 버튼 초기화하는 메소드 
+  // 남은 지뢰, 버튼 초기화하는 메소드 
 
    public void setProgressPane() {
 	progressPanel = new JPanel();
@@ -439,4 +439,255 @@ public class MineGUI extends JPanel implements ActionListener {
 		mineLabel[1].setIcon( numImgList[ten] );
 		mineLabel[2].setIcon( numImgList[one] );
    }
-  
+
+   public boolean isAllCheckFlagMine() {
+	if ( game != Game.READY ) {
+		for (int r = 0; r < ROWS; r++) {
+			for (int c = 0; c < COLS; c++) {
+				if ( tile[r][c].getFace() != -1 && tile[r][c].getState() == State.FLAG ) { 
+				return false; }
+				
+				if ( tile[r][c].getFace() != -1 && tile[r][c].getState() != State.OPEN ) { 
+				return false; }
+			}
+		}
+		return ( flagCount == MINE );
+	} else return false;
+   }
+
+  //이겼을 때
+   public void GameWin() {
+	for (int r = 0; r < ROWS; r++) {
+		for (int c = 0; c < COLS; c++) {
+			tile[r][c].removeActionListener(tileActionListener[r][c]);
+			tile[r][c].removeMouseListener(tileMouseListener[r][c]);
+			}
+		}
+        if ( level == Level.ROW ) {
+		file = new File("rowscore.dat");
+	} else if ( level == Level.MIDDLE ) {
+		file = new File("middlescore.dat");
+	} else {
+		file = new File("highscore.dat");
+	}
+
+	String text = null;
+	if ( file.exists() ) {
+		try {
+			BufferedReader reader = new BufferedReader( new FileReader(file) );
+			reader.close();					
+		} catch (IOException ex) { System.err.println("파일을 읽던 중 오류 발생");}
+	} 
+	game = Game.END;
+   }
+
+  //타일 눌렀을 때
+
+   public void aroundTilePressed(int r, int c) {
+	int [] dx = {-1,-1,-1,0,0,1,1,1};
+	int [] dy = {-1,0,1,-1,1,-1,0,1};
+		
+	for (int i = 0; i < 8; i++) { 
+		try {
+			if ( tile[r+dx[i]][c+dy[i]].getState() != State.FLAG && tile[r+dx[i]][c+dy[i]].getState() != State.OPEN )
+				tile[r+dx[i]][c+dy[i]].setIcon(pressedImage);
+		} catch(IndexOutOfBoundsException e){}
+	}
+   }
+
+   public void aroundTileReleased(int r, int c) {
+	int flagCnt = 0;
+	int [] dx = {-1,-1,-1,0,0,1,1,1};
+	int [] dy = {-1,0,1,-1,1,-1,0,1};
+		
+	for (int i = 0; i < 8; i++) {
+		try {
+			if ( tile[r+dx[i]][c+dy[i]].getState() == State.FLAG ) flagCnt++;
+		} catch(IndexOutOfBoundsException e){}
+	}
+	if ( tile[r][c].getFace() == flagCnt ) {
+		for (int i = 0; i < 8; i++) {
+			try {
+				if ( tile[r+dx[i]][c+dy[i]].getState() == State.CLOSE | tile[r+dx[i]][c+dy[i]].getState() == State.WILDCARD ) {
+					Tile t = tile[r+dx[i]][c+dy[i]];
+					if ( t.getFace() == -1 ) {
+						game = Game.END;
+						t.setDisabledIcon( mineImgList[1] );;
+						game = Game.END;
+						GameOver();
+						return;
+					} else if ( t.getFace() != 0 && t.getFace() != -1 ) {
+						t.setState( State.OPEN );
+						t.setDisabledIcon( tileNumImgList[t.getFace() - 1] );
+						t.setEnabled( false );
+					} else {
+						spaceTileOpen( t.getRow(), t.getCol() );
+						replaceTile();
+					}
+				}
+			} catch(IndexOutOfBoundsException e){}
+		}
+	} else {
+		for (int i = 0; i < 8; i++) { 
+			try {
+				if ( tile[r+dx[i]][c+dy[i]].getState() != State.FLAG && tile[r+dx[i]][c+dy[i]].getState() != State.OPEN )
+					tile[r+dx[i]][c+dy[i]].setIcon(closeImage);
+			} catch(IndexOutOfBoundsException e){}
+		}
+	}
+}	
+
+  //내부 클래스
+  //새 게임으로 바꿀 때 수행하는 클래스
+   class NewButtonListener implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+		checkMine = MINE;
+		flagCount = 0;
+		reStartGame();
+	}
+   }
+
+  // 게임상태를 받는 클래스
+   class TileActionListener implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+		if ( game == Game.READY ) { 		
+			game = Game.START;
+		}
+		Tile t = (Tile)e.getSource();
+		if ( t.getState() == State.CLOSE | t.getState() == State.WILDCARD ) {
+			if ( t.getFace() == -1 ) {
+				game = Game.END;
+				t.setDisabledIcon( mineImgList[1] );
+				game = Game.END;
+				GameOver();
+				return;
+			} else if ( t.getFace() != 0 && t.getFace() != -1 ) {
+				t.setState( State.OPEN );
+				t.setDisabledIcon( tileNumImgList[t.getFace() - 1] );
+				t.setEnabled( false );
+			} else {
+				spaceTileOpen( t.getRow(), t.getCol() );
+				replaceTile();
+			}
+		}
+		if ( isAllCheckFlagMine() ) { 		// 지뢰를 모두 다 찾았는지 검사
+				GameWin();
+		}			
+	}
+   }
+
+   // 마우스의 클릭으로 이벤트를 받는 클래스
+   class TileMouseListener extends MouseAdapter {
+	private boolean bothLeft = false;
+	private boolean bothRight = false;
+		
+	public void mousePressed(MouseEvent e) {
+		Tile t = (Tile)e.getSource();
+		if ( SwingUtilities.isLeftMouseButton(e) ) {
+			newButton.setIcon( newImgList[1] );
+			if ( t.getState() == State.OPEN ) {
+				bothLeft = true;
+			}
+		}
+		if ( SwingUtilities.isRightMouseButton(e) ) {
+			if ( t.getState() != State.OPEN ) {
+				if ( t.getState() == State.CLOSE ) {
+					t.setIcon(flagImage);
+					t.setState(State.FLAG);
+					checkMine -= 1;
+					if ( t.getFace() == -1 ) 
+					   flagCount++;
+					newButton.setIcon( newImgList[5] );
+					diplayMineCount();
+				} else if ( t.getState() == State.FLAG ) {
+					t.setIcon(wildcardImage);
+					t.setState(State.WILDCARD);
+					checkMine += 1;
+					if ( t.getFace() == -1 )
+					   flagCount--;
+					newButton.setIcon( newImgList[4] );
+					diplayMineCount();
+					} else {
+					t.setIcon(closeImage);
+					t.setState(State.CLOSE);
+					newButton.setIcon( newImgList[0] );
+					}
+			}
+			if ( isAllCheckFlagMine() ) { 		// 지뢰를 모두 다 찾았는지 검사
+				GameWin();
+			}
+			// both mouse check
+			if ( t.getState() == State.OPEN ) {
+				bothRight = true;
+			}
+		}
+		if ( t.getState() == State.OPEN ) {
+			if ( bothLeft == true && bothRight == true ) {
+				aroundTilePressed( t.getRow(), t.getCol() );
+			}
+		}
+	}
+
+  	public void mouseReleased(MouseEvent e) {
+		Tile t = (Tile)e.getSource();
+		if ( SwingUtilities.isLeftMouseButton(e) ) {
+			newButton.setIcon( newImgList[0] );
+			if ( t.getState() == State.OPEN ) {
+				bothLeft = false;
+			}
+		}
+		if ( SwingUtilities.isRightMouseButton(e) ) {
+			if ( t.getState() == State.OPEN ) {
+				bothRight = false;
+			}
+		}
+		if ( t.getState() == State.OPEN ) {
+			if ( bothLeft == false && bothRight == false) {
+				aroundTileReleased( t.getRow(), t.getCol() );
+			}
+		}
+		if ( game == Game.END ) newButton.setIcon( newImgList[2] );
+	}
+   }
+
+public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+}}}
+
+{{{
+
+import javax.swing.*;
+
+// GUI에서 보이는 버튼을 기본적으로 설정하는 클래스.
+public class Tile extends JButton {
+	
+	private State state		= null;
+	private int face		= 0;
+	private int row			= 0;
+	private int col			= 0;
+	
+	public Tile(int face, int row, int col, Icon icon) {
+		super(icon);
+		this.state = State.CLOSE;
+		this.face = face;
+		this.row = row;
+		this.col = col;
+	}
+	public void setFace(int face) { this.face = face; }
+	public int getFace() { return this.face; }
+	public int getRow() { return this.row; }
+	public int getCol() { return this.col; }
+	public void setState(State STATE) { this.state = STATE; }
+	public State getState() { return this.state; }
+}
+}}}
+
+{{{
+  // 열거형 
+  public enum State { OPEN, CLOSE, FLAG, WILDCARD };
+  public enum Level { ROW, MIDDLE, HIGH };
+  public enum Game { READY, START, END };
+}}}
