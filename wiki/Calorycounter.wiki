@@ -55,8 +55,7 @@ public class start implements ActionListener
 
      button.setContentAreaFilled(false); 
      button.setOpaque(true); 
-     button.addActionListener(this);
-
+   
      panel.add(button);
      button.addActionListener(this);
      panel.add(button2);
