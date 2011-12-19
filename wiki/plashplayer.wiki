@@ -113,3 +113,44 @@ System.out.println("재밌었나용?ㅋ");
 }
 
 }
+
+
+import javax.sound.midi.*;        //클래스를 하나 더 만들어 소리효과도 추가했습니다
+
+public class GugugameSound {
+
+	   
+    public void play(){
+       
+        try {
+           
+            Sequencer player = MidiSystem.getSequencer();
+            player.open();
+           
+            Sequence seq = new Sequence(Sequence.PPQ,4);
+           
+           
+            Track track = seq.createTrack();
+           
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,74,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+           
+          
+            ShortMessage b = new ShortMessage();
+            b.setMessage(128,1,74,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+           
+           
+            player.setSequence(seq);
+           
+            player.start();
+            } catch (Exception ex) {
+                    ex.printStackTrace();
+            }
+    }
+
+}
+
