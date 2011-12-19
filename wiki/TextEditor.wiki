@@ -1,8 +1,7 @@
 
-
 = Introduction =
 
-매우 기본적인 메모장입니다.
+기본적인 메모장입니다.
 
 
 = Details =
