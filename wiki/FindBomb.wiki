@@ -19,82 +19,133 @@
 = Using the Code =
 
 {{{
-import java.util.*;
+import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+// 프레임 생성하는 클래스
+public class MainFrame extends JFrame { 
+
+   private Level		level		= Level.MIDDLE;
+   private MineGUI		mineGUI		= null;	
+	/* 메뉴 */
+   private JMenuBar		menuBar		= null;
+   private JMenu		fileMenu	= null;
+   private JMenuItem		newItem		= null;
+   private JMenuItem		rowLvItem	= null;
+   private JMenuItem		midlLvItem	= null;
+   private JMenuItem		highLvItem	= null;
+   private JMenuItem		bestTimeItem  	= null;
+   private JMenuItem		exitItem	= null;
+
+   private String		endString	= "종료?";
+
+  // MainFrame의 생성자
+  public MainFrame( String title ) {
+   super( title );
+   initMenu();
+   setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+   this.mineGUI = new MineGUI(this.level);
+   this.setContentPane(this.mineGUI);
+   this.pack();
+   this.setCenterPosition();
+   // frame icon 
+   this.setResizable(false);
+   this.setVisible(true);
+	}
+
+  /* 내부 클래스 [ActionListener]*/
+
+// 새 게임으로 바꿀 때 이벤트를 받는 클래스
+  class newActionListener implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+		changeGame();
+	}
+  }
+
+// 레벨 바꾸는 이벤트를 받는 클래스
+  class levelActionListener implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+		if ( e.getSource() == rowLvItem ) {
+			changeLevel(Level.ROW);
+		} else if (e.getSource() == midlLvItem ) {
+			changeLevel(Level.MIDDLE);
+		} else {
+			changeLevel(Level.HIGH);
+		}
+	}
+  }
+
+// 종료시 이벤트를 받는 클래스
+  class exitActionListener implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+		int result;
+		result = JOptionPane.showConfirmDialog( MainFrame.this, endString, "Game End", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE );
+		if ( result == JOptionPane.YES_OPTION ) System.exit(0);
+	}
+  }
+
+// 메뉴 바 설정하는 메소드 
+   public void initMenu() {
+	menuBar		= new JMenuBar();
+	fileMenu	= new JMenu( "게임" );
+	newItem		= new JMenuItem( "새 게임" );
+	rowLvItem	= new JMenuItem( "초급" );
+	midlLvItem	= new JMenuItem( "중급" );
+	highLvItem	= new JMenuItem( "고급" );
+	exitItem	= new JMenuItem( "끝내기" );
+	
+	newItem.addActionListener( new newActionListener() );
+	rowLvItem.addActionListener( new levelActionListener() );
+	midlLvItem.addActionListener( new levelActionListener() );
+	highLvItem.addActionListener( new levelActionListener() );
+	exitItem.addActionListener( new exitActionListener() );
+	
+	fileMenu.add( newItem );
+	fileMenu.addSeparator();
+	fileMenu.add( rowLvItem );
+	fileMenu.add( midlLvItem );
+	fileMenu.add( highLvItem );
+	fileMenu.addSeparator();
+	fileMenu.add( exitItem );
+	
+	menuBar.add( fileMenu );
+	
+	this.setJMenuBar( menuBar );
+	}
 
 
-public class FindBombGame {  // 게임 클래스
+   public void setCenterPosition() {
+	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+	Dimension frm = this.getSize();
+	int xpos = (int)( screen.getWidth() / 2 - frm.getWidth() / 2 );
+	int ypos = (int)( screen.getHeight() / 2 - frm.getHeight() / 2 );
+	this.setLocation( xpos, ypos );
+	}
 
-   
-   private GameHelper helper = new GameHelper();
-   private ArrayList<FindBomb> FindBombsList = new ArrayList<FindBomb>;
-   private int checkblock = 0;
+// 레벨 바꾸기
+   public void changeLevel(Level lv) {
+	this.level = lv;
+	changeGame();
+	}
 
+// 게임을 다시 세팅 
+   public void changeGame() {
+	this.remove(this.mineGUI);
+	this.mineGUI = new MineGUI(this.level);
+	this.setContentPane(this.mineGUI);
+	this.pack();
+	this.setCenterPosition();
+	this.setResizable(false);
+	this.setVisible(true);
+	}
 
-   private void setUpGame()  // FindBomb객체 만들고 위치 지정
-
-
-   private void startPlaying() // 사용자의 입력을 받음 
-
-
-   private void checkUserGuess(String userGuess)
-        // 사용자가 선택한 블럭이 지뢰인지 아닌지 확인함
-
-
-   private void finishGame() // 게임 결과를 알려주는 메시지 출력
-
-
-   public static void main(String[] args) {
-
-       FindBombGame game = new FindBombGame();
-       game.setUpGame();
-       game.startPlaying();
-
-     }
-     
+// 메인 메소드
+   public static void main ( String args[] ){
+	new MainFrame( "지뢰 찾기" );
+	}
 }
-
 }}}
-
 
 {{{
-
-public class FindBomb { // 실제 FindBomb 객체
-
-   
-   private ArrayList<String> locationCalls;
-   private string bomb;  
-        // 블럭의 위치를 지정한 arraylist, Bomb의 구분을 짓는 문자열 변수
-
-   public void setLocationCells(ArrayList loc) // 실행 할 때마다 Bomb의 위치를 바꾸어줌
-
-   public void inBomb(String bomb)
-
-   public String checkBlock(String userInput) //사용자가 입력한 블럭이 Bomb인지 아닌지 확인
-
-   public String showNumber(String userInput) // 선택한 블럭 주위에 Bomb가 몇 개있는지 숫자로 나타냄  
-
-   }
-   
-
-}}}
-
-
-{{{
-
-public class GameHelper {  // 보조 클래스
-
-
-   public String getUserInput(String prompt) // 사용자의 입력을 받음
-
-   public ArrayList <String> placeBomb(int size) // Bomb의 위치를 지정함 
-
-   
-
-   }
-
-}}}
-
-
-
-
-그래픽은 어떻게 해야될지 몰라서 직접써서 찾는걸로 해 봤습니다
