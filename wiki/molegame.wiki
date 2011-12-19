@@ -1,0 +1,143 @@
+= Introduction =
+
+두더지를 잡는게임입니다
+
+= Details =
+
+두더지의 그림이 렌덤으로 이동합니다. 그 두더지를 마우스로 클릭하면 
+점수가 올라가고 시간은 정해져있습니다.
+
+LMainFrame 클래스
+
+
+import javax.swing.*;
+
+public class LMainFrame extends JFrame {
+  LView m_view = new LView();
+
+     public LMainFrame()
+     {
+         add(m_view);
+
+         setTitle("molegame");
+         setSize(500, 500);
+         setVisible(true);
+
+         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+     }
+}
+
+ 
+
+LView 클래스
+
+import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.JOptionPane;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
+public class LView extends JPanel implements MouseListener, ActionListener
+{
+    int m_x = 100;
+    int m_y = 100;
+    int m_w = 50;
+    int m_h = 50;
+
+    int m_score = 0;
+    int m_timer = 10;
+    Timer t1, t2;
+
+    Random m_rand = new Random();
+
+    public LView()
+     {
+        this.addMouseListener(this);
+        t1 = new Timer(1000, this);
+        t1.start();
+        t2 = new Timer(500, this);
+        t2.start();
+
+    }
+
+    public void paint(Graphics g)
+    {
+        this.paintComponent(g);
+
+        //g.drawString("sdasd", 10, 10);
+      
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Image image = tk.getImage("c:/mole.jpg");
+        g.drawImage(image,m_x,m_y,40,40, this);
+        g.drawString("score : "+m_score+ "    time : "+m_timer, 10, 10);
+   
+    }
+
+    public void mouseClicked(MouseEvent e) {
+            }
+
+    public void mousePressed(MouseEvent e) {
+                int x, y;
+        x = e.getX();
+        y = e.getY();
+
+        if(m_x <= x && x <= m_x+m_w)
+        {
+            if(m_y <= y && y < m_y+m_h)
+            {
+                m_score += 100;
+                repaint();
+            }
+        }
+    }
+
+    public void mouseReleased(MouseEvent e) {
+            }
+
+    public void mouseEntered(MouseEvent e) {
+            }
+
+    public void mouseExited(MouseEvent e) {
+           }
+
+    public void actionPerformed(ActionEvent e) {
+                if(t1 == e.getSource())
+        {
+            if(0 < m_timer )
+            {
+                m_timer --;
+            }
+            else if(m_timer <= 0)
+            {
+                t1.stop();
+                t2.stop();
+                JOptionPane.showMessageDialog(this, "game over ~~!!", "mole", JOptionPane.INFORMATION_MESSAGE);
+            }
+            repaint();
+        }
+        else if(t2 == e.getSource())
+        {
+            m_x = m_rand.nextInt(400);
+            m_y = m_rand.nextInt(400);
+            repaint();
+        }
+    }
+}
+
+
+ 
+
+Main클래스
+
+ 
+
+public class Main {
+  public static void main(String[] args) 
+     {
+         LMainFrame the = new LMainFrame();
+
+     }
+}
+
+
