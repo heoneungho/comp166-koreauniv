@@ -130,8 +130,9 @@ public class Enemy extends GameCharacter {
 		}
 	}
 }
-4. Battle.java
 }}}
+4. Battle.java
+{{{
 import java.io.IOException;
 import java.util.Scanner;
 public class Battle	extends GamePlay{
@@ -281,7 +282,7 @@ public class Battle	extends GamePlay{
 		}
 	}
 }
-
+}}}
 5. GamePlay.java
 {{{
 import java.util.*;
