@@ -108,7 +108,7 @@ str1 = d.readLine();
 
 }
 
-System.out.println("안녕히 가세요.");
+System.out.println("재밌었나용?ㅋ");
 
 }
 
