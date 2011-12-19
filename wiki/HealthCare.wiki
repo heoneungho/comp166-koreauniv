@@ -142,14 +142,23 @@ in_weight.setText("");
 }
 
 public String BMI_Check(double BMI){
+
 if(BMI<20)
+
 BMI_Result="Under weight!!";
+
 else if(20<=BMI && BMI<25)
+
 BMI_Result="You are absolutely normal!";
+
 else if(25<=BMI&& BMI<30)
+
 BMI_Result="You are overweight!!";
+
 else if(BMI<=30)
+
 BMI_Result="You are obese!!!!";
+
 return BMI_Result;
 }
 
