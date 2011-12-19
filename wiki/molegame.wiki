@@ -1,3 +1,4 @@
+#labels 2011190732이지예
 = Introduction =
 
 두더지를 잡는게임입니다
@@ -13,7 +14,8 @@ LMainFrame 클래스
 import javax.swing.*;
 
 public class LMainFrame extends JFrame {
-  LView m_view = new LView();
+ 
+ LView m_view = new LView();
 
      public LMainFrame()
      {
@@ -32,10 +34,15 @@ public class LMainFrame extends JFrame {
 LView 클래스
 
 import javax.swing.*;
+
 import javax.swing.Timer;
+
 import javax.swing.JOptionPane;
+
 import java.awt.*;
+
 import java.awt.event.*;
+
 import java.util.*;
 
 public class LView extends JPanel implements MouseListener, ActionListener
@@ -139,5 +146,3 @@ public class Main {
 
      }
 }
-
-
