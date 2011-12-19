@@ -29,7 +29,7 @@ public class melodyCube
 	Track track;
 	boolean Rand = false;
 	int tool=1;
-	int[] noteKey = {80,78,76,74, 72,70,68,66, 64,62,60,58, 56,54,52,50 };
+	int[] noteKey = {80,78,76,74, 72,70,68,66, 64,62,60,58, 56,54,52,50 }; //연주 시의 각각 음의 높낮이에 대한 정보입니다.
 	
 	public static void main(String[] args) {
 		new melodyCube().melodyCubeGUI();	
@@ -50,19 +50,19 @@ public class melodyCube
 		
 		Box buttonBox = new Box(BoxLayout.X_AXIS);
 		
-		JButton start = new JButton("START!");
+		JButton start = new JButton("START!");//연주를 시작하는 버튼
 		start.addActionListener(new startListener());
 		buttonBox.add(start);
 		
-		JButton stop = new JButton("STOP!");
+		JButton stop = new JButton("STOP!");//연주를 정지하는 버튼
 		stop.addActionListener(new stopListener());
 		buttonBox.add(stop);
 		
-		JButton random = new JButton("RANDOM!");
+		JButton random = new JButton("RANDOM!");//무작위로 노트를 배열하여 새로운 창을 여는 버튼
 		random.addActionListener(new randomListener());
 		buttonBox.add(random);
 		
-		JButton change = new JButton("CHANGE TOOL!");
+		JButton change = new JButton("CHANGE TOOL!");//악기를 무작위로 변경하는 버튼
 		change.addActionListener(new changeListener());
 		buttonBox.add(change);
 		
@@ -70,7 +70,7 @@ public class melodyCube
 		slower.addActionListener(new slowerListener());
 		buttonBox.add(slower);
 		
-		JButton faster = new JButton(">>>");
+		JButton faster = new JButton(">>>");//연주 속도를 조절하는 버튼
 		faster.addActionListener(new fasterListener());
 		buttonBox.add(faster);
 		
@@ -88,7 +88,7 @@ public class melodyCube
 			JCheckBox cube = new JCheckBox();
 			if(Rand == true)
 			{
-				if((Math.random() * 2) > 0.2)
+				if((Math.random() * 2) > 0.2)//1/5의 확률로 노트가 선택됩니다.
 					cube.setSelected(false);
 					else
 						cube.setSelected(true);
@@ -209,7 +209,7 @@ public class melodyCube
 	public class changeListener implements ActionListener {
 		public void actionPerformed(ActionEvent a) {
 			
-			tool = (int) (Math.random() * 124);
+			tool = (int) (Math.random() * 124);//124종류의 악기가 무작위로 선택됩니다.
 			
 		}
 	}
