@@ -167,10 +167,7 @@ public class MineGUI extends JPanel implements ActionListener {
   private int		checkMine	= 40;
   private int		flagCount	= 0;
   private JLabel[]	mineLabel	= null;
-  private JButton	newButton	= null;
-  private JLabel[]	timeLabel	= null;
-  private Timer		timer		= new Timer( 1000, this );
-  private int		time		= 0;
+  
   private Tile[][] 	tile		= null;
   private File		file		= null;
   private JPanel progressPanel	        = null;
@@ -179,7 +176,6 @@ public class MineGUI extends JPanel implements ActionListener {
   // ImageIcon 필드
 
   private ImageIcon[]	numImgList	= null; 
-  private ImageIcon[]	newImgList	= null;
   private ImageIcon[]	mineImgList	= null;
   private ImageIcon[] tileNumImgList	= null;
   private ImageIcon	defaultImage	= null;
@@ -220,7 +216,7 @@ public class MineGUI extends JPanel implements ActionListener {
 		
 	tileNumImgList = new ImageIcon[7];
 	for (int i = 0; i < 7; i++)
-		tileNumImgList[i] = new ImageIcon("D:/java/" +(i + 1) + "s.gif");
+		tileNumImgList[i] = new ImageIcon("D:/java/" +(i + 1) + ".png");
 		
 	defaultImage	= new ImageIcon("D:/java/default.gif");
 	closeImage	= new ImageIcon("D:/java/close.gif");
