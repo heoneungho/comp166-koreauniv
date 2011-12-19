@@ -44,12 +44,12 @@ if (result == y)
 
 {
 
-return "정답입니다~ ㅊㅋㅊㅋ";
+return "정답입니다~ ㅊㅋㅊㅋ";    //정답시 출력
 
 } else
 
-return "틀렸습니다~ -_-;;";
-
+return "틀렸습니다~ -_-;;";           //오답시 출력(+사운드)
+력
 }
 
 };
@@ -70,7 +70,8 @@ int b=0,f=0;
 
 String str1,str2;
 
-System.out.print("단을 입력하세요(press 0 to exit) >>");
+System.out.print("단을 입력하세요(press 0 to exit) >>");    //0 입력시 게임종료
+                                                                                                         1~ 단 선택
 
  
 
@@ -108,7 +109,7 @@ str1 = d.readLine();
 
 }
 
-System.out.println("재밌었나용?ㅋ");
+System.out.println("재밌었나용?ㅋ");     //게임 종료
 
 }
 
@@ -153,4 +154,3 @@ public class GugugameSound {
     }
 
 }
-
