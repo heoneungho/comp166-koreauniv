@@ -25,36 +25,330 @@
 관심이 많은 사람들이 증가하고 있는 만큼 충분히 유용한 프로그램이라고 판단했습니다.
 
 = Code =
-클래스 목록 : Height, Weight, Colesterol, AbdomObesity, BodyFatPerc 
+클래스 목록 : BMI_Test, AbdomObesity, Cure 
 
-1) public static Height
-         state : 자신의 키, 나이, 평균 키, 주기
-
-        method  (1) 평균출력 : 나이를 입력받아 정상적인 키를 출력
-                  
-                 (2) 평균과의 차이를 +/- 값으로 나타냄
-                   
-                  (3) 변화율 출력 : 초기부터 현재까지 입력한 키의 data를 불러오
-                                      고 증가율 출력
-2) public static Weight
+1) public class BMI_Test
           state : 자신의 키, 몸무게, 주기
            method (1) 정상체중 출력 : 키를 통해 정상 체중 계산, 출력
-                   
-                    (2) 평균과의 차이를 나타냄
-                    
-                    (3) 변화율 출력 : 초기부터 현재까지 입력한 체중을의 data를                                불러오고 증감률 출력        
-                    
-                    (4) 비만도 측정 : 비만도를 계산하여 저체중, 정상, 과체중, 경도비만, 고도비만 중 어디에 속하는지 알려줌
+                   (2) 비만도 출력 : BMI지수를 계산하여 출력     
+                   (3) 비만 범위 측정 : 비만도를 계산하여 저체중, 정상, 과체중,비만 중 어디에 속하는지 알려줌
 
-3) public static Colesterol
-           state : 현재 콜레스테롤 수치
-            method : 콜레스테롤 수치의 변화율 출력
 
-4) public static AbdomObesity
-           state : 허리둘레, 엉덩이둘레, 성별
+2) public static AbdomObesity
+           state : 허리둘레, 엉덩이둘레
             method : 복부비만도 계산하여 출력
 
-5) public static BodyFatPerc
-          state : 성별, 허리둘레, 엉덩이둘레, 몸무게, 키
-           method : 체지방률 계산
-       
+3) public class Cure
+           method: (1)prescription : 비만을 예방할 수 있는 방법 제시
+                      (2)explanation : BMI가 무엇인지에 대한 정보 제공
+
+= Actual Code =
+package javaTerm;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class BMI_Test extends JFrame implements ActionListener
+{
+ double height,weight;
+ TextField in_height,in_weight,reBMI,reWe;
+ TextArea ta;
+ Button enter,reset;
+ String BMI_Result;
+
+
+ BMI_Test(){
+   setLayout(new GridLayout(2,1,5,5));
+  JPanel p1=new JPanel();
+ 
+  p1.setBackground(Color.pink);
+  p1.setLayout(new BorderLayout()); 
+  p1.add(new Label("Input heigh(kg)/weight(cm) and push RESULT button."),"North");
+
+  JPanel p11=new JPanel();
+  p11.setBackground(Color.pink);
+  p11.add(new Label("Height(cm): "));
+  in_height=new TextField(5);
+  p11.add(in_height);
+ 
+  p11.add(new Label("Weight(kg): "));
+  in_weight=new TextField(5);
+  p11.add(in_weight);
+  p1.add(p11,"Center");
+
+  JPanel p12=new JPanel(); 
+  p12.setBackground(Color.pink);
+  JButton enter =new JButton("RESULT");
+  JButton reset =new JButton("AGAIN");
+  enter.addActionListener(this);
+  reset.addActionListener(this);
+ 
+  p12.add(enter);
+  p12.add(reset);  
+  p1.add(p12,"South");  
+  add(p1);
+
+ 
+
+JPanel p2=new JPanel(); 
+p2.setLayout(new BorderLayout());
+p2.add(new Label("----------- BMI RESULT ------------"),"North");
+JPanel p21=new JPanel();
+p21.add(new Label("RATE(BMI):"));
+reBMI=new TextField(5); 
+p21.add(reBMI);
+p21.add(new Label("NORMAL WEIGHT(kg):"));
+reWe=new TextField(5);
+p21.add(reWe);
+p21.add(new Label("Result of your state is?"));
+ta=new TextArea(3,22);
+p21.add(ta);
+
+p2.add(p21,"Center");
+
+add(p2);
+in_height.requestFocus();
+
+addWindowListener(new WindowAdapter() {
+
+ public void windowClosing(WindowEvent we) {
+System.exit(0);
+}
+});
+}
+
+
+public void actionPerformed(ActionEvent ae) {
+String s=ae.getActionCommand();
+
+
+if(s=="RESULT"){
+
+
+height=Double.valueOf(in_height.getText()).doubleValue();
+
+double N_weight = (height - 100)* 0.9;
+
+height=height/100;
+System.out.println(height);
+weight=Double.valueOf(in_weight.getText()).doubleValue();
+
+
+double BMI = Math.round(weight/(height * height));
+String re=BMI_Check(BMI);
+reBMI.setText(""+BMI);
+reWe.setText(""+N_weight);
+ta.setText(re);
+}else{
+in_height.setText("");
+in_weight.setText("");
+}
+}
+
+public String BMI_Check(double BMI){
+if(BMI<20)
+BMI_Result="Under weight!!";
+else if(20<=BMI && BMI<25)
+BMI_Result="You are absolutely normal!";
+else if(25<=BMI&& BMI<30)
+BMI_Result="You are overweight!!";
+else if(BMI<=30)
+BMI_Result="You are obese!!!!";
+return BMI_Result;
+}
+
+public static void main(String[] args)
+{
+BMI_Test bmi=new BMI_Test();
+bmi.show();
+bmi.setSize(400,300);
+
+AbdomObe abdomObe=new AbdomObe();
+abdomObe.show();
+abdomObe.setSize(400,300);
+
+Cure gui = new Cure();
+//gui.show();
+//gui.setSize(400,300);
+gui.go();
+}
+}
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+package javaTerm;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class AbdomObe extends JFrame implements ActionListener{
+
+ double hip, waist;
+ TextField in_hip,in_waist, reRate,reWe;
+  TextArea ta;
+  JButton enter,reset,cure;
+  String AO_Result;
+
+  AbdomObe(){
+   setLayout(new GridLayout(2,1,5,5));
+  
+   JPanel p1=new JPanel();
+   p1.setBackground(Color.yellow);
+   p1.setLayout(new BorderLayout()); 
+   p1.add(new Label("Input waist/hip(cm) and push RESULT button!"),"North");
+
+   JPanel p11=new JPanel();
+   p11.setBackground(Color.yellow);
+   p11.add(new Label("waist(cm): "));
+   in_waist=new TextField(5);
+   p11.add(in_waist);
+  
+   Label l=new Label("hip(cm): ");
+   p11.add(l);
+   in_hip=new TextField(5);
+   p11.add(in_hip);
+   p1.add(p11,"Center");
+   JPanel p12=new JPanel();
+   p12.setBackground(Color.yellow);
+   JButton enter =new JButton("RESULT");
+   JButton reset =new JButton("AGAIN");
+  
+   enter.addActionListener(this);
+   reset.addActionListener(this);
+  
+  
+   p12.add(enter);
+   p12.add(reset);
+
+   p1.add(p12,"South");
+   add(p1);
+  
+ 
+
+ 
+
+ JPanel p2=new JPanel();  
+ p2.setLayout(new BorderLayout());
+ p2.add(new Label("----------- Abdomen Obesity ------------"),"North");
+ JPanel p21=new JPanel();
+ p21.add(new Label("Rate of Ab.Obesity:"));
+ reRate=new TextField(5);
+ p21.add(reRate);
+ p21.add(new Label("The higher the rate the more dangerous you are."));
+ p21.add(new Label("ResulT of you state is?"));
+ TextArea ta =new TextArea(3,23);
+ p21.add(ta);
+ p2.add(p21,"Center");
+
+ add(p2);
+ in_waist.requestFocus();
+ 
+ addWindowListener(new WindowAdapter() {
+
+  public void windowClosing(WindowEvent we) {
+ System.exit(0);
+ }
+ });
+ }
+
+ public void actionPerformed(ActionEvent ae) {
+ String s=ae.getActionCommand();
+
+ if(s=="RESULT"){
+
+ 
+ waist=Double.valueOf(in_waist.getText()).doubleValue();
+ hip=Double.valueOf(in_hip.getText()).doubleValue();
+ 
+ double Rate = (hip)/(waist);
+ String re=Abdomen_Check(Rate);
+ 
+ reRate.setText(""+Rate);
+ ta.setText(re);
+ }else{
+ in_waist.setText("");
+ in_hip.setText("");
+ }
+ }
+
+ public String Abdomen_Check(double Rate){
+ if(Rate<0.7)
+ AO_Result="Very Safe!!";
+ else if(0.7<=Rate && Rate<0.8)
+ AO_Result="Normal.But little bit dangerous!";
+ else if(0.8<=Rate&& Rate<0.9)
+ AO_Result="You are obese!!";
+ else if(Rate>=0.9)
+ AO_Result="Very dangerous!!!!";
+ return AO_Result;
+ }
+
+ 
+ }
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+package javaTerm;
+    import java.awt.*;
+    import java.awt.event.*;
+
+    import javax.swing.*;
+
+    public class Cure extends JFrame implements ActionListener{
+
+     JTextArea text;
+     
+     
+     public void go() {
+      
+      JFrame frame = new JFrame();
+      //setLayout(new GridLayout(2,1,5,5));
+      JPanel p1 = new JPanel();
+      p1.setBackground(Color.orange);
+      
+      JButton b1= new JButton("PRESCRIPTION");
+      JButton b2= new JButton("EXPLANATION OF BMI");
+      
+      b1.addActionListener(this);
+      b2.addActionListener(this);
+      
+      p1.add(b1);
+      p1.add(b2);
+      
+      //add(p1);
+      
+      JPanel p2 = new JPanel();
+       p2.add(new Label("THERE ARE CONTENTS!"),"North");
+      text = new JTextArea(10, 20);
+      text.setLineWrap(true);
+      
+      JScrollPane scroller = new JScrollPane(text);
+      scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+      scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+      p2.add(scroller);
+      
+      frame.getContentPane().add(BorderLayout.NORTH, p1);
+      frame.getContentPane().add(BorderLayout.CENTER, p2);
+      
+      frame.setSize(400,500);
+      frame.setVisible(true);
+      //add(p2);
+     }
+      
+      
+      public void actionPerformed(ActionEvent ae) {
+       String s=ae.getActionCommand();
+
+       if(s=="PRESCRIPTION"){
+        text.append("1)Drink a lot of warm water.\n 2)Stretch your body regularly.\n 3)Stimulate your feet!\n 4)Breath through abodomen. \n5)Eat more veges than meat.\n\n\n");
+        
+        }else{
+        text.append("BMI means body mass index.\n Through BMI test you can \n know your body mass exactly.\n This rate can be the index of obesity.\n\n");
+        
+        }
+        }
+    }
