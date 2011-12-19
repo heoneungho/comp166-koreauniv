@@ -115,7 +115,7 @@ public class MainFrame extends JFrame {
 	this.setJMenuBar( menuBar );
 	}
 
-
+  // 화면과 프레임의 크기를 정하고 화면 중앙에 프레임이 나오도록 설정
    public void setCenterPosition() {
 	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 	Dimension frm = this.getSize();
@@ -208,7 +208,7 @@ public class MineGUI extends JPanel implements ActionListener {
 	setGamePane();
   }
 
-  // image 받는 메소드
+  // image 받는 메소드. 이미지의 위치는 변경하면 됩니다
    public void setImageLoading() {
 	numImgList = new ImageIcon[10];
 	for ( int i = 0; i < 10; i++ )
