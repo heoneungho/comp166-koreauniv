@@ -1,8 +1,115 @@
 #labels 2011190730,장재훈
 = Introduction =
 
-마우스를 올려놓으면 재생되는 plash player
+원래 계획했던 프로그램 대신, 재밌고 신나는 구구단게임을 만들어 보았습니다.
+우리 모두 신나고 재밌는 구구단의 세계로 빠져 봅시다~^^*
 
 = Details =
 
-네이버나 다음, 야후 등 검색홈페이지를 돌아다니다보면 웹페이지에 "마우스를올려보세요" 라는 문구가 있습니다. 마우스포인트를 올려놓게되면 화면이 커지면서 동영상이 재생되면서 플레쉬영상이 나옵니다. 평소에 궁금하기도해서 이번기회에 이런 프로그램을 만들어보려합니다.
+import java.io.*;
+
+class Gugudan
+
+{
+
+private int comnum;
+
+private int result;
+
+public String setComState()
+
+{
+
+comnum = (int)(Math.random()*8 + 1);
+
+return " * " + comnum + " = ";
+
+}
+
+public String setResult(int x)
+
+{
+
+result = x * comnum;
+
+return "정답은 : " + result;
+
+}
+
+public String getTrue(int y)
+
+{
+
+if (result == y)
+
+{
+
+return "정답입니다~ ㅊㅋㅊㅋ";
+
+} else
+
+return "틀렸습니다~ -_-;;";
+
+}
+
+};
+
+ 
+
+ 
+
+ 
+
+public class Gugugame
+
+{
+
+public static void main(String [] args) throws Exception{
+
+int b=0,f=0;
+
+String str1,str2;
+
+System.out.print("단을 입력하세요(press 0 to exit) >>");
+
+ 
+
+ 
+
+BufferedReader d = new BufferedReader(new InputStreamReader(System.in));
+
+BufferedReader e = new BufferedReader(new InputStreamReader(System.in));
+
+str1 = d.readLine();
+
+Gugudan g = new Gugudan();
+
+ 
+
+while(!str1.equals("0")){
+
+b = Integer.valueOf(str1).intValue();
+
+System.out.print("입력한 단 : " + b);
+
+System.out.print(g.setComState());
+
+str2 = e.readLine();
+
+f = Integer.valueOf(str2).intValue();
+
+System.out.println(g.setResult(b));
+
+System.out.println(g.getTrue(f));
+
+System.out.println("단을 입력하세요(press 0 to exit)>>");
+
+str1 = d.readLine();
+
+}
+
+System.out.println("안녕히 가세요.");
+
+}
+
+}
