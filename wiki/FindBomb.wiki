@@ -26,9 +26,10 @@ import javax.swing.*;
 // 프레임 생성하는 클래스
 public class MainFrame extends JFrame { 
 
-   private Level		level		= Level.MIDDLE;
+   private Level		level		= Level.ROW;
    private MineGUI		mineGUI		= null;	
-	/* 메뉴 */
+
+	// 메뉴
    private JMenuBar		menuBar		= null;
    private JMenu		fileMenu	= null;
    private JMenuItem		newItem		= null;
@@ -471,17 +472,27 @@ public class MineGUI extends JPanel implements ActionListener {
 	}
 
 	String text = null;
+	String score = null;	
 	if ( file.exists() ) {
 		try {
 			BufferedReader reader = new BufferedReader( new FileReader(file) );
-			reader.close();					
-		} catch (IOException ex) { System.err.println("파일을 읽던 중 오류 발생");}
+			text = reader.readLine();
+			reader.close();
+			if (text != null) {
+			   String name = JOptionPane.showInputDialog( this, "지뢰를 모두 찾았습니다! 이름을 입력해주세요.", "ㅋㅇㅋ", JOptionPane.OK_CANCEL_OPTION );
+			   FileWriter writer = new FileWriter( file );
+			   score = name;
+			   writer.write( score );
+			   writer.close();
+			   text = score + "님 추카추카!";
+			   JOptionPane.showMessageDialog( this, text, "End", JOptionPane.OK_OPTION );			
+			}
+		}catch (IOException ex) { System.err.println("파일을 읽던 중 오류 발생");}
 	} 
 	game = Game.END;
    }
 
   //타일 눌렀을 때
-
    public void aroundTilePressed(int r, int c) {
 	int [] dx = {-1,-1,-1,0,0,1,1,1};
 	int [] dy = {-1,0,1,-1,1,-1,0,1};
@@ -576,14 +587,13 @@ public class MineGUI extends JPanel implements ActionListener {
    }
 
    // 마우스의 클릭으로 이벤트를 받는 클래스
-   class TileMouseListener extends MouseAdapter {
+  class TileMouseListener extends MouseAdapter {
 	private boolean bothLeft = false;
 	private boolean bothRight = false;
 		
 	public void mousePressed(MouseEvent e) {
 		Tile t = (Tile)e.getSource();
 		if ( SwingUtilities.isLeftMouseButton(e) ) {
-			newButton.setIcon( newImgList[1] );
 			if ( t.getState() == State.OPEN ) {
 				bothLeft = true;
 			}
@@ -596,7 +606,6 @@ public class MineGUI extends JPanel implements ActionListener {
 					checkMine -= 1;
 					if ( t.getFace() == -1 ) 
 					   flagCount++;
-					newButton.setIcon( newImgList[5] );
 					diplayMineCount();
 				} else if ( t.getState() == State.FLAG ) {
 					t.setIcon(wildcardImage);
@@ -604,21 +613,20 @@ public class MineGUI extends JPanel implements ActionListener {
 					checkMine += 1;
 					if ( t.getFace() == -1 )
 					   flagCount--;
-					newButton.setIcon( newImgList[4] );
 					diplayMineCount();
-					} else {
+				} else {
 					t.setIcon(closeImage);
 					t.setState(State.CLOSE);
-					newButton.setIcon( newImgList[0] );
-					}
+				}
 			}
-			if ( isAllCheckFlagMine() ) { 		// 지뢰를 모두 다 찾았는지 검사
-				GameWin();
+			if ( isAllCheckFlagMine() ) { 
+				// 지뢰를 모두 다 찾았는지 검사
+					GameWin();
 			}
-			// both mouse check
+			  // 마우스 체크
 			if ( t.getState() == State.OPEN ) {
-				bothRight = true;
-			}
+					bothRight = true;
+				}
 		}
 		if ( t.getState() == State.OPEN ) {
 			if ( bothLeft == true && bothRight == true ) {
@@ -626,11 +634,9 @@ public class MineGUI extends JPanel implements ActionListener {
 			}
 		}
 	}
-
-  	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(MouseEvent e) {
 		Tile t = (Tile)e.getSource();
 		if ( SwingUtilities.isLeftMouseButton(e) ) {
-			newButton.setIcon( newImgList[0] );
 			if ( t.getState() == State.OPEN ) {
 				bothLeft = false;
 			}
@@ -645,14 +651,13 @@ public class MineGUI extends JPanel implements ActionListener {
 				aroundTileReleased( t.getRow(), t.getCol() );
 			}
 		}
-		if ( game == Game.END ) newButton.setIcon( newImgList[2] );
 	}
-   }
+   }	
 
-public void actionPerformed(ActionEvent e) {
+   public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
+   }
 }
 }}}
 
