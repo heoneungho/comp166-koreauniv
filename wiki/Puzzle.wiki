@@ -36,8 +36,8 @@ C 버튼: 텍스트필드 강제 공백화
 
 = Using the Code =
 
-
-
+눈에 보이는 GUI를 무엇으로 할지 결정 하는 부분
+{{{
 import java.awt.*;
 import java.awt.event.*;
 
@@ -46,14 +46,18 @@ import javax.swing.JFrame;
 public class calculate extends Frame implements ActionListener{
 	//기본적으로 계산기 GUI와 버튼을 눌렀을때 액션수행
 
-	private Frame frm; 
+	
 	private Button btn[ ]; // 계산기의 버튼들
 	private Panel pan; //버튼이 위치할 판
 	private double num1, num2, num3; //입력한 두 숫자, 계산값
 	private TextField text; // 숫자가 적힐 공간
 	private String symbol; // 부호에 따른 매개변수
-	
-	
+ }}}
+ 
+
+GUI를 설정하고 버튼 위치 정하는 부분
+
+{{{	
 	public calculate( ){ //생성자인데 GUI 설정
 
 		btn = new Button[17]; //10개 숫자, 4개 연산, =, 소수점, c
@@ -100,17 +104,10 @@ public class calculate extends Frame implements ActionListener{
 		add(btn[16], BorderLayout.EAST); //클리어는 오른쪽에
         add(text, BorderLayout.NORTH); //텍스트필드는 위쪽
         
-        
+}}}        
 
-//여기까지 GUI 설정, 이하로는 이벤트 설정
-
-
-
-
-
-
-
-
+   계속 이이서 버튼에 대한 이벤트 설정
+{{{
         for(int i=0; i<=16; i++)
         {			//버튼누르면이벤트일어난다 선언
           btn[i].addActionListener(this);
@@ -157,15 +154,9 @@ public class calculate extends Frame implements ActionListener{
                 case 9: //9을 눌렀으면 현재 텍스트필드에 9을 추가
                 	text.setText(text.getText() + "9");
 				break;
-
-// 여기까지 숫자에 대한 이벤트 결정
-
-
-
-
-
-
-				
+}}} 여기까지 숫자에 대한 이벤트 결정
+    부호에 대한 이벤트 시작
+{{{ 				
                 case 10://btn[10]은 덧셈이므로
                  //기호를 누르면 그이전에 입력한 숫자를 num1로 갖자
                 	symbol="+";
@@ -191,16 +182,9 @@ public class calculate extends Frame implements ActionListener{
                     num1= Double.parseDouble(text.getText());
                     text.setText("");
                     break;
-
-
-// 여기까지 사칙부호 버튼에 대한 이벤트 결정
-
-
-
-
-
-
-
+}}}
+= 버튼에는 두번째 수 인식과 계산과정과 출력까지 담겨
+{{{
                 case 14:// = 이전 쓴 숫자는 두번째 수인 num2로 본다
                     num2 = Double.parseDouble(text.getText());
                    /* 부호 입력후 공백상태를 만들었기 때문에 
@@ -237,12 +221,10 @@ public class calculate extends Frame implements ActionListener{
                     }  //case 14안에서 case문 종료
                     break; // case14의 브레이크
                     
- 
+ }}}
 
-// = 버튼에는 두번째 수 인식과, 사칙 부호에 따른 계산까지 담겨
-
-
-
+ 나머지 버튼도 이벤트 결정
+{{{
                case 15: // 소수점
                 	text.setText(text.getText() + ".");
                     break;
@@ -256,16 +238,12 @@ public class calculate extends Frame implements ActionListener{
 	  }// for 문 종료
 	}// actionPerformed 종료
 
-	
-//  여기까지 계산기 객체를 생성하는 코드
+}}}	
+  여기까지 계산기 객체를 생성하는 코드, GUI와 액션이벤트
 
 
-
-
-
-
-
-// 실제 계산기 객체를 생성하라 명령하는 메인
+  실제 계산기 객체를 생성하라 명령하는 메인
+{{{
         public static void main(String args[ ])
 	{
 		calculate cal = new calculate(); //계산기 객체 생성
@@ -280,3 +258,5 @@ public class calculate extends Frame implements ActionListener{
 	    }); //addWindowListener종료
 	}
 }
+
+}}}
