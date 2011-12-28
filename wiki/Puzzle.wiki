@@ -37,7 +37,9 @@ C 버튼: 텍스트필드 강제 공백화
 
 = Using the Code =
 
-눈에 보이는 GUI를 무엇으로 할지 결정 하는 부분
+
+클래스 안에서 가장 먼저 눈에 보이는 GUI를 무엇으로 할지 결정 하는 부분
+
 {{{
 import java.awt.*;
 import java.awt.event.*;
@@ -56,7 +58,7 @@ public class calculate extends Frame implements ActionListener{
  }}}
  
 
-GUI를 설정하고 버튼 위치 정하는 부분
+GUI를 설정하고 버튼 위치 정하는 부분으로 모두 생성자 속에 위치
 
 {{{	
 	public calculate( ){ //생성자인데 GUI 설정
@@ -114,7 +116,8 @@ GUI를 설정하고 버튼 위치 정하는 부분
 
 }}}        
 
-   계속 이이서 버튼에 대한 이벤트 설정
+   생성자가 종료되고 버튼에 대한 액션 이벤트 설정하는 메서드 
+
 {{{
        	 	
 	public void actionPerformed(ActionEvent ae) {
@@ -232,10 +235,10 @@ GUI를 설정하고 버튼 위치 정하는 부분
 	}// actionPerformed 종료
 
 }}}	
-  여기까지 계산기 객체를 생성하는 코드, GUI와 액션이벤트
-
-
-  실제 계산기 객체를 생성하라 명령하는 메인
+   GUI를 위한 생성자와, 액션이벤트를 위한 메서드가 클래스 내분에 위치
+   이것으로 계산기 객체를 생성하기 위한 정보 설정은 종료
+   
+   실제 계산기 객체를 생성하라 명령하는 메인 메서드
 {{{
         public static void main(String args[ ])
 	{
@@ -252,4 +255,6 @@ GUI를 설정하고 버튼 위치 정하는 부분
 	}
 }
 
-}}}
+}}} 
+
+하나의 클래스 안에 초기설정, 생성자 , 이벤트 메서드, 메인 메서드
