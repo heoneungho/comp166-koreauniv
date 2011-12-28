@@ -1,0 +1,1 @@
+public enum Level { ROW, MIDDLE, HIGH };
