@@ -36,7 +36,7 @@ C 버튼: 텍스트필드 강제 공백화
 
 = Using the Code =
 
-<wiki:comment>
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -234,4 +234,3 @@ public class calculate extends Frame implements ActionListener{
 	    }); //addWindowListener종료
 	}
 }
-</wiki:comment>
