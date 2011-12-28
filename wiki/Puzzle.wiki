@@ -104,18 +104,18 @@ GUI를 설정하고 버튼 위치 정하는 부분
 		add(btn[16], BorderLayout.EAST); //클리어는 오른쪽에
         add(text, BorderLayout.NORTH); //텍스트필드는 위쪽
         
+     for(int i=0; i<=16; i++)
+        {			// 버튼누르면이벤트일어난다고 GUI에 이벤트 선언
+          btn[i].addActionListener(this);
+        }
+    }
+
+
 }}}        
 
    계속 이이서 버튼에 대한 이벤트 설정
 {{{
-        for(int i=0; i<=16; i++)
-        {			//버튼누르면이벤트일어난다 선언
-          btn[i].addActionListener(this);
-        }
-                
-	 }
-		 
-	 	
+       	 	
 	public void actionPerformed(ActionEvent ae) {
 		//액션에 의해 이벤트가 일어난다 파라미터를 ae로 뒀다.
 		for(int i=0; i<=16; i++)
@@ -154,9 +154,7 @@ GUI를 설정하고 버튼 위치 정하는 부분
                 case 9: //9을 눌렀으면 현재 텍스트필드에 9을 추가
                 	text.setText(text.getText() + "9");
 				break;
-}}} 여기까지 숫자에 대한 이벤트 결정
-    부호에 대한 이벤트 시작
-{{{ 				
+			
                 case 10://btn[10]은 덧셈이므로
                  //기호를 누르면 그이전에 입력한 숫자를 num1로 갖자
                 	symbol="+";
@@ -182,13 +180,11 @@ GUI를 설정하고 버튼 위치 정하는 부분
                     num1= Double.parseDouble(text.getText());
                     text.setText("");
                     break;
-}}}
-= 버튼에는 두번째 수 인식과 계산과정과 출력까지 담겨
-{{{
+
                 case 14:// = 이전 쓴 숫자는 두번째 수인 num2로 본다
                     num2 = Double.parseDouble(text.getText());
                    /* 부호 입력후 공백상태를 만들었기 때문에 
-                                                    다시 숫자를 입력하고 =를 입력하면 num2로 인식*/
+                        다시 숫자를 입력하고 =를 입력하면 num2로 인식*/
                    
                     switch(symbol) //case 14안에서 case문
                     {
@@ -221,10 +217,6 @@ GUI를 설정하고 버튼 위치 정하는 부분
                     }  //case 14안에서 case문 종료
                     break; // case14의 브레이크
                     
- }}}
-
- 나머지 버튼도 이벤트 결정
-{{{
                case 15: // 소수점
                 	text.setText(text.getText() + ".");
                     break;
