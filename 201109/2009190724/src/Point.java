@@ -1,0 +1,36 @@
+
+public enum Point {
+	South,
+	S1,
+	S2,
+	S3,
+	S4,
+	East,
+	E1,
+	E2,
+	E3,
+	E4,
+	North,
+	N1,
+	N2,
+	N3,
+	N4,
+	West,
+	W1,
+	W2,
+	W3,
+	W4,
+	CE1,
+	CE2,
+	Center,
+	CN1,
+	CN2,
+	CW1,
+	CW2,
+	CS1,
+	CS2,
+	NOT_IN_GAME,
+	GOAL_IN
+}
+
+// 좌표의 각 노드를 정의한다.
