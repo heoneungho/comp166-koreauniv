@@ -1,0 +1,78 @@
+= 2011년 가을 =
+
+*강의시간*
+ 1. 월(4-5) 라이시움 408
+ 1. 수(5) 라이시움 408
+
+*수업자료 교재*
+ 1. Head First java - 뇌회로를 자극하는 자바 학습법 (개정2판) 
+  * 저자 : 케이시 시에라 | 역자 : 서환수 | 출판사 : 한빛미디어 
+  * 2007년 11월 09일 출간 
+  * [http://headfirstlabs.com/books/hfjava/] code download
+  * [http://comp166-koreauniv.googlecode.com/files/ppt.zip] ppt
+ 1. The Java Tutorials 
+  * http://download.oracle.com/javase/tutorial 
+
+*주요일정*
+ 1. 2011.09.28 프로젝트 소개페이지 만들기
+  * 소개와 배경작성
+ 1. 2011.10.26 프로젝트 중간점검
+  * 소개와 배경에 대해서 자세히 작성
+  * 클래스목록 생성
+  * 각 클래스별로 공개된 속성과 공개된 메소드 정의 (실제소스코드처럼 작성)
+ 1. 2011.11.28 실습
+ 1. 2011.11.30 실습
+ 1. 2011.12.05 프로젝트 시연
+  * 5분발표
+  * 프로그램소스제출안함
+ 1. 2011.12.12 기말고사
+ 1. 2011.12.19 프로젝트 완료
+  * 위키페이지
+  * 프로그램소스제출 (email: onacloud@korea.ac.kr)
+  * 실습문제제출 (email: onacloud@korea.ac.kr)
+
+*주요문서*
+ 1. [SetupJavaDevelopmentEnvironment] 408실습실에 JAVA 개발환경 구축하기
+ 1. [PracticalExercise] 실습문제
+ 1. [tictactoe] : 샘플프로젝트; Tic Tac Toe Implemented in Java with Computer Player
+
+*수강생*
+|| 이름 || 프로젝트명 || 소개 ||
+|| 김도형 || [SimpleGame] ||  ||
+|| 서정현 || [Hangman] ||  ||
+|| 조아영 || [TextEditor] ||  ||
+|| 신광록 || [PageName] ||  ||
+|| 정윤지 || [mumuglerae] ||  ||
+|| 김영기 || [NinjaKid] ||  ||
+|| 김나윤 || [FindBomb] ||  ||
+|| 서현아 || [HealthCare] ||  ||
+|| 이종화 || [WorstGame] ||  ||
+|| 윤창진 || [CJtuneandmetronome] ||  ||
+|| 한은영 || [Calorycounter] ||  ||
+|| 정한결 || [melodycube] ||  ||
+|| 김형준 || [MemoPaper] ||  ||
+|| 김도연 || [memopad] ||  ||
+|| 오세원 || [boxescape] ||  ||
+|| 김민승 || [Min] ||  ||
+|| 우성호 || [AngryTiger] ||  ||
+|| 최우형 || [Managingyourgrade] ||  ||
+|| 송학종 || [null] ||  ||
+|| 박재성 || [SaveMoney] ||  ||
+|| 김성운 || [CorrecTyping] ||  ||
+|| 임공빈 || [DigitalDiary] ||  ||
+|| 노재현 || [bookmanager] ||  ||
+|| 장재훈 || [plashplayer] ||  ||
+|| 조승희 || [Scheduler] ||  ||
+|| 이지예 || [molecatchgame] ||  ||
+|| 양설믜 || [hangman] ||  ||
+|| 오인영 || [MoodusicPlayer] ||  ||
+|| 이인수 || [] || ||
+|| 류선규 || [BankManagemnet] ||  ||
+|| 최병준 || [] ||  ||
+|| 이하정 || [paintpuzzle] ||  ||
+|| 권예림 || [haterbomber] ||  ||
+|| 백성수 || [KoreaunivBuildingInformation] || ||
+|| 김희태 || [PCROOMpriceCalculater] ||  ||
+|| 김현민 || [Baseballgame] ||  ||
+|| 장용현 || [CPUscheduler] ||  ||
+|| 김종범 || [simple_calculator] || ||
