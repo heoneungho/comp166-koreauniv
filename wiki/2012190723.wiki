@@ -7,6 +7,13 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
+주어진 코드로 프로그램을 만들게되면 출력 결과에 문제가 생긴다.
+후반부에
+1 bottles of beer on the wall 
+1 bottle of beer on the wall
+1 bottle of beer.
+이렇게 출력이 되는데 이때, 1 bottles 라고 복수형으로 출력되는 문제가 발생된다.
+따라서, 이 문제를 해결하기 위해서는 if(beerNum==1)조건문의 위치를 바꾸면 된다.
 
 }}}
 
