@@ -40,6 +40,13 @@ public class BeerSong {    // BeerSong이라는 이름의 클레스를 생성합
     } //main 클래스를 종료합니다.
    } //클래스를 종료합니다.
 
+이렇게 코드를 수정하면,
+1 bottle of beer on the wall 
+1 bottle of beer on the wall
+1 bottle of beer.
+에서 처럼 1개의 병을 단수형(bottle)으로 나타낸다.
+따라서, 1개의 병이 bottles로 출력되는 문제를 해결했다.
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
