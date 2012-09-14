@@ -15,6 +15,31 @@
 이렇게 출력이 되는데 이때, 1 bottles 라고 복수형으로 출력되는 문제가 발생된다.
 따라서, 이 문제를 해결하기 위해서는 if(beerNum==1)조건문의 위치를 바꾸면 된다.
 
+public class BeerSong {    // BeerSong이라는 이름의 클레스를 생성합니다.
+   public static void main(String[]args){  // main 메소드를 하나 생성합니다.
+      int beerNum=99; // beerNum이라는 정수형 변수에 99를 넣습니다.
+      String word="bottles"; // 문자열 word 변수에 "bottles"를 넣습니다.
+
+      while(beerNum>0){ // beerNum이 0이 되기 전까지 반복문을 반복합니다.
+
+          System.out.println(beerNum+""+word+"of beer on the wall");
+          System.out.println(beerNum+""+word+"of beer.");
+          System.out.println("Take one down.");
+          System.out.println("Pass it around.");
+          beerNum=beerNum-1;
+
+      if(beerNum==1){
+          word="bottle"; // beerNum이 1이되면 word를 단수형인 "bottle"로 바꿉니다.
+      }
+      if(beerNum>0){
+          System.out.println(beerNum+""+word+"of beer on the wall");
+      }else{
+          System.out.println("No more bottles of beer on the wall");
+      } //else문을 종료합니다.
+     } //while 순환문을 종료합니다.
+    } //main 클래스를 종료합니다.
+   } //클래스를 종료합니다.
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
