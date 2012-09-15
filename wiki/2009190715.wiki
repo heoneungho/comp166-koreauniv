@@ -8,11 +8,62 @@
 
 {{{
 
+
+public class BeerSong {
+
+	public static void main (String[] args) {
+		int beerNum=99;
+		String word = "bottles"; //복수형
+		
+		while (beerNum > 0){
+			
+			if (beerNum ==1)	{
+				word = "bottle"; //단수형
+			}
+			
+			System.out.println(beerNum + " " + word + " of beer on the wall");
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around.");
+			beerNum = beerNum -1;
+			
+			if (beerNum >0) {
+				System.out.println(beerNum + " " + word + "of beer on the wall");
+			}else {
+				System.out.println("No more bottles of beer on the wall");
+			}
+		}
+	}
+}
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+
+
+public class PhraseOMatic {
+	public static void main (String[] args) {
+		
+		String[] wordListOne = {"good", "bad", "beautiful", "elegance", "massive", "hot", "dynamic", "useful"};
+		String[] wordListTwo = {"persisted", "kept","contacted","focused","targeted","shared","cooperative"};
+		String[] wordListThree = {"character", "thinking", "mission", "strategy", "skill", "medicine","eye"};
+		
+		int oneLength = wordListOne.length;
+		int twoLength = wordListTwo.length;
+		int threeLength = wordListThree.length;
+		
+		int rand1 = (int) (Math.random() * oneLength);
+		int rand2 = (int) (Math.random() * twoLength);
+		int rand3 = (int) (Math.random() * threeLength);
+		
+		String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
+		
+		System.out.println ("What we need is a " + phrase);
+	}
+}
+
 
 }}}
 
@@ -24,6 +75,54 @@
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+A
+
+class Exercise1b {
+
+public static void main(String [] args) {
+	int x = 1;
+	while (x<10) {
+		if (x>3){
+		System.out.println("big x");
+		x=x+1; //x=x+1을 넣지 않으면 무한루트 발생
+			}
+		}
+	}
+}
+
+
+B
+
+class Exercise1b { //class를 넣어주어야함
+
+public static void main(String [] args) {
+	int x = 5;
+	while (x>1) {
+		x = x-1;
+		if (x<3) {
+			System.out.println("small x");
+			}
+		}
+	}
+}
+
+
+C
+
+class Exercise1b {
+
+public static void main(String [] args) { //메인메소드를 넣어주어야함
+
+	int x = 5;
+	while (x>1) {
+		x = x -1;
+		if (x <3) {
+			System.out.println ("small x");
+			}
+		}
+	}
+}
 
 }}}
 
