@@ -71,9 +71,26 @@ public class PhraseOMatic {
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+A
 
-}}}
+class Exercise1b // 클래스 선언
+  {
+  public static void main(String [] args) // 메소드 선언
+  {
+  int x = 1 ; // x를 1로 선언
+  while(x<10) // x가 10보다 작을때
+  {
+    x = x + 1 // while문 한바퀴 돌때마다 x가 1씩 증가, 무한순환을 막아줌.
+    if(x>3) // x가 3보다 클때
+     {
+    System.out.println("big x"); // 출력
+     }
+  }
+  }
+  }
+
+B
+
 
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
