@@ -6,9 +6,36 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-{{{
+public class BeerSong// 클래스 선언
+  {
+  public static void main (String[] args) // 메소드 선언
+    {
+    int beerNum = 99; // 맥주의 수를 99개로 설정
+    String word = "bottles"; // 복수형
+       while(beerNum > 0) // 맥주가 하나 이상일때
+      {
+      System.out.println(beerNum + " " + word + " of beer on the wall");
+      System.out.println(beerNum + " " + word + " of beer.");
+      System.out.println("Take one down.");
+      System.out.println("Pass it around."); // 출력
+      beerNum = beerNum -1; // 와일문을 한바퀴 돌때마다 맥주갯수 하나씩 감소
 
-}}}
+      if(beerNum == 1) // 맥주의 갯수가 하나일때
+       {
+      word = "bottle"; // 단수병(한병인 경우)
+      } // 이 if문의 위치를 바꿔주어야 아래쪽 에서도 갯수가 1일때부터 단수로 적용
+
+       if(beerNum > 0) // 갯수가 하나 이상일때
+      {
+      System.out.println(beerNum + " " + word + " of beer on the wall");
+      }
+      else // 갯수가 0개일떄
+       {
+      System.out.println("No more bottles of beer on the wall");
+      } // else문 끝
+       } // while 순환문 끝
+    } // main 클래스 끝
+  } // 클래스 끝
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
