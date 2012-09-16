@@ -39,14 +39,35 @@ public class BeerSong// 클래스 선언
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{
+public class PhraseOMatic {
+  public static void main ( String[] args) {
+  // 세 종류의 단어 목록을 만듭니다. 적당히 필요한 단어를 추가해도 됩니다.
+  String[] wordListOne = {"dog", "cat", "eagle", "tiger", "elephant"};
+  String[] wordListTwo = {"first", "second", "third", "fourth", "fifth"};
+  String[] wordListThree = {"love", "like", "become", "hate", "favor"};
 
-}}}
+  // 각 단어 목록에 단어가 몇개씩 들어있는지 확인합니다.
+  int oneLength = wordListOne.lengh;
+  int twoLength = wordListTwo.lengh;
+  int threeLength = wordListThree.lengh;
+
+  // 난수 세 개를 발생시킵니다.
+  int rand1 = (int) (Math.random() * oneLength);
+  int rand2 = (int) (Math.random() * twoLength);
+  int rand3 = (int) (Math.random() * threeLength);
+
+  // 이제 구문을 만듭니다.
+  String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
+
+  //구문을 출력합니다.
+  System.out.println("What we need is a " + phrase);
+  }
+  }
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 프로그램을 실행시킨다. 보안 관련 작업을 처리한다.
+ * 컴파일러: 변수에 이상한 유형의 데이터를 저장하지 못하게 한다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
