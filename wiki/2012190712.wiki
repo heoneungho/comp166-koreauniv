@@ -91,7 +91,7 @@ class Exercise1b // 클래스 선언
 
 B
 
-class first // 클래스를 정의하지 않으면 컴파일할 수 없다.
+class Exercise1b // 클래스를 정의하지 않으면 컴파일할 수 없다.
   {
   public static void main(String [] args) // 메소드 선언
   {
@@ -103,6 +103,24 @@ class first // 클래스를 정의하지 않으면 컴파일할 수 없다.
     {
     System.out.println("small x"); // 출력
     }
+  }
+  }
+  }
+
+C
+
+class Exercise1b // 클래스 선언
+  {
+  public static void main(String [] args) // while문이 메소드 안에 있지 않으면 컴파일 되지 않는다.
+  {
+  int x = 5; // x를 5로 선언
+  while ( x > 1) // x가 1보다 클 동안
+  {
+  x = x - 1; // x가 1씩 줄어든다
+  if ( x < 3) // 만약 x가 3보다 작다면
+  {
+  System.out.println("small x"); // 출력
+  }
   }
   }
   }
