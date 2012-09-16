@@ -91,7 +91,21 @@ class Exercise1b // 클래스 선언
 
 B
 
-
+class first // 클래스를 정의하지 않으면 컴파일할 수 없다.
+  {
+  public static void main(String [] args) // 메소드 선언
+  {
+  int x = 5; // x를 5로 선언
+  while (x > 1) // x가 1보다 클동안
+  {
+    x = x - 1; // while문 한바퀴 돌때 x가 1씩 줄어든다
+    if(x < 3) // x가 3보다 작을때
+    {
+    System.out.println("small x"); // 출력
+    }
+  }
+  }
+  }
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
