@@ -73,7 +73,7 @@ int threeLength=wordListThree.length;
 //난수 세 개를 발생시킵니다.
 int rand1=(int) (Math.random()*oneLength);
 int rand2=(int) (Math.random()*twoLength);
-int rand1=(int) (Math.random()*threeLength);
+int rand3=(int) (Math.random()*threeLength);
 
 //이제 구문을 만듭니다.
   String phrase=wordListOne[rand1]+""+wordListTwo[rand2]+""+wordListThree[rand3];
