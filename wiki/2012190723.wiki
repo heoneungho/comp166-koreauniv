@@ -115,7 +115,20 @@ int rand3=(int) (Math.random()*threeLength);
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-
+A: 
+// big x라는 문장을 여러개 출력하는 프로그램입니다.
+class Exercise1b{
+ public static void main(String[]args){
+  int x=1;
+  while(x<10){
+   x=x+1; // 이 부분이 빠지면 while 반복문이 무한이 순환합니다. 
+   if(x>3){
+    System.out.println("big x");
+   }
+  }
+ }
+}
+  
 }}}
 
 
