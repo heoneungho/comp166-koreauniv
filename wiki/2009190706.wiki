@@ -107,12 +107,60 @@ public class PhraseOMatic {
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 프로그램을 실행, ClassCast Exception을 발생시켜 다른 유형의 값이 들어오는것을 방지, 보안 관련 작업 수행, 바이트코드가 만들어진 다음 바이트코드가 실행되기 전까지 수정되었는지를 확인
+ * 컴파일러: 바이트코트로 소스를 변환시켜 실행 속도를 빠르게 함, 실행시 일어나서는 안 될 대부분의 오류를 막음, 비공개 메소드와 변경되서는 안 될 핵심적인 클랙스에 접근 하는것을 방지
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+A
+
+class Exercise1b {
+   public static void main(String [] arg) {
+    int x=1;
+    while (x<10) {
+      if (x >3) {
+         System.out.println("bix x");
+      }
+     x= x+1; // x의 값이 변하지 않아 while문을 벗어날 수 없으므로 프로그램이 종료되지 않고 무한 반복 됩니다.
+    }
+  }
+}
+
+
+B
+
+class Exercise1b { //클래스가 선언되지 않아 추가하였습니다.
+   public static void main(String [] arg) {
+     int x = 5;
+     while(x>1) {
+       x = x - 1;
+       if (x<3) {
+          System.out.println("small x");
+       }
+     }
+   }
+}
+
+
+C
+
+class Exercise1b
+   public static void main(String [] arg) { //메인함수가 선언되지 않아 추가하였습니다.
+
+     int x = 5;
+     while (x>1) {
+        x = x -1;
+        if (x<3) {
+          System.out.println("small x");
+        }
+     }
+   }
+}
+
+
+
 
 }}}
 
