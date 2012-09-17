@@ -8,6 +8,33 @@
 
 {{{
 
+public calss BeerSong {
+public static void main (String[] args) {
+int beerNum = 99;
+String word = "bottles"; // 복수형
+
+while (beerNum > 0) {
+
+System.out.println("beerNum + " " + word + " of beer on the wall");
+System.out.println("beerNum + " " + word + " of beer.");
+System.out.println("Take one down.");
+System.out.println("Pass it around.");
+beerNum = beerNum -1;
+
+if (beerNum == 1) {
+ word = "bottle"; //단수형(한병인경우)
+}
+
+if (beerNum > 0) {
+System.out.println("beerNum + " " + word + " of beer on the wall");
+}
+else {
+System.out.println("No more bottles of beer on the wall");
+}//else문 끝
+}//while순환문 끝
+}//main 클래스 끝
+}//클래스 끝
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
@@ -18,13 +45,52 @@
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 프로그램을 실행시키는 역할을 한다. 또 보안관련 작업을 수행한다
+ * 컴파일러: 어떤 프로그램이 실행될 때 절대로 일어나면 안 되는 일을 방지한다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+{{{ 
+A
+class Exercise1b {
+public static void main(Strinc [] args) {
+int x = 1;
+while ( x < 10 ) {
+X = X+1;
+if (x > 3) {
+System.out.println("big x");
+}
+}
+}
+}
 
+B
+Class Foo{
+public static void main(String [] args) {
+int x = 5;
+while ( x > 1){
+x = x -1;
+if(x<3){
+System.ot.println("small x");
+}
+}
+}
+}
+
+C
+
+class Exercise1b {
+public static void main(String [] args){
+
+int x = 5;
+while ( x > 1) {
+x = x - 1;
+if ( x < 3) {
+System.out.println("small x");
+}
+}
+}
+}
 }}}
 
 
