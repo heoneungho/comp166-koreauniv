@@ -6,27 +6,95 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-{{{
+public class BeerSong{  //누구든지 접근가능한 BeerSong 이라는 클래스 선언 
+     public static void main (String[] args){  //리턴값이 없는 'args'라는 이름의 String 배열의 인자를 갖는 main 메소드 선언
+        int beerNum = 99;  //beerNum이라는 int형변수 선언과 99값 대입
+        String word = "bottles";  //word라는 String변수 선언과 bottles 대입 복수형
+       
+       While (beerNum > 0){ //beerNum이 양수일때
 
-}}}
+            if (beerNum == 1) {  
+            word = "bottle";  //단수형(한 병 인경우)
+          } 
+
+          System.out.println(beerNum + " " + word + " of beer on the wall"); //()안 출력하고 줄바꿈
+            System.out.println(beerNum + " " + word + " of beer.");
+          System.out.println("Take one down.");
+          System.out.println("Pass it around.";
+          beerNum = beerNum - 1; //변수 beerNum에 저장된 값의 하나 작은 값을 beerNum에 대입
+
+          //if (beerNum > 0) {
+             System.out.println(beerNum + " " + word + "of beer on the wall");//
+}// 이 if문은 위에 while문의 조건과 겹친다. 그리고 밑의 else문이 받는 if문이 beerNum이 1일때와 0보다 클때 두가지가 겹치게 된다. 따라서 주석처리하거나 삭제한다. 
+              else {
+               System.out.println("No more bottles of beer on the wall");
+             }//else 문 끝. 위의 beerNum == 1인 조건의 if 문을 받도록 고쳐줌  
+                           
+      }//while순환문 끝
+   }//main클래스 끝
+}//클래스 끝
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{
+public class PhraseOMatic{
+   public static void main (String[] args){
+     
+      
+      String [] wordListOne = {"I","love","java","it's","1:59","AM"}; //wordListOne이라고 이름 지은 String 배열을 선언하고 그 안에 구성원소를 저장한다.
+      
+      String [] wordListTwo = {"i'm", "too", "tired", "now", "sleepy"};
+      String [] wordListThree = {"fighting", "huurry", "up"}; 
+    
+      int oneLength = wordListOne.length; //int형 변수 oneLength를 선언하고 wordListOne배열 안의 원소개수를 oneLength에 대입한다.
+      int twoLength = wordListTwo.length;
+      int threeLength = wordListThree.length;
 
-}}}
+      int rand1 = (int) (Math.random() * oneLength); //oneLength배열의 크기 보다 같거나 작은 수 중 임의 수를 불러내는 함수를 이용하고 rand1이라는 int형 변수를 선언 후 대입한다. 
+      int rand2 = (int) (Math.random() * twoLength);
+      int rand3 = (int) (Math.random() * threeLength);
+
+      String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3]; // phrase라는 String 변수를 선언한 후 위에서 대입된 rand1, rand2, rand3 번째수에 해당하는 단어를 각각의 wordListOne,two,three에서 불러내어 phrase에 대입한다.
+
+      System.out.println("What we need is a " + phrase); //구문을 추출한다.   
+     
+   } //main 클래스 끝 
+ } // 클래스 끝
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 우리가 짠 소스코드(원조)를 컴파일러가 바이트 코드로 코딩하면 자바 가상 머신은 바이트 코드를 읽고 전자제품에 돌린다. 플랫폼에 무관하게 사용 가능하다. 
+ * 컴파일러: 자바 가상 머신이 설치된 어떤 전자제품에서도 돌아갈 수 있도록 우리가 짠 소스코드를 자바 가상머신이 코딩할 수 있는 바이트 코드로 코딩 시켜주는 장치.  
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+class Shuffle1{
+  public static void main (String [] args){
+    int x = 3; // int형 변수 x 설정후 3 대입
+   
+    while(x > 0) { //while문 시작
+     
+     if(x > 2) { // x>2일때 if조건문 시작
+        System.out.print("a"); //a출력
+        x = x - 1; // x = 3에서 x = 2로 변수 대입값 변화
+        System.out.print("-"); //-출력
+    
+        if(x == 2){ //if문 안에 if문 x== 2일때 조건 true.
+        System.out.print("b  c"); //b c 출력
+        } //x==2일때의 if문 끝  
+     } //x>2일때의 if문 끝 
+       
+    x = x - 1; // x=2에서 x=1로 변수 대입값 변화
 
-}}}
+    if(x == 1){ //x==1 일때 if조건문 시작  true.  
 
+      System.out.print("d"); //d출력
+  
+      x = x - 1; //x=1에서 x=0으로 변수 대입값 변화, while문을 빠져나올 수 있게 변화
+    } x==1일때 if문 끝
+           
+   }while문 끝
+  }main클래스 끝
+}클래스 끝
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
