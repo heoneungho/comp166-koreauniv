@@ -36,6 +36,9 @@ public static void main (String[] args){
 
 	while(beerNum > 0){ 
 		
+         /*      if (beerNum==1){ 
+			word = "bottle"; 
+				} 이부분이 문제가 되므로 없애고 */
 
 System.out.println(beerNum + " " + word + " of beer on the wall");
 System.out.println(beerNum + " " + word + " of beer.");
@@ -46,6 +49,7 @@ System.out.println("Pass it around.");
 		if (beerNum==1){ 
 			word = "bottle"; 
 				} 
+//여기에 추가합니다
 		
 		if(beerNum > 0){ 
 System.out.println(beerNum + " " + word + " of beer on the wall");
