@@ -7,7 +7,64 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-ㅇㅇ
+책의 내용처럼 작성하면
+다음과 같이
+
+1 bottles of beer on the wall
+1 bottle of beer on the wall
+
+1이 단수임에도 불구하고 복수처럼 bottles로 표현되는걸 알 수 있습니다.
+
+위와같은 문제가 발생하는 이유는 
+
+if (beerNum==1){ 
+	word = "bottle"; 
+			}
+이 beerNum = beerNum -1;보다 위에 있기 때문에 발생합니다.
+즉, beerNum이 2일때 beerNum = beerNum -1; 구문을 지나면서 beerNum이
+1이 되지만 word는 아직 변하지 않았기 때문에 문제가 발생하게 됩니다.
+그러므로 다음과 같이 if문을 beerNum = beerNum-1; 밑으로 내려 beerNum이
+1이 되자마자 bottle로 바꿔주게 함으로써 문제가 해결됩니다.
+
+public class BeerSong{ 
+
+public static void main (String[] args){ 
+
+	int beerNum = 99;
+
+	String word = "bottles"; 
+
+	while(beerNum > 0){ 
+		
+
+System.out.println(beerNum + " " + word + " of beer on the wall");
+System.out.println(beerNum + " " + word + " of beer.");
+System.out.println("Take one down.");
+System.out.println("Pass it around.");
+	        beerNum = beerNum -1;
+		
+		if (beerNum==1){ 
+			word = "bottle"; 
+				} 
+		
+		if(beerNum > 0){ 
+System.out.println(beerNum + " " + word + " of beer on the wall");
+		} 
+		else{ 
+System.out.println("No more bottles of beer on the wall"); 
+		} 
+
+	} 
+}
+
+} 
+
+
+
+
+
+
+
 
 }}}
 
