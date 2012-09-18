@@ -217,9 +217,9 @@ public class GuessGame {
 
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
+A. 
 
 >TapeDeck.java
-
 class TapeDeck{
 
 	boolean canRecord = false;
@@ -234,7 +234,6 @@ class TapeDeck{
    }
 
 >TapeDeckTestDrive.java
-
 class TapeDeckTestDrive {
 	public static void main(String [] args) {
 		TapeDeck t = new TapeDeck();
@@ -246,6 +245,32 @@ class TapeDeckTestDrive {
 		}
 	}
 }
+
+B,
+
+>DvDPlayer.java
+class DVDPlayer {
+	boolean canRecord = false;
+	void recordDVD () {
+	 System.out.println("DVD recording");
+	}
+	void playDVD() {
+	  System.out.println("DVD playing");
+	}
+ }
+
+>DVDPlayerTestDrive.java
+class DVDPlayerTestDrive {
+	public static void main(String [] args) {
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD();
+		if(d.canRecord == true) {
+			d.recordDVD();
+		}
+	}
+}
+
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
