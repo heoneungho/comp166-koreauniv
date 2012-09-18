@@ -86,7 +86,23 @@ int rand3=(int) (Math.random()*threeLength);
 
 {{{
 
+class Exercise1b {
 
+    public static void main(String [] args) {
+        
+        int x = 1;
+
+        while ( x < 10 ) //while문을 빠져나갈수 없게 되있다.
+         {
+           if ( x > 3 )//if문 시작
+           {
+             system.out.println("big x");
+             break;//break로 while문을 빠져나간다!!.
+           }//if문 끝
+           x = x+1;
+          }//while문 끝
+}//메인 메소드끝
+}클래스끝
 
 
 }}}
