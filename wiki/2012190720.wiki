@@ -40,6 +40,9 @@
     
      System.out.println("No more bottles of beer on the wall"); /* beerNum이 0이 되면 이 문자열을 출력*/
 } // else문 끝
+} // while 순환문 끝
+}// main 클래스 끝
+}// 클래스 끝
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
