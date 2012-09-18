@@ -32,7 +32,7 @@ public class BeerSong{
 }}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{G
+{{{
 
 public class PhraseOAatic{
  public static void main(String[] args){
