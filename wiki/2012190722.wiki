@@ -169,8 +169,9 @@ class Exercise {
 
 {{{
 
+
 public class GuessGame {
-        Player p2;
+        Player p1;
         Player p2;
         Player p3;
         Player p4;
@@ -202,30 +203,72 @@ public class GuessGame {
                 p3.guess();
                 p4.guess();
 
-                guessp1 = p1.Number;
-                System.out.println(1번 선수가 찍은 숫자: " + guessp1);
+                guessp1 = p1.number;
+                System.out.println("1번 선수가 찍은 숫자: " + guessp1);
+
+                guessp2 = p2.number;
+                System.out.println("2번 선수가 찍은 숫자: " + guessp2);
+
+                guessp3 = p3.number;
+                System.out.println("3번 선수가 찍은 숫자: " + guessp3);
+
+                guessp4 = p4.number;
+                System.out.println("4번 선수가 찍은 숫자: " + guessp4);
+                
+                if (guessp1 == targetNumber) {
+                	p1isRight = true;
+                }
+                
+                if (guessp2 == targetNumber) {
+                	p2isRight = true;         
+                }
+                
+                if (guessp3 == targetNumber) {
+                	p3isRight = true;
+                }
+
+                if (guessp4 == targetNumber) {
+                	p4isRight = true;
+                }
+                
+                if (p1isRight || p2isRight || p3isRight || p4isRight) {
+                	
+                	System.out.println("맞춘 선수가 있습니다.");
+                	System.out.println("1번선수: " +p1isRight);
+                	System.out.println("2번선수: " +p2isRight);
+                	System.out.println("3번선수: " +p3isRight);
+                	System.out.println("4번선수: " +p4isRight);
+                	System.out.println("게임 끝!");
+                	break;
+                }
+                else {
+                	System.out.println("다시 시도해야 합니다.");
+                }
+          }
+        }
+}
 
 
-                guessp2 = p2.Number;
-                System.out.println(2번 선수가 찍은 숫자: " + guessp2);
 
-
-                guessp3 = p3.Number;
-                System.out.println(3번 선수가 찍은 숫자: " + guessp3);
-
-
-
-                guessp4 = p4.Number;
-                System.out.println(4번 선수가 찍은 숫자: " + guessp4);
-
+public class Player {
+	int number = 0;
+	
+	public void guess() {
+		number = (int) (Math.random()*10);
+		System.out.println("찍은 숫자: " + number);
+	}
+}  
 
 
 
 
-
-
-                                                                        
-
+public class GameLauncher {
+	public static void main(String[] args) {
+		GuessGame game = new GuessGame();
+		game.startGame();
+	}
+}
+             
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
