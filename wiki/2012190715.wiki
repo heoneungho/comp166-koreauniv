@@ -218,9 +218,34 @@ public class GuessGame {
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+>TapeDeck.java
 
-}}}
+class TapeDeck{
+
+	boolean canRecord = false;
+
+	void playTape() {
+	 System.out.Println("tape playing");
+	}
+
+	void recordTape() {
+	 System.out.Println("tape recording");
+	}
+   }
+
+>TapeDeckTestDrive.java
+
+class TapeDeckTestDrive {
+	public static void main(String [] args) {
+		TapeDeck t = new TapeDeck();
+		t.canRecord = true;
+		t.playtape();
+
+		if(t.canRecord == true) {
+			t.recordTape();
+		}
+	}
+}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
