@@ -74,6 +74,32 @@ public class BeerSong {                                   //BeerSong이란 클�
 
 {{{
 
+public class PhraseOMatic	//PhraswOMatic 이란 클래스를 만듭니다.
+{
+	public static void main(String[]args)
+	{
+
+		String[]wordListOne={"I", "He", "She","It", "John", "Kate"};
+
+		String[]wordListTwo={"like", "hate", "love","eat"};
+
+		String[]wordListThree={"dog", "cat", "cow", "human", "pig"};
+		//각각의 단어 리스트를 만듭니다
+		int oneLength = wordListOne.length;
+		int twoLength = wordListTwo.length;
+		int threeLength = wordListThree.length;
+		//각각의 정수변수를 만들고 각 그룹의 단어수만큼 대입합니다.
+
+		int rand1 = (int) (Math.random()*oneLength);
+		int rand2 = (int) (Math.random()*twoLength);
+		int rand3 = (int) (Math.random()*threeLength);
+		//난수를 발생시킵니다.
+
+		String phrase=wordListOne[rand1]+""+wordListTwo[rand2]+""+wordListThree[rand3];
+		//그룹에서 랜덤하게 하나씩뽑아서 단어를 만듭니다.
+		System.out.println("What we need is a"+phrase);
+	}//단어를 출력합니다.
+}
 }}}
 
 *52p 집중토론* _요약_
