@@ -278,29 +278,29 @@ public class GameLauncher{
 A:
 class TapeDeck{ // 테입덱이라는 클래스를 생성합니다.
 
- boolean canRecord=false; // canRecord를 불린 값으로 지정합니다.
- 
- void playTape(){
-  System.out.println("tape playing");
- }
+	boolean canRecord=false; // canRecord를 불린 값으로 지정합니다.
 
- void recordTape(){
-  System.out.println("tape recording");
- }
+	void playTape(){
+		System.out.println("tape playing");
+	}
+
+	void recordTape(){
+		System.out.println("tape recording");
+	}
 }
 
 class TapeDeckTestDrive{ // 테스트 클래스를 만듭니다.
- public static void main(String[]args){
+	public static void main(String[]args){
 
- TapeDeck t=new TapeDeck(); // t객체를 만들어 줍니다.
+		TapeDeck t=new TapeDeck(); // t객체를 만들어 줍니다.
 
- t.canRecord=true;
- t.playTape();
+		t.canRecord=true;
+		t.playTape();
 
-  if(t.canRecord==true){
-   t.recordTape();
-  }
- }
+		if(t.canRecord==true){
+			t.recordTape();
+		}
+	}
 }
 
 }}}
