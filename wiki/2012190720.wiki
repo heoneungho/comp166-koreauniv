@@ -7,8 +7,8 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
- public class BeerSong{
-   public static void main (String[] args) {
+ public class BeerSong{ // 클래스 생성
+   public static void main (String[] args) { // main 생성
       int beerNum = 99; // 정수 beerNum 설정
 
       String word = "bottles"; // 복수형
@@ -16,11 +16,6 @@
       while (beerNum > 0) // beerNum이 0이 되면 while문을 빠져나갑니다.
        {
  
-       if (beerNum == 1) // beerNum이 1이면 단수형을 씁니다.
-       {
-           word = "bottle"; // 단수형
-       }
-
      System.out.println(beerNum + " " + word + " of beer on the wall");
 
      System.out.println(beerNum + " " + word + " of beer .");
@@ -31,10 +26,15 @@
 
      beerNum = beerNum - 1; // beerNum 정수를 99부터 1씩 줄여나갑니다.
 
-   /* if (beerNum > 0) {
+   
+       if (beerNum == 1) // beerNum이 1이면 단수형을 씁니다.
+       {
+           word = "bottle"; // 단수형
+       } /* if문이 문자열 출력 앞에 있으면 나중에 beerNum이 1이 됐을 때 1 bottles of beer on the wall과 ,1 bottle of beer on the wall 으로 단수와 복수문장 모두 출력됩니다. 따라서 위치를 문자열 출력 아래로 두어야 단수문장 두개가 출력됩니다.
+
+       if (beerNum > 0) {
     
      System.out.println(beerNum + " " + word + " of beer on the wall"); }
- */  // while의 조건에 이미 beerNum > 0 조건이 있기 때문에 이 부분을 없애야 하는 것 같습니다.
 
     else {
     
