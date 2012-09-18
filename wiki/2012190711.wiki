@@ -48,7 +48,7 @@
 
 {{{
 
-GuessGame.jave :
+GuessGame.java :
 
 public class GuessGame {
 	Player p1;
