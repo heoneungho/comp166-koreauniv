@@ -17,9 +17,7 @@ public class BeerSong {
 		
 		while (beerNum > 0){
 			
-			if (beerNum ==1)	{
-				word = "bottle"; //단수형
-			}
+
 			
 			System.out.println(beerNum + " " + word + " of beer on the wall");
 			System.out.println(beerNum + " " + word + " of beer.");
@@ -27,6 +25,12 @@ public class BeerSong {
 			System.out.println("Pass it around.");
 			beerNum = beerNum -1;
 			
+			if (beerNum ==1)	{
+				word = "bottle"; //단수형
+			}
+
+
+
 			if (beerNum >0) {
 				System.out.println(beerNum + " " + word + "of beer on the wall");
 			}else {
