@@ -113,11 +113,14 @@ System.out.println("small x");
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
+
+> GuessGame.java
+
 public class GuessGame {
 	Player p1;
 	Player p2;
 	Player p3;
-	Player p5;
+	Player p4;
 //GuessGame 에는 Player 객체 네개를 저장하기 위한 인스턴트 변수 네개있다.
 
 	public void startGame() {
@@ -193,6 +196,8 @@ public class GuessGame {
    }
 }  
 
+> Player.java
+
 	public class Player {
 	 int number = 0;
 
@@ -202,13 +207,13 @@ public class GuessGame {
 	}
       }
 
+>GameLauncher.java
 	public class GameLauncher {
 	 public static void main (String[] args) {
 		GuessGame game = new GuessGame();
 		game.startGame();
 	}
      } 
-
 
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
