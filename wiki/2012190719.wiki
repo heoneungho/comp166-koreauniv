@@ -7,6 +7,66 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
+책에 나와있는데로 코드를 짜면, 
+99 bottles of beer on the wall
+99 bottles of beer.
+Take one down.
+Pass it around.
+98 bottles of beer on the wall
+98 bottles of beer on the wall
+98 bottles of beer.
+Take one down.
+Pass it around.
+97 bottles of beer on the wall
+97 bottles of beer on the wall
+97 bottles of beer.
+Take one down.
+Pass it around.
+이런식으로 99 를 제외한 나머지 문장에서 같은문장이 두번씩 중첩됩니다.
+또한 제일 마지막에서
+1 bottles of beer on the wall
+다음과같이 1개의 병인데 복수형(bottles)단어가 쓰여지게 됩니다.
+이를 해결하기 위해 코드를 짜고 주석을 달아보겠습니다.
+
+public class BeerSong {                                   //BeerSong이란 클래스를 만듭니다
+    public static void main (String[] args)
+    {
+            int beerNum = 99;                                //beerNum이란 정수변수를 만들고
+                                                                           //99를 대입합니다.
+            String word = "bottles"; //복수형      //word란 문자열 변수를 만들고
+                                                                           //bottles를 대입합니다.
+            while (beerNum > 0)                           //beerNum이 0보다 클동안 실행합니다
+            {
+                   /* if (beerNum == 1)           //if문이 여기에 있으면마지막 1병남았을때
+                    {                                            //bottles가 뜨는 오류가 생깁니다
+                            word = "bottle";          //beerNum = beerNum - 1;
+                    }                                            //따라서 위 문장 아래로 옴겨야합니다
+                    */다
+                   // System.out.println(beerNum + " " + word + " of beer on the wall");
+                    System.out.println(beerNum + " " + word + " of beer.");
+                    System.out.println("Take one down.");
+                    System.out.println("Pass it around.");      //각각의 문장을 실행합니다
+                    beerNum = beerNum - 1;  //문장을 실행한후 beerNum에서1을 빼줍니다
+
+                    if (beerNum == 1)    //beerNum 이 1일경우에 bottle을 출력합니다
+                    {
+                            word = "bottle";
+                    }
+
+                    if (beerNum > 0)   //beerNum이 1보다 클경우 문장을 출력해주는 코드
+                    {                              //하지만 이미 위에서 출력했으므로 주석처리합니다
+                         // System.out.println(beerNum + " " + word + " of beer on the wall"); 
+                    }
+
+                    else
+                    {                     //beerNum이 0보다 작거나 같을경우 문장을 출력합니다
+                            System.out.println("No more bottles of beer on the wall");
+                    }
+            }
+    }
+
+}
+
 
 }}}
 
