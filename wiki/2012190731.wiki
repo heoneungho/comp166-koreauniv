@@ -42,8 +42,6 @@ public class BeerSong { // 클래스 명
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
-package homework;
-
 public class PhraseOMatic {
 	public static void main(String[] args) {
 		// 세 종류의 단어 목록을 만듭니다. 적당히 필요한 단어를 추가해도 됩니다.
@@ -74,12 +72,48 @@ public class PhraseOMatic {
 *52p 집중토론* _요약_
 
  * 자바 가상 머신:
+ - 프로그램(자바)을 실행시킨다.
  * 컴파일러:
+ - 언어를 해석해서 실행시킨다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Exercise1b {
+	public static void main(String[] args) {
+		int x = 1;
+		while (x < 10) {
+			x++; // x의 값을 변화시켜서 무한반복을 방지한다.
+			if ( x > 3) {
+				System.out.println("big x");
+			}
+		}
+	}
+}
 
+class Exercise1b { // 클래스 선언이 빠졌다.
+	public static void main(String[] args) {
+		int x = 5;
+		while ( x > 1 ) {
+			x = x - 1;이
+			if (x < 3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
+
+class Exercise1b { 
+	public static void main(String[] args) { // 메소드가 빠졌다.
+		int x = 5;
+		while ( x > 1 ) {
+			x = x - 1;이
+			if (x < 3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
@@ -87,16 +121,16 @@ public class PhraseOMatic {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것을 뜻한다.
+ * 메소드: 객체에서 자신이 하는 것을 뜻한다.
+ * 클래스: 객체를 만들기 위한 청사진을 뜻한다.
+ * 테스트용 클래스: 클래스들이 실행되게 하는 클래스를 뜻한다. (메인 메소드가 온다)
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: channel, volume, power
+ * 메소드: setChannel(), upVolume(), downVolume(), on(), off() 
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
