@@ -5,7 +5,8 @@
 = 01. 껍질을 깨고:간단한 소개 =
 
 *48p BeerSong* _문제해결하기, 주석달기_
-3 bottles of beer on the wall
+
+{3 bottles of beer on the wall
 3 bottles of beer on the wall
 3 bottles of beer.
 Take one down.
@@ -73,6 +74,7 @@ Pass it arround.
 Take one down.
 Pass it arround.
 No more bottles of beer on the wal
+}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
