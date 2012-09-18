@@ -184,6 +184,7 @@ class Exercise1b
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
 public class GuessGame {
 
 	Player p1;
