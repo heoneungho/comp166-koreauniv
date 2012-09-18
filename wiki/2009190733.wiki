@@ -8,6 +8,44 @@
 
 {{{
 
+
+//클래스 선언
+public class BeerSong{ 
+	//메인함수 선언
+	public static void main(String[] args) { 
+		
+		//변수 설정
+		int beerNum = 99;  
+		String word = "bottles"; 
+	
+		//맥주병이 존재하는 동안에
+		while(beerNum >0){
+			
+			if(beerNum == 1){
+				word = "bottle"; //맥주병 하나인 경우
+			}
+		
+			//맥주병이 하나라도 남아있다면
+			if(beerNum > 0){
+				
+				//남은 맥주병들 출력하고 맥주명 하나 소비
+				System.out.println(beerNum + " " + word + " " + "of beer on the wall");
+				System.out.println(beerNum + " " + word + " " + "of beer.");
+				System.out.println("Take one down");
+				System.out.println("Pass it around");
+				beerNum = beerNum -1 ;
+			
+				
+			}else{
+				//맥주병을 모두 먹으면 출력
+				System.out.println("No more bottles of beer on the wall");
+			}
+		}
+	}
+} 
+ 
+문제점 : if(beerNum>0) 잘못포괄하여 두번출력되었음.
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
