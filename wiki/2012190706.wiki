@@ -8,6 +8,7 @@
 
 {{{
 
+aa
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
