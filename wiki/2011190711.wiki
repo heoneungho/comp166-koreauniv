@@ -5,10 +5,76 @@
 = 01. 껍질을 깨고:간단한 소개 =
 
 *48p BeerSong* _문제해결하기, 주석달기_
+3 bottles of beer on the wall
+3 bottles of beer on the wall
+3 bottles of beer.
+Take one down.
+Pass it arround.
+2 bottles of beer on the wall
+2 bottles of beer on the wall
+2 bottles of beer.
+Take one down.
+Pass it arround.
+1 bottles of beer on the wall
+1 bottle of beer on the wall
+1 bottle of beer.
+Take one down.
+Pass it arround.
+No more bottles of beer on the wall
 
-{{{
+원래 출력 결과입니다.
 
-}}}
+public class BeerSong2 {
+	public static void main(String[] args) {
+		int beerNum = 99;
+		String word = "bottles";		//복수형
+		System.out.println(beerNum + " " + word + " of beer on the wall");
+		// 문제는 99병일 때를 제외하고 98 bottles of beer on the wall 이 문장이 두 번씩 반복되는 것입니다.
+		//그래서 while문 밖으로 바로 위의 문장을 빼냈습니다. 그러면 if문이 실행될 때만 한 번 실행되므로
+		// 위의 문장이 두 번 반복되지 않습니다.	
+		while (beerNum > 0) {
+
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it arround.");
+			beerNum = beerNum - 1;
+
+			if (beerNum == 1) {
+				word = "bottle";			//단수형(1병인 경우)
+			}
+			// 1병일 때도 bottles가 출력되었습니다. 따라서 bottle가 출력되게 해주어야 되는데,
+			// 바로 위 문장의 위치를 바꾸어 주었습니다. 그러면 beernum이 1일 때에는 word가 bottle로 바뀌게 되어
+			// 제대로 출력됩니다.
+			if (beerNum > 0) {
+				System.out.println(beerNum + " " + word + " of beer on the wall");
+			}	else {
+				System.out.println("No more bottles of beer on the wall");
+			}
+		}
+	}
+}
+
+수정된 출력 결과입니다.
+
+4 bottles of beer on the wall
+4 bottles of beer.
+Take one down.
+Pass it arround.
+3 bottles of beer on the wall
+3 bottles of beer.
+Take one down.
+Pass it arround.
+2 bottles of beer on the wall
+2 bottles of beer.
+Take one down.
+Pass it arround.
+1 bottle of beer on the wall
+1 bottle of beer.
+Take one down.
+Pass it arround.
+No more bottles of beer on the wal
+
+
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
