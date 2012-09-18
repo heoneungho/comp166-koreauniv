@@ -41,7 +41,7 @@ public class BeerSong {                                   //BeerSong이란 클�
                     {                                            //bottles가 뜨는 오류가 생깁니다
                             word = "bottle";          //beerNum = beerNum - 1;
                     }                                            //따라서 위 문장 아래로 옴겨야합니다
-                    *
+                    */
                    // System.out.println(beerNum + " " + word + " of beer on the wall");
                     System.out.println(beerNum + " " + word + " of beer.");
                     System.out.println("Take one down.");
