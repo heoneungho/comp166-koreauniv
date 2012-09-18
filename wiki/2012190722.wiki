@@ -85,7 +85,7 @@ int rand3=(int) (Math.random()*threeLength);
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-
+A
 class Exercise1b {
 
     public static void main(String [] args) {
@@ -101,9 +101,30 @@ class Exercise1b {
            }//if문 끝
            x = x+1;
           }//while문 끝
-}//메인 메소드끝
+     }//메인 메소드끝
 }클래스끝
 
+B
+class Exercise {
+
+    public static void main(String [] args) {
+
+        int x = 5;
+
+        while ( x > 1 ) {
+
+          x = x - 1;
+        
+          if ( x < 3 ) {
+
+            System.out.println("small x");
+
+          }//if문 끝
+        }//while문 끝
+    }//메인 메소드끝
+}클래스 끝
+
+C
 
 }}}
 
