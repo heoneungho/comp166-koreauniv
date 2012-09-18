@@ -79,6 +79,7 @@ No more bottles of beer on the wal
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {
+
 public class PhraseOMatic {
 	public static void main(String[] args) {
 		String[] wordListOne = {"잘생기고", "못생기고", "멋지고", "더럽고", "추하고", "키가 작고", "키가 크고", "뚱뚱하고", "홀쭉하고", "날씬하고", "어깨가 좁고"};
@@ -100,8 +101,6 @@ public class PhraseOMatic {
 		System.out.println("My nickname is " + phrase);
 	}
 }
-
-
 
 }
 
