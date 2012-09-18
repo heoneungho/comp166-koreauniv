@@ -87,8 +87,51 @@ public class PhaseOmatic {
 
 {{{
 A : 컴파일 가능하다.(콘솔창에 출력되기 위해서는 x값이 4이상 9이하여야된다.)
+public class Exercise1b {
+
+	public static void main(String[] args){
+		
+		int x = 5;
+		
+		while(x<10){
+			
+			if(x>3){
+				System.out.println("big x");
+			}
+		}
+	}
+}
 B : 클래스 선언해야 컴파일 가능하다.
+public class Exercise1b {
+
+	public static void main(String[] args){
+		
+		int x = 1;
+		
+		while(x>1){
+			x = x - 1;
+			if(x<3){
+				System.out.println("small x");
+			}
+		}
+	}
+}
 C : 메인 함수를 선언해야 컴파일 가능하며 x값이 2일때 출력이 가능하다.
+
+public class Exercise1b {
+
+	public static void main(String[] args){
+		
+		int x = 5;
+		
+		while(x>1){
+			x = x - 1;
+			if(x<3){
+				System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
