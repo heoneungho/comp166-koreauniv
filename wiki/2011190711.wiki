@@ -74,8 +74,6 @@ Take one down.
 Pass it arround.
 No more bottles of beer on the wal
 
-
-
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
