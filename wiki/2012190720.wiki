@@ -34,7 +34,7 @@
 
        if (beerNum > 0) {
     
-     System.out.println(beerNum + " " + word + " of beer on the wall"); }
+     System.out.println(beerNum + " " + word + " of beer on the wall"); } // 문자열에 word를 넣어서 출력
 
     else {
     
