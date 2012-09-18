@@ -105,7 +105,8 @@ class Exercise1b {
 }클래스끝
 
 B
-class Exercise {
+small x 이 2번 출력되는 코드
+class Exercise {//클래스 가 빠져있어서 추가!
 
     public static void main(String [] args) {
 
@@ -125,7 +126,26 @@ class Exercise {
 }클래스 끝
 
 C
+small x 가 2번실행되는 코드
+class Exercise {
 
+    public static void main(String [] args) {
+
+      int x = 5;
+
+      while ( x >1 ) {
+
+        x = x-1 ;
+       
+        if ( x < 3 ) {
+
+          System.out.println("small x");
+
+        }//if문 끝
+
+       }//while문 끝
+    }//메인메소드 끝
+}//클래스 끝
 }}}
 
 
