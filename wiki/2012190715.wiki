@@ -6,11 +6,44 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-{{{
+public class BeerSong { public static void main (String args) { int beerNum = 99; String word = "bottles"; //복수형
 
-}}}
+while (beerNum > 0) {
+
+if (beerNum == 1) { word = "bottle"; //단수형 (한 병인 경우) }
+
+System.out.println(beerNum + " " + word + " of beer on the wall"); System.out.println(beerNum + " " + word + " of beer."); System.out.println("Take one down."); System.out.println("Pass it around."); beerNum = beerNum - 1;
+
+if(beerNum > 0) { System.out.println(beerNum + " " + word + " of beer on the wall"); } else { System.out.println("No more bottles of beer on the wall"); } //else 문 끝 } //while 순환문 끝 } //main 클래스 끝 } //클래스 끝
+
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
+
+public class PhraseOMatic {
+public static void main (String[] args) {
+
+// 세 종류의 단어 목록을 만든다. 
+String [] wordListOne = {"4/21","young-tigers","20,000 people"};
+String [] wordListTwo = {"strong","focus-on","sharing"};
+String [] wordListThree = {"tip-toe","firefighter","cold-war"};
+
+//각 단어 목록에 단어가 몇 개씩 들어있는지 확인한다.
+int oneLength = wordListOne.length;
+int twoLength = wordListTwo.length;
+int threeLength = wordListThree.length;
+
+//난수 세개 발생시킨다
+int rand1 = (int) (Math.random()*oneLength);
+int rand2 = (int) (Math.random()*twoLength);
+int rand3 = (int) (Math.random()*threeLength);
+
+//구문 만들기
+String phrase = wordListOne[rand1] + " " +
+wordListTwo[rand2] + " " + wordListThree[rand3];
+
+//구문을 출력한다
+System.out.println("What we need is a " + phrase);
+}
 
 {{{
 
