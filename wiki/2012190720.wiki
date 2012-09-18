@@ -38,7 +38,7 @@
 
     else {
     
-     System.out.println("No more bottles of beer on the wall"); // beerNum이 0이 되면 이 문자열을 출력
+     System.out.println("No more bottles of beer on the wall"); /* beerNum이 0이 되면 이 문자열을 출력*/
 } // else문 끝
 }}}
 
