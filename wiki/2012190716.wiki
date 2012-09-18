@@ -5,8 +5,8 @@
 = 01. 껍질을 깨고:간단한 소개 =
 
 *48p BeerSong* _문제해결하기, 주석달기_
-
-public calss BeerSong{
+{{{
+public class BeerSong{
  public static void main(String[] args){
   int beereNum=99;
   String word="bottles"; //복수형
@@ -29,7 +29,7 @@ public calss BeerSong{
   }// while순환문 끝
  }//main 클래스 끝
 }//클래스 끝
-
+}}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{G
