@@ -6,9 +6,9 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-public class BeerSong {
-        public static void main (String[] args) {
-                int beerNum=99;
+public class BeerSong {       //클래스 선언
+        public static void main (String[] args) {      //main 메소드 선언
+                int beerNum=99;       //병의 수를 나타내는 변수 선언
                 String word="bottles";  //복수형
 
                 while (beerNum > 0) {
