@@ -239,7 +239,81 @@ public class GuessGame {
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+{{{ 
+===================================================
+A
+
+public class TapeDeck {
+	
+	//테이프 기록 초기값 false
+	boolean canRecord = false;
+	
+	//테이프 동작 출력
+	void playTape(){
+		System.out.println("tape playing");
+	}
+	//테이프 기록 출력
+	void recordTape(){
+		System.out.println("tape recording");
+	}
+}
+
+public class TapeDeckTestDrive {
+	public static void main(String[] args){
+		
+		//TapeDeck 객체 하나 생성
+		TapeDeck t = new TapeDeck();
+		
+		//tape 저장하기 위해 
+		t.canRecord = true;
+		
+		//기록되는 환경 출력
+		t.playTape();
+		
+		//테이프가 기록중이라면 출력문 형성
+		if(t.canRecord == true){
+			
+			t.recordTape();
+		}
+	}
+}
+=======================================================
+B
+
+
+public class DVDPlayer {
+	
+	//실행하자마자 기록되지 않도록 초기값 false로
+	boolean canRecord = false;
+	
+	//기록되고 있을때 출력문
+	void recordDVD(){
+		System.out.println("DVD redording");
+	}
+	//동작중일때 출력문
+	void playDVD(){
+		System.out.println("DVD playing");
+	}
+}
+
+public class DVDPlyaerTestDrive {
+	public static void main(String[] args){
+		
+		//DVD 객체 생성
+		DVDPlayer d = new DVDPlayer();
+		
+		//기록하기 위해 변수값 true로 
+		d.canRecord = true;
+		d.playDVD();
+		
+		//기록되고 있다면 해당되는 출력문 보여줌
+		if(d.canRecord == true){
+			d.recordDVD();
+		}
+	}
+}
+
+
 
 }}}
 
