@@ -37,6 +37,7 @@ public class BeerSong// 클래스 선언
        } // while 순환문 끝
     } // main 클래스 끝
   } // 클래스 끝
+}}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
@@ -65,7 +66,6 @@ public class PhraseOMatic {
   System.out.println("What we need is a " + phrase);
   }
   }
-
 }}}
 
 *52p 집중토론* _요약_
