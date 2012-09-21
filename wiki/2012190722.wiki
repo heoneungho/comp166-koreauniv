@@ -300,7 +300,35 @@ class TapeDeckTestDrive {//class선언
         }
 }//class 끝
 
+B
 
+
+
+class DVDPlayer {//클래스 선언
+
+        boolean canRecord = false;//bool형 변수 canRecord를 선언하고 false로 초기화
+
+        void recordDVD (){
+                System.out.println("DVD recording");
+        }
+        void playDVD () {//playDVD 메소드가 빠져있어서 추가함
+                System.out.println("DVD playing");
+        }
+}//클래스 끝
+
+class DVDPlayerTestDrive {//클래스 선언
+        public static void main(String [] args) {
+
+                DVDPlayer d = new DVDPlayer();//DVDPlayer 객체를 생성
+                d.canRecord = true;
+                d.playDVD();
+
+                if ( d.canRecord == true) {
+                        d.recordDVD();
+                }
+        }
+}//클래스끝
+~                
 
 
 
