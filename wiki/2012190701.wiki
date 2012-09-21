@@ -7,7 +7,40 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-public classaa
+public class beersong
+{
+
+        public static void main (String[] args)
+        {
+
+                int beerNum = 99; //맥주의 개수 99
+                String word = "bottles"; //복수형
+
+                while ( beerNum > 0)//맥주의 개수가 0보다 클때까지 while순환문을돌림
+                {
+                        if(beerNum == 1)//맥주의 개수가 1이면
+                                word = "bottle"; //단수형(한 병인 경우)
+
+                System.out.println(beerNum + " " + word + " of beer on the wall");
+                System.out.println(beerNum + " " + word + " of beer.");
+                System.out.println("Take on down.");
+                System.out.println("Pass it around.");
+                        //출력문입니다.         
+
+                beerNum = beerNum - 1;//beerNum을 1개 감소시킨 후 저장합니다
+
+                if(beerNum > 0)//beerNum이 0보다 크면
+                {
+                        System.out.println(beerNum + " " + word + " of beer on the wall");
+                }
+                else
+                {
+                        System.out.println("No more bottles of beer on the wall");
+                }//else 문 끝
+                }//while 순환문 끝
+        } //main 클래스 끝
+}//클래스 끝
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
