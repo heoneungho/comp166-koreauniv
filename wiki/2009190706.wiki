@@ -317,6 +317,56 @@ public class GameLauncher {
 
 {{{
 
+public class dog {
+
+	String name;
+	public static void main(String[] args) {
+		
+		dog dog1 = new dog();
+		dog1.bark();
+		
+	dog1.name = "Bart";
+	
+	dog[] myDogs = new dog[7];
+	
+	myDogs[0] = new dog();
+	myDogs[1] = new dog();
+	myDogs[2] = dog1;
+	myDogs[3] = new dog();
+	myDogs[4] = new dog();
+	myDogs[5] = new dog();
+	myDogs[6] = new dog();
+	
+		
+		myDogs[0].name = "Fred";
+		myDogs[1].name = "Marge";
+		myDogs[2].name = "byung jun";
+		myDogs[3].name = "sung han";
+		myDogs[4].name = "se hyun";
+		myDogs[5].name = "zero";
+		myDogs[6].name = "lucky";
+		
+		System.out.print("마지막 개의 이름 : ");
+		System.out.println(myDogs[2].name);
+		
+		int x = 0;
+		while(x < myDogs.length){
+			myDogs[x].bark();
+			x = x+1;
+		}
+				
+		
+	}
+	
+	public void bark(){
+		System.out.println(name + "이(가) 왈!하고 짖습니다");
+	}
+	
+	public void eat(){}
+		public void Chasecat() {}
+
+}
+
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
