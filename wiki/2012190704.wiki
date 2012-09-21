@@ -32,9 +32,9 @@ public class BeerSong {       //클래스 선언
                 }//while순환문 끝
         }//main클래스 끝
 }//클래스 끝 
-
+}}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
-
+{{{
 class Exercise1b {
      public static void main(String [] args) {
           int x = 1;
