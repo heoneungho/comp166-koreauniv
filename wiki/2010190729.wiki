@@ -10,7 +10,7 @@
 문제 : 48p의 코드를 실행시켜 보면 1bottle일때 1bottles 라고 나오는데, if의 위치를 바꿔 주면 해결할수 있다.
 
 
-public class beersong {
+public class Beersong {
 		public static void main(String[] args){
 				int beerNum = 99;
 				String word = "bottles";
