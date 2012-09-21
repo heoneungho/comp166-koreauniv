@@ -274,6 +274,39 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+class TapeDeck {//class 선언
+
+        boolean canRecord = false;//bool형 변수를 선언하고 false로 초기화
+
+        void playTape () {
+                System.out.println("tape playing");
+        }
+
+        void recordTape () {
+                System.out.println("tape recording");
+        }
+}//class 끝     
+class TapeDeckTestDrive {//class선언
+        public static void main(String [] args) {
+                TapeDeck t = new TapeDeck();//TapeDeck 객체를 생성(추가된코드)
+                t.canRecord = true;
+                t.playTape();
+
+                if ( t.canRecord == true ) {
+                        t.recordTape();
+                }
+        }
+}//class 끝
+
+
+
+
+
+
+
+
 
 }}}
 
