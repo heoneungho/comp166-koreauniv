@@ -71,21 +71,59 @@ point", "solution", "architecture", "core competency",
      int rand3 = (int) (Math.random() * threeLength);
 
      //이제 구문을 만듭니다.
-     String phase = wordListOne[rand1] 
+     String phase = wordListOne[rand1] + " " +
+wordListTwo[rand2] + " " + wordLIstThree[rand3];
 
-
-
+     System.out.println("What we need is a " + phase);
+     }
+}
 
 }}}
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 프로그램실행, 보안
+ * 컴파일러: 파일전송, 문법확인, 바이트코드작성, 데이터유형위반사항검사사
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Exercise1b {
+     public static void main(String [] args) {
+          int x = 1;
+          while ( x < 10 ) {
+               x = x + 1;
+               if ( x > 3 ) {
+                    System.out.println("big x");
+               }
+          }
+     }
+}
+
+class Foo{
+     public static void main(String [] args) {
+          int x = 5;
+          while ( x > 1 ) {
+               x = x - 1;
+               if ( x < 3) {
+                    System.out.println("small x");
+               }
+          }
+     }
+}
+
+class Exercise1b {
+     public static void main(String [] args) {
+          int x = 5;
+          while ( x > 1) {
+               x = x - 1;
+               if ( x < 3 ) {
+                    System.out.println("small x");
+               }
+          }
+     }
+}
+
 
 }}}
 
@@ -94,21 +132,28 @@ point", "solution", "architecture", "core competency",
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것. 객체의 상태(데이터). 객체를 부르는 다른 이름
+ * 메소드: 객체에서 할 수 있는 일
+ * 클래스: 객체를 만들기 위한 청사진
  * 테스트용 클래스:
  
 
 *68p Television* _채워넣기_
 
  * 인스턴스 변수:
- * 메소드:
+ * 메소드:TurnOn(), TurnOff(), VolumeUp(), VolumeDown(), 
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
+public class GuessGame
+
+
+
+
+
 
 }}}
 
