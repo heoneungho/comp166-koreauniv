@@ -18,7 +18,7 @@ if(beerNum > 0) { System.out.println(beerNum + " " + word + " of beer on the wal
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
-
+{{{
 public class PhraseOMatic {
 public static void main (String[] args) {
 
@@ -45,8 +45,6 @@ wordListTwo[rand2] + " " + wordListThree[rand3];
 System.out.println("What we need is a " + phrase);
 }
 
-{{{
-
 }}}
 
 *52p 집중토론* _요약_
@@ -55,7 +53,7 @@ System.out.println("What we need is a " + phrase);
  * 컴파일러: 자바에서 바이트코드 컴파일러를 사용하여 파일을 자바 가상머신에게 준다. 
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
+{{{
 A. 
 class Exercise1b {
 public static void main(String [] args) {
@@ -95,7 +93,7 @@ System.out.println("small x");
 }
 }
 
-
+}}}
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
 *68p~ 클래스* _요약_
@@ -113,7 +111,7 @@ System.out.println("small x");
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
-
+{{{
 > GuessGame.java
 
 public class GuessGame {
@@ -215,8 +213,9 @@ public class GuessGame {
 	}
      } 
 
-
+}}}
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
+{{{
 A. 
 
 >TapeDeck.java
@@ -270,7 +269,7 @@ class DVDPlayerTestDrive {
 		}
 	}
 }
-
+}}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
