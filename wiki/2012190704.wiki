@@ -28,12 +28,22 @@ public class BeerSong {       //클래스 선언
                                 System.out.println(beerNum + " " + word + " of beer on the wall");
                         } else {
                                 System.out.println("No more bottles of beer on the wall");
-                        }//else문 끝
-                }//while순환문 끝
-        }//main클래스 끝
-}//클래스 끝 
+                        }     //else문 끝
+                }     //while순환문 끝
+        }     //main클래스 끝
+}     //클래스 끝 
 }}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
+{{{
+public class Phrase
+}}}
+*52p 집중토론* _요약_
+
+ * 자바 가상 머신: (Java Virtual Machine)바이트코드로 컴파일된 코드를 실행시켜 주는 프로그램.
+ * 컴파일러: 자바언어로 작성된 프로그램을 바이트코드로 변환시키는 것.
+
+*55p 컴파일러가 되어봅시다* _구현후 주석달기_
+
 {{{
 class Exercise1b {
      public static void main(String [] args) {
@@ -46,16 +56,29 @@ class Exercise1b {
           }
      }
 }
-}}}
-*52p 집중토론* _요약_
 
- * 자바 가상 머신: (Java Virtual Machine)바이트코드로 컴파일된 코드를 실행시켜 주는 프로그램.
- * 컴파일러: 자바언어로 작성된 프로그램을 바이트코드로 변환시키는 것.
+class Exercise1b {     //class를 정의해야 함.
+     public static void main(String [] args) {
+          int x = 5;
+          while (x > 1) {
+               x = x - 1;
+               if (x < 3) {
+                    System.out.println("small x");
+               }
+          }
+     }
+}
 
-*55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
-{{{
-
+class Exercise1b {
+     public static void main(String [] args) {     //메소드를 정의해야 함.
+          int x = 5;
+          while (x > 1) {
+               x = x - 1;
+               if (x < 3) {
+                    System.out.println("small x");
+          }
+     }
+}
 }}}
 
 
