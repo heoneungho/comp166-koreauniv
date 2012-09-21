@@ -318,6 +318,58 @@ class Dog {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A. 
+class Books {
+	String title;
+	String author;
+}
+
+class BooksTestDrive {
+	public static void main(String [] args) {
+		
+		Books [] myBooks = new Books[3];
+		int x = 0;
+		myBooks[0] = new Books();
+		myBooks[1] = new Books();
+		myBooks[2] = new Books(); // myBooks 의 객체를 만든다
+		myBooks[0].title = "The Grapes of Java";
+		myBooks[1].title = "The Java Gatsby";
+		myBooks[2].title = "The Java Cookbook"; // 책의 제목
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian"; // 책의 저자
+		while(x<3) { // x가 3이 될때까지 책 세권의  제목과 저자를 나타내준다.
+			System.out.print(myBooks[x].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[x].author);
+			x = x + 1;
+		}
+	}
+}
+
+B.
+class Hobbits {
+	String name;
+	public static void main(String [] args) {
+		Hobbits [] h = new Hobbits[3];
+			int z = -1; // 배열의 인덱스는 0에서 시작해야한다.
+			while (z<2) {
+				z = z + 1; // z가 0부터 시작한다.
+				h[z] = new Hobbits();
+				h[z].name = "bilbo";
+				if(z==1) { // z = 1 일때의 이름
+						h[z].name = "frodo";
+				}
+				if (z==2) { // z = 2 일때의 이름 그리고 out
+					h[z].name = "sam";
+				}
+				System.out.print(h[z].name + " is a ");
+				System.out.println("good Hobbit name"); //출력
+			}
+	}
+}
+
+
 
 }}}
 
