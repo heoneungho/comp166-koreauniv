@@ -45,7 +45,8 @@ public class beersong
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{public class phraseomatic
+{{{
+public class phraseomatic
 {
         public static void main (String[] args)
         {
