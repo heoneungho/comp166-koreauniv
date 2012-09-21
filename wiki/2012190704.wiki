@@ -6,7 +6,7 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-public class BeerSong {       //클래스 선언
+{{{public class BeerSong {       //클래스 선언
         public static void main (String[] args) {      //main 메소드 선언
                 int beerNum=99;       //병의 수를 나타내는 변수 선언
                 String word="bottles";  //복수형
@@ -45,7 +45,7 @@ class Exercise1b {
           }
      }
 }
-
+}}}
 *52p 집중토론* _요약_
 
  * 자바 가상 머신: (Java Virtual Machine)바이트코드로 컴파일된 코드를 실행시켜 주는 프로그램.
