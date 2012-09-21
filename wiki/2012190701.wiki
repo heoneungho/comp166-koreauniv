@@ -86,7 +86,19 @@ public class phraseomatic
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-
+//big x 를 여러번 출력하는 프로그램이에요
+public class Exercise1b {
+	public static void main(String[] args) {
+		int x = 1; // x = 1 대입
+		while ( x < 10)//x 가 10 미만일때까지 계속	{
+			x++;//x 를 1씩 증가시킨다
+			if ( x > 3)//x가 3 보다 크면 출력한다	{
+				System.out.println("big x");
+				break;//반복문을 빠져나간다.
+			}
+		}
+	}
+}
 }}}
 
 
