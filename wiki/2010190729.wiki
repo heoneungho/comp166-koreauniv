@@ -10,23 +10,28 @@
 문제 : 48p의 코드를 실행시켜 보면 1bottle일때 1bottles 라고 나오는데, if의 위치를 바꿔 주면 해결할수 있다.
 
 
+
 public class Beersong {
 		public static void main(String[] args){
 				int beerNum = 99;
 				String word = "bottles";//복수형
 				
-				while(beerNum > 0){
+				while(beerNum > 0)//beerNum이 0보다 크면 실행
+				{
 					System.out.println(beerNum + " " + word + " of beer on the wall");
 					System.out.println(beerNum + " " + word + " of beer");
 					System.out.println("Take one down.");
 					System.out.println("pass it around.");
 					beerNum = beerNum-1;
-					if(beerNum==1)	{
-						word = "bottle";//한병일 경우
+					if(beerNum==1)//beerNum이1이면 실행
+					{
+						word = "bottle";
 					}
-					if(beerNum>0)	{
+					if(beerNum>0)//beerNum이 0보다크면 실행
+					{
 						System.out.println(beerNum + " " + word + " of beer on the wall");
-					}else	{
+					}else//beerNum이 0보다 크지않으면 실행
+					{
 						System.out.println("No more bottles of beer on the wall");
 					}
 				}
