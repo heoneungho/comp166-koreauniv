@@ -34,9 +34,17 @@ public class BeerSong {       //클래스 선언
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{
-
-}}}
+class Exercise1b {
+     public static void main(String [] args) {
+          int x = 1;
+          while (x < 10) {
+               x = x + 1;     //while문의 무한 반복을 막기 위해 x를 1씩 증가시킴.
+               if (x > 3) {
+                    System.out.println("big x");
+               }
+          }
+     }
+}
 
 *52p 집중토론* _요약_
 
