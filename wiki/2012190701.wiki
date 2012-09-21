@@ -119,6 +119,21 @@ public class Exercise2b	//class 명이 없으므로 넣어줍니다
 		
 	}
 }
+
+
+//small x 를 여러 번 출력하는 프로그램
+public class Exercise3b {
+	public static void main(String[] args) {//main 이 없기 때문에 main 을 추가해준다.
+		int x = 5;
+		while (x > 1)	{
+			x = x - 1;
+			if(x < 3)	{
+				System.out.println("small x");
+			}
+		}
+	}
+
+}
 }}}
 
 
