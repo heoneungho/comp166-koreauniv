@@ -374,6 +374,83 @@ public class Dog {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+===================================================
+public class Books {
+	String title;
+	String author;
+}
+
+public class BooksTestDrive {
+	public static void main(String[] args){
+		
+		//Books 클래스 참조할 배열객체 생성
+		Books[] myBooks = new Books[3];
+		
+		//객체개수만큼 루프 돌리기 위한 변수
+		int x = 0;
+		
+		//객체 생성하고 그 객체를 배열 원소에 대입
+		myBooks[0] = new Books();
+		myBooks[1] = new Books();
+		myBooks[2] = new Books();
+		
+		//배열객체 마다 해당 출력문 입력
+		myBooks[0].title = "The Grapes of Java";
+		myBooks[1].title = "The Java Gatsby";
+		myBooks[2].title = "The Java Cookbook";
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian";
+		
+		//객체 출력
+		while(x<3){
+			
+			System.out.println(myBooks[x].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[x].author);
+			x = x+1;
+		}
+	}
+}
+================================================================
+B
+
+public class Hobbit {
+	String name;
+}
+
+public class Hobbits {
+	
+	
+	public static void main(String[] args){
+		
+		//객체 생성
+		Hobbit [] h = new Hobbit[3];
+		int z = 0;
+		
+		//3개 객체 출력
+		while(z<3){
+			
+			//해당객체 배열원소에 대입
+			h[z] = new Hobbit();
+			//h[0]인경우 출력
+			h[z].name = "bilbo";
+			//h[1]인경우 출력
+			if(z == 1){
+				h[z].name = "frodo";
+			}
+			//h[2]인경우 출력
+			if(z == 2){
+				h[z].name = "sam";
+			}
+			System.out.println(h[z].name + "is a ");
+			System.out.println("good Hobbit name");
+			//다른 객체 출력위해 하나씩 증가 시킴
+			z = z+1;
+		}
+	}
+}
 
 }}}
 
