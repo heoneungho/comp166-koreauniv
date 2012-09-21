@@ -13,7 +13,7 @@
 public class Beersong {
 		public static void main(String[] args){
 				int beerNum = 99;
-				String word = "bottles";
+				String word = "bottles";//복수형
 				
 				while(beerNum > 0){
 					System.out.println(beerNum + " " + word + " of beer on the wall");
@@ -22,7 +22,7 @@ public class Beersong {
 					System.out.println("pass it around.");
 					beerNum = beerNum-1;
 					if(beerNum==1)	{
-						word = "bottle";
+						word = "bottle";//한병일 경우
 					}
 					if(beerNum>0)	{
 						System.out.println(beerNum + " " + word + " of beer on the wall");
