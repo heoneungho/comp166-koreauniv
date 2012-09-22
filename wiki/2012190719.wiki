@@ -109,11 +109,32 @@ public class PhraseOMatic	//PhraswOMatic 이란 클래스를 만듭니다.
  * 컴파일러: 가상머신에 파일을 넘겨줌; 각종 위반사항을 막아줌. 보안관련작업.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
+A
+{{{
 
+public class Exercise1b {
+
+	public static void main(String [] args)
+	{
+		int x = 1;     //x라는 변수를 선언하고 1을 대입합니다.
+		
+		while(x<10)   // x가10보다 작으면 계속 반복되는 반복문을 만듭니다.
+		{
+			if(x>3)   // x가 3보다 크면 아래의 문장을 출력합니다.
+			{
+				System.out.println("big x");
+				
+			}
+		}
+	}
+}
+//위 코드에 들어있는 while문 때문에 x에 1을넣으면 while문을 빠져나오지 못하고 무한 루프에 빠지게 됩니다. 따라서 while문을 제거해야 합니다.
+}}}
+
+B
 {{{
 
 }}}
-
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
