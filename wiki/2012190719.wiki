@@ -136,9 +136,28 @@ public class Exercise1b {
 
 B
 {{{
+class Exercise1b  //추가해줘야함
+{
+	
+	public static void main(String [] args)
+	{
+		int x = 5;  //x라는 변수를 선언하고 5를 대입합니다.
+		while ( x>1)//x가 1보다 클경우 계속 반복되는 반복문을 선언합니다.
+		{
+			x=x-1;  //x에 x-1을 대입합니다.
+		
+			if(x<3) //x가 3보다 작으면 아래 문장을 출력합니다.
+			{
+				System.out.println("small x");
+			}
+		}
+	}
+}
 
+//결국 x가 5,4,3,2,1로변하면서 2,1일때 문장이 출력되고 1이되면 while문을 벗어나게되어 종료됩니다.
 }}}
-
+책에 나와있는 코드에는 class가 없어서 시작이 되지않습니다.
+따라서 class를 추가해주어야합니다.
 
 C
 {{{
