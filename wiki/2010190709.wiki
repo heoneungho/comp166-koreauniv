@@ -241,7 +241,7 @@ class TapeDeck {
 
 class TapeTestTestDrive {
 	public static void main(String[] args){
-		TapeDeck t = new TapeDeck();
+		TapeDeck t = new TapeDeck();//TapeDeck객체 생성이 안되어 있으므로 추가해준다.
 		t.canRecord=true;
 		t.playTape();
 		
@@ -253,6 +253,33 @@ class TapeTestTestDrive {
 }
 
 //B
+
+
+class DVDPlayer {
+	boolean canRecord=false;
+	
+	void playDVD(){
+		System.out.println("DVD playing");//playDVD 메소드가 빠져있으므로 추가해 주어야한다.
+	}
+	
+	void recordDVD(){
+		System.out.println("DVD recording");
+	}
+
+}
+
+class DVDPlayerTestDrive {
+	public static void main(String [] args){
+		
+		DVDPlayer d =new DVDPlayer();
+		d.canRecord= true;
+		d.playDVD();
+		
+		if(d.canRecord==true){
+			d.recordDVD();
+		}
+	}
+}
 
 }}}
 
