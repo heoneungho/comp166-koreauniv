@@ -118,16 +118,16 @@ public class Exercise1bC {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 객체의 상태(데이터), 각 객체마다 값이 다르다.
+ * 메소드: 객체에서 할 수 있는 일
+ * 클래스: 객체를 만들기 위한 청사진
+ * 테스트용 클래스: 새로운 클래스를 테스트하기 위한 클래스
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: power, channel, volume
+ * 메소드: turnOnAndOff(), changeChannel, changeVolume() 
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
@@ -155,9 +155,9 @@ public class GuessGame {
 		boolean p1isRight=false;
 		boolean p2isRight=false;
 		boolean p3isRight=false;
-		boolean p4isRight=false;
+		boolean p4isRight=false;//기본적인 블리언 값 거짓으로 저장
 		
-		int targetNumber=(int) (Math.random()*10);
+		int targetNumber=(int) (Math.random()*10);//0이상 9이하 숫자를 타켓 숫자로 지정
 		
 		System.out.println("0이상 9이하의 숫자를 맞춰보세요.");
 		
@@ -182,7 +182,7 @@ public class GuessGame {
 			System.out.println("4번 선수가 찍은 숫자: "+guessp4);
 			
 			if(guessp1==targetNumber){
-				p1isRight=true;
+				p1isRight=true;//숫자를 맞추면 블리언 값이 참으로 바뀐다.
 			}
 
 			if(guessp2==targetNumber){
