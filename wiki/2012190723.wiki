@@ -434,7 +434,32 @@ class BooksTestDrive{
 	}
 
 }
+
 B:
+// Hobbits 클래스를 생성합니다.
+class Hobbits {
+	String name;
+	public static void main (String [] args) {
+
+		Hobbits [] h = new Hobbits[3];
+		int z = 0; // 배열의 인덱스는 0에서 시작하므로 0으로 설정합니다.
+
+		while (z<3)     {    // 따라서 z<3입니다.
+
+		h[z] = new Hobbits(); // 객체를 생성합니다.
+		h[z].name = "bilbo";
+		if (z==1) {
+			h[z].name = "frodo";
+		}
+		if (z==2) {
+			h[z].name = "sam";
+		}
+		System.out.print(h[z].name + " is a ");
+		System.out.println("good hobbit name");
+		z = z + 1; //Z의 값을 1씩 증가시킵니다.
+		}
+	}
+}
 
 }}}
 
