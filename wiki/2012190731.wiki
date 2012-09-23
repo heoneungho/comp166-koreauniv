@@ -299,32 +299,31 @@ public class Dog {
     String name;
     public static void main(String[] args) {
         Dog dog1 = new Dog();
-        dog1.bark();
-        dog1.name = "Bart";
+        dog1.bark(); // 아직 dog1에 이름이 할당 되지 않았습니다. null 값처리.
+        dog1.name = "저글링";
         
-        Dog[] myDogs = new Dog[3];
+        Dog[] myDogs = new Dog[3]; // 이름을 넣을 배열을 만든다.
         myDogs[0] = new Dog();
         myDogs[1] = new Dog();
         myDogs[2] = dog1;
         
-        myDogs[0].name = "Fred";
-        myDogs[1].name = "Marge";
+        myDogs[0].name = "히드라";
+        myDogs[1].name = "울트라";
         
-        System.out.print("마지막 개의 이름 ");
+        System.out.print("마지막 개의 이름은 ");
         System.out.println(myDogs[2].name);
         
         int x = 0;
         while (x < myDogs.length) {
             myDogs[x].bark();
             x = x+1;
-        }
+        } // 모든 개들을 짖게 하자.
     }
     public void bark() {
-        System.out.println(name + " 이(가) 왈!하고 짖습니다.");
-    }
+        System.out.println(name + " 이(가) 꾸에에엑!하고 짖습니다.");
+    } // 개들을 짖게하는 매소드다.
     
     public void eat() { }
-    
     public void chaseCat() { }
 }
 
