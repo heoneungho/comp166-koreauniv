@@ -127,7 +127,7 @@ public class Exercise1bC {
 *68p Television* _채워넣기_
 
  * 인스턴스 변수: power, channel, volume
- * 메소드: turnOnAndOff(), changeChannel, changeVolume() 
+ * 메소드: turnOnAndOff(), changeChannel(), changeVolume() 
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
@@ -223,6 +223,36 @@ public class GuessGame {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+//A
+
+
+class TapeDeck {
+	boolean canRecord=false;
+	
+	void playTape(){
+		System.out.println("tape playing");
+	}
+	
+	void recordTape(){
+		System.out.println("tape recording");
+	}
+}
+
+
+class TapeTestTestDrive {
+	public static void main(String[] args){
+		TapeDeck t = new TapeDeck();
+		t.canRecord=true;
+		t.playTape();
+		
+		if(t.canRecord==true){
+			t.recordTape();
+		}
+	}
+
+}
+
+//B
 
 }}}
 
