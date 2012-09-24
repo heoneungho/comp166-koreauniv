@@ -553,6 +553,27 @@ class DogTestDrive{
 
 {{{
 
+A:
+// 수(인자)를 메소드에 넘겼다가 리턴받는 코드입니다. 
+class XCopy {
+
+	public static void main(String[] args) {
+		int orig=42;
+		XCopy x=new XCopy(); // XCopy 객체 x를 생성합니다.
+		int y= x.go(orig); // y변수에 42를 go 메소드에 넘겨받은 리턴값을 대입합니다.
+		System.out.println(orig+""+y); // orig와 y를 출력합니다.
+	}
+
+	int go(int arg){ // 이때 orig의 값은 바뀌지 않습니다.
+		arg=arg*2;
+		return arg;
+	}
+}
+
+
+B:
+
+
 }}}
 
 
