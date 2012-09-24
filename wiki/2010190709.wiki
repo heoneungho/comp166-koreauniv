@@ -287,7 +287,7 @@ class DVDPlayerTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 원시 변수에는 정수, 부울, 부동소수점 수와 같은 것이 들어가지만 래퍼런스변수에는 객체에 대한 레퍼런스가 들어간다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
@@ -343,12 +343,80 @@ public void chaseCat(){}
 
 {{{
 
+//A
+
+class Books {
+	String title;
+	String author;
+
+}//Books 클래스 선언
+
+class BooksTestDrive {
+	public static void main(String [] args){
+		Books [] myBooks=new Books[3];
+		int x=0;
+		
+		myBooks[0]=new Books();//Books배열에 들어있는 원소는 Books 레퍼런스 변수에 불과하기 때문에 Books 객체를 만들어 주어야 한다.
+		myBooks[1]=new Books();
+		myBooks[2]=new Books();
+		
+		myBooks[0].title="The Grape of Java";
+		myBooks[1].title="The Java Gatsby";
+		myBooks[2].title="The Java Cookbook";
+		myBooks[0].author="bob";
+		myBooks[1].author="sue";
+		myBooks[2].author="ian";
+		
+		while(x<3){
+			System.out.print(myBooks[x].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[x].author);
+			x=x+1;
+			
+		}
+		
+		
+	}
+
+}
+
+//B
+
+class Hobbits {	
+	String name;
+}
+//Hobbits 클래스 생성
+class HobbitsTestDrive {
+	public static void main(String [] args){
+		Hobbits [] h= new Hobbits[3];
+		int z=0;
+		
+		while(z<3){//총 3개의 배열을 선언했으므로 z<3이 되어야한다
+			h[z] = new Hobbits();//Hobbits 객체 생성
+			h[z].name="bilbo";
+			if(z==1){
+				h[z].name="frodo";
+			}
+			if(z==2){
+				h[z].name="sam";
+			}
+	
+		
+		System.out.print(h[z].name + " is a ");
+		System.out.println("good Gobbit name");
+		z++;//z값을 증가시켜 반복문이 나중에 끝나도록 해준다.
+		}
+	}
+
+}
+
+
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥이 이겼다.
+ * 문제가 된 부분은 어딘가요?: 둘 다  객체를 10개를 만든다. 밥의 경우는 10개의 객체를 만들어 모두에 접근할 수 있지만 켄트의 경우는 10개 중에 마지막 객체에만 접근하므로 문제가 된다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
