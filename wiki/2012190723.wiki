@@ -554,6 +554,7 @@ class DogTestDrive{
 {{{
 
 A:
+
 // 수(인자)를 메소드에 넘겼다가 리턴받는 코드입니다. 
 class XCopy {
 
@@ -572,6 +573,28 @@ class XCopy {
 
 
 B:
+
+// 게터와 세터를 사용하여 캡슐화를 한 코드입니다.
+class Clock{
+	String time;
+	void setTime(String t){
+		time=t;
+	}
+	String getTime(){ // 게터 메소드에는 리턴 타입을 설정해야합니다.
+		return time;
+	}
+}
+
+class ClockTestDrive {
+
+	public static void main(String[] args) {
+		Clock c= new Clock();
+		c.setTime("1245");
+		String tod=c.getTime();
+		System.out.println("time:"+tod);
+	}
+
+}
 
 
 }}}
