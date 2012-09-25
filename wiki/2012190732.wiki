@@ -7,7 +7,47 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-		
+
+public class BeerSong{  //BeerSong class선언
+     
+        public static void main(String[] args) {  //main함수 선언
+                
+               
+                int beerNum = 99;   //맥주병 변수 beerNum선언
+                String word = "bottles";  //문자열 word 선언
+        
+                
+                while(beerNum >0){ //맥주병이 있을 때 while
+                        
+                      
+                        
+                        if(beerNum > 0){
+                             //맥주병이 있다면?
+                                
+                                System.out.println(beerNum + " " + word + " " + "of beer on the wall");
+                                System.out.println(beerNum + " " + word + " " + "of beer.");
+                                System.out.println("Take one down");
+                                System.out.println("Pass it around");
+                                
+                                beerNum = beerNum -1 ;
+                                       //병의 수를 하나씩 줄여감.                      
+                                 
+                        }
+                       if(beerNum == 1){
+                            word = "bottle"; 
+            //맥주병이 하나일 경우 bottles가 아니라 bottle이므로 미리 수정. 
+                    }
+                           else{
+                               
+                                System.out.println("No more bottles of beer on the wall");
+                         //맥주병을 모두 먹으면 출력
+                          }
+                }
+        }
+}
+ 
+ 
+//Problem is that "if문 사용시 beerNum==1일때 오류발생."		
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
