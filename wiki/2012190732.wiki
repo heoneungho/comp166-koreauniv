@@ -375,7 +375,13 @@ DVD recording가 출력된다. */
 *83p~ 변수* _요약_
 
  * 원시변수 vs 레퍼런스변수:
- 
+
+- 원시변수: 정수(byte,short,int,long), 부울(boolean), 부동소수점수(float, double)와 같은 기초적인 값이 들어간다.
+
+- 레퍼런스 변수: 객체에 대한 레퍼런스가 들어간다. 
+  ex) Dog mydog = new Dog();
+         mydog가 레퍼런스변수명이됨.
+
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
