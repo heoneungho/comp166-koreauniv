@@ -1,4 +1,5 @@
-#summary 민 형 이 의 페 이 지 야
+#summary MHMHMHMHMHMHMHMHMHMHMHMHMHMHMH
+
 
 <wiki:toc max_depth="1" />
 
@@ -83,6 +84,41 @@ public class PhraseOMatic {
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class Exercise1b{
+    public static void main(String [] args){
+        int x = 1;
+        while (x < 10){
+           x = x +1;
+        if (x > 3){
+             System.out.println("big x");
+       }
+     }
+   }
+ }
+
+class Foo{
+   public static void main(String [] args) {
+       int x = 5;
+       while (x > 1){
+           x = x - 1;
+           if ( x < 3){
+              System.out.println("small x");
+       }
+     }
+   }
+}
+class Exercise1b{
+    public static void main(String [] args){
+        int x = 5;
+        while ( x > 1){
+        x = x - 1;
+        if ( x < 3){
+              System.out.println("small x");
+        }
+      }
+    } 
+}
 
 
 
