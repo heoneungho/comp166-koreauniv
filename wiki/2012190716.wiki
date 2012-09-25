@@ -204,6 +204,28 @@ public class GameLauncher{
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+class TapeDeck {
+	boolean canRecord=false;
+	void playeTape(){
+		System.out.println("tape playing");
+	}
+	void recordTape(){
+		System.out.println("tape recording");
+	}
+}
+class TapeDeckTestDrive{
+	public static void main(String [] args){
+		TapeDeck t=new TapeDeck();// have to  make a gekchea
+		t.canRecord=true;
+		t.playeTape();
+		if(t.canRecord){
+			t.recordTape();
+		}
+	}
+}
+
 
 }}}
 
