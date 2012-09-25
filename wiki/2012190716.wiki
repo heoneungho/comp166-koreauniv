@@ -162,6 +162,14 @@ public class GuessGame{
    guessp4=p4.number;
    System.out.println("you said"+guessp4);
 
+   if(guessp1==targetNumber) p1isRight=true;
+
+   if(guessp2==targetNumber) p2isRight=true;
+
+   if(guessp3==targetNumber) p3isRight=true;
+
+   if(guessp4==targetNumber) p4isRight=true;
+
   }
  }
 }
