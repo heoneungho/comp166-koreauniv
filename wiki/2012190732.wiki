@@ -271,14 +271,19 @@ public class Exercise1b { //Exercise1b 클래스 지정
 
 }
 class Player{ //Player class 지정. 선수에 관련된 정보.
+
         int number=0; //선수들이 찍을 숫자를 나타내는 변수 number선언.
+
         public void guess(){ //guess 메소드 선언.
+
                 number = (int) (Math.random()*10); //random 메소드 이용 무작위 추출.
                     System.out.println("찍은숫자:"+number);
 }
 }
 public class GameLauncher{ //GameLauncher class 지정
+
         public static void main(String[] args) { //메인함수 호출 => 가장먼저 실행.
+
             GuessGame game = new GuessGame(); //GuessGame 메소드 호출.
             game.startGame(); //게임을 시작한다.
         
@@ -290,6 +295,8 @@ public class GameLauncher{ //GameLauncher class 지정
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
