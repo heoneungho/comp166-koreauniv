@@ -701,7 +701,7 @@ public class SimpleDotComTestDrive {
 
 		} 
 
-	}  // 메소드 
+	}  // 메소드 끝
 } // 클래스 끝
 
 
