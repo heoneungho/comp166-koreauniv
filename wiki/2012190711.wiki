@@ -1,4 +1,4 @@
-#summary 수업중 실습하는 내용을 올리게 되는 실습페이지입니다. 페이지의 내용은 각 학생에 의해서 관리됩니다.
+#summary 수업중 실습하는 내용을 올리게 되는 실습페이지입니다. 페이지의 내용은 김정곤에 의해서 관리됩니다.
 
 <wiki:toc max_depth="1" />
 
@@ -8,6 +8,34 @@
 
 {{{
 
+public class BeerSong {
+	public static void main (String[] args) {
+		int beerNum = 99;
+		String word = "bottles"; //복수형
+		
+		while (beerNum > 0) {
+			
+			
+			System.out.println(beerNum + " " + word + " of beer on the wall");
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around.");
+			beerNum = beerNum - 1;
+
+			if (beerNum == 1) {
+				word = "bottle";	//단수형(한 병인 경우)
+			}
+			
+			if (beerNum > 0) {
+				System.out.println(beerNum + " " + word + " of beer on the wall");
+			} else {
+				System.out.println("No more bottles of beer on the wall");
+			}	// else 문 끝
+		} // while 순환문 끝
+	}	// main 클래스 끝
+} // 클래스 끝
+
+/* if 문 을 beerNum = beerNum - 1; 밑으로 내려주어 한병이 되었을 때 단수형으로 표현*/
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
