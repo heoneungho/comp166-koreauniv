@@ -490,6 +490,57 @@ public class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+ package toBeCompiler;
+
+public class XCopy {
+	public static void main(String[] args) {
+		
+		int orig = 42;
+		
+		XCopy x = new XCopy();
+		
+		int y = x.go(orig); // go라는 함수에 orig를 매개변수로 넣어서 y에 받습니다.
+		
+		System.out.println(orig + " " + y); // y는 orig의 2배이니... 
+		// 출력은 42 84가 되겠지요
+	}
+	
+	int go(int arg) {
+		
+		arg = arg * 2;
+		
+		return arg;
+	}
+
+}
+//--------------------------------------------------------------
+
+package toBeCompiler2;
+
+public class Clock {
+	String time;
+	
+	void setTime (String t) {
+		time = t;
+	}
+	String getTime () { //time은 String이니 반환값도 같아야한다.
+		return time; 
+	}
+}
+
+package toBeCompiler2;
+
+public class ClockTestDrive {
+	public static void main(String[] args) {
+		
+		Clock c = new Clock ();
+		
+		c.setTime("1245");
+		String tod = c.getTime(); // tod에 시간을 받는다.
+		System.out.println("time: " + tod); // 출력한다.
+	}
+	
+}
 
 }}}
 
