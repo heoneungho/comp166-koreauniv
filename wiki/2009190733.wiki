@@ -464,18 +464,86 @@ public class Hobbits {
 *105p~ 객체* _요약_
 
  * 캡슐화: 데이터에 대한 접근 제어
- * 게터와 세터:
+ * 게터와 세터: 
+게터 = 게터가 가져오기로 되어있는 값을 리턴값 형태로 받아오기 위한 용도
+세터 = 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도로 쓰인다.
  * 인스턴스 변수 vs 지역 변수:
- 
+ 인스턴스 변수 = 클래스 내에서 선언됨
+ 지역 변수  = 메소드 내에서 선언됨
 *107p Dog* _실행_
 
 {{{
+
+Wooof! Wooof!
+Yip!Yip
+Ruff! Ruff!
 
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+A
+=======================================================
+
+public class XCopy {
+	
+	public static void main(String[] args){
+		
+		//초기값 저장
+		int orig = 42;
+		
+		//객체 생성
+		XCopy x = new XCopy();
+		
+		//메소드 값 전달하여 2배 된값 리턴 받음
+		int y = x.go(orig);
+		
+		//결과물 출력
+		System.out.println(orig+"  "+y);
+	}
+	
+	//초기값 두배해 주는 함수
+	int go(int arg){
+		arg = arg * 2;
+		
+		return arg;
+	}
+}
+=============================================================
+B
+
+
+public class Clock {
+	String time;
+	
+	//setTime 함수 호출시 생성자
+	void setTime(String t){
+		
+		time = t;
+	}
+	//getTime시 String time 리턴
+	String getTime(){
+		return time;
+	}
+}
+
+
+public class ClockTestDrive {
+	public static void main(String[] arsg){
+		
+		//객체 생성
+		Clock c = new Clock();
+		
+		//setTime 1245값 넣어 Clock 클래스에서 time값 리턴받음
+		c.setTime("1245");
+		
+		//time값 넘겨 받아 저장하고 출력
+		String tod = c.getTime();
+		System.out.println("tiem : " + tod);
+	}
+}
 
 }}}
 
