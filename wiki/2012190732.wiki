@@ -93,7 +93,67 @@ public class PhraseOMatic { // PhaseOmatic class 지정
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A : 
+ 
+public class Exercise1b { //Exercise1b class 지정
 
+        public static void main(String[] args){ //main함수 선언
+                
+                int x = 1; // 인스턴스 변수 x 선언
+                
+                while(x<10){ //while문
+                                                     
+                        if(x>3){
+                                System.out.println("big x");
+                                			                        }
+                        						x++; //x=x+1을 해줌으로써 while문 멈춤 
+                }
+        }
+}
+//A는 원래 무한루프로 계속 big x가 출력되는 형태였으나, x++;를 출력함으로써
+//x<10이 성립을 안하는 조건을 만들어서 이 경우 big x가 6번 출력되는 경우가 되었//다.
+
+B : 
+public class Exercise1b { //클래스를 지정해 주어야함.
+																
+
+        public static void main(String[] args){ //메인함수 선언
+                
+        			int x = 5; //인스턴스 변수 x 선언
+                
+                while(x>1){ //while문
+                	
+                        	x = x - 1;
+        
+                        	if(x<3){
+                                System.out.println("small x");
+                          	}
+                }
+        }
+}
+//B는 class 선언 없이  main함수가  존재할수 없으므로  아예 불가능한 코드였다.
+//class를 지정해주고,  나머지대로 출력하면  small x가  2번출력된다.
+
+C :
+
+public class Exercise1b { //Exercise1b 클래스 지정
+
+    public static void main(String[] args){ //메인함수 선언
+                
+                int x = 5; //인스턴스 변수 
+                
+                while(x>1){ //while
+                        x = x - 1;
+                        
+                        if(x<3){
+                                System.out.println("small x");
+                        }
+                }
+        }
+}
+
+//C는 메인함수가 없어서  실행이  불가능한 형태였다.
+//메인함수부터 프로그램이 실행되므로,  프로그램에서는 항상 메인함수가 있어야 한다.
 }}}
 
 
