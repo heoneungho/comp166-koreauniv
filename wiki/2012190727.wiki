@@ -161,6 +161,51 @@ public class GuessGame
 
 {{{
 
+class TapeDeck{
+     boolean canRecord = false;
+     void playTape() {
+          System.out.println("tape playing");
+     }
+     void recordTape() {
+          System.out.println("tape recording");
+     }
+}
+
+class TapeDeckTestDrive{
+     public static void main(String [] args) {
+          TapeDeck += new TapeDeck();
+          t.canRecord = true;
+          t.playTape();
+
+          if (t.canRecord == true) {
+               t.recordTape();
+          }
+     }
+} 
+
+class DVDPlayer{
+     boolean canRecord = false;
+     void recordDVD() {
+          System.out.println("DVD recordings");
+     }
+     void playDVD() {
+          System.out.println("DVD recording");
+     }
+}
+
+class DVDPlayerTestDrive {
+     public static void main(String [] args) {
+          DVDPlayer d = new DVDPlayer();
+          d.canRecord = true;
+          d.playDVD();
+          if (d.canRecord == true) {
+               d.recordDVD();
+          }
+     }
+}
+
+
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
@@ -172,6 +217,30 @@ public class GuessGame
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+
+class Dog {
+     String name;
+     public static void main (String[] args) {
+          // Dog 객체를 만들고 접근합니다.
+          Dog dog 1 = new Dog();
+          dog1.bark();
+          dog1.name = "Bart";
+
+          // 이번에는 Dog 배열을 만듭니다.
+          Dog[] myDogs = new Dog[3];
+          // 그리고 개를 몇 마리 집어넣습니다.
+          myDogs[0] = new Dog();
+          myDogs[1] = new Dog();
+          myDogs[2] = dog1;
+
+          // 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+          myDogs[0].name = "Fred";
+          myDogs[1].name = "Marge";
+
+          //
+
+
+
 
 }}}
 
