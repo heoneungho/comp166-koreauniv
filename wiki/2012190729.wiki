@@ -197,7 +197,7 @@ class BooksTestDrive {
 
 B.
 
-public class Hobbits {   //public 필요
+class Hobbits {   
 	String name;
 	
 	public static void main (String [] args) {
