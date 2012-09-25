@@ -61,7 +61,7 @@ public class PhraseOMatic { // PhaseOmatic class 지정
                 String[] wordListTwo = {"C study","unix study","java study","datastructure study","C++ study"};
                 String[] wordListThree = {"math","computer","korean","english","geography"};
 
-                      //3개의 String배열 생성 - portalsite, computer subject, normal subject
+                      //3개의 String배열 생성 - electronics, computer subject, normal subject
                 
                 int oneLength = wordListOne.length;
                 int twoLength = wordListTwo.length;
