@@ -1,0 +1,14 @@
+#summary 독서실 좌석 현황과 요금을 계산해주고 관리하는 프로그램입니다.
+
+= Introduction =
+
+독서실의 빈좌석과 이용 중인 좌석을 보여주고, 
+이용 중인 좌석의 요금을 계산해주는 독서실 좌석 관리 프로그램입니다.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
