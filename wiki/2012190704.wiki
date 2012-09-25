@@ -106,19 +106,20 @@ class Exercise1b {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것. 객체의 상태(데이터)를 나타냄.
+ * 메소드: 객체에서 자신이 하는 것(할 수 있는 일).
+ * 클래스: 객체를 만들기 위한 청사진.
+ * 테스트용 클래스: 새로운 클래스를 테스트하기 위한 클래스.
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: channel, volume
+ * 메소드: setChannel(), setVolume()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
+{{{
 public class GuessGame {
         Player p1;
         Player p2;
@@ -197,7 +198,24 @@ public class GuessGame {
 							}	// 순환문 끝
 						}	//메소드 끝
 					}	// 클래스 끝
+}}}
+{{{
+public class Player {
+     int number = 0;     //찍은 숫자를 저장할 변수
 
+     public void guess() {
+          number = (int) (Math.random() * 10);
+          System.out.println("찍은 숫자: " + number);
+     }
+}
+}}
+{{
+public class GameLauncher {
+     public static void main (String[] args) {
+          GuessGame game = new GuessGame();
+     }
+}
+}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
