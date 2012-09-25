@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary 화장품가게에서 필요한 프로그램입니다.
 
 = Introduction =
 
