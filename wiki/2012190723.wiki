@@ -625,7 +625,10 @@ class ClockTestDrive {
 
 {{{
 
-public class SimpleDotCom{
+// SimpleDotCom 게임의 최종 코드입니다.
+
+// SimpleDotCom의 클래스를 생성합니다.
+class SimpleDotCom{ 
 	int [] locationCells;
 	int numOfHits=0;
 
@@ -652,7 +655,7 @@ public class SimpleDotCom{
 	}
 }
 
-public class SimpleDotComTestDrive {
+public class SimpleDotComTestDrive { // SimpleDotCom의 테스트 클래스를 실행합니다.
 
 	public static void main(String[] args) {
 
@@ -662,16 +665,16 @@ public class SimpleDotComTestDrive {
 		dot.setLocationCells(locations);
 
 		String userGuess="2";
-		String result=dot.checkYourself(userGuess);
+		String result=dot.checkYourself(userGuess); // 여기에 사용자가 입력한 가상의 값을 전달합니다.
 		String testResult="failed";
 		if(result.equals("hit")){
 			testResult="passed";
 		}
 
 		System.out.println(testResult);
-	}
+	}  // 메소드 끝
 
-}
+} // 클래스 끝
 
 
 }}}
