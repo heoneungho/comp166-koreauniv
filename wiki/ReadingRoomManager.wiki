@@ -1,5 +1,5 @@
 #summary 독서실 좌석 현황과 요금을 계산해주고 관리하는 프로그램입니다.
-#labels 2012190723
+#labels 2012190723유영훈
 
 = Introduction =
 
