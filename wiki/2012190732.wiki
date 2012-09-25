@@ -19,7 +19,7 @@ public class BeerSong{  //BeerSong class 지정
                 
                 while(beerNum >0){ //맥주병이 있을 때 while
                         
-                      정
+                      
                         
                         if(beerNum > 0){
                              //맥주병이 있다면?
@@ -181,41 +181,60 @@ public class Exercise1b { //Exercise1b 클래스 지정
 		Player p1;
 		Player p2;
 		Player p3;
-		player p4;
+		Player p4;
 
-		//선수가  4명이므로 인스턴트변수 Player을 4개 설정함.
+		//선수가  4명이므로 인스턴트변수  Player을  4개 설정함.
 
-		public void startgame() {
+		public void startGame() {
 			p1 = new Player();
 			p2 = new Player();
 			p3 = new Player();
-		
-			/* 객체 설정후 각각을 변수에 대입합 */
+			p4 = new Player();
+			
+			//startGame 메소드 호출 후  new 연산자를 통해 새로운 Player 생성
+            //인스턴스 변수에 대입.
 			
 			int guessp1 = 0;
 			int guessp2 = 0;
 			int guessp3 = 0;
+			int guessp4 = 0;
 			
+		  //인스턴스 변수 4개 선언.  guesspNum = pNum이 추측한 숫자
+
 			boolean p1isRight = false;
 			boolean p2isRight = false;
 			boolean p3isRight = false;
+			boolean p4isRight = false;
+						
+			//boolean 연산자 이용, 참.거짓판별 변수  4개 선언.
+
 			
 			int targetNumber = (int)(Math.random()*10);
+			// 맞춰야할 숫자를 만들기 위해 인스턴스 변수 targetNumber선언
+			//math 메소드 random을  사용하고, 정수형을 유도하기 위해서, 캐스트 연산자  (int)를 써줌.
 			System.out.println("0이상 9이하의 숫자를 맞춰보세요.");
+						
 			
-			while(true){
-				System.out.println("맞춰야할 숫자는"+targetNumber+"입니다.");
+			while(true){ //맞출 때까지 계속 while문 진행
+				
+					System.out.println("맞춰야할 숫자는"+targetNumber+"입니다.");
+					
 			p1.guess();
 			p2.guess();
 			p3.guess();
+			p4.guess();
 			
-			guessp1=p1.number;
-			System.out.println("1번 선수가 찍은숫자:" +guessp1);
-			guessp1=p2.number;
-			System.out.println("2번 선수가 찍은숫자:"+guessp2);
-			guessp3=p3.number;
-			System.out.println("3번 선수가 찍은숫자:"+guessp3);
+			//선수마다 guess 메소드 호출
 			
+			guessp1=p1.number; //p1이 추측한 숫자를 나타내는 변수 guessp1 선언 후 추측 숫자를 대입
+				System.out.println("1번 선수가 찍은숫자:" +guessp1);
+			guessp1=p2.number; //p2가 추측한 숫자를 나타내는 변수 guessp2 선언 후 추측 숫자를 대입
+				System.out.println("2번 선수가 찍은숫자:"+guessp2);
+			guessp3=p3.number; //p3가 추측한 숫자를 나타내는 변수 guessp3 선언 후 추측 숫자를 대입
+				System.out.println("3번 선수가 찍은숫자:"+guessp3);
+			guessp4=p4.number; //p4 추측한 숫자를 나타내는 변수 guessp4 선언 후 추측 숫자를 대입
+				System.out.println("4번 선수가 찍은숫자:"+guessp4);
+						
 			 if(guessp1==targetNumber){
 				 	p1isRight=true;
 			 }
@@ -225,16 +244,25 @@ public class Exercise1b { //Exercise1b 클래스 지정
 			 if(guessp3==targetNumber){
 				 	p3isRight=true;
 			 }
-			 if(p1isRight||p2isRight||p3isRight) {
+			 if(guessp4==targetNumber){
+				 	p4isRight=true;
+			 }
+			 
+			 //if문 이용, 추측한 숫자가 맞춰야할 숫자일 경우 true가 나오게 하는 boolean 변수 pNumRight 사용.
+			 
+			 
+			 if(p1isRight||p2isRight||p3isRight||p4isRight) { //p1 or p2 or p3 or p4 가 맞추면,
 				 System.out.println("맞춘선수가있습니다.");
 				 System.out.println("1번선수:"+p1isRight);
 				 System.out.println("2번선수:"+p2isRight);
 				 System.out.println("3번선수:"+p3isRight);
-				 System.out.println("게임끝.");
-				 break;
+				 System.out.println("4번선수:"+p4isRight);
+				 				 System.out.println("게임끝.");
+				 break; //break이용 if문 종결.
 			 }
 			 else{
 				 System.out.println("다시시도해야합니다.");
+				 //아무도 못맞췄을 경우 계속 한다.
 			 }
 			}
 		}
