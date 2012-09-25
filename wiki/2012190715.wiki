@@ -389,11 +389,57 @@ class Hobbits {
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
+{{{
+ * 캡슐화: 캡슐화(Encapsulation) 는 매우 중요하다. 캡슐화를 해놓지 않으면 아무나 데이터에 접근할 수 있다. 예를들어 레퍼런스 변수를 통해 접근 할 수 있다. 따라서 모든 인스턴스 변수에 대해 세터 메소드를 만들어야 한다.
+--> 캡슐화 p.116 GoodDog 클래스 캡슐화 예제문제
+class GoodDog {
 
- * 캡슐화:
- * 게터와 세터:
+	private int size;
+	
+	public int getSize() {
+		return size;
+	}
+	
+	public void setSize(int s) {
+		size = s;
+		}
+	
+	void bark() {
+		if(size > 60) {
+			System.out.println("Wooof! Wooof!");
+		} else if (size >14) {
+			System.out.println("Ruff! Ruff!");
+		} else {
+			System.out.println("Yip! Yip!");
+		}
+	}
+}
+
+class GoodDogTestDrive {
+	
+	public static void main(String[] args) {
+		GoodDog one = new GoodDog();
+		one.setSize(70);
+		GoodDog two = new GoodDog();
+		two.setSize(8);
+		System.out.println("Dog one:" + one.getSize());
+		System.out.println("Dog two:" + two.getSize());
+		one.bark();
+		two.bark();
+	}
+}
+
+결과>
+Dog one:70
+Dog two:8
+Wooof! Wooof!
+Yip! Yip!
+
+ * 게터와 세터: 게터(getter)와 세터(setter)의 정식 명칭은 액세서(accessor)와 뮤테이터(mutator)이다. 게터와 세터는 각각 어떤 것을 가져오고(get) 설정하는(get) 역할을 한다. 보통 인스턴스 변수의 값에 대해 그런 작업을 한다. 게터는 단지 그 게터가 가져오기로 되어있는 값을 리턴값 형태로 받아오기 위한 용도로만 쓰인다. 세터는 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도로 쓰인다.
  * 인스턴스 변수 vs 지역 변수:
- 
+인스턴스 변수는 클래스 내에서 선언된다.(메소드 내에서 선언되는 것이 아니다.)
+지역변수(local variable)는 메소드 내에서 선언된다. 또한 지역변수는 사용하기 전에 반드시 초기화해야한다. 
+}}}
 *107p Dog* _실행_
 
 {{{
