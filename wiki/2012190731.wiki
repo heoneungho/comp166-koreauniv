@@ -435,20 +435,55 @@ public class Hobbits {
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 토니
+ * 문제가 된 부분은 어딘가요?: 토니는 ca[0], ca[1], ..., ca[9]의 메모리를 전부 할당 했지만, 켄트는 refc를 계속 초기화 시켰습니다. 결국 최종 결과물은 refc 하나인 셈입니다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+ * 캡슐화: 다른 사람이 변수를 함부로 바꾸지 못하도록 private를 이용해서 보호하는 작업.
+ * 게터와 세터: 게터는 값을 받고, 세터는 값을 돌려줍니다.
+ * 인스턴스 변수 vs 지역 변수: 인스턴트 변수는 클래스내에서 선언 되는 변수인 반면 지역변수는 사용전에 반드시 초기화 해야하고 메소드 내에서 선언된다.
  
 *107p Dog* _실행_
 
 {{{
+package dogBarksBySize;
+
+public class Dog {
+	int size;
+	String name;
+	
+	void bark() { // 개가 짖는데...
+		if (size > 60) { // 큰 싸이즈
+			System.out.println("왈! 왈!");
+		} else if (size > 14) { // 중간 싸이즈
+			System.out.println("멍! 멍!");
+		} else { // 작은 싸이즈를 나타냅니다!
+			System.out.println("깨갱! 깨갱!");
+		}
+	}
+}
+
+package dogBarksBySize;
+
+public class DogTestDrive {
+	public static void main(String[] args) {
+	// 각각의 개들에게 싸이즈를 주는 작업입니다.
+		Dog one = new Dog();
+		one.size = 70;
+		Dog two = new Dog();
+		two.size = 8;
+		Dog three = new Dog();
+		three.size = 35;
+	// 짖어보렴.
+		one.bark();
+		two.bark();
+		three.bark();
+	}
+	
+}
 
 }}}
 
