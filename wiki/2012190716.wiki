@@ -264,6 +264,25 @@ class DVDPlayerTestDrive{
 
 {{{
 
+
+class Dog{
+	String name;
+	
+	public static void main(String [] args){
+		Dog dog1= new Dog();
+		dog1.bark();
+		dog1.name="Bart";
+		
+		Dog[] myDogs =new Dog[3];
+		
+		myDogs[0]=new Dog();
+		myDogs[1]=new Dog();
+		myDogs[2]=dog1;
+		
+		System.out.println("last dog name");
+	}
+}
+
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
