@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#summary It is a Ani Pang Helper!! Let's play AniPang!!
 = Introduction =
 
 Add your content here.
