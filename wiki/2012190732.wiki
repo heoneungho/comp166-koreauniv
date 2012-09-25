@@ -8,7 +8,7 @@
 
 {{{
 
-public class BeerSong{  //BeerSong class선언
+public class BeerSong{  //BeerSong class 지정
      
         public static void main(String[] args) {  //main함수 선언
                 
@@ -19,7 +19,7 @@ public class BeerSong{  //BeerSong class선언
                 
                 while(beerNum >0){ //맥주병이 있을 때 while
                         
-                      
+                      정
                         
                         if(beerNum > 0){
                              //맥주병이 있다면?
@@ -54,6 +54,35 @@ public class BeerSong{  //BeerSong class선언
 
 {{{
 
+public class PhraseOMatic { // PhaseOmatic class 지정
+        public static void main(String[] args){ //main함수 선언
+                
+                String[] wordListOne = {"iphone", "ipad", "ipot", "galaxy tab", "galaxy note"};
+                String[] wordListTwo = {"C study","unix study","java study","datastructure study","C++ study"};
+                String[] wordListThree = {"math","computer","korean","english","geography"};
+
+                      //3개의 String배열 생성 - portalsite, computer subject, normal subject
+                
+                int oneLength = wordListOne.length;
+                int twoLength = wordListTwo.length;
+                int threeLength = wordListThree.length;
+                
+                      //인스턴스변수 numLength = 배열의 길이
+
+                int rand1 = (int)(Math.random() * oneLength);
+                int rand2 = (int)(Math.random() * twoLength);
+                int rand3 = (int)(Math.random() * threeLength);
+
+                     // math 메소드 random 사용 
+                    // but random() 메소드는 0또는 1반영하므로 *정수의 길이를 해줌. 
+                
+                String phrase = wordListOne[rand1] + "," + wordListTwo[rand2] + "," + wordListThree[rand3];
+                
+                System.out.println("What we need is a " + phrase);
+                
+        }
+
+}
 }}}
 
 *52p 집중토론* _요약_
