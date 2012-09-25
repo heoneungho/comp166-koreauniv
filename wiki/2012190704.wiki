@@ -35,7 +35,19 @@ public class BeerSong {       //클래스 선언
 }}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 {{{
-public class Phrase
+public class PhraseOMatic {
+     public static void main (String[] args) {
+
+          String[] wordListOne = {"Korea", "university", "computer", "education"};
+          String[] wordListTwo = {"likes", "wants", "does", "works"};
+          String[] wordListThree = {"pizza", "math", "actor", "music"};
+
+          int oneLength = wordListOne.length;
+          int twoLength = wordListTwo.length;
+          int threeLength = wordListThree.length;
+
+          int rand1 = (int) (Math.random() * oneLength);
+
 }}}
 *52p 집중토론* _요약_
 
