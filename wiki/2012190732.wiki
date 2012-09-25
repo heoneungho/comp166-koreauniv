@@ -106,7 +106,7 @@ public class Exercise1b { //Exercise1b class 지정
                         if(x>3){
                                 System.out.println("big x");
                                 			                        }
-                        						x++; //x=x+1을 해줌으로써 while문 멈춤 
+                        	x++; //x=x+1을 해줌으로써 while문 멈춤 
                 }
         }
 }
