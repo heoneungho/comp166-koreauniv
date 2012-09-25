@@ -144,8 +144,8 @@ class Exercise1b // 클래스 선언
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: channel, volume
+ * 메소드: channelup(), channeldown(), volumeup(), volumedown()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
