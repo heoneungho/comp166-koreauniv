@@ -277,6 +277,35 @@ public class TapeDeckTestDrive {
 
 // ---------------------------------------------------------------
 
+package toBeCompiler2;
+
+public class DVDPlayer {
+	boolean canRecord = false;
+	
+	void recordDVD() {
+		System.out.println("DVD recording");
+	}
+	
+	void playDVD() { // playDVD를 정의해 준다.
+		System.out.println("DVD playing"); 
+	}
+}
+
+package toBeCompiler2;
+
+class DVDPlayerTestDrive {
+	public static void main(String[] args) {
+		
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD(); // playDVD();를 정의해 줘야합니다!
+		
+	if(d.canRecord == true) {
+		d.recordDVD();
+		}
+	}
+}
+
 
 
 }}}
@@ -285,13 +314,11 @@ public class TapeDeckTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 원시 변수는 정수, 부울, 부동소수점과 같은 기초적인 값이 들어가는 반면 레퍼런스변수는 객체에 대한 레퍼런스가 들어간다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
-
-//책이 없어서 문제가 뭔지 모른다 ㅠㅠ
 
 package makedogwaff;
 
@@ -302,16 +329,21 @@ public class Dog {
         dog1.bark(); // 아직 dog1에 이름이 할당 되지 않았습니다. null 값처리.
         dog1.name = "저글링";
         
-        Dog[] myDogs = new Dog[3]; // 이름을 넣을 배열을 만든다.
+        Dog[] myDogs = new Dog[5]; // 이름을 넣을 배열을 만든다.
         myDogs[0] = new Dog();
         myDogs[1] = new Dog();
-        myDogs[2] = dog1;
-        
+        myDogs[2] = new Dog();
+        myDogs[3] = new Dog();
+        myDogs[4] = dog1;
+
+
         myDogs[0].name = "히드라";
-        myDogs[1].name = "울트라";
-        
+        myDogs[1].name = "맹독충";
+        myDogs[2].name = "일벌레";
+        myDogs[3].name = "울트라";
+       
         System.out.print("마지막 개의 이름은 ");
-        System.out.println(myDogs[2].name);
+        System.out.println(myDogs[4].name);
         
         int x = 0;
         while (x < myDogs.length) {
@@ -332,6 +364,72 @@ public class Dog {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+package toBeCompiler;
+
+public class Books { // Books 클래스입니다.
+	String title;
+	String author;
+	// 두 가지 문자열을 받는 군요!
+}
+
+package toBeCompiler;
+
+public class BooksTestDrive {
+	public static void main(String[] args) {
+		
+		Books [] myBooks = new Books[3];
+		for(int x = 0; x < myBooks.length; x++) {
+			myBooks[x] = new Books();
+		} // myBooks에 각각 Books()를 생성해 줍니다.
+			
+		myBooks[0].title = "자바의 포도";
+		myBooks[1].title = "위대한 자바";
+		myBooks[2].title = "자바 요리책";
+		
+		myBooks[0].author = "임요벙";
+		myBooks[1].author = "콩지노";
+		myBooks[2].author = "벼수달";
+		
+		int y = 0; // x를 위에서 썼으니 다른 변수를 이용하도록 합시다.
+		
+		while (y < 3) { // 반복문으로 출력을 한다!
+			System.out.print(myBooks[y].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[y].author);
+			y = y + 1;
+		}
+	}
+}
+
+//------------------------------------------------------------------------------
+
+package toBeCompiler2;
+
+public class Hobbits {
+	
+		String name;
+		
+		public static void main(String[] args) {
+			Hobbits [] h = new Hobbits[3];
+			int z = -1; // 변수 z를 적당히 수정한다.
+			
+			while ( z < 2 ) { // 반복문의 조건에 의해 하나하나 출력하도록 변수 z의 값을 재 조정합니다.
+				z = z + 1;
+				h[z] = new Hobbits();
+				h[z].name = "강건마";
+				if ( z == 1 ) { 
+					h[z].name = "마영웅";
+				}
+				if ( z == 2) { 
+					h[z].name = "지대호";
+				}
+				System.out.print(h[z].name + " 은 ");
+				System.out.println("좋은 학생들의 이름이다?");
+			}
+		}
+}
+
 
 }}}
 
