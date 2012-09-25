@@ -115,8 +115,8 @@ class Exerciselb
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: Volume, Channel
+ * 메소드: UpVolume, DownVolume, UpChannel, DownChannel
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
