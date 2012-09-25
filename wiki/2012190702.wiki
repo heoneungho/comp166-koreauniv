@@ -71,9 +71,36 @@ public class PhraseOMatic
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+class Exerciselb
+{
+  public static void main(String [] args)
+  { 
+    int x = 1;
+    
+    while ( x < 10 ) // x 가 10미만일 때 1씩 더함
+    {
+       if( x > 3 )
+       System.out.println("big x");
+       x++;
+    }
+  }
+}
 
-}}}
+
+class Exerciselb
+{
+  public static void main(String [] args)
+  {
+    int x = 5;
+    while(x>1)  // x가 1초과일 때 계속 1씩 뺌
+    {
+       if (x < 3)
+          System.out.println("small x");
+       x--;
+    }
+  }
+}
+
 
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
