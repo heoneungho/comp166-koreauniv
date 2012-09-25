@@ -166,6 +166,7 @@ public class GameLauncher {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+                        
 A.
 class Books {
 	String title;
@@ -195,7 +196,8 @@ class BooksTestDrive {
 
 
 B.
-class Hobbits {
+
+public class Hobbits {   //public 필요
 	String name;
 	
 	public static void main (String [] args) {
