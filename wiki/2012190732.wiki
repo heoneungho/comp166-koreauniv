@@ -296,7 +296,77 @@ public class GameLauncher{ //GameLauncher class 지정
 
 {{{
 
+A :
 
+class TapeDeck { //TapeDeck 클래스 지정.
+	
+        boolean canRecord=false; //boolean연산자 이용, canRecord 지정.
+     
+        void playTape(){ //playTape 메소드 호출.
+        	
+                System.out.println("tape playing"); //출력
+        }
+        void recordTape(){ //recordTape 메소드 호출.
+                System.out.println("tape recording"); //출력
+        }
+}
+class TapeDeckTestDrive{ //테스트용 클래스 지정.
+        public static void main(String [] args){ //메인메소드 선언.
+        	
+                TapeDeck t=new TapeDeck(); 
+                
+                // 밑에 t라는 것이 있기에 이를 써먹을 객체가 필요하다! 
+      //new연산자를 이용하여 새로운 TapeDeck 메소드를 호출.
+                
+                t.canRecord=true; //선언
+                t.playTape(); //playTape 메소드 호출 -> 출력
+                
+                if(t.canRecord == true){ //참
+                        t.recordTape(); //recordTape 메소드 호출 -> 출력
+                }
+        }
+}
+
+//t라는 것을 사용하기위에서는 t를 선언해 주었어야 한다.
+/*
+tape playing
+tape recording 가 출력된다. */
+
+B:
+
+class DVDPlayer { // 클래스 지정.
+	
+        boolean canRecord=false; //boolean연산자 이용, canRecord 지정.
+     
+        void recordDVD(){ //recordDVD 메소드 호출.
+        	
+                System.out.println("DVD recording"); //출력
+        }
+        void playDVD(){ // 밑에 d.playDVD 메소드가 호출 되었으므로 메소드를 호출해주어야함.
+                System.out.println("DVD playing"); //출력
+        }
+}
+class DVDPlayerTestDrive{ //테스트용 클래스 지정.
+        public static void main(String [] args){ //메인메소드 선언.
+        	
+               DVDPlayer d = new DVDPlayer(); 
+               
+               	//new 연산자를 이용하여 DVDPlayer 메소드 호출
+                      
+               d.canRecord=true; //선언
+               d.playDVD(); //playDVD 메소드 호출 -> 출력
+                
+                if(d.canRecord == true){ //참
+                        d.recordDVD(); //recordDVD 메소드 호출 -> 출력
+                }
+        }
+}
+
+// playDVD() 메소드가 없었기 때문에 오류가 났던것.
+
+/*
+DVD playing
+DVD recording가 출력된다. */
 
 }}}
 
