@@ -43,12 +43,11 @@ public class PhraseOMatic
 {
   public static void main(String[] args)
   {
-     String[] wordListOne = {"Cash", "Money", "Power", "Magic" , "Supreme Team", "Poping", "Lady"};
+     String[] wordListOne = {"JongHa", "Geun Young" , "Dong Hyeok", "Young Hyun", "Jung Gon"};
 
-     String[] wordListTwo = {"Baby", "Boo", "Bro", "Yeah",
- "Haaaaaaaaaaaaaaaa", "Hooooooooooo", "Huuuuuuuuu"};
+     String[] wordListTwo = {"Love", "Hit", "Hate", "Like", "Help"};
 
-     String[] wordListThree = {"save", "input", "take", "give", "dominate", "donate", "help"};
+     String[] wordListThree = {"Gay" , "Billy", "IT Bank", "LOL", "IU"};
 
      int oneLength = wordListOne.length;
      int twoLength = wordListTwo.length;
