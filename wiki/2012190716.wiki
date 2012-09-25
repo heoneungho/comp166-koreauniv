@@ -170,7 +170,32 @@ public class GuessGame{
 
    if(guessp4==targetNumber) p4isRight=true;
 
+   if(p1isRight || p2isRigth || p3isRight || p4isRight){
+    System.out.println("Some one catch!");
+    System.out.println("Num1:"+p1isRigth);
+    System.out.println("Num2:"+p2isRigth);
+    System.out.println("Num3:"+p3isRigth);
+    System.out.println("Num4:"+p4isRigth);
+    break;
+   }
+   else System.out.println("Try again");
   }
+ }
+}
+
+public class Player{
+ int number=0;
+
+ public void guess(){
+  number=(int)(Math.random()*10);
+  System.out.println("Type num:"+number);
+ }
+}
+
+public class GameLauncher{
+ public static void main(String[] args){
+  GuessGame game=new GuessGame();
+  game.startGame();
  }
 }
 
