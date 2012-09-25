@@ -5,7 +5,7 @@
 = 01. 껍질을 깨고:간단한 소개 =
 
 *48p BeerSong* _문제해결하기, 주석달기_
-
+{{{
 public class BeerSong
 {
     public static void main (String[] args)
@@ -36,9 +36,9 @@ public class BeerSong
        }
        }
 }}
-
+}}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
-
+{{{
 public class PhraseOMatic
 {
   public static void main(String[] args)
@@ -62,14 +62,14 @@ public class PhraseOMatic
      System.out.println("What we need is a " + phrase);
    }
 }
-
+}}}
 52p 집중토론* _요약_
 
  * 자바 가상 머신: 프로그램을 실행
  * 컴파일러: 실행할 때 절대로 일어나면 안 되는 일을 방지
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
+{{{
 class Exerciselb
 {
   public static void main(String [] args)
@@ -84,8 +84,8 @@ class Exerciselb
     }
   }
 }
-
-
+}}}
+{{{
 class Exerciselb
 {
   public static void main(String [] args)
@@ -99,7 +99,7 @@ class Exerciselb
     }
   }
 }
-
+}}}
 
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
