@@ -1,4 +1,4 @@
-#summary 2009190733 마승영 One-sentence summary of this page.
+#summary [2009190733 마승영] FoodMarketManager
 
 = Introduction =
 
