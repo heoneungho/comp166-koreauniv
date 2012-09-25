@@ -1,0 +1,14 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+화장품 가게의 화장품 종류별, 라인별 제품 구분과 수량을 측정하고
+일자별로 몇 개가 판매되었는지 계산해주는 프로그램입니다.
+감사합니다.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
