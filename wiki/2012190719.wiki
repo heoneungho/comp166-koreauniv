@@ -97,7 +97,7 @@ public class PhraseOMatic	//PhraswOMatic 이란 클래스를 만듭니다.
 
 		String phrase=wordListOne[rand1]+""+wordListTwo[rand2]+""+wordListThree[rand3];
 		//그룹에서 랜덤하게 하나씩뽑아서 단어를 만듭니다.
-		System.out.println("What we need is a"+phrase);
+		System.out.println(phrase);
 	}//단어를 출력합니다.
 }
 }}}
