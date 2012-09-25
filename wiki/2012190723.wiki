@@ -625,11 +625,14 @@ class ClockTestDrive {
 
 {{{
 
+// SimpleDotCom 게임의 최종 코드입니다.
+// 가져오기를 선언합니다.
+
 import java.io.*;
 
-class GameHelper {
+class GameHelper { //GameHelper 클래스를 생성합니다.
 	public String getUserInput(String prompt) {
-		String inputLine = null;
+		String inputLine = null; 
 		System.out.print(prompt + "");
 		try {
 			BufferedReader is = new BufferedReader(new InputStreamReader(
@@ -643,9 +646,9 @@ class GameHelper {
 		return inputLine;
 	}
 }
-class SimpleDotCom {
+class SimpleDotCom { //SimpleDotCom 클래스를 생성합니다.
 	int[] locationCells;
-	int numOfHits = 0;
+	int numOfHits = 0; // 초기 hit 수를 0으로 설정합니다.
 
 	public void setLocationCells(int[] locs) {
 		locationCells = locs;
@@ -680,7 +683,7 @@ public class SimpleDotComTestDrive {
 
 		SimpleDotCom theDotCom = new SimpleDotCom();
 
-		int randomNum = (int) (Math.random() * 5);
+		int randomNum = (int) (Math.random() * 5); // 난수를 발생합니다.
 
 		int[] locations = { randomNum, randomNum + 1, randomNum + 2 };
 		theDotCom.setLocationCells(locations);
@@ -696,12 +699,10 @@ public class SimpleDotComTestDrive {
 				System.out.println(numOfGuesses + " guesses");
 			}
 
-		} // 메소드 끝
+		} 
 
-	} // 클래스 끝
-}
-
-
+	}  // 메소드 
+} // 클래스 끝
 
 
 }}}
