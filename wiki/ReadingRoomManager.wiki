@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
-독서실 좌석을 관리하고 요금을 계산해주는 프로그램입니다.
+#summary One-sentence summary of this page.독서실 좌석을 관리하고 요금을 계산해주는 프로그램입니다.
+
 
 = Introduction =
 
