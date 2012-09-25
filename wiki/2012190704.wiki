@@ -208,14 +208,14 @@ public class Player {
           System.out.println("찍은 숫자: " + number);
      }
 }
-}}
-{{
+}}}
+{{{
 public class GameLauncher {
      public static void main (String[] args) {
           GuessGame game = new GuessGame();
      }
 }
-}}
+}}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
