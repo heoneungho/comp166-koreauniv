@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#summary 2012190703 김민형
 = Introduction =
 
 각 호선의 역을 알려주고 역 사이의 최소환승거리, 최소시간거리 및 각 역의 첫차와 막차시간을 알려줍니다.
