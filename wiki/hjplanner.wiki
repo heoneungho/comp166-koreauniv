@@ -1,0 +1,14 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+2012190715 김현주님의 자바프로젝트입니다.
+
+
+= Details =
+플래너 만들기
+연간,월간,주간 계획들과 용돈 사용 현황을 기록할 수 있는 프로그램입니다.
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
