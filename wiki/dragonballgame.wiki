@@ -1,0 +1,10 @@
+#summary One-sentence summary of this page.
+
+친구들과 어렸을때 하던 드래곤볼 게임을 컴퓨터와 대전할수 있도록 만들어보려 합니다.
+
+Add your content here.
+
+
+= Details =
+
+에너지모으기 방어하기 공격하기 순간이동 원기옥등 다양한 기술을 사용하며 컴퓨터와 대전할수 있도록 설계해보려합니다.
