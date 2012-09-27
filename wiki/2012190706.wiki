@@ -58,7 +58,8 @@ public class PhraseOMatic {
 		//세 종류의 단어 목록을 만듭니다. 적당히 이필요한 단어를 추가해도 됩니다.
 		String[] wordListOne = {"능호","채원","성호","영현","규원","종한"};
 		String[] wordListTwo = {"은","는"};
-		String[] wordListThree = {"바보예요","멍청이예요","멋쟁이예요","사랑스러워요","잘생겼어요","교수님을 좋아해요","교수님을 싫어해요"};
+		String[] wordListThree = {"바보예요","멍청이예요","멋쟁이예요","사랑스러워요","잘생겼어요",
+"교수님을 좋아해요","교수님을 싫어해요"};
 		
 		// 각 단어 목록에 단어가 몇 개씩 들어있는지 확인합니다.
 		int oneLength = wordListOne.length;
