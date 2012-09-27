@@ -1,12 +1,11 @@
 #summary 2012190703 김민형
 = Introduction =
 
-각 호선의 역을 알려주고 역 사이의 최소환승거리, 최소시간거리 및 각 역의 첫차와 막차시간을 알려줍니다.
-
+지하철에 관한 정보를 알려주는 프로그램.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+각 호선의 역 소개
+선택한 두 개의 역 사이의 최소환승경로, 최단시간경로
+각 역의 첫차 및 막차
+각 역의 출구 정보
