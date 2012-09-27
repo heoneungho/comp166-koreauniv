@@ -1,13 +1,12 @@
-#summary One-sentence summary of this page.
+[2012190726 김경민] Trash Toss
 
 = Introduction =
 
-Add your content here.
+ 쓰레기를 던져 쓰레기통에 넣는 게임입니다.
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+ * 던지는 지점부터 쓰레기통까지의 거리 조절
+ * 양 옆에서 부는 바람의 세기 조절
+ * 나중에 더 추가하겠습니다 
