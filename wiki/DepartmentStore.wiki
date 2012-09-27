@@ -1,5 +1,5 @@
 #labels 2012190718한승원
-#DepartmentStore
+#DepartmentStore.
 
 = Introduction =
 
