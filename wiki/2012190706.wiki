@@ -8,7 +8,42 @@
 
 {{{
 
-aa
+package ch1;
+
+public class BeerSong {
+	public static void main (String[] args) {
+		int beerNum = 99;  //int형 변수이름을 beerNum 으로하고 99를 초기화합니다.
+		String word = "bottles";  // String 형 변수이름을 word로 하고 bottles 로 초기화합니다.
+		
+		while (beerNum > 0) {
+			
+			if (beerNum == 1) {
+				word = "bottle";
+			}  //만약 beerNum 이 1이라면 word에 bottle 을 저장시킵니다.
+			
+			System.out.println(beerNum + " " + word + " of beer on the wall");
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around.");
+			beerNum = beerNum - 1; 
+			
+			/*
+                        // 아래의 문장은 필요 없기에 주석처리하였습니다.         
+
+                       if (beerNum > 0 ) {
+				System.out.println(beerNum + " " + word + " of beer on the wall");
+			} else { 
+                        
+                        
+                        */
+			
+			if(beerNum == 0)
+				{System.out.println("No more bottles of beer on the wall");
+			} //  if 문 끝
+		} // while 순환문 끝
+	} //main 클래스 끝
+} //클래스 끝
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
