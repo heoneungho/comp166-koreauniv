@@ -27,7 +27,7 @@ public class beersong
 
                 beerNum = beerNum - 1;//beerNum을 1개 감소시킨 후 저장합니다
                  if(beerNum == 1)//맥주의 개수가 1이면
-                 word = "bottle";단수형(한 병인 경우)//if 문의 위치를 바꾸어주어서 맥주가 1개일때 복수로 출력되는것 방지
+                 word = "bottle";//단수형(한 병인 경우)if 문의 위치를 바꾸어주어서 맥주가 1개일때 복수로 출력되는것 방지
 
 
                 if(beerNum > 0)//beerNum이 0보다 크면
