@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+2013 해결의 책!
+생일과 이름을 영어로 입력하면 2013년의 미래의 주의점과 미래예측을 간단히 해주는 프로그램입니다
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
