@@ -295,7 +295,7 @@ public class TapeDeckTestDrive
 	public static void main(String[] args) 
 	{
 		TapeDeck t = new TapeDeck();
-		
+		//TapeDeck 타입의 변수 객체t를 만들어줍니다
 		t.canRecord = true;
 		t.playTape();
 		
@@ -321,6 +321,7 @@ public class DVDPlayer
 	{
 		System.out.println("DVD Playing");
 	}
+        //playDVD method 를 만들어줍니다
 }
 
 public class DVDPlayerTestDrive 
