@@ -3,12 +3,9 @@
 
 = Introduction =
 
-Add your content here.
+본격 달무티게임
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Hangeul i an dae T.T
