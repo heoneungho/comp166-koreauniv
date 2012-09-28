@@ -1,4 +1,4 @@
-#summary 2012190719 텀과제
+#summary 블랙잭 [2012190719]
 
 = Introduction =
 
