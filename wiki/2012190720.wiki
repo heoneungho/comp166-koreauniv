@@ -280,6 +280,43 @@ class GuessGame {
 
 {{{
 
+public class Dog {
+		String name;
+		public static void main(String[] args) {
+			// Dog 객체를 만들고 접근합니다.
+			Dog dog1 = new Dog();
+			dog1.bark();
+			dog1.name = "Bart";
+			
+			//  이번에는 Dog 배열을 만듭니다.
+			Dog[] myDogs = new Dog();
+			//그리고 개를 몇 마리 집어넣습니다.
+			myDogs[0] = new Dog();
+			myDogs[1] = new Dog();
+			myDogs[2] = new Dog();
+			myDogs[3] = new Dog();
+			myDogs[4] = new Dog();
+			myDogs[5] = new Dog();
+			myDogs[6] = new Dog();
+			myDogs[7] = dog1;
+
+			//배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+			
+			myDogs[0].name = "Fred";
+			myDogs[1].name = "Bart";
+			myDogs[2].name = "Suhyeon";
+			myDogs[3].name = "John";
+			myDogs[4].name = "Michael";
+			myDogs[5].name = "Abbb";
+			myDogs[6].name = "Bccc";
+		// myDogs[7]의 이름이 뭐였지?
+			System.out.print("마지막 개의 이름: ");
+			System.out.println(myDogs[2].name);
+		
+			
+		}
+
+}
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
