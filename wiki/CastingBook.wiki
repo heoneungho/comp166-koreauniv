@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-연기자를 섭외하기 위한 연출자용 스케쥴러. 
+#summary 연기자를 섭외하기 위한 연출자용 스케쥴러.
 
 = Introduction =
 
