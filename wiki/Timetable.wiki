@@ -1,4 +1,5 @@
 #summary 2012190712 이성호
+#labels 2012190712,이성호
 
 = Introduction =
 
