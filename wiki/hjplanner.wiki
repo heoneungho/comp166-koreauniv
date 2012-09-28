@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary 2012190715 김현주
 
 = Introduction =
 2012190715 김현주님의 자바프로젝트입니다.
