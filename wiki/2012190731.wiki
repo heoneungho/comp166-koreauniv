@@ -1,4 +1,5 @@
 #summary 자바 코딩은 참 즐거운 것 같아 >_<~ (페이지의 내용은 각 학생에 의해서 관리됩니다.)
+#labels 20121907임채원
 
 <wiki:toc max_depth="1" />
 
@@ -21,7 +22,7 @@ public class BeerSong { // 클래스 명
                }
 
       System.out.println(beerNum + " " + word + " of beer on the wall"); // 출력
-      System.out.println(beerNum + " " + word + " of beer.");
+      System.out.println(beerNum + " "원 + word + " of beer.");
       System.out.println("Take one down.");
       System.out.println("Pass it around.");
       beerNum = beerNum - 1;
@@ -549,7 +550,7 @@ public class ClockTestDrive {
 
 *135p XP* _요약_
 
- * 익스트림 프로그래밍이란?
+ * 익스트림 프로그래밍이란? 소프트웨어 개발 방법론 분야다. "조금씩, 하지만 자주 발표", "사이클을 반복해서 돌리면서 개발", "스펙에 없는 것은 넣지 않는다" 등등의 규칙이 있다.
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
