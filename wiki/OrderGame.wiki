@@ -1,0 +1,12 @@
+#summary 순서 맞추기 게임 [2012190704채유연]
+
+= Introduction =
+
+이야기 순서, 요리 순서, 그림 순서 등 여러가지 것들의 순서를 맞추는 게임이다.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
