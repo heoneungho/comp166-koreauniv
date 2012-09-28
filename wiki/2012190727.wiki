@@ -1,5 +1,4 @@
-#summary 수업중 실습하는 내용을 올리게 되는 실습페이지입니다. 페이지의 내용은 각 학생에 의해서 관리됩니다.
-
+#summary 2012190727 한혜원 자바자바자바바
 <wiki:toc max_depth="1" />
 
 = 01. 껍질을 깨고:간단한 소개 =
@@ -407,13 +406,32 @@ class ClockTestDrive{
 
 = 05. 메소드를 더 강력하게:흐름 제어, 연산 등  =
 
-*135p XP* _요약_
+*135p XP* _요약_ 익스트림 프로그래밍(XP, eXtreme Programming)이라는 방법은 
 
  * 익스트림 프로그래밍이란?
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+
+public class SimpleDotComTestDrive {
+     public static void main (String [] args) {
+          SimpleDotCom dot = new SimpleDotCom();
+          // SimpleDotCom클래스의 인스턴스를 만든다.
+
+          int[] locations = {2, 3, 4};
+          dot.setLocationCells(locations);
+    
+          String userGuess = "2";
+          String result = dot.checkYourself(userGuess);
+          String testResult = "failed";
+          if (result.equals("hits")) {
+               testResult = "passed";
+          }
+          System.out.println(testresult);
+     }
+} 
+
 
 }}}
 
