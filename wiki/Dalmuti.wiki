@@ -1,4 +1,4 @@
-#summary 달무티게임
+#summary 2012190701 김근영 본격 달무티게임
 
 
 = Introduction =
@@ -8,4 +8,5 @@
 
 = Details =
 
-Hangeul i an dae T.T
+*달무티를 할 수 있도록 도와주는 게임입니다
+*재밌어요 데헿
