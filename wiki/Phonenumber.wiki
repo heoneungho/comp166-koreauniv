@@ -1,0 +1,19 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+내일(29일)이 종한이 생일인데 전화할 때 생일이 표시되는거에 착안해
+전화번호와 상대 정보를 기입하고 중요한 행사를 미리 알려주는 프로그램을
+만들 생각입니다.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+
+- 상대정보 기입 및 검색
+- 생일 일주일전 미리 알림
+
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
