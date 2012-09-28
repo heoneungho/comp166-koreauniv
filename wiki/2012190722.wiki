@@ -421,9 +421,36 @@ class BooksTestDrive {
 
 B
 
+class Hobbits {
 
+        String name;
 
+        public static void main(String [] args) {
 
+        Hobbits [] h = new Hobbits[4];
+        int z= 0;
+
+        while(z<4) {//hobbits 객체를 생성하고 name을 정하기위한  while문
+                h[z] = new Hobbits();
+                h[z].name = "bilbo";
+                if(z == 1) {
+                        h[z].name = "frodo";
+                }
+                if(z == 2) {
+                        h[z].name = "sam";
+                }
+                if(z == 3) {
+                        h[z].name = "wow";
+                }
+
+                System.out.print(h[z].name + " is a ");
+                System.out.println("good Hobbit name");
+
+                z = z+1;//while문이 제대로 동작하기위해서 위치를 옮깁니다.
+
+                }
+        }
+}
 
 
 
