@@ -18,9 +18,7 @@ public class beersong
 
                 while ( beerNum > 0)//맥주의 개수가 0보다 클때까지 while순환문을돌림
                 {
-                        if(beerNum == 1)//맥주의 개수가 1이면
-                                word = "bottle"; //단수형(한 병인 경우)
-
+                       
                 System.out.println(beerNum + " " + word + " of beer on the wall");
                 System.out.println(beerNum + " " + word + " of beer.");
                 System.out.println("Take on down.");
@@ -28,6 +26,9 @@ public class beersong
                         //출력문입니다.         
 
                 beerNum = beerNum - 1;//beerNum을 1개 감소시킨 후 저장합니다
+                 if(beerNum == 1)//맥주의 개수가 1이면
+                                word = "bottle"; //단수형(한 병인 경우)//if 문의 위치를 바꾸어주어서 맥주가 1개일때 복수로 출력되는것 방지
+
 
                 if(beerNum > 0)//beerNum이 0보다 크면
                 {
