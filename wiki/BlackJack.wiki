@@ -1,4 +1,5 @@
 #summary 블랙잭 [2012190719]
+#labels 2012190719김영현
 
 = Introduction =
 
