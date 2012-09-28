@@ -1,0 +1,23 @@
+#summary One-sentence summary of this page.
+#labels 2010190709강성한
+2010190709 강성한
+
+= Introduction =
+
+평소에 테트리스게임을 즐겨하는데 이번 기회에 자바수업을 들으면서 프로그래밍 실력도 늘리고 좋아하는 게임도 만들어보려고 선택하게 되었다. 화면구성, html등 자바 뿐만 아니라 다양한 공부를 이번 텀과제를 하면서 늘려야겠다.
+
+
+Add your content here.
+
+
+= Details =
+
+1. 각각의 모양마다 다른 색을 주고 
+2. 내려갈 때마다 차지해야하는 공간과 
+3. 회전시 변화하는 모양
+4. 최종 위치하는 곳 등 기본적인 아이디어를 바탕으로 과제를 해나갈 것이다.
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
