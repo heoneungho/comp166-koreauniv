@@ -288,6 +288,8 @@ class Dog{
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
 class Books {
 	String title;
 	String author;
@@ -312,6 +314,28 @@ class BooksTestDrive{
 			System.out.print("by");
 			System.out.println(myBooks[x].author);
 			x++;
+		}
+	}
+}
+B
+
+class Hobbits{
+	String name;
+	public static void main(String [] args){
+		Hobbits [] h=new Hobbits[3];
+		int z=-1;
+		while(z<2){
+			z++;
+			h[z]=new Hobbits();
+			h[z].name="bilbo";
+			if(z==1){
+				h[z].name="frodo";
+			}
+			if(z==2){
+				h[z].name="sam";
+			}
+			System.out.print(h[z].name+" is a ");
+			System.out.println("good Hobbit name");
 		}
 	}
 }
