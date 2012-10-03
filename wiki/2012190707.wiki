@@ -98,7 +98,23 @@ A: class Exerciselb
 	}//main 클래스 끝
 }//클래스 끝
 
-B:
+B:class Foo //클래스가 없으므로 클래스를 만들어준다 
+{
+	public static void main(String[] args) 
+	{
+		int x = 5;
+
+		while (x>1)
+		{
+			x = x-1;
+			
+			if (x<3)
+			{
+				System.out.println("small x");
+			}
+		}
+	}
+}
 
 C:
 }}}
