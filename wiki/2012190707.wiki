@@ -116,7 +116,23 @@ B:class Foo //클래스가 없으므로 클래스를 만들어준다
 	}
 }
 
-C:
+C:class Exerciselb 
+{
+	public static void main(String[] args)//메인 메소드가 없으므로 추가해준다
+	{
+		int x = 5;
+
+		while (x>1)
+		{
+			x = x - 1;
+			
+			if (x<3)
+			{
+				System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
