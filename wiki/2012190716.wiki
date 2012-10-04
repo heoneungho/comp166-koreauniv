@@ -395,6 +395,45 @@ class DogTestDrive{
 
 {{{
 
+A
+public class XCopy {
+	public static void main(String [] args){
+		int orig=42;
+		
+		XCopy x=new XCopy();
+		int y=x.go(orig);
+		System.out.println(orig+" "+y);
+	}
+	int go(int arg){
+		arg=arg*2;
+		
+		return arg;
+	}
+}
+
+
+B
+class Clock {
+	String time;
+	
+	void setTime(String t){
+		time=t;
+	}
+	String getTime(){// get time 이 string을 리턴하므로 String형식으루해야함
+		return time;
+	}
+}
+
+class ClockTestDrive{
+	public static void main(String [] args){
+		Clock c=new Clock();
+		c.setTime("1234");
+		
+		String tod=c.getTime();
+		System.out.println("time:"+tod);
+	}
+}
+
 }}}
 
 
