@@ -11,10 +11,15 @@
 
 = Details =
 
+2인에서 4인 사이의 사용자를 선택하고 초기 자본을 이용하여
 
+기본적으로 제공되는 40개의 땅을 구매하고 건물을 세워 가치를 높인 뒤
 
+타인이 방문할 시 일정량의 돈을 받을 수 있도록 하는 게임입니다.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+(찬스와 무인도 또한 구현할 예정 입니다.)
+
+생각보다 일찍 구현할 수 있게 된다면, 이클립스에서 제공하는
+
+안드로이드 개발 환경을 이용하여 안드로이드로도 구현해 볼 생각입니다.
+
