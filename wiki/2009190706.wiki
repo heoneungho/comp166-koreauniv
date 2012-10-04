@@ -379,7 +379,9 @@ public class DVDPlayerTestDrive {
 	
 }
 
-
+실행결과
+DVD playing
+DVD recording
 
 }}}
 
