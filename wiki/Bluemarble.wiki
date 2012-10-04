@@ -1,9 +1,8 @@
-#summary One-sentence summary of this page.
+#summary 브루마불 게임
 #labels 2009190706최병준
 
 = Introduction =
 
-Add your content here.
 어렸을 적에, 누구나 해봤을만한,
 
 꼭 누군가는 빈정상해서 항상 마지막은 치고박고 싸우게 만들었던
