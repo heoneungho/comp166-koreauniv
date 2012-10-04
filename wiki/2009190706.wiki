@@ -340,7 +340,45 @@ public class TapeDeckTestDrive {
 	
 }
 
+실행결과
+tape playing
+tape recording
+
+
 *B*
+
+public class DVDPlayer {
+
+	boolean canRecord = false;
+	
+	void recordDVD(){
+		System.out.println("DVD recording");
+	}
+	
+	void playDVD(){
+		System.out.println("DVD playing");
+	}//추가된 메소드
+	
+	
+}
+
+public class DVDPlayerTestDrive {
+
+	public static void main(String [] args){
+		
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD(); //PlayDVD 메소드가 없기 때문에 컴파일이 되지 않습니다. 문제 해결을 위해 DVDPlayer 클래스에서 PlayDVD 메소드를 만들어 줍니다.
+		
+		if (d.canRecord == true) {
+			d.recordDVD();
+		}
+		
+		
+	}
+	
+}
+
 
 
 }}}
