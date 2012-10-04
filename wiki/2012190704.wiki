@@ -237,7 +237,7 @@ class TapeDeck {
 class TapeDeckTestDrive {
      public static void main(String [] args) {
     
-          TapeDeck t = new TapeDeck();     //TapeDeck 객체 생성과 t라는 레퍼런스변수 선언
+          TapeDeck t = new TapeDeck();     /*TapeDeck 객체 생성과 t라는 레퍼런스변수 선언*/
 
           t.canRecord = true;
           t.playTape();
