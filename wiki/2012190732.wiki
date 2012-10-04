@@ -342,7 +342,8 @@ class DVDPlayer { // 클래스 지정.
         	
                 System.out.println("DVD recording"); //출력
         }
-        void playDVD(){ // 밑에 d.playDVD 메소드가 호출 되었으므로 메소드를 호출해주어야함.
+        void playDVD(){ 
+// 밑에 d.playDVD 메소드가 호출 되었으므로 메소드를 호출해주어야함.
                 System.out.println("DVD playing"); //출력
         }
 }
@@ -557,6 +558,7 @@ class Hobbits { //클래스 지정.
 -인스턴스 변수:클래스 내에서 선언. 기본값이 있음 ex) int의 기본값은 0임.
 
 -지역변수:메소드 내에서 선언.기본값이 없음. -> 그렇기 때문에 사용전에 반드시 초기화 해야함. 
+
 *107p Dog* _실행_
 
 {{{
