@@ -505,6 +505,38 @@ The Java Cookbook
 
 *B*
 
+public class Hobbits {
+
+	String name;
+	
+	public static void main(String[] args){
+		
+		Hobbits[] h = new Hobbits[3];
+		int z = 0 ;
+		
+		while (z<3){ //배열을 3개 만들었고 0,1,2 만 사용하면 되므로 4가 아닌 3보다 작음을 조건으로 제시합니다. 4로 할경우 실행은 제대로 되나 exception 오류가 납니다.
+		
+			
+			h[z]= new Hobbits();
+			
+			h[z].name = "bilbo";
+			
+			if (z==1){
+				h[z].name = "frodo";
+			}
+			if (z==2){
+				h[z].name = "sam";
+			}
+			
+			System.out.print(h[z].name + " is a ");
+			System.out.println("Good Hobbit name");
+			
+			z = z + 1; //또한 이 코드를 예제처럼 while문 맨 위에 넣을 경우는 시작위치가 1이 되므로 이처럼 while 마지막으로 위치를 바꿔줍니다.
+		}
+			
+	}
+	
+}
 
 
 }}}
