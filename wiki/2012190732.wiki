@@ -549,7 +549,48 @@ class Hobbits { //클래스 지정.
 *107p Dog* _실행_
 
 {{{
+class Dog { //클래스 선언
+	
+        int size;
+        String name; // size라는 인스턴스 변수, name이라는 문자열 변수 선언
+        
+        void bark(){ //bark 메소드 = 사이즈에 따라 짖는 소리가 다름.
+                if(size > 60){
+                        System.out.println("Wooof! Wooof!");
+                }
+                else if(size > 14){
+                        System.out.println("Ruff! Ruff!");
+                }
+                else{ //size가 14이하
+                        System.out.println("Yip! Yip!");
+                }
+        }
 
+}
+
+class DogTestDrive { //테스트용 클래스.
+	        public static void main(String[] args){ //메인메소드
+  
+	        Dog one = new Dog(); //one이라는 이름의 Dog변수 선언
+                one.size = 70;
+                Dog two = new Dog(); //two라는 이름의 Dog변수 선언
+                two.size = 8;
+                Dog three = new Dog(); //three라는 이름의 Dog변수 선언
+                three.size = 35;
+                
+                one.bark(); 
+                two.bark();
+                three.bark(); //개들이 짖는다.
+        }
+
+}
+
+
+//출력
+/* "Wooof! Wooof!"
+   "Yip! Yip!"
+   "Ruff! Ruff!"
+  */
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
