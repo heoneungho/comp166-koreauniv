@@ -220,10 +220,11 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+                A
 class TapeDeck {
 
      boolean canRecord = false;
-
+언
      void playTape() {
           System.out.println("tape playing");
      }
@@ -236,7 +237,8 @@ class TapeDeck {
 class TapeDeckTestDrive {
      public static void main(String [] args) {
     
-          TapeDeck t = new TapeDeck();     
+          TapeDeck t = new TapeDeck();     //TapeDeck 객체 생성과 t라는 레퍼런스변수 선언
+
           t.canRecord = true;
           t.playTape();
 
@@ -247,10 +249,32 @@ class TapeDeckTestDrive {
 }
 
 
+                B
+class DVDPlayer {
 
+	boolean canRecord = false;
 
+	void recordDVD() {
+		System.out.println("DVD recording");
+	}
 
+	void playDVD() {     //DVD재생하는 메소드 생성
+		System.out.println("DVD playing");
+	}
+}
 
+class DVDPlayerTestDrive {
+	public static void main(String[] args) {
+
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD();
+
+		if (d.canRecord == true) {
+			d.recordDVD();
+		}
+	}
+}
 
 }}}
 
@@ -259,6 +283,8 @@ class TapeDeckTestDrive {
 *83p~ 변수* _요약_
 
  * 원시변수 vs 레퍼런스변수:
+-'원시변수'에는 정수, 부울, 부동소수점 수와 같은 기초적인 값이 들어감.
+-'레퍼런스변수'에는 객체에 대한 레퍼런스가 들어감.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
