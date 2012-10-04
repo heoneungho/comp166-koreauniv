@@ -1,6 +1,5 @@
+#summary MyAlbumManagement
 #labels 2012190732조혜경
-
-
 = Introduction =
 
 자신이 즐겨듣는 음악을 넣어서 관리하는 프로그램입니다.
