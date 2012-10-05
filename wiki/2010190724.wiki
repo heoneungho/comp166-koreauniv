@@ -6,9 +6,29 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-{{{
-
-}}}
+public class BeerSong{
+ public static void main(String[] args){
+  int beerNum = 99;
+  String word = "bottles";
+ 
+  while(beerNum > 0){
+    if(beerNum == 1){
+     word = "bottle";    // beerNum가 1이 되면 단수형으로 쓴다.
+    }
+  System.out.println(beerNum + "" + word + "of beer on the wall");
+  System.out.println(beerNum + "" + word + "of beer.");
+  System.out.println("Take one down.");
+  System.out.println("Pass it around.");
+  beerNum = beerNum - 1;  // beerNum이 99부터 1씩 작아진다. 
+                                               //순환문 돌아가는 동안 매번 위의 명령대로 출력된다. 
+  if(beerNum == 0)
+  {System.out.println("No more bottles of beer on the wall");}
+//beerNum이 0이 되면 위의 문장이 출력 된다. 그리고 순환문에서 나간다. 
+   문제해결 : if문은 필요없다. (99~1) bottle(s) of beer on the wall 라는 문장이 
+                      두 번씩 불필요하게 반복되는 점 제거
+  }
+ }
+}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
