@@ -311,10 +311,24 @@ public class Dog {
 			myDogs[6].name = "Bccc";
 		// myDogs[7]의 이름이 뭐였지?
 			System.out.print("마지막 개의 이름: ");
-			System.out.println(myDogs[2].name);
-		
-			
-		}
+                        System.out.println(myDogs[7].name);
+
+// 이제 순환문을 써서 배열에 들어있는 모든 개가 짖도록 합시다.
+
+                        int x = 0;
+                        while( x < myDogs.length) {
+                           myDogs[x].bark();
+                           x = x + 1;
+			}
+
+                        public void bark() {
+                           System.out.println(name + "이(가) 왈! 하고 짖습니다.");
+}
+
+public void eat() { }
+public void chaseCat() {}
+
+}
 
 }
 }}}
