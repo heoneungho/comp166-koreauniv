@@ -750,6 +750,46 @@ public class DotCom2 {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList;
+
+public class DotCom3 {
+
+	private ArrayList<String> locationCells;
+	
+	//location 위치 초기화
+	public void setLocationCells(ArrayList<String> loc){
+		locationCells = loc;
+	}
+	
+	public String checkYourself(String userInput){
+		
+		//초기값 miss로
+		String result = "miss";
+		
+		//user로부터 인덱스값 받고
+		int index = locationCells.indexOf(userInput);
+		
+		//추측한 위치가 맞는지 확인하여 맞다면
+		if(index >= 0){
+			
+			//위치된 인덱스값 지우고
+			locationCells.remove(index);
+			
+			//인덱스가 비웠는지 확인하여
+			if(locationCells.isEmpty()){
+				//모두 비웠으면 kill
+				result = "kill";
+			}else{
+				//남아있다면 hit
+				result = "hit";
+			}
+		}
+		
+		//결과값 반환
+	return result;
+	}
+}
+
 
 }}}
 
