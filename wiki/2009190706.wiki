@@ -879,7 +879,7 @@ public class SimpleDotComTestDrive {
 }
 
 
-public class SimpleDotCom {다
+public class SimpleDotCom 
 
 	int[] locationCells;
 	boolean[] hitCells = new boolean[3];
