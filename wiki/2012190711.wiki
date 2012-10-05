@@ -89,6 +89,59 @@ ClassCast Exception 을 발생.
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+* A:
+/* big x 가 6번 출력됩니다. */
+class Exercise1b {
+	
+	public static void main(String [] args) {
+		
+		int x = 1;
+		while (x<10) {
+			
+			if (x>3) {
+				System.out.println("big x");
+			}
+			x++; // x에 1을 하나씩 더해주어 while문을 빠져나갈수 있음.
+		} //while문 끝
+	} //main클래스 끝
+
+} //클래스 끝
+
+
+* B:
+/* small x 가 2번 출력됩니다. */
+class Exercise1b { //클래스 선언을 해줍니다.
+	
+	public static void main(String [] args) {
+		
+		int x = 5;
+		while (x>1) {
+			x--;
+			if (x<3) {
+				System.out.println("small x");
+			}
+		} //while문 끝
+	} //main클래스 끝
+
+} //클래스 끝
+
+* C:
+/* small x 가 2번 출력됩니다. */
+class Exercise1b {
+	
+	public static void main(String [] args) { //main클래스를 선언해줍니다.
+		
+		int x = 5;
+		while (x>1) {
+			x--;
+			if (x<3) {
+				System.out.println("small x");
+			}
+		} //while문 끝
+	} //main클래스 끝
+
+} //클래스 끝
+
 
 }}}
 
