@@ -636,6 +636,58 @@ public class SimpleDotComTestDrive {
 
 {{{
 
+
+
+public class DotCom1 {
+	
+	//사용될 배열 및 변수 선언
+	int[] locationCells;
+	
+	//배열요소 hit되었는지 확인하기 위해서
+	String[] hitCells;
+	int numofHits = 0;
+	
+	//setLocation 메소드 초기화
+	public void setLocationCells(int[] locs){
+		locationCells = locs;
+	}
+	
+	//checkYourself 함수 선언
+	public String checkYourself(String stringGuess){
+		
+		//스트링변수를 int형으로 형 변환
+		int guess = Integer.parseInt(stringGuess);
+		//결과값 초기 false로
+		String result = "miss";
+		
+		//전달받은 배열 길이 만큼
+		for(int i = 0; i<locationCells.length; i++){
+			
+			//이전에 맞춘적이 있다면 입력못하도록
+			if(hitCells[i] == "true"){
+				break;
+			}
+			
+			//location 위치와 사용자가 추측한 정보가 일치하면 hit
+			if(guess == locationCells[i]){
+				result = "hit";
+				hitCells[i] = "true";
+				//hit수 증가
+				numofHits++;
+				break;
+			}
+		}
+		
+		//모두 hit했다면 kill 출력
+		if(numofHits == locationCells.length){
+			result = "kill";
+		}
+		//결과값 출력
+		System.out.println(result);
+			return result;
+	}
+}
+
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
