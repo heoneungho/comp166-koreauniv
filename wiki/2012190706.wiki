@@ -83,12 +83,29 @@ public class PhraseOMatic {
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신:  바이트코드로 작성된 프로그램을 해석해서 실행하는 프로그램
+ * 컴파일러:  잘못된 코드 부분을 알려주고 소스 코드를 바이트코드로 바꿔주는 프로그램
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
+는
 {{{
+
+package ch1;
+
+class Exercise1b1 {  
+	public static void main(String [] args)  {
+		int x = 1;
+		while( x<10) {
+			if(x>3) {
+				System.out.println("big x");
+				
+			}
+			x=x+1; // 이거를 안붙여주면 무한루프가 되어 아무 값도 안나옵니다.
+		}
+	}
+
+}
+
 
 }}}
 
