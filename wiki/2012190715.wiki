@@ -641,7 +641,14 @@ public class SimpleDotCom {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+기존 SimpleDotCom 클래스에서 수정해야 할 부분.
+			if (guess == locationCells[i]) {
+				result = "hit";
+				numOfHits++;
 
+if(guess == locationCells[i] && !hitCells[i])
+hitCells[i] = true;
+numOfHits++;
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
@@ -712,11 +719,8 @@ public class DotCom {
 				result = "kill";
 			} else {
 				result = "hit";
-			}
+				}
 		}
-		}
-	}
-}
 	return result;
 }
 }
