@@ -694,6 +694,57 @@ public class DotCom1 {
 
 {{{
 
+public class DotCom2 {
+	
+	//사용될 배열 및 변수 선언
+	int[] locationCells;
+	int numofHits = 0;
+	
+	//setLocation 메소드 초기화
+	public void setLocationCells(int[] locs){
+		locationCells = locs;
+	}
+	
+	//checkYourself 함수 선언
+	public String checkYourself(String stringGuess){
+		
+		//스트링변수를 int형으로 형 변환
+		int guess = Integer.parseInt(stringGuess);
+		
+		//결과값 초기 false로
+		String result = "miss";
+		
+		//전달받은 배열 길이 만큼
+		for(int i = 0; i<locationCells.length; i++){
+			
+			//이미 맞추었다면
+			if(locationCells[i] == -1){
+				System.out.println("already hit!!");
+				break;
+			}
+			
+			//location 위치와 사용자가 추측한 정보가 일치하면 hit
+			if(guess == locationCells[i]){
+				result = "hit";
+				//맞춘경우 배열요소 -1로 전환
+				locationCells[i] = -1;
+				//hit수 증가
+				numofHits++;
+				break;
+			}
+		}
+		
+		//모두 hit했다면 kill 출력
+		if(numofHits == locationCells.length){
+			result = "kill";
+		}
+		//결과값 출력
+		System.out.println(result);
+			return result;
+	}
+}
+
+
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
