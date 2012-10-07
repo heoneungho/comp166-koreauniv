@@ -399,12 +399,156 @@ DVD recording
 
 {{{
 
+package ch3;
+
+class Dog {
+	String name; //인스턴스 변수를 선언합니다.
+	public static void main (String[] args) {
+		Dog dog1 = new Dog(); //dog1 이라는 Dog 객체를 만듭니다.
+		dog1.bark(); //bark 라는 매소드를 실행합니다.
+		dog1.name = "Bart"; // dog1 의 인스턴스변수인 name 에 Bart를 저장시킵니다.
+		
+		Dog[] myDogs = new Dog[8]; // myDogs 라는 객체 배열을 만듭니다.
+		myDogs[0] = new Dog();
+		myDogs[1] = new Dog();
+		myDogs[2] = dog1;
+		myDogs[3] = new Dog();
+		myDogs[4] = new Dog();
+		myDogs[5] = new Dog();
+		myDogs[6] = new Dog();
+		myDogs[7] = new Dog();
+		// 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+	
+		myDogs[0].name = "Fred";
+		myDogs[1].name = "Marge";
+		
+
+		int i= 3;
+		while (i < myDogs.length) {
+			myDogs[i].name = i + "번째 강아지";
+			i = i + 1;
+			
+		}
+		// 개의 이름을 순환문을 이용해 저장시킵니다.
+		
+		System.out.print("마지막 개의 이름: ");
+		System.out.println(myDogs[2].name);
+		
+		// myDogs[2] 의 이름을 출력합니다.
+		
+		int x = 0;
+		while(x<myDogs.length) {
+			myDogs[x].bark();
+			x=x+1;
+		}
+	}
+	// 순환문을 이용해 myDogs[0]부터 myDogs[7] 까지 bark 매소드를 실행시킵니다.
+	
+	public void bark() {
+		System.out.println(name + "이(가) 왈!하고 짖습니다.");
+	
+	}
+	//bark 매소드 입니다.
+	
+	public void eat() { } //eat 매소드 입니다.
+	public void chaseCat() { } //chaseCat 매소드입니다.
+	
+	
+}
+
+코딩 결과
+null이(가) 왈!하고 짖습니다.
+마지막 개의 이름: Bart
+Fred이(가) 왈!하고 짖습니다.
+Marge이(가) 왈!하고 짖습니다.
+Bart이(가) 왈!하고 짖습니다.
+3번째 강아지이(가) 왈!하고 짖습니다.
+4번째 강아지이(가) 왈!하고 짖습니다.
+5번째 강아지이(가) 왈!하고 짖습니다.
+6번째 강아지이(가) 왈!하고 짖습니다.
+7번째 강아지이(가) 왈!하고 짖습니다.
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+----A----
+package ch3;
 
+class Books {
+	String title;
+	String author;
+} //Books 클래스를 만듭니다.
+
+public class BooksTestDrive {
+	public static void main(String [] args) {
+	
+		Books [] myBooks = new Books[3]; // 배열 레퍼런스를 만듭니다.
+		int x = 0;
+
+		int i = 0;
+		while ( i <3) {
+			myBooks[i] = new Books();
+			i = i+1;
+		} //책에서는 이부분이 없어서 오류가 나게 됩니다. 순환문을 이용해 배열 레퍼런스가 Books 객체에 접근하도록 합니다.
+
+		myBooks[0].title = "The Grapes of Java";
+		myBooks[1].title = "The Java Gatsby";
+		myBooks[2].title = "The Java Cookbook";
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian";
+		//title과 author에 정보를 입력합니다.
+		
+		while(x<3) {
+			System.out.print(myBooks[x].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[x].author);
+			x=x+1;
+		} // 순환문을 이용해 title by author 순으로 출력하도록 만듭니다.
+	}
+
+}
+코딩 결과
+The Grapes of Java by bob
+The Java Gatsby by sue
+The Java Cookbook by ian
+
+----B----
+package ch3;
+
+class Hobbits { //Hobbits 클래스를 만듭니다.
+
+	String name;
+	
+	public static void main(String [] args) {
+		
+		Hobbits [] h = new Hobbits[3]; // 배열 레퍼런스를 만듭니다
+		int z = 0;
+		
+		while (z<3) { //책에는 z<4 인데 배열이 3이 므로 3을 해줘야 합니다.
+			// z = z+1; // 책에는 이부분때문에 Hobbits[2] 부분이 짤리게 됩니다. 이 식을 맨 밑으로 내려야 정상적인 결과가 나옵니다.
+			h[z] = new Hobbits(); //배열 레퍼런스를 써서 Hobbits 객체에 접근합니다.
+			h[z].name = "bilbo"; // h[0]의 name 에 bilbo 가 들어가게 됩니다.
+			if(z==1) {
+				h[z].name = "frodo"; //z=1 일 때, h[1]의 name 에 frodo 가 들어가게 됩니다.
+			}
+			
+			if (z==2) {
+				h[z].name = "sam"; //z=2 일 때, h[2]의 name 에 sam 이 들어가게 됩니다.
+			}
+			
+			System.out.print(h[z].name + " is a ");
+			System.out.println("good Hobiit name"); //name is a good Hobbit name 이 나오게 출력합니다.
+			z=z+1; // 이부분으 추가 시켜줘야 정상적인 결과가 나옵니다.
+		}
+	}
+}
+
+코딩 결과
+bilbo is a good Hobiit name
+frodo is a good Hobiit name
+sam is a good Hobiit name
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
