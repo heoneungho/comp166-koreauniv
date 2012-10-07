@@ -312,6 +312,81 @@ public class GameLauncher {
 
 {{{
 
+----A----
+
+package ch2;
+
+class TapeDeck {
+	
+	boolean canRecord = false ;
+	
+	void playTape() {
+		System.out.println("tape playing");
+		
+	}
+	
+	void recordTape() {
+		System.out.println("tape recording");
+		
+	}
+
+}
+
+class TapeDeckTestDrive {
+	public static void main(String [] args) {
+		TapeDeck t = new TapeDeck(); // 이걸 만들어야지 TapeDeck 클래스의 객체 t가 만들어짐. 그리고 점연산자를 쓸수 있게됨.
+		t.canRecord = true;
+		t.playTape();
+		
+		if(t.canRecord == true) {
+			t.recordTape();
+			
+		}
+	}	
+}
+
+코딩 결과
+tape playing
+tape recording
+
+
+----B----
+package ch2;
+
+class DVDPlayer {
+	
+	boolean canRecord = false ;
+	
+	void playDVD() {
+		System.out.println("DVD playing");
+	} // 밑에 d.playDVD(); 가 있는데 여기서 playDVD() 라는 메소드를 정의안하면 오류가 생기기때문에 임의로 메소드 하나를 만들었습니다.
+	
+	void recordDVD() {
+		System.out.println("DVD recording");
+	}
+}
+
+class DVDPlayerTestDrive {
+	public static void main(String [] args) {
+		
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD();
+		
+		if(d.canRecord == true) {
+			d.recordDVD();
+			
+		}
+	}
+
+}
+
+코딩 결과
+DVD playing
+DVD recording
+
+
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
