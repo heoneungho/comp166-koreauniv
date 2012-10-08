@@ -828,6 +828,105 @@ class SimpleDotCom { // SimpleDotCom클래스를 생성합니다.
 
 {{{
 
+// 두번째 옵션을 구현한 코드입니다.
+
+import java.io.*;
+
+class GameHelper { // GameHelper 클래스를 생성합니다.
+
+	public String getUserInput (String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if (inputLine.length() == 0) return null;
+		} catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+
+		return inputLine;
+	}
+
+}
+
+public class SimpleDotComTestDrive { // SimpleDotComTestDrive클래스를 생성합니다.
+
+	public static void main(String[] args){
+
+
+		int numOfGuesses=0;
+
+		GameHelper helper = new GameHelper();
+
+		SimpleDotCom theDotCom = new SimpleDotCom();
+
+		int randomNum = (int) (Math.random() * 5);
+
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+		theDotCom.setLocationCells(locations);
+
+		boolean isAlive = true;
+
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + "guesses");
+			}
+
+		}
+	}
+
+}
+
+
+class SimpleDotCom { // SimpleDotCom클래스를 생성합니다.
+
+	int[] locationCells;
+
+
+	int numOfHits = 0;
+
+	public void setLocationCells(int[] locs){
+
+		locationCells = locs;
+	}
+
+	public String checkYourself(String stringGuess){
+
+		int guess = Integer.parseInt(stringGuess);
+
+		String result = "miss";
+
+		for(int i = 0; i < locationCells.length; i++){
+
+			if(guess == locationCells[i] && locationCells[i]!=-1){ // 이미 맞춘 배열인지 확인합니다. 이미 맞춘 배열은 -1값을 가집니다.
+				result = "hit";
+				numOfHits++;
+				locationCells[i]=-1; // 맞춘 배열은 -1값으로 변경해줍니다.(두번째 옵션)
+
+				break;
+
+			}
+
+		}
+
+		if (numOfHits == locationCells.length){
+			result = "kill";
+		}
+
+		System.out.println(result);
+		return result;
+
+	}
+
+} // 클래스 끝
+
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
