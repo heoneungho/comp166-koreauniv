@@ -646,6 +646,7 @@ if (guess == locationCells[i]) {
 				result = "hit";
 				numOfHits++;
 
+-> 수정 후
 if(guess == locationCells[i]&&hitCells[i]!=true){
                                 result = "hit"; // 이미 맞춘 셀이 중복되지 않게 따로 저장해 놓습니다.
                                 numOfHits++;
@@ -662,7 +663,7 @@ if (guess == locationCells[i]) {
 				result = "hit";
 				numOfHits++;
 
-
+-> 수정 후
  for(int i = 0; i < locationCells.length; i++){
 	 if(guess == locationCells[i]&&locationCells[i]!=-1)
 	 result = "hit";
