@@ -864,10 +864,18 @@ public class SimpleDotComTestDrive {
 		
 		boolean isAlive = true;
 		
-		while(isAlive == true){
-			String guess = helper.getUserInput("enter a number");
+				while(isAlive == true){
+		
+			String guess = "a";
+		
+			while(guess == "a") //입력값이 없는 경우를 대비하여 getUserInput 메소드에서의 리턴값에 따라 다시 입력값을 받도록 함
+			{
+				guess = helper.getUserInput("enter a number");
+			}
+			
 			String result = theDotCom.checkYourself(guess);
 			numOfGuesses++;
+
 			if(result.equals("kill")){
 				isAlive = false;
 				System.out.println(numOfGuesses + "guesses");
@@ -936,10 +944,11 @@ public class GameHelper {
 		String inputLine = null;
 		System.out.print(prompt + " ");
 		
-		try{
+	try{
 			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
 			inputLine = is.readLine();
-			if (inputLine.length() == 0) return null;
+			if (inputLine.length() == 0) 
+				return "a";
 		} catch(IOException e){
 			System.out.println("IOException: " + e);
 		}
