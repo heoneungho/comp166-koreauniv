@@ -1082,6 +1082,128 @@ public class GameHelper {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
+
+	int[] locationCells;
+	int[] locationCellsCopy;
+
+	int numOfHits = 0;
+
+	public void setLocationCells(int[] locs) {
+
+		locationCells = locs;
+
+	}
+
+	public String checkYourself(String stringGuess) {
+
+		
+		int a = 0;
+		int guess = Integer.parseInt(stringGuess);
+
+		String result = "miss";
+
+		
+		
+		for (int i = 0; i < (locationCells.length - numOfHits); i++) { //총 배열의 수에서 맞춘 횟수를 뺀 만큼 반복문을 돌립니다
+
+			if (guess == locationCells[i]) {
+//맞춘다면 맞춘값과 현재 배열의 마지막 숫자의 위치를 바꿔줍니다.
+				a = locationCells[locationCells.length - numOfHits - 1];
+
+				locationCells[locationCells.length - numOfHits - 1] = locationCells[i];
+
+				locationCells[i] = a;
+
+				result = "hit";
+				
+				numOfHits++;
+
+				break;
+
+			}
+
+		}
+
+		if (numOfHits == locationCells.length) {
+			result = "kill";
+		}
+
+		System.out.println(result);
+		return result;
+
+	}
+
+}
+
+
+public class SimpleDotComTestDrive {
+
+	public static void main(String[] args){
+
+		int numOfGuesses=0;
+		
+		GameHelper helper = new GameHelper();
+		
+		SimpleDotCom theDotCom = new SimpleDotCom();
+		
+		int randomNum = (int) (Math.random() * 5);
+		
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		
+		boolean[] hitCells = new boolean[3];
+			
+		theDotCom.setLocationCells(locations);
+		
+		boolean isAlive = true;
+		
+		while(isAlive == true){
+		
+			String guess = "a";
+		
+			while(guess == "a")
+			{
+				guess = helper.getUserInput("enter a number");
+			}
+			
+			String result = theDotCom.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + "guesses");
+			}
+			
+		}
+		
+	}
+}
+
+
+
+import java.io.*;
+
+public class GameHelper {
+
+	public String getUserInput (String prompt){
+		String inputLine = null;
+
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if (inputLine.length() == 0) 
+				return "a";
+		} catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+	
+}
+
+
 
 }}}
 
