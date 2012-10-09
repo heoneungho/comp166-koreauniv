@@ -983,32 +983,30 @@ class GameHelper{ // GameHelper 클래스를 생성합니다.
 
 			int x=0; // 위치시킬 닷컴의 n번째 위치
 			success=true; // 성공으로 가정함니다.
-			while(success&&x<comSize){
-				if(grid[location]==0){
-					coords[x++]=location;
-					location+=incr;
-					if(location>=gridSize)
+			while(success&&x<comSize){ // 닷컴이 들어갈 자리가 비었는지 확인
+				if(grid[location]==0){ // 아직 사용하지 않았으면
+					coords[x++]=location; // 위치를 저장
+					location+=incr; // 다음 칸 확인
+					if(location>=gridSize) // 경계를 벗어난 경우
 					{
-						success=false;
+						success=false; // 실패
 
 					}if(x>0& (location%gridLength==0)){
 						success=false;
 					}else{
 						success=false;
-
-
 					}
-				}
-			}
+				} // if문 종료
+			} // while 끝
 		}
-		int x=0;
+		int x=0; // 위치를 알파벳 좌표로 바꿈
 		int row=0;
 		int column=0;
 		while(x<comSize){
-			grid[coords[x]]=1;
-			row=(int)(coords[x]/gridLength);
-			column=coords[x]%gridLength;
-			temp=String.valueOf(alphabet.charAt(column));
+			grid[coords[x]]=1; // 기본 그리드 좌표를 '사용 중'으로 표시
+			row=(int)(coords[x]/gridLength); // 행 값을 구함
+			column=coords[x]%gridLength; // 열 값을 구함
+			temp=String.valueOf(alphabet.charAt(column)); // 숫자된 열을 알파벳으로 변환
 
 			alphaCells.add(temp.concat(Integer.toString(row)));
 			x++;
@@ -1018,11 +1016,11 @@ class GameHelper{ // GameHelper 클래스를 생성합니다.
 	}
 }
 
-class DotCom{
-	private ArrayList<String>locationCells;
-	private String name;
+class DotCom{ // DotCom 클래스 생성.
+	private ArrayList<String>locationCells; // 셀 위치가 들어있는 ArrayList
+	private String name; // DotCom의 이름
 
-	public void setLocationCells(ArrayList<String> loc){
+	public void setLocationCells(ArrayList<String> loc){ // 세터 메소드
 		locationCells=loc;
 	}
 
@@ -1034,14 +1032,14 @@ class DotCom{
 		String status="miss";
 		int index=locationCells.indexOf(userInput);
 		if(index>0){
-			locationCells.remove(index);
-			if(locationCells.isEmpty()){
+			locationCells.remove(index); // 맞춘 항목을 삭제
+			if(locationCells.isEmpty()){ // 모든 위치를 맞췄는지 확인.
 				status="kill";
-				System.out.println("Ouch! You sunk"+name+" : (");
+				System.out.println("Ouch! You sunk"+name+" : ("); 
 			}else{
 				status="hit";
 			}
-		}
+		} // if 문 끝
 		return status;
 	}
 }
