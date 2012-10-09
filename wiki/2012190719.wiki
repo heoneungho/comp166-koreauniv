@@ -358,6 +358,38 @@ class TapeDeckTestDrive
 B
 {{{
 
+class DVDPlayer 
+{
+	boolean canRecord = false;
+	
+	void recordDVD()
+	{
+		System.out.println("DVD recording");
+	}//recordDVD라는 메소드를 만들고 위의 문장을 출력하도록합니다.
+	
+	void playDVD()
+	{
+		System.out.println("DVD playing!!");
+	}
+	//책에는 이 메소드가 없어서 실행이 안됬는데 있어야 합니다.
+}
+
+class DVDPlayerTestDrive
+{
+	public static void main(String [] args)
+	{//메인함수
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+	//d라는 DVDPlayer변수를 만듭니다.
+		d.playDVD();
+		//위 메소드를 실행합니다.
+		if(d.canRecord == true)//d에서 canRecord가 참일경우 if문에들어갑니다.
+		{
+			d.recordDVD();//이 메소드를 실행합니다.
+			
+		}
+	}
+}
 }}}
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
