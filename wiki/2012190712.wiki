@@ -260,6 +260,8 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
 class TapeDeck { // 클래스 선언
 	boolean canRecord = false; // 참거짓변수 지정
 	void playTape() { // 메소드 선언
@@ -281,6 +283,8 @@ class TapeDeckTestDrive { // 클래스 선언
 		}
 	}
 }
+
+B
 
 class DVDPlayer { // 클래스 선언
 	boolean canRecord = false; // 참거짓변수 지정
