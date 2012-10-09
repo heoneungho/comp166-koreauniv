@@ -319,10 +319,46 @@ public class GameLauncher
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
+A
+{{{
+
+class TapeDeck 
+{
+	boolean canRecord = false;
+	//TapeDeck이란 메소드에서 canRecord라는 참거짓변수를 선언하고 거짓을 대입합니다.
+	void playTape() 
+	{
+		System.out.println("tape playing");
+	}
+	
+	void recordTape()
+	{
+		System.out.println("tape recording");
+	}
+}
+
+class TapeDeckTestDrive
+{
+	public static void main(String [] args)
+	{
+		TapeDeck t;//t라는 TapeDeck을 선언합니다.
+		t = new TapeDeck();
+		//책에는 위의 두문장이 없어서 실행이안됬는데 이렇게 선언을 해야 합니다.
+		t.canRecord = true;//t에서 canRecord를 참으로 반꿔줍니다.
+		t.playTape();
+		
+		if(t.canRecord == true)//t에서canRecord가 참일경우 아래 문장을 실행합니다.
+		{
+			t.recordTape();
+		}
+	}
+}
+}}}
+
+B
 {{{
 
 }}}
-
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
 *83p~ 변수* _요약_
