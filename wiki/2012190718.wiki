@@ -32,11 +32,11 @@ public class BeerSong
              System.out.println(beerNum + "" + word + "of beer on the wall");
          }else{
              System.out.println("No more bottles of beer on the wall");
-            }
-        }
-      }
+         }
+     }
    }
 }
+
 
 }}}
 
@@ -168,6 +168,7 @@ public class GuessGame{
          break;
       }else{
          System.out.println("must try again");
+         }
       }
    }
 }
