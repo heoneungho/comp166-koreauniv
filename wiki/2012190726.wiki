@@ -8,6 +8,33 @@
 
 {{{
 
+public class BeerSong {  //클래스 명 설정
+	public static void main(String[] args) {  //메인 클래스 시작
+		int beerNum = 99;  //정수형 변수 beerNum을 설정, 99대입
+		String word = "bottles";   //복수형
+		
+		while (beerNum > 0) {  //while 순환문 시작
+
+			if (beerNum == 1){  //beerNum이 1일 경우,
+				word = "bottle";        //단수형(한 병인 경우)
+			}
+			
+			System.out.println(beerNum + " " + word + " of beer on the wall");
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around.");  //이상 출력문.
+			beerNum = beerNum - 1;  //beerNum에서 1을 뺀다.
+			
+			if (beerNum > 0) {  //beerNum이 0 초과 일 경우,
+			//	System.out.println(beerNum + " " + word + " of beer on the wall");
+                             //원래 있었던 문장이 중복되는 오류를 막기 위해 주석 처리, 혹은 출력문을 제거한다.
+			} else {
+			  	System.out.println("No more bottles of beer on the wall");
+			} 		//else 문 끝
+		}			//while 순환문 끝
+	}			//main 클래스 끝
+}			 //클래스 끝
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
