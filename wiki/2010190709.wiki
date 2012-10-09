@@ -529,6 +529,7 @@ class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+//같은 숫자를 반복해서 입력해서 게임이 끝나는 문제가 있다.
 public class SimpleDotComTestDrive {
 	public static void main(String[] args){
 		
@@ -608,6 +609,7 @@ public class GameHelper {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+//boolean hitCells를 만들어 맞추면 true로 바꾸어주어 문제를 해결한다.
 public class SimpleDotComTestDrive {
 	public static void main(String[] args){
 		
@@ -686,6 +688,7 @@ public class GameHelper {
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+//맞추면 원래값을 -1로 바꾸어주어 다시 못 맞추게 바꾼다.
 public class SimpleDotComTestDrive {
 	public static void main(String[] args){
 		
@@ -765,7 +768,91 @@ public class GameHelper {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+//ArrayList를 이용해서 맞추면 그 배열을 없앤다. 따라서 3개의 배열이 있었는데 하나를 맞추면 2개로 줄어든다.
+import java.util.ArrayList;
 
+
+public class SimpleDotComTestDrive {
+	public static void main(String[] args){
+		
+		int numOfGuesses=0;
+		
+		GameHelper helper = new GameHelper();		
+		SimpleDotCom theDotCom = new SimpleDotCom();
+		
+		int randomNum = (int) (Math.random()*5);		
+//		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		
+		
+		
+		ArrayList<String> locations = new ArrayList<String>();
+		
+		locations.add(Integer.toString(randomNum));
+		locations.add(Integer.toString(randomNum+1));
+		locations.add(Integer.toString(randomNum+2));
+		
+		
+		theDotCom.setLocationCells(locations);
+		boolean isAlive=true;
+		
+		while(isAlive==true){
+			String guess = helper.getUserInput("enter a number");
+			String result=theDotCom.checkYourself(guess);
+			numOfGuesses++;
+			
+			if(result.equals("kill")){
+				isAlive=false;
+				System.out.println(numOfGuesses+" guesses");
+			}
+		}		
+	}	
+}
+
+import java.util.ArrayList;
+
+public class SimpleDotCom {
+	private ArrayList<String> locationCells;
+   
+public void setLocationCells(ArrayList<String> loc){
+        locationCells=loc;
+    }
+
+public String checkYourself(String userinput){
+        String result="miss";
+        int index = locationCells.indexOf(userinput);
+        if(index>=0){
+        	locationCells.remove(index);
+        	
+        	if(locationCells.isEmpty()){
+                result="kill";
+        				}
+        	else{
+        		result="hit";
+        		
+        				}
+        			}
+        System.out.println(result);
+        return result;
+    }
+
+}
+
+import java.io.*;
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length()==0)
+				return null;
+			}catch(IOException e){
+				System.out.println("IOException: " + e);
+		}
+		return inputLine;
+	}
+}
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
