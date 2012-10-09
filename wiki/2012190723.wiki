@@ -966,23 +966,23 @@ class GameHelper{ // GameHelper 클래스를 생성합니다.
 	}
 
 	public ArrayList<String>placeDotCom(int comSize){
-		ArrayList<String>alphaCells=new ArrayList<String>();
-		String temp=null;
-		int []coords=new int[comSize];
-		int attempts=0;
-		boolean success = false;
-		int location=0;
+		ArrayList<String>alphaCells=new ArrayList<String>(); // 'f6'과 같은 좌표가 들어갑니다.
+		String temp=null; // 나중에 연결하기 위한 임시 String 배열입니다.
+		int []coords=new int[comSize]; // 현재 후보 좌표입니다.
+		int attempts=0; // 시도 횟수를 세기 위한 카운터입니다.
+		boolean success = false; // 적당한 위치를 찾았는지 표시하기 위한 플래그입니다.
+		int location=0; // 현재 시작 위치.
 
-		comCount++;
-		int incr=1;
-		if((comCount%2)==1){
-			incr=gridLength;
+		comCount++; // n번 닷컴
+		int incr=1; // 수평 방향으로 증가시킬 값 설정.
+		if((comCount%2)==1){ // 홀수 번째 닷컴인 경우(수직으로 배치)
+			incr=gridLength; // 수직 방향으로 증가시킬 값 설정
 		}
-		while(!success&attempts++<200){
-			location=(int)(Math.random()*gridSize);
+		while(!success&attempts++<200){ // 주 검색 순환문(32)
+			location=(int)(Math.random()*gridSize); // 임의 시작 위치를 구함째
 
-			int x=0;
-			success=true;
+			int x=0; // 위치시킬 닷컴의 n번째 위치
+			success=true; // 성공으로 가정함니다.
 			while(success&&x<comSize){
 				if(grid[location]==0){
 					coords[x++]=location;
@@ -1112,7 +1112,6 @@ public class DotComBust{
 		game.startPlaying();
 	}
 }
-
 
 
 
