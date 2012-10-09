@@ -221,6 +221,21 @@ public class GuessGame{
         }
       }
 
+     public class Player{
+      int number = 0;
+    
+     public void guess(){
+         number = (int) (Math.random()*10);
+         System.out.println("찍은 숫자:"+number);
+    }
+   }
+
+    public class GameLauncher{
+      public static void main (String[] args){
+        GuessGame game = new GuessGame();
+        game.startGame();
+   }
+ }
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
