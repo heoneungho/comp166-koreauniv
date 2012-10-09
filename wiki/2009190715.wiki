@@ -770,7 +770,7 @@ public class SimpleDotCom {
 			else if (guess == locationCells[i] && hitCells[i] == true) {
 				System.out.println("꼼수쓰지마라");
 			}
-//hitCells가 true인경우 맞춘값을 다시대입한것이므로 numofHits의 값을 늘리지 않는다
+//hitCells가 true인경우 맞춘값을 다시대입한것이므로 numOfHits의 값을 늘리지 않는다
 				
 				
 		}
