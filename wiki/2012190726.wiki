@@ -26,7 +26,7 @@ public class BeerSong {  //클래스 명 설정
 			beerNum = beerNum - 1;  //beerNum에서 1을 뺀다.
 			
 			if (beerNum > 0) {  //beerNum이 0 초과 일 경우,
-			//	System.out.println(beerNum + " " + word + " of beer on the wall");
+		 	   //System.out.println(beerNum + " " + word + " of beer on the wall");
                              //원래 있었던 문장이 중복되는 오류를 막기 위해 주석 처리, 혹은 출력문을 제거한다.
 			} else {
 			  	System.out.println("No more bottles of beer on the wall");
