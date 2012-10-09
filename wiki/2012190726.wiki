@@ -72,12 +72,49 @@ public class PhraseOMatic {
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 기본적으로 파일을 실행시키는 역할을 함. 컴파일러가 잡아내지 못한 오류, 보안 등을 체크하기도 한다.
+
+ * 컴파일러: 언어를 해석해서 파일을 주는 것이 주역할. 오류, 보안 등을 체크한다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class Exercise1b1{ //클래스 명이 모두 같아서 임의로 Exercise1b1로 설정.
+	public static void main(String[] args) {
+		int x = 1;
+		while (x < 10) {
+			if (x > 3) {
+				System.out.println("big x");
+			}
+			x = x + 1; //원래 코드에서 무한 루프였던 것을 고치기 위해 반복문 한 번 마다 x를 증가 시켜준다.
+		}
+	}
+}
+
+class Exercise1b2 { //클래스 이름 선언이 빠졌으므로 추가해준다.
+	public static void main(String[] args) {
+		int x = 5;
+		while (x > 1) {
+			x = x - 1;
+			if (x < 3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
+
+class Exercise1b3 { //클래스 명이 모두 같아서 임의로 Exercise1b3로 설정.
+	public static void main(String[] args) { //main 메소드를 추가해준다.
+		int x = 5;
+		while (x > 1) {
+			x = x - 1;
+			if (x < 3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
 
 }}}
 
