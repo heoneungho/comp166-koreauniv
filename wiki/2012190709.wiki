@@ -70,6 +70,45 @@ System.out.println("What we need is a " + phrase);
 
 {{{
 
+1. 
+class Exercise1b { 
+ public static void main(String [] args) {
+  int x = 1;
+  while ( x < 10 ) {
+   x = x+3; // x값을 변화시켜 while문의 조건을 만족시키지 않게 하는 행을 추가한다.
+   if ( x > 3 ) {
+    System.out.println("big x");
+   }
+  }
+ }
+}
+
+2.
+class excercise{ // class를 선언함
+ public static void main(String [] args) {
+  int x = 5;
+  while ( x > 1) {
+   x = x-1;
+   if ( x < 3) {
+    System.out.println("small x");
+   }
+  }
+ }
+}
+
+3.
+class Exercise1b{
+ public static void main(String [] args) { //메소드 추가가
+  int x=5;
+  whiel (x>1) {
+   x=x-1;
+   if(x<3){
+    System.out.println("small x");
+   }
+  }
+ }
+}
+
 }}}
 
 
