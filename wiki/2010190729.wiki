@@ -162,11 +162,32 @@ public void chaseCat() {  }
 
 *135p XP* _요약_
 
- * 익스트림 프로그래밍이란?
+ * 익스트림 프로그래밍이란? 
+ 최근의 소프트웨어 개발 방법론 분야로 
+조금씩/자주 발표,사이클을 반복해서 돌리면서 개발,스펙에 없는 것은 집어넣지않기,테스트 코드를 먼저 만들기 등과 같은 규칙이 있다.
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+
+public class SimpleDotComTestDrive{
+  public static void main(String[] args){
+    SimpleDotCom dot = new SimpleDotCom();
+
+    int[] locations = {2,3,4};
+    dot.setLocationCells(locations);
+
+    String userGuess = "2";
+    String result = dot.checkYourself(userGuess);
+    String testResult = "failed";
+    if(result.equals("hit")){
+      testResult = "passed";
+    }
+
+    System.out.println(testResult);
+  }
+}
+
 
 }}}
 
