@@ -395,11 +395,58 @@ class DVDPlayerTestDrive
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 원시변수에는 정수, 부울, 부동소수점 수와 같은 기초적인 값(단순한 비트 패턴으로 나타낼 수 있는값)이 들어가지만 객체 레퍼런스에는 객체에 대한 레퍼런스가 들어간다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+
+class Dog 
+{
+	String name;
+	public static void main (String [] args)
+	{
+		Dog dog1 = new Dog();
+		dog1.bark();//dog1에 대해 bark메소드를 실행합니다.
+		dog1.name = "Bart";//dog1의 name을 bart로 합니다.
+		
+		Dog[] myDogs = new Dog[10];
+		
+		for(int i=0;i<9;i++)//i가 0부터  8까지 반복되는 반복문을만듭니다.
+		{
+		myDogs[i] = new Dog();
+		}
+		myDogs[9] = dog1;//마지막 dog엔 dog1인 bart를 집어넣습니다.
+		
+		myDogs[0].name = "Fred";
+		myDogs[1].name = "Marge";
+		myDogs[2].name = "Kim";
+		myDogs[3].name = "Park";
+		myDogs[4].name = "Oh";
+		myDogs[5].name = "Song";
+		myDogs[6].name = "Lee";
+		myDogs[7].name = "choi";
+		myDogs[8].name = "Jo";
+		//각각의 이름을 정합니다.ㅣ
+		System.out.print("마지막 개의 이름: ");
+		System.out.println(myDogs[9].name);
+		//마지막 개인 바트를 출력합니다.
+		int x=0;
+		while(x <myDogs.length)
+		{
+			myDogs[x].bark();
+			x=x+1;
+		}//x가 0부터 배열수만큼 차례대로 짖게합니다.
+	}
+	
+	public void bark()//bark메소드
+	{
+		System.out.println(name + "이(가) 왈! 하고 짖습니다.");
+	}
+	
+	public void eat() { }
+	public void chaseCat() { }
+}
 
 }}}
 
