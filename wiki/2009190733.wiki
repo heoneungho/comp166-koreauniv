@@ -949,7 +949,6 @@ public class DotCom {
 		
 }
 ===========================================================================
-
 import java.io.*;
 import java.util.*;
 
@@ -1005,7 +1004,9 @@ public class GameHelper {
 			location = (int)(Math.random() * gridSize); //임이의 시작위치를 구함
 			int x = 0;
 			success = true;  //성공할 것으로 가정함
-			while(success && x <comSize){  //닷컴이 비어있는지 확인
+			
+			
+			while(success && x < comSize){  //닷컴이 비어있는지 확인
 				
 				if(grid[location] ==0){  //아직 사용하지 않았다면
 					coords[x++] = location; // 위치저장
@@ -1015,9 +1016,9 @@ public class GameHelper {
 					}
 					if(x>0 & (location % gridLength ==0)){  //경계를 벗어난 경우(오른쪽)
 						success = false;
-					}else{  // 이미 사용중인 경우
-						success = false;
 					}
+				}else{  // 이미 사용중인 경우
+						success = false;
 				}
 			}
 		}
