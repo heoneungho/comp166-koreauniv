@@ -790,6 +790,46 @@ public class SimpleDotCom {
 
 {{{
 
+
+
+public class SimpleDotCom {
+
+	
+	int [] locationCells;
+	
+	int numOfHits = 0;
+
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
+	
+	public String checkYourself (String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for (int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i] && locationCells[i] > 0) {
+//locationCells[i]>0이라는 조건을 추가시킴
+
+				result = "hit";
+				numOfHits++;
+				locationCells[i] = -1; //-1대입
+				break;
+			}
+
+				
+				
+		}
+		
+		if (numOfHits == locationCells.length){
+			result = "kill";
+		}
+		
+		System.out.println(result);
+		return result;
+	}
+}
+
+
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
