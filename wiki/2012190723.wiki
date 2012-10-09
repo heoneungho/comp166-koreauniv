@@ -938,12 +938,13 @@ class SimpleDotCom { // SimpleDotCom클래스를 생성합니다.
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
-
+// DotCom게임 최종 버전입니다.
+// DotCom, DotComBust, GameHelper 클래스들이 필요합니다.
 
 import java.util.*;
 import java.io.*;
 
-class GameHelper{
+class GameHelper{ // GameHelper 클래스를 생성합니다.
 
 	private static final String alphabet="abcdefg";
 	private int gridLength=7;
@@ -1021,7 +1022,7 @@ class DotCom{
 	private ArrayList<String>locationCells;
 	private String name;
 
-	public void setLocationCells(ArrayList loc){
+	public void setLocationCells(ArrayList<String> loc){
 		locationCells=loc;
 	}
 
@@ -1111,6 +1112,7 @@ public class DotComBust{
 		game.startPlaying();
 	}
 }
+
 
 
 
