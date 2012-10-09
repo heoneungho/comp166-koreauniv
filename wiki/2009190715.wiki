@@ -739,6 +739,51 @@ public class GameHelper {
 
 {{{
 
+
+public class SimpleDotCom {
+
+	
+	int [] locationCells;
+	
+	boolean [] hitCells = {false, false, false};
+//hitCells boolean 배열을 생성하여 false값을 넣어준다.
+	int numOfHits = 0;
+
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
+	
+	public String checkYourself (String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for (int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i] && hitCells[i] == false) {
+				result = "hit";
+				hitCells[i] = true;
+//맞춘값의 hitCells에는 true값을 넣어준다.
+				numOfHits++;
+				break;
+			}
+
+//플레이어의 추측과 locationcells가 일치하고 hitCells가 false때 적중한다로바꾼다
+
+			else if (guess == locationCells[i] && hitCells[i] == true) {
+				System.out.println("꼼수쓰지마라");
+			}
+//hitCells가 true인경우 맞춘값을 다시대입한것이므로 numofHits의 값을 늘리지 않는다
+				
+				
+		}
+		
+		if (numOfHits == locationCells.length){
+			result = "kill";
+		}
+		
+		System.out.println(result);
+		return result;
+	}
+}
+
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
