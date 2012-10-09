@@ -646,7 +646,7 @@ if (guess == locationCells[i]) {
 				result = "hit";
 				numOfHits++;
 
-if(guess == locationCells[i] && hitCells[i]!=true){
+if(guess == locationCells[i]&&hitCells[i]!=true){
                                 result = "hit"; // 이미 맞춘 셀이 중복되지 않게 따로 저장해 놓습니다.
                                 numOfHits++;
                                 hitCells[i] = true; 
@@ -657,7 +657,19 @@ if(guess == locationCells[i] && hitCells[i]!=true){
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+기존 SimpleDotCom 클래스에서 수정해야 할 부분.
+if (guess == locationCells[i]) {
+				result = "hit";
+				numOfHits++;
 
+
+ for(int i = 0; i < locationCells.length; i++){
+	 if(guess == locationCells[i]&&locationCells[i]!=-1)
+	 result = "hit";
+	 numOfHits++;
+	 locationCells[i]=-1; // 원래 배열을 그냥 사용하면서 맞춘 셀의 값은 모두 -1로 바꿉니다.
+	 break;
+}
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
