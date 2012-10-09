@@ -42,12 +42,32 @@ public class BeerSong
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+public class PhraseOMatic
+{
+   public static void main(String[] args)
+   {
+      String[] wordListOne = {"absolute", "smart", "gorgeous"};
+      String[] wordListTwo = {"neutral", "regular", "ordinary"};
+      String[] wordListThree = {"hideous", "ugly", "low quality"};
 
+      int oneLength = wordListOne.length;
+      int twoLength = wordListTwo.length;
+      int threeLength = wordListThree.length;
+
+      int rand1 = (int)(Math.random()*oneLength);
+      int rand2 = (int)(Math.random()*twoLength);
+      int rand3 = (int)(Math.random()*threeLength);
+
+      String phrase = wordListOne[rand1] + "" + wordListTwo[rand2] + "" + wordListThree[rand3];
+
+      System.out.println("What we need is a" + phrase);
+   }
+}
 }}}
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
+ * 자바 가상 머신: 
  * 컴파일러:
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
@@ -76,6 +96,80 @@ public class BeerSong
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
+public class GuessGame{
+   Player p1;
+   Player p2;
+   Player p3;
+   Player p4;
+
+   public void startGame(){
+      p1 = new Player();
+      p2 = new Player();
+      p3 = new Player();
+      p4 = new Player();
+
+      int guessp1=0;
+      int guessp2=0;
+      int guessp3=0;
+      int guessp4=0;
+
+      boolean p1isRight = false;
+      boolean p2isRight = false;
+      boolean p3isRight = false;
+      boolean p4isRight = false;
+
+      int targetNumber = (int)(Math.random()*10);
+      System.out.println("type in a number from 0 to 9");
+ 
+      while(true){
+         System.out.println("the number is"+ targetNumber);
+
+      p1.guess();
+      p2.guess();
+      p3.guess();
+      p4.guess();
+
+      guessp1 = p1.number;
+      System.out.println("the number player 1 put:" + guessp1);
+
+      guessp2 = p2.number;
+      System.out.println("the number player 2 put:" + guessp2);
+
+      guessp3 = p3.number;
+      System.out.println("the number player 3 put:" + guessp3);
+
+      guessp4 = p4.number;
+      System.out.println("the number player 4 put:" + guessp4);
+
+      if(guessp1 == targetNumber){
+         p1isRight = true;
+      }
+      if(guessp2 == targetNumber){
+         p2isRight = true;
+      }
+      if(guessp3 == targetNumber){
+         p3isRight = true;
+      }
+      if(guessp4 == targetNumber){
+         p4isRight = true;
+      }
+
+      if(p1isRight || p2isRight || p3isRight || p4isRight)
+      {
+         System.out.println("there is a player that got the answer right");
+         System.out.println("1st player:" + p1isRight);
+         System.out.println("2nd player:" + p2isRight);
+         System.out.println("3rd player:" + p3isRight);
+         System.out.println("4th player:" + p4isRight);
+         System.out.println("game finished");
+
+         break;
+      }else{
+         System.out.println("must try again");
+      }
+   }
+}
 
 }}}
 
