@@ -642,13 +642,16 @@ public class SimpleDotCom {
 
 {{{
 기존 SimpleDotCom 클래스에서 수정해야 할 부분.
-			if (guess == locationCells[i]) {
+if (guess == locationCells[i]) {
 				result = "hit";
 				numOfHits++;
 
-if(guess == locationCells[i] && !hitCells[i])
-hitCells[i] = true;
-numOfHits++;
+if(guess == locationCells[i] && hitCells[i]!=true){
+                                result = "hit"; // 이미 맞춘 셀이 중복되지 않게 따로 저장해 놓습니다.
+                                numOfHits++;
+                                hitCells[i] = true; 
+                                break;
+
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
