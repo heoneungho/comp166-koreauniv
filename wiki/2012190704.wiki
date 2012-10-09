@@ -285,7 +285,7 @@ class DVDPlayerTestDrive {
  * 원시변수 vs 레퍼런스변수:
 -'원시변수'에는 정수, 부울, 부동소수점 수와 같은 기초적인 값이 들어감.
 -'레퍼런스변수'에는 객체에 대한 레퍼런스가 들어감.
- 
+
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
@@ -361,14 +361,14 @@ class Hobbits {
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트의 코드는 하나를 제외한 나머지 Contact객체에 접근할 수 없다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
+ * 캡슐화: 
  * 게터와 세터:
  * 인스턴스 변수 vs 지역 변수:
  
@@ -376,11 +376,63 @@ class Hobbits {
 
 {{{
 
+
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+          A
+
+class XCopy {
+
+	public static void main(String [] args) {
+		
+		int orig = 42;
+
+		XCopy x = new XCopy();
+
+		int y = x.go(orig);     //orig값의 두배를 y에 대입.
+
+		System.out.println(orig + " " + y);
+	}
+
+        //숫자의 크기를 2배로 증가시키는 메소드.
+	int go(int arg) {
+		
+		arg = arg * 2;
+
+		return arg;
+	}
+}
+//컴파일 됨. 출력 결과 : 42 84
+
+
+          B
+
+class Clock {
+	String time;
+
+	void setTime (String t) {
+		time = t;
+	}
+
+	String getTime() {     // time을 반환해야 하므로 return type이 void가 아니라 String이여야 함.
+		return time;
+	}
+}
+
+class ClockTestDrive {
+	public static void main(String [] args) {
+
+		Clock c = new Clock();
+
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("time: " + tod);
+	}
+}
 
 }}}
 
