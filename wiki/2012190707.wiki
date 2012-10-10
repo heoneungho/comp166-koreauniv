@@ -259,7 +259,37 @@ public class GameLauncher
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A: class TapeDeck
+{
+	boolean canRecord = false;
 
+	void playTape()
+	{
+		System.out.println("tape playing");
+	}
+
+	void recordTape()
+	{
+		System.out.println("tape recording");
+	}
+}
+
+class TapeDeckTestDrive 
+{
+	public static void main(String[] args) 
+	{
+		TapeDeck t = new TapeDeck(); //t가 선언되어있지 않으므로 객체로 선언해준다.
+		t.canRecord = true;
+		t.playTape();
+
+		if (t.canRecord ==true)
+		{
+			t.recordTape();
+		}
+	}
+}
+
+B:
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
