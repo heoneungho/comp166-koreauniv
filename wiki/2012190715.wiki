@@ -771,12 +771,12 @@ cf) 오버라이드
 
 {{{
 public class MonsterTestDrive {
-	public static void main(String [] args) {
-		Monster [] ma = new Monster[3];
+	public static void main(String [] args) { 
+		Monster [] ma = new Monster[3]; // Vampire,Dragon,Monster이라는 세개의 클래스를 생성한다.
 		ma[0] = new Vampire();
 		ma[1] = new Dragon();
 		ma[2] = new Monster();
-		for(int x = 0; x<3; x++) {
+		for(int x = 0; x<3; x++) { // int 형태의 입력값 0,1,2 넣어준다.
 			ma[x].frighten(x);
 		}
 	}
@@ -785,7 +785,7 @@ public class MonsterTestDrive {
 ==========================================
 
 public class Monster {
-		boolean frighten(int d) {
+		boolean frighten(int d) { //int 형식으로 받아서 bool형식으로 출력
 			System.out.println("arrrgh");
 			return true;
 		}
@@ -794,7 +794,7 @@ public class Monster {
 ==========================================
 
 public class Vampire extends Monster {
-		boolean frighten(int x) {
+		boolean frighten(int x) {  //int 형식으로 받아서 bool형식으로 출력
 			System.out.println("a bite?");
 			return false;
 		}
@@ -808,6 +808,13 @@ public class Dragon extends Monster{
 		return true;
 	}
 }
+
+==========================================
+
+결과값 : 
+a bite?
+breath fire
+arrrgh
 
 }}}
 
