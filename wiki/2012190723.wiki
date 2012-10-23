@@ -1462,6 +1462,29 @@ arrrgh
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{ 
+	static{
+		System.out.println("super static block");
+	}
+	StaticSuper(){ // StaticSuper은 생성자이므로 반드시()가 있어야 합니다.
+		System.out.println("super constructor");
+	}
+}
+
+public class StaticTests extends StaticSuper { // StaticTests는 StaticSuper를 상속받습니다.
+	static int rand;
+	static{
+		rand=(int)(Math.random()*6);
+		System.out.println("static block"+rand);
+	}
+	StaticTests(){
+		System.out.println("constructor");
+	}
+	public static void main(String[]args){
+		System.out.println("in main");
+	}
+	StaticTests st=new StaticTests(); // st를 읽기위해 메인 메소드 밖으로 뺍니다.
+}
 
 }}}
 
