@@ -569,6 +569,37 @@ public class SimpleDotCom {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+<수정한 SimpleDotCom.java>
+
+public class SimpleDotCom {
+
+	int[] locationCells;
+	boolean[] hitCells;	/*이미 맞춘 문제인지 확인하기 위해 추가한 배열.*/
+	int numOfHits = 0;
+
+	public void setLocationCelss(int[] locs) {
+		locationCells = locs;
+	}
+
+	public String checkYourself(String stringGuess) {	//사용자가 추측한 위치를 받아옵니다.
+		int guess = Integer.parseInt(StringGuess);	//사용자가 추측한 위치를 int로 변환.
+		String result = "miss";
+		for(int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i] && hitCells[i] != true) {	/*hitCells배열을 통해 이미 맞춘 문제가 아닐 때만 실행.*/
+				result = "hit";	//맞춘 횟수가 3미만일 경우 "hit"을 결과로 리턴.
+				hitCells[i] = true;	/*맞춘 문제임을 저장.*/
+				numOfHits++;
+				break;
+			}
+		} //순환문 끝
+
+		if (numOfHits == locationCells.length) {	//마지막 셀인지 확인.
+			result = "kill";	//맞춘 횟수가 3이면 "kill"을 결과로 리턴.
+		}
+		System.out.println(result);
+			return result;
+	} //메소드 끝
+} //클래스 끝
 
 }}}
 
