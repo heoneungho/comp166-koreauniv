@@ -544,7 +544,7 @@ public class SimpleDotCom {
 	}
 
 	public String checkYourself(String stringGuess) {	//사용자가 추측한 위치를 받아옵니다.
-		int guess = Integer.parseInt(StringGuess);	//사용자가 추측한 위치를 int로 변환.
+		int guess = Integer.parseInt(stringGuess);	//사용자가 추측한 위치를 int로 변환.
 		String result = "miss";
 		for(int i = 0; i < locationCells.length; i++) {
 			if (guess == locationCells[i]) {
@@ -581,7 +581,7 @@ public class SimpleDotCom {
 	}
 
 	public String checkYourself(String stringGuess) {	//사용자가 추측한 위치를 받아옵니다.
-		int guess = Integer.parseInt(StringGuess);	//사용자가 추측한 위치를 int로 변환.
+		int guess = Integer.parseInt(stringGuess);	//사용자가 추측한 위치를 int로 변환.
 		String result = "miss";
 		for(int i = 0; i < locationCells.length; i++) {
 			if (guess == locationCells[i] && hitCells[i] != true) {	/*hitCells배열을 통해 이미 맞춘 문제가 아닐 때만 실행.*/
@@ -604,8 +604,36 @@ public class SimpleDotCom {
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
+<수정한 SimpleDotCom.java>
 {{{
+public class SimpleDotCom {
 
+	int[] locationCells;
+	int numOfHits = 0;
+
+	public void setLocationCelss(int[] locs) {
+		locationCells = locs;
+	}
+
+	public String checkYourself(String stringGuess) {	//사용자가 추측한 위치를 받아옵니다.
+		int guess = Integer.parseInt(stringGuess);	//사용자가 추측한 위치를 int로 변환.
+		String result = "miss";
+		for(int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i] && locationCells[i] != -1) {	/*locationCells의 값이 -1이면 이미 맞춘 위치이므로 넘어감.*/
+				result = "hit";	//맞춘 횟수가 3미만일 경우 "hit"을 결과로 리턴.
+				locationCells[i] = -1;	/*맞춘 것을 나타내기 위해 locationCells의 값을  -1로 변경.*/
+				numOfHits++;
+				break;
+			}
+		} //순환문 끝
+
+		if (numOfHits == locationCells.length) {	//마지막 셀인지 확인.
+			result = "kill";	//맞춘 횟수가 3이면 "kill"을 결과로 리턴.
+		}
+		System.out.println(result);
+			return result;
+	} //메소드 끝
+} //클래스 끝
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
