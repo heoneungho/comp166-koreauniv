@@ -433,7 +433,7 @@ class Hobbits { // Hobbits 클래스를 생성.
 
                 while (z<3)     {    // 그러므로 z<3.
 
-                h[z] = new Hobbits(); // 객체를 생성합니다.
+                h[z] = new Hobbits(); // 객체를 설정.
                 h[z].name = "bilbo";
                 if (z==1) {
                         h[z].name = "frodo";
@@ -443,7 +443,7 @@ class Hobbits { // Hobbits 클래스를 생성.
                 }
                 System.out.print(h[z].name + " is a ");
                 System.out.println("good hobbit name");
-                z = z + 1; //Z의 값을 1씩 증가시킵니다.
+                z = z + 1; //마지막으로 z의 값을 1씩 증가시킨다.
                 }
         }
 }
