@@ -68,12 +68,47 @@ public class PhraseOMatic
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신: 
- * 컴파일러:
+ * 자바 가상 머신:  프로그램을 실행시키고, 보안관련작업을 처리한다.
+ * 컴파일러: 자바 코드를 바이트코드로 짜지 않아도 되게 하여 프로그램이 빠르게 돌아 가도록 하며, 변수에 이상한 유형의 데이터를 저장하지 않도록한다.  또한  동적바인딩을 지원하고,  문제를 감지해 프로그램 실행 도중에 문제가 생기는 것을 방지해준다.  비공개 메소드를 호출하거나 메소드를 변경하려는것과 같은 접근 위반을 방지하는 것을 맡아서 하며, 사람들이 함부로 보면 안되는 코드를 건드리려는 일을 방지한다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Exercise1b{
+   public static void main(String [] args){
+      int x=1;
+      while(x<10){
+         x = x+1;  //코드가 진행될 때마다 x 값을 증가시킨다// 
+         if(x>3){
+            System.out.println("big x");
+         }
+      }
+   }
+}
+
+class x{ //class를 만들어준다//
+public static void main(String [] args){
+   int x=5;
+   while(x>1){
+      x = x-1;
+      if(x<3){
+         System.out.println("small x");
+         }
+      }
+   }
+}
+
+class Exercise1b{ 
+public static void main(String [] args){ // 메소드를 열어준다//
+   int x=5;
+   while(x>1){
+      x = x-1;
+      if(x<3){
+         System.out.println("small x");
+         }
+      }
+   }
+}
 
 }}}
 
@@ -90,8 +125,8 @@ public class PhraseOMatic
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것(객체의 데이터) 
+ * 메소드: 객체에서 자신이 하는 것
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
@@ -175,7 +210,7 @@ public class GuessGame{
 
 }}}
 
-*76p 컴파일러가 되어봅시다* _구현후 주석달기_
+*76p 컴파일러가것 되어봅시다* _구현후 주석달기_
 
 {{{
 
