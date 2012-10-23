@@ -401,7 +401,7 @@ class Hobbits {
  * 게터와 세터: 게터는 게터가 가져오기로 되어있는값을 리턴값 형대로 받아오기 위한 용도로만 쓰입니다. 정식 명칭은 액세서(accessor)이다.
 세터는 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도로 쓰인다.
  * 인스턴스 변수 vs 지역 변수:
- 변수가 어떤 블록(block) 내에서만 선언되지 않을 때에는 다른 블록에 그것을 사용하는 것은 불가능하며, 프로그램 내 전체에 걸쳐 사용할 수 없다. 이것은 그 변수가 지역적인 것이며, 프로그수램 전체에 대하여 정의되어 있지 않기 때문이다. 이러한 변수를 지역변수라 한다.
+인스턴스 변수는 힙에 들어가고 지역변수는 스택에 들어가므로 지역변수가 효율적이지만 지역변수는 어떤 블록 내에서만 선언되고 다른 블록에고 그것을 사용하는 것은 불가능하다.
 *107p Dog* _실행_
 
 {{{
@@ -440,7 +440,48 @@ class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A.
+class XCopy {
+	public static void main(String [] args) {
+	int orig = 42; 
+	XCopy x = new XCopy(); 
+	int y = x.go(orig); // y에  x.go(orig)= x.go( int 42)=42*2=84 (go 함수 실행)
+	System.out.println(orig + " " + y); // 42 84 출력
+}
+로
+	int go(int arg) {
+		arg = arg * 2; //  42 실행하면 두배 하여 84 값으로return해준다.
+		return arg;
+	 }
+}
 
+출력결과:42 84
+
+B.
+class Clock {
+	String time;
+
+	void setTime(String t) {
+		time = t;
+	}
+
+	String getTime() { // return 타입이  time 이므로 void가 아닌 String으로 지정한다.
+		return time;
+	}
+} // 이함수는 setTime에 변수를 넣으면 그 변수가 리턴되는 꼴이다.
+
+class ClockTestDrive {
+	public static void main(String [] args) {
+                
+		Clock c = new Clock();
+                
+		c.setTime("1235"); // 초기 setTime 에 time=1235가 리턴되어 세팅된다.
+		String tod = c.getTime(); // tod에 getTime 함수에서 return 되는 time값, 즉 1235가 대입된다.
+		System.out.println("time:"+tod);
+	}
+}
+
+출력결과: time 1235
 }}}
 
 
