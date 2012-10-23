@@ -568,9 +568,8 @@ public class SimpleDotCom {
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
-{{{
 <수정한 SimpleDotCom.java>
-
+{{{
 public class SimpleDotCom {
 
 	int[] locationCells;
