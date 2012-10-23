@@ -213,6 +213,53 @@ public class GuessGame{
 *76p 컴파일러가것 되어봅시다* _구현후 주석달기_
 
 {{{
+class TapeDeck{
+        boolean canRecord = false;
+        
+        void playTape(){
+                System.out.println("tape playing");
+        }
+
+        void recordTape(){
+                System.out.println("tape recording");
+        }
+}
+
+class TapeDeckTestDrive{
+        public static void main(String [] args){
+                TapeDeck t = new TapeDeck(); //TapeDeck 객체를 생성하고 인스턴스
+ 변수 애 대입한다//
+                t.canRecord = true;
+                t.playTape();
+
+                if(t.canRecord == true){
+                        t.recordTape();
+                }
+        }
+
+class DVDPlayer{
+        boolean canRecord = false;
+        
+        void recordDVD(){
+                System.out.println("DVD recording");
+        }
+
+        void playDVD(){
+                System.out.println("DVD plaing");// DVD를 play 하는 메소드를 생성한다.//
+        }
+}
+
+class DVDPlayerTestDrive{
+        public static void main(String [] args){
+                DVDPlayer d = new DVDPlayer(); 
+                d.canRecord = true;
+                d.playDVD();
+
+                if(d.canRecord == true){
+                        d.recordDVD();
+                }
+        }
+
 
 }}}
 
@@ -220,24 +267,94 @@ public class GuessGame{
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수:  원시변수에는 정수,부울, 부동소수점 수와 같은 기초적인 값이 들어가며 객체 레퍼런스에는 객체에 대한 레퍼런스(메소드 호출 등)이 들어간다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog{
+        String name;
+        public static void main(String[] args){
+                Dog dog1 = new Dog();
+                dog1.bark();
+                dog1.name = "Bart";
+
+                Dog[] myDogs = new Dog[10];
+                myDogs[0]= new Dog();
+                myDogs[1]= new Dog();
+                myDogs[2]= new Dog();
+                myDogs[3]= new Dog();
+                myDogs[4]= new Dog();
+                myDogs[5]= new Dog();
+                myDogs[6]= new Dog();
+                myDogs[7]= new Dog();
+                myDogs[8]= new Dog();
+                myDogs[9]= dog1;        
+        
+                myDogs[0].name = "Fred";        
+                myDogs[1].name = "Marge";
+                myDogs[2].name = "Angie";
+                myDogs[3].name = "Becky";
+                myDogs[4].name = "John";
+                myDogs[5].name = "Beth";
+                myDogs[6].name = "Mike";
+                myDogs[7].name = "Sam";
+                myDogs[8].name = "Rach";
+
+                int x= 0;
+                while(x< myDogs.length)
+                {
+                        myDogs[x].bark();
+                        x = x+1;
+                }
+        }
+        public void bark(){
+                System.out.println(name + "이(가) 왈!하고 짖습니다.");
+        }
+}
 
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Books{
+        String title;
+        String author;
+}
+
+class BooksTestDrive{
+        public static void main(String [] args){
+                Books [] myBooks = new Books[3];
+                int x=0;
+
+                myBooks[0] = new Books();
+                myBooks[1] = new Books();
+                myBooks[2] = new Books(); //myBooks 객체 3개를 생성하고 각각을 myBooks 인스턴스 변수 3개에 대입한다.//
+
+                myBooks[0].title = "The Grapes of Java";
+                myBooks[1].title = "The JAVA Gatsby";
+                myBooks[2].title = "THe JAVA Cookbook";
+                myBooks[0].author = "BOb";
+                myBooks[1].author = "sue";
+                myBooks[2].author = "ian";
+
+       while(x<3){
+                        System.out.print(myBooks[x].title);
+                        System.out.print("by");
+                        System.out.println(myBooks[x].author);
+                        x = x+1;
+                }
+        }
+}
+
 
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?: 
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?:  Bob
+ * 문제가 된 부분은 어딘가요?: Kent의 메소드에서 만든 Contact 객체 중에서 마지막 것을 제외한 나머지는 접근할 수가 없다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
