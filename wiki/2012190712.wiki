@@ -477,6 +477,24 @@ class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+class XCopy { // 클래스 선언
+	public static void main(String [] args) { // 메소드 선언
+		int orig = 42; // orig 에 값을 대입한후 선언한다.
+		XCopy x = new XCopy(); // 객체를 만든다후 선언한다
+		int y = x.go(orig); // y 에 값을 대입한다.
+		System.out.println(orig + " " + y); // 출력
+	}
+	int go(int arg){ // go 함수를 만든다.
+		arg = arg * 2;
+		return arg; // 원래값에 2를 곱한값을 돌려보낸다.
+	}
+}
+// 컴파일이 실행 된다. 자바에서는 값으로 전달하므로, 원래 orig 의 값은 바뀌지 않는다.
+
+B
+
 
 }}}
 
