@@ -66,13 +66,51 @@ public class PhraseOMatic {
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 바이트 코드를 해석해서 실행하는 소프트웨어.
+ * 컴파일러: 자바 언어로 기술된 프로그램을 바이트 코드라는 중간 코드로 변환시킨다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
+을
 {{{
+A. 
+class Exercise1b {
+	public static void main(String [] args) {
+		int x = 1;
+		while (x<10){
+			x=x+1; //  while이 infite 하게 돌아가지 않게 x를 하나씩 늘려주어야한다.
+			if(x>3) {
+				System.out.println("big x");
+			}
+		}
+	}
+}
 
+B.
+class Exercise 1b{ // 클래스를 정의해주어야 컴파일 가능하다.
+	public static void main(String [] args){
+		int x = 5;
+		while (x>1) {
+			x = x-1;
+			if(x<3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
+
+
+C.
+class Exercise1b{
+	public static void main(String [] args) { // 클래스 내 메소드 안에 코드가 있어야한다.
+		int x = 5;
+		while (x>1) {
+			x = x-1;
+			if(x<3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
