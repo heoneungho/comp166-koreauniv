@@ -1365,7 +1365,7 @@ class Vampire extends Monster { //Monster를 상속받습니다.
                 }
         }
 
- class Dragon extends Monster{
+class Dragon extends Monster{
         boolean frighten(int degree) {
                 System.out.println("breath fire");
                 return true;
