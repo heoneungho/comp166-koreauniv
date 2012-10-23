@@ -1329,11 +1329,11 @@ class DotComBust
 {{{
 // 미완성본 집에서 다시 할 것
 public class Animal {
-	picture
-	food
-	boolean hunger;
-	boundaries
-	location
+	String[] picture;
+	boolean food;
+	int hunger;
+	float boundaries;
+	float location;
 
 	void makeNoise(){
 		// 소리를 낼 때의 행동입니다.
@@ -1343,6 +1343,7 @@ public class Animal {
 	}
 
 }
+
 
 }}}
  
