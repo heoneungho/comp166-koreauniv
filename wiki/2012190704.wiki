@@ -639,6 +639,43 @@ public class SimpleDotCom {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList;
+//ArrayList 채용
+
+public class DotCom {
+
+	private ArrayList<String> locationCells;     //배열대신 String이 들어가는 ArrayList사용.
+	//private int numOfHits;
+	//(없어도 됩니다 )
+
+	public void setLocationCells (ArrayList<String> loc) {
+		locationCells = loc;
+	}
+
+	public String checkYourself (String userInput) {
+		
+		String result = "miss";
+
+			int index = locationCells.indexOf(userInput);
+                        //사용자가 추측한 위치가 ArrayList에 들어있는지 확인.
+                        //들어있으면 인덱스번호가, 그렇지 않으면 -1이 리턴됨.
+
+			if (index >= 0) {
+
+				locationCells.remove(index);
+                                //인덱스가 0이상이면 사용자가 추측한 위치가 목록에 들어있는 것이므로 제거.   
+
+				if (locationCells.isEmpty()) {
+					result = "kill";
+				} else {
+					result = "hit";
+				}	//if문 끝
+
+			}	//바깥쪽 if문 끝
+
+		return result;
+	}	//메소드 끝
+}	//클래스 끝
 
 }}}
 
