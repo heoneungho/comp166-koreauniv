@@ -1338,7 +1338,44 @@ class DotComBust
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+// 1번 코드가 제대로 작동합니다.
+public class MonsterTestDrive {
+        public static void main(String [] args) { 
+                Monster [] ma = new Monster[3]; // Vampire,Dragon,Monster를 생성합니다.
+                ma[0] = new Vampire();
+                ma[1] = new Dragon();
+                ma[2] = new Monster();
+                for(int x = 0; x<3; x++) { // 입력값 0,1,2을 넣어줍니다.
+                        ma[x].frighten(x);
+                }
+        }
+}
 
+class Monster {
+                boolean frighten(int d) { //int 를 받아 bool로 출력합니다.
+                        System.out.println("arrrgh");
+                        return true;
+                }
+}
+
+class Vampire extends Monster { //Monster를 상속받습니다.
+                boolean frighten(int x) {  //int 를 받아 bool로 출력합니다.
+                        System.out.println("a bite?");
+                        return false;
+                }
+        }
+
+ class Dragon extends Monster{
+        boolean frighten(int degree) {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+
+결과값 : 
+a bite?
+breath fire
+arrrgh
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
