@@ -1327,6 +1327,22 @@ class DotComBust
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+// 미완성본 집에서 다시 할 것
+public class Animal {
+	picture
+	food
+	boolean hunger;
+	boundaries
+	location
+
+	void makeNoise(){
+		// 소리를 낼 때의 행동입니다.
+		void eat(boolean hunger){
+			// 동물이 음식을 접했을 때의 행동입니다.
+		}
+	}
+
+}
 
 }}}
  
