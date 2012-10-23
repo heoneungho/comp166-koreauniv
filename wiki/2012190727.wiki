@@ -6,12 +6,12 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-public class BeerSong{
-      public static void main(String[] args)  {
-           int beerNum = 99;
+public class BeerSong{           //class 선언
+      public static void main(String[] args)  {           //main함수 선언
+           int beerNum = 99;           beerNum이라는 정수형변수 선언 후 99값 저장
            String word = "bottles";        //복수형
 
-           while (beerNum > 0) {
+           while (beerNum > 0) {           //while 순환문 시작
 
                  if (beerNum == 1) {
                        word = "bottle";             //단수형(한 병인 경우)
