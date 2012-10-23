@@ -240,6 +240,31 @@ class TapeDeckTestDrive {
  }
 }
 
+
+
+class DVDPlayer {
+
+ boolean canRecord = false;
+
+ void playDVD () { //record >> play 로 변경
+  System.out.println("DVD recording");
+ }
+}
+
+class DVDPlayerTestDrive {
+ public static void main(String [] args) {
+
+  DVDPlayer d = new DVDPlayer();
+  d.canRecord = true;
+  d.playDVD();
+
+  if (d.canRecord == true) {
+   d.recordDVD();
+  }
+ }
+}
+
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
