@@ -329,6 +329,59 @@ class DVDPlayerTestDrive{
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog { // Dog 클래스.
+        String name;
+        public static void main(String[]args){
+                //Dog 객체를 만들고 접근합니다.
+                Dog dog1=new Dog();
+                dog1.bark();
+                dog1.name="Men-Boong";
+
+                //이번에는 Dog 배열을 만듭니다.
+                Dog[]myDogs=new Dog[10]; // Dog 10마리가 짖어대겠지..
+                myDogs[0]=new Dog();
+                myDogs[1]=new Dog();
+                myDogs[2]=new Dog();
+                myDogs[3]=new Dog();
+                myDogs[4]=new Dog();
+                myDogs[5]=new Dog();
+                myDogs[6]=new Dog();
+                myDogs[7]=new Dog();
+                myDogs[8]=new Dog();
+                myDogs[9]=dog1;  // myDogs[9]에 dog1을 넣어보자
+
+                // 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+
+                myDogs[0].name="Geun-Young";
+                myDogs[1].name="Young-Hun";
+                myDogs[2].name="Neung-Ho";
+                myDogs[3].name="Dong-Gi";
+                myDogs[4].name="Bong-Woo";
+                myDogs[5].name="Min-Hyung";
+                myDogs[6].name="Seung-Won";
+                myDogs[7].name="Chai-Won";
+                myDogs[8].name="Yoo-Yeon";
+
+                System.out.print("마지막 개의 이름:");
+                System.out.println(myDogs[9].name); // 마지막 개의 이름.
+
+                // 순환문을 써서 배열에 있는 모든 개가 짖도록 합니다.
+
+                int x = 0;
+                while(x < myDogs.length){
+                        myDogs[x].bark();
+                        x = x + 1;
+                }
+        }
+
+        public void bark(){
+                System.out.println(name + "이(가) 깨갱!하고 짖어댑니다.");
+        }
+        public void eat(){}
+        public void chaseCat(){}
+
+
+}
 
 }}}
 
