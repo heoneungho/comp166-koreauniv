@@ -614,6 +614,67 @@ Ruff! Ruff!
 
 {{{
 
+-----A-----
+package ch4;
+
+class XCopy {
+	public static void main(String [] args) {
+		int orig = 42; // orig 란 변수에 42를 넣는다.
+		XCopy x = new XCopy(); // x 라는 XCopy 객체를 만듭니다.
+		int y = x.go(orig); // y 에 x.go(orig) 메소드를 실행시킨 값을 저장시킵니다.
+		System.out.println(orig + " " + y); //  orig 값과 y값을 순서대로 나타냅니다.
+	}
+	
+	int go(int arg) { 
+		arg = arg *2;
+		return arg;
+	} // arg * 2 가 되도록하는 매소드 go를 만듭니다.
+
+}
+
+코딩 결과
+42 84
+
+
+----B-----
+package ch4;
+
+class Clock {
+
+	String time;
+	
+	void setTime(String t) {
+		time = t;
+		
+		// setTime 메소드를 만든다. 이건 세터라 볼 수 있다.
+		
+	}
+	
+	String getTime() {    //책은 void 인데 리턴값은 String 이다. 그래서 String 으로 바꿔줘야한다.
+		return time;
+	
+		// getTime 메소드를 만든다. 이건 게터라 볼 수 있다.
+		
+	}
+	
+}
+
+class ClockTestDrive {
+	public static void main(String [] args) {
+		
+		Clock c = new Clock(); //c라는 Clock 객체를 만든다.
+		
+		c.setTime("1245"); //세터를 이용해 "1245"를 time 에 넣는다.
+		String tod = c.getTime(); //tod 에 게터로 받아 들인 값을 넣는다.
+		System.out.println("time: " + tod); // time tod 순으로 출력한다.
+	}
+}
+
+
+
+코딩 결과
+time: 1245
+
 }}}
 
 
