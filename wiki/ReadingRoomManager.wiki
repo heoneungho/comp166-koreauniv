@@ -84,6 +84,15 @@ mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
 *2. 메인 화면 클래스(mainWindow)*
 
 - mainWindow() : 생성자, 기본적인 틀을 만듭니다.
+{{{
+setTitle("독서실 관리 프로그램");// 제목표시줄
+setSize();// 사이즈 설정
+pan1();// 메소드 호출
+pan2();// 메소드 호출
+pan3();// 메소드 호출
+gridInit();// 메소드 호출
+setVisible(true);// 창을 보여줌
+}}}
 
 - pan1() : 상단의 판넬 생성
 
