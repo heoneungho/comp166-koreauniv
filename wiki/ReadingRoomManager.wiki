@@ -95,7 +95,10 @@ setVisible(true);// 창을 보여줌
 }}}
 
 - pan1() : 상단의 판넬 생성
-
+{{{
+pan1 = new JPanel();// 판넬1 생성
+pan1.add(blank = new JTextField());// 상단의 시계표시를 위해 공백을 만드는 텍스트필드
+}}}
 - pan2() : 독서실 화면 부분의 판넬 생성
 
 - pan3() : 상황판 등 하단의 판넬 생성
