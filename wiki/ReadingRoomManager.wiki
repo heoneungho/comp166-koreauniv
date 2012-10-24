@@ -74,7 +74,7 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 
 *5)클래스/인터페이스 설정*
 
-*1. 메인 클래스(main)* {{{public class main}}}
+*1. 메인 클래스(main)*
 
 - mainWindow클래스를 실행
 {{{
@@ -105,7 +105,10 @@ setVisible(true);// 창을 보여줌
 - run() : 상단에 시계를 표시하기 위해 쓰레드를 실행
 
 - actionPerformed() : 버튼이벤트 설정
-
+{{{
+jariNumber = Integer.parseInt();// 자리번호 변수에 저장하고
+new enterWindow(jariNumber);// 그것을 매개변수로 입실 창 띄우기
+}}}
 
 *3. 입실 화면 클래스(enterWindow)*
 
