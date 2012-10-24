@@ -39,8 +39,5 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 *3) Program Structure*
 
 
-http://code.google.com/images/code_sm.png
-
-
 
 
