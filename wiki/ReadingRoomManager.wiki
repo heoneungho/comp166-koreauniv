@@ -139,7 +139,7 @@ setTitle("입실");// 제목표시줄
 IDNumber = tf1.getText();// 손님 ID 번호를 텍스트박스에서 받음
 jariNumber = tf2.getText();// 자리 번호를 텍스트박스에서 받음
 }}}
-- itemStateChanged() : 체크박스 이벤트 설정 // 기간제, 시간제 선택
+- itemStateChanged() : 체크박스 이벤트 설정(기간제, 시간제 선택)
 
 
 *4. 퇴실 화면 클래스(leaveWindow)*
