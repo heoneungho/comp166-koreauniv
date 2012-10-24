@@ -7,7 +7,7 @@
 이용 중인 좌석의 요금을 계산해주는 *독서실 좌석 관리 프로그램*입니다.
 
 
-= Details =
+= Background&Details =
 
 *1) Background*
 
