@@ -13,7 +13,7 @@ public class BeerSong
        int beerNum = 99;
        String word = "bottles";
     
-       while(beerNum > 0 )
+       while(beerNum > 0 ) //맥주를 차례대로 낮춰가며 노래부름
        {
            
        System.out.println(beerNum + " " + word + " of beer on the wall");
@@ -22,7 +22,7 @@ public class BeerSong
        System.out.println("Pass it around.");
        beerNum = beerNum - 1;
 
-       if (beerNum > 0)
+       if (beerNum > 0) // 술남은거
        {
             if(beerNum ==1)
             word = "bottle";
@@ -239,12 +239,12 @@ class TapeDeck
 {
 	boolean canRecord = false;
 
-	void playTape()
+	void playTape() // 테이프 플레이 
 	{
 		System.out.println("tape playing");
 	}
 
-	void recoredTape()
+	void recoredTape() // 테이프 녹음
 	{
 		System.out.println("tape recording");
 	{
@@ -254,11 +254,11 @@ class TapeDeckTestDrive
 {
 	public static void main(String [] args)
 	{
-		TapeDeck t = new Ta[eDeck();
+		TapeDeck t = new TapeDeck(); //테이프 객체 생성
 		t.canrecord = true;
 		t.playTape();
 
-		if(t.canRecord == true)
+		if(t.canRecord == true) // 플레이 없음 녹음
 			t.recordTape();
 	}
 }
@@ -284,12 +284,12 @@ class DVDPlayerTestDrive
 {
 	public static void main(String [] args)
 	{
-		DVDPlayer d = new DVDPlayer();
+		DVDPlayer d = new DVDPlayer(); // DVD 객체 생성
 		d.canRecord = true;
 		d.playDVD();
 	
 		if(d.canRecord == true)
-			d.recordDVD();
+			d.recordDVD(); // 실행할 것이 없음 녹음
 	}
 }
 
@@ -367,7 +367,7 @@ class BooksTestDrive
 {
 	public static void main(String [] args)
 	{
-		Books [] myBookes = new Books[3];
+		Books [] myBookes = new Books[3]; //Books 객체 생성
 		int x = 0;
 		myBooks[0] = new Books();
 		myBooks[1] = new Books();
@@ -380,7 +380,7 @@ class BooksTestDrive
 		myBooks[1].author = "sue";
 		myBooks[2].author = "ian";
 
-		while(x<3)
+		while(x<3) // 차례대로 책이름 저자 프린트
 		{	
 			System.out.println(myBooks[x].title);
 			System.out.println(" by ");
@@ -400,10 +400,10 @@ class Hobbits
 	
 	public static void main(String [] args)
 	{
-		Hobbits [] h = new Hobbits[3];
+		Hobbits [] h = new Hobbits[3]; //Hobbits 객체 생성
 		int z = 0;
 		
-		while(z<3)
+		while(z<3) // 차례대로 is a good Hobbit name 프린트
 		{
 			z++;
 			h[z] = new Hobbits();
