@@ -100,12 +100,22 @@ pan1 = new JPanel();// 판넬1 생성
 pan1.add(blank = new JTextField());// 상단의 시계표시를 위해 공백을 만드는 텍스트필드
 }}}
 - pan2() : 독서실 화면 부분의 판넬 생성
-
+{{{
+pan2 = new JPanel();// 패널 생성
+}}}
 - pan3() : 상황판 등 하단의 판넬 생성
-
+{{{
+pan3 = new JPanel();// 패널 생성
+pan3.add(condition = new JTextArea());// 상황판을 생성
+pan3.add(history = new JButton("내역보기"));// 버튼 부착
+pan3.add(configBtn = new JButton("요금설정"));// 버튼 부착
+}}}
 - gridInit() : 독서실 부분에 버튼을 부착
 
 - run() : 상단에 시계를 표시하기 위해 쓰레드를 실행
+{{{
+Date d = new Date();// 날짜 객체 생성
+}}}
 
 - actionPerformed() : 버튼이벤트 설정
 {{{
