@@ -223,3 +223,5 @@ jariNumber = tf2.getText();// 자리 번호를 텍스트박스에서 받음
 
 
 *11. 시스템 시간을 저장하는 인터페이스*
+
+- day, hour, min, month, present, sec, year
