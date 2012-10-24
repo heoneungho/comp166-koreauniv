@@ -305,7 +305,53 @@ class DVDPlayerTestDrive
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog
+{
+	String name;
+	public static void main(String [] args)
+	{
+		int n,i;
+		Dog dog1 = new Dog();
+		dog1.bark();
+		dog1.name = "Bart";
 
+		System.out.println("개 몇마리로 할까 ?");
+		scanf("%d", &n);
+	
+		Dog[] mydogs = new dog[n];
+
+		for(i=0;i<n-1;i++)
+		{
+			myDogs[i] = new Dog();
+		}
+		myDogs[n-1] = dog1;
+
+		for(i=0;i<n-1;i++)
+		{
+			myDogs[i].name = "Bart" + i ;
+		}
+		
+		myDogs[n-1] = "Bart" + n-1;
+
+		System.out.println("마지막 개의 이름 :");	
+		System.out.println("myDogs[n-1].name);
+	
+		int x = 0;
+		
+		while(x < myDogs.length)
+		{
+			myDog[x].bark();
+			x++;
+		}
+	}
+
+	public void bark()
+	{
+		System.out.println(name + "이(가) 왈! 하고 짖습니다.");
+	}
+	
+	public void eat() { }
+	public void chaseCat() { }
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
