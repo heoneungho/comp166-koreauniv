@@ -76,7 +76,7 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 
 *1. 메인 클래스(mainYoungHoon)*
 {{{
-public class YoungHoon{
+public class mainYoungHoon{
 public static void main(String[] args) {
 		mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
 	}
@@ -88,7 +88,43 @@ mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
 }}}
 
 *2. 메인 화면 클래스(mainWindow)*
+{{{
+class mainWindow extends JFrame {
+	JTextField blank;// 상단의 시계표시를 위해 공백을 만드는 텍스트필드
+	int jariNumber;// 자리번호
+	
+	public mainWindow() {
+	}
 
+	public void actionPerformed() {
+
+		
+		} 
+
+	public void gridInit() { // 버튼을 생성하는 메소드
+		
+	}
+
+	// 상단 판넬
+	public void pan1() {
+		
+	}
+
+	// 중앙 버튼 부분 판넬
+	public void pan2() {
+		
+	}
+
+	// 하단 상황판 부분 판넬
+	public void pan3() {
+		
+	}
+
+	// 스레드 실행 부분
+	public void run() {
+		
+}
+}}}
 - mainWindow() : 생성자, 기본적인 틀을 만듭니다.
 {{{
 setTitle("독서실 관리 프로그램");// 제목표시줄
