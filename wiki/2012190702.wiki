@@ -213,7 +213,23 @@ public class GuessGame
                                 p4isRight = true;
 
                         if ( p1isRight || p2isRight || p3isRight || p4isRight)
+			{
+				System.out.println("맞은 선수가 있습니다.");
+				System.out.println("1번 선수: " + p1isRight);
+				System.out.println("2번 선수: " + p2isRight);
+				System.out.println("3번 선수: " + p3isRight);
+				System.out.println("4번 선수: " + p4isRight);
+				System.out.println("게임 끝.");
+				Break;
+			}
 
+			else
+			{
+				System.out.println("다시 시도해야 합니다.");
+			}
+		}
+	}
+}
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
