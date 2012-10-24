@@ -75,12 +75,23 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 *5)클래스 설정*
 
 *1. 메인 클래스(main)*
+
 - mainWindow클래스를 실행
 
 *2. 메인 화면 클래스(mainWindow)*
+
 *3. 입실 화면 클래스(enterWindow)*
+
 *4. 퇴실 화면 클래스(leaveWindow)*
+
 *5. 내역 화면 클래스(logWindow)*
+
 *6. 환경 설정 클래스(config)*
+
 *7. 데이터를 파일로부터 읽는 클래스(readFile)*
+
 *8. 데이터를 파일에 저장하는 클래스(writeFile)*
+
+*9. 현재까지 기록을 읽는 클래스(readLog)*
+
+*10. 상황을 출력하는 클래스(message)*
