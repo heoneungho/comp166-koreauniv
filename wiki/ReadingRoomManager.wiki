@@ -74,8 +74,14 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 
 *5)클래스/인터페이스 설정*
 
-*1. 메인 클래스(main)*
-
+*1. 메인 클래스(mainYoungHoon)*
+{{{
+public class YoungHoon{
+public static void main(String[] args) {
+		mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
+	}
+}
+}}}
 - mainWindow클래스를 실행
 {{{
 mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
