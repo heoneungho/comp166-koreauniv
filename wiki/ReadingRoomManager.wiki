@@ -78,6 +78,7 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 
 - mainWindow클래스를 실행
 
+
 *2. 메인 화면 클래스(mainWindow)*
 
 - mainWindow() : 생성자, 기본적인 틀을 만듭니다.
@@ -97,18 +98,95 @@ PC방과 당구장에서 사람들이 있는 자리를 체크하고 시간과 �
 
 *3. 입실 화면 클래스(enterWindow)*
 
+- enterWindow() :　생성자, 기본적인 틀을 만듬
+
+- pan1() : 판넬을 생성하고 윈도우를 구성
+
+- layout() : 그리드백 레이아웃에 객체를 부착하는 메소드
+
+- actionPerformed() : 버튼이벤트 설정
+
+- itemStateChanged() : 체크박스 이벤트 설정
+
+
 *4. 퇴실 화면 클래스(leaveWindow)*
+
+- leaveWindow() : 생성자,기본적인 틀을 만듬
+
+- pan1() : 판넬을 생성하고 윈도우를 구성
+
+- layout() : 그리드백 레이아웃에 객체를 부착하는 메소드
+
+- intime() : 좌석 이용 시간을 계산하는 메소드
+
+- charge() : 독서실 이용 요금을 계산하는 메소드
+
+- actionPerformed() : 버튼이벤트 설정
+
+
 
 *5. 내역 화면 클래스(logWindow)*
 
+- logWindow() : 생성자
+
+- pan1() : 상단의 테이블부분 판넬 생성
+
+- pan3() : 하단의 검색부분 판넬 생성
+
+- defaultTable() : 기본 테이블을 불러오는 메소드
+
+- IDNumberSearch() : 사용자 ID번호로 검색하는 메소드
+
+- dateSearch() : 날짜로 검색하는 메소드
+
+- remove table() : 테이블의 내용을 지우는 메소드
+
+- total() : 통계부분을 계산하는 메소드
+
+- actionPerformed() : 버튼이벤트 설정
+
+
 *6. 환경 설정 클래스(config)*
+
+- config() : 생성자
+
+- pan1() : 판넬을 생성하고 윈도우를 구성
+
+- layout() : 그리드백 레이아웃에 객체를 부착하는 메소드
+
+- actionPerformed() : 버튼이벤트 설정
+
 
 *7. 데이터를 파일로부터 읽는 클래스(readFile)*
 
+- readFile() : 생성자
+
+- readconfig() : 설정된 요금을 읽어옴
+
+- readdata() : 독서실의 상황과 현재까지의 내역을 읽어옴
+
+
 *8. 데이터를 파일에 저장하는 클래스(writeFile)*
+
+- write() : 생성자
+
+- writeFile() : 파일에 독서실의 상황 및 내역을 써 넣음
+
 
 *9. 현재까지 기록을 읽는 클래스(readLog)*
 
+- readLog() : 생성자
+
+
 *10. 상황을 출력하는 클래스(message)*
+
+- message() : 
+
+2개의 생성자를 가지고 있음. 
+
+매개변수가 4개가 들어오면 입실, 
+
+7개가 들어오면 퇴실에 메세지를 저장
+
 
 *11. 시스템 시간을 저장하는 인터페이스*
