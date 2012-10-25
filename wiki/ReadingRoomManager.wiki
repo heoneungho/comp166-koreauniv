@@ -368,11 +368,27 @@ writeFile() {} // 파일에 독서실의 상황 및 내역을 써 넣음
 
 
 *9. 현재까지 기록을 읽는 클래스(readLog)*
+{{{
+public class readLog {
+
+readLog(){} // 생성자
+
+}}}
+*[메소드 설명]*
 
 - readLog() : 생성자
 
 
 *10. 상황을 출력하는 클래스(message)*
+{{{
+public class message{
+
+message() {} 
+
+}
+
+}}}
+*[메소드 설명]*
 
 - message() : 
 
