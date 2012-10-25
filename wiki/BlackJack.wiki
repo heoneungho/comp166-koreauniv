@@ -70,13 +70,13 @@ public class MainBlackJack
 public class Menu 
 {
 	
-	void Start()
+	public void Start()
 	{}
 	
-	void Regame()
+	public void Regame()
 	{}
 	
-	void Exit()
+	public void Exit()
 	{}
 }
 
@@ -90,7 +90,7 @@ public class CardSet
 	int num;
 	String shape;
 	
-	 GetCard()
+	public void GetCard()
 	{}
 	
 }
@@ -103,9 +103,9 @@ public class CardSet
 
 public class Admin 
 {
-	void Hit()
+	public void Hit()
 	{}
-	void Stay()
+	public void Stay()
 	{}
 }
 
