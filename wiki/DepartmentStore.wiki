@@ -59,8 +59,8 @@ class Customer()
             // 등급을 정한다
 
           enum Grade { none, silver, gold, diamond, platinum };
-        Fullname fullname() const{ return name; };
-	Grade grade() const{ return rank; };
+        Fullname fullname(){ return name; };
+	Grade grade(){ return rank; };
 }
 
 }}}
@@ -95,8 +95,8 @@ class worker()
             // 등급을 정한다
 
           enum Grade { none, silver, gold, diamond, platinum };
-        Fullname fullname() const{ return name; };
-	Grade grade() const{ return rank; };
+        Fullname fullname(){ return name; };
+	Grade grade(){ return rank; };
 
 }
 
