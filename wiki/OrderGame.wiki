@@ -62,9 +62,22 @@
 
 =Class=
 
+①Main.class
+{{{
 public class Main {
-     public static class main (String args[]) {
-          
+     public static void main (String[] args) {
+
+          start()     //게임시작 메소드
+          aboutGame()     //게임에 대한 설명 보여주는 메소드
+     }
+}
+}}}
+
+②SelectQuestionType.class
+{{{
+pubilc class SelectQuestionType {
+     
+         
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
