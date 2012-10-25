@@ -220,6 +220,7 @@ dataSearch(){} // 날짜로 검색
 remove table(){} // 테이블 내용 삭제
 total(){} // 통계 계산
 actionPerformed(){} // 버튼 설정
+}
 }}}
 *[메소드 설명]*
 
