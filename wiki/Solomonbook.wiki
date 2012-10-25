@@ -3,13 +3,77 @@
 = Introduction =
 
 2013 해결의 책!
-생일과 이름을 영어로 입력하면 2013년의 미래의 주의점과 미래예측을 간단히 해주는 프로그램입니다
+100% 재미로 해보는 믿거나 말거나. 올해의 운과 오늘의 운 그리고 로또 번호도 맞춰보자!
+이 프로그램은 세가지 메뉴를 갖고 있다. 
+1.나의 생일을 입력하면 올해가 나에게 어떤 해일까? 알려준다.
+2.오늘의 날짜와 요일 이름을 입력하면 오늘의 운세와 기분좋은 말이 뜬다.
+3.로또번호 뭐 찍을지 모르겠으면 프로그램을 돌리면 나온다.
 
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+public class Main {
+	
+
+          public static void main(String[] args) {
+		
+		Menu01 menu01 = new Menu01();
+		Menu02 menu02 = new Menu02();
+		Menu03 menu03 = new Menu03();
+
+		int selectItem = 0;
+
+		switch (selectItem) {
+
+		case 1:
+			menu01.execute();
+
+			break;
+		case 2:
+			menu02.execute();
+
+			break;
+		case 3:
+			menu03.execute();
+
+			break;
+		}
+
+	}
+}
+
+
+public interface Menuexecute {
+	abstract public void execute();
+}//인터페이스를 이용해서 각 Menu들을 구현합니다
+
+
+public class Menu01 implements Menuexecute{
+
+	@Override
+	public void execute() {
+		System.out.println("생년월일을 YYYYMMDD 로 입력해 주세요.");
+	}//이 안에 생년월일을 받고 프로그램을 작성하는 방법은 차후에 생각해서 코딩할게요.
+
+}
+
+
+public class Menu02 implements Menuexecute{
+	@Override
+	public void execute() {
+		System.out.println("이름을 입력해 주세요.");
+	}//이름 성별 오늘 날짜를 받아서 메세지를 뜨게 하는 원리도 차후에 생각해서 코딩할게요.
+
+}
+
+
+public class Menu03 implements Menuexecute{
+	@Override
+	public void execute() {
+		System.out.println("추첨할 번호 갯수를 입력하세요.");
+	}//로또지만 6개 모두 번호가 뜨도록 하지 않고 자기가 원하는 갯수의 수만 뜨게 할거고 rand함수 돌릴 예정 입니다.
+
+}
+
