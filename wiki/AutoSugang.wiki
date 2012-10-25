@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-#labels Featured
+#labels 2012190724
 자동수강신청프로그램입니다
 = Introduction =
 
