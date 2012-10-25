@@ -12,7 +12,12 @@ _ - 삼수 10계 중 7 -_ <br>
 
 = 세부사항 =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+가장 초기버전인 0.10 버전에서는 <br>
+<br> 
+○ '하루하루 행동력 최대로 올린 다음 하루를 시작' <br>
+○ '행동을 하면 행동력을 감소' <br>
+○ '특정 행동을 하면 특정 능력치가 증가 혹은 감소' <br>
+○ '11월 10일이 되면 게임을 종료' <br>
+○ GUI 기반이 아닌 단순히 입력을 통해 옛날의 머드게임과 같은 버전을 먼저 만드는 것을 목표로 함 <br>
+<br>
+을 구현 시키는 것이 목표입니다. <br>
