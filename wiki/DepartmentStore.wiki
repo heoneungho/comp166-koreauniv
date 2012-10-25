@@ -9,6 +9,7 @@ public class main()
 {
 	customer file 열기;(같은 이름의 사람이 있는지 확인)
         worker file 열기;(같은 이름의 사람이 있는지 확인)
+        
         우수고객 또는 우수사원 보기;
 }
 
