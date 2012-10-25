@@ -16,7 +16,7 @@
 
 = Details =
 
-
+대략적인 코드는 이 구조로 만들 겁니다.
 public class Main {
 	
 
@@ -26,6 +26,7 @@ public class Main {
 		Menu02 menu02 = new Menu02();
 		Menu03 menu03 = new Menu03();
 
+//이 사이에 123 중 하나의 숫자를 받고 입력받은 숫자를 스위치문을 돌려서 케이스 분류할 생각입니다.
 		int selectItem = 0;
 
 		switch (selectItem) {
@@ -58,7 +59,7 @@ public class Menu01 implements Menuexecute{
 	@Override
 	public void execute() {
 		System.out.println("생년월일을 YYYYMMDD 로 입력해 주세요.");
-	}//이 안에 생년월일을 받고 프로그램을 작성하는 방법은 차후에 생각해서 코딩할게요.
+	}//이 안에 생년월일을 받고 메세지를 띠우는 원리는 차후에 생각해서 코딩할게요. 
 
 }
 
