@@ -51,10 +51,10 @@ class Customer()
 	void setGrade() 
         {
                 rank = 0;
-		if(totalSpend>100000)	rank = silver;
-		if(totalSpend>500000)	rank = gold;
-		if(totalSpend>900000)	rank = diamond;
-		if(totalSpend>1300000)	rank = platinum;
+		if(totalSpend>1000000)	rank = silver;
+		if(totalSpend>4000000)	rank = gold;
+		if(totalSpend>7000000)	rank = diamond;
+		if(totalSpend>10000000)	rank = platinum;
         }    
             // 등급을 정한다
 
@@ -87,10 +87,10 @@ class worker()
 	void setGrade()
         {
                  rank = 0;
-	         if(totalSell>500000)	rank = silver;
-	         if(totalSell>2500000)	rank = gold;
-	         if(totalSell>4500000)	rank = diamond;
-	         if(totalSell>6500000)	rank = platinum;
+	         if(totalSell>5000000)	rank = silver;
+	         if(totalSell>10000000)	rank = gold;
+	         if(totalSell>15000000)	rank = diamond;
+	         if(totalSell>20000000)	rank = platinum;
         }    
             // 등급을 정한다
 
