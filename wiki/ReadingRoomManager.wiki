@@ -82,7 +82,6 @@ public static void main(String[] args) {
 	}
 }
 }}}
-[메소드 설명]
 - mainWindow클래스를 실행
 {{{
 mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
@@ -113,6 +112,8 @@ class mainWindow extends JFrame {
 	public void run() {	
 	}
 }}}
+[메소드 설명]
+
 - mainWindow() : 생성자, 기본적인 틀을 만듭니다.
 {{{
 setTitle("독서실 관리 프로그램");// 제목표시줄
