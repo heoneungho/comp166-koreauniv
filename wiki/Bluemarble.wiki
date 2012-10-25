@@ -110,5 +110,12 @@ public class gameHelper {
 
 5.
 
-
 [http://postfiles7.naver.net/20121026_150/cbj5210_1351178763393RnMbJ_JPEG/class.jpg?type=w3]
+
+  5-1.
+{{{
+
+abstract class ddang {
+
+}
+}}}
