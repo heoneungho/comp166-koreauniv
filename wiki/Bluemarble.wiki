@@ -197,3 +197,73 @@ abstract class event extends ddang{
 }}}
 
   5-4.
+
+{{{
+public class goldKey {
+
+	int random;
+	
+	
+	public void exe(int i){
+		//플레이어가 도착했을 시 랜덤하게 이벤트 효과 발생 i는 플레이어 번호 
+	}
+	
+	
+}
+
+}}}
+
+  5-5.
+{{{
+
+public class desertIsland {
+	//무인도
+	
+	public void exe(int i){
+		//무인도에서 일어나는 이벤트 발생
+	}
+
+}
+
+}}}
+
+  5-6.
+{{{
+
+public class worldTravel {
+
+	public void exe(int i){
+		
+		// 세계여행 도착시 발생하는 이벤트
+		
+	}
+		
+}
+
+}}}
+
+  5-7.
+{{{
+
+public class startPoint {
+
+	public void exe(int i){
+		// 출발점 지나갈 시 월급 지급
+	}
+	
+}
+
+}}}
+
+  5-8.
+{{{
+
+public class worldGold {
+
+	public void exe(){
+		// 세꼐기금 도착시 플레이어에 기금 전달
+	}
+	
+}
+
+}}}
