@@ -588,10 +588,62 @@ class DogTestDrive
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
+
+A
 {{{
+
+public class XCopy 
+{
+	public static void main(String [] args)
+	{
+		int orig = 42; //orig라는 변수를 선언하고 42를 대입합니다.
+		
+		XCopy x = new XCopy(); //x라는 XCopy객체를 만듭니다.
+		
+		int y = x.go(orig);//y라는 변수를 선언하고 x.go(orig)를 대입합니다.
+		
+		System.out.println(orig + " " + y);//출력
+	}
+
+	int go(int arg)//인트형변수를 받아서 인트형 변수를 반환합니다.
+	{
+		arg = arg * 2;
+		
+		return arg;
+	}
+}
 
 }}}
 
+B
+{{{
+
+public class Clock 
+{
+	String time;
+	void setTime(String t)
+	{
+		time = t;
+	}
+	
+	String getTime()//책에는 void라고 되있는데 여기선 문자열을 반환하므로 String으로 바꿔야합니다.
+	{
+		return time;
+	}
+}
+
+class ClockTestDrive
+{
+	public static void main(String [] args)//메인함수를 작성합니다.
+	{
+		Clock c = new Clock(); //c라는 새로운 객체 생성합니다.
+		
+		c.setTime("1245"); //c.time에 1245를 대입합니다.
+		String tod = c.getTime();
+		System.out.println("time: " + tod);
+	}
+}
+}}}
 
 = 05. 메소드를 더 강력하게:흐름 제어, 연산 등  =
 
