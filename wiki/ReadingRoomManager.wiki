@@ -112,7 +112,7 @@ class mainWindow extends JFrame {
 	public void run() {	
 	}
 }}}
-[메소드 설명]
+*[메소드 설명]*
 
 - mainWindow() : 생성자, 기본적인 틀을 만듭니다.
 {{{
@@ -163,6 +163,8 @@ actionPerformed() // 버튼 이벤트 설정
 itemStateChanged(){} // 기간제, 시간제 선택 설정
 }
 }}}
+*[메소드 설명]*
+
 - enterWindow() :　생성자, 기본적인 틀을 만듬
 {{{
 setTitle("입실");// 제목표시줄
