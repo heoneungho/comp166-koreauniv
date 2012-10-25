@@ -244,6 +244,14 @@ actionPerformed(){} // 버튼 설정
 
 
 *6. 환경 설정 클래스(config)*
+{{{
+public class config{
+pan1() {} // 판넬 생성
+layout() {} // 객체 부착
+actionPerformed() {} // 버튼 설정
+}
+}}}
+*[메소드 설명]*
 
 - config() : 생성자
 
