@@ -26,9 +26,15 @@ Organize: 비어있는공간을 매꾸어주고 랜덤으로 동물들을 생성
 
 
 {{{
-public AniPangHelper{
+class AniPangHelper{
+ Check();
+ Pang();
+ Organize();
 }
 
+class
+
 public class AniPang{
+ //처음에 for문으로 배열에 렌덤으로 초기 게임판 생성
 }
 }}}
