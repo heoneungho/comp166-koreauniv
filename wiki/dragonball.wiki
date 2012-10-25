@@ -13,11 +13,10 @@ Details
 
 
 Requirement 
-•컴퓨터와 대전할 경우 대전자수를 지정합니다.
 
+*컴퓨터와 대전할 경우 대전자수를 지정합니다.
 *기록을 남기기 위하여 플레이어의 아이디를 저장합니다.
-
-•기모으기, 방어하기, 공격하기, 필살기등 다양한 기술을 사용합니다. 
+*기모으기, 방어하기, 공격하기, 필살기등 다양한 기술을 사용합니다. 
 
 -기모으기
 : 공격을 하기위한 필요조건 입니다. 기모은양에 따라 다양한 공격을 할수 있습니다.
@@ -46,10 +45,12 @@ Requirement
 클래스/인터페이스 설정 
 
 1. 메인 클래스(dragonball) 
+
 public class dragonball
 {
    public static void main(String[] args) {                
    GameMain main = new GameMain();//게임메인메뉴 생성
+}
 }
 
 2. 메인 화면 클래스(GameMain) 
