@@ -13,8 +13,98 @@ _ - 삼수 10계 중 7 -_ <br>
 
 = 프로젝트 설명 (0.10 기반) =
 
+기본적인 프로젝트의 작동 방법은 수업시간에 했던 DotCom게임처럼 (DotCome게임에서는) 한 턴마다 예상지점에 공격을 했듯, 이 프로젝트는 한 턴 대신 하루, 공격 대신에 행동력을 이용해 특정 행동을 하고 행동력을 모두 소모하면 하루를 넘겨 또 다른 하루를 갖는 것입니다. <br>
+<br>
+다음은 주요 클래스에 대한 설명입니다. <br>
+<br>
+a) PlayJongro.java <br>
+<br>
+{{{
 
+public class PlayJongro {
+	
+	static GameMenu gm = new GameMenu();
+	
+	public static void main(String[] args) {
+		System.out.println("My Jongro Story를 플레이 해주셔서 감사합니다!");
+		
+		gm.setUpGame();
+		gm.startPlaying();
+		
+	}
+}
 
+}}}
+<br>
+이 클래스는 메인 메소드를 갖고 있습니다. 메인 메소드안에는 DotCom게임과 같이 게임을 초기세팅해주는 setUpGame 메소드와 startPlaying 메소드가 있습니다. 자세한 설명은 GameMenu 클래스에서 하겠습니다. <br>
+
+b) GameMenu.java <br>
+<br>
+{{{
+
+import java.util.Scanner;
+
+public class GameMenu {
+	
+	Status me = new Status();
+	
+	public void GameOfDay() {
+		
+		if(me.dow == 1) {
+		
+			System.out.println("★왠지 언어를 공부하고 싶은 월요일입니다!★");
+			System.out.println();
+			System.out.println("오늘은 무엇을 할까...? (남은 행동력: " + me.hp + ")" );
+			System.out.println("§ 1. 언어 수업을 듣는다. (행동력 10 소모) ");
+			System.out.println("§ 2. 매점을 간다. (돈 2000 소모) ");
+			System.out.println("§ 3. 자습을 한다. (행동력 20 소모) ");
+			System.out.println("§ 9. 집에 간다. (하루가 지남. 행동력 회복) ");
+			
+			Scanner sc = new Scanner(System.in);
+			int value = sc.nextInt();
+			
+			switch (value) {
+				case 1: me.kor += 10; break;
+				
+				case 2: me.money -= 2000; break;
+				
+				case 3: 
+							System.out.println("어떤 과목 자습을 할까요?");
+							System.out.println("1. 언어");
+							System.out.println("2. 수리");
+							System.out.println("3. 외국어");
+							value = sc.nextInt();
+							
+							switch (value) {
+								case 1: me.kor += 15; break;
+								case 2: me.mth += 15; break;
+								case 3: me.eng += 15; break;
+							} break;
+							
+				case 9: me.hp = me.hp_MAX;
+						 me.month++; me.day++; me.dow++;
+			}
+			
+		} // 우선 월요일까지만 구현
+
+	public void setUpGame() { // 아직 미구현
+                                     
+		
+	}
+
+	public void startPlaying() { // 아직 미구현
+	
+		
+	}
+	
+} // 클래스 끝
+
+}}}
+이 클래스는 전반적인 게임을 실행시키는 것을 목적으로 갖고 있습니다.
+
+GameOfDay(): 각 날마다 플레이어에게 선택지를 출력해서 보여주고 플레이어에게 선택지를 입력받아서 행동력이나 돈을 소모해서 어떠한 행동을 하게 만들어주는 메소드입니다.
+
+setUpGame(): 
 
 = 패치노트 0.10 =
 
