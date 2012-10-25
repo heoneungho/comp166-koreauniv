@@ -28,15 +28,16 @@
 
 =Outline=
 *개략적인 class구성*
+
 ①Main.class
 
 ②SelectQuestionType.class
 
 ③Game.class
-     -StoryOrderGame.class 
-     -LyricOrderGame.class
-     -CookingOrderGame.class
-     -HistoryOrderGame.class
+     - StoryOrderGame.class 
+     - LyricOrderGame.class
+     - CookingOrderGame.class
+     - HistoryOrderGame.class
      -...more
 
 ④Result.class
