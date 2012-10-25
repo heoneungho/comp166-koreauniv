@@ -8,6 +8,51 @@
 
 {{{
 
+
+/* 컴파일 시 마지막에 
+1 bottles of beer on the wall
+1 bottle of beer on the wall
+1 bottle of beer.
+Take one down.
+Pass it around.
+no more bottles of beer on the wall
+이렇게 단, 복수 오류가 뜬다. 책의 코딩을 아래와 같이 고치면 */
+
+public class Beersong {
+	public static void main(String[] args) {
+		int beerNum = 99;
+		String word = "bottles"; //복수형
+		
+		while (beerNum>0){
+			System.out.println(beerNum + " " + word + " of beer on the wall");
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around.");
+			beerNum = beerNum-1;
+			
+			if (beerNum ==1){
+				word = "bottle"; //단수형
+			} //위의 네 줄과 순서를 바꾼 상태
+			
+			if (beerNum > 0){
+				System.out.println(beerNum + " " + word + " of beer on the wall");
+			}else{
+				System.out.println("no more bottles of beer on the wall");
+			} //else문 끝
+		} //while문 끝
+
+	} //main클래스 끝
+
+} //클래스 끝
+
+/* 고치면 
+1 bottle of beer on the wall
+1 bottle of beer on the wall
+1 bottle of beer.
+Take one down.
+Pass it around.
+no more bottles of beer on the wall
+위와 같이 된다.*/
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
