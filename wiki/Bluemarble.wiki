@@ -82,17 +82,19 @@ public class gameHelper {
 	
 		int i;
 		
-		player p1 = new player(); //플레이어 객체 생성
-		player p2 = new player();
+		player[] p = new player[3]; // 플레이어 배열객체 선언
 		
+		p[1] = new player(); // 플레이어 객체 생성자 호출
+		p[2] = new player();
+
 		ddang[] d = new toji[40];
 		  // 땅들의 배열객체 선언
 		for(i=0;i<41;i++){
 		d[i] = new toji();	
 		} // 생성자 호출
 		
-		p1.reset(); //플레이어 초기화
-		p2.reset(); 
+		p[1].reset(); //플레이어 초기화
+		p[2].reset(); 
 		
 		gameHelper game = new gameHelper(); // 게임헬퍼 객체 생성
 		game.turn = 0;
@@ -105,7 +107,8 @@ public class gameHelper {
 		
 		
 	}
-
+	
+}
 }}}
 
 5.
