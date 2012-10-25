@@ -14,6 +14,24 @@
 = Details =
 
 Add your content here.  Format your content with:
+
+* 시간표출력 클래스 : 목록을 실행하는 도중에도 목록 아랫부분에 계속 나옵니다. 요일은 행, 시간은 열로 나타냅니다. 2차원 배열로 나타내고 시작할땐 모두 null상태에서 시작합니다.
+
+* 강의목록 입력 클래스 : 100개의 강의목록을 입력합니다. 혹은 파일에서 리스트를 가져옵니다.
+
+* 목록출력 클래스 : 시간표 위에 목록으로 나타냅니다. 1을 누르면 강의등록, 2를 누르면 강의삭제, 3을 누르면 수강가능한 리스트를 보여줍니다.
+{{{
+// 목록을 출력하는 클래스입니다.
+public class printlist{
+// 1~3까지의 번호를 입력받아 다른 메소드를 실행시키는 메소드입니다.
+numinsert(){
+ lecturein(){} // 1을 누르면 강의 등록으로 넘어갑니다.
+ lecturedel(){} // 2를 누르면 강의가 삭제됩니다.
+ lecturepossible(){}// 3을 누르면 수강가능한 리스트를 보여줍니다.
+}
+
+}}}
+
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
