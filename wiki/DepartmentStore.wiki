@@ -8,6 +8,8 @@
 
 main class에서는 고객과 직원들의 파일을 입출력하고 우수고객과 우수사원을 확인할 수 있습니다.
 
+{{{
+
 public class main()
 {
 	customer file 열기;(같은 이름의 사람이 있는지 확인)
@@ -16,6 +18,12 @@ public class main()
         System.out.println("우수고객을 보기 위해서는 1번을, 우수직원을 보기 위해서는 2번을 선택하시오");
 
 }
+
+}}}
+
+customer class에서는 고객의 이름과 지출금액을 받고, 등급을 나눕니다.
+
+{{{
 
 class Customer()						
 {
@@ -55,6 +63,11 @@ class Customer()
 	Grade grade() const{ return rank; };
 }
 
+}}}
+
+worker class 에서는 직원의 이름과 수익을 받고 그에따라 등급을 나눕니다.
+{{{
+
 class worker()							
 {
 	Fullname name;
@@ -86,3 +99,5 @@ class worker()
 	Grade grade() const{ return rank; };
 
 }
+
+}}}
