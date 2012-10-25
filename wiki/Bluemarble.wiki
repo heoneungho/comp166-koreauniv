@@ -119,3 +119,71 @@ abstract class ddang {
 
 }
 }}}
+
+  5-2.
+{{{
+
+public class toji extends ddang {
+
+	String name; // 토지 이름
+
+	int tojiPrice; //토지 가격
+	int homePrice; //집 가격
+	int byulPrice; //빌딩 가격
+	int hotelPrice;//호텔 가격
+
+	int penalty=0; //상대방이 걸렸을 시 벌금
+	int soyu=0;    //소유권자
+	
+	public void exe(int i){
+		
+		//플레이어가 땅에 도착했을 시 secondFrame을 띄우고 땅 구입 여부 확인하고
+		//상대유저 도착시 벌금을 내게 함.
+		
+	}
+	
+	public void buytoji(int i){
+		penalty += tojiPrice;
+		soyu = i;
+		tojiPrice = 0;
+		
+		//땅 구입시 구입가격만큼 상대편이 지불해야 할 패널티를 증가시키고 소유권을 가짐
+		//다시 땅에 도착하여 재 클릭 했을시 패널티가 증가하면 안되므로 0으로 값을 바꿔줌
+	}
+	
+	public void buyhome(){
+		
+		if(tojiPrice==0) //땅을 가진 후에만 건물을 지을 수 있음
+			{
+				penalty += homePrice; // 집 구매시 벌금을 증가시키고
+				homePrice = 0; //다시 땅에 돌아와 구매하려 해도 패널티가 증가하지 않게끔 초기화
+			}
+		
+	}
+	
+	public void buybyul(){
+
+		if(tojiPrice==0) //땅을 가진 후에만 건물을 지을 수 있음
+			{
+				penalty += byulPrice; // 빌딩 구매시 벌금을 증가시키고
+				byulPrice = 0; //다시 땅에 돌아와 구매하려 해도 패널티가 증가하지 않게끔 초기화
+			}
+		
+	}
+	
+	public void buyhotel(){
+
+		if(tojiPrice==0) //땅을 가진 후에만 건물을 지을 수 있음
+			{
+				penalty += hotelPrice; // 호텔 구매시 벌금을 증가시키고
+				hotelPrice = 0; //다시 땅에 돌아와 구매하려 해도 패널티가 증가하지 않게끔 초기화
+			}
+		
+	}
+	
+}
+}}}
+
+  5-3.
+
+{{{
