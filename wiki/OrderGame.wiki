@@ -30,21 +30,35 @@
 *개략적인 class구성*
 
 ①Main.class
+     //메인클래스
+     //게임을 시작시키거나 게임에 대한 설명을 볼 수 있다.
 
 ②SelectQuestionType.class
+     //player가 문제 유형 선택
 
 ③Game.class
+
      - StoryOrderGame.class 
+          //이야기의 순서 맞추기 게임
      - LyricOrderGame.class
+          //노래 가사/시 등의 순서 맞추기 게임
      - CookingOrderGame.class
+          //요리 순서 맞추기 게임
      - HistoryOrderGame.class
+          //역사적 사건의 순서 맞추기 게임
      -...more
 
 ④Result.class
-
+     /*정답과 오답을 판단.
+     정답일 경우 다른 유형의 게임을 계속할 건지 게임을 그만둘 건지 묻고,
+     오답일 경우 재도전 할 건지 포기할 것인지 player에게 물음.*/
+ 
 ⑤Exit.class
+     게임 중단
 
 ⑥Retry.class
+     틀린 문제 다시 풀기
+
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
