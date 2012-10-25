@@ -55,22 +55,39 @@ public class dragonball
 
 2. 메인 화면 클래스(GameMain) 
 class GameMain { //게임메인화면을 나타내는 클래스입니다.
-start(); //게임시작 메소드
-setting(); // 환경설정 메소드
-score();// 점수설정 메소드
-exit(); // 종료 메소드
+start(); //게임을시작합니다.
+setting(); // 환경설정을합니다.
+scoresetting();// 점수를설정합니다.
+exit(); // 종료합니다.
 }
 
 3. 게임 화면 클래스 (Playing)
 class Playing {
-attack(); //공격하는 메소드
-defence(); //방어하는 메소드
-charging(); //기모으는 메소드
+attack(); //공격합니다.
+defence(); //방어합니다.
+charging(); //기를모읍니다.
 }
 
 4. 컴퓨터 클래스 (Cpu)
 class Cpu {
-CPUAction(); //컴퓨터의 행동을 지정해주는메소드
+CPUAction(); //컴퓨터의 행동을 지정해줍니다.
 }
 
-5. 
+5. 스코어 클래스 (Score)
+class Score {
+ScoreSave(); //점수를 저장합니다.
+ScoreArray(); //점수를 높은순으로 나열합니다.
+} 
+
+6. 아이디 설정 클래스 (NickName)
+class NickName {
+NewNick(); //닉네임을 생성합니다.
+NickSave(); // 닉네임을 저장합니다.
+}
+
+7. 공격 클래스 (VAttack)
+class VAttack {
+NA(); //보통공격을합니다.
+SA(); //강력한공격을합니다.
+SSA(); //원기옥을사용합니다.
+}
