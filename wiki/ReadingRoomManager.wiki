@@ -373,6 +373,8 @@ public class readLog {
 
 readLog(){} // 생성자
 
+}
+
 }}}
 *[메소드 설명]*
 
