@@ -1,4 +1,3 @@
-#labels dragonball
 Introduction
 
 친구들과 어렸을때 하던 드래곤볼 게임을 컴퓨터 또는 친구와 대전할수 있도록 만들어보려 합니다.
