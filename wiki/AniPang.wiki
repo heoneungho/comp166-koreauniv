@@ -26,11 +26,6 @@ Organize: 비어있는공간을 매꾸어주고 랜덤으로 동물들을 생성
 
 
 {{{
-class AniPangHelper{
- Check();
- Pang();
- Organize();
-}
 
 class AniPangTestDrive{
  public static void main(String[] args){
@@ -40,15 +35,23 @@ class AniPangTestDrive{
    }
    while(time<60){
     AniPang Ani= new AniPang();
+    //입력받아 Ani로 set +게임판에서 동물 자리 바꾸는 명령 실행
+    if(Check()){//게임판 검사
+     Pang();
+     Organize();
+    }
+    else 자리 원상복귀;
    }
  }
 }
 
 public class AniPang{
  int x,y,way;
- public get(int a,int b,int c){
+ public set(int a,int b,int c){
   x=a,y=b,c=way
  }
-
+ Check();
+ Pang();
+ Organize();
 }
 }}}
