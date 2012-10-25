@@ -655,6 +655,98 @@ class ClockTestDrive
 
 {{{
 
+public class SimpleDotComGame {
+
+	public static void main(String[] args) 
+	{
+		int numOfGuesses = 0;//현재 사용자가 추측한 횟수를 넣을 변수를 선언하고 0으로초기화합니다.
+		
+		GameHelper helper = new GameHelper();//helper라는 객체를 만듭니다.
+		
+		SimpleDotCom theDotCom = new SimpleDotCom();//the DotCom이라는 객체를 만듭니다.
+		
+		int randomNum = (int) (Math.random() * 5);//0에서 4까지의 임의의 정수를 생성합니다.
+		
+		int[] locations = {randomNum, randomNum+1, randomNum+2};//난수를 이용해서 위치 배열을 만듭니다.
+		
+		theDotCom.setLocationCells(locations);//위치를 지정합니다.
+		
+		boolean isAlive = true;//닷컴이 살아있는지 판별할 변수를 생성합니다.
+		
+		while(isAlive == true)//닷컴이 살아있는동안 계속되는 반복문을 만듭니다.
+		{
+			String guess = helper.getUserInput("enter a number");//입력을받습니다.
+			
+			String result = theDotCom.checkYourself(guess);//입력받은 수를 확인해서 저장합니다.
+			
+			numOfGuesses++;//추측횟수를 증가시킵니다.
+			
+			if(result.equals("kill"))//닷컴이 죽었다면 실행합니다.
+			{
+				isAlive = false;//닷컴의 생사여부를 판단하는 변수에 죽음을 넣습니다.
+				
+				System.out.println(numOfGuesses + ": guesses");//추측횟수를 표시해줍니다.
+			}
+		}
+		
+	}
+
+}
+
+public class SimpleDotCom 
+{
+	int[] locationCells;//배열을 만듭니다.
+	int numOfHits = 0;//맞춘횟수를 저장할 변수를 만듭니다.
+	
+	public void setLocationCells(int[] locs)
+	{
+		locationCells = locs;//위치를 저장할 메소드를 만듭니다.
+	}
+	
+	public String checkYourself(String stringGuess)
+	{
+		int guess = Integer.parseInt(stringGuess);//입력받은 문자열을 정수로 바꿔 저장합니다.
+		String result = "miss";//결과를 표시해주는 문자열을 선언합니다.
+		for(int i = 0; i<locationCells.length; i++)//닷컴의 길이동안 반복되는 반복문을만듭니다.
+		{
+			if (guess == locationCells[i])//맞았다면 실행합니다.
+			{
+				result = "hit";//결과를 hit으로 만듭니다.
+				numOfHits++;//맞춘횟수를 1증가시킵니다.
+				break;//반복문을 빠져나옵니다.
+			}
+		}
+		
+		if ( numOfHits == locationCells.length)//맞춘횟수가 닷컴길이와같다면 실행합니다.
+		{
+			result = "kill";//결과를 kill로 만듭니다.
+		}
+		System.out.println(result);//결과를 출력합니다.
+		return result;
+	}
+}
+import java.io.*;
+
+public class GameHelper 
+{
+	public String getUserInput(String prompt)
+	{
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		try
+		{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if( inputLine.length() == 0) return null;
+		} catch (IOException e)
+		{
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
