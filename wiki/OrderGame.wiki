@@ -58,8 +58,13 @@
 
 ⑥Retry.class
      틀린 문제 다시 풀기
-
 }}}
+
+=Class=
+
+public class Main {
+     public static class main (String args[]) {
+          
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
