@@ -111,6 +111,7 @@ class mainWindow extends JFrame {
 	// 스레드 실행 부분
 	public void run() {	
 	}
+}
 }}}
 *[메소드 설명]*
 
@@ -209,6 +210,18 @@ actionPerformed(){} // 버튼 작동 설정
 
 
 *5. 내역 화면 클래스(logWindow)*
+{{{
+public class logWindow{
+pan1(){} // 상단 판넬
+pan3(){} // 하단 검색 판넬
+defaultTable(){} // 기본 테이블
+IDNumberSearch(){} // 사용자 ID 번호로 검색
+dataSearch(){} // 날짜로 검색
+remove table(){} // 테이블 내용 삭제
+total(){} // 통계 계산
+actionPerformed(){} // 버튼 설정
+}}}
+*[메소드 설명]*
 
 - logWindow() : 생성자
 
