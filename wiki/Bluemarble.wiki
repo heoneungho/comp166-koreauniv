@@ -36,8 +36,76 @@ public class mainFrame {
 }}}
 
 2.
+{{{
 public class secondFrame {
 
 	//플레이어가 땅에 도착했을때 땅 구매 여부를 물어보는 창의 그래픽을 나타내는 클래스 입니다.
 	
 }
+
+}}}
+
+3.
+{{{
+public class player {
+
+	int money; // 플레이어가 가진돈
+	int state; // 플레이어의 현재위치
+	int desertIsland; // 무인도에서의 턴을 체크
+	int worldTravel; // 전 턴에서 세계여행 칸에 도착했는지 체크
+
+	public void reset(){
+		// 초기화
+		money = 300000;
+		state = 0;
+		desertIsland = 0;
+		worldTravel = 0;
+		
+	}
+
+}
+
+}}}
+
+4.
+{{{
+import java.math.*;
+
+public class gameHelper {
+	// 초기화를 진행하고 게임이 시작되는 메인이 존재 하는 클래스
+	
+	int turn;  // 제한턴 체크
+	int randomOne; // 첫번째 주사위
+	int randomTwo; // 두번째 주사위
+	
+	public static void main(String arg[]){
+	
+		int i;
+		
+		player p1 = new player(); //플레이어 객체 생성
+		player p2 = new player();
+		
+		ddang[] d = new toji[40];
+		  // 땅들의 배열객체 선언
+		for(i=0;i<41;i++){
+		d[i] = new toji();	
+		} // 생성자 호출
+		
+		p1.reset(); //플레이어 초기화
+		p2.reset(); 
+		
+		gameHelper game = new gameHelper(); // 게임헬퍼 객체 생성
+		game.turn = 0;
+		while(game.turn<40){
+			
+			//제한 40턴 이내에 주사위를 굴리고 걸리는 땅마다 이벤트 발생
+			
+		}
+		
+		
+		
+	}
+
+}}}
+
+5.
