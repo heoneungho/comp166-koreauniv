@@ -153,7 +153,14 @@ new enterWindow(jariNumber);// 그것을 매개변수로 입실 창 띄우기
 }}}
 
 *3. 입실 화면 클래스(enterWindow)*
-
+{{{
+class enterWindow{
+pan1(){} // 판넬 생성 및 윈도우 구성
+layout(){} // 그리드백 레이아웃에 객체 부착
+actionPerformed() // 버튼 이벤트 설정
+itemStateChanged(){} // 기간제, 시간제 선택 설정
+}
+}}}
 - enterWindow() :　생성자, 기본적인 틀을 만듬
 {{{
 setTitle("입실");// 제목표시줄
