@@ -187,3 +187,10 @@ public class toji extends ddang {
   5-3.
 
 {{{
+
+abstract class event extends ddang{
+
+}
+}}}
+
+  5-4.
