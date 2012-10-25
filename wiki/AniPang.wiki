@@ -32,9 +32,23 @@ class AniPangHelper{
  Organize();
 }
 
-class
+class AniPangTestDrive{
+ public static void main(String[] args){
+  //처음에 for문으로 배열에 렌덤으로 초기 게임판 생성 
+   while(true){
+    if(Check()==0)break;
+   }
+   while(time<60){
+    AniPang Ani= new AniPang();
+   }
+ }
+}
 
 public class AniPang{
- //처음에 for문으로 배열에 렌덤으로 초기 게임판 생성
+ int x,y,way;
+ public get(int a,int b,int c){
+  x=a,y=b,c=way
+ }
+
 }
 }}}
