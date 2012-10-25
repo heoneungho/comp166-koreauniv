@@ -5,12 +5,17 @@
 제가 만들고자 하는 게임은 
 이야기 순서, 요리 순서, 그림 순서, 노래가사 순서, 역사적 사건의 순서 등 여러가지 것들의 순서를 맞추는 게임입니다.
 
+
 = Details =
 
  * 문제 형식은 순서를 맞추는 것이다.
+
  * 게임player가 원하는 문제 분야를 선택하면 해당 문제가 나오고, 그 문제를 푸는 게임이다. 
+
  * 순서를 맞추면 다른 분야의 문제를 더 풀거나 게임을 끝낼 수 있다. 
+
  * 답을 맞추지 못해도 게임을 중도 포기 할 수 있다.
+
 
 =Strong Points=
 
@@ -21,6 +26,24 @@
 또 문제 유형이 다양하기 때문에 지루하지 않게 계속 할 수 있다.
 
 
+=Outline=
+*개략적인 class구성*
+①Main.class
+
+②SelectQuestionType.class
+
+③Game.class
+     -StoryOrderGame.class 
+     -LyricOrderGame.class
+     -CookingOrderGame.class
+     -HistoryOrderGame.class
+     -...more
+
+④Result.class
+
+⑤Exit.class
+
+⑥Retry.class
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
