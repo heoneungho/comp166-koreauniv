@@ -28,7 +28,7 @@
 
 =Outline=
 *개략적인 class구성*
-
+{{{
 ①Main.class
      //메인클래스
      //게임을 시작시키거나 게임에 대한 설명을 볼 수 있다.
@@ -59,7 +59,7 @@
 ⑥Retry.class
      틀린 문제 다시 풀기
 
-
+}}}
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
