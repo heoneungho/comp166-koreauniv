@@ -25,13 +25,13 @@
 
 = class =
 
-1.
+1.{{{
 public class mainFrame {
 
 	// swing을 이용한 바탕을 구성하는 클래스 입니다.
 	
 }
-
+}}}
 2.
 public class secondFrame {
 
