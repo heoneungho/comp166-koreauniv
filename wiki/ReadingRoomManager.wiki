@@ -263,6 +263,14 @@ actionPerformed() {} // 버튼 설정
 
 
 *7. 데이터를 파일로부터 읽는 클래스(readFile)*
+{{{
+public class readFile{
+readFile(){} // 생성자
+readconfig(){} // 설정된 요금을 읽어옴
+readdata(){}// 독서실의 상황 및 내역을 읽어옴
+}
+}}}
+*[메소드 설명]*
 
 - readFile() : 생성자
 
