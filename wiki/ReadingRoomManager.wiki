@@ -82,6 +82,7 @@ public static void main(String[] args) {
 	}
 }
 }}}
+[메소드 설명]
 - mainWindow클래스를 실행
 {{{
 mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
