@@ -183,6 +183,16 @@ jariNumber = tf2.getText();// 자리 번호를 텍스트박스에서 받음
 
 
 *4. 퇴실 화면 클래스(leaveWindow)*
+{{{
+public class leaveWindow extends JFrame{
+pan1(){} // 판넬, 윈도우 구성
+layout(){} // 레이아웃에 객체 부착
+intime(){} // 좌석 이용 시간 계산
+charge(){} // 독서실 이용 요금 계산
+actionPerformed(){} // 버튼 작동 설정
+}
+}}}
+*[메소드 설명]*
 
 - leaveWindow() : 생성자,기본적인 틀을 만듬
 
