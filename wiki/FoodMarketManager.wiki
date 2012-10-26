@@ -87,6 +87,8 @@ http://comp166-koreauniv.googlecode.com/files/resource.PNG
 
 http://comp166-koreauniv.googlecode.com/files/db.PNG
 
+= 클래스 관계 = 
+
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
