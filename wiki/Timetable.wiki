@@ -54,7 +54,7 @@ numinsert(){
 {{{
 public class lecturein{
   System.out.println("등록할 강의번호를 누르세요");
-  
+}
 }}}
   
 
