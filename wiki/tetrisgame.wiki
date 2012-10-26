@@ -5,7 +5,8 @@
 
 = Introduction =
 
-평소에 테트리스게임을 즐겨하는데 이번 기회에 자바수업을 들으면서 프로그래밍 실력도 늘리고 좋아하는 게임도 만들어보려고 선택하게 되었다. 화면구성, html등 자바 뿐만 아니라 다양한 공부를 이번 텀과제를 하면서 늘려야겠다.
+평소에 테트리스게임을 즐겨하는데 게임을 하는 건 쉽지만 개발해본 경험은 한번도 없어서  이번 기회에 자바수업을 들으면서 프로그래밍 실력도 늘리고 좋아하는 게임도 만들어보려고 선택하게 되었다. 아이디어는 기본적인 블락들을 구성하고 내려갈 때마다 변화하는 모습을 생각해서 최종 도달 지점을 설정해 주는 것이다. 이를 구현하기위해 화면구성, html등 자바 뿐만 아니라 이와 관련된 다양한 공부를 이번 텀과제를 하면서 늘려야겠다. 한 학기 내내 진행되는 만큼 다양한 자료조사를 바탕으로 멋있는 게임을 완성하고 싶다.
+[http://www.google.co.kr/imgres?hl=ko&newwindow=1&sa=X&biw=1366&bih=615&tbm=isch&prmd=imvnsula&tbnid=R3rgXhkOHFKjeM:&imgrefurl=http://iphonegamerblog.com/2010/01/22/tetris-review/&docid=LZ2raSnU5rpImM&imgurl=http://iphonegamerblog.com/wp-content/uploads/2010/01/tetris2.jpg&w=300&h=450&ei=bnKKUJ-DPem7iAf62YHwAg&zoom=1&iact=rc&dur=220&sig=118303345509377082413&page=2&tbnh=142&tbnw=97&start=22&ndsp=28&ved=1t:429,r:11,s:20,i:163&tx=51&ty=83]
 
 
 Add your content here.
@@ -13,13 +14,17 @@ Add your content here.
 
 = Details =
 
-1. 각각의 모양마다 다른 색을 준다
+1. 각각의 모양마다 다른 색을 준다.
  
-2. 내려갈 때마다 차지해야하는 공간을 고려한다
+2. 내려갈 때마다 차지해야하는 공간을 고려한다.(아래의 블락이 있을 경우 이동하지 못한다.)
 
-3. 회전시 변화하는 모양을 정해준다
+3. 회전시 변화하는 모양을 정해준다. (변화할 때마다 차지하는 공간을 달리 표현하여 구현)
 
-4. 최종 위치하는 곳 등 기본적인 아이디어를 바탕으로 과제를 해나갈 것이다.
+4. 최종 위치하는 곳은 마지막 블락이 쌓인곳 바로 위가 될 것이다.
+
+5. 변수에는 난수가 있어하고 내려가는 것이 가능한지 체크하는 변수, 블락의 모양 등이 들어가야 겠다.
+
+
 
 
 Add your content here.  Format your content with:
@@ -28,3 +33,48 @@ Add your content here.  Format your content with:
   * Automatic links to other wiki pages
 
 = Code =
+
+import java.applet.*;
+import java.util.*;
+import java.awt.*;
+
+
+public class tetris extends Applet {
+	Color [] kindOfBlock;
+	int timePeriod;
+	Random ran;
+	boolean dropOk;
+	
+	public void setKindOfColor(){
+		//블락의 종류별로 색깔을 설정한다.
+	}
+	
+	public void rotateBlock(){
+		//블락 별로 모양을 변형시키는 메소드
+	}
+	
+	public void dropBlock(){
+		if(dropOk){
+			//한 칸 내려온다.
+		}
+		
+	}
+	
+	public void nextBlock(){
+		//난수를 이용하여 블락 종류를 결정한다.
+	}
+	
+	public void stopBlock(){
+		//가장 높은 블락까지 도달하면 멈춘다.
+	}
+	
+	public void lineClear(){
+		//한 줄이 다 차면 없앤다.
+	}
+	
+	public void isGameover(){
+		//끝에 까지 블락이 쌓이면 게임이 종료된다.
+	}
+
+
+}
