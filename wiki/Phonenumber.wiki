@@ -17,9 +17,54 @@ Add your content here.  Format your content with:
 - 생일 일주일전 미리 알림
 
 
-{
-ㅁㄴㅇㄹ
+= code =
+package PhoneNumber;
+
+public class PhoneNumber {
+	public static void main(String[] args) {
+
+		name(); //이름을 입력받습니다.
+		phonenumber(); // 전화번호를 입력받습니다.
+		birthday(); // 생일을 입력받습니다.
+		note(); // 그사람에 대한 메모를 입력받습니다.
+	}
+
 }
+
+class name {
+	
+	String name; // 이름을 입력받을 인스턴스 변수를 만듭니다.
+	
+	void printname(); // "이름을 입력하시오"가 출렵됩니다.
+	String getname(); // 입력받은 이름을 name 에 저장시킵니다.
+	
+}
+
+
+class phonenumber {
+	String phonenumber; //전화번호를 입력받을 인스턴스 변수를 만듭니다.
+	
+	void printphonenumber(); // "전화번호를 입력하시오"가 출력됩니다.
+	String getphonenuber(); // 입력받을 전화번호를 phonenumber 에 저장시킵니다.
+}
+
+
+class birthday {
+	String birth; // 생일을 입력받을 인스턴스 변수를 만듭니다.
+	
+	void printbirth(); // "생일을 입력하시오"가 출력됩니다.
+	String getbirth(); // 입력받을 생일을 birth 에 저장시킵니다.
+	
+}
+
+
+class note {
+	String note; // 노트를 입력받을 인스턴스 변수를 만듭니다.
+	
+	void printnote(); // "노트를 입력하시오"가 출력됩니다.
+	String getnote(); // 입력받을 노트를 note 에 저장시킵니다.
+}
+
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
