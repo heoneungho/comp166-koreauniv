@@ -836,6 +836,37 @@ public class SimpleDotCom {
 
 {{{
 
+import java.util.ArrayList;
+
+public class DotCom {
+
+	private ArrayList<String> locationCells;
+	
+	public void setLocationCells(ArrayList<String> loc) {
+		locationCells = loc;
+	}
+	
+	public String checkYourself(String userInput) {
+		
+		String result = "miss";
+		
+		int index = locationCells.indexOf(userInput);
+		
+		if (index >= 0 ) {
+			
+			locationCells.remove(index);
+			
+			if (locationCells.isEmpty()) {
+				result = "kill";
+			} else {
+				result = "hit";
+			}
+			
+			}
+			return result;
+		}
+	}
+
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
