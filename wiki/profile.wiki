@@ -25,13 +25,17 @@ package Profile;
 
 public class Main {
 // 메인 메소드로서 
-class Profile {
+	public static void main (String args[]) {
+	}
+}
+
+public class Profile {
 
 //기본적으로 모든 프로필을 생성하면 기록해야되는 basic information을 담고 있다.
 
-		string name;
-		string phone number ();
-		string birthday (); // 기본적인 정보들
+		private String name;
+		private String phone number ();
+		private String birthday (); // 기본적인 정보들
 
 //이 밖에 모든 프로필들은 해당 사람을 만난 또는 만날 날짜와 그것에 대해 정보를 입력할 수 있는 meet가 있다.
 
@@ -48,11 +52,11 @@ class Profile {
 
 //그렇다면 이 프로필에는 그 사람의 이름, 전화번호, 생일, 만난 날짜, 노트, 그리고 종교관이 포함되어 있을 것입니다.
 
-	}
 }
+
 //이 클래스는 기본적인 정보들을 보여주는 클래스이다.
 
-class ProfileManage {
+public class ProfileManage {
 
 
 // 이 클래스는 프로필을 관리할 수 있다.
