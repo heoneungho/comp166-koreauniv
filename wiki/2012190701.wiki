@@ -526,6 +526,34 @@ public class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class Clock {
+
+	String name;
+	
+	void setTime(String t)
+	{
+		time = t;
+	}
+	
+	String getTime()
+	{
+		return time;
+	}
+
+}
+
+public class ClockTestDrive {
+
+	public static void main() {
+		
+		Clock c = new Clock();
+		
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("Time: " + tod);
+		
+	}
+}
 
 }}}
 
