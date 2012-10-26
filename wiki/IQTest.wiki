@@ -1,0 +1,11 @@
+#summary IQTest
+#labels 2012190732조헤경
+
+
+
+= Introduction =
+
+자신의 나이를 입력하고, 10가지의 문제를 풀어서 맞고 틀림을 따져서 대략적인 IQ를 계산해주는 프로그램입니다.
+
+= Details =
+
