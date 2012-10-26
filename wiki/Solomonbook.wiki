@@ -17,6 +17,7 @@
 = Details =
 
 대략적인 코드는 이 구조로 만들 겁니다.
+{{{
 public class Main {
 	
 
@@ -80,3 +81,4 @@ public class Menu03 implements Menuexecute{
 	}//로또지만 6개 모두 번호가 뜨도록 하지 않고 자기가 원하는 갯수의 수만 뜨게 할거고 rand함수 돌릴 예정 입니다.
 
 }
+}}}
