@@ -104,10 +104,54 @@ pubilc class SelectQuestionType {
 
 ③Game.class
 
-public class Game.class {
+public class Game {
+//여러 게임들의 상위 클래스
+     result();
+}
+
+public class StoryOrderGame {
+//이야기순서게임
 
 }
 
+public class LyricOrderGame {
+//가사/시순서게임
+
+}
+
+public class CookingOrderGame {
+//조리순서게임
+
+}
+
+public class HistoryOrderGame {
+//역사순서게임
+
+}
+
+
+④Result.class
+
+pubic class Result {
+     
+     boolean result;     //결과 저장. 정답 1, 오답 0
+     Retry();     //재도전 메소드. 틀린 문제의 처음 상태로 돌아감.
+     Exit();     //나가기 메소드. 정답을 맞춘 뒤 게임을 그만 하고 싶을 때. 게임 중단.
+     SelectQuetionType();     //정답을 맞춘 뒤 다른 문제 유형을 풀기 위해 다른 게임을 선택 화면으로 이동
+     GiveUp();     //포기 메소드. 게임 중도 포기.
+}
+
+⑤Exit.class
+
+public class Exit {
+//프로그램 중단시키는 클래스
+}
+
+⑥Retry.class
+
+public class Retry {
+//문제를 풀기 직전의 상태로 돌아가게 하는 클래스
+}
          
 }}}         
 Add your content here.  Format your content with:
