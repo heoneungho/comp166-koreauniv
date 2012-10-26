@@ -27,7 +27,8 @@
 
 http://java.sun.com/javase/downloads/index.jsp (다운로드 링크)
 
-http://comp166-koreauniv.googlecode.com/files/JdkHome.PNG
+http://comp166-koreauniv.googlecode.com/files/JDK.png
+
 2. Eclipse 다운로드 및 설치
 : 클래스 파일 생성하고 실제 코드작업을 한다. 또한 에뮬레이터로 기기에 작동하는지 테스트를 할 수 있다.
 
