@@ -89,7 +89,11 @@ import java.util.Scanner;
 
 pubilc class SelectQuestionType {
 
-     System.out.println("1번 : 이야기 순서 맞추기 . . .");     //
+     System.out.println("1번 : 이야기 순서 맞추기");     //
+     System.out.println("2번 : 가사 / 시 순서 맞추기");     //
+     System.out.println("3번 : 요리 순서 맞추기");     //
+     System.out.println("4번 : 역사적 사건 순서 맞추기");     //
+     System.out.println("5번 : . . .");     //
 
      Scanner scan = new Scanner(System.in);
      int t = scan.nextInt();
