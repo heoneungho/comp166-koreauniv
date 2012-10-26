@@ -37,6 +37,46 @@
 
 {{{
 
+public class MainUpDown {
+	//메인 메소드가 오는 클래스입니다.
+	
+	public static void main(String[] args) {
+		
+	}
+	
+
+}
+
+
+
+public class DecideNumber {
+	
+	//게임을 시작할 때 1~5000 사이의 숫자 중 하나를 랜덤으로 정하는 클래스입니다.
+
+}
+
+
+public class LifeCheck {
+	//플레이어에게 주어진 기회(Life)를 체크하는 클래스입니다.
+	
+	int Life;
+
+	
+}
+
+
+public class Chances {
+	//랜덤으로 찬스를 정하여 제공하는 클래스입니다.(switch 사용예정)
+	
+	int x;
+
+}
+
+
+public class EndGame {
+	//게임을 종료하는 클래스입니다. 주어진 기회동안 숫자를 맞췄는지에 따라 2가지로 나눠집니다.
+
+}
 
 
 }}}
