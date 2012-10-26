@@ -283,7 +283,8 @@ public class LoginActivity extends Activity{
 
 }}}
 
-NewProductActivity.java
+* NewProductActivity.java
+
 {{{
 package com.example.Products;
 
@@ -783,7 +784,8 @@ private String jsonParser(String json){
 
 }}}
 
-MainActivity.java
+* MainActivity.java
+
 {{{
 package com.example.FoodMarketMain;
 
@@ -924,7 +926,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 }}}
 
-NoticeBoardActivity.java
+* NoticeBoardActivity.java
+
 {{{
 package com.example.NoticeBoard;
 
