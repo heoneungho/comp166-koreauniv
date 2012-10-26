@@ -64,14 +64,22 @@ http://comp166-koreauniv.googlecode.com/files/layout2.PNG
 2. 클래스 파일
 : 어플에 동작해야 할 모든 기능을 담당하는 부분으로 일반적인 자바코드 작업과 동일하다.
 
+http://comp166-koreauniv.googlecode.com/files/code.PNG
+
 3. PHP파일
 : 웹서버에 자료를 넘겨주고 받아오기 위한 것으로 C코드와 SQL언어에 대한 이해가 필요하다.
+
+http://comp166-koreauniv.googlecode.com/files/php.PNG
 
 4. 리소스 파일 관리
 : 어플에 들어갈 이미지나 레이아웃 등 부가적인 요소에 대해 폴더를 두고 관리한다.
 
+http://comp166-koreauniv.googlecode.com/files/resource.PNG
+
 5. Database
 : 사용자로부터 입력받은 자료를 저장 및 검색하기 위한 공간으로 SQL언어에 대한 이해가 필요하다.
+
+http://comp166-koreauniv.googlecode.com/files/db.PNG
 
 
 Add your content here.  Format your content with:
