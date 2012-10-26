@@ -21,3 +21,44 @@
 
 = Code =
 
+pakage Kupon;
+
+1. 시작 화면
+
+
+public class Main {
+	UserInfo(); // 프로그램 사용자의 정보를 입력받는 클래스 실행
+	KUList(); // 올라온 쿠폰 목록 확인
+}
+
+2. 사용자 정보 입력
+
+private class UserInfo {
+	getName(); // 사용자 이름 입력
+	getCellNum(); // 사용자 번호 입력
+}
+
+3. 쿠폰 리스트 확인
+
+public class KUList {//사용자들이 올린 쿠폰 목록 보여줌
+	KUSell(); //쿠폰 등록
+	KUBuy(); // 쿠폰 거래
+}
+
+4. 쿠폰 올리기
+
+public class KUSell {
+	getKUname(); //쿠폰 업체 이름 입력
+	getKUprice(); // 희망 가격 제시
+	regisKU(); //리스트에 저장
+}
+
+5. 쿠폰 사기
+
+public class KUBuy {
+	KUSearch();//쿠폰 검색
+	KUSelect();//쿠폰 선택
+	SendINfo();//사용자 정보 보내기
+}
+
+6. 거래종료
