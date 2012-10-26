@@ -18,6 +18,7 @@ Add your content here.  Format your content with:
 
 
 = code =
+{{{
 package PhoneNumber;
 
 public class PhoneNumber {
@@ -30,7 +31,10 @@ public class PhoneNumber {
 	}
 
 }
+}}}
 
+
+{{{
 class name {
 	
 	String name; // 이름을 입력받을 인스턴스 변수를 만듭니다.
@@ -39,7 +43,7 @@ class name {
 	String getname(); // 입력받은 이름을 name 에 저장시킵니다.
 	
 }
-
+}}}
 
 class phonenumber {
 	String phonenumber; //전화번호를 입력받을 인스턴스 변수를 만듭니다.
