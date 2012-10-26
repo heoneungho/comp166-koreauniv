@@ -1434,6 +1434,125 @@ public class GameHelper {
 하
 {{{
 
+public class Animal {
+
+	int picture;
+	int food;
+	int hunger;
+	int boundaries;
+	int location;
+	
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+	public void sleep(){
+		
+	}
+	
+	public void roam(){
+		
+	}
+	
+}
+
+public class Feline extends Animal{
+
+	
+	
+	public void roam(){
+		
+	}
+	
+}
+
+
+public class Lion extends Feline{
+
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+}
+
+
+public class Tiger extends Feline{
+
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+}
+
+public class Cat extends Feline{
+
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+}
+
+public class Hippo extends Animal{
+
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+}
+
+public class Canine {
+
+	public void roam(){
+		
+	}
+	
+	
+}
+
+public class Wolf extends Canine{
+
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+}
+
+public class Dog extends Canine{
+
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+}
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
