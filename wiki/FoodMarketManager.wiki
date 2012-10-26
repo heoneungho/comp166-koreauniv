@@ -111,6 +111,8 @@ http://comp166-koreauniv.googlecode.com/files/class.PNG
 
 * onClick() : 사용자가 핸드폰을 터치하였을 때 이벤트를 처리하기 위한 함수
 
+추가적인 메소드들
+
 * setOnClickListener() : 해당 버튼이 클릭 되었을 때 이벤트 처리
 
 * JSONObject : 사용자로부터 입력받은 자료 parsing하기 위한 함수
