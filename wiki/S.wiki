@@ -10,32 +10,35 @@
 
 1. 주문 날짜 및 시간
 
-public class OrderTime{
+public class OrderTime{}
 
 2. 고객 정보 : 이름, 전화번호
 
-public class CustomerInfo{
+public class CustomerInfo{}
 
 3. 메뉴 선택 : 피자 종류 [도우][토핑]
                         피자 크기
                         피자 수량
 
-public class PizzaInfo{
+public class PizzaInfo{}
 
 4. 음료 선택 : 미선택
                          선택 [종류][수량]
 
-public class DrinkInfo{
+public class DrinkInfo{}
 
 5. 할인카드
 
-public class DiscountCard{
+public class DiscountCard{}
+
 6. 결제수단
 
-public class Payment{
+public class Payment{}
+
 7. 결제 가격: 총 가격 -  할인 가격
 
-public class Price{
+public class Price{}
+
 8. 최종 확인 및 배송지 결정
 
-public class FinalDecision{
+public class FinalDecision{}
