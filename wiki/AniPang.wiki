@@ -24,6 +24,11 @@ Organize: 비어있는공간을 매꾸어주고 랜덤으로 동물들을 생성
 
 3. 게임중 : 게임하는 사람으로부터 동물의 좌표와 옮기고자하는 방향을 입력한다. 그 그리고 게임판에서 그 동물을 바꾸어준다. 그런후 Check();를 실행한다. 만약 Check의 리턴값이 없으면 다시 입력을 받고, 리턴값이 있다면. Pang() 을 실행한다.
 
+클래스
+
+AniPangTestDire
+main 함수가 들어있는 클래스이다. 이클래스에서 게임을 시작한다. 그리고 시간이 다될때까지
+
 
 {{{
 
@@ -47,6 +52,13 @@ class AniPangTestDrive{
 
 public class AniPang{
  int x,y,way;
+ float time;
+ public timeset(float a){
+  time=a;
+ }
+ public timeget(){
+  return time;
+ }
  public set(int a,int b,int c){
   x=a,y=b,c=way
  }
