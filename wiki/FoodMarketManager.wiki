@@ -604,25 +604,6 @@ public class NewProductActivity extends Activity {
     	}
     }
     
-    public void onClickImg1(View v) {
-    	switch(v.getId()) {
-    	case R.id.btnProductSendPicture:
-    		AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
-    		View customLayout1 = View.inflate(mContext, R.layout.custom_button1, null);
-    		builder1.setView(customLayout1);
-    		dialog = builder1.create();
-    		dialog.show();
-    		break;
-    	case R.id.camera1:
-    		dialog.dismiss();
-    		takePicture1();
-    		break;
-    	case R.id.photoAlbum1:
-    		dialog.dismiss();
-    		photoAlbum1();
-    		break;
-    	}
-    }
     
   //사진 촬영
   	void takePicture() {
@@ -642,22 +623,6 @@ public class NewProductActivity extends Activity {
   		startActivityForResult(intent, REQUEST_PHOTO_ALBUM);
   	}
   	
-  	void takePicture1() {
-  		//카메라 호출 intent 생성
-  		Intent intent1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-  		File file = new File(Environment.getExternalStorageDirectory(),SAMPLEIMG);
-  		intent1.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-  		startActivityForResult(intent1, REQUEST_PICTURE1);
-  	}
-  	
-  	//사진 불러오기
-  	void photoAlbum1() {
-  		//photo Album 호출 intent 생성
-  		Intent intent1 = new Intent(Intent.ACTION_PICK);
-  		intent1.setType(Images.Media.CONTENT_TYPE);
-  		intent1.setData(Images.Media.EXTERNAL_CONTENT_URI);
-  		startActivityForResult(intent1, REQUEST_PHOTO_ALBUM1);
-  	}
   	
   	//촬영한 사진을 수정하기 위해서
   	Bitmap loadPicture() {
@@ -686,17 +651,6 @@ public class NewProductActivity extends Activity {
   			giveProductImage.setImageURI(selectedImageURI);
   			ImageFilePath = getRealPathFromURI(selectedImageURI);  
   			giveImage = ImageFilePath;
-  			
-  		}
-  		if(requestCode == REQUEST_PICTURE1) {
-  			iv.setImageBitmap(loadPicture());
-  		}
-  		
-  		if(requestCode == REQUEST_PHOTO_ALBUM1) {
-  			selectedImageURI1 = data.getData(); 
-			productImage.setImageURI(selectedImageURI1);
-  			ImageFilePath1 = getRealPathFromURI(selectedImageURI1);
-  			prodImage = ImageFilePath1;
   			
   		}
   	}
@@ -779,9 +733,6 @@ private String jsonParser(String json){
 		  return sb.toString();
 		 }
 }
-
-
-
 }}}
 
 * MainActivity.java
@@ -898,14 +849,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			intent.putExtra("strCurTime", strCurTime);
 			startActivity(intent);
 		}
-		else if(id == button3.getId()){
-			Intent intent = new Intent(this, com.example.Products.AllProductsActivity.class);
-			startActivity(intent);
-		}
-		else if(id == button4.getId()){
-			Intent intent = new Intent(this, com.example.NoticeBoard.AllBoardsActivity.class);
-			startActivity(intent);
-		}
+		
 	}
 
 	private static void showDialog(final Activity activity,
