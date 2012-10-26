@@ -23,7 +23,8 @@
 
 점수계산방식: 연속으로 맞출때마다 10, 20, 30... 점으로 점수가 늘어납니다.
 
-{{{public class  FindPair
+{{{
+public class  FindPair
 {
 	public static void main(String[] args) 
 	{
