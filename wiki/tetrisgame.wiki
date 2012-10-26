@@ -11,7 +11,7 @@
 http://comp166-koreauniv.googlecode.com/files/tetris.jpg
 
 평소 테트리스를 하는 화면이다.(레벨을 보면 얼마나 열심히 했는지 알수있다;;)
-http://comp166-koreauniv.googlecode.com/files/tetris1.jpg
+http://comp166-koreauniv.googlecode.com/files/tetris1.png
 
 
 Add your content here.
