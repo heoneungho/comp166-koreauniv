@@ -22,3 +22,38 @@
    점수와 연속으로 맞춘 그림의 수, 찾을때까지 그림을 선택한 횟수 가 보여집니다
 
 점수계산방식: 연속으로 맞출때마다 10, 20, 30... 점으로 점수가 늘어납니다.
+
+public class  FindPair
+{
+	public static void main(String[] args) 
+	{
+		FindPair p = new FindPair();
+	}
+}
+
+
+class menu
+{
+	start();
+	load();
+	help();
+}
+
+class boad
+{
+	boad();
+	pictures();
+
+}
+
+class game
+{
+	click();
+	grade();
+	save();
+}
+
+class result
+{
+	score();
+}
