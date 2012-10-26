@@ -45,14 +45,17 @@ class name {
 }
 }}}
 
+{{{
 class phonenumber {
 	String phonenumber; //전화번호를 입력받을 인스턴스 변수를 만듭니다.
 	
 	void printphonenumber(); // "전화번호를 입력하시오"가 출력됩니다.
 	String getphonenuber(); // 입력받을 전화번호를 phonenumber 에 저장시킵니다.
 }
+}}}
 
 
+{{{
 class birthday {
 	String birth; // 생일을 입력받을 인스턴스 변수를 만듭니다.
 	
@@ -60,15 +63,16 @@ class birthday {
 	String getbirth(); // 입력받을 생일을 birth 에 저장시킵니다.
 	
 }
+}}}
 
-
+{{{
 class note {
 	String note; // 노트를 입력받을 인스턴스 변수를 만듭니다.
 	
 	void printnote(); // "노트를 입력하시오"가 출력됩니다.
 	String getnote(); // 입력받을 노트를 note 에 저장시킵니다.
 }
-
+}}}
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
