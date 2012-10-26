@@ -56,6 +56,7 @@ http://comp166-koreauniv.googlecode.com/files/APM7Setup.png
 
 1. 레이아웃
 : 레이아웃은 어플의 화면을 구성하는 작업으로 주로 XML코드로 이루어 진다.
+
 http://comp166-koreauniv.googlecode.com/files/layout1.PNG
 
 http://comp166-koreauniv.googlecode.com/files/layout2.PNG
