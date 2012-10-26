@@ -537,7 +537,29 @@ class ClockTestDrive
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotComTestDrive
+{
+        public static void main (String [] args)
+        {
+                SimpleDotCom dot = new SimpleDotCom(); // 
 
+                int[] locations = {2,3,4};
+
+                dot.setLocationCells(locations);
+
+                String userGuess = "2";
+
+                String result = dot.checkYourself(userGuess);
+
+                String testResult = "failed";
+
+                if(result.equals("hit")
+                        testResult = "passed";
+
+                System.out.println(testResult);
+        }
+}
+                                           
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
