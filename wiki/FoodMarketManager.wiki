@@ -20,12 +20,7 @@
 
 = 세부사항 & 개발환경=
 
-안드로이드 어플로 개발.(최하 android 2.1버젼으로)
-
-* Java Develoment Kit(JDK) 6.0
-* Eclipse
-* Android SDK
-* APM7Setup
+* Version : 안드로이드 어플로 개발.(최하 android 2.1버젼으로)
 
 1. Java Develoment Kit(JDK) 6.0 다운로드 및 설치
 : 자바 라이브러리를 통해 클래스 파일의 원활환 작업을 위해 필요
