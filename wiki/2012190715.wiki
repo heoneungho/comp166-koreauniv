@@ -1,4 +1,4 @@
-#summary *현주의 실습 페이지 입니다 ~ !
+#summary * 현주의 실습 페이지 입니다 ~ !
 #labels 2012190715김현주실습page
 
 <wiki:toc max_depth="1" />
