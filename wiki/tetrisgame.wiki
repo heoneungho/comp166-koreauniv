@@ -38,6 +38,7 @@ Add your content here.  Format your content with:
   * Automatic links to other wiki pages
 
 = Code =
+{{{
 
 import java.applet.*;
 import java.util.*;
@@ -83,3 +84,5 @@ public class tetris extends Applet {
 
 
 }
+
+}}}
