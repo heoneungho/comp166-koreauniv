@@ -17,7 +17,7 @@ Add your content here.  Format your content with:
 - 생일 일주일전 미리 알림
 
 
-= code =
+= Code =
 {{{
 package PhoneNumber;
 
@@ -73,6 +73,3 @@ class note {
 	String getnote(); // 입력받을 노트를 note 에 저장시킵니다.
 }
 }}}
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
