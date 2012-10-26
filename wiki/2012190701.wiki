@@ -355,6 +355,68 @@ public class DVDPlayerTestDrive
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+public class Dog {
+	
+	String name;
+	
+	public static void main(String[] args) {
+		//Dog 
+		Dog dog1 = new Dog();
+		dog1.bark();
+		dog1.name = "bart";
+	
+				
+		//
+		Dog[] myDogs = new Dog[10];
+		//
+		myDogs[0] = new Dog();
+		myDogs[1] = new Dog();
+		myDogs[2] = dog1;
+		int y = 3;
+		while(y < 10)
+		{
+			myDogs[y++] = new Dog();
+		}
+		
+		//
+		//
+		myDogs[0].name = "Fred";
+		myDogs[1].name = "Marge";
+		myDogs[3].name = "Yoshi";
+		myDogs[4].name = "Grand";
+		myDogs[5].name = "Season";
+		myDogs[6].name = "Hong";
+		myDogs[7].name = "SABU";
+		myDogs[8].name = "OU";
+		myDogs[9].name = "JiRooHae";
+		
+		//
+		System.out.print();
+		System.out.println(myDogs[2].name);
+		
+		//
+		//
+		int x = 0;
+		while(x < myDogs.length)
+		{
+			myDogs[x].bark();
+			x = x + 1;
+			
+		}
+		
+			
+	}
+	
+	public void bark()
+	{
+		System.out.println(name + "");
+		
+	}
+	
+	public void eat(){}
+	public void chaseCat() {}
+
+}
 
 
 }}}
