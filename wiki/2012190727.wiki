@@ -479,12 +479,46 @@ public class SimpleDotComTestDrive {
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 
+ * 오버로딩: 이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것. 오버로드된 메소드는 다형성과는 전혀 관계가 없다. 
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+public class MonsterTestDrive {
+     public static void main ( String [] args) {
+          Monster [] ma = new Monster[3];
+          ma[0] = new Vampire();
+          ma[1] = new Dragon();
+          ma[2] = new Monster();
+          for ( int x = 0; x < 3 ; x ++) {
+               ma[x].frighten(x);
+          }
+     }
+}
+
+class Monster{
+     boolean frighten ( int d) {
+          System.out.println("arrrgh");
+          return true;
+     }
+}
+
+class Vampire extends Monster {
+     boolean frighten(int x) {
+          System.out.println("a bite?");
+          return false;
+     }
+}
+
+class Dragon extends Monster {
+     boolean frighten ( int degree) {
+          System.out.println("breath fire");
+          return true;
+     }
+}
+
 
 }}}
 
@@ -492,11 +526,11 @@ public class SimpleDotComTestDrive {
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ * 인터페이스: 100% 추상 클래스
+ * 다형성: 여러 형태
+ * 추상 클래스: 인스턴스를 만스들 수 없는 클래스
+ * 추상 메소드: 반드시 오버라이드 해야하는 메소드. 추상 메소드를 만들 때는 클래스도 반드시 추상 클래스로 만들어야 한다. 추상 클래스가 아닌 클래스에 추상 메소드를 집어넣을 수는 없다. 추상 메소드를 만드는 이유는 실제 메소드 코드를 잔혀 집어넣지 않았더라도 일련의 하위클래스를 위한 규약의 일부를 정의하기 위함. 
+ * 다중 상속: multiple inheritance, 상위클래스를 두 개 사용하는 접근법에 발생하는 한 가지 문제점. 자바에서는 다중 상속 사용 불가. '죽음의 다이아몬드'라고 알려진 문제가 있기 때문.
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
