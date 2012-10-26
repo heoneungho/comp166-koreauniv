@@ -20,7 +20,7 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages'
-
+{{{
 package Profile;
 
 public class Main {
@@ -66,3 +66,4 @@ public class ProfileManage {
 // 그리고, delete를 통해 해당 프로필을 삭제할 수도 있다.
 
  }
+}}}
