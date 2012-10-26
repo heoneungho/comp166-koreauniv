@@ -13,11 +13,11 @@ Add your content here.
 
 = Details =
 
-1. 각각의 모양마다 다른 색을 주고
+1. 각각의 모양마다 다른 색을 준다
  
-2. 내려갈 때마다 차지해야하는 공간과
+2. 내려갈 때마다 차지해야하는 공간을 고려한다
 
-3. 회전시 변화하는 모양
+3. 회전시 변화하는 모양을 정해준다
 
 4. 최종 위치하는 곳 등 기본적인 아이디어를 바탕으로 과제를 해나갈 것이다.
 
@@ -26,3 +26,5 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+= Code =
