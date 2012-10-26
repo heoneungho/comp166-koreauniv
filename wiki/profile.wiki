@@ -19,4 +19,42 @@
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * Automatic links to other wiki pages'
+
+package Profile;
+
+class Profile {
+
+//기본적으로 모든 프로필을 생성하면 기록해야되는 basic information을 담고 있다.
+
+		string name;
+		string phone number ();
+		string birthday (); // 기본적인 정보들
+
+//이 밖에 모든 프로필들은 해당 사람을 만난 또는 만날 날짜와 그것에 대해 정보를 입력할 수 있는 meet가 있다.
+
+//또한, 특이사항 등을 자유롭게 적을 수 있는 note가 있다.
+
+// 마지막으로, make는 새로운 카테로리를 만들 수 있다.
+//한 프로필을 생성할 때 기본정보를 입력하는 란이 스있을 것이며 
+그 외에도 make를 통해 새롭게 입력할 카테고리를 입력하고, 그 카테고리안에 정보를 저장할 수 있게 합니다.
+
+예를 들자면, 내가 이 사람의 종교관을 프로필에 저장하고자 한다.
+그렇다면 make를 이용해서 종교관이라는 카테고리를 만들 수 있게 하여
+ 그 안에 정보를 입력할 수 있도록 할 것이다.
+
+그렇다면 이 프로필에는 그 사람의 이름, 전화번호, 생일, 만난 날짜, 노트, 그리고 종교관이 포함되어 있을 것입니다.
+
+	}
+}
+//이 클래스는 기본적인 정보들을 보여주는 클래스이다.
+
+class ProfileManage {
+}
+// 이 클래스는 프로필을 관리할 수 있다.
+입력하는 메소드를 포함한 클래스로서 Scanner를 도입하여 new Profile을 생성한 후 
+정보를 입력하는 클래스 이다.
+//또한, search를 통해 이름을 검색하여 그 이름의 프로필을 찾을 수 있게 한다.
+// 그리고, delete를 통해 해당 프로필을 삭제할 수도 있다.
+
+ 
