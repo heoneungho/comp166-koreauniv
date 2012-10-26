@@ -37,9 +37,11 @@ public class Profile {
 
 //기본적으로 모든 프로필을 생성하면 기록해야되는 basic information을 담고 있다.
 
-		private String name;
-		private String phone number ();
-		private String birthday (); // 기본적인 정보들
+	private String name;
+	private String phone number ();
+	private String birthday (); // 기본적인 정보들
+
+	// more
 }
 }}}
 
