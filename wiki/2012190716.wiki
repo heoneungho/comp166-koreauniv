@@ -776,6 +776,7 @@ class Dog extends Canine{
 
 {{{
 
+
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
