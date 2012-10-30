@@ -465,6 +465,32 @@ class BooksTestDrive
         }
 }
 
+
+public class Hobbits {
+
+		String name; //name 이름의 String 형성
+		
+		public static void  main(String[] args) {
+			
+			Hobbits [] h = new Hobbits[3];//Hobbits 객체를 생성하고 arraylist에 대입
+			int z = -1;//초기 z값 지정
+			
+			while(z < 2)
+			{
+				z = z + 1;//array 처음의 인덱스가 0이기 때문에 z + 1 을 해주어 0으로 만든다.
+				h[z] = new Hobbits();//각각의 list 에 객체 대입
+				h[z].name = "bilbo";//h[0]의 이름
+				if(z == 1)//h[1]의 이름
+					h[z].name = "frodo";
+				if(z == 2)//h[2]의 이름
+					h[z].name = "sam";
+			
+			System.out.print(h[z].name + " is a ");
+			System.out.println("good Hobbit name");
+			}
+		}
+}
+
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
