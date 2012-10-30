@@ -276,14 +276,14 @@ A :
 public class TapeDeck 
 {
 
-	boolean canRecord = false;
+	boolean canRecord = false; //canRecord = false로 세팅
 	
-	void playTape()
+	void playTape()//playTape 메소드 생성
 	{
 		System.out.println("tape playing");		
 	}
 	
-	void recordTape()
+	void recordTape()//recordTape 메소드 생성
 	{
 		System.out.println("tape recording");
 		
@@ -297,8 +297,8 @@ public class TapeDeckTestDrive
 	{
 		TapeDeck t = new TapeDeck();
 		//TapeDeck 타입의 변수 객체t를 만들어줍니다
-		t.canRecord = true;
-		t.playTape();
+		t.canRecord = true;//t의 canRecord를 true로
+		t.playTape();//t의 playTape메소드 실행
 		
 		if(t.canRecord == true)
 		{
@@ -311,14 +311,14 @@ B:
 
 public class DVDPlayer
 {
-	boolean canRecord = false;
+	boolean canRecord = false;//canRecord = false로 세팅
 	
-	void recordDVD()
+	void recordDVD()//recordDVD메소드 생성
 	{
 		System.out.println("DVD recording");
 		
 	}
-	void playDVD()
+	void playDVD()//playDVD메소드 생성
 	{
 		System.out.println("DVD Playing");
 	}
@@ -329,8 +329,8 @@ public class DVDPlayerTestDrive
 {
 	public static void main(String[] args) {
 		
-		DVDPlayer d = new DVDPlayer();
-		d.canRecord = true;
+		DVDPlayer d = new DVDPlayer();//DVDPlayer형의 새로운 객체 생성
+		d.canRecord = true;//d의 canRecord에 true를 넣어줌
 		d.playDVD();
 		
 		if(d.canRecord == true)
@@ -463,8 +463,8 @@ class BooksTestDrive
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?:밥
+ * 문제가 된 부분은 어딘가요?:켄트의 메소드에서는 순환문을 돌 때마다 새로운 객체를 레퍼런스 변수 하나에 대입했기 때문에 전에 참조하고 있던 객체는 버림받게 되는 문제가 있었다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
