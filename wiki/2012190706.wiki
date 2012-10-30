@@ -682,7 +682,63 @@ time: 1245
 
 *135p XP* _요약_
 
- * 익스트림 프로그래밍이란? 소프트웨어 개발 방법론 분야의 한 종류이다. 서로 조화롭게 쓸 수 있도록 계획된 일련의 규칙이 있다.
+package ch5;
+
+public class SimpleDotComTestDrive {
+	public static void main (String[] args) {
+		SimpleDotCom dot = new SimpleDotCom(); //dot 이라는 SimpleDotCom 객체를 만듭니다.
+		
+		int[] locations = {2,3,4}; // int 배열을 만듭니다.
+		dot.setLocationCells(locations); //세터를 실행합니다.
+		
+		String userGuess = "2"; // userGuess에 2를 넣습니다.
+		String result = dot.checkYourself(userGuess); //checkYourself를 실행해 그 값을 result에 넣습니다.
+
+		String testResult = "failed"; //testResult 에 failed 를 넣습니다.
+		if(result.equals("hit") ) {
+			testResult = "passed";
+			
+		} //result가 hit이면 testResult에 passed를 넣습니다.
+		
+		System.out.println(testResult); //testResult를 출력합니다.		
+	}
+
+}
+
+public class SimpleDotCom {
+	int[] locationCells; //int 배열을 만듭니다.
+	int numOfHits = 0;
+	
+	public void setLocationCells(int[] locs) {
+		locationCells = locs; //받은 배열을 locationCells에 넣습니다. 세터입니다.
+		
+	}
+	
+	public String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess); //stringGuess를 인트형 값으로 만듭니다.
+		String result = "miss";
+		for(int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i]) {
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		} // locationCells의 길이만큼 0부터 증가합니다. guess와 locationCells[i]의 값이 같으면 result에 hit을 넣고 numOfHits의 수를 1 증가시킵니다.
+		
+		if(numOfHits == locationCells.length) {
+			result = "kill";
+		} // locationCells의 길이 numOfHits 의 값이 같으면 result에 kill를 넣습니다.
+		
+		System.out.println(result); //result의값을 출력합니다.
+			return result; // result를 반환합니다.
+		
+	}
+}
+
+코딩 결과
+hit
+passed
+
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
