@@ -508,6 +508,55 @@ public class GameHelper{
         }
    }
 
+public class SimpleDotComTestDrive{
+  public static void main(String[] args){
+   int numoOfGuesses = 0 ;
+   GameHelper helper = new GameHelper();
+
+   SimpleDotCom theDotCom = new SimpleDotCom();
+   int randomNum = (int)(Math.random()*5);
+
+   int[] locations = {randomNum, randomNum+1, randomNum+2};
+   theDotCom.setLocationCells(locations);
+   boolean isAlive = true;
+
+   while(isAlive == ture){
+     String guess = helper.getUserInput("enter a number");
+     String result = theDotCom.checkYourself(guess);
+     numOfGuesses++;
+     if(result.equals("kill")){
+       isAlive = false;
+       System.out.println(numofGuesses + "guesses");
+   }
+ }
+}
+
+public class simpleDotCom{
+   int[] locationCells;
+   int numOfHits = 0;
+
+ public void setLocationCells(int[] los){
+  locationcells = locs;
+}
+public String checkYourself(String stringGuess){
+  int guess = Interger.parseInt(stringGuess);
+  String result = "miss";
+  for(int i = 0 ; i<locationCells.length; i++){
+    if(guess == locationCells[i]){
+         result = 'hit';
+         numOfHits++;
+         break;
+   }
+ }
+
+if(numOfHits == locationCells.length){
+   result = "kill"l
+}
+System.out.println(result);
+   return result;
+ }
+}
+
 
 }}}
 
