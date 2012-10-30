@@ -357,29 +357,30 @@ public class DVDPlayerTestDrive
 {{{
 public class Dog {
 	
-	String name;
+	String name;//String 타입의 변수 name 생성
 	
 	public static void main(String[] args) {
-		//Dog 
-		Dog dog1 = new Dog();
-		dog1.bark();
-		dog1.name = "bart";
+		
+		Dog dog1 = new Dog();//Dog 타입의 객체 dog1생성
+		dog1.bark();//dog1이 짖도록 함
+		dog1.name = "bart";//dog1의 name에 bart 대입
 	
 				
-		//
+		//dog타입의 arraylist를 생성합니다.
 		Dog[] myDogs = new Dog[10];
-		//
+		//0~9까지 객체를 생성합니다
 		myDogs[0] = new Dog();
 		myDogs[1] = new Dog();
 		myDogs[2] = dog1;
 		int y = 3;
-		while(y < 10)
+		while(y < 10)//반복문을 통해 객체 생성후 대입
 		{
 			myDogs[y++] = new Dog();
 		}
 		
-		//
-		//
+		
+		//배열 레퍼런스를 써서 Dog객체에 접근합니다.
+                //이름을 지정해줍니다.
 		myDogs[0].name = "Fred";
 		myDogs[1].name = "Marge";
 		myDogs[3].name = "Yoshi";
@@ -390,13 +391,13 @@ public class Dog {
 		myDogs[8].name = "OU";
 		myDogs[9].name = "JiRooHae";
 		
-		//
-		System.out.print();
+		//myDogs[2]의 이름
+		System.out.print("마지막 개의 이름: ");
 		System.out.println(myDogs[2].name);
 		
-		//
-		//
-		int x = 0;
+		//이제 순환문을 써서 배열에 들어있는
+		//모든 개가 짖도록 합니다.
+		int x = 0;//while문 초기 변수
 		while(x < myDogs.length)
 		{
 			myDogs[x].bark();
@@ -428,6 +429,8 @@ class Books
 {
         String title;
         String author;
+        //title 과 author 이름의 String 선언
+
 }
 
 
@@ -437,10 +440,12 @@ class BooksTestDrive
         public static void main(String[] args)
         {
                 Books[] myBooks = new Books[3];
+                //Books 타입의 arraylist 생성
                 int x = 0;
 
                 for(;x < 3; x++)
                         myBooks[x] = new Books();
+                //Books객체를 생성 후 arraylist에 대입해줍니다
 
                 myBooks[0].title = "The Grappes of Java";
                 myBooks[1].title = "The Java Gatsby";
@@ -456,6 +461,7 @@ class BooksTestDrive
                         System.out.print(" by ");
                         System.out.println(myBooks[x].author);
                 }
+                //반복문을 통해서 출력해줍니다.
         }
 }
 
