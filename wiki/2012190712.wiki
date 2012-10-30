@@ -544,7 +544,22 @@ class ClockTestDrive{ // 클래스 선언
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotcomTestDrive{
+	public static void main(String[] args){
+	    SimpelDotCom dot = new SimpleDotCom(); // Simple DotCom클래스의 인스턴스를 만듭니다.
 
+	    int[] locations = {2, 3, 4}; // 닷컴의 위치를 나타내기 위한 int 배열을 만듭니다.(0에서 6까지의 숫자 가운데 연속된 정수 세 개)
+	    dot.setLocationCells(locations); // 닷컴에 대해 세터 메소드를 호출합니다.
+
+	    String userGuess = "2"; // 사용자가 추측한 위치 역할을 할 가짜 값을 만듭니다.
+	    String result = dot.checkYourself(userGuess); // 닷컴 객체에 대해 checkYourself()메소드를 호출하고 그 메소드에 가짜 값을 전달합니다.
+	    String testResult = "failed";
+	    if(result.equals("hit")){
+	        test Result = "passed"; // 가짜값(2)이 맞으면("hit"가 리턴되면) 제대로 리턴되는 것을 알 수 있습니다
+	    }
+	    System.out.println(testResult); // 테스트 결과를 출력합니다.(passed 또는 failed)
+	}
+}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
