@@ -1327,9 +1327,8 @@ class DotComBust
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
-
 // Animal 클래스의 계층 구조입니다.
-public class Animal {
+class Animal {
 	String picture;
 	boolean food;
 	int hunger;
@@ -1348,7 +1347,6 @@ public class Animal {
 	void roam(){
 		// 동물이 먹거나 자고 있지 않을 떄의 행동
 	}
-
 }
 
 // Feline은 Animal을 상속받습니다.
@@ -1356,6 +1354,7 @@ class Feline extends Animal{
 	void roam(){ // roam을 오버라이드합니다.
 	}
 }
+
 // Lion은 Feline을 상속받습니다.
 class Lion extends Feline{
 	void makeNoise(){
@@ -1386,7 +1385,42 @@ class Cat extends Feline{
 	}
 }
 
+// Hippo는 Animal을 확장합니다.
+class Hippo extends Animal{
+	void makeNoise(){
+		// 오버라이드합니다.
+	}
+	void eat(boolean food){
+		// 오버라이드합니다.
+	}
+}
 
+// Canine은 Animal을 확장합니다.
+class Canine extends Animal{
+	void roam(){
+		// 오버라이드합니다.
+	}
+}
+
+// Wolf는 Canine을 확장합니다.
+class Wolf extends Canine{
+	void makeNoise(){
+		// 오버라이드합니다.
+	}
+	void eat(boolean food){
+		// 오버라이드합니다.
+	}
+}
+
+// Dog는 Canine을 확장합니다.
+class Dog extends Canine{
+	void makeNoise(){
+		//오버라이드합니다.
+	}
+	void eat(boolean food){
+		// 오버라이드합니다.
+	}
+}
 
 
 }}}
