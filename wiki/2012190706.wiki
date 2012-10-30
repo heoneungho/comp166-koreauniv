@@ -682,6 +682,11 @@ time: 1245
 
 *135p XP* _요약_
 
+
+ 
+*137p~ 간단한 닷컴 게임* _구현후 주석달기_
+
+{{{
 package ch5;
 
 public class SimpleDotComTestDrive {
@@ -738,12 +743,6 @@ public class SimpleDotCom {
 코딩 결과
 hit
 passed
-
- 
-*137p~ 간단한 닷컴 게임* _구현후 주석달기_
-
-{{{
-
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
