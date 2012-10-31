@@ -50,6 +50,10 @@ http://comp166-koreauniv.googlecode.com/files/Reading1.JPG
 
 *3) Program Structure(프로그램 구조)*
 
+http://comp166-koreauniv.googlecode.com/files/ReadingPro.JPG
+
+
+
 || *독서실 관리자* || ↔ || *프로그램* || ↔ || *입실, 퇴실, 이용 내역* || ↔ || *파일* || 
 
 *4) UI구상*
