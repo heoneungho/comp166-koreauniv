@@ -267,7 +267,8 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-<A>
+//A
+
 class TapeDeck{
 	boolean canRecord = false;
 	
@@ -295,7 +296,7 @@ public class TapeDeckTestDrive {
 }
 
 
-<B>
+//B
 
 public class DVDPlayer {
 	
