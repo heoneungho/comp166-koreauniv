@@ -11,7 +11,7 @@
 
 *1) Background(배경)*
 
- http://code.google.com/p/comp166-koreauniv/downloads/detail?name=%EB%8F%85%EC%84%9C%EC%8B%A41.bmp&can=2&q=#makechanges
+ http://code.google.com/p/comp166-koreauniv/downloads/독서실1.bmp
 
  고등학생 시절, 야간 자율 학습을 마치고 곧 바로 집 앞 독서실에 들러 추가로 공부를 하곤했었는데, 
 
