@@ -116,7 +116,7 @@ class dragon {
 	String lose = "컴퓨터가 이겼습니다.";
 	int charge = 0; //기모은횟수
 		
-	String[] my = {"기모으기","공격","방어"};              //내가 가위바위보
+	String[] my = {"기모으기","공격","방어"};              
 	Scanner me = new Scanner(System.in);
 	   
 	while(true)
