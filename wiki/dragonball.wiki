@@ -100,3 +100,74 @@ class VAttack {
 	SSA(); // 원기옥을 사용합니다.
 }
 }}}
+
+
+지금 대충 틀을 잡아보는...중?
+
+{{{
+
+import java.util.Scanner; 
+class dragon { 
+	public static void main(String[] args) { 
+	int a=0;
+	boolean x = true;
+	String draw = "아무일도 일어나지 않았다."; 
+	String win = "당신이 이겼습니다."; 
+	String lose = "컴퓨터가 이겼습니다.";
+	int charge = 0; //기모은횟수
+		
+	String[] my = {"기모으기","공격","방어"};              //내가 가위바위보
+	Scanner me = new Scanner(System.in);
+	   
+	while(true)
+	{    	 
+		
+	while(x)
+	{
+	System.out.println("기모으기 = 0, 공격 = 1, 방어 = 2");
+	a = me.nextInt();
+	if (charge==0 && a==1)
+		System.out.println("공격할 에너지가 부족합니다.");
+	else
+		x = false;
+	}
+		
+	if (a==0)
+		charge++; //기를모음
+	
+	if (a==1)
+		charge--;//공격하면 기를 소모
+	
+		
+    if(a>=0||a<3)
+    { 
+          System.out.println("당신은 " + my[a] + "을 하셨습니다.");
+    }
+    else
+    { 
+          System.out.println("0,1,2중 하나만 선택하시길 바랍니다."); 
+    } 
+    //컴퓨터가 선택
+    int co=(int)(Math.random()*3); // *3에 +1을 해야만 1~3이 나옵니다. 
+    System.out.println("컴퓨터는 " + my[co] + "을 했다.");        
+	  
+       if (a == 2 || co ==2 || a==co)
+    	   System.out.println(draw);
+       else if (a==1 && co==0)
+       {
+    	   System.out.println(win);
+    	   break;
+       }
+   	   else if(a==0 && co==1)
+   	   {
+    	   System.out.println(lose);
+    	   break;
+       
+       }
+       x = true;
+ 	}
+	}
+}
+
+
+}}}
