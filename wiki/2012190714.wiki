@@ -20,7 +20,8 @@ no more bottles of beer on the wall
 
 public class Beersong {
 	public static void main(String[] args) {
-		int beerNum = 99;
+		
+                int beerNum = 99;
 		String word = "bottles"; //복수형
 		
 		while (beerNum>0){
@@ -61,9 +62,9 @@ no more bottles of beer on the wall
 //자동구문 생성기 - 내가 사는 곳
 
 public class PhraseOMatic {
-	
 	public static void main(String[] args) {
-		//세 종류의 단어 목록 
+		
+                //세 종류의 단어 목록 
 		String[] wordListOne = {"small","big","famous","beautiful"};
 		String[] wordListTwo = {"town","city","countryside"};
 		String[] wordListThree = {"Korea","Japan","China","Thailand","Singapore"};
@@ -101,7 +102,8 @@ public class PhraseOMatic {
 //A.
 public class Exercise1b {
 	public static void main(String[] args) {
-		int x = 1;
+		
+                int x = 1;
 		while(x<10){ 
 			x = x+1; //출력값이 나오도록 조건을 추가
 			if(x>3){
@@ -115,7 +117,8 @@ public class Exercise1b {
 //B.
 public class Exercise1b { //클래스가 없으므로 추가
 	public static void main(String[] args) {
-		int x = 5;
+		
+                int x = 5;
 		while(x>1){ 
 			x = x-1;
 			if(x<3){
@@ -129,7 +132,8 @@ public class Exercise1b { //클래스가 없으므로 추가
 //C.
 public class Exercise1b { 
 	public static void main(String[] args) { //메인 메소드가 없으므로 추가
-		int x = 5;
+		
+                int x = 5;
 		while(x>1){ 
 			x = x-1;
 			if(x<3){
@@ -165,7 +169,8 @@ public class Exercise1b {
 package GuessGame;
 
 public class GuessGame {
-	Player p1;
+	
+        Player p1;
 	Player p2;
 	Player p3;
 	Player p4;
@@ -245,7 +250,8 @@ public class GuessGame {
 }
 
 public class Player {
-	int number = 0;
+	
+        int number = 0;
 	
 	public void guess(){
 		number = (int) (Math.random()*10);
@@ -270,7 +276,8 @@ public class GameLauncher {
 //A
 
 public class TapeDeck{
-	boolean canRecord = false;
+	
+        boolean canRecord = false;
 	
 	void playTape(){
 		System.out.println("tape playing");
@@ -313,8 +320,7 @@ public class DVDPlayer {
 }
 
 public class DVDPlayerTestDrive {
-
-	public static void main(String[] args) {
+        public static void main(String[] args) {
 		
 		DVDPlayer d = new DVDPlayer();
 		d.canRecord = true;
@@ -347,7 +353,8 @@ public class DVDPlayerTestDrive {
 public class Dog {
 	String name;
 	public static void main(String[] args) { 
-		// Dog 객체를 만들고 접근
+		
+                // Dog 객체를 만들고 접근
 		Dog dog1 = new Dog();
 		dog1.bark();
 		dog1.name = "Bart";
@@ -440,8 +447,7 @@ public class BooksTestDrive {
 
 public class Hobbits {
 	
-	String name;
-	
+        String name;
 	public static void main(String[] args) {
 		
 		Hobbits[] h = new Hobbits[3];
