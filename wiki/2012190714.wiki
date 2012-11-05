@@ -8,7 +8,6 @@
 
 {{{
 
-
 /* 컴파일 시 마지막에 
 1 bottles of beer on the wall
 1 bottle of beer on the wall
@@ -59,6 +58,7 @@ no more bottles of beer on the wall
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+
 //자동구문 생성기 - 내가 사는 곳
 
 public class PhraseOMatic {
@@ -88,17 +88,18 @@ public class PhraseOMatic {
 
 }
 
-
 }}}
 
 *52p 집중토론* _요약_
 
  * 자바 가상 머신: 프로그램을 실행, 바이트코드가 만들어진 다음 바이트코드가 실행되기 전까지 외부의 접근을 확인하는 작업 수행.
+ 
  * 컴파일러: 자바 언어를 해석, 동적 바인딩 지원, 실행 시 오류 막아줌, 클래스 및 메소드의 보안 담당. 
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
 //A.
 public class Exercise1b {
 	public static void main(String[] args) {
@@ -152,20 +153,25 @@ public class Exercise1b {
 *68p~ 클래스* _요약_
 
  * 인스턴스 변수: 객체에서 대해 아는 것(객체의 데이터 혹은 상태)
+ 
  * 메소드: 객체에서 할 수 있는 일
+
  * 클래스: 가상머신에 그 유형의 객체를 만드는 방법을 알려주는 역할
+
  * 테스트용 클래스: 새로운 클래스 유형의 객체에 들어이쓴 메소드와 변수를 테스트하는 역할, main() 메소드를 포함하며 그 main() 메소드에서 테스트할 클래스 유형의 객체를 만들어서 접근
  
 
 *68p Television* _채워넣기_
 
  * 인스턴스 변수: volume, channel
+
  * 메소드: volumeUp(), volumeDown(), channelUp(), channerDown()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
 package GuessGame;
 
 public class GuessGame {
@@ -273,8 +279,8 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-//A
 
+//A.
 public class TapeDeck{
 	
         boolean canRecord = false;
@@ -303,8 +309,7 @@ public class TapeDeckTestDrive {
 }
 
 
-//B
-
+//B.
 public class DVDPlayer {
 	
 	boolean canRecord = false;
@@ -332,7 +337,6 @@ public class DVDPlayerTestDrive {
 	}
 
 }
-
 
 }}}
 
@@ -404,6 +408,7 @@ public class Dog {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
 //A.
 
 package Books;
@@ -443,8 +448,6 @@ public class BooksTestDrive {
 
 
 //B.
-
-
 public class Hobbits {
 	
         String name;
@@ -479,26 +482,68 @@ public class Hobbits {
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트의 방식으로 메소드를 만들면 10개의 객체가 아닌 마지막으로 만든 객체 하나만 사용할 수 있다. 
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+ * 캡슐화: 인스턴스 변수를 부적절한 값으로 설정하지 못하게 막기 위해 인스턴스 변수를 private로 지정하고 접근 제어를 위해 게터와 세터를 public으로 지정
+ 
+ * 게터와 세터: 인스턴스 변수의 값에 대해 가져오기로 되어있는 값을 리턴값 형태로 받아오는 것을 게터, 설정한 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도로 쓰이는 것이 세터라 함
+
+ * 인스턴스 변수 vs 지역 변수: 인스턴스 변수는 클래스 내에서 선언되고, 지역 변수는 메소드 내에서 선언됨(지역 변수는 항상 초기화 필요)
  
 *107p Dog* _실행_
 
 {{{
+
+package Dog;
+
+public class Dog {
+	
+	int size;
+	String name;
+	
+	void bark(){
+		if(size>60){
+			System.out.println("Wooof! Wooof");
+		}else if(size>14){
+			System.out.println("Ruff! Ruff!");
+		}else{
+			System.out.println("Yip! Yip!");
+		}
+	}
+
+}
+
+public class DogTestDrive {
+	
+	public static void main(String[] args) {
+		
+		Dog one = new Dog();
+		one.size = 70;
+		Dog two = new Dog();
+		two.size = 8;
+		Dog three = new Dog();
+		three.size = 35;
+		
+		one.bark();
+		two.bark();
+		three.bark();
+
+	}
+
+}
 
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
