@@ -1113,12 +1113,12 @@ class Dragon extends Monster {
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 객체와 함께 힙에 있으며, 도중에 초기화 되거나 강제로 제거되지 않는다면 객체가 사라질 때 같이 사라진다. 
+ * 지역 변수: 메소드 안에 존재하며, 전산 순서에 따라 스택에 쌓이며 순차적으로 사라진다.
 
 *302p 5분 미스터리* _구현후 주석달기_
 
-{{{
+{{{ 
 
 }}}
 
@@ -1136,7 +1136,57 @@ class Dragon extends Monster {
 *339p Calendar* _구현후 주석달기_
 
 {{{
+package fiveminMystery;
 
+import java.util.*;
+
+class V2Radiator {
+	V2Radiator (ArrayList list) {
+		for(int x=0; x<5; x++) {
+			list.add(new SimUnit ("V2Radiator"));
+		}
+	}
+}
+
+class V3Radiator extends V2Radiator {
+	V3Radiator (ArrayList lglist) {
+		super(lglist);
+		for(int g=0; g<10; g++) {
+			lglist.add(new SimUnit("V3Radiator"));
+		}
+	}
+}
+
+class RetentionBot {
+	RetentionBot (ArrayList rlist) {
+		rlist.add(new SimUnit("Retention"));
+	}
+}
+
+public class TestLifeSupportSim {
+	public static void main(String[] args) {
+		ArrayList aList = new ArrayList();
+		V2Radiator v2 = new V2Radiator(aList);
+		V3Radiator v3 = new V3Radiator(aList);
+		for(int z=0; z<20; z++) {
+			RetentionBot ret = new RetentionBot(aList);
+		}
+	}
+}
+
+class SimUnit {
+	String botType;
+	SimUnit(String type) {
+		botType = type;
+	}
+	int powerUse() {
+		if("Retention".equals(botType)) {
+			return 2;
+		} else {
+			return 4;
+		}
+	}
+}
 }}}
 
 *342p 집중토론* _요약_
