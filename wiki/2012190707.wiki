@@ -464,6 +464,34 @@ class DogTestDrive
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Clock
+{
+	String time;
+
+	void setTime(String t)
+	{
+		time = t;
+	}
+
+	String getTime() //리턴값이 있으므로 String 이어야 한다.
+	{
+		return time;
+	}
+}
+
+class ClockTestDrive
+{
+	public static void main(String[] args) 
+	{
+		Clock c = new Clock();
+
+		c.setTime("1245");
+
+	String tod = c.getTime();
+	System.out.println("time: " + tod);
+	}
+}
+
 
 }}}
 
