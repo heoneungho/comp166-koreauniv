@@ -1131,9 +1131,9 @@ class V2Radiator {
 	}
 }
 
-class V3Radiator extends V2Radiator {
+class V3Radiator /*extends V2Radiator*/ {
 	V3Radiator (ArrayList lglist) {
-		super(lglist);
+		// super(lglist);
 		for(int g=0; g<10; g++) {
 			lglist.add(new SimUnit("V3Radiator"));
 		}
@@ -1173,7 +1173,10 @@ class SimUnit {
 	}
 }
 
-// 결과적으로 aList에 V2R이 5개, V2R이 5개, V3R이 10개, Retention이 10개 쌓입니다. (5+5+10)*4 + 10*2 = 120의 에너지를 소모하게 된 것입니다. 고로 V3Radiator가 상V2Radiator를 상속한데에서 온 문제입니다. 상속받지 않으면 사라가 의도한대로 코딩을 할 수 있습니다. 
+// 결과적으로 aList에 V2R이 5개, V2R이 5개, V3R이 10개, Retention이 10개 쌓입니다. 
+// (5+5+10)*4 + 10*2 = 120의 에너지를 소모하게 된 것입니다. 
+// 고로 V3Radiator가 상V2Radiator를 상속한데에서 온 문제입니다. 
+// 상속받지 않으면 사라가 의도한대로 코딩을 할 수 있습니다. 
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
