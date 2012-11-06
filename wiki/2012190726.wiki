@@ -510,6 +510,59 @@ public class DogTestDrive {
 
 {{{
 
+  A
+
+public class XCopy {
+	
+	public static void main(String[] args) {
+		
+		int orig = 42;
+		
+		XCopy x = new XCopy(); // XCopy의 객체 x 생성
+		
+		int y = x.go(orig); // y 값에 orig 값(42)을 go 메소드에 넣어 얻은 값을 넣음
+		
+		System.out.println(orig + " " + y);
+	}
+	
+	int go(int arg) { // go 메소드
+		
+		arg = arg * 2;
+		
+		return arg; // arg 값을 메인 메소드의 x.go(orig) 반환한다.로
+	}
+} // 출력값 : 42 84
+
+
+  B
+
+package compiler2;
+
+public class Clock {
+	String time;
+	
+	void setTime(String t){
+		time = t;
+	}
+	
+	String getTime(){  //void를 사용할 경우 return값을 설정할 수 없기 때문에 time의 변수형인 String으로 설정해야 한다.
+		return time;
+	}
+}
+
+package compiler2;
+
+public class ClockTestDrive {
+	public static void main(String[] args) {
+		
+		Clock c = new Clock();
+		
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("time:" + tod);
+	}
+} // 출력값 1245
+
 }}}
 
 
