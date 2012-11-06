@@ -1321,12 +1321,74 @@ public class StaticTests extends StaticSuper {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public void takeRisk() throws BadException{
+		//예측하지 못한 상황 발생한 경우
+		if(abandonAllHope){
+			//예외처리 생성
+			throw new BadException();
+		}
+	}
+	
+	public void crossFingers(){
+		//실행해보고
+		try{
+			anObject.takeRisk();
+		}//예외가 발생한 경우 출력
+		catch(BadException ex){
+			System.out.println("Aaargh!");
+			//해결할수 없으면 추적이라도 가능하도록
+			ex.printStackTrace();
+		}
+	}
 
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+//미디어 패키지를 불러옴
+import javax.sound.midi.*;
+
+public class MiniminiMusicApp {
+	
+	public static void main(String [] args){
+		MiniminiMusicApp mini = new MiniminiMusicApp();
+		mini.play();
+	}
+	
+	public void play(){
+		
+		try{
+			//시퀀스를 받아와서 염
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();
+			
+			//생성자 초기화
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			
+			//트랙 요청
+			Track track = seq.createTrack();
+			
+			//트랙에 MidiEvent를 집어넣음
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144,1,44,100);
+			MidiEvent noteOn = new MidiEvent(a,1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128,1,44,100);
+			MidiEvent noteOff = new MidiEvent(b,16);
+			track.add(noteOff);
+			
+			//sequencer에 sequence를 보낸다.
+			player.setSequence(seq);
+			//스타트 메소드 호출
+			player.start();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+}
 
 }}}
 
