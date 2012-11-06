@@ -1646,6 +1646,83 @@ public class Dragon extends Monster{
 
 {{{
 
+import java.util.*;
+
+class V2Radiator {
+
+	V2Radiator(ArrayList list){
+		for(int x=0;x<5;x++){
+			list.add(new SimUnit("V2Radiator"));
+			}
+	
+	}
+	
+}
+
+import java.util.ArrayList;
+
+
+class V3Radiator extends V2Radiator {
+	
+	V3Radiator(ArrayList lglist){
+		
+		 super(lglist); // 이부분이 필요 없음
+		
+		for(int g=0;g<10;g++){
+			lglist.add(new SimUnit("V3Radiator"));
+		}
+	}
+
+}
+
+import java.util.ArrayList;
+
+
+class RetentionBot {
+
+	RetentionBot(ArrayList rlist){
+		rlist.add(new SimUnit("Retention"));
+	}
+	
+}
+
+import java.util.ArrayList;
+
+
+public class TestLifeSupportSim {
+
+	public static void main(String[] args){
+		ArrayList aList = new ArrayList();
+		V2Radiator v2 = new V2Radiator(aList);
+		V3Radiator v3 = new V3Radiator(aList);
+		for(int z=0;z<20;z++){
+			RetentionBot ret = new RetentionBot(aList);
+		}
+		
+		
+		
+	}
+	
+}
+
+
+class SimUnit {
+
+	String botType;
+	SimUnit(String type){
+		botType = type;
+	}
+	int powerUse(){
+		if("Retention".equals(botType))
+			return 2;
+		else
+			return 4;
+	}
+	
+}
+
+
+
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
