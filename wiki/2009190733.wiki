@@ -1240,13 +1240,42 @@ class SimUnit{
 *339p Calendar* _구현후 주석달기_
 
 {{{
+//추후 사용할 클래스에 대한 라이브러이 임포트
+import java.util.*;
+import static java.lang.System.out;
+
+public class FullMoons {
+
+		//DAY를 상수값으로 고정
+		static int DYA_IM = 1000*60*60*24;
+		
+		public static void main(String[] args){
+			//캘린더 클래스로부터 인스턴스 얻음
+			Calendar c = Calendar.getInstance();
+			
+			//c인스턴스에 변수값 설정
+			c.set(2004,0,7,15,40);
+			
+			//경과한 날짜와 시각을 밀리초 단위로 표현
+			long day1 = c.getTimeInMillis();
+			
+			//월단위 체크
+			for(int x =0; x<60; x++){
+				day1 += (DYA_IM*29.52);
+				//밀리단위로 날짜를 day1으로 고정
+				c.setTimeInMillis(day1);
+				out.println(String.format("full moon on %tc", c));
+			}
+		}
+}
+
 
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 인스턴스마다 하나씩 있는 변수
+ * 정적 변수: 클래스마다 하나씩 있는 변수, 클래스 안에서 모든 인스턴스에 의해 공유됨
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
