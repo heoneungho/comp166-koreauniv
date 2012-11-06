@@ -1159,31 +1159,67 @@ import java.util.ArrayList;
 import java.util.*;
 
 class V2Radiator{
+		
+		//V2 생성자 
+        V2Radiator(ArrayList list){
+                for(int x=0; x<5; x++){
+                		//리스트에 인덱스 추가
+                        list.add(new SimUnit("V2Radiator"));
+                }
+        }
+}
+
+class V3Radiator extends V2Radiator{
+        
+		//V3생성자
+        V3Radiator(ArrayList lglist){
+        		//상속받은 객체 먼저 초기화
+                super(lglist);
+                for(int x=0; x<5; x++){
+                	lglist.add(new SimUnit("V2Radiator"));
+                }
+        }
+}
+
+class RetentionBot{
 	
-	V2Radiator(ArrayList list){
-		for(int x=0; x<5; x++){
-			list.add(new SimUnit("V2Radiator"));
-		}
+	//RetentionBot 생성자 초기화
+	RetentionBot(ArrayList rlist){
+		//리스트에 인덱스 추가
+		rlist.add(new SimUnit("Retention"));
 	}
 }
 
-class V3Radiator{
-	
-	V3Radiator(ArrayList lglist){
-		super(lglist);
-		for(int x=0; x<5; x++){
-			list.add(new SimUnit("V2Radiator"));
-		}
-	}
-}
-
+//테스트 클래스 정의
 public class TestLifeSupportSim {
-	public static void main(String [] args){
-		ArrayList aList = new ArrayList();
-		V2Radiator v2 = new V2Radiator(aList);
-		V3Radiator v3 = new V3Radiator(aList);
-		for(int z = 0; z<20; z++){
-			RetentionBot ret = new RetentionBot(aList);
+        public static void main(String [] args){
+        	
+        		//배열생성
+                ArrayList aList = new ArrayList();
+                //객체 생성하고 생성자 초기화 작업함
+                V2Radiator v2 = new V2Radiator(aList);
+                V3Radiator v3 = new V3Radiator(aList);
+                
+                //RetentionBot 생성하고 리스트 만듬
+                for(int z = 0; z<20; z++){
+                        RetentionBot ret = new RetentionBot(aList);
+                }
+        }
+}
+
+class SimUnit{
+	String botType;
+	//전달받은 인자 비교하기 위해서
+	SimUnit(String type){
+		botType = type;
+	}
+	
+	int powerUse(){
+		//Retention 문자열을 입력받은경우
+		if("Retention".equals(botType)){
+			return 2;
+		}else{
+			return 4;
 		}
 	}
 }
@@ -1194,12 +1230,12 @@ public class TestLifeSupportSim {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 클래스의 인스턴스없이 메소드를 실행할 수 있음
+ * 정적 메소드를 선언하는 방법: static이라는 키워드 사용
+ * static final: 이렇게 선언된 변수는 상수이다.
+ * 널 레퍼런스: 해당 레퍼런스가 가리키고 있는것이 없다는 것을 의미
+ * 오토 박싱: 원시값과 래퍼 객체 사이의 변환을 자동으로 해줌
+ * 정적 임포트: static을 활용하여 임포트 시키는 방법
 
 *339p Calendar* _구현후 주석달기_
 
