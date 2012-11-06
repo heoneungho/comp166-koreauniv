@@ -1280,6 +1280,39 @@ public class FullMoons {
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{
+	
+	//정적변수 초기화
+	static{
+		System.out.println("super static block");
+	}
+	//생성자 초기화
+	StaticSuper(){
+		System.out.println("super constructor");
+	}
+}
+
+
+public class StaticTests extends StaticSuper {
+
+	static int rand;
+	
+	static{
+		rand = (int)(Math.random()*6);
+		System.out.println("static block"+rand);
+	}
+	//생성자 초기화
+	StaticTests(){
+		System.out.println("constructor");
+	}
+	
+	public static void main(String [] args){
+		//메인 확인문 출력
+		System.out.println("in Main");
+		//인스턴스 생성 및 생성자 초기화
+		StaticTests st = new StaticTests();
+	}
+}
 
 }}}
 
