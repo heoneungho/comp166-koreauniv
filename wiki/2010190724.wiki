@@ -31,6 +31,7 @@ public class BeerSong{
 }
 }}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
+{{{
  public class PhraseOMatic{
  public static void main(String[] args){
 
@@ -51,7 +52,7 @@ public class BeerSong{
   System.out.println("What we need is a " + phrase);
 }
 }
-
+}}}
 *52p 집중토론* _요약_
 
  * 자바 가상 머신: 프로그램을 실행시켜준다. 변수에 틀린 유형의 값이 들어가면 ClassCast Exception을 발생시킨다. 보안 관련 작업. 바이트코드가 만들어진 다음 바이트 코드가 실행되기 전까지 다른 누군가가 그것을 건드리지 않았는지 확인.
@@ -61,7 +62,7 @@ public class BeerSong{
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 A문제 
-
+{{{
 /*x가 1로 고정인 상태여서 while문의 조건은 충족시켜 while문 밖으로 나오지 않는다. 그리고 while문 속 if문의 조건에는 해당되지 않아 while문에서 아무 결과를 보이지 않으며 무한적으로 돈다. 그러므로 while문에 x를 1씩 증가시키는 것을 추가하여 while문 밖으로 나올 수 있게 한다.*/
 
 class Exercise1b{
@@ -74,9 +75,9 @@ class Exercise1b{
   x++;
  }
 }
-
+}}}
 B문제 
-
+{{{
 /*메소드는 있는데 클래스가 없어서 문제다. 그러니 클래스를 만들면 된다.*/
 
 class Peace{
@@ -90,9 +91,9 @@ public static void main(String[] args){
  }
 }
 }
- 
+ }}}
 C문제
-
+{{{
 /* 메소드가 없다. 적어도 행동을 하는 while문은 메소드 안에 있어야 한다. */
 
 class Exercise1b{
@@ -107,7 +108,7 @@ public static void main(String[] args){
  }
 }
 }
-
+}}}
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
 *68p~ 클래스* _요약_
