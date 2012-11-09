@@ -1071,12 +1071,63 @@ return alphaCells;
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속:  상위클래스로부터 공통적인 코드를 하위클래스에서 상속받아 사용하는것이다. 코드가 중복되는 것을 막을수 있고 일련의 클래스를 위한 공통적인 규약을 정의할수 있다.
+ * 다형성:  레퍼런스 변수 유형으로 선언한 유형을 확장하는 모든 것을 그 레퍼런스 변수에 대입하는 등의 일을 하는것
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+
+class Animal	{
+
+int picture, food, hunger, boundaries, location;
+
+void makeNoise() {};
+void eat() {};
+void sleep() {};
+void roam() {};
+
+
+
+class Feline extends Animal	{
+void roam() {};
+}
+
+class Hippo extends Animal{
+void makeNoise() {};
+void eat() {};
+}
+
+class Canine extends Animal{
+void roam() {};
+}
+
+class Lion extends Feline{
+void makeNoise(){};
+void eat(){};
+}
+
+class Tiger extends Feline{
+void makeNoise(){};
+void eat(){};
+}
+
+class Cat extends Feline{
+void makeNoise(){};
+void eat(){};
+}
+
+class Wolf extends Canline{
+void makeNoise(){};
+void eat(){};
+}
+
+class Dog extends Canline{
+void makeNoise(){};
+void eat(){};
+}
+
+}
 
 }}}
  
