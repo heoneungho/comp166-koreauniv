@@ -102,72 +102,199 @@ class VAttack {
 }}}
 
 
-지금 대충 틀을 잡아보는...중?
+지금까지 만든거 11/09
 
 {{{
 
-import java.util.Scanner; 
-class dragon { 
-	public static void main(String[] args) { 
-	int a=0;
-	boolean x = true;
-	String draw = "아무일도 일어나지 않았다."; 
-	String win = "당신이 이겼습니다."; 
-	String lose = "컴퓨터가 이겼습니다.";
-	int charge = 0; //기모은횟수
+
+//컴퓨터와 플레이어의 내용을 포함하고있는 상위클래스
+
+class PLAYER
+{
+	int turn=1;
+	int charge=0 ;
+	boolean A=false;
+	boolean energy=false;
+	
+
 		
-	String[] my = {"기모으기","공격","방어"};              
-	Scanner me = new Scanner(System.in);
-	   
-	while(true)
-	{    	 
-		
-	while(x)
+		public void Charging()
 	{
-	System.out.println("기모으기 = 0, 공격 = 1, 방어 = 2");
-	a = me.nextInt();
-	if (charge==0 && a==1)
-		System.out.println("공격할 에너지가 부족합니다.");
-	else
-		x = false;
+		charge++;
+		System.out.println("기를 모읍니다. 현재 기모은양: " + charge);
+		turn++;
 	}
-		
-	if (a==0)
-		charge++; //기를모음
+
+	public void Attacking()
+	{
+		while(!energy)
+		{
+			if (charge>=1)
+			{
+				System.out.println("공격합니다. 현재 기모은양: " +charge);
+				charge--;
+				turn++;
+				energy = true;
+			}
+			else
+			{
+				System.out.println("에너지가 부족합니다");
+			}
+		}
+		energy = false;
+	}
+			
+	public void Defensing()
+	{
+		System.out.println("방어합니다. 현재 기모은양: " +charge);
+		turn++;
+	}
 	
-	if (a==1)
-		charge--;//공격하면 기를 소모
-	
+	public int doAction (int Choice)
+	{
+		switch (Choice)
+		{
+			case 0:
+				Charging();
+				return ++turn;
 		
-    if(a>=0||a<3)
-    { 
-          System.out.println("당신은 " + my[a] + "을 하셨습니다.");
-    }
-    else
-    { 
-          System.out.println("0,1,2중 하나만 선택하시길 바랍니다."); 
-    } 
-    //컴퓨터가 선택
-    int co=(int)(Math.random()*3); // *3에 +1을 해야만 1~3이 나옵니다. 
-    System.out.println("컴퓨터는 " + my[co] + "을 했다.");        
-	  
-       if (a == 2 || co ==2 || a==co)
-    	   System.out.println(draw);
-       else if (a==1 && co==0)
-       {
-    	   System.out.println(win);
-    	   break;
-       }
-   	   else if(a==0 && co==1)
-   	   {
-    	   System.out.println(lose);
-    	   break;
-       
-       }
-       x = true;
- 	}
+			case 1:
+				Attacking();
+				return ++turn;
+
+			case 2:
+				Defensing();
+				return ++turn;					
+
+			default:
+				return ++turn;
+		}
 	}
 }
+
+
+//플레이어를 설정해주는 클래스
+
+
+import java.util.Scanner; 
+
+class USER extends PLAYER
+{
+	//글로벌 변수
+	int USERChoice = -1; //0=기모으기, 1=공격, 2=방어
+	Scanner me;
+	
+	
+	//컨스트럭터
+	public USER() {
+		
+		me=  new Scanner(System.in);
+	}
+
+	public int USERAction ()
+	{
+		System.out.println("0 : 기모으기, 1 : 공격, 2 : 방어 ");
+		USERChoice = me.nextInt();
+		
+		return doAction(USERChoice); //defined in PLAYER
+	}
+}
+
+
+//컴퓨터를 조작해주는 클래스
+
+
+class CPU extends PLAYER
+{
+	int CPUChoice = -1; //0=기모으기, 1=공격, 2=방어
+    String [] CPUA = {"기모으기","공격","방어"};           
+
+	public int CPUAction()
+	{
+			if (turn==1)
+			{
+				Charging();
+				return ++turn;
+			}
+			else
+			{
+				CPUChoice = (int)(Math.random()*3);
+				System.out.println("컴퓨터가 " + CPUA[CPUChoice]+ "을(를) 한다.");
+
+				return doAction(CPUChoice); //defined in PLAYER					
+			}
+		
+	}
+}
+
+//상태를 지정해주는 클래스
+
+
+class STATE
+{
+	USER A = new USER();
+	CPU B = new CPU();
+
+	String draw; 
+	String win; 
+	String lose;
+
+	public STATE() {
+		A = new USER();
+		B = new CPU();
+
+		draw = "아무일도 일어나지 않았습니다."; 
+		win = "당신이 이겼습니다."; 
+		lose = "컴퓨터가 이겼습니다.";
+	}
+	
+	public void method ()
+	{
+		for (;A.turn<10000;)
+		{
+			if(A.USERAction()==B.CPUAction())
+			{				
+				if(A.USERChoice == B.CPUChoice)
+					System.out.print(draw);
+				else if(A.USERChoice==2)
+					System.out.println(draw);
+				else if(B.CPUChoice==2)
+					System.out.println(draw);
+				else if(A.USERChoice==0 && B.CPUChoice==1)
+				{
+					System.out.println(lose);
+					break;
+				}
+				else if(A.USERChoice==1 && B.CPUChoice==0)
+				{
+					System.out.println(win);
+					break;
+				}
+			}
+			else
+			{
+				System.out.println("ERROR");
+				break;
+			}
+			
+		}
+	}
+	
+}
+
+
+
+//메인메소드가 있는 드라이버클래스
+
+
+public class DRIVER {
+
+	public static void main(String[] args) {
+		(new STATE()).method();
+	}
+}
+
+
 
 
 }}}
