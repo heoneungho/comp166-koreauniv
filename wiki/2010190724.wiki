@@ -62,7 +62,7 @@ public class BeerSong{
 
 A문제 
 
-//x가 1로 고정인 상태여서 while문의 조건은 충족시켜 while문 밖으로 나오지 않는다. 그리고 while문 속 if문의 조건에는 해당되지 않아 while문에서 아무 결과를 보이지 않으며 무한적으로 돈다. 그러므로 while문에 x를 1씩 증가시키는 것을 추가하여 while문 밖으로 나올 수 있게 한다.
+/*x가 1로 고정인 상태여서 while문의 조건은 충족시켜 while문 밖으로 나오지 않는다. 그리고 while문 속 if문의 조건에는 해당되지 않아 while문에서 아무 결과를 보이지 않으며 무한적으로 돈다. 그러므로 while문에 x를 1씩 증가시키는 것을 추가하여 while문 밖으로 나올 수 있게 한다.*/
 
 class Exercise1b{
  public static void main(String [] args){
@@ -75,6 +75,38 @@ class Exercise1b{
  }
 }
 
+B문제 
+
+/*메소드는 있는데 클래스가 없어서 문제다. 그러니 클래스를 만들면 된다.*/
+
+class Peace{
+public static void main(String[] args){
+ int x = 5;
+ while(x>1){
+  x--;
+  if(x<3){
+	System.out.println("small x");
+  }
+ }
+}
+}
+ 
+C문제
+
+/* 메소드가 없다. 적어도 행동을 하는 while문은 메소드 안에 있어야 한다. */
+
+class Exercise1b{
+
+public static void main(String[] args){
+ int x = 5;
+ while(x>1){
+	x--;
+	if(x<3){
+	 System.out.println("small x");
+   	}
+ }
+}
+}
 
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
