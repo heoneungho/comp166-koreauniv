@@ -994,6 +994,22 @@ class Dragon extends Monster{//int형 변수를 받아 boolean값을 리턴한�
 
 {{{
 
+import javax.swing.*;
+
+public class SimpleGuil {
+	public static void main(String[] args){
+		JFrame frame =new JFrame();//프레임 생성
+		JButton button =new JButton("click me");//버튼 생성 및 버튼 생성자에 버튼에 표시할 텍스트 전달
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//창을 닫았을 때 프로그램이 종료 된다
+		frame.getContentPane().add(button);//버튼을 프레임 내용틀에 추가
+		frame.setSize(300,300);
+		frame.setVisible(true);
+		
+	}
+
+}
+
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
