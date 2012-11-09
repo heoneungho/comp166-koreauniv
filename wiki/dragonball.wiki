@@ -173,6 +173,10 @@ class PLAYER
 }
 
 
+}}}
+
+{{{
+
 //플레이어를 설정해주는 클래스
 
 
@@ -201,6 +205,11 @@ class USER extends PLAYER
 }
 
 
+}}}
+
+{{{
+
+
 //컴퓨터를 조작해주는 클래스
 
 
@@ -226,6 +235,11 @@ class CPU extends PLAYER
 		
 	}
 }
+
+
+}}}
+
+{{{
 
 //상태를 지정해주는 클래스
 
@@ -283,6 +297,11 @@ class STATE
 }
 
 
+}}}
+
+{{{
+
+
 
 //메인메소드가 있는 드라이버클래스
 
@@ -293,7 +312,6 @@ public class DRIVER {
 		(new STATE()).method();
 	}
 }
-
 
 
 
