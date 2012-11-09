@@ -1825,6 +1825,21 @@ public class StaticTests extends StaticSuper{
 
 {{{
 
+public void takeRisk() throws BadException { // 예외 선언
+     if (abandonAllHope){
+           throw new BadEXception(); // 새로운 Exception 객체를 만들고 던짐
+    }
+}
+
+public void crossFingers(){
+     try{
+               anObject.takeRisk();
+     } catch (BadException ex){
+        System.out.println("Aaargh!");
+        ex.printStackTrace();
+     }
+}
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
