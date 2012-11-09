@@ -491,14 +491,14 @@ class Dog { //size가 다른 개는 짖는 소리도 다르당께
 class DogTestDrive{ //Test를 해보자!
 
         public static void main(String[]args){
-                // Dog 객체들을 생성합니다.
+
                 Dog one=new Dog();
                 one.size=70;
                 Dog two=new Dog();
                 two.size=8;
                 Dog three=new Dog();
                 three.size=35;
-                // 동일한 메소드로 서로 다른 결과가 나오는 것을 확인합니다.
+
                 one.bark();
                 two.bark();
                 three.bark();
@@ -510,6 +510,51 @@ class DogTestDrive{ //Test를 해보자!
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+A:
+
+class XCopy {
+
+        public static void main(String[] args) {
+                int orig = 42;
+                XCopy x = new XCopy(); // XCopy x 생성
+                int y = x.go(orig); 
+                System.out.println(orig + " " + y); // orig와 y를 출력
+        }
+
+        int go(int arg){ //orig의 값은 바뀌지 않는다.
+                arg = arg * 2;
+                return arg;
+        }
+}
+
+
+B:
+
+// 게터와 세터를 이용하여 캡슐화한 코드
+class Clock{
+        String time;
+
+        void setTime(String t){
+                time = t;
+        }
+
+        String getTime(){ //리턴 타입 설정
+                return time;
+        }
+}
+
+class ClockTestDrive {
+
+        public static void main(String [] args) {
+
+                Clock c = new Clock();
+
+                c.setTime("1245");
+                String tod = c.getTime();
+                System.out.println("time: " + tod);
+        }
+}
 
 }}}
 
