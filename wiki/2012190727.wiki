@@ -592,7 +592,19 @@ class Dragon extends Monster {
 
 {{{
 
+import javax.sound.midi.*;
 
+public class MiniMiniMusicApp {
+
+     public static void main (Strin[] args) {
+          MiniMiniMusicApp mini = new MiniMiniMusicApp();
+          mini.play() {
+
+     public void play() {
+
+          try {
+          
+               Sequencer player = MidiSystem
 
 }}}
 
