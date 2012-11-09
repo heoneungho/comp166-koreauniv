@@ -829,7 +829,7 @@ public class SimpleDotComTestDrive { //Test용 class 지정
 
 ex) 상위클래스 = shape / 하위클래스 = square, circle, triangle, amoeba
 
- * 다형성: 
+ * 다형성: 레퍼런스 변수 유형으로 선언한 유형을 확장하는 모든 것을 그 레퍼런스 변수에 대입하는 등의 일을 하는 것을 말한다.
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
