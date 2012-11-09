@@ -721,7 +721,7 @@ public class SimpleGui1 {
 
                 frame.setSize(300,300); //300x300크기의 프레임입니다.
 
-                frame.setVisible(true); 화면에 보이도록 합니다.
+                frame.setVisible(true); //화면에 보이도록 합니다.
         }
 }
 
