@@ -994,6 +994,14 @@ class Dragon extends Monster{//int형 변수를 받아 boolean값을 리턴한�
 
 {{{
 
+}}}
+
+= 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
+
+*389p~ 첫번째 GUI:버튼* _구현후 주석달기_
+
+{{{
+
 import javax.swing.*;
 
 public class SimpleGuil {
@@ -1009,14 +1017,6 @@ public class SimpleGuil {
 	}
 
 }
-
-}}}
-
-= 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
-
-*389p~ 첫번째 GUI:버튼* _구현후 주석달기_
-
-{{{
 
 }}}
 
