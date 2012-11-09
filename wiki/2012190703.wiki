@@ -597,6 +597,68 @@ System.out.println(result);
 
 {{{
 
+class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise(){}
+        void eat(){}
+        void sleep(){}
+        void roam(){}
+        
+}
+
+
+
+class Feline extends Animal{
+        void roam(){}
+}
+
+
+class Lion extends Feline{
+        void makeNoise(){}
+        void eat{}
+}
+
+
+class Tiger extends Feline{
+        void makeNoise(){}
+        void eat{}
+}
+
+
+class Cat extends Feline{
+        void makeNoise(){}
+        void eat{}
+}
+
+
+class Hippo extends Animal{
+        void makeNoise(){}
+        void eat(){}
+}
+
+
+class Canine extends Animal{
+        void roam(){}
+}
+
+
+class Wolf extends Canine{
+        void makeNoise(){}
+        void eat(){}
+}
+
+
+class Dog extends Canine{
+        void makeNoise(){}
+        void eat(){}
+}
+
+
 
 
 
