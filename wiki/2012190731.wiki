@@ -1193,15 +1193,43 @@ class SimUnit {
 *339p Calendar* _구현후 주석달기_
 
 {{{
+package calendar;
 
+import java.util.*;
 
-
+public class CalendarUsage {
+	public static void main(String[] args) {
+		Calendar c = Calendar.getInstance();
+		
+		c.set(1992,4,27,18,15);
+		// 1992년 5월 27일 18시 15분
+		long day1 = c.getTimeInMillis();
+		// 1970년 1월 1일부터 경과한 시간을 밀리초 단위로 표현.
+		day1 += 1000 * 60 * 60;
+		// 밀리초단위로 한시간을 나타냅니다.
+		c.setTimeInMillis(day1);
+		// 한시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+		System.out.println("새 시간 " + c.get(c.HOUR_OF_DAY));
+		c.add(c.DATE, 35);
+		// 35일을 더합니다.
+		System.out.println("35일 후 " + c.getTime());
+		// 35일 후 결과값 출력.
+		c.roll(c.DATE, 35);
+		// 35일을 더하되, 달은 변경하지 않습니다.
+		System.out.println("35일을 굴리면 " + c.getTime());
+		// 35일 굴리고 결과값 출력.
+		c.set(c.DATE, 1);
+		// 날짜를 1로 설정.
+		System.out.println("1일로 설정 " + c.getTime());
+		 // 날짜를 1로 설정하고 결과값 출력.
+	}
+}
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 정적변수는 절차위주의 프로그래밍 썼던 비효율적인 변수 할당 방법이므로 바람직하지 않다. 
+ * 정적 변수: 하지만 정적변수는 이미 자바 환경 자체에 녹아들어가 있고 때에 따라서는 정적 변수를 쓰는 것이 편리할 때도 있으므로 정적변수를 매도해서만은 안된다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
