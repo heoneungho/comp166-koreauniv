@@ -798,6 +798,33 @@ public class DotCom {
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.event.*;     //ActionListener와 ActionEvent가 들어있는 패키지를 사용하기 위한 import선언
+
+public class SimpleGui1B implements ActionListener {     //인터페이스 구현
+	JButton button;
+
+	public static void main (String[] args) {
+		SimpleGui1B gui = new SimpleGui1B();
+		gui.go();
+	}
+
+	public void go() {
+		JFrame frame = new JFrame();
+		button = new JButton("Click me");
+
+		button.addActionListener(this);     //버튼에 등록 
+
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent event) {     //ActionListener인터페이스의 actionPerformed()메소드를 구현
+		button.setText("I've been clicked!");     //이벤트가 일어났다는 것을 알려줌.
+	}
+}
 
 }}}
 
