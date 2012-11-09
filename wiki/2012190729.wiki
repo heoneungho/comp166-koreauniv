@@ -639,7 +639,34 @@ class ClockTestDrive {
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.event.*; //ActionListener와 ActionEvent를 포함하는 import 선언
 
+public class SimpleGuilB implements ActionListener {   // 인스턴스 ActionListener를 SimpleGuilB에 사용
+	JButton button;
+	
+	public static void main (String[] args) {
+		SimpleGuilB gui = new SimpleGuilB();
+		gui.go();
+	}
+
+	public void go() {
+		JFrame frame = new JFrame ();
+		button = new JButton("click me");
+
+		button.addActionListener(this); // 버튼에 등록,  리스너 목록에 포함 시킴
+	
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	
+	}
+
+	public void actionPerformed(ActionEvent event) {
+		button.setText("I've been clicked!"); // 버튼에서 메소드 호출 이벤트가 일어났다는 것을 알려줌
+	}
+}
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
