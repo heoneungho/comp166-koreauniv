@@ -1024,6 +1024,37 @@ class SimUnit {
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class StaticTests extends StaticSuper{
+	static int rand;
+	
+	static{
+		rand = (int) (Math.random()*6);
+		System.out.println("static block" + rand);
+	}
+	StaticTests() {
+		System.out.println("constructor");
+	}
+	public static void main(String [] args) {
+		System.out.println("in main");
+		StaticTests st = new StaticTests();
+	}
+}
+class StaticSuper {
+	static{
+		System.out.println("super static block");
+	}
+	StaticSuper(){
+		System.out.println(
+				"super constructor");
+	}
+}
+
+<결과 화면>
+super static block
+static block0
+in main
+super constructor
+constructor
 
 }}}
 
