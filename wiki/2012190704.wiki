@@ -792,6 +792,24 @@ public class DotCom {
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+import javax.swing.*;	
+
+public class SimpleGui1 {
+	public static void main(String[] args) {
+		
+		JFrame frame = new JFrame();     //프레임 생성
+		JButton button = new JButton("click me");     'click me'라고 표시된 버튼 생성
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //창을 닫으면 프로그램이 바로 종료
+
+	
+		frame.getContentPane().add(button);     //버튼을 프레임의 내용 틀(content pane)에 추가
+
+		frame.setSize(300,300);     //프레임의 크기를 픽셀단위로 지정
+
+		frame.setVisible(true);     //화면에 표시되도록 설정
+	}
+}
 
 }}}
 
