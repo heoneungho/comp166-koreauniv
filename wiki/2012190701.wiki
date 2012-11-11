@@ -830,6 +830,46 @@ public class GameHelper
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+//다른 클래스들은 동일합니다.
+
+public class SimpleDotCom 
+{
+	int[] locationCells;
+	int numOfHits = 0;
+	
+	public void setLocationCells(int [] locs)
+	{
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess)
+	{
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i = 0 ;i < locationCells.length; i++)
+		{
+			if(guess == -1)//만약에 사용자가 입력한 숫자가 -1이면 반복문을 빠져나갑니다.
+				break;
+			else if(guess == locationCells[i])
+			{
+				result = "hit";
+				locationCells[i] = -1;//맞췄을 경우 배열의 값을 -1로 바꿔줍니다.
+				numOfHits++;
+				break;
+			}
+		}
+
+	
+	if(numOfHits == locationCells.length)
+	{
+		result = "kill";
+	}
+	System.out.println(result);
+	return result;
+
+	}
+}
+
 
 }}}
 
