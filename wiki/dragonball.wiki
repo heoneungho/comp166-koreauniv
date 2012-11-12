@@ -38,76 +38,12 @@
 
 종료하기 : 프로그램을 종료합니다.
 
-= 클래스 =
-
-1. 메인클래스
-{{{
-
-public class dragonball{
-	public static void main(String [] args ) {
-		GameMain main = new GameMain(); //게임메인메뉴 생성
-	}
-}
-
-}}}
-
-2. 메인 화면 클래스
-{{{
-class GameMain
-{
-	start(); //게임을 시작합니다.
-	setting(); //환경설정을 합니다.
-	scoresettiong(); // 점수를 설정합니다.
-	exit(); //게임을 종료합니다.
-}
-}}}
-
-3. 게임 화면 클래스
-{{{
-class Palying {
-	attack(); //공격합니다.
-	defence(); //방어합니다.
-	charging(); //기를 모읍니다.
-}
-
-}}}
-4. 컴퓨터 클래스
-{{{
-class Cpu {
-	CPUAction(); // 컴퓨터 행동을 지정해줍니다.
-}
-}}}
-5. 스코어 클래스
-{{{
-class Score {
-	ScoreSave(); // 점수를 저장합니다.
-	ScoreArray(); // 점수를 높은순으로 나열합니다.
-}
-}}}
-6. 아이디 설정 클래스
-{{{
-class NickName{
-	NewNick(); // 닉네임을 생성합니다.
-	NickSave(); // 닉네임을 저장합니다.
-}
-}}}
-
-7. 공격클래스 (VAttack)
-{{{
-class VAttack {
-	NA(); //보통공격을 합니다.
-	SA(); //강력한공격을 합니다.
-	SSA(); // 원기옥을 사용합니다.
-}
-}}}
-
 
 지금까지 만든거 11/09
 
+PLAYER class
+
 {{{
-
-
-//컴퓨터와 플레이어의 내용을 포함하고있는 상위클래스
 
 class PLAYER
 {
@@ -116,38 +52,52 @@ class PLAYER
 	boolean A=false;
 	boolean energy=false;
 	
-
 		
-		public void Charging()
-	{
+	public void Charging()
+	{		
+		who ();
 		charge++;
 		System.out.println("기를 모읍니다. 현재 기모은양: " + charge);
 		turn++;
 	}
 
 	public void Attacking()
-	{
-		while(!energy)
-		{
-			if (charge>=1)
-			{
-				System.out.println("공격합니다. 현재 기모은양: " +charge);
-				charge--;
-				turn++;
-				energy = true;
-			}
-			else
-			{
-				System.out.println("에너지가 부족합니다");
-			}
-		}
-		energy = false;
+	{	
+		who ();
+		charge--;
+		System.out.println("공격합니다. 현재 기모은양: " +charge);
+		turn++;
 	}
 			
 	public void Defensing()
 	{
+		who ();
 		System.out.println("방어합니다. 현재 기모은양: " +charge);
 		turn++;
+	}
+	
+	public void PowerAttacking()
+	{
+		who ();
+		charge = charge-4;
+		System.out.println("원기옥을 사용합니다. 현재 기모은양: " +charge);
+		turn++;
+	}
+	
+	public void Teleport()
+	{
+		who ();
+		charge = charge -2;
+		System.out.println("순간이동을 사용합니다. 현재 기모은양: " +charge);
+		turn++;
+	}
+	
+	public void who ()
+	{
+		if(this instanceof USER) // If the object is an intance of Class USER 
+			System.out.print("사용자가 ");
+		else if (this instanceof CPU) // If the object is an intance of Class CPU
+ 			System.out.print("컴퓨터가 ");
 	}
 	
 	public int doAction (int Choice)
@@ -164,7 +114,16 @@ class PLAYER
 
 			case 2:
 				Defensing();
-				return ++turn;					
+				return ++turn;
+				
+			case 3:
+				PowerAttacking();
+				return ++turn;
+				
+			case 4:
+				Teleport();
+				return ++turn;
+				
 
 			default:
 				return ++turn;
@@ -175,10 +134,11 @@ class PLAYER
 
 }}}
 
+USER class
+
 {{{
 
 //플레이어를 설정해주는 클래스
-
 
 import java.util.Scanner; 
 
@@ -186,37 +146,50 @@ class USER extends PLAYER
 {
 	//글로벌 변수
 	int USERChoice = -1; //0=기모으기, 1=공격, 2=방어
-	Scanner me;
-	
+	Scanner me;		
 	
 	//컨스트럭터
-	public USER() {
-		
+	public USER() {		
 		me=  new Scanner(System.in);
 	}
 
 	public int USERAction ()
 	{
-		System.out.println("0 : 기모으기, 1 : 공격, 2 : 방어 ");
-		USERChoice = me.nextInt();
+		while(!energy)
+		{
+			System.out.println("0: 기모으기, 1: 공격, 2: 방어, 3: 원기옥, 4: 순간이동 ");
+			USERChoice = me.nextInt();
 		
-		return doAction(USERChoice); //defined in PLAYER
+
+			if(charge<1&&USERChoice==1)
+				System.out.println("에너지가 부족합니다");
+			else if(charge<4&&USERChoice==3)
+				System.out.println("에너지가 부족합니다");
+			else if(charge<2&&USERChoice==4)
+				System.out.println("에너지가 부족합니다");
+			else if (USERChoice>4||USERChoice<0)
+				System.out.println("잘못된 선택입니다.");
+			else
+			{
+				energy = true;
+			}
+		}
+		energy = false;
+		return doAction(USERChoice); //defined in PLAYER	
 	}
 }
-
-
 }}}
+
+CPU class
 
 {{{
 
 
 //컴퓨터를 조작해주는 클래스
 
-
 class CPU extends PLAYER
 {
-	int CPUChoice = -1; //0=기모으기, 1=공격, 2=방어
-    String [] CPUA = {"기모으기","공격","방어"};           
+	int CPUChoice = -1; //0=기모으기, 1=공격, 2=방어    
 
 	public int CPUAction()
 	{
@@ -227,22 +200,30 @@ class CPU extends PLAYER
 			}
 			else
 			{
-				CPUChoice = (int)(Math.random()*3);
-				System.out.println("컴퓨터가 " + CPUA[CPUChoice]+ "을(를) 한다.");
-
+				while(!energy)
+				{
+					CPUChoice = (int)(Math.random()*4);
+					if(CPUChoice==1&&charge<1){}
+					else if(CPUChoice==3&&charge<4){}
+					else if(CPUChoice==4&&charge<2){}
+					else
+					{
+						energy=true;
+					}
+				}
+				energy=false;
 				return doAction(CPUChoice); //defined in PLAYER					
-			}
-		
+			}		
 	}
 }
 
-
 }}}
+
+STATE class
 
 {{{
 
 //상태를 지정해주는 클래스
-
 
 class STATE
 {
@@ -262,7 +243,7 @@ class STATE
 		lose = "컴퓨터가 이겼습니다.";
 	}
 	
-	public void method ()
+	public void COMPARE ()
 	{
 		for (;A.turn<10000;)
 		{
@@ -270,9 +251,13 @@ class STATE
 			{				
 				if(A.USERChoice == B.CPUChoice)
 					System.out.print(draw);
-				else if(A.USERChoice==2)
+				else if(A.USERChoice==2&&B.CPUChoice!=3)
 					System.out.println(draw);
-				else if(B.CPUChoice==2)
+				else if(A.USERChoice!=3&&B.CPUChoice==2)
+					System.out.println(draw);
+				else if(A.USERChoice==4)
+					System.out.println(draw);
+				else if(B.CPUChoice==4)
 					System.out.println(draw);
 				else if(A.USERChoice==0 && B.CPUChoice==1)
 				{
@@ -282,6 +267,16 @@ class STATE
 				else if(A.USERChoice==1 && B.CPUChoice==0)
 				{
 					System.out.println(win);
+					break;
+				}
+				else if(A.USERChoice==3 && B.CPUChoice!=4)
+				{
+					System.out.println(win);
+					break;
+				}
+				else if(A.USERChoice!=4 && B.CPUChoice==3)
+				{
+					System.out.println(lose);
 					break;
 				}
 			}
@@ -296,8 +291,9 @@ class STATE
 	
 }
 
-
 }}}
+
+DRIVER class
 
 {{{
 
@@ -309,9 +305,12 @@ class STATE
 public class DRIVER {
 
 	public static void main(String[] args) {
-		(new STATE()).method();
+		STATE game = new STATE();
+		game.COMPARE();
+	
 	}
 }
+
 
 
 
