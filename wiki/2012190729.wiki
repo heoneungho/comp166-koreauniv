@@ -895,7 +895,49 @@ public class TwoButtons { //메인 GUI 클래스에서는 ActionListener 구현�
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
 
+public class SimpleAnimation {
+	
+	int x =70;
+	int y =70; //메인 GUI클래스에 원의  x와 y좌표를 저장하기 위한 인스턴스 변수 두 개를 만듦
+
+	public static void main (String[] args) {
+		SimpleAnimation gui = new SimpleAnimation ();
+		gui.go();
+	}
+	
+	public void go() {
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		MyDrawPanel drawPanel = new MyDrawPanel(); //위젯을 만들고 프레임에 집어넣기만 하면 됨
+	
+		frame.getContentPane().add(drawPanel);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+
+		//애니메이션 수행하는 부분
+		for(int i=0; i<130; i++) {
+			x++;
+			y++;  //x,y좌표 증가
+
+			drawPanel.repaint(); // 스스로 다시 칠하라고 패널에게 알림 (새로운 위치의 원을 볼 수 있게됨)
+			
+			try {
+				Thread.sleep(50); //속도를 약간 줄임(안그러면 너무 빨라 안보일 수 있기 때문)
+			} catch (Exception ex) {}
+		}
+	}
+	
+	class MyDrawPanel extends JPanel { //내부클래스
+		public void paintComponent(Graphics g) {
+			g.setColor(Color.green);
+			g.fillOval(x,y,40,40); //지속적으로 갱신되는 외부 클래스의 x와 y 좌표를 사용
+		}
+	} //내부 클래스 끝
+} //외부 클래스 
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
