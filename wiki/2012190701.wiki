@@ -1304,6 +1304,52 @@ class Dog extends Canine//Dog는 Canine를 확장합니다.
 
 {{{
 
+//1번이 제대로 작동해요.
+public class MonsterTestDrive
+{
+        public static void main(String[] args)
+        {
+                Monster[] ma = new Monster[3];//Monster 타입의 배열을 만듭니다.
+
+                ma[0] = new Vampire();//0의 위치에 Vampire객체를 집어넣습니다.
+                ma[1] = new Dragon();//1의 위치에 Dragon객체를 집어넣습니다.
+                ma[2] = new Monster();//2의 위치에 Monster객체를 집어넣습니다.
+
+                for(int x = 0; x < 3; x++)//반복문입니다.
+                {
+                        ma[x].frighten(x);//배열의 각 객체가 frighten을 하도록 합니다.
+                }
+        }
+}
+
+class Monster
+{
+        boolean frighten(int d)
+        {
+                System.out.println("arrrgh");
+                return true;
+        }
+}
+
+class Vampire extends Monster//Vampire는 Monster을 확장합니다.
+{
+        boolean frighten(int x)
+        {
+                System.out.println("a bite?");
+                return false;
+        }
+}
+
+class Dragon extends Monster//Dragon은 Monster을 확장합니다.
+{
+        boolean frighten(int degree)
+        {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+
+
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
