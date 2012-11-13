@@ -1765,7 +1765,57 @@ public class SimpleGui1B implements ActionListener {
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+/* 버튼 클릭시 원의 색이 바뀌는 자바 프로그램입니다. */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
+public class SimpleGui3C implements ActionListener{
+	JFrame frame; // 프레임을 생성합니다.
+
+	public static void main(String [] args){
+		SimpleGui3C gui=new SimpleGui3C();
+		gui.go();
+	}
+
+	public void go() {
+		frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JButton button = new JButton("Change colors"); // change color라는 안내 문구가 있는 버튼을 생성합니다.
+		button.addActionListener(this); // 액션 리스너를 설정합니다.
+
+		MyDrawPanel drawPanel = new MyDrawPanel(); // drawPanel 객체를 생성합니다.
+
+		frame.getContentPane().add(BorderLayout.SOUTH,button); // 버튼을 프레임에 추가합니다.
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel); // 그림 패널을 프레임에 추가합니다.
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent event){
+		frame.repaint(); // 사용자가 버튼을 클릭하면 repaint메소드를 호출합니다. 그 프레임에 들어있는 모든 위젯의 paintComponent가 호출됩니다.
+	}
+}
+// 그래디언트의 시작과 끝 색을 무작위로 지정합니다.
+class MyDrawPanel extends JPanel{
+	public void paintComponent(Graphics g){
+		Graphics2D g2d = (Graphics2D) g;
+
+		int red = (int)(Math.random()*256); 
+		int green = (int)(Math.random()*256);
+		int blue = (int)(Math.random()*256);
+		Color startColor = new Color(red,green,blue);
+
+		red = (int)(Math.random()*256);
+		green = (int)(Math.random()*256);
+		blue = (int)(Math.random()*256);
+		Color endColor = new Color(red,green,blue);
+
+		GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor);
+		g2d.setPaint(gradient);
+		g2d.fillOval(70,70,100,100);
+	}
+}
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
