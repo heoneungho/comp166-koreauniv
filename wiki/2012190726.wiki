@@ -571,10 +571,89 @@ public class ClockTestDrive {
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
- 
+
+ - 테스트 대상을 만들기 전에 테스트 코드를 먼저 만드는 소프트웨어 개발 방법.
+ - "프로그래머들이 정말 원하는 방법", 90년대 말 등장
+ - 조금씩, 하지만 자주 발표한다, 사이클을 반복해서 돌리면서 개발한다, 테스트 코드를 먼저 만든다 등의 규칙이 있다. 
+
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+
+package simpledotcom;
+
+public class SimpleDotComGame {
+	public static void main(String[] args) { //main 메소드가 들어있는 클래스
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper(); //새로운 게임을 불러온다.
+		
+		SimpleDotCom theDotCom = new SimpleDotCom();
+		int randomNum = (int) (Math.random() * 5); //randomNum에 0과 4사이의 임의의 정수값을 가져온다.
+		
+		int [] locations = {randomNum, randomNum+1, randomNum+2};
+		theDotCom.setLocationCells(locations);
+		boolean isAlive = true;
+		
+		while(isAlive == true) { //숫자를 입력하여 맞고 틀리고를 판별.
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")) {
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");
+			} //if문 끝
+		} //while문 끝
+	} //main문 끝
+} //클래스 끝
+
+package simpledotcom;
+
+public class SimpleDotCom {
+	
+	int[] locationCells;
+	int numOfHits = 0;
+	
+	public void setLocationCells(int[] locs) { //로케이션을 설정.
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess) { //사용자가 쓴 숫자가 맞았는지를 체크한다.
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i]) {
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		} //순환문 끝
+		
+		if (numOfHits == locationCells.length) { //3개를 모두 맞췄으면 kill이라 띄운다.
+			result = "kill";
+		}
+		System.out.println(result);;
+		return result;
+	} //메소드 끝
+} //클래스 끝
+
+package simpledotcom;
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt) {
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		try {
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if (inputLine.length() == 0) return null;
+		} catch (IOException e) {
+			System.out.println("IOException: " + e);
+		}
+		return inputLine;
+	}
+}
 
 }}}
 
