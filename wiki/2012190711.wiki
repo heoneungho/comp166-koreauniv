@@ -883,7 +883,49 @@ public class TwoButtons { //메인 GUI클래스에서 리스너를 구현하지 
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
 
+public class SimpleAnimation {
+	
+	int x = 70;
+	int y = 70; //원의 좌표를 저장하기 위한 인스턴스 변수 설정
+	
+	public static void main (String[] args) {
+		SimpleAnimation gui = new SimpleAnimation ();
+		gui.go();
+	}
+	
+	public void go() {
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		MyDrawPanel drawPanel = new MyDrawPanel();
+		
+		frame.getContentPane().add(drawPanel);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+		
+		for(int i = 0; i < 130; i++) { //130번 반복합니다.
+			x++;
+			y++;
+			
+			drawPanel.repaint(); //새로운 위치에 원을 다시 그립니다.
+			
+			try {
+				Thread.sleep(50); //속도를 약간 줄입니다.
+			} catch(Exception ex) {}
+			}
+		} //go()메소드 끝
+	
+	class MyDrawPanel extends JPanel {
+		
+		public void paintComponent(Graphics g) {
+			g.setColor(Color.green);
+			g.fillOval(x, y, 40, 40);
+		}
+	} //내부클래스 끝
+} //외부클래스 끝
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
