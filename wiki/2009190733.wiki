@@ -1494,7 +1494,42 @@ public class SimpleGui1 {
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.event.*;
 
+public class SimpleGui1B implements ActionListener{
+	
+        JButton button;
+        
+        public static void main(String[] args){
+        	
+        		// 인스턴스 생성하고 함수 실행
+                SimpleGui1B gui = new SimpleGui1B();
+                gui.go();
+        }
+        
+        public void go(){
+        		
+        		//프레임과 버튼생성
+                JFrame frame = new JFrame();
+                button =new JButton("click me");
+		        
+                //리스너에 버튼 등록
+		        button.addActionListener(this);
+		        
+		        //프레임에 버튼 추가
+		        //프레임에 대한 속성값 정의
+		        frame.getContentPane().add(button);
+		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		        frame.setSize(300,300);
+		        frame.setVisible(true);
+        }
+        
+        //이벤트 발생시 수행문
+        public void actionPerformed(ActionEvent event){
+                button.setText("I've been clicked!");
+        }
+}
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
