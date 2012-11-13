@@ -1535,7 +1535,89 @@ public class SimpleGui1B implements ActionListener{
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
+
+
+public class SimpleGui3C implements ActionListener {
+
+        JFrame frame;
+        
+        public static void main(String[] args){
+        		//인스턴스 생성
+                SimpleGui3C gui = new SimpleGui3C();
+                gui.go();
+        }
+        
+        public void go(){
+        	
+        		//프레임 생성
+                frame = new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+                //버튼 생성 및 리스너에 추가
+                JButton button = new JButton("Change colors");
+                button.addActionListener(this);
+                
+                //MyDrawPanel 인스턴스 생성
+                MyDrawPanel drawPanel = new MyDrawPanel();
+                
+                //프레임 속성값 정의
+                frame.getContentPane().add(BorderLayout.SOUTH, button);
+                frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+                frame.setSize(300, 300);
+                frame.setVisible(true);
+                        
+        }
+        
+        //이벤트 발생시 수행문
+        public void actionPerformed(ActionEvent event){
+                frame.repaint();
+        }
+        
+        
+}
+
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+public class MyDrawPanel extends JPanel{
+
+		//그래픽 메소드 호출
+        public void paintComponent(Graphics g){
+        		
+        		//Graphics2D메소드 사용하기 위해 
+                Graphics2D g2d = (Graphics2D) g;
+                
+                //색 랜덤하게 지정
+                int red = (int) (Math.random() * 256);
+                int blue = (int) (Math.random() * 256);
+                int green = (int) (Math.random() * 256);
+                
+                //시작 색 적용
+                Color startColor = new Color(red, green, blue);
+                
+                
+                red = (int) (Math.random() * 256);
+                blue = (int) (Math.random() * 256);
+                green = (int) (Math.random() * 256);
+                //마지막 색 적용
+                Color endColor = new Color(red, green, blue);
+                
+                //속성값 GradientPaint에 모두 적용
+                GradientPaint gradient = new GradientPaint(70, 70, startColor, 150, 150, endColor);
+                g2d.setPaint(gradient);
+                g2d.fillOval(70, 70, 100, 100);
+                
+                
+        }
+}
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
