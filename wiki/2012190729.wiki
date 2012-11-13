@@ -826,6 +826,20 @@ public class MyDrawPanel extends JPanel {
 		g2d.fillOval(70,70,100,100);
 	}
 }
+/* 색 지정
+class MyDrawPanel extends JPanel {
+	public void paintComponent(Graphics g) { //사용자가 버튼을 클릭할 떄마다 그림 패널의 paintComponent{} 메소드가 호출됨
+		//타원을 무작위적으로 선택한 색으로 칠하기 위한 코드
+		Graphics2D g2d = (Graphics2D) g;
+
+		
+		GradientPaint gradient = new GradientPaint (70,70,Color.blue, 150,150, endColor);
+																	    //시작점      //시작색          //끝점     //끝
+		g2d.setPaint (gradient); //이렇게 하면 가상 페인트 브러시를 단색이 아닌 그래디언트로 지정할 수 있음
+		g2d.fillOval(70,70,100,100) //fillOval()메소드, 현재 페인트 브러시와 색칠함
+	}
+}
+*/
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
