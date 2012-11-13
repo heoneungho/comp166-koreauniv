@@ -933,6 +933,9 @@ public class SimpleAnimation {
 	
 	class MyDrawPanel extends JPanel { //내부클래스
 		public void paintComponent(Graphics g) {
+			g.setColor(Color.white);
+			g.fillRect(0,0,this.getWidth(), this.getHeight()); //getWidth()와 getHeight()는 JPanel로부터 상속 밭은 메소드
+
 			g.setColor(Color.green);
 			g.fillOval(x,y,40,40); //지속적으로 갱신되는 외부 클래스의 x와 y 좌표를 사용
 		}
