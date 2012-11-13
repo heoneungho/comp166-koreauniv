@@ -1709,7 +1709,23 @@ public class StaticTests extends StaticSuper { // StaticTests는 StaticSuper를 
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+/* 첫번째 버튼 구현 */
+import javax.swing.*;
 
+public class SimpleGui1B{
+	public static void main(String []args){
+		JFrame frame = new JFrame(); // J프레임을 생성합니다.
+		JButton button = new JButton("click me");  // J버튼을 생성합니다.
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 이것을 하면 창을 닫았을 때 프로그램이 종료됩니다.
+
+		frame.getContentPane().add(button); // 내용 틀에 버튼을 추가합니다.
+
+		frame.setSize(300,300); // 프레임의 크기를 픽셀단위로 지정합니다.
+
+		frame.setVisible(true); // 화면에 표시되도록 설정합니다.
+	}
+}
 
 }}}
 
