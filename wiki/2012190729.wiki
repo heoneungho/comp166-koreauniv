@@ -770,7 +770,62 @@ public class SimpleGuilB implements ActionListener {   // 인스턴스 ActionLis
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
+public class SimpleGui3C implements ActionListener {
+	JFrame frame;
+	public static void main (String[] args) {
+		SimpleGui3C gui = new SimpleGui3C();
+		gui.go();
+		}
+
+	public void go() {
+		frame = new JFrame();
+		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+
+		JButton button = new JButton ("Change colors");
+		button.addActionListener (this); // 리스너(this)를 버튼에 추가
+
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+		frame.getContentPane().add(BorderLayout.SOUTH, button); 
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel); // 위젯(버튼과 그림 패널) 두 개를 프레임의 두 지역에 추가
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent event) {
+		frame.repaint(); // 사용자가 버튼을 클릭하면 프레임의 repaint()메소드를 호출. 그러면 그 프레임에 들어있는 모든 위젯의 paintComponent()메소드가 호출됨
+	}
+}
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class MyDrawPanel extends JPanel {
+	public void paintComponent(Graphics g) { //사용자가 버튼을 클릭할 떄마다 그림 패널의 paintComponent{} 메소드가 호출됨
+		//타원을 무작위적으로 선택한 색으로 칠하기 위한 코드
+		Graphics2D g2d = (Graphics2D) g;
+
+		int red = (int) (Math.random() *256);
+		int green = (int) (Math.random() *256);
+		int blue = (int) (Math.random()*256);
+		Color startColor = new Color (red, green, blue);
+
+		red = (int) (Math. random () *256);
+		green = (int) (Math.random()*256);
+		blue = (int) (Math.random()*256);
+		Color endColor = new Color (red,green,blue); // 그래디언트의 시작과 끝색을 무작위로 지
+
+		GradientPaint gradient = new GradientPaint (70,70,startColor, 150,150, endColor);
+		g2d.setPaint (gradient);
+		g2d.fillOval(70,70,100,100);
+	}
+}
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
