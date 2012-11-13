@@ -1058,6 +1058,52 @@ public class SimpleGui1B implements ActionListener{
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener {
+	JFrame frame;
+	public static void main(String[] args){
+		SimpleGui3C gui = new SimpleGui3C();
+		gui.go();
+	}
+	
+	public void go(){
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton button= new JButton("change colors");
+		button.addActionListener(this);//리스너를 버튼에 추가한다.
+		
+		MyDrawPanel drawPanel =new MyDrawPanel();
+		
+		frame.getContentPane().add(BorderLayout.SOUTH, button);//프레임의 남쪽에 추가한다.
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent event){
+		frame.repaint();//사용자가 버튼을 클릭하면 paintComponent()메소드 호출된다.
+	}
+	
+	class MyDrawPanel extends JPanel{
+		public void paintComponent(Graphics g){
+			g.fillRect(0, 0, this.getWidth(), this.getHeight());//왼쪽 끝에서 0픽셀, 위쪽 끝에서 0픽셀에서 시작하여 전체를 검은색으로 칠한다.
+			
+			int red = (int)(Math.random()*255);
+			int green = (int)(Math.random()*255);
+			int blue = (int)(Math.random()*255);
+			
+			Color randomColor=new Color(red, green, blue);
+			g.setColor(randomColor);
+			g.fillOval(70,70,100,100); //왼쪽에서 70픽셀, 위에서 70픽셀인 곳에서 너비와 높이가 100픽셀인 원을 그린다.
+	}
+
+	}
+}
+
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
