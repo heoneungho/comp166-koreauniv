@@ -460,5 +460,40 @@ public class mainYoungHoon {
 		th.start();// 스레드를 실행합니다.
 	}
 }
+=================================================================================
+/* mainWindow 클래스입니다. 여기가 메인 창입니다. */
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
+import java.text.SimpleDateFormat;
 
+@SuppressWarnings("serial")
+class mainWindow extends JFrame implements Runnable, ActionListener {
+	JTextField blank;// 상단의 시계표시를 위해 공백을 만드는 텍스트필드입니다.
+	public JButton Btn[] = new JButton[150];// 자리 버튼입니다. 
+	JTextArea condition;// 상황판의 텍스트 영역입니다.
+	JButton configBtn;// 요금 설정 버튼입니다.
+	String currentDate = "";// 현재 날짜를 저장
+	String currentTime = "";// 현재 시간을 저장
+	JButton history;// 내역보기 버튼입니다.
+	int jariNumber;// 자리번호입니다.
+	JButton notUseBtn[] = new JButton[100];// 사용하지 않는 버튼(자리 사이 사이의 버튼)
+	readFile obj = new readFile();// 파일을 읽어들입니다.
+	JPanel pan1;// 판넬1
+	JPanel pan2;// 판넬2
+	JPanel pan3;// 판넬3
+
+	// 생성자
+	public mainWindow() {
+		setTitle("[독서실 관리 프로그램(ReadingRoomManager)]");// 제목 표시줄입니다.
+		setSize(1000, 700); // 사이즈를 설정합니다.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 버튼 클릭시 종료합니다.
+		pan1();// 메소드 호출
+		pan2();// 메소드 호출
+		pan3();// 메소드 호출
+		gridInit();// 메소드 호출
+		setVisible(true);// 창을 보여줌
+		setResizable(false);// 크기변경 불가
+	}
 }}}
