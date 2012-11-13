@@ -921,6 +921,9 @@ public class SimpleAnimation {
 	class MyDrawPanel extends JPanel {
 		
 		public void paintComponent(Graphics g) {
+			g.setColor(Color.white);
+			g.fillRect(0,0,this.getWidth(), this.getHeight()); //JPanel로부터 상속받은 메소드
+			
 			g.setColor(Color.green);
 			g.fillOval(x, y, 40, 40);
 		}
