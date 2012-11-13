@@ -550,6 +550,55 @@ class Dragon extends Monster {
 
 {{{
 
+import java.util.*;
+class V2Radiator {
+     V2Radiator(ArrayLIst list) {
+          for(int  x = 0; x < 5; x++) {
+               list.add(new SimUnit("V2Radiator"));
+          }
+     }
+}
+
+class V3Radiator extends V2Radiator{
+     V3Radiator (ArrayLIst lglist) {
+          super(lglist);
+          for(int g = 0; g < 10; g++) {
+               lglist.add(new SimUnit("V3Radiator"));
+          }
+     }
+} 
+
+class RetentionBot {
+     RetentionBot(ArrayList rlist) {
+          rlist.add(new SimUnit("Retention"));
+     }
+}
+
+public class TestLifeSupportSim{
+     public static void main(String [] args) {
+          ArrayList aList = new ArrayList();
+          V2Radiator v2 = new V2Radiator(aList);
+          V3Radiator v3 = new V3Radiator(aList);
+          for(int z = 0; z > 20; z++) {
+               RetentionBot ret = new RetentionBot(aList);
+          }
+     }
+}
+
+class SimUnit {
+     String botType;
+     SimUnit (String type){
+          botType = type;
+     }
+     int powerUse() {
+          if ("Retention".equals(botType)) {
+               return 2;
+          } else {
+               return 4;
+          }
+     }
+}
+
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
@@ -567,6 +616,8 @@ class Dragon extends Monster {
 
 {{{
 
+
+
 }}}
 
 *342p 집중토론* _요약_
@@ -578,6 +629,35 @@ class Dragon extends Monster {
 
 {{{
 
+class StaticSuper{
+ 
+     static {
+          System.out.println("super static block");
+     }
+
+     StaticSuper{
+          System.out.println("super constructor");
+     }
+}
+
+public class StaticTests extends StaticSuper{
+     static int rand;
+
+     static {
+          rand = (int) (Math.random() * 6);
+          System.out.println("static block" + rand);
+     }
+
+     StaticTests() {
+          System.out.println("constructor");
+     }
+
+     public static void main(String [] args) {
+          System.out.println("in main");
+          StaticTests st = new StaticTests();
+     }
+}
+
 }}}
 
 = 11. 위험한 행동:예외처리  =
@@ -585,6 +665,21 @@ class Dragon extends Monster {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+
+public void takeLisk() throws BadException{
+     if(abandonAllHope){
+          throw new BadException();
+     }
+}
+
+public void crossFIngers(){
+     try {
+          anObject.takeRisk();
+     } catch (BadException ex) {
+          System.out.println("Aaargh!");
+          ex.printStackTrace();
+     }
+}
 
 }}}
 
