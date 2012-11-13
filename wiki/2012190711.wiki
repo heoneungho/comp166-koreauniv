@@ -934,6 +934,7 @@ public class SimpleAnimation {
 *420p 뮤직 비디오* _구현후 주석달기_
 
 {{{
+
 import javax.sound.midi.*;
 import java.io.*;
 import javax.swing.*;
@@ -941,27 +942,90 @@ import java.awt.*;
 
 public class MiniMusicPlayer3 {
 
-	static JFrame f = new JFrame("My First Music Video");
-	static MyDrawPanel ml;
-	
-	public static void main(String[] args) {
-		MiniMusicPlayer3 mini = new MiniMusicPlayer3();
-		mini.go();
-	} //메소드 끝
-	
-	public void setUpGui() {
-		ml = new MyDrawPanel();
-		f.setContentPane(ml);
-		f.setBounds(30,30,300,300);
-		f.setVisible(true);
-	} //메소드 끝
-	
-	public void go() {
-		setUpGui();
-		
-		try {
-			
-			Sequencer sequencer = MidiSystem.getSequencer();
+        static JFrame f = new JFrame("My First Music Video");
+        static MyDrawPanel ml;
+        
+        public static void main(String[] args) {
+                MiniMusicPlayer3 mini = new MiniMusicPlayer3();
+                mini.go();
+        } //메소드 끝
+        
+        public void setUpGui() {
+                ml = new MyDrawPanel();
+                f.setContentPane(ml);
+                f.setBounds(30,30,300,300);
+                f.setVisible(true);
+        } //메소드 끝
+        
+        public void go() {
+                setUpGui();
+                
+                try {
+                        
+                        Sequencer sequencer = MidiSystem.getSequencer();
+                        sequencer.open(); //시퀀서를 만들고 엽니다.
+                        sequencer.addControllerEventListener(ml, new int[] {127});
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack(); //시퀀스와 트랙을 만듭니다.
+                        
+                        int r = 0;
+                        for (int i = 0; i < 60; i+=4) {
+                        	
+                        	r = (int) ((Math.random() * 50) + 1);
+                        	track.add(makeEvent(144,1,r,100,i));
+                        	track.add(makeEvent(176,1,127,0,i));
+                        	track.add(makeEvent(128,1,r,100,i + 2));
+                        } //순환문 끝
+                        
+                        sequencer.setSequence(seq);
+                        sequencer.start();
+                        sequencer.setTempoInBPM(120);
+                } catch (Exception ex) {ex.printStackTrace();}
+        }// 메소드 끝
+        
+        public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {
+        	MidiEvent event = null;
+        	try {
+        		ShortMessage a = new ShortMessage(); //메시지 인스턴스를 만듭니다
+        		a.setMessage(comd, chan, one, two);
+        		event = new MidiEvent(a, tick);
+        		
+        	}catch(Exception e) { }
+        	return event; //메시지가 모두 들어있는 MidiEvent 리턴
+        }// 메소드 끝
+        
+        class MyDrawPanel extends JPanel implements ControllerEventListener {
+        	boolean msg = false; //플래그를 일단 false로 설정합니다.
+        	
+        	public void controlChange(ShortMessage event) {
+        		msg = true; //이벤트를 받아 플래그를 true로 설정합니다.
+        		repaint();
+        	}
+        	
+        	public void paintComponent(Graphics g) {
+        		if (msg) {
+        			
+        			Graphics2D g2 = (Graphics2D) g;
+        			
+        			int r = (int) (Math.random() * 250);
+        			int gr = (int) (Math.random() * 250);
+        			int b = (int) (Math.random() * 250);
+        			
+        			g.setColor(new Color(r,gr,b));
+        			
+        			int ht = (int) ((Math.random() * 120) + 10);
+        			int width = (int) ((Math.random() * 120) + 10);
+        			
+        			int x = (int) ((Math.random() * 40) + 10);
+        			int y = (int) ((Math.random() * 40) + 10);
+        			
+        			g.fillRect(x,y,ht,width);  //무작위로 색과 직사각형을 그리기 위함입니다.
+        			msg =  false;
+        			
+        		}  //if문 끝
+        	} // 메소드 끝
+        }  // 내부 클래스 끝
+} //  클래스 끝
 			
 }}}
 
