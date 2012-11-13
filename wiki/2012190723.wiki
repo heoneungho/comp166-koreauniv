@@ -1821,6 +1821,59 @@ class MyDrawPanel extends JPanel{
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+/* 버튼 두 개를 처리하는 코드입니다. */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class TwoButtons {
+
+	JFrame frame; 
+	JLabel label; 
+
+	public static void main(String args[]){
+		TwoButtons gui = new TwoButtons();
+		gui.go();
+	}
+
+	public void go(){
+		frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+		JButton labelButton = new JButton ("Change Label");
+		// 버튼의 리스너 등록 메소드에 내부 클래스를 갖고 만든 객체를 전달 합니다.
+		labelButton.addActionListener(new LabelListener());
+
+		JButton colorButton = new JButton ("Change Circle");
+		// 버튼의 리스너 등록 메소드에 내부 클래스를 갖고 만든 객체를 전달 합니다.
+		colorButton.addActionListener(new ColorListener());
+
+		label = new JLabel("I'm a lebel");
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+		// 프레임에서 각 버튼과 판넬의 위치를 설정합니다.
+		frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(BorderLayout.EAST, labelButton);
+		frame.getContentPane().add(BorderLayout.WEST, label);
+
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+
+	class LabelListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			label.setText("Ouch!"); // 내부 클래스에서도 label 변수를 사용할 수 있습니다.
+		}
+	} // 내부 클래스 끝
+
+	class ColorListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			frame.repaint(); // 내부 클래스에서 외부 클래스 객체에 대한 레퍼런스 없이 그냥 frame 인스턴스 변수를 사용합니다.
+		}
+	} // 내부 클래스 끝
+}
 
 }}}
 
