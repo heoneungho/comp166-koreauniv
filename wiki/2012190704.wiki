@@ -961,6 +961,52 @@ public class TwoButtons {
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation {
+
+	int x = 70;
+	int y = 70;
+	//메인 GUI클래스에 원의 x와 y좌표를 저장하기 위한 인스턴스 변수 두 개 만듦.
+
+	public static void main (String[] args) {
+		SimpleAnimation gui = new SimpleAnimation();
+		gui.go();
+	}
+
+	public void go() {
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		MyDrawPanel drawPanel = new MyDrawPanel();	
+
+		frame.getContentPane().add(drawPanel);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+
+		for (int i = 0; i < 130; i++) {	//130번  반복 
+			
+			x++;
+			y++;
+
+			drawPanel.repaint();	//스스로 다시 칠하게 함. 
+
+			try {
+				Thread.sleep(50);	//보이도록 속도 늦춤.
+			}catch(Exception ex) {}
+		}	//애니메이션을 수행하는 부분 
+	}	//go() 메소드 끝
+
+	class MyDrawPanel extends JPanel {
+
+		public void paintComponent(Graphics g) {
+			g.setColor(Color.green);
+			g.fillOval(x, y, 40, 40);	//지속적으로 갱신되는 외부 클래스의 x와 y좌표 사용 
+		}
+	}	//내부 클래스 끝
+}	//외부 클래스 끝
+
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
