@@ -846,6 +846,65 @@ ex) 상위클래스 = shape / 하위클래스 = square, circle, triangle, amoeba
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class MonsterTestDrive { //MonsterTestDrive 클래스 선언
+	
+        public static void main(String[] args) { //메인 메소드
+  
+        					 Monster [] ma = new Monster[3]; //3마리의 몬스터 배열 생성(뱀파이어,드래곤,몬스터)
+                
+        					 ma[0] = new Vampire(); 
+                ma[1] = new Dragon();
+                ma[2] = new Monster();
+                
+                for(int x = 0; x < 3; x++) { //변수 x를 인트형으로 지정,  x=0,1,2;
+                	
+                        ma[x].frighten(x); //각 몬스터의 인덱스 만큼 frighten 실행.
+                       
+                }
+        }
+}
+
+class Monster { // Monster 클래스 지정
+
+						boolean frighten (int d) { //frighten 함수 지정. int형 변수 입력, boolean 으로 반환.
+							
+                System.out.println("arrrgh"); 
+                
+                return true; //true=1;
+        }
+}
+
+
+class Vampire extends Monster { //Monster의 하위클래스인 Vampire 생성.
+	
+        boolean frighten (int x) { //frighten 함수 지정. int형 변수 입력, boolean 으로 반환.
+        	
+                System.out.println("a bite?");
+                
+                return false; //false = 0;
+        }
+}
+
+class Dragon extends Monster { //Monster의 하위클래스인 Dragon 생성.
+	
+        boolean frighten (int degree) { 
+        	
+        	//frighten 함수 지정. int형 변수 입력, boolean 으로 반환.
+        	
+                System.out.println("breath fire"); 
+                
+                return true; //true = 1;
+        }
+}
+
+/*출력값
+a bite?
+breath fire
+arrrgh*/
+
+
+//1이 옳은 이유는 Vamfire과 Dragon은 Monster에게 상속받았고(Monster의 하위 클래스),
+//둘은 비슷 하지만, 조금 다르므로 오버라이딩을 해야 적절하며, 반환 유형(boolean)과 입력유형(int) 또 같한아야한다.
 
 }}}
 
