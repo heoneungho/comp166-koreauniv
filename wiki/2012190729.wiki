@@ -819,14 +819,14 @@ public class MyDrawPanel extends JPanel {
 		red = (int) (Math. random () *256);
 		green = (int) (Math.random()*256);
 		blue = (int) (Math.random()*256);
-		Color endColor = new Color (red,green,blue); // 그래디언트의 시작과 끝색을 무작위로 지
+		Color endColor = new Color (red,green,blue); // 그래디언트의 시작과 끝색을 무작위로 함
 
 		GradientPaint gradient = new GradientPaint (70,70,startColor, 150,150, endColor);
 		g2d.setPaint (gradient);
 		g2d.fillOval(70,70,100,100);
 	}
 }
-/* 색 지정
+/* 시작과 끝색 지정
 class MyDrawPanel extends JPanel {
 	public void paintComponent(Graphics g) { //사용자가 버튼을 클릭할 떄마다 그림 패널의 paintComponent{} 메소드가 호출됨
 		//타원을 무작위적으로 선택한 색으로 칠하기 위한 코드
