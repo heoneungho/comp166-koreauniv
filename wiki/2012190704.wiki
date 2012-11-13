@@ -850,11 +850,110 @@ public class SimpleGui1B implements ActionListener {     //인터페이스 구�
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener {
+
+	JFrame frame;
+
+	public static void main (String[] args) {
+		SimpleGui3C gui = new SimpleGui3C();
+		gui.go();
+	}
+
+	public void go() {
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JButton button = new JButton("Change colors");
+		button.addActionListener(this);	//Listener(this)를 버튼에 추가
+
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+		frame.getContentPane().add(BorderLayout.SOUTH, button);	//위젯(버튼)을 프레임에 추가
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);	//위젯(그림 패널)을 중앙 지역에 추가 
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent event) {
+		frame.repaint();	//사용자가 버튼을 클릭하면 프레임의 repaint()메소드를 호출
+	}
+}
+
+class MyDrawPanel extends JPanel {
+
+	public void paintComponent(Graphics g) {
+		//타원을 무작위적으롤 선택한 색으로 칠하기 위한 코드
+		g.fillRect(0,0,this.getWidth(), this.getHeight());	//패널 전체를 검은색(기본색)으로 칠함.
+
+		int red = (int) (Math.random() * 255);
+		int green = (int) (Math.random() * 255);
+		int blue = (int) (Math.random() * 255);
+
+		Color randomColor = new Color(red, green, blue);	//각각 빨간색, 녹색, 파란색 성분(RGB)을 나타내는 정수 세 개를 전달하여 색을 만듦.
+		g.setColor(randomColor);
+		g.fillOval(70,70,100,100);	//왼쪽에서 70픽셀, 위에서 70픽셀 떨어진 위치에 너비가 100픽셀, 높이가 100픽셀인 원을 그림.
+	}
+}
+
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class TwoButtons {
+
+	JFrame frame;
+	JLabel label;
+
+	public static void main(String[] args) {
+		TwoButtons gui = new TwoButtons ();
+		gui.go();
+	}
+
+	public void go() {
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JButton labelButton = new JButton("Change Label");
+		labelButton.addActionListener(new LabelListener());     //버튼의 리스너 등록메소드에 다른 리스너 클래스(내부 클래스)를 가지고 만든 객체를 전달.
+
+		JButton colorButton = new JButton("Change Circle");
+		colorButton.addActionListener(new ColorListener());
+
+		label = new JLabel("I'm a label");
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+		frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(BorderLayout.EAST, labelButton);
+		frame.getContentPane().add(BorderLayout.WEST, label);
+
+		frame.setSize(300,300);
+		frame.setVisible(true);
+
+	}
+
+	class LabelListener implements ActionListener {     
+		public void actionPerformed(ActionEvent event) {
+			label.setText("Ouch!");     //내부 클래스에서도 'label'변수 사용 가능능
+		}
+	}	//내부 클래스 끝
+
+	class ColorListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			frame.repaint();     //내부 클래스에서는 외부 클래스 객체에 대한 레퍼런스 없이 그냥 'frame' 인스턴스 변수 사용
+		}
+	}	//내부 클래스 끝
+}
 
 }}}
 
