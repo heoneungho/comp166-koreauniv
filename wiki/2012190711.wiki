@@ -934,7 +934,35 @@ public class SimpleAnimation {
 *420p 뮤직 비디오* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
 
+public class MiniMusicPlayer3 {
+
+	static JFrame f = new JFrame("My First Music Video");
+	static MyDrawPanel ml;
+	
+	public static void main(String[] args) {
+		MiniMusicPlayer3 mini = new MiniMusicPlayer3();
+		mini.go();
+	} //메소드 끝
+	
+	public void setUpGui() {
+		ml = new MyDrawPanel();
+		f.setContentPane(ml);
+		f.setBounds(30,30,300,300);
+		f.setVisible(true);
+	} //메소드 끝
+	
+	public void go() {
+		setUpGui();
+		
+		try {
+			
+			Sequencer sequencer = MidiSystem.getSequencer();
+			
 }}}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
