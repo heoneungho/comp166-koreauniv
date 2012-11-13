@@ -1234,7 +1234,48 @@ public class CalendarUsage {
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+package toBeCompiler;
 
+public class StaticSuper {
+	static { // 실행하자마자 바로 초기화
+		System.out.println("super static block");
+	}
+	
+	StaticSuper() { // 생성자 메소드에 ()를 넣어줍니다.
+		System.out.println("super constructor");
+	}
+}
+
+//----------------------------------------
+
+package toBeCompiler;
+
+public class StaticTests extends StaticSuper {
+	static int rand; 
+	
+	static { // 실행하자마자 바로 초기화
+		rand = (int) (Math.random() * 6);
+		System.out.println("static block " + rand);
+	}
+	
+	StaticTests() {
+		System.out.println("constructor");
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("in main");
+		StaticTests st = new StaticTests();
+	}
+	
+}
+
+// 고로 출력 결과는
+// super static block
+// static block 0
+// in main
+// super constructor
+// constructor
+// 가 된다.
 }}}
 
 = 11. 위험한 행동:예외처리  =
@@ -1242,18 +1283,136 @@ public class CalendarUsage {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+package exception;
 
+public class Test01 {
+	public static void main(String[] args) {
+		
+		// 앞뒤 상황 생략
+		
+		public void takeRisk() throws BadException {
+			if (abandonAllHope) {
+				throw new BadException();
+			}
+		}
+		
+		public void crossFingers() {
+			try {
+				anObject.takeRisk(); // 오류가 발생할 수도 있는 행동
+			} catch (BadException ex) {
+				System.out.println("Aaargh!"); // 그 때 예외 상황을 발생시키고 출력할 것.
+				ex.printStackTrance();
+			}
+		}
+		
+	}
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+package soundApp;
+
+import javax.sound.midi.*;
+
+public class MiniMiniMusicApp {
+
+		public static void main(String[] args) {
+			MiniMiniMusicApp mini = new MiniMiniMusicApp(); // 미니미니뮤직앱 생성 >_<
+			mini.play(); // 실행
+		} // main 메소드 끝
+		
+		public void play() {
+			
+			try {
+				Sequencer player = MidiSystem.getSequencer(); // 시퀀서를 받아서 엽니다.
+				player.open();
+				
+				Sequence seq = new Sequence(Sequence.PPQ, 4);
+				
+				
+				Track track = seq.createTrack(); // 시퀀서에 트랙을 요청
+				
+				// 트랙에 미디이벤트를 집어넣습니다.
+				ShortMessage a = new ShortMessage(); 
+				a.setMessage(144, 1, 44, 100);
+				MidiEvent noteOn = new MidiEvent(a, 1);
+				track.add(noteOn);
+				
+				ShortMessage b = new ShortMessage();
+				b.setMessage(128, 1, 44, 100);
+				MidiEvent noteOff = new MidiEvent(b, 16);
+				track.add(noteOff);
+				
+				player.setSequence(seq); // 시퀀서에 시퀀스를 보냅니다.
+				
+				player.start(); // CD의 재생 버튼을 누르는 것과 비슷!
+			
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+		} // play 메소드 끝
+} // 클래스 
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+package soundApp2;
+
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine {
+
+		public static void main(String[] args) {
+			MiniMusicCmdLine mini = new MiniMusicCmdLine(); // 미니미니뮤직앱 생성 >_<
+			if (args.length < 2) {
+				System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+			} else {
+				int instrument = Integer.parseInt(args[0]); // 악기선택
+				int note = Integer.parseInt(args[1]); // 음 높이선택
+				mini.play(instrument, note); // 실행
+			}
+		} // main 끝
+		
+		public void play(int instrument, int note) {
+			
+			try {
+				
+				Sequencer player = MidiSystem.getSequencer(); // 시퀀서를 받아서 엽니다.
+				player.open();
+				Sequence seq = new Sequence(Sequence.PPQ, 4);
+				Track track = seq.createTrack(); // 시퀀서에 트랙을 요청
+				
+				MidiEvent event = null; // 무엇을 할지,  언제 할지 결정함.
+				
+				ShortMessage first = new ShortMessage();
+				first.setMessage(192, 1, instrument, 0);
+				MidiEvent changeInstrument = new MidiEvent(first,1);
+				track.add(changeInstrument);
+				
+				// 트랙에 미디이벤트를 집어넣습니다.
+				ShortMessage a = new ShortMessage(); 
+				a.setMessage(144, 1, 44, 100);
+				MidiEvent noteOn = new MidiEvent(a, 1);
+				track.add(noteOn);
+				
+				ShortMessage b = new ShortMessage();
+				b.setMessage(128, 1, 44, 100);
+				MidiEvent noteOff = new MidiEvent(b, 16);
+				track.add(noteOff);
+				player.setSequence(seq); // 시퀀서에 시퀀스를 보냅니다.
+				player.start(); // CD의 재생 버튼을 누르는 것과 비슷!
+			
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+		} // play 메소드 끝
+} // 클래스
 
 }}}
 
