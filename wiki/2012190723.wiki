@@ -1709,7 +1709,14 @@ public class StaticTests extends StaticSuper { // StaticTests는 StaticSuper를 
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
-/* 첫번째 버튼 구현 */
+
+
+}}}
+
+*394p~ ActionEvent* _구현후 주석달기_
+
+{{{
+/* 버튼에 액션 리스너와 액션 이벤트를 구현합니다 */
 import javax.swing.*;
 import java.awt.event.*; // Actionlistener와 이벤트가 들어있는 패키지를 사용
 
@@ -1737,13 +1744,6 @@ public class SimpleGui1B implements ActionListener {
 		button.setText("I've been clicked!");
 	}
 }
-
-}}}
-
-*394p~ ActionEvent* _구현후 주석달기_
-
-{{{
-
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
