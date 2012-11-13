@@ -833,8 +833,7 @@ class MyDrawPanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 
 		
-		GradientPaint gradient = new GradientPaint (70,70,Color.blue, 150,150, endColor);
-					  //시작점      //시작색          //끝점     //끝
+		GradientPaint gradient = new GradientPaint (70,70(시작점),Color.blue(시작색), 150,150(끝점), endColor(끝색));
 		g2d.setPaint (gradient); //이렇게 하면 가상 페인트 브러시를 단색이 아닌 그래디언트로 지정할 수 있음
 		g2d.fillOval(70,70,100,100) //fillOval()메소드, 현재 페인트 브러시와 색칠함
 	}
