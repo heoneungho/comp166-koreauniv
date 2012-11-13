@@ -1187,13 +1187,14 @@ class Animal
         void sleep()
         {
                 //그 동물이 잠들어 있을 때의 행동
-`       }
+        }
 
         void roam()
         {
                 //그 동물이 먹거나 자고 있지 않을 때의 행동
         }
 
+}
 class Feline extends Animal//Feline은 Animal을 상속받습니다.
 {
         void roam()
