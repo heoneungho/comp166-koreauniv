@@ -580,7 +580,33 @@ public class DotComFirst {
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+public class DotComSecond {
+	int[] locationCells;
+	int numOfHits = 0;
 
+	public void setLocationCells (int[] locs) {
+		locationCells=locs;
+	}
+
+	public String checkYourself (String stringGuess) {
+		int guess = Integer.parseInt(stringGuess); //String을 int로 변환
+		String result = "miss"; //리턴할 결과를 저장할 변수를 만든다. 기본값은 "miss"로. (못맞추는 것을 기본값으로)
+
+		for(int i=0; i<locationCells.length; i++) { //배열에 들어있는 각 원소 (객체의 각 위치 셀)에 대해 반복합니다.
+			if(guess==locationCells[i] && hitCells[i] !=-1) { // -1이면 이미 맞춘 문제
+				result = "hit";
+				locationCells[i]=-1 
+				numOfHits++; // 맞을때
+				break;
+			}
+		}
+		if(numOfHits == locationCells.length) { //마지막 
+			result = "kill"; //순환문 밖으로 나왔지만 그 객체가 죽었는지 (3번 맞았는지) 확인 해보고, 그 경우에는 result 라를 String을 "kill"로 바꾼다.
+		} 
+		System.out.println(result);
+		return result;
+	}
+}
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
