@@ -835,6 +835,65 @@ ex) 상위클래스 = shape / 하위클래스 = square, circle, triangle, amoeba
 
 {{{
 
+class Animal{ //상위 클래스 Animal
+
+               int picture, food, hunger, boundaries, location;
+
+              void makeNoise() {};
+              void eat() {};
+              void sleep() {};
+              void roam() {};
+
+
+class Feline extends Animal{ //하위클래스 
+
+              void roam() {};
+}
+
+class Hippo extends Animal{//하위클래스 
+
+              void makeNoise() {};
+              void eat() {};
+}
+
+class Canine extends Animal{//하위클래스 
+
+              void roam() {};
+
+}
+
+class Lion extends Feline{//하위클래스 
+
+              void makeNoise(){};
+              void eat(){};
+}
+
+class Tiger extends Feline{//하위클래스 
+             
+              void makeNoise(){};
+              void eat(){};
+}
+
+class Cat extends Feline{//하위클래스 
+
+              void makeNoise(){};
+              void eat(){};
+}
+
+class Wolf extends Canline{//하위클래스 
+
+              void makeNoise(){};
+              void eat(){};
+}
+
+class Dog extends Canline{//하위클래스 
+
+              void makeNoise(){};
+              void eat(){};
+}
+
+}
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
