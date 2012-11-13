@@ -494,7 +494,53 @@ class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+import java.io.*;
+public class SimpleDotComTestDrive {
+	public static void main (String[] args) {
+		SimpleDotCom dot = new SimpleDotCom(); // SimpleDotCom클래스의 인스턴스 만들기
 
+		int[] locations = {3,4,5}; // 닷컴 위치를 나타내기 위해 int배열(0~6 연속된 정수 3개)을 만든다.
+		dot.setLocationCells (locations);
+	
+		String userGuess = "3"; //사용자가 추측한 위치 역할을 할 가짜값 만들기
+		String result = dot.checkYourself(userGuess); //닷컴 객체에 대해 checkYourself 메소드 호출하고 그 메소드에 가짜값 전달		
+		String testResult = "failed";
+
+		if (result.equals ("hit")) {
+			testResult = "passed"; // 가짜값이 맞으면 ("hit"가 리턴되면), 제대로 작동
+		}
+		System.out.println(testResult); // 테스트 결과 출력
+	}
+}
+
+
+import java.io.*;
+public class SimpleDotCom {
+	int[] locationCells;
+	int numOfHits = 0;
+
+	public void setLocationCells (int[] locs) {
+		locationCells=locs;
+	}
+
+	public String checkYourself (String stringGuess) {
+		int guess = Integer.parseInt(stringGuess); //String을 int로 변환
+		String result = "miss"; //리턴할 결과를 저장할 변수를 만든다. 기본값은 "miss"로. (못맞추는 것을 기본값으로)
+
+		for(int i=0; i<locationCells.length; i++) { //배열에 들어있는 각 원소 (객체의 각 위치 셀)에 대해 반복합니다.
+			if(guess==locationCells[i]) { //배열에 들어있는 각 원소 (객체의 각 위치 셀)에 대해 반복합니다.
+				result = "hit";
+				numOfHits++; // 맞을때
+				break;
+			}
+		}
+		if(numOfHits == locationCells.length) {
+			result = "kill"; //순환문 밖으로 나왔지만 그 객체가 죽었는지 (3번 맞았는지) 확인 해보고, 그 경우에는 result 라를 String을 "kill"로 바꾼다.
+		} 
+		System.out.println(result);
+		return result;
+	}
+}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
