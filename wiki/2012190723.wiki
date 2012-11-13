@@ -1709,6 +1709,34 @@ public class StaticTests extends StaticSuper { // StaticTests는 StaticSuper를 
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+/* 첫번째 버튼 구현 */
+import javax.swing.*;
+import java.awt.event.*; // Actionlistener와 이벤트가 들어있는 패키지를 사용
+
+public class SimpleGui1B implements ActionListener {
+	JButton button; // 버튼을 생성합니다. 
+
+	public static void main(String []args){
+		SimpleGui1B gui=new SimpleGui1B();
+		gui.go();
+
+	}
+
+	public void go(){
+		JFrame frame= new JFrame();
+		button=new JButton("cliick me"); // 버튼에 click me 라는 내용을 입력합니다.
+
+		button.addActionListener(this); // 버튼에 action리스너를 등록합니다.
+
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent event){ // 버튼이 클릭됐을 때 실행되는 이벤트입니다.
+		button.setText("I've been clicked!");
+	}
+}
 
 }}}
 
