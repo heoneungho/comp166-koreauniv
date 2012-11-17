@@ -964,7 +964,7 @@ public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래�
 3. 컴파일은 되지만 결과가 이상함
 {{{
 
-}}}package p227;
+package p227;
 
 public class MonsterTestDrive 
 {
