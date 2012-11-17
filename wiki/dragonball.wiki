@@ -312,6 +312,166 @@ public class DRIVER {
 }
 
 
+}}}
 
+SCREEN class
+
+{{{
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.Panel;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class SCREEN1 extends JFrame implements ActionListener {
+
+	
+	Image img1 = Toolkit.getDefaultToolkit().getImage("me.jpg");
+	Image img2 = Toolkit.getDefaultToolkit().getImage("enemy.jpg");
+	
+	private MenuBar mb = new MenuBar();	
+	private Menu file = new Menu("File");
+	private MenuItem fnew = new MenuItem("New");
+	private MenuItem fopen = new MenuItem("Open");
+	private MenuItem fsave = new MenuItem("Save");
+	private MenuItem fexit = new MenuItem("Exit");
+	
+	private FileDialog fdlg1 = new FileDialog(this, "파일 불러오기", FileDialog.LOAD);
+	private FileDialog fdlg2 = new FileDialog(this, "파일 저장하기", FileDialog.SAVE);
+	
+	private Menu help = new Menu("help");
+	private MenuItem hver = new MenuItem("Version");	
+	
+	private Label sel = new Label("행동을 선택하세요.");
+	private Button[] btns = {new Button("공격"), new Button("방어"), new Button("기모으기"), 
+			new Button("원기옥"), new Button("순간이동")};
+
+	
+	private BorderLayout ma = new BorderLayout();
+	
+	private JPanel p1 = new JPanel();
+	private GridLayout gl1 = new GridLayout(1,5);
+	
+	private JPanel p2 = new JPanel();
+	private GridBagLayout gl2 = new GridBagLayout(); 
+	
+	private JPanel p3 = new JPanel()
+	{
+		public void paintComponent(Graphics g){
+		     g.drawImage(img1, 0, 0, 200, 200, this);
+		}
+	};
+
+	
+	private GridBagLayout gl3 = new GridBagLayout();
+	
+	private JPanel p4 = new JPanel() 
+	{
+		public void paintComponent(Graphics g){
+		     g.drawImage(img2, 0, 0, 200, 200, this);
+		}
+	};
+	
+	private GridBagLayout gl4 = new GridBagLayout(); 
+	
+	
+
+	public SCREEN1() {
+		
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(150, 150, 600, 400);
+		setVisible(true);
+		
+		
+		this.init();
+		this.event();
+		
+	}
+	
+	public void init()	{
+
+		this.setLayout(ma);
+		
+		p3.setPreferredSize(new Dimension(200, 200));
+		p4.setPreferredSize(new Dimension(200, 200));
+		
+		p1.setLayout(gl1);
+		p1.add(btns[0]);
+		p1.add(btns[1]);
+		p1.add(btns[2]);
+		p1.add(btns[3]);
+		p1.add(btns[4]);
+		this.add(p1,BorderLayout.SOUTH);
+		
+		p2.setLayout(gl2);
+		p2.add(sel);
+		this.add(p2,BorderLayout.NORTH);
+		
+		p3.setLayout(gl3);
+		this.add(p3,BorderLayout.EAST);
+		
+		p4.setLayout(gl4);
+		this.add(p4,BorderLayout.WEST);
+						
+		
+		
+		file.add(fnew);
+		file.addSeparator();
+		file.add(fopen);
+		file.add(fsave);
+		file.addSeparator();
+		file.add(fexit);
+		mb.add(file);
+		
+		mb.add(help);
+		help.add(hver);
+		this.setMenuBar(mb);
+		
+		
+	}
+	
+	public void event()	{
+		fopen.addActionListener(this);
+		fsave.addActionListener(this);	
+		fexit.addActionListener(this);
+	}
+		
+	public void actionPerformed(ActionEvent e)	{
+		if (e.getSource()==fopen)
+			fdlg1.setVisible(true);
+		else if(e.getSource()==fsave)
+			fdlg2.setVisible(true);
+		else if(e.getSource()==fexit)
+			System.exit(0);
+	}
+	
+	
+	public static void main(String[] args) {		
+		SCREEN1 t = new SCREEN1();		
+	}
+}
 
 }}}
+
+11.17 update
