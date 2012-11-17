@@ -786,6 +786,66 @@ public class GameHelper
 
 {{{
 
+public class Animal 
+{
+	char food;
+	boolean hunger;
+	char boundaries;
+	char location;
+	
+	void makeNoise(){}
+	void eat(){}
+	void sleep(){}
+	void roam(){}
+	
+}
+
+public class Feline extends Animal 
+{
+	void roam(){}
+}
+
+public class Lion extends Feline 
+{
+	void makeNoise(){}
+	void eat(){}
+}
+
+public class Tiger extends Feline 
+{
+	void makeNoise(){}
+	void eat(){}
+}
+
+public class Cat extends Feline
+{
+	void makeNoise(){}
+	void eat(){}
+}
+
+public class Hippo extends Animal 
+{
+	void makeNoise(){}
+	void eat(){}
+}
+
+public class Canine extends Animal
+{
+	void roam(){}
+}
+
+public class Wolf extends Canine
+{
+	void makeNoise(){}
+	void eat(){}
+}
+
+public class Dog extends Canine
+{
+	void makeNoise(){}
+	void eat(){}
+}
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
@@ -795,9 +855,214 @@ public class GameHelper
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
+
+1. 정상적으로 실행됨
 {{{
+package p227;
+
+public class MonsterTestDrive 
+{
+	public static void main(String [] args) //메인문
+	{
+		Monster [] ma = new Monster[3]; //ma 라는 이름의 변수 3개를 만듬니다
+		ma[0] = new Vampire();	//각각의 변수를 설정합니다
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		
+		for(int x =0; x<3; x++)	//각각의 ma에서 frighten을 실행합니다
+		{
+			ma[x].frighten(x);
+		}
+	}
+}
+package p227;
+
+public class Monster 
+{
+	boolean frighten(int d)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("arrrgh!!");	//문장을 출력합니다
+		return true;	//참을 반환합니다
+	}
+}
+package p227;
+
+public class Vampire extends Monster //몬스터클래스밑에 뱀파이어클래스
+{
+	boolean frighten(int x)	//정수를 받아서 참거짓을 반환
+	{
+		System.out.println("a bite?");	//문장출력
+		return false;	//거짓을 반환
+	}
+}
+package p227;
+
+public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래스
+{
+	boolean frighten(int degree)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("breath fire");	//문장 출력
+		return true;	//참값을 반환
+	}
+}
 
 }}}
+
+
+2.
+{{{
+package p227;
+
+public class MonsterTestDrive 
+{
+	public static void main(String [] args) //메인문
+	{
+		Monster [] ma = new Monster[3]; //ma 라는 이름의 변수 3개를 만듬니다
+		ma[0] = new Vampire();	//각각의 변수를 설정합니다
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		
+		for(int x =0; x<3; x++)	//각각의 ma에서 frighten을 실행합니다
+		{
+			ma[x].frighten(x);
+		}
+	}
+}
+package p227;
+
+public class Monster 
+{
+	boolean frighten(int x)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("arrrgh!!");	//문장을 출력합니다
+		return true;	//참을 반환합니다
+	}
+}
+package p227;
+
+public class Vampire extends Monster //몬스터클래스밑에 뱀파이어클래스
+{
+	int frighten(int f)	//여기서 int를 반환하는것 때문에 컴파일 에러가 발생합니다
+	{
+		System.out.println("a bite?");	//문장출력
+		return 1;	//
+	}
+}
+package p227;
+
+public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래스
+{
+	boolean frighten(int degree)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("breath fire");	//문장 출력
+		return true;	//참값을 반환
+	}
+}
+
+}}}
+
+3. 컴파일은 되지만 결과가 이상함
+{{{
+
+}}}package p227;
+
+public class MonsterTestDrive 
+{
+	public static void main(String [] args) //메인문
+	{
+		Monster [] ma = new Monster[3]; //ma 라는 이름의 변수 3개를 만듬니다
+		ma[0] = new Vampire();	//각각의 변수를 설정합니다
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		
+		for(int x =0; x<3; x++)	//각각의 ma에서 frighten을 실행합니다
+		{
+			ma[x].frighten(x);
+		}
+	}
+}
+package p227;
+
+public class Monster 
+{
+	boolean frighten(int x)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("arrrgh!!");	//문장을 출력합니다
+		return false;	//거짓을 반환합니다
+	}
+}
+package p227;
+
+public class Vampire extends Monster //몬스터클래스밑에 뱀파이어클래스
+{
+	boolean scare(int x)	//오버라이드 하지않고 새로운 scare를 만들어서 결과가 이상하게나옴
+	{
+		System.out.println("a bite?");	//문장출력
+		return true;	//참을 반환
+	}
+}
+package p227;
+
+public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래스
+{
+	boolean frighten(int degree)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("breath fire");	//문장 출력
+		return true;	//참값을 반환
+	}
+}
+
+
+4. 컴파일은 되지만 결과가 잘못됨
+{{{
+
+}}}package p227;
+
+public class MonsterTestDrive 
+{
+	public static void main(String [] args) //메인문
+	{
+		Monster [] ma = new Monster[3]; //ma 라는 이름의 변수 3개를 만듬니다
+		ma[0] = new Vampire();	//각각의 변수를 설정합니다
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		
+		for(int x =0; x<3; x++)	//각각의 ma에서 frighten을 실행합니다
+		{
+			ma[x].frighten(x);
+		}
+	}
+}
+package p227;
+
+public class Monster 
+{
+	boolean frighten(int z)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("arrrgh!!");	//문장을 출력합니다
+		return true;	//참을 반환합니다
+	}
+}
+package p227;
+
+public class Vampire extends Monster //몬스터클래스밑에 뱀파이어클래스
+{
+	boolean frighten(byte b)	//입력 형식이 바뀌어서 결과가 잘못나옴
+	{
+		System.out.println("a bite?");	//문장출력
+		return true;	//참을 반환
+	}
+}
+package p227;
+
+public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래스
+{
+	boolean frighten(int degree)	//정수를 받아서 참거짓을 반환하는 함수
+	{
+		System.out.println("breath fire");	//문장 출력
+		return true;	//참값을 반환
+	}
+}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
 
