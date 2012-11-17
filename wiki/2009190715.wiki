@@ -1248,62 +1248,30 @@ public class SimpleGui1 {
 
 {{{
 
+
 import javax.swing.*;
-import java.awt.event.*;
-
-public class SimpleGui1B implements ActionListener {
-	JButton button;
-
-	public static void main (String[] args) {
-		SimpleGui1B gui = new SimpleGui1B();
-		gui.go();
-	}
-
-	public void go () {
-		JFrame frame = new JFrame();
-		button = new JButton("click me");
-
-		button.addActionListener(this);
-
-
-		frame.getContentPane().add(button);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300,300);
-		frame.setVisible(true);
-	}
-
-	public void actionPerformed(ActionEvent event) {
-		button.setText("I've been clicked!");
-	}
-}
-
-}}}
-
-*405p 버튼과 원의색* _구현후 주석달기_
-
-{{{
-
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class SimpleGui3C implements ActionListener {
-
+	
 	JFrame frame;
-
+	
 	public static void main (String[] args) {
 		SimpleGui3C gui = new SimpleGui3C();
 		gui.go();
 	}
-
-	public void go() {
+	
+	public void go () {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
 		JButton button = new JButton("Change colors");
 		button.addActionListener(this);
-
+		
 		MyDrawPanel drawPanel = new MyDrawPanel();
-
+		
 		frame.getContentPane().add(BorderLayout.SOUTH, button);
 		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
 		frame.setSize(300,300);
@@ -1318,25 +1286,34 @@ public class SimpleGui3C implements ActionListener {
 
 
 
-import java.awt.*;
+
+
+
+
+
 import javax.swing.*;
+import java.awt.*;
 
-class MyDrawPanel extends JPanel {
 
-	public void paintComponet(Graphics g) {
 
-	g.fillRect(0,0,this.getWith(), this,getHeight());
-
-	int red = (int) (Math.random() * 256);
-	int green = (int) (Math.random() * 256);
-	int blue = (int) (Math.random() * 256);
-
-	Color randomColor = new Color(red, green, blue);
-	g.setColor(randomColor);
-	g.fillOval(70,70,100,100);
-
+public class MyDrawPanel extends JPanel {
+	
+	public void paintComponent (Graphics g) {
+		
+		g.fillRect(0, 0, this.getWidth(),  this.getHeight());
+		
+		int red = (int)(Math.random()*256);
+		int green = (int)(Math.random()*256);
+		int blue = (int)(Math.random()*256);
+		
+		Color randomColor = new Color(red,green,blue);
+		g.setColor(randomColor);
+		g.fillOval(70, 70, 100, 100);	
 	}
+
 }
+
+
 
 
 
