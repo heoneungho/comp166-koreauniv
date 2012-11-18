@@ -5,7 +5,7 @@
 = 01. 껍질을 깨고:간단한 소개 =
 
 *48p BeerSong* _문제해결하기, 주석달기_
-
+{{{
 public class BeerSong{  //누구든지 접근가능한 BeerSong 이라는 클래스 선언 
      public static void main (String[] args){  //리턴값이 없는 'args'라는 이름의 String 배열의 인자를 갖는 main 메소드 선언
         int beerNum = 99;  //beerNum이라는 int형변수 선언과 99값 대입
@@ -33,9 +33,9 @@ public class BeerSong{  //누구든지 접근가능한 BeerSong 이라는 클래
       }//while순환문 끝
    }//main클래스 끝
 }//클래스 끝
-
+}}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
-
+{{{
 public class PhraseOMatic{
    public static void main (String[] args){
      
@@ -59,14 +59,14 @@ public class PhraseOMatic{
      
    } //main 클래스 끝 
  } // 클래스 끝
-
+}}}
 *52p 집중토론* _요약_
 
  * 자바 가상 머신: 우리가 짠 소스코드(원조)를 컴파일러가 바이트 코드로 코딩하면 자바 가상 머신은 바이트 코드를 읽고 전자제품에 돌린다. 플랫폼에 무관하게 사용 가능하다. 
  * 컴파일러: 자바 가상 머신이 설치된 어떤 전자제품에서도 돌아갈 수 있도록 우리가 짠 소스코드를 자바 가상머신이 코딩할 수 있는 바이트 코드로 코딩 시켜주는 장치.  
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
+{{{
 class Shuffle1{
   public static void main (String [] args){
     int x = 3; // int형 변수 x 설정후 3 대입
@@ -95,7 +95,7 @@ class Shuffle1{
    }while문 끝
   }main클래스 끝
 }클래스 끝
-
+}}}
 = 02. 객체마을로의 여행:객체에 대해 알아봅시다  =
 
 *68p~ 클래스* _요약_
@@ -113,7 +113,7 @@ class Shuffle1{
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
-
+{{{
 public class GuessGame{
      Player p1;
      Player p2;
@@ -210,7 +210,7 @@ public class GameLauncher {
 }            
 
 
-
+}}]
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
