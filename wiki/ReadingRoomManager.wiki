@@ -588,5 +588,56 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 	}
 
 
+	// 상단 판넬
+	public void pan1() {
+		pan1 = new JPanel();// 판넬1 생성
+		pan1.add(blank = new JTextField());// 상단의 시계표시를 위해 공백을 만드는 텍스트필드
+		blank.setPreferredSize(new Dimension(900, 70));// 공백 사이즈
+		blank.setEnabled(false);// 비활성화
+		add(pan1, "North");// 판넬1 부착
+	}
+
+	// 중앙 버튼부분 판넬
+	public void pan2() {
+		pan2 = new JPanel();// 패널 생성
+		GridLayout layout = new GridLayout(9, 1);// 그리드 레이아웃 생성
+		pan2.setLayout(layout);// 레이아웃 설정
+		add(pan2);// 판넬2 부착
+	}
+
+	// 하단 상황판 부분 판넬
+	public void pan3() {
+		pan3 = new JPanel();// 패널 생성
+		pan3.add(condition = new JTextArea());// 상황판을 생성
+		for (int i = 0; i < 11; i++) {// 상황판에 message 클래스에 저장된 메세지를 출력함
+			condition.append(message.message[i]);
+		}
+		condition.setPreferredSize(new Dimension(700, 200));// 상황판 사이즈
+		condition.setEditable(false);// 편집 불가
+		pan3.add(history = new JButton("독서실 이용내역보기"));// 버튼 부착
+		pan3.add(configBtn = new JButton("요금설정"));// 버튼 부착
+		history.addActionListener(this);// 액션리스너 추가
+		configBtn.addActionListener(this);// 액션리스터 추가
+		add(pan3, "South");// 판넬3 부착
+	}
+
+	// 스레드 실행 부분
+	public void run() {
+		while (true) {// 반복문
+			Date d = new Date();// 날짜 객체 생성
+			SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");// 형식
+			// 지정
+			SimpleDateFormat time = new SimpleDateFormat("hh시 mm분 ss초");// 형식 지정
+			currentDate = date.format(d);// 현재 날짜를 위에 저장해둔 형식으로 문자열 저장
+			currentTime = time.format(d);// 현재 시간을 위에 저장해둔 형식으로 문자열 저장
+			try {
+				Thread.sleep(500);// 0.5초 텀을 두고
+				repaint();// 다시그리기를 반복
+			} catch (InterruptedException e) {
+			}
+		}
+	}
+}
+
 
 }}}
