@@ -562,6 +562,19 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 			Btn[i].addActionListener(this);
 		}
 		// 여기까지 버튼 생성
+		
+		int i = 0;
+		// 회원이 입실한 자리의 라벨과 색깔을 바꿈
+		while (i < obj.length) {// 객체의 length 변수만큼 loop
+			int temp = Integer.parseInt(obj.jariNumber[i]);// 파일에 저장된 자리번호를
+			// temp에 정수형태로 저장
+			Btn[temp].setLabel(obj.carNumber[i]);// 자리번호의 버튼의 라벨을 회원번호로 바꿈
+			Btn[temp].setForeground(new Color(255, 0, 0));// 색깔을 붉은색으로 바꿈
+			i++;
+		}
+	}
+
+
 
 
 }}}
