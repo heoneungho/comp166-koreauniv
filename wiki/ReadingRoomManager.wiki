@@ -530,7 +530,38 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 		}
 	}
 
-
+	@SuppressWarnings("deprecation")
+	// 버튼을 생성하는 메소드
+	public void gridInit() {
+		for (int i = 1; i <= 15; i++) {
+			pan2.add(Btn[i] = new JButton(i + ""));
+			Btn[i].addActionListener(this);
+		}
+		for (int i = 1; i <= 15; i++) {
+			pan2.add(notUseBtn[i] = new JButton(""));
+			notUseBtn[i].setEnabled(false);
+		}
+		for (int i = 16; i <= 45; i++) {
+			pan2.add(Btn[i] = new JButton(i + ""));
+			Btn[i].addActionListener(this);
+		}
+		for (int i = 16; i <= 30; i++) {
+			pan2.add(notUseBtn[i] = new JButton(""));
+			notUseBtn[i].setEnabled(false);
+		}
+		for (int i = 46; i <= 75; i++) {
+			pan2.add(Btn[i] = new JButton(i + ""));
+			Btn[i].addActionListener(this);
+		}
+		for (int i = 31; i <= 45; i++) {
+			pan2.add(notUseBtn[i] = new JButton(""));
+			notUseBtn[i].setEnabled(false);
+		}
+		for (int i = 76; i <= 90; i++) {
+			pan2.add(Btn[i] = new JButton(i + ""));
+			Btn[i].addActionListener(this);
+		}
+		// 여기까지 버튼 생성
 
 
 }}}
