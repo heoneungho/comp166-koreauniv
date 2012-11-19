@@ -496,4 +496,41 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 		setVisible(true);// 창을 보여줌
 		setResizable(false);// 크기변경 불가
 	}
+
+	@SuppressWarnings("deprecation")
+
+	// 버튼 이벤트를 설정합니다.
+	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == configBtn) {// 요금설정 버튼
+			new config();// 요금설정 클래스 실행
+		} else if (e.getSource() == history) {// 내역보기 버튼
+			new logWindow();// 내역보기 클래스 실행
+		} else if (Integer.parseInt(e.getActionCommand()) >= 0// 버튼의 이름을 정수형태로
+				// 변환하여
+				&& Integer.parseInt(e.getActionCommand()) <= Btn.length) {// 0~150사이의
+			// 숫자면
+			jariNumber = Integer.parseInt(e.getActionCommand());// 자리번호 변수에 저장하고
+			new enterWindow(jariNumber);// 그것을 매개변수로 입실자 창 띄우기
+			dispose();// 창을 닫음
+		} else {// 0~150사이의 숫자가 아닐시에는
+			for (int i = 1; i < Btn.length; i++) {// 버튼을 처음부터 끝까지 검색
+				String temp = Btn[i].getLabel();// temp에 버튼의 라벨을 저장
+				int temp2 = Integer.parseInt(temp);// temp1에 저장한 라벨을 정수형태로 변환하여
+				// 저장해 둠
+				if (temp2 == Integer.parseInt(e.getActionCommand())) {
+					// temp2에 저장해둔 라벨과 액션이벤트로 들어온 매개변수가 같다면
+					// 사람이 사용하는 자리가 바로 그 자리 이므로
+					jariNumber = i;// 자리번호는 i
+					break;// 루프를 나옴
+				}
+			}
+			new leaveWindow(jariNumber);// 자리번호를 매개변수로 퇴실 창을 띄움
+			dispose();// 창을 닫음
+		}
+	}
+
+
+
+
 }}}
