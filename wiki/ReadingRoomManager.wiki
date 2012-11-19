@@ -634,10 +634,12 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 				Thread.sleep(500);// 0.5초 텀을 두고
 				repaint();// 다시그리기를 반복
 			} catch (InterruptedException e) {
+
 			}
 		}
 	}
 }
 
+=========================================================================================
 
 }}}
