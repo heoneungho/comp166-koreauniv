@@ -687,7 +687,38 @@ public static void main(String[] args){
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class MonsterTestDrive{
+	public static void main(String [] args){
+		Monster [] ma = new Monster[3]; // ma 배열을 생성합니다.
+		ma[0] = new Vampire();
+		ma[1] = new Monster();
+		ma[2] = new Monster();
+		for(int x = 0; x < 3; x++){ // 메소드를 생성합니다.
+			ma[x].frighten(x);
+		}
+	}
+}
 
+class Monster{ // 놀랐을 때 하는 행동
+	boolean frighten(int d){
+		System.out.println("arrrgh");
+		return true;
+	}
+}
+
+class Vampire extends Monster{ // 뱀파이어가 몬스터를 확장한다.
+	boolean frighten(int x){
+		System.out.println("a bite?");
+		return false;
+	}
+}
+
+class Dragon extends Monster{ // 드래곤이 몬스터를 확장한다.
+	boolean frighten(int degree){
+		System.out.println("breath fire");
+		return true;
+	}
+}
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
