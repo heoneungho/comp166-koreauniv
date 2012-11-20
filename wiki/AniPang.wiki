@@ -76,14 +76,18 @@ class AniPangTestDrive{
 		int	 x=-1;
 		Ani.CheckNPang();
 	 //	게임판 검사+pang
-		long  tmp1=System.currentTimeMillis();
-		Organize();
-		long tmp2=System.currentTimeMillis();
-		time-=(tmp2-tmp1);
-	 	}
-	 	else 자리 원상복귀;
+		boolean fl=true;
+		while(fl){
+			long  tmp1=System.currentTimeMillis();
+			Organize();
+			if(Ani.CheckNPang()==0)fl=false;
+			long tmp2=System.currentTimeMillis();
+			time-=(tmp2-tmp1);
+		}
  	}
+	 	else 자리 원상복귀;
  }
+}
 	
 	public class AniPang{
 		int x,y,way;
