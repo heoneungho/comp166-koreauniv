@@ -690,26 +690,24 @@ time: 1245
 {{{
 package ch5;
 
-public class SimpleDotComTestDrive {
-	public static void main (String[] args) {
-		SimpleDotCom dot = new SimpleDotCom(); //dot 이라는 SimpleDotCom 객체를 만듭니다.
-		
-		int[] locations = {2,3,4}; // int 배열을 만듭니다.
-		dot.setLocationCells(locations); //세터를 실행합니다.
-		
-		String userGuess = "2"; // userGuess에 2를 넣습니다.
-		String result = dot.checkYourself(userGuess); //checkYourself를 실행해 그 값을 result에 넣습니다.
+import java.io.*;
 
-		String testResult = "failed"; //testResult 에 failed 를 넣습니다.
-		if(result.equals("hit") ) {
-			testResult = "passed";
-			
-		} //result가 hit이면 testResult에 passed를 넣습니다.
+public class GameHelper {
+	public String getUserInput(String prompt) {
+		String inputLine = null;
+		System.out.println(prompt + "");
+		try {
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if (inputLine.length() == 0) return null;
+		} catch (IOException e) {
+			System.out.println("IOException: " + e);
+		}
+		return inputLine;
 		
-		System.out.println(testResult); //testResult를 출력합니다.		
 	}
 
-}
+} //GameHelper 클래스 입니다.
 
 public class SimpleDotCom {
 	int[] locationCells; //int 배열을 만듭니다.
@@ -741,9 +739,49 @@ public class SimpleDotCom {
 	}
 }
 
+public class SimpleDotComTestDrive {
+	public static void main (String[] args) {
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper(); //helper 라는 GameHelper 객체를 만듭니다.
+		
+		SimpleDotCom theDotCom = new SimpleDotCom(); //theDotCom 이라는 simpleDotCom 객체를 만듭니다.
+		int randomNum = (int) (Math.random()*5); // 랜덤으로 수를 뽑는데 0에서 4.9999.. 사이의 값을 int로 캐스트 햇으므로 0,1,2,3,4의 값만 randomNum으로 들어간다.
+		
+		int[] locations = {randomNum,randomNum+1,randomNum+2}; //locations 배열에 값을 넣어준다.
+		theDotCom.setLocationCells(locations); // locations 의 값을 세터해준다.
+		boolean isAlive = true; //while 문을 빠져나가게 하기 위한 수단이다.
+		
+		while(isAlive ==true) {
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom.checkYourself(guess); //checkYourself 를 하고 난뒤 리턴값이 result에 저장된다.
+			numOfGuesses++; //numOfGuesses 의 값을 1만큼 증가시킨다.
+			if(result.equals("kill")) {
+				isAlive = false; // 이 if문을 만족한다는 말 자체가 닷컴을 다 죽였단 말이므로 while 문을 더이상 못 돌리게 해야한다. 그래서 isAlive를 false가 되게 해 while문을 빠져나오도록 해준다.
+				System.out.println(numOfGuesses + " guesses"); // numOfGuesses guesses 가 출력되도록 한다.1
+				
+			}
+		}
+	}
+}
+
 코딩 결과
+enter a number
+0
+miss
+enter a number
+1
+miss
+enter a number
+2
 hit
-passed
+enter a number
+3
+hit
+enter a number
+4
+kill
+5 guesses
+
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
