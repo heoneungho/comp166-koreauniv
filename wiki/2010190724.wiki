@@ -363,7 +363,36 @@ class BooksTestDrive {
 }
 }}}
 
-B문제 
+B문제
+{{{
+
+class Hobbits {
+	
+	String name;
+	
+	public static void main(String[] args){
+		
+		Hobbits[] h = new Hobbits[3];
+		int z = 0;
+		
+		while(z<3){  //배열 원소는 0,1,2번째까지 이므로 z<"3"으로 교정
+		
+			h[z] = new Hobbits();
+			h[z].name = "bilbo";
+			if(z==1){
+				h[z].name = "frodo";
+			}
+			if(z==2){
+				h[z].name = "sam";
+			}
+			System.out.print(h[z].name + " is a ");
+			System.out.println("good Hobbit name");
+			
+			z++; //이 문장이 While문의 맨 앞에 있으면 z=0일 때는 처리되지 않는다.
+		}
+	}
+}
+}}} 
 *101p 레퍼런스 도용사건* _요약_
 
  * 누가 이겼나요?:
