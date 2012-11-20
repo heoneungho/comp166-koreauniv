@@ -748,7 +748,55 @@ class Dragon extends Monster{ // 드래곤이 몬스터를 확장한다.
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+import java.util.*;
+class V2Radiator{
+	V2Radiator(ArrayList list){
+		for(int x=0; x<5; x++){
+			list.add(new SimUnit("V2Radiator"));
+		}
+	}
+}
 
+class V3Radiator extends V2Radiator{
+	V3Radiator(ArrayList lglist){
+		super(lglist);
+		for(int g=0; g<10; g++){
+			lglist.add(new SimUnit("V3Radiator"));
+		}
+	}
+}
+
+class RetentionBot{
+	RetentionBot(ArrayList rlist){
+		rlist.add(new SimUnit("Retention"));
+	}
+}
+
+public class TestLifeSupportSim{
+	public static void main(String [] args){
+		ArrayList aList = new ArrayList();
+		V2Radiator v2 = new V2Radiator(aList);
+		V3Radiator v3 = new V3Radiator(aList);
+		for(int z=0; z<20; z++){
+			RetentionBot ret = new RetentionBot(aList);
+			System.out.println(z+1 + "unit");
+		}
+	}
+}
+
+class SimUnit{
+	String botType;
+	SimUnit(String type){
+		botType = type;
+	}
+	int powerUse(){
+		if("Retention".equals(botType)){
+			return 2;
+		}else{
+			return 4;
+		}
+	}
+}
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
