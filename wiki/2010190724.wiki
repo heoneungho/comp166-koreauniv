@@ -447,8 +447,32 @@ class DogTestDrive {
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
+A문제 : "42 84"로 출력.
 
+B문제 
+{{{
+class Clock {
+	String time;
+	
+	void setTime(String t){
+		time = t;
+	}
+	
+	String getTime() {  /*time의 유형은 String이므로 getTime의 반환형을 String으로 바꾼다.*/
+		return time;
+	}
+}
+
+class ClockTestDrive {
+	public static void main(String[] args){
+		
+		Clock c = new Clock();
+		
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("time: " + tod);
+	}
+}
 }}}
 
 
