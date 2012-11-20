@@ -759,7 +759,9 @@ public class SimpleAnimation{
 
 *452p 비트박스 프로그램* _구현후 주석달기_
 
-{{{import java.awt.*;
+{{{
+
+import java.awt.*;
 import javax.swing.*;
 import javax.sound.midi.*;
 import java.util.*;
@@ -768,7 +770,7 @@ import java.awt.event.*;
 public class BeatBox {
 
 	JPanel mainPanel;
-	ArrayList<JCheckBox> checkboxList; // 체크상자를 ArrayList에 저장합니다.
+	ArrayList<JCheckBox> checkboxList; /*체크상자를 ArrayList에 저장합니다.*/
 	Sequencer sequencer;
 	Sequence sequence;
 	Track track;
@@ -779,7 +781,7 @@ public class BeatBox {
 			"Hi Bongo", "Maracas", "Whistle", "Low Conga", "Cowbell",
 			"Vibraslap", "Low-mid Tom", "High Agogo", "Open Hi Conga" }; // 악기명을 string 으로 배열합니다.
 	int[] instruments = { 35, 42, 46, 38, 49, 39, 50, 60, 70, 72, 64, 56, 58,
-			47, 67, 63 }; // 실제 드럼 건반을 나타냅니다. 드럼 채널은 피아노의 각 건반이 서로 다른 드럼을 나타내는 것과 같다고 보면 됩니다. 예를 들어 35번 건반은 베이스 드럽을, 42번 건반은 하이햇을 나타냅니다.
+			47, 67, 63 }; /* 실제 드럼 건반을 나타냅니다. 드럼 채널은 피아노의 각 건반이 서로 다른 드럼을 나타내는 것과 같다고 보면 됩니다. 예를 들어 35번 건반은 베이스 드럽을, 42번 건반은 하이햇을 나타냅니다.*/
 
 	public static void main(String[] args) {
 		new BeatBox().buildGUI();
@@ -832,7 +834,7 @@ public class BeatBox {
 			c.setSelected(false);
 			checkboxList.add(c);
 			mainPanel.add(c);
-		} // 체크 상자를 만들고 모든 값을 false 로 설정한 다음 ArrayList와 GUI에 패널을 추가합니다.
+		} /* 체크 상자를 만들고 모든 값을 false 로 설정한 다음 ArrayList와 GUI에 패널을 추가합니다.*/
 
 		setUpMidi();
 
@@ -851,18 +853,18 @@ public class BeatBox {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	} // 시퀀서,시퀀스, 트랙을 만들기 위한 일반적인 미디 관련 코드입니다.
+	} /* 시퀀서,시퀀스, 트랙을 만들기 위한 일반적인 미디 관련 코드입니다.*/
 
 	public void buildTrackAndStart(){
 	 int[] trackList = null;
 	 
 	 sequence.deleteTrack(track);
-	 track = sequence.createTrack(); // 기존트랙을 제거하고 트랙을 새로 만듭니다.
+	 track = sequence.createTrack(); /* 기존트랙을 제거하고 트랙을 새로 만듭니다.*/
 	 
 	 	for (int i = 0; i < 16; i++){ 
 	 		trackList = new int[16];
 	 		
-	 		int key = instruments[i]; // 어떤 악기인지를 나타내는 건번 번호를 설정합니다.
+	 		int key = instruments[i]; /* 어떤 악기인지를 나타내는 건번 번호를 설정합니다.*/
 	 		
 	 		for ( int j = 0; j < 16; j++){
 	 			
@@ -872,8 +874,8 @@ public class BeatBox {
 	 		 		} else {
 	 		 			trackList[j] = 0;
 	 		 		}
-	 		} // 박자에 해당하는 체크상자가 선택되었는지 확인합니다. 되었으면 연주를 하고 안되었습니다 0으로 설정합니다.
-	 		makeTracks(trackList); // 악기의 16개의 모든 박자에 대해 이벤트를 만들고 트랙에 추가합니다.
+	 		} /* 박자에 해당하는 체크상자가 선택되었는지 확인합니다. 되었으면 연주를 하고 안되었습니다 0으로 설정합니다.*/
+	 		makeTracks(trackList); /* 악기의 16개의 모든 박자에 대해 이벤트를 만들고 트랙에 추가합니다.*/
 	 		track.add(makeEvent(176,1,127,0,16)); 
 
 	 	}
@@ -882,7 +884,7 @@ public class BeatBox {
 	 	try{
 	 		
 	 		sequencer.setSequence(sequence);
-	 			sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY); // 루프 반복 횟수를 지정하기 위한 메소드입니다. 계속 반복할 수 있도록 sequencer.LOOP_CONTINUOUSLY를 인자로 했습니다.
+	 			sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY); /* 루프 반복 횟수를 지정하기 위한 메소드입니다. 계속 반복할 수 있도록 sequencer.LOOP_CONTINUOUSLY를 인자로 했습니다.*/
 	 			sequencer.start();
 	 			sequencer.setTempoInBPM(120);
 	 	} catch(Exception e) { e.printStackTrace();}
@@ -913,7 +915,7 @@ public class BeatBox {
 			float tempoFactor = sequencer.getTempoFactor();
 			sequencer.setTempoFactor((float) (tempoFactor * 0.97));
 		}
-	} // 버튼에 대한 리스너 역할들 입니다. 빠르게 하면 속도가 3%증가, 느리게 하면 3% 감소합니다. 
+	} /* 버튼에 대한 리스너 역할들 입니다. 빠르게 하면 속도가 3%증가, 느리게 하면 3% 감소합니다. */
 	public void makeTracks(int[] list) {
 
 		for (int i = 0; i < 16; i++) {
@@ -921,11 +923,11 @@ public class BeatBox {
 
 			if (key != 0) {
 				track.add(makeEvent(144, 9, key, 100, i));
-				track.add(makeEvent(128, 9, key, 100, i + 1)); // NOTE ON과 NOTE OFF 를 만들고 추가합니다.
+				track.add(makeEvent(128, 9, key, 100, i + 1)); /* NOTE ON과 NOTE OFF 를 만들고 추가합니다.*/
 
 			}
 		}
-	} // 한 악기의 16박자 전체에 대해 이벤트를 만듭니다. int[] 배열에는 0 또는 악기의 건반 번호가 들어갑니다.
+	} /* 한 악기의 16박자 전체에 대해 이벤트를 만듭니다. int[] 배열에는 0 또는 악기의 건반 번호가 들어갑니다.*/
 
 	public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {
 		MidiEvent event = null;
