@@ -465,9 +465,9 @@ class Hobbits {
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+ * 캡슐화: 변수에 직접 접근하지 못하게함
+ * 게터와 세터: private으로 선언된 변수에 간접적으로 접근하기위해 만든 메소드 
+ * 인스턴스 변수 vs 지역 변수: 인스턴스 변수는 클래스 안에서 ,지역변수는 메소드안에서 선언됨
  
 *107p Dog* _실행_
 
@@ -511,6 +511,34 @@ class DogTestDrive {
 
 {{{
 
+public class Clock {
+
+        String name;
+  
+        void setTime(String t)//시간을설정
+        {
+                time = t;
+        }
+        
+        String getTime()//시간에해당하는 값을 반환
+        {
+                return time;
+        }
+
+}
+
+public class ClockTestDrive {
+
+        public static void main() {
+                
+                Clock c = new Clock();
+                c.setTime("1245");//시간설정
+                String tod = c.getTime();//객체c에 저장된 시간에해당하는 값을 반환
+                System.out.println("Time: " + tod);//출력
+                
+        }
+}
+
 }}}
 
 
@@ -519,7 +547,26 @@ class DogTestDrive {
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
+ 소프트웨어 개발 방법론중하나
+
+익스트림 프로그래밍의 규칙
  
+-조금씩하지만 자주 발표한다.
+
+-사이클을 반복해서 돌리면서 개발한다.
+
+-스펙에 없는것은 절대 집어넣지 않는다.
+
+-테스트코드 를 먼저 만든다
+
+-기회가 생기는 족족 언제 어디서든 코드를 개선한다.
+
+-모든 테스트를 통과하기 전에는 어떤 것도 발표하지 않는다
+
+-조금씩 발표하는 것을 기반으로 하여 현실적인 작업 계획을 만든다.
+
+-모든 일을 단순하게 처리한다
+
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
