@@ -864,7 +864,44 @@ public class TwoButtons {
      JLabel label;
 
      public static void main (String[] args) {
-          TwoButtons 
+          TwoButtons gui = new TwoButtons ();
+          gui.go();
+     }
+
+     public void go() {
+          frame = new JFrame();
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+          JButton labelButton = new JButton("Change Lable");
+          lableButton.addActionListener(new LableLIstener());
+
+          JButton colorButton = new JButton("Change Circle");
+          colorButton.addActionListener(new ColorListener());
+
+          label = new JLabel("I'm a label");
+          MyDrawPanel drawPanel = new MyDrawPanel();
+
+          frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+          frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+          frame.getContentPane().add(BorderLayout.EAST, labelButton);
+          frame.getContentPane().add(BorderLayout.WEST, label);
+
+          frame.setSize(300, 300);
+          frame.setVisible(true);
+     }
+
+     class LableListener implements ActionListener {
+          public void actionPerformed(ActionEvent event) {
+               label.setText("Ouch!");
+          }
+     }
+
+     class ColorListener implements ActionListener {
+          public void actionPerformed(ActionEvent event) {
+               frame.repaint();
+          }
+     }
+}
 
 
 }}}
@@ -873,11 +910,59 @@ public class TwoButtons {
 
 {{{
 
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation {
+
+     int x = 70;
+     int y = 70;
+
+     public static void main (String[] args) {
+          SimpleAnimation gui = new SimpleAnimation ();
+          gui.go();
+     }
+
+     public void go() {
+          JFrame frame = new JFrame();
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+          MyDrawPanel drawPanel = new MyDrawPanel();
+
+          frame.getContentPane().add(drawPanel);
+          frame.setSize(300, 300);
+          frame.setVisible(true);
+
+          for (int i = 0; i < 130; i++) {
+
+               x++;
+               y++;
+
+               drawPanel.repaint();
+
+               try {
+                    Thread.sleep(50);
+               } catch(Exception ex) {   }
+          }          
+     }
+
+     class MyDrawPanel extends JPanel {
+
+          public void paintComponent(Graphics g) {
+               g.setColor(Color.green);
+               g.fillOval(x, y, 40, 40);
+          }
+     }
+}
+
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
@@ -887,6 +972,8 @@ public class TwoButtons {
 
 {{{
 
+
+
 }}}
 
 = 14. 객체 저장:직렬화와 입출력  =
@@ -894,5 +981,7 @@ public class TwoButtons {
 *496p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
