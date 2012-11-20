@@ -1623,7 +1623,80 @@ public class MyDrawPanel extends JPanel{
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
 
+import java.awt.*;
+import java.awt.event.*;
+
+public class TwoButtons {
+        
+		JFrame frame;
+        JLabel label;
+        
+        public static void main(String[] args){
+                //인스턴스 생성
+        		TwoButtons gui = new TwoButtons();
+                gui.go();
+                
+        }
+        
+        public void go(){
+        		//프레임 생성
+                frame = new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+                JButton labelButton= new JButton("change label");
+                //다른 리스너 클래스를 만들어 객체를 전달
+                labelButton.addActionListener(new LabelListener());
+                
+                JButton colorButton=new JButton("change circle");
+                colorButton.addActionListener(new ColorListener());
+                
+                label= new JLabel("I'm a label");
+                MyDrawPanel drawPanel=new MyDrawPanel();
+                
+                frame.getContentPane().add(BorderLayout.SOUTH,colorButton);
+                frame.getContentPane().add(BorderLayout.CENTER,drawPanel);
+                frame.getContentPane().add(BorderLayout.EAST,labelButton);
+                frame.getContentPane().add(BorderLayout.WEST,label);
+                
+                frame.setSize(300,300);
+                frame.setVisible(true);
+                
+        }
+        
+        // label 에 관한 액션리스너
+        class LabelListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        label.setText("Ouch!");
+                }
+        }
+        
+        // Color 에 관한 액션리스너
+        class ColorListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        frame.repaint();
+                }
+        }
+        
+        class MyDrawPanel extends JPanel{
+                public void paintComponent(Graphics g){
+                	
+                		//왼쪽 끝에서 0픽셀, 위쪽 끝에서 0픽셀에서 시작
+                        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+                        
+                        int red = (int)(Math.random()*255);
+                        int green = (int)(Math.random()*255);
+                        int blue = (int)(Math.random()*255);
+                        
+                        Color randomColor=new Color(red, green, blue);
+                        g.setColor(randomColor);
+                        g.fillOval(70,70,100,100); 
+        }
+
+        }
+
+}
 }}}
 
 *418p 간단한 애니메이션* _구현후 주석달기_
