@@ -1880,7 +1880,7 @@ public class TwoButtons {
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
-/* 간단한 애니메이션 도읩니다. */
+/* 간단한 애니메이션 코드입니다. */
 import javax.swing.*;
 import java.awt.*;
 
