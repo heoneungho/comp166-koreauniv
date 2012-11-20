@@ -47,70 +47,100 @@ Organize(): 비어있는공간을 매꾸어주고 랜덤으로 동물들을 생�
 {{{
 
 class AniPangTestDrive{
- public static void main(String args){
-	 char Board[9][9];
-	 int i,j;
-	 
-	 //처음에 for문으로 배열에 렌덤으로 초기 게임판 생성 
-	 while(true){
-		 for(i=1;i<=7;i++){
-			 for(j=1;j<=7;j++){
-				 Board[i][j]=(char)(Math.random()*7+64);
-			 }
-		 }
-		 for(i=1;i<=7;i++){
-			 for(j=1;j<=7;j++){
-				 if(Board[i][j]==Board[i+1][j] && Board[i][j]==Board[i+2][j] && i<=5)break;
-				 if(Board[i][j]==Board[i][j+1] && Board[i][j]==Board[i][j+2] && i<=5)break;
-			 }
-		 }
-	 }
-	 long start = System.currentTimeMillis();//시간을 제기 시작한다.
-	 long end=System.currentTimeMillis();
-	 long time=end-start;
-	 while(time/1000.0<60){
-		 AniPang Ani= new AniPang();
-		 int x=Integer.parseInt(args),y=Integer.parseInt(args),way=Integer.parseInt(args);
-		 Ani.setAni(x,y,way,Board);
-		 //입력받아 Ani로 set +게임판에서 동물 자리 바꾸는 명령 실행
-		 int x=-1;
-		 x=Ani.Check();
-		 if(x!=-1){//게임판 검사
-			 long  tmp1=System.currentTimeMillis();
-			 Pang();
-			 Organize();
-			 long tmp2=System.currentTimeMillis();
-			 time-=(tmp2-tmp1);
-		 }
-		 else 자리 원상복귀;
-	 }
+	public static void main(String args){
+		char Board[][] = new char[10][10];
+		int i,j;
+		
+	//처음에 for문으로 배열에 렌덤으로 초기 게임판 생성 
+	while(true){
+		for(i=1;i<=7;i++){
+			for(j=1;j<=7;j++){
+				Board[i][j]=(char)(Math.random()*7+64);
+			}
+		}
+		for(i=1;i<=7;i++){
+			for(j=1;j<=7;j++){
+				if(Board[i][j]==Board[i+1][j] && Board[i][j]==Board[i+2][j] && i<=5)break;
+				if(Board[i][j]==Board[i][j+1] && Board[i][j]==Board[i][j+2] && i<=5)break;
+			}
+		}
+	}
+	long start = System.currentTimeMillis();//시간을 제기 시작한다.
+	long end=System.currentTimeMillis();
+	long time=end-start;
+	while(time/1000.0<60){
+		AniPang Ani= new AniPang();
+		int x=Integer.parseInt(args),y=Integer.parseInt(args),way=Integer.parseInt(args);
+		Ani.setAni(x,y,way,Board);
+		//	입력받아 Ani로 set +게임판에서 동물 자리 바꾸는 명령 실행
+		int	 x=-1;
+		Ani.CheckNPang();
+	 //	게임판 검사+pang
+		long  tmp1=System.currentTimeMillis();
+		Organize();
+		long tmp2=System.currentTimeMillis();
+		time-=(tmp2-tmp1);
+	 	}
+	 	else 자리 원상복귀;
+ 	}
  }
-}
-
-public class AniPang{
- int x,y,way;
- float time;
- public void timeset(float a){
-  time=a;
- }
- public float timeget(){
-  return time;
- }
- public int setAni(int a,int b,int c, char arr[][]){
-  char temp;
-  temp=arr[x][y];
-  arr[x][y]=arr[x+way/10-2][y+way%10-2];
-  arr[x+way/10-2][y+way%10-2]=temp;
-  return 0;
- }
-	 
- public int Check(int x,int y){
-	 if()
 	
-	 return 0;
- }
- public void Pang(int x,int y);
- public void Organize();
-}
-
+	public class AniPang{
+		int x,y,way;
+		float time;
+		public void timeset(float a){
+			time=a;
+		}
+		public float timeget(){
+			return time;
+		}
+		public int setAni(int a,int b,int c, char arr[][]){
+			char temp;
+			temp=arr[x][y];
+			arr[x][y]=arr[x+way/10-2][y+way%10-2];
+			arr[x+way/10-2][y+way%10-2]=temp;
+			return 0;
+		}
+		int Visit[][];
+		public int CheckNPang(int x,int y,char arr[][]){
+		 		int cnt=0,end,i,j;
+		 		for(i=1;i<7;i++){
+		 			if(arr[i][y]==arr[i+1][y]){
+		 				Visit[i][y]=1;
+		 				Visit[i+1][y]=1;
+		 			}
+		 		}
+		 		for(i=1;i<7;i++){
+		 			if(arr[x][i]==arr[x][i+1]){
+		 				Visit[x][i]=1;
+		 				Visit[x][i+1]=1;
+		 			}
+		 		}
+		 		for(i=1;i<=7;i++){
+		 			for(j=1;j<=7;j++){
+		 				if(Visit[i][j]){
+		 					cnt++;
+		 					Visit[i][j]=0;
+		 					arr[i][j]='X';
+		 				}
+		 			}
+		 		}
+		 		return cnt;
+		}
+		public void Organize(char arr[][]){
+			int i,j;
+			for(i=1;i<=7;i++){int cnt=0;
+				for(j=7;j>=1;j--){
+					if(arr[j][i]=='X'){
+						arr[j][i]=arr[j-1][i];
+						j++;
+						cnt++;
+					}
+				}
+				for(j=1;j<=cnt;j++){
+					arr[j][i]=(char)(Math.random()*7+64);
+				}
+			}
+		}
+	}
 }}}
