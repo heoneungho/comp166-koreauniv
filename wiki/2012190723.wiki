@@ -1880,6 +1880,58 @@ public class TwoButtons {
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+/* 간단한 애니메이션 도읩니다. */
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation {
+
+	//원의 x, y좌표를 설정합니다.
+	int x=70;
+	int y=70;
+
+	public static void main(String args[]){
+		SimpleAnimation gui=new SimpleAnimation();
+		gui.go();
+	}
+	public void go(){
+		JFrame frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// 위젯을 만들고 프레임에 집어 넣습니다.
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+		frame.getContentPane().add(drawPanel);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+
+		for(int i=0;i<300;i++){ // 130번 반복합니다.
+
+			x++; // x와 y 좌표를 증가시킵니다.
+			y++;
+
+			drawPanel.repaint(); // 스스로 다시 칠하라고 패널에게 말합니다.
+
+			try{
+				Thread.sleep(50); // 속도를 줄입니다.
+			}catch(Exception ex){}
+		}
+
+	} // go()메소드 끝
+
+	//내부 클래스입니다.
+	class MyDrawPanel extends JPanel{
+		private static final long serialVersionUID = 1L;
+		public void paintComponent(Graphics g){
+			g.setColor(Color.green);
+			g.fillRect(0,0,this.getWidth(),this.getHeight());
+
+			g.setColor(Color.green);
+			g.fillOval(x, y, 40, 40); // 외부클래스의 x, y 좌표를 사용합니다.
+
+		}
+	} // 내부 클래스 끝
+} // 외부 클래스 끝
 
 }}}
 
