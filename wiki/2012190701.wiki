@@ -1512,6 +1512,35 @@ public class Calenderuse
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper
+{
+	static//static 메소드 입니다 딱 한번만 실행됩니다.
+	{
+		System.out.println("super static blokc");
+	}
+	
+	StaticSuper()//생성자입니다.
+	{
+		System.out.println("super constructor");
+	}
+}
+
+public class StaticTests extends StaticSuper//StaticTests 는 StaticSuper을 확장합니다.
+{
+	static int rand;//static 변수입니다.
+	
+	static//static 메소드 입니다.
+	{
+		rand = (int) (Math.random() * 6);
+		System.out.println("static block " + rand);
+	}
+	
+	StaticTests()//생성자입니다.
+	{
+		System.out.println("in main");
+		StaticTests st = new StaticTests();//StaticTests 객체를 생성합니다.
+	}
+}
 
 }}}
 
