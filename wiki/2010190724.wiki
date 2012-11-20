@@ -222,8 +222,8 @@ public class GameLauncher{
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
-
-{{{A번 
+A번 
+{{{ 
 
 class TapeDeck {
 
