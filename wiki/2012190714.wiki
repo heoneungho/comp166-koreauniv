@@ -608,8 +608,65 @@ public class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+package SimpleDotCom;
+
+public class SimpleDotComTestDrive {
+
+	public static void main(String[] args) {
+		
+		SimpleDotCom dot = new SimpleDotCom(); // SimpleDotCom 클래스의 인스턴스
+		
+		int[] locations = {2,3,4}; // int 배열 만들기
+		dot.setLocationCells(locations); // 세터 메소드 호출
+		
+		String userGuess = "2"; // 사용자가 추측한 위치 값
+		String result = dot.checkYourself(userGuess); // checkYourself 메소드 전달
+		String testResult = "failed";
+		
+		if(result.equals("hit")){
+			testResult = "passed"; // "2"가 맞으면 출력
+		}
+		
+		System.out.println(testResult);
+		
+	}
+
+}
 
 
+import javax.tools.JavaFileManager.Location;
+
+public class SimpleDotCom {
+	
+	int [] locationCells; 
+	int numOfHits = 0; // 맞춘 횟수 초기화
+	
+	public void setLocationCells(int [] locs){
+		locationCells = locs;
+	}
+
+	public String checkYourself(String stringGuess){
+		
+		int guess = Integer.parseInt(stringGuess); // String 을 int 로 변환
+		String result = "miss"; // 기본 값 지정
+		
+		for(int i=0; i<locationCells.length; i++){ // 맞춘 횟수 확인하는 반복문
+			if(guess == locationCells[i]){
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length){ 
+			result = "kill";
+		}
+		
+		System.out.println(result);
+		
+		return result;
+	}
+}
 
 }}}
 
