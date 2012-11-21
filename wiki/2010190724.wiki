@@ -486,9 +486,42 @@ class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
+	int[] locationCells;  //맞춰야 되는 셀.
+	int numOfHits = 0;   //맞춘 것의 개수.
+	
+	public void setLocationCells(int[] locs){ //세터.
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess){/*틀렸는지 맞았는지 체크해주는 메소드.*/
+		int guess = Integer.parseInt(stringGuess); /*String형인 stringGuess을 int형으로 변환하여 guess에 저장.*/
+		String result = "miss"; //result의 초기값은 miss.
+		for(int i=0; i<locationCells.length; i++){
+			if(guess==locationCells[i]){
+				result = "hit";  //추측한 게 맞춰야 되는 셀 중 있으면 hit이 result에 저장.
+				numOfHits++;    //맞추면 맞춘 개수 +1됨.
+				break;  //if문 밖으로 나오기.
+			}
+		}
+		if(numOfHits == locationCells.length){
+			result = "kill";    //다 맞추면 result에 kill이 저장된다.
+		}
+		System.out.println(result); /*하나도 못 맞춰면 miss, 한개라도 맞추면 hit, 다 맞추면 kill이 출력.*/
+		return result; //result값으로 리턴.
+	}
+}
 
+public class SimpleDotComTestDrive {
+	public static void main (String[] args){
+		SimpleDotCom dot = new SimpleDotCom();
+		int[] locations = {2,3,4};  //맞춰야 되는 셀.
+		dot.setLocationCells(locations);
+		String userGuess = "2";  //추측값.
+		String result = dot.checkYourself(userGuess);
+	}
+}
 }}}
-
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
