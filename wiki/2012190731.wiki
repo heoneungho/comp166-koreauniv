@@ -1635,7 +1635,59 @@ public class TwoButtons {
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+package animation;
+import javax.swing.*;
+import java.awt.*;
 
+
+public class SimpleAnimation {
+
+    int x = 70;
+    int y = 70; // 메인 GUI 클래스에 원의 x,y 좌표 저장
+
+    public static void main (String[] args) {
+       SimpleAnimation gui = new SimpleAnimation ();
+       gui.go();
+   }
+
+   public void go() {
+       JFrame frame = new JFrame();
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+       MyDrawPanel drawPanel = new MyDrawPanel();       
+
+       frame.getContentPane().add(drawPanel);
+       frame.setSize(300,300);
+       frame.setVisible(true);
+
+
+       for (int i = 0; i < 130; i++) {
+
+          x++;
+          y++;
+
+          drawPanel.repaint();
+  
+          try {
+            Thread.sleep(50);
+          } catch(Exception ex) { }
+       }
+    
+   }// go() 메소드 끝끝
+
+
+    class MyDrawPanel extends JPanel {
+    
+       public void paintComponent(Graphics g) {
+          g.setColor(Color.white);
+          g.fillRect(0,0,this.getWidth(), this.getHeight());
+
+          g.setColor(Color.green);
+          g.fillOval(x,y,40,40);
+끝
+       }
+    } // 내부 클래스 끝
+} // 외부 클래스 끝
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
