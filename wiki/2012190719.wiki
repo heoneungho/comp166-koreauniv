@@ -1134,6 +1134,47 @@ public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래�
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+package p376;
+import javax.sound.midi.*;//소리를 내게하는 패키지를 불러옵니다.
+
+public class MiniMiniMusicApp 
+{
+	public static void main(String[] args)//메인함수
+	{
+		MiniMiniMusicApp mini = new MiniMiniMusicApp();//새로운 객체를 생성합니다
+		mini.play();//실행함수를 실행합니다.
+	}
+	
+	public void play()//실행함수 정의
+	{
+		try
+		{
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();//sequencer를 받아서 엽니다
+			
+			Sequence seq = new Sequence(Sequence.PPQ, 4);//새로운 sequencer를 만듭니다
+			
+			Track track = seq.createTrack();//미디 패키지에있는 트랙을 요청합니다.
+			
+			ShortMessage a = new ShortMessage();//소리를 내게하는 명령문입니다
+			a.setMessage(144, 1, 44, 100);
+			MidiEvent noteOn = new MidiEvent(a, 1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128, 1, 44, 100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff);
+			
+			player.setSequence(seq);//CD를 넣는것과 비슷합니다?!
+			
+			player.start();//재생합니다
+			
+		} catch (Exception ex){
+			ex.printStackTrace();
+		}
+	}
+}
 
 }}}
 
