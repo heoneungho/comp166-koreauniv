@@ -1148,12 +1148,65 @@ public class Dragon extends Monster //몬스터클래스 밑에 드래곤클래�
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+package p389;
+
+import javax.swing.*;//swing패키지를 불러옵니다.
+
+public class SimpleGui1 
+{
+	public static void main (String[] args)//메인함수
+	{
+		JFrame frame = new JFrame();//frame이라는 이름의 JFrame 객체를 만듭니다.
+		JButton button = new JButton("click me!!!");// 새로운 버튼을 만듭니다.
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//창을 닫았을때 프로그램이 종료되도록 합니다.
+		
+		frame.getContentPane().add(button);//버튼을 프레임위에 추가합니다
+		
+		frame.setSize(300,300);//프레임의 사이즈를 지정합니다.
+		
+		frame.setVisible(true);//화면에 표시되도록합니다.
+	}
+}
 
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+package p394;
+
+import javax.swing.*;
+import java.awt.event.*;//두개의 패키지를 불러옵니다.
+
+public class SimpleGui1B implements ActionListener//
+{
+	JButton button;
+	
+	public static void main (String[] args)//메인함수
+	{
+		SimpleGui1B gui = new SimpleGui1B();//새로운 객체를 만듭니다.
+		gui.go();//gui를 실행합니다.
+	}
+	
+	public void go()
+	{
+		JFrame frame = new JFrame();//새로운 프레임을
+		button = new JButton("click me!!");//버튼을 만듭니다
+		
+		button.addActionListener(this);//버튼에 등록합니다
+		
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent event)//버튼을 눌렀을경우 아래의 문장을 출력하도록 합니다.
+	{
+		button.setText("I've been clicked!!!");
+	}
+}
 
 }}}
 
