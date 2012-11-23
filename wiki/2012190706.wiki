@@ -801,6 +801,35 @@ kill
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+package ch6;
+
+import java.util.ArrayList;
+
+public class DotCom {
+	private ArrayList<String> locationCells; //string ArrayList인 locationCells 를 만듭니다.
+	
+	public void setLocationCells(ArrayList<String> loc) {
+		locationCells = loc;
+		
+	} // 입력받은 어레이리스트를 locationCells 로 입력해주는 세터입니다.
+
+	public String checkYourself(String userInput) {
+		String result = "miss"; 
+		int index = locationCells.indexOf(userInput); //userInput이 locationCells안에 있으면 그 해당 index를 저장하고 아니면 -1을 저장합니다.
+		if(index>=0) {
+			locationCells.remove(index); // locationCells의 해당위치의 숫자를 삭제합니다.
+			
+			if(locationCells.isEmpty()) {
+				result = "kill";
+			} else {
+				result = "hit";
+				
+			}
+			// locagtionCells를 다맞혀서 비어있다면 "kill"을 , 그렇지 않다면 "hit"을 result에 저장합니다.
+		}
+		return result;
+	}
+}
 
 }}}
 
