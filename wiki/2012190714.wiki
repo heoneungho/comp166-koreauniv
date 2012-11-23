@@ -608,33 +608,33 @@ public class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+
 package SimpleDotCom;
 
-public class SimpleDotComTestDrive {
+import java.io.*;
 
-	public static void main(String[] args) {
+public class GameHelper {
+	
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
 		
-		SimpleDotCom dot = new SimpleDotCom(); // SimpleDotCom 클래스의 인스턴스
-		
-		int[] locations = {2,3,4}; // int 배열 만들기
-		dot.setLocationCells(locations); // 세터 메소드 호출
-		
-		String userGuess = "2"; // 사용자가 추측한 위치 값
-		String result = dot.checkYourself(userGuess); // checkYourself 메소드 전달
-		String testResult = "failed";
-		
-		if(result.equals("hit")){
-			testResult = "passed"; // "2"가 맞으면 출력
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)
+				return null;
 		}
 		
-		System.out.println(testResult);
+		catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
 		
+		return inputLine;
 	}
 
 }
 
-
-import javax.tools.JavaFileManager.Location;
 
 public class SimpleDotCom {
 	
@@ -666,6 +666,36 @@ public class SimpleDotCom {
 		
 		return result;
 	}
+
+}
+
+
+public class SimpleDotComTestDrive {
+	
+	public static void main(String[] args) {
+		
+		int numOfGuesses = 0; // 사용자 추측 횟수 초기화
+		GameHelper helper = new GameHelper(); 
+			
+		SimpleDotCom theDotCom = new SimpleDotCom(); // 닷컴 객체 생성
+		int randomNum = (int)(Math.random()*5); // 난수 써서 셀 위치 배열
+			
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		theDotCom.setLocationCells(locations); // 닷컴 위치 지정
+		boolean isAlive = true;
+			
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");
+			}
+		}
+		
+	}
+
 }
 
 }}}
