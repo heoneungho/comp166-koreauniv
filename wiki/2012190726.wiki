@@ -1020,6 +1020,47 @@ public class Dog extends Canine {
 
 {{{
 
+package compiler;
+
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0; x < 3; x++) {
+			ma[x].frighten(x); // ma[1].frighten(1), ma[2].frighten(2), ma[3].frighten(3) 실행.
+		}
+	}
+}
+
+package compiler;
+
+public class Monster {
+  	boolean frighten(int d) {
+  		System.out.println("arrgh");
+  		return true;
+  	}
+}
+
+package compiler;
+
+public class Vampire extends Monster {
+	boolean frighten(int x) { //Vampire가 Monster를 오버라이드 해야하기 때문에 입력값 유형(int)와 반환값 유형(boolean)이 같아야 한다.
+		System.out.println("a bite?");
+		return false;
+	}
+}
+
+package compiler;
+
+public class Dragon extends Monster {
+	boolean frighten(int degree) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
