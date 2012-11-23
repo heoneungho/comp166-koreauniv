@@ -838,7 +838,24 @@ public class DotComBust{
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
 
+public class SimpleGui1{  
+
+	public static void main (String[] args){
+		
+		JFrame frame = new JFrame(); //프레임 만들기.
+		JButton button = new JButton("click me."); //"click me."버튼 만들기.
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //창을 닫았을 때 프로그램 종료.
+
+		frame.getContentPane().add(button); //버튼을 프레임에 넣기.
+
+		frame.setSize(300,300); //프레임의 크기 가로,세로 300픽셀.
+		
+		frame.setVisible(true); //화면에 표시되도록 하기.
+	}	
+}
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
