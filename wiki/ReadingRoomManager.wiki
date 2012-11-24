@@ -88,7 +88,7 @@ http://comp166-koreauniv.googlecode.com/files/main.JPG
 
 *[입실 화면]*
 
-http://comp166-koreauniv.googlecode.com/files/enter.jpg
+http://comp166-koreauniv.googlecode.com/files/enterWindow.JPG
 
 - 입실 화면에서는 기간제, 시간제 회원을 선택하고 회원 ID를 적은 후 확인 버튼을 누르면 입실 처리됩니다.
 
