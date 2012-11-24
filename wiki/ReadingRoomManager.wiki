@@ -666,19 +666,17 @@ public class enterWindow extends JFrame implements ActionListener, ItemListener,
 	Label label1;
 	Label label2;
 	Label label3;
-	Checkbox large;
-	Checkbox medium;
+	Checkbox termprice; 
+	Checkbox hourprice;
 	readFile obj = new readFile();
 	JPanel pan1;
 	JPanel pan2;
 	JPanel pan3;
 	String enterTime = ""; // 입실 시간
-	String printenterTime = ""; // 출력용 입실 시간
-	Checkbox small;
+	String printenterTime = ""; // 출력용 입실 시간	
 	String[] temp = new String[5];
 	JTextField tf1;
 	JTextField tf2;
-	Checkbox verySmall;
 
 	// 생성자
 	public enterWindow(int jariNumber) {
@@ -722,6 +720,50 @@ public class enterWindow extends JFrame implements ActionListener, ItemListener,
 					}
 				}
 			}
+			// 회원님 입실
+			enterTime = "" + year + "/" + month + "/" + day + "/" + hour + "/"
+					+ min;// 입실 시간을 저장
+			printenterTime = ConvertTime(enterTime);// 화면 출력용 입실시간을 저장
+			new writeFile(jariNumber, deskSelect, idNumber, enterTime, "-", "-",
+					"-");// 파일에 쓰는 클래스로 매개변수롤 넘겨줌
+			new message(jariNumber, deskSelect, idNumber, printenterTime);// 메세지
+																			// 출력
+																			// 클래스로
+																			// 매개변수를
+																			// 넘겨줌
+			dispose();// 창 닫음
+		} else if (ae.getSource() == cancel) {// 취소 버튼
+			dispose();// 창 닫음
+		}
+		mainWindow cl = new mainWindow();
+		Thread th = new Thread(cl);
+		th.start();// 스레드를 재실행
+	}
 
+	// 저장된 시간을 화면출력용 시간으로 바꾸는 메소드
+	private String ConvertTime(String time) {
+		StringTokenizer parse = new StringTokenizer(time, "/");// 토크나이저로 저장된 시간을
+																// 나눈후
+		temp[0] = parse.nextToken();// 배열에 각각 저장
+		temp[1] = parse.nextToken();
+		temp[2] = parse.nextToken();
+		temp[3] = parse.nextToken();
+		temp[4] = parse.nextToken();
+		String printTime = temp[0] + "년 " + temp[1] + "월 " + temp[2] + "일 "
+				+ temp[3] + "시 " + temp[4] + "분";// 다시 출력용 시간으로 합침
+		return printTime;
+	}
+
+	@Override
+	// 체크박스 이벤트
+	public void itemStateChanged(ItemEvent ie) {
+		// 독서실 사용자 요금제 선택함.
+		if (ie.getSource() == hourprice) {
+			deskSelect = "시간제 사용자";
+		} else if (ie.getSource() == termprice) {
+			deskSelect = "기간제 사용자";
+		}
+
+	}
 
 }}}
