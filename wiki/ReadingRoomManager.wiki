@@ -1045,4 +1045,339 @@ public class leaveWindow extends JFrame implements ActionListener, time {
 
 ===============================================================================================================
 
+/* 이용 내역을 보여주는  Log 창입니다. */
+
+// 멋있어보이기 위해 java.awt.* 와  javax.swing.*를 안 하고 다 썼습니다ㅋㅋ
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+
+@SuppressWarnings("serial")
+public class logWindow extends JFrame implements ActionListener, ItemListener {
+	static int hourpriceCnt = 0; // 시간제 사용자를 세기 위한 정적 변수입니다.
+	static int termpriceCnt = 0; // 기간제 사용자를 세기 위한 정적 변수입니다.
+	static int totalclient = 0; // 총 이용자 수입니다.
+	static int totalCharge = 0; // 총 이용 요금입니다.
+
+	Checkbox cb0;
+	Checkbox cb1;
+	Checkbox cb2;
+	DefaultTableColumnModel cModel;
+	String[] historyCol = { "자리번호", "요금제", "회원번호", "입실시간", "퇴실시간", "이용시간(분)",
+	"요금(원)" };
+	Label label1;
+	Label label10;
+	Label label11;
+	Label label12;
+	Label label13;
+	Label label14;
+	Label label15;
+	Label label16;
+	Label label2;
+	Label label3;
+	Label label4;
+	Label label5;
+	Label label6;
+	Label label7;
+	Label label8;
+	Label label9;
+	DefaultTableModel model;
+	DefaultTableModel model2;
+	readLog obj = new readLog();
+	JPanel pan1;
+	JPanel pan2;
+	JPanel pan3;
+	JPanel pan4;
+	JPanel pan5;
+	JScrollPane scrollpane;
+	JScrollPane scrollpane2;
+	JButton search;
+	JTable table;
+	JTable table2;
+	String[] temp = new String[7];
+	JTextField tf1;
+	JTextField tf2;
+	JTextField tf3;
+	JTextField tf4;
+	String[] totalCol = { "통계", "시간제 사용자", "기간제 사용자", "이용자 수", "요금합계(원)" };
+
+	// 생성자
+	public logWindow() {
+		setTitle("독서실 내역");// 제목표시줄
+		setSize(1000, 700);// 사이즈
+		model = new DefaultTableModel(historyCol, 0);// 독서실 내역 테이블 모델
+		table = new JTable(model);// 테이블
+		model2 = new DefaultTableModel(totalCol, 0);// 통계 테이블 모델
+		table2 = new JTable(model2);// 테이블
+		pan1 = new JPanel();// 패널 생성
+		pan2 = new JPanel();// 패널 생성
+		pan3 = new JPanel();// 패널 생성
+		defaultTable();// 메소드 호출
+		pan1();// 메소드 호출
+		pan3();// 메소드 호출
+		setVisible(true);// 보이게 함
+		setResizable(false);// 크기 조절 불가
+	}
+
+	// 액션이벤트
+	public void actionPerformed(ActionEvent ae) {
+		if (ae.getSource() == search) {// 검색 버튼
+			String temp1 = tf1.getText();// 회원 번호
+			String temp2 = tf2.getText();// 년
+			String temp3 = tf3.getText();// 월
+			String temp4 = tf4.getText();// 일 //텍스트 박스로부터 값을 받아옴
+			removeTable();// 테이블을 지움
+			// 검색 부분
+			// 회원 번호로 검색
+			if (!temp1.isEmpty() && temp2.isEmpty() && temp3.isEmpty()
+					&& temp4.isEmpty()) {
+				idNumberSearch(tf1.getText());
+			}
+			// 날짜로 검색
+			else if (temp1.isEmpty() && !temp2.isEmpty() && !temp3.isEmpty()
+					&& !temp4.isEmpty()) {
+				dateSearch(tf2.getText(), tf3.getText(), tf4.getText());
+			} else {// 칸이 모두 비어있을 경우
+				defaultTable();// 기본 내역 출력
+			}
+		}
+	}
+
+	// 회원번호로 검색하는 메소드
+	public void idNumberSearch(String idNumber) {
+		totalclient = 0;// 총 이용자 수 초기화
+		hourpriceCnt = 0;// 시간제 사용자 수 초기화
+		termpriceCnt = 0;// 기간제 사용자 수 초기화
+
+		totalCharge = 0;// 통계 값 초기화
+		for (int i = 0; i < obj.length; i++) {// 파일에서 검색
+			if (obj.idNumber[i].equals(idNumber)) {// 파일에 저장된 회원번호가 현재 칸에 입력한
+				// 회원번호와 같을 경우
+
+				// 그 사용자의 내용을 temp 배열에 저장
+				temp[0] = obj.jariNumber[i];
+				temp[1] = obj.deskSelect[i];
+				temp[2] = obj.idNumber[i];
+				temp[3] = obj.printenterTime[i];
+				temp[4] = obj.printleaveTime[i];
+				temp[5] = obj.inTime[i];
+				temp[6] = obj.charge[i];
+				model.addRow(temp);// 테이블에 추가
+				total(obj.deskSelect[i], obj.inTime[i], obj.charge[i]);// 통계 계산
+				totalclient++;// 총 사용자 수 +1
+			}
+		}
+		// 통계 테이블
+		temp[0] = "";// 공백
+		temp[1] = Integer.toString(hourpriceCnt);// 시간제 사용자 카운트
+		temp[2] = Integer.toString(termpriceCnt);// 기간제 사용자 카운트
+
+		temp[3] = Integer.toString(totalclient);// 총 사용자 수 카운트
+		temp[4] = Integer.toString(totalCharge);// 총 요금
+		model2.addRow(temp);// 테이블에 추가
+	}
+
+	// 날짜로 검색하는 메소드
+	public void dateSearch(String year, String month, String day) {
+		totalclient = 0;
+		hourpriceCnt = 0;
+		termpriceCnt = 0;
+
+		totalCharge = 0;// 통계 값 초기화
+		for (int i = 0; i < obj.length; i++) {// 파일에서 검색
+			String s = obj.printUnparkTime[i];// 날짜를 기준으로 검색
+			if (s.matches(year + "년.*"))// 년 텍스트필드 + "년"과 같은 문자열이 있는지 검색함
+				if (s.matches(".*" + month + "월.*"))// 월 텍스트필드 + "월"과 같은 문자열이
+					// 있는지 검색함
+					if (s.matches(".*" + day + "일.*")) {// 일 텍스트필드 + "일"과 같은
+						// 문자열이 있는지 검색함
+						temp[0] = obj.jariNumber[i];
+						temp[1] = obj.deskSelect[i];
+						temp[2] = obj.idNumber[i];
+						temp[3] = obj.printenterTime[i];
+						temp[4] = obj.printleaveTime[i];
+						temp[5] = obj.inTime[i];
+						temp[6] = obj.charge[i];// 내용을 temp배열에 추가
+						model.addRow(temp);// 테이블에 추가
+						total(obj.carSelect[i], obj.inTime[i], obj.charge[i]);
+						// 통계 계산
+
+						totalclient++;// 총 사용자 수 계산
+					}
+
+		}
+
+		// 통계 테이블
+		temp[0] = "";
+		temp[1] = Integer.toString(hourpriceCnt);// 시간제 사용자 카운트
+		temp[2] = Integer.toString(termpriceCnt);// 기간제 사용자
+
+		temp[3] = Integer.toString(totalclient);// 총 사용자 수 카운트
+		temp[4] = Integer.toString(totalCharge);// 총 요금
+		model2.addRow(temp);// 테이블에 추가
+	}
+
+	// 기본 테이블
+	public void defaultTable() {
+		totalclient = 0;
+		hourpriceCnt = 0;
+		termpriceCnt = 0;
+
+
+		totalCharge = 0;// 통계 값 초기화
+		for (int i = 0; i < obj.length; i++) {// 파일의 내용을 temp에 저장
+			temp[0] = obj.jariNumber[i];
+			temp[1] = obj.deskSelect[i];
+			temp[2] = obj.idNumber[i];
+			temp[3] = obj.printenterTime[i];
+			temp[4] = obj.printleaveTime[i];
+			temp[5] = obj.inTime[i];
+			temp[6] = obj.charge[i];
+			model.addRow(temp);// 테이블에 추가
+			total(obj.deskSelect[i], obj.inTime[i], obj.charge[i]);// 통계 계산
+			totalclient++;// 총 사용자 수 계산
+		}
+
+		// 통계 테이블
+		temp[0] = "";
+		temp[1] = Integer.toString(hourpriceCnt);
+		temp[2] = Integer.toString(termpriceCnt);
+
+		temp[3] = Integer.toString(totalclient);
+		temp[4] = Integer.toString(totalCharge);
+		model2.addRow(temp);// 테이블에 추가
+	}
+
+	@Override
+	// 체크박스 이벤트
+	public void itemStateChanged(ItemEvent ie) {
+		if (ie.getSource() == cb1) {// 회원 체크박스 체크시
+			tf2.setEnabled(false);//
+			tf3.setEnabled(false);//
+			tf4.setEnabled(false);// 날짜부분 비활성화
+			tf2.setText("");//
+			tf3.setText("");//
+			tf4.setText("");// 날짜부분 텍스트필드 초기화
+			tf1.setEnabled(true);// 회원 텍스트필드 활성화
+
+		} else if (ie.getSource() == cb2) {// 날짜 체크박스 체크시
+			tf1.setEnabled(false);// 회원 텍스트필드 비활성화
+			tf1.setText("");// 텍스트필드 초기화
+			tf2.setEnabled(true);//
+			tf3.setEnabled(true);//
+			tf4.setEnabled(true);// 날짜부분 활성화
+
+		}
+	}
+
+	// 테이블 부분 판넬
+	public void pan1() {
+		Font f1 = new Font("맑은 고딕", Font.BOLD, 24);// 폰트 생성
+		BoxLayout blayout = new BoxLayout(pan1, BoxLayout.Y_AXIS);// 박스레이아웃 생성
+		pan1.setLayout(blayout);// 레이아웃 설정
+		label1 = new Label("독서실 내역");// 라벨 생성
+		label1.setFont(f1);// 폰트설정
+		pan1.add(label1);// 라벨 부착
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);// 테이블 자동 리사이즈를 off
+
+		// 각각의 colomn의 길이를 정해줌		
+		table.getColumnModel().getColumn(0).setPreferredWidth(60);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table.getColumnModel().getColumn(3).setPreferredWidth(250);
+		table.getColumnModel().getColumn(4).setPreferredWidth(250);
+		table.getColumnModel().getColumn(5).setPreferredWidth(100);
+		table.getColumnModel().getColumn(6).setPreferredWidth(100);
+		scrollpane = new JScrollPane(table);// 스크롤바가 생기는 판넬에 테이블 부착
+		pan1.add(scrollpane);// 스크롤판넬을 판넬1에 부착
+		label2 = new Label("통계");// 라벨 생성
+		label2.setFont(f1);// 폰트설정
+		pan1.add(label2);// 라벨 부착
+		scrollpane2 = new JScrollPane(table2);// 스크롤바가 생기는 판넬에 테이블 부착
+		pan1.add(scrollpane2);// 스크롤판넬을 판넬1에 부착
+		table2.setPreferredScrollableViewportSize(new Dimension(300, 30));// 크기 설정
+		add(pan1, "North");// 판넬1 부착
+		table.setEnabled(false);//
+		table2.setEnabled(false);// 테이블을 비활성화
+	}
+
+	// 검색 부분 판넬
+	public void pan3() {
+		CheckboxGroup cbg = new CheckboxGroup();// 체크박스 그룹화
+		cb1 = new Checkbox("회원번호", cbg, true);// 체크박스 생성
+		cb2 = new Checkbox("날짜", cbg, false);// 체크박스 생성
+		label3 = new Label("               ");// 공백
+		label4 = new Label("년");//
+		label5 = new Label("월");//
+		label6 = new Label("일");// 라벨 생성
+		tf1 = new JTextField(10);//
+		tf2 = new JTextField(10);//
+		tf3 = new JTextField(10);//
+		tf4 = new JTextField(10);// 텍스트필드 생성
+		pan3.add(label3);// 라벨 부착
+		pan3.add(cb1);// 체크박스 부착
+		pan3.add(tf1);// 텍스트필드 부착
+		label7 = new Label("               ");// 공백
+		pan3.add(label7);// 라벨 부착
+		pan3.add(cb2);// 체크박스 부착
+		pan3.add(tf2);// 텍스트필드 부착
+		pan3.add(label4);// 라벨 부착
+		pan3.add(tf3);// 텍스트필드 부착
+		pan3.add(label5);// 라벨 부착
+		pan3.add(tf4);// 텍스트필드 부착
+		pan3.add(label6);// 라벨 부착
+		cb1.addItemListener(this);//
+		cb2.addItemListener(this);// 아이템리스너 등록
+		search = new JButton("검색");// 검색버튼
+		search.addActionListener(this);// 액션리스너 등록
+		pan3.add(search);// //검색버튼 부착
+		tf2.setEnabled(false);//
+		tf3.setEnabled(false);//
+		tf4.setEnabled(false);// 날짜 검색부분은 비활성화 되도록 함
+		add(pan3, "South");// 판넬 부착
+
+	}
+
+	// 테이블을 지우는 메소드
+	public void removeTable() {
+		int temp = table.getRowCount();// 테이블을 줄 수를 받아와서
+		for (int i = 0; i < temp; i++) {
+			model.removeRow(0);// 제거
+		}
+		temp = table2.getRowCount();// 테이블의 줄 수를 받아와서
+		for (int i = 0; i < temp; i++) {
+			model2.removeRow(0);// 제거
+		}
+	}
+
+	// 통계를 내는 메소드
+	public void total(String deskSelect, String inTime, String charge) {
+
+		if (deskSelect.equals("시간제 사용자"))// 사용자가 시간제라면
+			hourpriceCnt++;// 카운트 증가
+		else if (deskSelect.equals("기간제 사용자"))// 마찬가지
+			termpriceCnt++;
+
+		totalCharge += Integer.parseInt(charge);// 요금을 정수형태로 변환하여 변수에 더해서 저장
+	}
+}
+
+===============================================================================================================
+
 }}}
