@@ -836,7 +836,349 @@ public class DotCom {
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
+package ch6_1;
 
+import java.util.*;
+
+public class DotCom {
+	private ArrayList<String> locationCells; //어레이리스트 locationCells를 만듭니다.
+	private String name; // 닷컴의 이름이 되는 스트링 변수를 선언합니다.
+	
+	public void setLocationCells(ArrayList<String> loc)	{
+		locationCells = loc;
+	} //locationCells에 값을 넣기 위한 세터입니다.
+	
+	public void setName(String n) {
+		name = n;
+		
+	} //name 에 값을 넣기 위한 세터입니다.
+
+	public String checkYourself(String userInput) {
+		String status = "miss"; //status 의 초기값은 miss입니다.
+		int index = locationCells.indexOf(userInput); // index 에 유저가 입력한 값의 항목의 index숫자를 저장합니다.
+		if(index >= 0) {
+			locationCells.remove(index); //항목을 삭제합니다. 
+			if(locationCells.isEmpty()) {
+				status = "kill"; //비어 있으면 status 를 kill 로 바꿉니다.
+				System.out.println("Ouch! You sunk " + name + "   : ( ");
+			} else {
+				status = "hit"; // 비어 있지 않으면 hit 으로 바꿉니다.
+			}
+		}
+		return status;
+	}
+}
+
+import java.util.*;
+
+public class DotComBust {
+	
+	private GameHelper helper = new GameHelper(); //GameHelper 의 객체 helper를 만듭니다.
+	private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>(); // ArrayList인 dotComsList를 만듭니다.
+	private int numOfGuesses = 0; // 추측한 횟수를 저장합니다.
+	
+	private void setUpGame() {
+		DotCom one = new DotCom();
+		one.setName("Pets.com");
+		DotCom two = new DotCom();
+		two.setName("eToys.com");
+		DotCom three = new DotCom();
+		three.setName("Go2.com");
+		dotComsList.add(one);
+		dotComsList.add(two);
+		dotComsList.add(three);
+		//아까 만든 어레이리스트 dotComsList에 DotCom 객체인 one,two,three 를 넣습니다.
+		
+		System.out.println("Your goal is to sink three dot coms.");
+		System.out.println("Pets.com, eToys.com, Go2.com");
+		System.out.println("Try to sink them all in the fewest number of guesses");
+		// 뭘해야하는지 알려줍니다.
+		
+		for (DotCom dotComToSet : dotComsList) {
+			ArrayList<String> newLocation = helper.placeDotCom(3); // newLocation 에 위치 3개를 저장합니다.
+			dotComToSet.setLocationCells(newLocation); //dotComsList에 있는 각원소에 위치 3개를 지정해줍니다. 세터죠!
+		}
+	}
+	
+	private void startPlaying() {
+		while(!dotComsList.isEmpty()) { //dotcomsList가 비어 있지 않으면 실행합니다.
+			String userGuess = helper.getUserInput("Enter a guess"); //추측값을 쓰게하고 userGuess에 그 값을 저장합니다. 
+			checkUserGuess(userGuess); //유저가 입력한 값으로 checkuserGuess 메소드를 실행합니다.
+		}
+	}
+	
+	private void checkUserGuess(String userGuess)	{
+		numOfGuesses++; //추측값을 증가시킵니다.
+		String result = "miss"; // 맨처음 result 는 miss로 초기화합니다.
+		for (DotCom dotComToTest : dotComsList) { 
+			result = dotComToTest.checkYourself(userGuess); //result에 checkYourself를 실행하고 얻은 리턴값을 저장합니다.
+			if (result.equals("hit")) {
+				break;
+			} //result의 값이 hit이면 순환문을 빠져나옵니다.
+			
+			if (result.equals("kill")) {
+				dotComsList.remove(dotComToTest); //result의 값이 kill 이면 dotComsList에서 그 항목을 빼닙니다.
+				break;
+			} 
+		}
+		System.out.println(result); // result의 값을 출력합니다.
+	}
+	
+	private void finishGame() {
+		System.out.println("All Dot Coms are dead! Your stock is now worthless");
+		if(numOfGuesses <= 18) {
+			System.out.println("It only took you" + numOfGuesses + " guesses.");
+			System.out.println("You got out before your options sank");
+		} else {
+			System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
+			System.out.println("Fish are dancing with your options");
+		}	
+	} //몇번만에 맞췄는지에 따라 출력을 달리합니다.
+	
+	public static void main (String[] args)	{
+		DotComBust game = new DotComBust(); //DotComBust 객체인 game을 만듭니다.
+		game.setUpGame();  //setUpGame메소드를 실행합니다. 
+		game.startPlaying(); //startPlaying메소드를 실행합니다.
+		game.finishGame(); //finishGame 메소드를 실행합니다.
+	}
+}
+
+import java.io.*;
+import java.util.*;
+
+public class GameHelper {
+	
+	private static final String alphabet = "abcdefg";
+	private int gridLength = 7;
+	private int gridSize = 49;
+	private int [] grid = new int[gridSize];
+	private int comCount = 0;
+	
+	public String getUserInput(String prompt) {
+		String inputLine = null;
+		System.out.println(prompt + " ");
+		try {
+			BufferedReader is = new BufferedReader(
+					new InputStreamReader(System.in)) ;
+			inputLine = is.readLine();
+			if (inputLine.length() == 0 ) return null;
+		} catch(IOException e) {
+			System.out.println("OException: " + e);
+		}
+		return inputLine.toLowerCase();
+	}
+	
+	public ArrayList<String> placeDotCom(int comSize) {
+		ArrayList<String> alphaCells = new ArrayList<String> ();
+		String[] alphacoords = new String [comSize];
+		String temp = null;
+		int [] coords = new int[comSize];
+		int attempts = 0;
+		boolean success = false;
+		int location = 0;
+		
+		comCount++;
+		int incr = 1;
+		if((comCount &2) == 1) {
+			incr = gridLength;
+		}
+		
+		while (!success & attempts++ < 200) {
+			location =(int) (Math.random() * gridSize);
+			
+			int x = 0;
+			success = true;
+			while(success && x < comSize) {
+				if (grid[location] == 0) {
+					coords[x++] = location;
+					location += incr;
+					if(location >= gridSize) {
+						success = false;
+					}
+					if(x>0 & (location % gridLength == 0)) {
+						success = false;
+					}
+					
+				} else {
+					success = false;
+				}
+			}
+		}
+		
+		int x= 0;
+		int row = 0;
+		int column = 0;
+		
+		while(x<comSize) {
+			grid[coords[x]] = 1;
+			row= (int)	(coords[x] / gridLength);
+			column = coords[x]	% gridLength;
+			temp = String.valueOf(alphabet.charAt(column));
+			
+			alphaCells.add(temp.concat(Integer.toString(row)));
+			x++;
+		}
+		return alphaCells;
+	}
+} //GameHelper 클래스 코드입니다.
+
+코딩결과
+Your goal is to sink three dot coms.
+Pets.com, eToys.com, Go2.com
+Try to sink them all in the fewest number of guesses
+Enter a guess 
+a0
+miss
+Enter a guess 
+a1
+miss
+Enter a guess 
+a2
+miss
+Enter a guess 
+a3
+miss
+Enter a guess 
+a4
+hit
+Enter a guess 
+a5
+miss
+Enter a guess 
+b4
+hit
+Enter a guess 
+c4
+Ouch! You sunk Pets.com   : ( 
+kill
+Enter a guess 
+a6
+miss
+Enter a guess 
+a7
+miss
+Enter a guess 
+b0
+miss
+Enter a guess 
+b1
+miss
+Enter a guess 
+b2
+miss
+Enter a guess 
+b3
+miss
+Enter a guess 
+b5
+miss
+Enter a guess 
+b6
+miss
+Enter a guess 
+b7
+miss
+Enter a guess 
+c0
+hit
+Enter a guess 
+c1
+miss
+Enter a guess 
+d0
+hit
+Enter a guess 
+e0
+Ouch! You sunk eToys.com   : ( 
+kill
+Enter a guess 
+f0
+miss
+Enter a guess 
+f1
+miss
+Enter a guess 
+f2
+miss
+Enter a guess 
+f3
+miss
+Enter a guess 
+f4
+miss
+Enter a guess 
+f5
+miss
+Enter a guess 
+f6
+miss
+Enter a guess 
+f7
+miss
+Enter a guess 
+g0
+miss
+Enter a guess 
+g1
+miss
+Enter a guess 
+g2
+miss
+Enter a guess 
+g
+miss
+Enter a guess 
+g3
+miss
+Enter a guess 
+g4
+miss
+Enter a guess 
+g5
+miss
+Enter a guess 
+g6
+miss
+Enter a guess 
+c6
+miss
+Enter a guess 
+d6
+miss
+Enter a guess 
+e6
+miss
+Enter a guess 
+f6
+miss
+Enter a guess 
+g6
+miss
+Enter a guess 
+e1
+miss
+Enter a guess 
+e2
+hit
+Enter a guess 
+e3
+miss
+Enter a guess 
+f2
+miss
+Enter a guess 
+e2
+miss
+Enter a guess 
+d2
+hit
+Enter a guess 
+c2
+Ouch! You sunk Go2.com   : ( 
+kill
+All Dot Coms are dead! Your stock is now worthless
+Took you long enough. 49 guesses.
+Fish are dancing with your options
 }}}
 
 = 07. 객체마을에서의 더 나은 삶:미래를 준비합시다  =
