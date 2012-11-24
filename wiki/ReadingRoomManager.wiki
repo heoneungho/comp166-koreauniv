@@ -94,6 +94,8 @@ http://comp166-koreauniv.googlecode.com/files/enterWindow.JPG
 
 *④이용내역화면*
 
+http://comp166-koreauniv.googlecode.com/files/이용내역.JPG
+
 - 현재까지 기록을 보여주며 회원 ID, 날짜별로 검색이 가능합니다.
 
 *5)클래스/인터페이스 설정*
