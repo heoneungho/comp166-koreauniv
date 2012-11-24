@@ -82,6 +82,8 @@ http://comp166-koreauniv.googlecode.com/files/main.JPG
 
 *②요금 설정화면*
 
+http://comp166-koreauniv.googlecode.com/files/price.JPG
+
 - 기간제, 시간제 회원별 요금 설정이 가능합니다.
 
 *③입실, 퇴실화면*
