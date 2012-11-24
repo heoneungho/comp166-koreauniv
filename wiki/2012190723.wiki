@@ -1865,6 +1865,7 @@ class MyDrawPanel extends JPanel{
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+
 /* 버튼 두 개를 처리하는 코드입니다. */
 import javax.swing.*;
 import java.awt.*;
@@ -2130,7 +2131,7 @@ public class BeatBox {
 		buttonBox.add(start);
 
 		JButton stop = new JButton("Stop");
-		stop.addActionListener (new MyStopListenr());
+		stop.addActionListener (new MyStopListener());
 		buttonBox.add(stop);
 
 		JButton upTempo = new JButton("upTempo");
@@ -2170,7 +2171,7 @@ public class BeatBox {
 
 		theFrame.setBounds(50,50,300,300);
 		theFrame.pack();
-		theFrame.setVisible(true);	
+		theFrame.setVisible(true);      
 
 	}// buildGUI 메소드 끝
 
@@ -2185,12 +2186,12 @@ public class BeatBox {
 		}catch(Exception e){e.printStackTrace();}
 	}//setUpMidi 메소드 끝
 
-// 체크상자의 상태를 MIDI이벤트로 바꾼 후 이벤트를 트랙에 추가합니다.
+	// 체크상자의 상태를 MIDI이벤트로 바꾼 후 이벤트를 트랙에 추가합니다.
 	public void buildTrackAndStart(){
 		int [] trackList = null; // 각 악기의 열여섯 박자에 대한 값을 원소가 16개인
 		// 배열에 저장합니다. 어떤 악기가 특정 박자에서 연주되어야하면 그 원소의 값에 건반 번호를
 		// 넣습니다. 반대로 연주되어야 하지 않는다면 0을 집어넣습니다.
-		
+
 		// 기존 트랙을 제거하고 트랙을 새로 만듭니다.
 		sequence.deleteTrack(track);
 		track = sequence.createTrack();
@@ -2198,10 +2199,10 @@ public class BeatBox {
 		//열 16개 모두에 대해 같은 작업을 처리합니다.
 		for(int i = 0; i< 16; i++){
 			trackList = new int[16];
-			
+
 			int key = instruments[i]; // 어떤 악기인지 정하는 번호를 설정합니다.
-			
-			
+
+
 			for(int j = 0; j<16 ; j ++) // 모든 박자에 대해 같은 작업을 반복합니다.
 			{
 				JCheckBox jc = checkboxList.get(j + (16*i));
@@ -2210,12 +2211,12 @@ public class BeatBox {
 				}else{
 					trackList[j] = 0;
 				}
-				}//안쪽 for문 끝
-			
+			}//안쪽 for문 끝
+
 			makeTracks(trackList);
 			track.add(makeEvent(176,1,127,0,16));
-			}// 바깥쪽 for문 끝
-		
+		}// 바깥쪽 for문 끝
+
 		track.add(makeEvent(192,9,1,0,15));
 		try{
 			sequencer.setSequence(sequence);
@@ -2223,7 +2224,63 @@ public class BeatBox {
 			sequencer.start();
 			sequencer.setTempoInBPM(120);
 		}catch(Exception e){e.printStackTrace();}
-		} // buildTrackAndStart 메소드 끝
+	} // buildTrackAndStart 메소드 끝
+
+	public class MyStartListener implements ActionListener {
+		public void actionPerformed(ActionEvent a){
+			buildTrackAndStart();
+		}
+	} // 내부 클래스 끝
+
+	public class MyStopListener implements ActionListener{
+		public void actionPerformed(ActionEvent a){
+			sequencer.stop();
+		}
+	}// 내부 클래스 끝
+
+	public class MyUpTempoListener implements ActionListener{
+		public void actionPerformed(ActionEvent a){
+			float tempoFactor = sequencer.getTempoFactor();
+			sequencer.setTempoFactor((float)(tempoFactor * 1.03));
+		}
+	}// 내부 클래스 끝
+	public class MyDownTempoListener implements ActionListener {
+		public void actionPerformed(ActionEvent a){
+			float tempoFactor = sequencer.getTempoFactor();
+			sequencer.setTempoFactor((float)(tempoFactor* .97));
+		}
+	}// 내부 클래스 끝
+
+	// 한 악기의 16박자 전체에 대해 이벤트를 생성. int배열에는 악기에 해당하는
+	// 건반 번호 또는 0이 들어갑니다. 0이 들어있다면 그 박자에서는 해당 악기가
+	// 연주되지 않아야 합니다. 0이 아닌 값이 들어있다면 이벤트를 만들어서
+	// 트랙에 추가합니다.
+	public void makeTracks(int [] list){
+		for(int i=0;i<16;i++){
+			int key = list[i];
+
+			if(key!=0){
+
+				// Note on과 note off 이벤트를 만들고 트랙에 추가합니다. 		
+				track.add(makeEvent(144,9,key,100,i));
+				track.add(makeEvent(128,9,key,100,i+1));
+			}
+		}
+	}
+
+	public MidiEvent makeEvent(int comd, int chan , int one, int two, int tick){
+		MidiEvent event = null;
+		try{
+			ShortMessage a = new ShortMessage();
+			a.setMessage(comd,chan,one,two);
+			event = new MidiEvent ( a, tick);
+
+		}catch(Exception e){e.printStackTrace();}
+		return event;
+
+	}
+}//클래스 끝
+
 }}}
 
 = 14. 객체 저장:직렬화와 입출력  =
