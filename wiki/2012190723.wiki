@@ -2082,6 +2082,7 @@ public class MiniMusicPlayer3 {
 *452p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
+
 /* 비트박스 코드입니다. */
 import java.awt.*;
 import javax.swing.*;
@@ -2136,11 +2137,11 @@ public class BeatBox {
 
 		JButton upTempo = new JButton("upTempo");
 		upTempo.addActionListener(new MyUpTempoListener());
-		buttonBox.add("upTempo");
+		buttonBox.add(upTempo, "upTempo");
 
 		JButton downTempo = new JButton("Tempo Down");
 		downTempo.addActionListener(new MyDownTempoListener());
-		buttonBox.add("downTempo");
+		buttonBox.add(downTempo, "downTempo");
 
 		Box nameBox = new Box(BoxLayout.Y_AXIS);
 		for(int i=0; i<16; i++){
