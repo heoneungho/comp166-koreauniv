@@ -68,6 +68,8 @@ http://comp166-koreauniv.googlecode.com/files/ReadingPro.jpg
 
 *①메인화면*
 
+http://comp166-koreauniv.googlecode.com/files/mainWindow.jpg
+
 - 자리가 비어있으면 자리 번호로 표시됩니다.
 
 - 입실자가 자리를 사용 중인 경우 개인 ID가 붉은 색으로 표시됩니다.
