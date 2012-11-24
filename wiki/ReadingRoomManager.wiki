@@ -813,5 +813,224 @@ time {
 
 ===============================================================================================================
 
+// 퇴실 창입니다
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.StringTokenizer;
+
+import javax.swing.*;
+
+@SuppressWarnings("serial")
+public class leaveWindow extends JFrame implements ActionListener, time {
+	GridBagConstraints c;
+	JButton cancel;
+	String idNumber; // 회원 번호
+	String deskSelect; // 독서실 요금제 선택
+	CheckboxGroup cbg;
+	String charge; // 요금
+	JButton confirm;
+	String inTime;
+	String jariNumber; // 자리 번호
+	Checkbox hourprice; // 시간제 이용
+	Checkbox termprice; // 기간제 이용
+	readFile obj = new readFile();
+	JPanel pan1;
+	JPanel pan2;
+	JPanel pan3;
+	String enterTime; // 입실 시간
+	StringTokenizer parse;
+	String printenterTime; // 입실시간 출력
+	String printleaveTime; // 떠난시간 출력
+	String pt[];
+	int ptInt[];
+	String temp[] = new String[5];
+	int temp1;
+	int temp2;
+	int temp3;
+	JTextField tf0;
+	JTextField tf1;
+	JTextField tf2;
+	JTextField tf3;
+	JTextField tf4;
+	JTextField tf5;
+	JTextField tf6;
+	String leaveTime; // 떠난시간
+	String upt[];
+	int uptInt[];
+
+	// 생성자
+	public leaveWindow(int jariNumber) {
+		for (int i = 0; i < obj.length; i++) {// 매개변수로 들어온 자리번호를 저장된 파일에서 검색
+			if (jariNumber == Integer.parseInt(obj.jariNumber[i])) {// 자리번호가 같다면
+				temp1 = i;// 그 배열의 번호를 temp1에 저장해둠
+				break;
+			}
+		}
+		this.deskSelect = obj.deskSelect[temp1];// 위에서 찾은 배열의 번호를 이용하여 변수 설정
+		this.idNumber = obj.idNumber[temp1];// 위에서 찾은 배열의 번호를 이용하여 변수 설정
+		this.jariNumber = "" + jariNumber;// 자리번호
+		this.enterTime = obj.enterTime[temp1];// 위에서 찾은 배열의 번호를 이용하여 변수 설정
+		this.printenterTime = ConvertTime(enterTime);// 위에서 찾은 배열의 번호를 이용하여 변수 설정
+		this.leaveTime = "" + year + "/" + month + "/" + day + "/" + hour
+				+ "/" + min;// 현재 시간을 퇴실시간으로 저장
+		this.printleaveTime = ConvertTime(leaveTime);// 저장한 퇴실시간을 출력용 퇴실시간으로
+		// 변환
+		this.inTime = "" + intime();// 독서실 이용 시간을 계산
+		this.charge = "" + charge();//  독서실 이용 요금을 계산
+		setTitle("퇴실");// 타이틀
+		setSize(250, 300);// 사이즈
+		setLocation(350, 250);// 창이 뜬느 위치
+		setVisible(true);// 보이도록함
+		setResizable(false);// 크기 변경 불가
+		pan1();// 메소드 호출
+	}
+
+	@Override
+	// 버튼이벤트
+	public void actionPerformed(ActionEvent ae) {
+		if (ae.getSource() == confirm) {// 확인 버튼
+			new writeFile(jariNumber, deskSelect, idNumber, enterTime,
+					leaveTime, inTime, charge);// 위에서 저장한 변수들을 매개변수로 하여 파일에 쓰는
+			// 클래스로 넘겨줌
+			new message(jariNumber, deskSelect, idNumber, printenterTime,
+					printleaveTime, inTime, charge);// 상황판에 메세지를 출력
+			dispose();// 창을 닫음
+		} else if (ae.getSource() == cancel) {// 취소 버튼
+			dispose();// 창을 닫음
+		}
+		mainWindow cl = new mainWindow();
+		Thread th = new Thread(cl);
+		th.start();// 스레드를 새로 실행
+	}
+
+	// 요금 설정
+	// c[0]~c[12]==요금을 저장해 둔 변수
+	public int charge() {
+
+		// 회원이 시간제 사용 회원
+		if (deskSelect.equals("시간제 사용자")) {
+			// 입실되어 있는 시간이 60분 미만일시
+			if (intime() < 60) {
+				return obj.c[0];// 저장된 요금 리턴
+			} // 60분 이상일시	
+			else if (intime() >= 60) {		
+				// 계산된 요금이 최대요금보다 작으면
+				if ((((intime() - 60) / 30 + 1) * obj.c[1]) + obj.c[0] < obj.c[2]) {
+					return (((intime() - 60) / 30 + 1) * obj.c[1]) + obj.c[0];// 계산된 요금 리턴
+
+				} else if ((((intime() - 60) / 30 + 1) * obj.c[1]) + obj.c[0] > obj.c[2]) {
+					// 계산된 요금이 최대요금보다 크면
+					return obj.c[2];// 최대요금 리턴
+				}
+			}
+		}
+		// 아래는 위의 계산방법과 동일함
+		else if (deskSelect.equals("기간제 사용자")) {
+			if (intime() < 60) {
+				return obj.c[3];
+			} else if (intime() >= 60) {
+				if ((((intime() - 60) / 30 + 1) * obj.c[4]) + obj.c[3] < obj.c[5]) {
+					return (((intime() - 60) / 30 + 1) * obj.c[4]) + obj.c[3];
+				} else if ((((intime() - 60) / 30 + 1) * obj.c[4]) + obj.c[3] > obj.c[5]) {
+					return obj.c[5];
+				}
+			}
+		} 
+		return 0;
+	}
+
+	// 저장된 시간을 화면출력용 시간으로 바꾸는 메소드
+	private String ConvertTime(String time) {
+		StringTokenizer parse = new StringTokenizer(time, "/");// 토크나이저로 저장된 시간을
+		// 나눈후
+		temp[0] = parse.nextToken();// 배열에 각각 저장
+		temp[1] = parse.nextToken();
+		temp[2] = parse.nextToken();
+		temp[3] = parse.nextToken();
+		temp[4] = parse.nextToken();
+		String printTime = temp[0] + "년 " + temp[1] + "월 " + temp[2] + "일 "
+				+ temp[3] + "시 " + temp[4] + "분";// 다시 출력용 시간으로 합침
+		return printTime;
+	}
+
+	// 독서실 이용 시간을 계산
+	public int intime() {
+		pt = new String[5];
+		ptInt = new int[5];
+		upt = new String[5];
+		uptInt = new int[5];
+		StringTokenizer parse1 = new StringTokenizer(enterTime, "/");// 입실 시간을
+		// 토크나이저로 나눔
+		StringTokenizer parse2 = new StringTokenizer(leaveTime, "/");// 퇴실 시간을
+		// 토크나이저로
+		// 나눔
+		for (int i = 0; i < 5; i++) {
+			pt[i] = parse1.nextToken();// 입실시간 토큰 저장
+			ptInt[i] = Integer.parseInt(pt[i]);// 토큰을 정수형태로 변환
+			upt[i] = parse2.nextToken();// 퇴실 시간토큰 저장
+			uptInt[i] = Integer.parseInt(upt[i]);// 토큰을 정수형태로 변환
+		}
+		temp2 = (ptInt[2] * 1440) + (ptInt[3] * 60) + (ptInt[4]);// 입실시간을 분 단위로
+		// 저장
+		temp3 = (uptInt[2] * 1440) + (uptInt[3] * 60) + (uptInt[4]);// 퇴실시간을 분
+		// 단위로 저장
+		return temp3 - temp2;// 퇴실시간-입실시간=이용시간 리턴
+	}
+
+	// 그리드백 레이아웃을 손쉽게 사용하기위해 만듬
+	public void layout(Component obj, int x, int y, int width, int height) {
+		c.gridx = x; // 시작위치 x
+		c.gridy = y; // 시작위치 y
+		c.gridwidth = width; // 컨테이너 너비
+		c.gridheight = height; // 컨테이너 높이
+		add(obj, c);
+	}
+
+	// 판넬
+	public void pan1() {
+		GridBagLayout gridbag = new GridBagLayout();// 그리드백 레이아웃 생성
+		setLayout(gridbag);// 레이아웃 설정
+		c = new GridBagConstraints();// 그리드백 레이아웃을 제어하는 객체
+		c.fill = GridBagConstraints.BOTH; // 전체를 채움
+		tf0 = new JTextField(deskSelect);// 요금제 텍스트필드
+		tf1 = new JTextField(idNumber);// 회원번호 텍스트필드
+		tf2 = new JTextField(jariNumber);// 자리번호 텍스트필드
+		tf3 = new JTextField(printenterTime);// 입실시간
+		tf4 = new JTextField(printleaveTime);// 퇴실시간
+		tf5 = new JTextField(inTime);// 이용시간
+		tf6 = new JTextField(charge);// 요금
+		confirm = new JButton("확인");// 확인버튼
+		cancel = new JButton("취소");// 취소버튼
+		confirm.addActionListener(this);
+		cancel.addActionListener(this);// 액션리스너 등록
+		layout(new Label("요금제"), 0, 0, 1, 2); // 라벨 부착
+		layout(tf0, 1, 1, 4, 1);// 요금제 텍스트필드 부착
+		layout(new Label("회원번호"), 0, 2, 1, 1);// 라벨부착
+		layout(tf1, 1, 2, 4, 1);// 회원번호 텍스트필드 부착
+		layout(new Label("자리번호"), 0, 3, 1, 1);// 라벨부착
+		layout(tf2, 1, 3, 4, 1);// 자리번호 텍스트필드 부착
+		layout(new Label("입실시간"), 0, 4, 1, 1);// 라벨 부착
+		layout(tf3, 1, 4, 4, 1);// 입실시간 텍스트필드 부착
+		layout(new Label("퇴실시간"), 0, 5, 1, 1);// 라벨부착
+		layout(tf4, 1, 5, 4, 1);// 퇴실시간 텍스트필드 부착
+		layout(new Label("이용시간(분)"), 0, 6, 1, 1);// 라벨 부착
+		layout(tf5, 1, 6, 4, 1);// 이용시간 텍스트필드 부착
+		layout(new Label("요금"), 0, 7, 1, 1);// 라벨부착
+		layout(tf6, 1, 7, 4, 1);// 요금 텍스트필드 부착
+		layout(new Label(""), 1, 8, 1, 1);// 한칸 공백
+		layout(new Label("퇴실하시겠습니까?"), 1, 9, 4, 1);// 라벨 부착
+		layout(confirm, 1, 10, 2, 1);// 확인버튼 부착
+		layout(cancel, 3, 10, 2, 1);// 취소버튼 부착
+		tf0.setEditable(false);
+		tf1.setEditable(false);
+		tf2.setEditable(false);
+		tf3.setEditable(false);
+		tf4.setEditable(false);
+		tf5.setEditable(false);
+		tf6.setEditable(false);// 텍스트 필드 편집이 불가
+
+	}
+}
 
 }}}
