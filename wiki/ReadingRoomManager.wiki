@@ -483,6 +483,7 @@ public class mainYoungHoon {
 	}
 }
 ===============================================================================================================
+
 /* mainWindow 클래스입니다. 여기가 메인 창입니다. */
 import java.awt.*;
 import java.awt.event.*;
@@ -520,7 +521,6 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 	}
 
 	@SuppressWarnings("deprecation")
-
 	// 버튼 이벤트를 설정합니다.
 	public void actionPerformed(ActionEvent e) {
 
@@ -584,13 +584,12 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 			Btn[i].addActionListener(this);
 		}
 		// 여기까지 버튼 생성
-		
 		int i = 0;
 		// 회원이 입실한 자리의 라벨과 색깔을 바꿈
 		while (i < obj.length) {// 객체의 length 변수만큼 loop
 			int temp = Integer.parseInt(obj.jariNumber[i]);// 파일에 저장된 자리번호를
 			// temp에 정수형태로 저장
-			Btn[temp].setLabel(obj.carNumber[i]);// 자리번호의 버튼의 라벨을 회원번호로 바꿈
+			Btn[temp].setLabel(obj.idNumber[i]);// 자리번호의 버튼의 라벨을 회원번호로 바꿈
 			Btn[temp].setForeground(new Color(255, 0, 0));// 색깔을 붉은색으로 바꿈
 			i++;
 		}
@@ -608,7 +607,6 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 		g.drawString(currentTime, 410, 90);// 시간을 띄움
 
 	}
-
 
 	// 상단 판넬
 	public void pan1() {
@@ -656,7 +654,6 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 				Thread.sleep(500);// 0.5초 텀을 두고
 				repaint();// 다시그리기를 반복
 			} catch (InterruptedException e) {
-
 			}
 		}
 	}
