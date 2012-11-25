@@ -1876,5 +1876,6 @@ public interface time {
 	int year = present.get(Calendar.YEAR);
 }
 
-
 }}}
+
+= Result =
