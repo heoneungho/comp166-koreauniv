@@ -7,7 +7,7 @@
 
 *2.* [#Background&Details&Outline]
 
- [#ProjectStart_Reading Room Manager]
+ [#ProjectStart_Reading_Room_Manager]
 
 = Introduction =
 
@@ -465,7 +465,7 @@ public interface time {
 
 - day, hour, min, month, present, sec, year
 
-= ProjectStart_Reading Room Manager =
+= ProjectStart_Reading_Room_Manager =
 
 {{{
 /* 독서실을 관리하는 프로그램인 ReadingRoomManager입니다. */
