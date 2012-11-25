@@ -986,7 +986,7 @@ public class MiniMusicCmdLine {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		args[0] = br.readLine(); //악기 입력받기.
 
-		System.out.println("음 입력하세요: ");
+		System.out.print("음 입력하세요: ");
 		BufferedReader cr = new BufferedReader(new InputStreamReader(System.in));
 		args[1] = cr.readLine(); //음 입력받기.
 
