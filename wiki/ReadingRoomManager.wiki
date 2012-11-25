@@ -3,9 +3,9 @@
 
 = Contents - Links for contents =
 
- [#Introduction]
+1. [#Introduction]
 
- [#Background&Details&Outline]
+2. [#Background&Details&Outline]
 
  [Project Start - Reading Room Manager]
 
