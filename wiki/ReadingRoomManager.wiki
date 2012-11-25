@@ -1756,11 +1756,12 @@ public class readLog {
 	public String printleaveTime[];
 	public String temp[] = new String[5];
 	public String leaveTime[]; // 퇴실 시간
+	private BufferedReader r;
 
 	public readLog() {
 		try {
 			FileReader file = new FileReader(new File("log.csv"));// 로그 파일을 열음
-			BufferedReader r = new BufferedReader(file);// 버퍼리더로 열음
+			r = new BufferedReader(file);
 			String csvStr = "";
 			String tmpStr = "";
 			while (tmpStr != null) {
@@ -1815,6 +1816,7 @@ public class readLog {
 		return printTime;
 	}
 }
+
 
 ===============================================================================================================
 
