@@ -1616,6 +1616,120 @@ public class readFile {
 
 ===============================================================================================================
 
+/* 파일에 저장하는 writeFile 클래스입니다. */
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class writeFile {
+
+	public String idNumber; // 회원번호
+	public String deskSelect; // 요금제 선택
+	public String charge; // 요금
+	public String inTime;
+	public String jariNumber; // 자리 번호
+	readFile obj = new readFile();
+	public String enterTime; // 입실 시간
+	public String leaveTime; // 퇴실 시간
+
+	// 생성자
+	public writeFile(String jariNumber, String deskSelect, String idNumber,
+			String enterTime, String leaveTime, String inTime, String charge) {
+		this.deskSelect = deskSelect;
+		this.jariNumber = jariNumber;
+		this.idNumber = idNumber;
+		this.enterTime = enterTime;
+		this.leaveTime = leaveTime;
+		this.inTime = inTime;
+		this.charge = charge;
+		write();// 메소드 호출
+	}
+
+	public void write() {
+		try {
+			if (charge == "-") {// 요금 부분의 매개변수가 "-" 일시에는 입실화면에서 들어온 것임
+				// 입실 부분
+				BufferedWriter w = new BufferedWriter(new FileWriter(
+						"data.csv", true));// 파일을 열음
+				w.write(jariNumber);
+				w.write(",");
+				w.write(deskSelect);
+				w.write(",");
+				w.write(idNumber);
+				w.write(",");
+				w.write(enterTime);
+				w.write(",");
+				w.write(leaveTime);
+				w.write(",");
+				w.write(inTime);
+				w.write(",");
+				w.write(charge);
+				w.newLine();// 파일에 차례대로 써 넣음
+				w.close();// 파일을 닫음
+			} else {// 요금부분의 매개변수가 "-"가 아닐시에는 퇴실화면에서 들어온 것임
+				// 퇴실 부분
+				FileWriter w = new FileWriter("data.csv");// 현재 독서실의 회원정보를 저장하는
+				// 파일
+				BufferedWriter w1 = new BufferedWriter(new FileWriter(
+						"log.csv", true));// 독서실 내역 파일
+				int temp1, temp2;
+				temp1 = Integer.parseInt(jariNumber);// temp 변수에 매개변수로 들어온 자리번호를
+				// 정수형으로 변환하여 저장
+				int temp = -1;
+				// log 파일 부분(내역 저장)
+				for (int i = 0; i < obj.length; i++) {// 파일에서 읽어들인 것을 검색
+					temp2 = Integer.parseInt(obj.jariNumber[i]);// 파일의 자리번호를
+					// 정수형으로 변환
+					if (temp1 == temp2) {// 매개변수로 들어온것과 파일의 자리번호가 같다면
+						temp = i;// temp에 그 배열번호를 저장해둠
+						w1.write(jariNumber);
+						w1.write(",");
+						w1.write(deskSelect);
+						w1.write(",");
+						w1.write(idNumber);
+						w1.write(",");
+						w1.write(enterTime);
+						w1.write(",");
+						w1.write(leaveTime);
+						w1.write(",");
+						w1.write(inTime);
+						w1.write(",");
+						w1.write(charge);
+						w1.newLine();//로그파일에 차례대로 써 넣음
+						break;
+					}
+				}
+				// data 파일 부분(독서실의 정보 저장)
+				for (int i = 0; i < obj.length; i++) {// 파일에서 읽어들인 것을 검색
+					if (i == temp)// 배열에서 하나씩 검색하면서 파일에 써 넣는데
+						continue;// 만약 위에서 저장해둔 temp와 i가 같다면 그 회원은 퇴실한 회원이므로 파일에
+					// 쓰지 않고 continue 함.
+					w.write(obj.jariNumber[i]);
+					w.write(",");
+					w.write(obj.deskSelect[i]);
+					w.write(",");
+					w.write(obj.idNumber[i]);
+					w.write(",");
+					w.write(obj.enterTime[i]);
+					w.write(",");
+					w.write(obj.leaveTime[i]);
+					w.write(",");
+					w.write(obj.inTime[i]);
+					w.write(",");
+					w.write(obj.charge[i]);
+					w.write("\r\n");
+				}
+				w.close();//
+				w1.close();// 파일을 닫음
+			}
+
+		} catch (IOException e) {
+		}
+	}
+}
+
+===============================================================================================================
 
 
 }}}
