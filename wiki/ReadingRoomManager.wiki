@@ -7,7 +7,7 @@
 
 *2.* [#Background&Details&Outline]
 
-*3.* [#ProjectStart]
+*3.*
 
 = Introduction =
 
