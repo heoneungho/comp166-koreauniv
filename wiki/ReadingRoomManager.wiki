@@ -10,12 +10,12 @@ http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
 
 = 목차 =
 
-[#Background & Details & Outline]
+[#Background&Details&Outline]
 
-[Introduction]
+[#Introduction]
 
 
-= Background & Details & Outline =
+= Background&Details&Outline =
 
 *1) Background(배경)*
 
