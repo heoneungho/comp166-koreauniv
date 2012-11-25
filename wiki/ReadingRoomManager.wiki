@@ -1209,7 +1209,7 @@ public class logWindow extends JFrame implements ActionListener, ItemListener {
 
 		totalCharge = 0;// 통계 값 초기화
 		for (int i = 0; i < obj.length; i++) {// 파일에서 검색
-			String s = obj.printUnparkTime[i];// 날짜를 기준으로 검색
+			String s = obj.printleaveTime[i];// 날짜를 기준으로 검색
 			if (s.matches(year + "년.*"))// 년 텍스트필드 + "년"과 같은 문자열이 있는지 검색함
 				if (s.matches(".*" + month + "월.*"))// 월 텍스트필드 + "월"과 같은 문자열이
 					// 있는지 검색함
@@ -1223,7 +1223,7 @@ public class logWindow extends JFrame implements ActionListener, ItemListener {
 						temp[5] = obj.inTime[i];
 						temp[6] = obj.charge[i];// 내용을 temp배열에 추가
 						model.addRow(temp);// 테이블에 추가
-						total(obj.carSelect[i], obj.inTime[i], obj.charge[i]);
+						total(obj.deskSelect[i], obj.inTime[i], obj.charge[i]);
 						// 통계 계산
 
 						totalclient++;// 총 사용자 수 계산
@@ -1385,6 +1385,7 @@ public class logWindow extends JFrame implements ActionListener, ItemListener {
 		totalCharge += Integer.parseInt(charge);// 요금을 정수형태로 변환하여 변수에 더해서 저장
 	}
 }
+
 
 ===============================================================================================================
 
