@@ -39,439 +39,1139 @@
 종료하기 : 프로그램을 종료합니다.
 
 
-지금까지 만든거 11/09
-
-PLAYER class
-
-{{{
-
-class PLAYER
-{
-	int turn=1;
-	int charge=0 ;
-	boolean A=false;
-	boolean energy=false;
-	
-		
-	public void Charging()
-	{		
-		who ();
-		charge++;
-		System.out.println("기를 모읍니다. 현재 기모은양: " + charge);
-		turn++;
-	}
-
-	public void Attacking()
-	{	
-		who ();
-		charge--;
-		System.out.println("공격합니다. 현재 기모은양: " +charge);
-		turn++;
-	}
-			
-	public void Defensing()
-	{
-		who ();
-		System.out.println("방어합니다. 현재 기모은양: " +charge);
-		turn++;
-	}
-	
-	public void PowerAttacking()
-	{
-		who ();
-		charge = charge-4;
-		System.out.println("원기옥을 사용합니다. 현재 기모은양: " +charge);
-		turn++;
-	}
-	
-	public void Teleport()
-	{
-		who ();
-		charge = charge -2;
-		System.out.println("순간이동을 사용합니다. 현재 기모은양: " +charge);
-		turn++;
-	}
-	
-	public void who ()
-	{
-		if(this instanceof USER) // If the object is an intance of Class USER 
-			System.out.print("사용자가 ");
-		else if (this instanceof CPU) // If the object is an intance of Class CPU
- 			System.out.print("컴퓨터가 ");
-	}
-	
-	public int doAction (int Choice)
-	{
-		switch (Choice)
-		{
-			case 0:
-				Charging();
-				return ++turn;
-		
-			case 1:
-				Attacking();
-				return ++turn;
-
-			case 2:
-				Defensing();
-				return ++turn;
-				
-			case 3:
-				PowerAttacking();
-				return ++turn;
-				
-			case 4:
-				Teleport();
-				return ++turn;
-				
-
-			default:
-				return ++turn;
-		}
-	}
-}
-
-
-}}}
-
-USER class
-
-{{{
-
-//플레이어를 설정해주는 클래스
-
-import java.util.Scanner; 
-
-class USER extends PLAYER
-{
-	//글로벌 변수
-	int USERChoice = -1; //0=기모으기, 1=공격, 2=방어
-	Scanner me;		
-	
-	//컨스트럭터
-	public USER() {		
-		me=  new Scanner(System.in);
-	}
-
-	public int USERAction ()
-	{
-		while(!energy)
-		{
-			System.out.println("0: 기모으기, 1: 공격, 2: 방어, 3: 원기옥, 4: 순간이동 ");
-			USERChoice = me.nextInt();
-		
-
-			if(charge<1&&USERChoice==1)
-				System.out.println("에너지가 부족합니다");
-			else if(charge<4&&USERChoice==3)
-				System.out.println("에너지가 부족합니다");
-			else if(charge<2&&USERChoice==4)
-				System.out.println("에너지가 부족합니다");
-			else if (USERChoice>4||USERChoice<0)
-				System.out.println("잘못된 선택입니다.");
-			else
-			{
-				energy = true;
-			}
-		}
-		energy = false;
-		return doAction(USERChoice); //defined in PLAYER	
-	}
-}
-}}}
+지금까지 만든거 11/25
 
 CPU class
 
 {{{
 
 
-//컴퓨터를 조작해주는 클래스
+public class CPU extends Player{
 
-class CPU extends PLAYER
-{
-	int CPUChoice = -1; //0=기모으기, 1=공격, 2=방어    
+	boolean cpuEnergy;
+	
+	public CPU() {
+		cpuEnergy=false;
+	}
+	
+	public void setEnergy (boolean energy) {cpuEnergy=energy;}
+	public boolean getEnergy () {return cpuEnergy;}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-	public int CPUAction()
+	}
+
+	public boolean getState(int i) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
+
+}}}
+
+Player class
+
+{{{
+
+
+public class Player {
+
+
+	int charge;
+	int choice;
+	int state;
+	
+	
+	public Player() {
+		
+		charge = 0;
+		choice = -1;
+		state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+		
+	}
+	
+	public void setCharge (int newCharge) {charge=newCharge;}
+	public int getCharge () {return charge;}
+	public void setChoice (int newChoice) {choice=newChoice;}
+	public int getChoice () {return choice;}
+	
+	public void setState (int newState) {state = newState;}
+	public int getState () {return state;}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+}}}
+
+mydragonball Class
+
+{{{
+
+//메인메소드와 gui
+
+import javax.swing.*;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+
+
+public class mydragonball {
+	
+
+	private Player me;
+	private CPU cpu;
+
+
+	int end = -1;
+
+	
+	
+	public mydragonball() {
+		initPlayer();
+		initialize();
+	}
+	
+	public void initPlayer ()
 	{
-			if (turn==1)
-			{
-				Charging();
-				return ++turn;
+		me = new Player();
+		cpu = new CPU();
+	}
+	
+	
+	
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					mydragonball window = new mydragonball();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			else
-			{
-				while(!energy)
+		});
+	}
+
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		
+
+		frame = new JFrame();
+		frame.setResizable(false);
+
+		frame.setBounds(100, 100, 600, 350);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.NORTH);
+		
+		JLabel lblSelectPosition = new JLabel("Select Position");
+		panel.add(lblSelectPosition);
+		
+		JPanel panel_1 = new JPanel();
+		frame.getContentPane().add(panel_1, BorderLayout.WEST);
+		panel_1.setLayout(new GridLayout(2, 1));
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("me.jpg"));
+		panel_1.add(lblNewLabel);
+		
+		final JLabel lblNewLabel_1 = new JLabel("");
+		panel_1.add(lblNewLabel_1);
+		
+		JPanel panel_2 = new JPanel();	
+		frame.getContentPane().add(panel_2, BorderLayout.EAST);
+		panel_2.setLayout(new GridLayout(2,1));
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("enemy.jpg"));
+		panel_2.add(lblNewLabel_2);
+		
+		final JLabel lblNewLabel_3 = new JLabel("");
+		panel_2.add(lblNewLabel_3);
+		
+		JPanel panel_3 = new JPanel();
+		frame.getContentPane().add(panel_3, BorderLayout.SOUTH);
+		panel_3.setLayout(new GridLayout(1,5));
+		
+		JPanel panel_4 = new JPanel();
+		frame.getContentPane().add(panel_4, BorderLayout.CENTER);
+		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		final JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setForeground(Color.RED);
+		lblNewLabel_4.setFont(new Font("Viner Hand ITC", Font.PLAIN, 30));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblNewLabel_4);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmNew = new JMenuItem("New");
+		mntmNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				initPlayer();	
+
+				end = -1;
+				lblNewLabel_4.setText("");	
+				lblNewLabel_1.setText("");	
+				lblNewLabel_3.setText("");	
+			}
+		});
+		mnFile.add(mntmNew);
+		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnFile.add(mntmExit);
+		
+		JMenu mnVersion = new JMenu("Version");
+		menuBar.add(mnVersion);
+		
+		JMenuItem mntmInformation = new JMenuItem("Information");
+		mntmInformation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "2009190715 임세현이 만든 trash");
+			}
+		});
+		mnVersion.add(mntmInformation);
+		
+		
+		
+		JButton btnAttack = new JButton("charge");
+		btnAttack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+			
+
+			//컴퓨터의 행동	
+			if(me.getCharge()<1&&cpu.getCharge()==0) {  
+					//cpu.charge++;
+					cpu.setCharge(cpu.getCharge()+1);
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.getCharge());
+					////System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.getCharge());
+					//cpu.state=0;
+					cpu.setState(0);
+				}
+				else {
+				
+				while(!cpu.getEnergy())
 				{
-					CPUChoice = (int)(Math.random()*4);
-					if(CPUChoice==1&&charge<1){}
-					else if(CPUChoice==3&&charge<4){}
-					else if(CPUChoice==4&&charge<2){}
+					//cpu.choice =  (int)(Math.random()*4);
+					cpu.setChoice((int)(Math.random()*4));
+					
+					if(cpu.getChoice()==1&&cpu.getCharge()<1){}
+					else if(cpu.getChoice()==3&&cpu.getCharge()<4){}
+					else if(cpu.getChoice()==4&&cpu.getCharge()<2){}
 					else
 					{
-						energy=true;
+						cpu.setEnergy(true);
 					}
 				}
-				energy=false;
-				return doAction(CPUChoice); //defined in PLAYER					
-			}		
-	}
-}
+				cpu.setEnergy(false);
+				
+				switch (cpu.getCharge()) {
+				case 0:
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.getCharge());
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.getCharge());	
+					cpu.state=0;
+					break;
+					
+				case 1:
+					cpu.charge--;
+					lblNewLabel_3.setText("공격합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("공격합니다. 현재 기모은양: " + cpu.charge);
+					cpu.setState(1);
+					break;
+					
+				case 2:
+					lblNewLabel_3.setText("방어합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("방어합니다. 현재 기모은양: " + cpu.charge);
+					cpu.setState(2);
+					break;
+					
+				case 3:
+					cpu.charge=cpu.charge-4;
+					lblNewLabel_3.setText("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.setState(3);
+					break;
+					
+				case 4:
+					cpu.charge=cpu.charge-2;
+					lblNewLabel_3.setText("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.setState(4);
+					break;
+					
 
-}}}
-
-STATE class
-
-{{{
-
-//상태를 지정해주는 클래스
-
-class STATE
-{
-	USER A = new USER();
-	CPU B = new CPU();
-
-	String draw; 
-	String win; 
-	String lose;
-
-	public STATE() {
-		A = new USER();
-		B = new CPU();
-
-		draw = "아무일도 일어나지 않았습니다."; 
-		win = "당신이 이겼습니다."; 
-		lose = "컴퓨터가 이겼습니다.";
-	}
+				default:
+					break;
+				}
+			}
+				
+		
+				
+				//플레이어의 행동
+				me.charge++;
+				lblNewLabel_1.setText("기를 모읍니다. 현재 기모은양: " +me.getCharge());
+				//System.out.println("기를 모읍니다. 현재 기모은양: " +me.getCharge());
+				me.setState(0);
 	
-	public void COMPARE ()
-	{
-		for (;A.turn<10000;)
-		{
-			if(A.USERAction()==B.CPUAction())
-			{				
-				if(A.USERChoice == B.CPUChoice)
-					System.out.print(draw);
-				else if(A.USERChoice==2&&B.CPUChoice!=3)
-					System.out.println(draw);
-				else if(A.USERChoice!=3&&B.CPUChoice==2)
-					System.out.println(draw);
-				else if(A.USERChoice==4)
-					System.out.println(draw);
-				else if(B.CPUChoice==4)
-					System.out.println(draw);
-				else if(A.USERChoice==0 && B.CPUChoice==1)
-				{
-					System.out.println(lose);
-					break;
-				}
-				else if(A.USERChoice==1 && B.CPUChoice==0)
-				{
-					System.out.println(win);
-					break;
-				}
-				else if(A.USERChoice==3 && B.CPUChoice!=4)
-				{
-					System.out.println(win);
-					break;
-				}
-				else if(A.USERChoice!=4 && B.CPUChoice==3)
-				{
-					System.out.println(lose);
-					break;
-				}
-			}
-			else
-			{
-				System.out.println("ERROR");
-				break;
-			}
+				
+				
+				
+				
+				
+
+				//컴퓨터와 플레이어의 상태비교
+						if(me.state==0 && cpu.state==1)
+						{
+							lblNewLabel_4.setText("lose");
+							end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							if (end==0) {
+								cpu.charge = 0;
+								me.charge = 0;
+								cpu.choice = -1;
+								cpu.setEnergy(false); 
+								me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+								cpu.state = -1;
+								end = -1;
+								lblNewLabel_4.setText("");	
+								lblNewLabel_1.setText("");	
+								lblNewLabel_3.setText("");													
+							}
+							else {
+								System.exit(0);
+							}
+							
+						}
+						else if(me.state==1 && cpu.state==0)
+						{
+							lblNewLabel_4.setText("win");
+							end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							if (end==0) {
+								cpu.charge = 0;
+								me.charge = 0;
+								cpu.choice = -1;
+								cpu.setEnergy(false); 
+								me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+								cpu.state = -1;
+								end = -1;
+								lblNewLabel_4.setText("");	
+								lblNewLabel_1.setText("");	
+								lblNewLabel_3.setText("");													
+							}
+							else {
+								System.exit(0);
+							}
+							//break;
+						}
+						else if(me.state==3 && cpu.state!=4)
+						{
+							lblNewLabel_4.setText("win");
+							end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							if (end==0) {
+								cpu.charge = 0;
+								me.charge =  0;
+								cpu.choice =  -1;
+								cpu.setEnergy(false); 
+								me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+								cpu.state = -1;
+								end = -1;
+								lblNewLabel_4.setText("");	
+								lblNewLabel_1.setText("");	
+								lblNewLabel_3.setText("");													
+							}
+							else {
+								System.exit(0);
+							}
+							//break;
+						}
+						else if(me.state!=4 && cpu.state==3)
+						{
+							lblNewLabel_4.setText("lose");	
+							end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							if (end==0) {
+								cpu.charge = 0;
+								me.charge =  0;
+								cpu.choice =  -1;
+								cpu.setEnergy(false); 
+								me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+								cpu.state = -1;
+								end = -1;
+								lblNewLabel_4.setText("");	
+								lblNewLabel_1.setText("");	
+								lblNewLabel_3.setText("");													
+							}
+							else {
+								System.exit(0);
+							}
+							//break;
+						}
+
+			
+			
+				
 			
 		}
-	}
-	
-}
-
-}}}
-
-DRIVER class
-
-{{{
-
-
-
-//메인메소드가 있는 드라이버클래스
-
-
-public class DRIVER {
-
-	public static void main(String[] args) {
-		STATE game = new STATE();
-		game.COMPARE();
-	
-	}
-}
-
-
-}}}
-
-SCREEN class
-
-{{{
-
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.Dimension;
-import java.awt.FileDialog;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Label;
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
-import java.awt.Panel;
-import java.awt.Toolkit;
-import java.awt.Window;
-import java.awt.event.*;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-
-public class SCREEN1 extends JFrame implements ActionListener {
-
-	
-	Image img1 = Toolkit.getDefaultToolkit().getImage("me.jpg");
-	Image img2 = Toolkit.getDefaultToolkit().getImage("enemy.jpg");
-	
-	private MenuBar mb = new MenuBar();	
-	private Menu file = new Menu("File");
-	private MenuItem fnew = new MenuItem("New");
-	private MenuItem fopen = new MenuItem("Open");
-	private MenuItem fsave = new MenuItem("Save");
-	private MenuItem fexit = new MenuItem("Exit");
-	
-	private FileDialog fdlg1 = new FileDialog(this, "파일 불러오기", FileDialog.LOAD);
-	private FileDialog fdlg2 = new FileDialog(this, "파일 저장하기", FileDialog.SAVE);
-	
-	private Menu help = new Menu("help");
-	private MenuItem hver = new MenuItem("Version");	
-	
-	private Label sel = new Label("행동을 선택하세요.");
-	private Button[] btns = {new Button("공격"), new Button("방어"), new Button("기모으기"), 
-			new Button("원기옥"), new Button("순간이동")};
-
-	
-	private BorderLayout ma = new BorderLayout();
-	
-	private JPanel p1 = new JPanel();
-	private GridLayout gl1 = new GridLayout(1,5);
-	
-	private JPanel p2 = new JPanel();
-	private GridBagLayout gl2 = new GridBagLayout(); 
-	
-	private JPanel p3 = new JPanel()
-	{
-		public void paintComponent(Graphics g){
-		     g.drawImage(img1, 0, 0, 200, 200, this);
-		}
-	};
-
-	
-	private GridBagLayout gl3 = new GridBagLayout();
-	
-	private JPanel p4 = new JPanel() 
-	{
-		public void paintComponent(Graphics g){
-		     g.drawImage(img2, 0, 0, 200, 200, this);
-		}
-	};
-	
-	private GridBagLayout gl4 = new GridBagLayout(); 
-	
-	
-
-	public SCREEN1() {
 		
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(150, 150, 600, 400);
-		setVisible(true);
-		
-		
-		this.init();
-		this.event();
-		
-	}
 	
-	public void init()	{
+	});
+		panel_3.add(btnAttack);
+		
+		JButton btnDefense = new JButton("attack");
+		btnDefense.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				if(me.getCharge()<1) {
+					lblNewLabel_4.setText("error");
+				}
+				else {
 
-		this.setLayout(ma);
-		
-		p3.setPreferredSize(new Dimension(200, 200));
-		p4.setPreferredSize(new Dimension(200, 200));
-		
-		p1.setLayout(gl1);
-		p1.add(btns[0]);
-		p1.add(btns[1]);
-		p1.add(btns[2]);
-		p1.add(btns[3]);
-		p1.add(btns[4]);
-		this.add(p1,BorderLayout.SOUTH);
-		
-		p2.setLayout(gl2);
-		p2.add(sel);
-		this.add(p2,BorderLayout.NORTH);
-		
-		p3.setLayout(gl3);
-		this.add(p3,BorderLayout.EAST);
-		
-		p4.setLayout(gl4);
-		this.add(p4,BorderLayout.WEST);
+				
+				
+				if(me.getCharge()<1&&cpu.charge==0) {  
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=0;
+				}
+				else {
+				
+				while(!cpu.getEnergy())
+				{
+					cpu.choice =  (int)(Math.random()*4);
+					if(cpu.getChoice()==1&&cpu.charge<1){}
+					else if(cpu.getChoice()==3&&cpu.charge<4){}
+					else if(cpu.getChoice()==4&&cpu.charge<2){}
+					else
+					{
+						cpu.setEnergy(true);
+					}
+				}
+				cpu.setEnergy(false);
+				
+				switch (cpu.getChoice()) {
+				case 0:
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);	
+					cpu.state=0;
+					break;
+					
+				case 1:
+					cpu.charge--;
+					lblNewLabel_3.setText("공격합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("공격합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=1;
+					break;
+					
+				case 2:
+					lblNewLabel_3.setText("방어합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("방어합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=2;
+					break;
+					
+				case 3:
+					cpu.charge=cpu.charge-4;
+					lblNewLabel_3.setText("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=3;
+					break;
+					
+				case 4:
+					cpu.charge=cpu.charge-2;
+					lblNewLabel_3.setText("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=4;
+					break;
+					
+
+				default:
+					break;
+				}
+			}
+				
+				
+				
+				
+				me.setCharge(me.getCharge()-1);
+				lblNewLabel_1.setText("공격합니다. 현재 기모은양: " +me.getCharge());
+				//System.out.println("공격합니다. 현재 기모은양: " +me.getCharge());
+				me.state=1;
+	
+				
+				
+				
+				
+				
+
+				
+
+				if(me.state==0 && cpu.state==1)
+				{
+					lblNewLabel_4.setText("lose");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					
+				}
+				else if(me.state==1 && cpu.state==0)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state==3 && cpu.state!=4)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state!=4 && cpu.state==3)
+				{
+					lblNewLabel_4.setText("lose");	
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
 						
+						
+			}
+		}
+			
+		});
+		panel_3.add(btnDefense);
 		
-		
-		file.add(fnew);
-		file.addSeparator();
-		file.add(fopen);
-		file.add(fsave);
-		file.addSeparator();
-		file.add(fexit);
-		mb.add(file);
-		
-		mb.add(help);
-		help.add(hver);
-		this.setMenuBar(mb);
-		
-		
-	}
+		JButton btnCharge = new JButton("defense");
+		btnCharge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				if(me.getCharge()<1&&cpu.charge==0) {  
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=0;
+				}
+				else {
+				
+				while(!cpu.getEnergy())
+				{
+					cpu.choice =  (int)(Math.random()*4);
+					if(cpu.getChoice()==1&&cpu.charge<1){}
+					else if(cpu.getChoice()==3&&cpu.charge<4){}
+					else if(cpu.getChoice()==4&&cpu.charge<2){}
+					else
+					{
+						cpu.setEnergy(true);
+					}
+				}
+				cpu.setEnergy(false);
+				
+				switch (cpu.getChoice()) {
+				case 0:
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);	
+					cpu.state=0;
+					break;
+					
+				case 1:
+					cpu.charge--;
+					lblNewLabel_3.setText("공격합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("공격합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=1;
+					break;
+					
+				case 2:
+					lblNewLabel_3.setText("방어합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("방어합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=2;
+					break;
+					
+				case 3:
+					cpu.charge=cpu.charge-4;
+					lblNewLabel_3.setText("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=3;
+					break;
+					
+				case 4:
+					cpu.charge=cpu.charge-2;
+					lblNewLabel_3.setText("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=4;
+					break;
+					
+
+				default:
+					break;
+				}
+			}
+				
+				
+				
+				
+				lblNewLabel_1.setText("방어합니다. 현재 기모은양: " +me.getCharge());
+				//System.out.println("방어합니다. 현재 기모은양: " +me.getCharge());
+				me.state=2;
 	
-	public void event()	{
-		fopen.addActionListener(this);
-		fsave.addActionListener(this);	
-		fexit.addActionListener(this);
-	}
+				
+				
+				
+				
+				
+
+				
+
+				if(me.state==0 && cpu.state==1)
+				{
+					lblNewLabel_4.setText("lose");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					
+				}
+				else if(me.state==1 && cpu.state==0)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state==3 && cpu.state!=4)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state!=4 && cpu.state==3)
+				{
+					lblNewLabel_4.setText("lose");	
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+						
+						
+			}
+		});
+		panel_3.add(btnCharge);
 		
-	public void actionPerformed(ActionEvent e)	{
-		if (e.getSource()==fopen)
-			fdlg1.setVisible(true);
-		else if(e.getSource()==fsave)
-			fdlg2.setVisible(true);
-		else if(e.getSource()==fexit)
-			System.exit(0);
-	}
+		JButton btnPowerAttack = new JButton("power attack");
+		btnPowerAttack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(me.getCharge()<4) {
+					lblNewLabel_4.setText("error");
+				}
+				else {
+				
+				
+				
+				if(me.getCharge()<1&&cpu.charge==0) {  
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=0;
+				}
+				else {
+				
+				while(!cpu.getEnergy())
+				{
+					cpu.choice =  (int)(Math.random()*4);
+					if(cpu.getChoice()==1&&cpu.charge<1){}
+					else if(cpu.getChoice()==3&&cpu.charge<4){}
+					else if(cpu.getChoice()==4&&cpu.charge<2){}
+					else
+					{
+						cpu.setEnergy(true);
+					}
+				}
+				cpu.setEnergy(false);
+				
+				switch (cpu.getChoice()) {
+				case 0:
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);	
+					cpu.state=0;
+					break;
+					
+				case 1:
+					cpu.charge--;
+					lblNewLabel_3.setText("공격합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("공격합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=1;
+					break;
+					
+				case 2:
+					lblNewLabel_3.setText("방어합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("방어합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=2;
+					break;
+					
+				case 3:
+					cpu.charge=cpu.charge-4;
+					lblNewLabel_3.setText("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=3;
+					break;
+					
+				case 4:
+					cpu.charge=cpu.charge-2;
+					lblNewLabel_3.setText("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=4;
+					break;
+					
+
+				default:
+					break;
+				}
+			}
+				
+				
+				
+				
+				me.setCharge(me.getCharge()-4);
+				lblNewLabel_1.setText("원기옥을 사용합니다. 현재 기모은양: " +me.getCharge());
+				//System.out.println("원기옥을 사용합니다. 현재 기모은양: " +me.getCharge());
+				me.state=3;
 	
+				
+				
+				
+				
+				
+
+				
+				if(me.state==0 && cpu.state==1)
+				{
+					lblNewLabel_4.setText("lose");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					
+				}
+				else if(me.state==1 && cpu.state==0)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state==3 && cpu.state!=4)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state!=4 && cpu.state==3)
+				{
+					lblNewLabel_4.setText("lose");	
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+						
+			}
+		}
+			
+		});
+		panel_3.add(btnPowerAttack);
+		
+		JButton btnTeleport = new JButton("teleport");
+		btnTeleport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(me.getCharge()<2) {
+					lblNewLabel_4.setText("error");
+				}
+				else {
+				
+				
+				
+				if(me.getCharge()<1&&cpu.charge==0) {  
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=0;
+				}
+				else {
+				
+				while(!cpu.getEnergy())
+				{
+					cpu.choice =  (int)(Math.random()*4);
+					if(cpu.getChoice()==1&&cpu.charge<1){}
+					else if(cpu.getChoice()==3&&cpu.charge<4){}
+					else if(cpu.getChoice()==4&&cpu.charge<2){}
+					else
+					{
+						cpu.setEnergy(true);
+					}
+				}
+				cpu.setEnergy(false);
+				
+				switch (cpu.getChoice()) {
+				case 0:
+					cpu.charge++;
+					lblNewLabel_3.setText("기를 모읍니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("기를 모읍니다. 현재 기모은양: " + cpu.charge);	
+					cpu.state=0;
+					break;
+					
+				case 1:
+					cpu.charge--;
+					lblNewLabel_3.setText("공격합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("공격합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=1;
+					break;
+					
+				case 2:
+					lblNewLabel_3.setText("방어합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("방어합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=2;
+					break;
+					
+				case 3:
+					cpu.charge=cpu.charge-4;
+					lblNewLabel_3.setText("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("원기옥을 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=3;
+					break;
+					
+				case 4:
+					cpu.charge=cpu.charge-2;
+					lblNewLabel_3.setText("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					//System.out.println("텔레포트를 사용합니다. 현재 기모은양: " + cpu.charge);
+					cpu.state=4;
+					break;
+					
+
+				default:
+					break;
+				}
+			}
+				
+				
+				
+				
+				me.setCharge(me.getCharge()-2);
+				lblNewLabel_1.setText("텔레포트를 사용합니다. 현재 기모은양: " +me.getCharge());
+				//System.out.println("텔레포트를 사용합니다. 현재 기모은양: " +me.getCharge());
+				me.state=4;
 	
-	public static void main(String[] args) {		
-		SCREEN1 t = new SCREEN1();		
+				
+				
+				
+				
+				
+
+				
+
+				if(me.state==0 && cpu.state==1)
+				{
+					lblNewLabel_4.setText("lose");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					
+				}
+				else if(me.state==1 && cpu.state==0)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state==3 && cpu.state!=4)
+				{
+					lblNewLabel_4.setText("win");
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+				else if(me.state!=4 && cpu.state==3)
+				{
+					lblNewLabel_4.setText("lose");	
+					end = JOptionPane.showConfirmDialog(frame, "다시 시작하시겠습니까", "시작",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					if (end==0) {
+						cpu.charge = 0;
+						me.charge =  0;
+						cpu.choice =  -1;
+						cpu.setEnergy(false); 
+						me.state = -1;//0=charge,1=attack,2=defense,3=power attack, 4=teleport
+						cpu.state = -1;
+						end = -1;
+						lblNewLabel_4.setText("");	
+						lblNewLabel_1.setText("");	
+						lblNewLabel_3.setText("");													
+					}
+					else {
+						System.exit(0);
+					}
+					//break;
+				}
+						
+			}
+				
+		}
+			
+		});
+		panel_3.add(btnTeleport);
+		
+
+		
+	
 	}
+
 }
-
 }}}
-
-11.17 update
