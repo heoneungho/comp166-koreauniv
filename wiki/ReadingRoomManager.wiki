@@ -1817,6 +1817,46 @@ public class readLog {
 
 ===============================================================================================================
 
+/* 상황을 출력하는 message클래스입니다. */
+
+public class message {
+	static int i = 0;
+	public static String message[] = new String[12];
+
+	// 매개변수가 4개인 경우
+	public message(String jariNumber, String deskSelect, String idNumber,
+			String enterTime) {
+		// 배열크기 이상의 메세지가 들어오는 경우 메세지가 한칸씩 밀리도록 함
+		if (i > 10) {
+			for (int j = 0; j < 10; j++) {
+				message[j] = message[j + 1];
+			}
+			i = 10;
+		}
+		// 메세지 저장
+		message[i] = jariNumber + "번 자리로 " + idNumber + "번 회원이 " + enterTime
+				+ "에 입실하셨습니다.\n";
+		i++;
+	}
+
+	// 매개변수가 6개인 경우
+	public message(String jariNumber, String deskSelect, String idNumber,
+			String enterTime, String leaveTime, String inTime, String charge) {
+		// 배열크기 이상의 메세지가 들어오는 경우 메세지가 한칸씩 밀리도록 함
+		if (i > 10) {
+			for (int j = 0; j < 10; j++) {
+				message[j] = message[j + 1];
+			}
+			i = 10;
+		}
+		// 메세지 저장
+		message[i] = jariNumber + "번 자리에서 " + idNumber + "번 회원이 " + leaveTime
+				+ "에 퇴실하셨습니다.\n";
+		i++;
+	}
+}
+
+===============================================================================================================
 
 
 }}}
