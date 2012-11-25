@@ -3,11 +3,11 @@
 
 = [목차] - 빠른 이동 링크 =
 
-[#Introduction]
+ [Introduction]
 
-[#Background&Details&Outline]
+ [Background&Details&Outline]
 
-[#Project Start - Reading Room Manager]
+ [Project Start - Reading Room Manager]
 
 = Introduction =
 
