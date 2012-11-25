@@ -1541,6 +1541,8 @@ public class readFile {
 	public String temp[] = new String[5];
 	public String temp1 = "";
 	public String leaveTime[]; // 퇴실 시간
+	private BufferedReader r;
+	private BufferedReader r2;
 
 	// 생성자
 	public readFile() {
@@ -1552,7 +1554,7 @@ public class readFile {
 	public void readconfig() {
 		try {
 			FileReader file = new FileReader(new File("config.cfg"));// 파일리더를 열음
-			BufferedReader r = new BufferedReader(file);// 파일리더를 버퍼리더로 읽음
+			r = new BufferedReader(file);
 			temp1 = r.readLine();// 라인을 읽음
 			c = new int[12];// 배열 생성
 			StringTokenizer parse = new StringTokenizer(temp1, ",");// 토크나이저로
@@ -1578,11 +1580,11 @@ public class readFile {
 	public void readdata() {
 		try {
 			FileReader file = new FileReader(new File("data.csv"));// 파일을 열음
-			BufferedReader r = new BufferedReader(file);// 파일리더를 버퍼리더로 읽음
+			r2 = new BufferedReader(file);
 			String csvStr = "";
 			String tmpStr = "";
 			while (tmpStr != null) {
-				tmpStr = r.readLine();// 변수에 라인단위로 읽어서 저장
+				tmpStr = r2.readLine();// 변수에 라인단위로 읽어서 저장
 				if (tmpStr != null) {
 					csvStr = csvStr + tmpStr + ",";// 라인단위로 읽어들인 것을 다른 변수에 계속
 					// 추가함
@@ -1614,6 +1616,7 @@ public class readFile {
 	}
 
 }
+
 
 ===============================================================================================================
 
