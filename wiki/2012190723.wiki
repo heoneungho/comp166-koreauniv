@@ -1734,6 +1734,29 @@ public class StaticTests extends StaticSuper { // StaticTests는 StaticSuper를 
 
 {{{
 
+/*try-catch를 구현한 비트박스를 구성하는 코드입니다.*/
+
+import javax.sound.midi.*;
+
+public class Test { // test 클래스를 생성합니다.
+	public void play(){ // play 메소드입니다.
+		try{ 
+			@SuppressWarnings("unused") // unused를 사용할 수 있도록 컴파일러에게 명령합니다.
+			Sequencer sequencer = MidiSystem.getSequencer(); 
+			System.out.println("Successfully got a sequencer");
+			//getSequencer 메소드를 호출할 때 예외가 발생하지 않으면  메시지를 출력합니다.
+		} catch(MidiUnavailableException ex){ 
+			System.out.println("Bummer");
+			//예외 발생시 메시지가 출력됩니다. 
+		}
+	}
+	public static void main(String[] args){
+		Test mu = new Test();  
+		mu.play();
+	}
+}
+
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
