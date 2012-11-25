@@ -1185,13 +1185,109 @@ Fish are dancing with your options
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속: 하위클래스가 상위클래스의 멤버(인스턴스변수,메소드)를 물려받는다는 것을 의미합니다.
+ * 다형성: 다형성을 이용해 메소드 매개변수를 상위클래스 유형으로 선언하면 실행할 때 어떤 하위 클래스의 객체도 전달할 수 있어서 편리하다.
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+package ch7;
 
+public class animal {
+	String picture;
+	String food;
+	int hunger;
+	int boundaries;
+	String location;
+	
+	void makeNoise() {
+		//소리를 낼때의 행동
+	}
+	void eat() {
+		//음식을 접했을 대의 행동
+	}
+
+	void sleep() {
+		//잠들어 있을 때의 행동
+	}
+	void roam() {
+		//먹이를 찾아 다닐때의 해옫ㅇ
+	}
+}
+
+public class Feline extends animal{
+	
+	void roam() {
+		//Feline 소리를 낼때의 행동
+	}
+
+}
+
+public class Lion extends Feline {
+	void makeNoise(){
+		//사자 소리를 낼때의 행동
+	}
+	void eat() {
+		//사자가 먹이를 접했을 때의 행동
+	}
+
+}
+
+public class Tiger extends Feline {
+	void makeNoise() {
+		//호랑이가 소릴를 낼때의 행동
+	}
+	void eat() {
+		//호랑이가 먹을때의 행동
+	}
+}
+
+public class Cat extends Feline{
+	void makeNoise(){
+		//고양이가 소리낼때의 행동
+	}
+
+	 void eat() {
+		 //고양이가 먹을때의 행동
+	 }
+}
+
+public class Hippo extends animal{
+	void makeNoise(){
+		//하마가 소리를 낼때의 행동
+	}
+	void eat() {
+		//하마가 먹이를 접했을 때의 행동
+	}
+
+}
+
+public class Canine extends animal{
+	void roam() {
+		//cCanine 이 먹이를 찾아다닐때의 행동
+	}
+
+}
+
+public class Wolf extends Canine{
+	void makeNoise(){
+		//늑대기 소리를 낼때의 행동
+	}
+	void eat() {
+		//늑대가 먹이를 접했을 때의 행동
+	}
+
+}
+
+public class Dog extends Canine{
+	void makeNoise(){
+		//개가 소리를 낼때의 행동
+	}
+	void eat() {
+		//개가 먹이를 접했을 때의 행동
+	}
+
+}
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
