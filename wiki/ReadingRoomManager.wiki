@@ -1,11 +1,11 @@
 #summary [2012190723 유영훈] 독서실 좌석 현황과 요금을 계산해주고 관리하는 프로그램입니다.
 #labels 2012190723유영훈
 
-= [목차] - 빠른 이동 링크 =
+= [Contents] - Links for contents =
 
- [Introduction]
+ [#Introduction]
 
- [Background&Details&Outline]
+ [#Background&Details&Outline]
 
  [Project Start - Reading Room Manager]
 
