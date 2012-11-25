@@ -908,7 +908,25 @@ class Dragon extends Monster{
 *357p try/catch* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
 
+public class MusicTest1 {
+	public void play(){
+		try{ 
+			Sequencer sequencer = MidiSystem.getSequencer(); 
+			//getSequencer메소드를 호출시, 예외가 발생할 수 있으므로 try안에 넣는다.
+			System.out.println("Successfully got a sequencer");		
+		} catch(MidiUnavailableException ex){ //예외 발생시, catch에 있는 내용이 실행된다. 
+			System.out.println("Bummer");
+		}
+	}
+	
+	public static void main(String[] args){
+		MusicTest1 mt = new MusicTest1();  
+		mt.play();
+	}
+}
+ 
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
