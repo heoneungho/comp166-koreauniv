@@ -12,7 +12,7 @@ http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
 
 [#Background & Details & Outline]
 
-[#Introduction]
+[Introduction]
 
 
 = Background & Details & Outline =
