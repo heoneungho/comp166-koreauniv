@@ -5,7 +5,7 @@
 
 *1.* [#Introduction]
 
-*2.* [#Background&Details&Outline#Background&Details&Outline]
+*2.* [#Background&Details&Outline]
 
  [Project Start - Reading Room Manager]
 
