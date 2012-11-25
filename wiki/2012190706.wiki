@@ -1298,7 +1298,54 @@ public class Dog extends Canine{
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+package ch7_1;
 
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3]; //레퍼런스 배열을 만듭니다.
+		ma[0] = new Vampire(); //뱀파이어 클래스는 몬스터 클래스를 상속받으니 이런 관계가 가능합니다.
+		ma[1] = new Dragon(); //드래곤 클래스는 몬스터 클래스를 상속받으니 이런 관계가 가능합니다.
+		ma[2] = new Monster();
+		for(int x = 0; x < 3; x++) {
+			ma[x].frighten(x); // 다형성을 이용해서 frighten 매소드를 실행시킵니다.
+		}
+	}
+
+}
+
+public class Monster {
+	boolean frighten(int d) {
+		System.out.println("arrrgh"); //arrrgh 를 출력합니다.
+		return true;
+		
+	}
+
+}
+
+public class Vampire extends Monster{
+	boolean frighten(int x) {
+		System.out.println("a bite?"); //a bite? 를 출력합니다.
+		return false;
+	}
+
+}
+
+public class Dragon extends Monster{ //몬스터를 상속받습니다.
+	boolean frighten(int degree) {
+		System.out.println("breath fire"); //breath fire 을 출력합니다.
+		return true;
+	}
+
+}
+
+코딩결과
+a bite?
+breath fire
+arrrgh
+
+1번은 위에 보듯이 가능합니다.
+2번은 Vamprie 의 리턴유형이 int 라서 안됩니다. 리턴유형만 바꾸는 것은 오버라이드도 오버로드도 아니기때문입니다.
+3번,4번은 arrrgh ,breath fire, arrrgh 로 코딩결과가 나옵니다. 3번은 뱀파이어의 frighten 을 바꿨어야 했는데 scare로 새로운 메소드를 만들어서 scare의 내용이 적용이 안됬습니다. 4번은 뱀파이어의 frighten 이 인자를 byte로 받아 오버로드 된격이 되었습니다. 인자는 int 이므로 monster에서 상속받은 frighten 을 그대로 사용하게 되었습니다. 그래서 3,4번 결과는 책의 요구사항과 다릅니다.
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
