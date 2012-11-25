@@ -9,6 +9,8 @@
 
 *3.* [#Project-Start]
 
+*4.* [#Result]
+
 = Introduction =
 
 http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
