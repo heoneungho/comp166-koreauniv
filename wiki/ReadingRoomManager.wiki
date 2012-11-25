@@ -15,7 +15,7 @@ http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
 
 = Background & Details & Outline =
 
-*1) Background(배경)*
+*1) Background(배경)* <br>
 
 
 
