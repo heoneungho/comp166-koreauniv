@@ -598,7 +598,7 @@ class mainWindow extends JFrame implements Runnable, ActionListener {
 	@Override
 	// 상단의 시계를 그리는 메소드
 	public void paint(Graphics g) {
-		g.setColor(Color.black);// 사각형색 검정
+		g.setColor(Color.blue);// 사각형색 파란색
 		g.fillRect(0, 0, 1500, 100);// 0,0을 기준으로 1500,100 만큼 사각형을 채움
 		g.setColor(Color.white);// 글자색 흰색
 		Font f1 = new Font("맑은 고딕", Font.BOLD, 24);// 폰트 생성
