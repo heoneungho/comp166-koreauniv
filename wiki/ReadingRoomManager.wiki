@@ -65,7 +65,7 @@ http://comp166-koreauniv.googlecode.com/files/Reading1.JPG
 || *독서실 관리자* || ↔ || *프로그램* || ↔ || *입실, 퇴실, 이용 내역* || ↔ || *파일* || 
 
 
-http://comp166-koreauniv.googlecode.com/files/ReadingPro.jpg
+http://comp166-koreauniv.googlecode.com/files/diagram.JPG
 
 
 *4) UI구상*
