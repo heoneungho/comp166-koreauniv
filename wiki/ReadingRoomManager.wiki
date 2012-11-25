@@ -1856,5 +1856,20 @@ public class message {
 
 ===============================================================================================================
 
+/* 시스템으로부터 시간을 받아오는 time클래스입니다. */
+
+import java.util.Calendar;
+
+//시스템으로 부터 시간을 받아와 저장하는 인터페이스
+public interface time {
+	Calendar present = Calendar.getInstance();
+	int day = present.get(Calendar.DATE);
+	int hour = present.get(Calendar.HOUR_OF_DAY);
+	int min = present.get(Calendar.MINUTE);
+	int month = present.get(Calendar.MONTH) + 1;
+	int sec = present.get(Calendar.SECOND);
+	int year = present.get(Calendar.YEAR);
+}
+
 
 }}}
