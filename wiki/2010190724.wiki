@@ -974,7 +974,63 @@ public class MiniMiniMusicApp {
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import java.io.*;  
+import javax.sound.midi.*;
 
+public class MiniMusicCmdLine {
+	public static void main(String[] args) throws IOException{
+		MiniMusicCmdLine mini = new MiniMusicCmdLine();
+		args = new String[2];
+
+		System.out.print("악기 입력하세요: ");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		args[0] = br.readLine(); //악기 입력받기.
+
+		System.out.println("음 입력하세요: ");
+		BufferedReader cr = new BufferedReader(new InputStreamReader(System.in));
+		args[1] = cr.readLine(); //음 입력받기.
+
+			int instrument = Integer.parseInt(args[0]);
+			int note = Integer.parseInt(args[1]);
+			mini.play(instrument, note);
+		}
+	
+	public void play(int instrument, int note){ //악기와 음, 두 인자를 전달.
+		try{
+			
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			Track track = seq.createTrack();
+			
+			MidiEvent event = null;
+			
+			ShortMessage first = new ShortMessage();
+			first.setMessage(192,1,instrument,0);
+			MidiEvent changeInstrument = new MidiEvent(first, 1);
+			track.add(changeInstrument);
+			
+			ShortMessage a = new ShortMessage(); //Message 만들기.                         
+			a.setMessage(144,1,44,12); //그 메세지의 의미.('44번 음표를 연주하는 것을 시작.')  
+			MidiEvent noteOn = new MidiEvent(a,1);         
+			//이 메세지의 내용(a)을 첫번째 박자(1번 비트)에서 가동시키도록 지정한 MidiEvent 생성.
+			track.add(noteOn); //생성된 MidiEvent를 track에 추가.       
+			
+			ShortMessage b = new ShortMessage(); //Message 만들기.                        
+			b.setMessage(128,1,44,100); //그 메세지의 의미.('연주 끝.')                       
+			MidiEvent noteOff = new MidiEvent(b,16);                        
+			track.add(noteOff);//track에 추가.                           
+			
+			player.setSequence(seq); //Sequence를 Sequencer에 넘겨주기.      
+			
+			player.start(); //Sequencer 작동.     
+			
+			} catch(Exception ex){
+			ex.printStackTrace();             
+			}
+
+		}
+	} 
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
