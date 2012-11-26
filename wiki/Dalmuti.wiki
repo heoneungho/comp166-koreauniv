@@ -19,9 +19,165 @@
 {{{
 /*클래스 이름이나 상속 등이 계속 바뀌기 때문이 바뀌는 대로 업로드할 예정입니다.*/
 
+class Card
+{
+	private int cardNum;//카드의 번호입니다.
+	
+	Card()
+	{
+	}
+	Card(int cardNum)
+	{
+		this.cardNum = cardNum;
+	}
+	public void setCardNum(int cardNum)
+	{
+		this.cardNum = cardNum;
+	}
+	public int getCardNum()
+	{
+		return cardNum;
+	}
+}
+
+public class Dalmuti 
+{
+
+	void startGame()
+	{
+		Player p1 = new Player(1);
+		Player p2 = new Player(2);
+		Player p3 = new Player(3);
+		Player p4 = new Player(4);
+		
+		GameHelper help = new GameHelper();
+			
+		while(true)
+		{
+			System.out.println("Player1의 차례입니다.");
+			help.getUserInput();
+				if(help.checkCard(help.input, help.numOfPutCard)== true)
+				{
+					p1.putDownCard(help.input,help.numOfPutCard);
+				}
+				
+			System.out.println("Player2의 차례입니다.");
+			help.getUserInput();
+				if(help.checkCard(help.input, help.numOfPutCard)== true)
+				{
+					p2.putDownCard(help.input,help.numOfPutCard);
+				}
+				
+			System.out.println("Player3의 차례입니다.");
+			help.getUserInput();
+				if(help.checkCard(help.input, help.numOfPutCard)== true)
+				{
+					p3.putDownCard(help.input,help.numOfPutCard);
+				}
+				
+			System.out.println("Player4의 차례입니다.");
+			help.getUserInput();
+				if(help.checkCard(help.input, help.numOfPutCard)== true)
+				{
+					p4.putDownCard(help.input,help.numOfPutCard);
+				}
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		GameMaster g = new GameMaster();
+		g.arrangeCard();
+		g.cardMix(g.arrangeList);
+		
+		Dalmuti d = new Dalmuti();
+		d.startGame();
+	}
+}
+
+
+import java.util.*;
+import java.io.*;
+
+public class GameHelper
+{
+	LastCard last = new LastCard();
+	private Scanner keyboard;
+	int numOfPutCard;
+	Card input = new Card();
+	
+	void getUserInput()
+	{
+		keyboard = new Scanner(System.in);
+		System.out.println("턴을 넘기려면 -1을 입력해주세요.");
+		if(keyboard.nextInt() == -1)
+			return;
+		else if((last.getCurCard()) == 0)
+		{
+			System.out.println("아무 카드나 내려놓으실 수 있습니다.");
+			System.out.println("내려 놓고자 하는 카드 번호, 카드의 장 수를 입력하세요");
+			input.setCardNum(keyboard.nextInt());
+			numOfPutCard = keyboard.nextInt();
+			
+			if(input.getCardNum() > numOfPutCard)
+			{
+				System.out.println("다시 입력해 주세요");
+				getUserInput();
+			}				
+		}
+		else
+		{
+			System.out.print(last.getCurCard()+"의 숫자를 가진 카드를 ");
+			System.out.println(last.getNumOfCur()+"장 만큼 내려놓을 수 있습니다.");
+			Card input = new Card(keyboard.nextInt());
+			numOfPutCard = keyboard.nextInt();
+			
+			if(input.getCardNum() != last.getCurCard())
+			{
+				System.out.println("다시 입력해 주세요");
+				getUserInput();
+			}
+		}
+	}
+	
+	boolean checkCard(Card c, int numOfPutCard)
+	{
+		if((last.getCurCard()) == c.getCardNum() && (last.getNumOfCur() == numOfPutCard))
+			return true;
+		else
+			return false;
+	}
+	
+	
+}
+
+public class LastCard 
+{
+	private int curCard = 0;
+	private int numOfCur = 0;
+	
+	void setCurCard(int n)
+	{
+		curCard = n;
+	}
+	void setNumOfCur(int n)
+	{
+		numOfCur = n;
+	}
+	int getCurCard()
+	{
+		return curCard;
+	}
+	int getNumOfCur()
+	{
+		return numOfCur;
+	}
+}
+
+
 import java.util.*;
 
-abstract class GameMaster
+class GameMaster
 {
 	ArrayList<Card> arrangeList = new ArrayList<Card>();
 	Card c;
@@ -49,7 +205,6 @@ abstract class GameMaster
 
 class Player extends GameMaster
 {
-	boolean canPut;
 	ArrayList<Card> myList = new ArrayList<Card>();
 	
 	Player(int n)
@@ -66,137 +221,20 @@ class Player extends GameMaster
 				myList.add(arrangeList.get(i));	break;
 		}
 	}
-	private void putDownCard(Card c,int n)
+	void putDownCard(Card c,int n)
 	{
 		for(int i = 0 ; i < n ;i++)
 			myList.remove(c);
 	}
 	
-	private void theKing()
+	void theKing()
 	{
 		System.out.println("야 내가 왕이다!d");
 	}
 	
-	private void theSlave()
+	void theSlave()
 	{
 		System.out.println("저는 노예입니다. 굽신굽신");
 	}
 }
-
-class Card
-{
-	private int cardNum;//카드의 번호입니다.
-	
-	Card(int cardNum)
-	{
-		this.cardNum = cardNum;
-	}
-	public int getCardNum()
-	{
-		return cardNum;
-	}
-}
-
-import java.util.*;
-
-public class GameHelper
-{
-
-	Player p1 = new Player(1);
-	Player p2 = new Player(2);
-	Player p3 = new Player(3);
-	Player p4 = new Player(4);
-
-}
-
-import java.util.*;
-
-class TestCode
-{
-	static ArrayList<Card> arrangeList = new ArrayList<Card>();
-	Card c;
-	
-	public final void arrangeCard()
-	{
-		for(int i = 0 ; i <12 ; i++)
-		{
-			for(int j = 0 ; j < 12 ; j++)
-			{
-				c = new Card(i+1);
-				arrangeList.add(c);
-				if(i == j)
-					break;
-			
-			}
-		}
-	}
-	
-	public final void cardMix(ArrayList<Card> c)
-	{
-		Collections.shuffle(c);
-	}
-
-	
-	public static void main(String[] args)
-	{
-		TestCode t = new TestCode();
-		t.arrangeCard();
-		t.cardMix(arrangeList);
-		
-		A a1 = new A(1);
-		A a2 = new A(2);
-		A a3 = new A(3);
-		A a4 = new A(4);
-		
-		a1.printArray();
-		a2.printArray();
-		a3.printArray();
-		a4.printArray();
-
-	}
-}
-
-class A extends TestCode
-{
-	ArrayList<Card> myList = new ArrayList<Card>();
-	
-	A(int n)
-	{
-		switch(n)
-		{
-			case 1: for(int i = 0 ; i < 19 ; i++)
-					myList.add(arrangeList.get(i)); break;
-			case 2: for(int i = 19 ; i < 39 ; i++)
-					myList.add(arrangeList.get(i));	break;
-			case 3: for(int i = 39 ; i < 58 ; i++)
-					myList.add(arrangeList.get(i));	break;
-			case 4: for(int i = 58 ; i < 78 ; i++)
-					myList.add(arrangeList.get(i));	break;
-		}	
-
-	}
-	void printArray()
-	{
-		for(Card tmp : myList)
-		{
-			System.out.print(tmp.getCardNum()+"\t");
-		}
-		System.out.println("");
-	}
-}
-
-class Card
-{
-	private int cardNum;//카드의 번호입니다.
-	
-	Card(int cardNum)
-	{
-		this.cardNum = cardNum;
-	}
-	int getCardNum()
-	{
-		return cardNum;
-	}
-}
-
 }}}
