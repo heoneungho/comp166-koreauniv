@@ -17,71 +17,186 @@
 
 *
 {{{
-class GameLauncher
-{//게임을 실행시키는 클래스입니다.
-	public static void main(String[] args)
-	//메인문이 들어있습니다.
+/*클래스 이름이나 상속 등이 계속 바뀌기 때문이 바뀌는 대로 업로드할 예정입니다.*/
 
-	GameStart game = new GameStart();
-	//게임을 실행하기위한 객체를 생성합니다.
+import java.util.*;
 
-	game.startGame()
-	//게임을 시작하는 메소드
-}
-}}}
-
-{{{
-class GameStart
+abstract class GameMaster
 {
-	void GetTheNumOfPlayers()
-	//플레이어의 수를 받는 메소드입니다.
-
-	void CardSpread()
-	//각각의 플레이어들에게 카드를 배분해주는 메소드입니다.
-
-	void CardPutDown()
-	//내려놓을 수 있는 카드가 있는지 확인하는 메소드입니다.
-
-	void SelectCard()
-	//만약에 내려놓을 수 있는 카드가 있다면 어떠한 카드를 내려놓을지 
-	//아니면 안내려놓고 턴을 넘길지 결정하는 메소드입니다.
-
-	void TheKing()
-	//카드를 다 내려놓은 사람이 있다면 메소드를 호출하고
-	//그 사람을 제외시킨 채로 그대로 게임을 진행합니다.
-
-	void TheSlave()
-	//마지막에 남게 된 사람에 대해 실행되는 메소드입니다.
-
-	void startGame()
-	{	
-		//게임을 시작하는 메소드입니다.
+	ArrayList<Card> arrangeList = new ArrayList<Card>();
+	Card c;
 	
-		//플레이어 수만큼 플레이어 객체를 생성합니다.
-	
-		//내려놓을 수 있는 카드를 확인하며
-		
-		//만약에 있다면 내려놓을지 아니면 그냥 턴을 넘길지 결정합니다.
+	public final void arrangeCard()
+	{
+		for(int i = 0 ; i <12 ; i++)
+		{
+			for(int j = 0 ; j < 12 ; j++)
+			{
+				c = new Card(i+1);
+				arrangeList.add(c);
+				if(i == j)
+					break;
+			
+			}
+		}
 	}
-		
 	
+	public final void cardMix(ArrayList<Card> c)
+	{
+		Collections.shuffle(c);
+	}
 }
-}}}
-{{{
+
+class Player extends GameMaster
+{
+	boolean canPut;
+	ArrayList<Card> myList = new ArrayList<Card>();
+	
+	Player(int n)
+	{
+		switch(n)
+		{
+			case 1: for(int i = 0 ; i < 19 ; i++)
+				myList.add(arrangeList.get(i)); break;
+			case 2: for(int i = 19 ; i < 39 ; i++)
+				myList.add(arrangeList.get(i));	break;
+			case 3: for(int i = 39 ; i < 58 ; i++)
+				myList.add(arrangeList.get(i));	break;
+			case 4: for(int i = 58 ; i < 78 ; i++)
+				myList.add(arrangeList.get(i));	break;
+		}
+	}
+	private void putDownCard(Card c,int n)
+	{
+		for(int i = 0 ; i < n ;i++)
+			myList.remove(c);
+	}
+	
+	private void theKing()
+	{
+		System.out.println("야 내가 왕이다!d");
+	}
+	
+	private void theSlave()
+	{
+		System.out.println("저는 노예입니다. 굽신굽신");
+	}
+}
+
 class Card
 {
-	int Card_Num;
-	//가지고 있는 카드의 숫자 정보입니다.
-	int NumOfCard;
-	//각각의 숫자에 대해 현재 가지고 있는 카드 장수입니다.
+	private int cardNum;//카드의 번호입니다.
+	
+	Card(int cardNum)
+	{
+		this.cardNum = cardNum;
+	}
+	public int getCardNum()
+	{
+		return cardNum;
+	}
+}
 
-	//예를 들어 Card_Num = 10, NumOfCard = 4 라 한다면 숫자가 10인 카드를 4장 가지고 있다는 뜻입니다.
-}
-}}}
-{{{
-class Player
+import java.util.*;
+
+public class GameHelper
 {
-	Card[] myCards = new Card[12];
-	//1~12까지의 카드 정보를 저장할 수 있는 배열을 만듭니다.
+
+	Player p1 = new Player(1);
+	Player p2 = new Player(2);
+	Player p3 = new Player(3);
+	Player p4 = new Player(4);
+
 }
+
+import java.util.*;
+
+class TestCode
+{
+	static ArrayList<Card> arrangeList = new ArrayList<Card>();
+	Card c;
+	
+	public final void arrangeCard()
+	{
+		for(int i = 0 ; i <12 ; i++)
+		{
+			for(int j = 0 ; j < 12 ; j++)
+			{
+				c = new Card(i+1);
+				arrangeList.add(c);
+				if(i == j)
+					break;
+			
+			}
+		}
+	}
+	
+	public final void cardMix(ArrayList<Card> c)
+	{
+		Collections.shuffle(c);
+	}
+
+	
+	public static void main(String[] args)
+	{
+		TestCode t = new TestCode();
+		t.arrangeCard();
+		t.cardMix(arrangeList);
+		
+		A a1 = new A(1);
+		A a2 = new A(2);
+		A a3 = new A(3);
+		A a4 = new A(4);
+		
+		a1.printArray();
+		a2.printArray();
+		a3.printArray();
+		a4.printArray();
+
+	}
+}
+
+class A extends TestCode
+{
+	ArrayList<Card> myList = new ArrayList<Card>();
+	
+	A(int n)
+	{
+		switch(n)
+		{
+			case 1: for(int i = 0 ; i < 19 ; i++)
+					myList.add(arrangeList.get(i)); break;
+			case 2: for(int i = 19 ; i < 39 ; i++)
+					myList.add(arrangeList.get(i));	break;
+			case 3: for(int i = 39 ; i < 58 ; i++)
+					myList.add(arrangeList.get(i));	break;
+			case 4: for(int i = 58 ; i < 78 ; i++)
+					myList.add(arrangeList.get(i));	break;
+		}	
+
+	}
+	void printArray()
+	{
+		for(Card tmp : myList)
+		{
+			System.out.print(tmp.getCardNum()+"\t");
+		}
+		System.out.println("");
+	}
+}
+
+class Card
+{
+	private int cardNum;//카드의 번호입니다.
+	
+	Card(int cardNum)
+	{
+		this.cardNum = cardNum;
+	}
+	int getCardNum()
+	{
+		return cardNum;
+	}
+}
+
 }}}
