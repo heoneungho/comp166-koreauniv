@@ -1885,3 +1885,6 @@ public interface time {
 - 메인 창
 
 http://comp166-koreauniv.googlecode.com/files/메인화면.jpg
+
+*2. 실습실에서 실행 화면*
+- 입실 창
