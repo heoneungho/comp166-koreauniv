@@ -1191,7 +1191,7 @@ public class SimpleGui1B implements ActionListener { //인터페이스를 구현
 		button = new JButton("click me");
 		
 		button.addActionListener(this); //버튼에 등록합니다. 전달하는 인자는 ActionListener
-																				//를 구현한 클래스의 객체여야 합니다.
+																		                                                                       //를 구현한 클래스의 객체여야 합니다.
 		
 		frame.getContentPane().add(button);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
