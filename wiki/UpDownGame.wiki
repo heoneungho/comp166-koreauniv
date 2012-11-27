@@ -79,12 +79,90 @@ public class LifeCheck {
 }
 
 
-public class Chances {
-	//랜덤으로 찬스를 정하여 제공하는 클래스입니다.(switch 사용예정)
+package upanddown;
+
+public class Chance1 {
 	
-	int x;
+	System.out.println("--2의 배수 힌트--");
+	
+	if(ans%2 == 0) {
+		System.out.println("답은 2의 배수 입니다.");
+	} else {
+		System.out.println("답은 2의 배수가 아닙니다.");
+	}
+	
+}
+
+
+package upanddown;
+
+public class Chance2 {
+	
+	System.out.println("--3의 배수 힌트--");
+	
+	if(ans%3 == 0) {
+		System.out.println("답은 3의 배수 입니다.");
+	} else {
+		System.out.println("답은 3의 배수가 아닙니다.");
+	}
 
 }
+
+
+package upanddown;
+
+public class Chance3 {
+	
+	System.out.println("--기회 추가--");
+	System.out.println("기회가 1회 추가 되었습니다!");
+	
+	life += 1;
+
+}
+
+
+package upanddown;
+
+public class Chance4 {
+
+	System.out.println("--기회 감소--");
+	System.out.println("기회가 1회 감소 되었습니다 호갱님^^");
+	
+	life -= 1;
+
+}
+
+
+package upanddown;
+
+public class Chance5 {
+	
+	int mid = (int) (max + min) / 2;
+	
+	System.out.println("--반띵 찬스!!--");
+	
+	if (ans > mid) {
+		min = mid;
+		System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+	} else if(ans < mid) {
+		max = mid;
+		System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+	} else {
+		//답을 맞췄을 경우로 이동!
+	} 
+
+}
+
+
+package upanddown;
+
+public class Chance6 {
+	
+	System.out.println("꽝이야. 헤헤");
+
+}
+
+
 
 
 public class EndGame {
