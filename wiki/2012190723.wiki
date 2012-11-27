@@ -1763,6 +1763,46 @@ public class Test { // test 클래스를 생성합니다.
 
 {{{
 
+/* 첫번째 사운드 애플리케이션을 구현한 코드입니다. */
+import javax.sound.midi.*; // 미디 패키지를 불러옵니다.
+
+public class MiniMiniMusicApp {
+
+	public static void main(String [] args){
+		MiniMiniMusicApp mini = new MiniMiniMusicApp();
+		mini.play();
+	} // main 메소드 끝
+	public void play(){
+		try{
+			Sequencer player = MidiSystem.getSequencer(); //시퀀서를 받아서 엽니다.
+			player.open();
+
+			Sequence seq = new Sequence(Sequence.PPQ, 4); // 시퀀서 생성자로 넘기는 인자.
+			Track track = seq.createTrack(); // 시퀀스에 트랙을 요청합니다.
+
+			// 트랙에 미디이벤트를 집어넣습니다. 이 부분은 거의 인스턴트 코드입니다.
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144,1,44,100);
+			MidiEvent noteOn = new MidiEvent(a,1);
+			track.add(noteOn);
+
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128,1,44,100);
+			MidiEvent noteOff = new MidiEvent(b,16);
+			track.add(noteOff);
+
+			// 시퀀서에 시퀀스를 보냅니다.
+			player.setSequence(seq);
+
+			player.start();
+
+		} catch (Exception ex){
+			ex.printStackTrace();
+		}
+
+	} // play 메소드 끝
+} // 클래스 끝
+
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
