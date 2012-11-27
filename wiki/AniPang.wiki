@@ -130,7 +130,7 @@ public class AniPang{
 	 		for(j=1;j<=7;j++){
 	 			if(Visit1[i][j]>=3 && Visit[i+1][j]<Visit1[i][j]){
 	 				int k;
-	 				for(k=i-Visit1[i][j];k<=i;k++)arr[k][j]='X''
+	 				for(k=i-Visit1[i][j];k<=i;k++)arr[k][j]='X';
 	 					cnt+=Visit1[i][j];
 	 			}
 	 			if(Visit2[i][j]>=3 && Visit2[i][j+1]<Visit2[i][j]){
