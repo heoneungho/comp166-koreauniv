@@ -1889,7 +1889,7 @@ http://comp166-koreauniv.googlecode.com/files/메인화면.jpg
 *2. 실습실에서 실행 화면*
 - 입실 창
 
-http://comp166-koreauniv.googlecode.com/files/입실창.jpg창
+http://comp166-koreauniv.googlecode.com/files/입실창.jpg
 
 *3. 실습실에서 실행 화면*
 - 입실 이후 메인 창
