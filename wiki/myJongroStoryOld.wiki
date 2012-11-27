@@ -1,0 +1,14 @@
+#labels 2012190731임채원
+# 패치가 진행됨에 따라 구버전의 자료를 누적시키는 곳입니다.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
