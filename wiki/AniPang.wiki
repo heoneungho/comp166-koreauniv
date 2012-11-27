@@ -68,6 +68,7 @@ class AniPangTestDrive{
 		long start = System.currentTimeMillis();//시간을 제기 시작한다.
 		long end=System.currentTimeMillis();
 		long time=end-start;
+		int Score=0;
 		while(time/1000.0<60){
 			AniPang Ani= new AniPang();
 			Ani.x=Integer.parseInt(args);
@@ -77,18 +78,23 @@ class AniPangTestDrive{
 			Ani.setAni(Board);
 		//	입력받아 Ani로 set +게임판에서 동물 자리 바꾸는 명령 실행
 			int	 x=-1;
-			Ani.CheckNPang();
+			int tmp;
+			tmp=Ani.CheckNPang(Board);
+			if(tmp==0){
+				Ani.setAni(Board);
+				continue;
+			}
+			Score+=tmp;
 	 //	게임판 검사+pang
 			boolean fl=true;
 			while(fl){
 				long  tmp1=System.currentTimeMillis();
-				Organize();
-				if(Ani.CheckNPang()==0)fl=false;
+				Ani.Organize(Board);
+				if(Ani.CheckNPang(Board)==0)fl=false;
 				long tmp2=System.currentTimeMillis();
 				time-=(tmp2-tmp1);
 			}
 		}
-		else 자리 원상복귀;
 	}
 }
 
@@ -120,9 +126,9 @@ public class AniPang{
 		 		if(Visit1[i+1][y]==3)flag=1;
 		 	}
 	 		if(arr[x][j]==arr[x][j+1] && arr[x][j]==know){
-	 			know2=arr[i][y];
-		 		Visit2[i+1][y]=Visit2[i][y]+1;
-		 		if(Visit2[i+1][y]==3)flag=1;
+	 			know2=arr[x][j];
+		 		Visit2[x][j+1]=Visit2[x][j]+1;
+		 		if(Visit2[x][j+1]==3)flag=1;
 		 	}
 	 	}
 	 	if(flag==0)return 0;
