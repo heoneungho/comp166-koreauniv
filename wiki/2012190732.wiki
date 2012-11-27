@@ -1107,6 +1107,30 @@ class SimUnit //클래스 선언.
 
 {{{
 
+import java.util.*;
+
+public class Calenderuse //클래스 지정
+
+{
+        public static void main(String[] args) //메인 메소드
+        {
+                Calender c = Calender.getInstance();
+                c.set(2004,0,7,15,40); //시간 : 2004.1.7 15:40
+                long day1 = c.getTimeInMillis();
+//1970. 1.1 이래로 흐른 시간을 밀리초로 표현 한 값 get
+                day1 += 1000 * 60 * 60;
+                c.setTimeInMillis(day1);//한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);//+35일
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);//35일 이후 . 달의 변화 X
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);//1로 설정.
+                System.out.println("set to 1 " + c.getTime());
+                
+        
+        }
+}
 }}}
 
 *342p 집중토론* _요약_
@@ -1119,14 +1143,14 @@ class SimUnit //클래스 선언.
 
 {{{
 
-public class StaticTests extends StaticSuper{ //확장 클래스.
-        static int rand;
+public class StaticTests extends StaticSuper{ //확장 static 메소드.
+        static int rand; //static 변수 선언
         
         static{
                 rand = (int) (Math.random()*6);
                 System.out.println("static block" + rand);
         }
-        StaticTests() {
+        StaticTests() { //생성자
                 System.out.println("constructor");
         }
         public static void main(String [] args) { //메인 메소드
@@ -1138,7 +1162,7 @@ class StaticSuper {
         static{
                 System.out.println("super static block");
         }
-        StaticSuper(){
+        StaticSuper(){ //생성자
                 System.out.println(
                                 "super constructor");
         }
