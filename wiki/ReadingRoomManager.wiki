@@ -1898,3 +1898,9 @@ http://comp166-koreauniv.googlecode.com/files/afe.jpg
 
 *4. 실습실에서 실행 화면*
 - 독서실 이용내역보기
+
+http://comp166-koreauniv.googlecode.com/files/log.jpg
+
+
+*5. 실습실에서 실행 화면*
+- 요금 설정 창
