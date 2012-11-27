@@ -44,7 +44,8 @@ Pang(): 좌표를 set해주면 게임판에서 그 좌표들을 애니팡한다.
 
 Organize(): 비어있는공간을 매꾸어주고 랜덤으로 동물들을 생성한다.
 
-{{{import java.io*;
+{{{
+import java.io*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
