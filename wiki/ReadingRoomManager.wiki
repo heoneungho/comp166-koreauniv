@@ -5,14 +5,6 @@
 
 <wiki:toc max_depth="1" />
 
-*1.* [#Introduction]
-
-*2.* [#Background&Details&Outline]
-
-*3.* [#Project-Start]
-
-*4.* [#Result]
-
 = Introduction =
 
 http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
