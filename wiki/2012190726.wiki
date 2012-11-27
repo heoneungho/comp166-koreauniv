@@ -1147,11 +1147,62 @@ public class Dragon extends Monster {
 
 {{{
 
+package simpleGUI;
+
+import javax.swing.*;
+
+public class SimpleGui1 {
+	public static void main(String[] args) {
+		
+		JFrame frame = new JFrame(); //프레임을 만듭니다.
+		JButton button = new JButton("click me"); //click me 버튼을 만듭니다.
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		
+		frame.getContentPane().add(button); //버튼을 추가합니다.
+		
+		frame.setSize(300,300); //프레임의 전체 크기를 설정합니다.
+		
+		frame.setVisible(true); //화면에 보이게 설정합니다.
+	}
+}
+
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+
+package simpleGUI2;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class SimpleGui1B implements ActionListener { //인터페이스를 구현합니다.
+	JButton button;
+
+	public static void main(String[] args) {
+		SimpleGui1B gui = new SimpleGui1B();
+		gui.go();
+	}
+	
+	public void go() {
+		JFrame frame = new JFrame();
+		button = new JButton("click me");
+		
+		button.addActionListener(this); //버튼에 등록합니다. 전달하는 인자는 ActionListener
+																								//를 구현한 클래스의 객체여야 합니다.
+		
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent event) { //실제 이벤트를 처리하는 메소드.
+		button.setText("I've been clicked!");
+	}	
+}
 
 }}}
 
