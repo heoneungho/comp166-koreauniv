@@ -1912,3 +1912,5 @@ http://comp166-koreauniv.googlecode.com/files/leave.jpg
 
 *7. 실습실에서 실행 화면*
 - 퇴실 이후 메인 창
+
+http://comp166-koreauniv.googlecode.com/files/amain.jpg
