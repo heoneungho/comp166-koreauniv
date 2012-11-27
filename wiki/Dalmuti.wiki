@@ -179,7 +179,7 @@ import java.util.*;
 
 class GameMaster
 {
-	ArrayList<Card> arrangeList = new ArrayList<Card>();
+	static ArrayList<Card> arrangeList = new ArrayList<Card>();
 	Card c;
 	
 	public final void arrangeCard()
