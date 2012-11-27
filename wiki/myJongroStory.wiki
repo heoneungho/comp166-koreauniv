@@ -147,6 +147,123 @@ public class Status {
 
 게임 내 주인공 캐릭터의 능력치와 자금 현황을 표기합니다. <br>
 
+*c) Time.java* <br>
+
+{{{
+
+package myJongroStory020;
+
+public class Time {
+	public int month = 4;
+	public int day = 4; // 4월 4일 (월요일)에 시작 11월 10일 (목요일)에 끝	
+	public int dow = 1; // 1 -> 월요일, 2 -> 화요일, ..., 7 -> 일요일 (Day of Week)
+
+}
+
+}}}
+
+0.10 버전의 Status에 있던 시간 관련 변수들을 따로 보관하게 했습니다. <br>
+가독성이 좋아졌습니다. <br>
+
+*d) CardData.java* <br>
+
+{{{
+
+package myJongroStory020;
+
+public class CardData {
+	// 각 카드의 능력치를 나타내는 class다.
+	
+	/* 언어, 수리, 외국어 기본적인 능력치를 올려주는 카드들 */
+	/* k1~3, m1~3, e1~3 (총 9 종류) */
+	
+	// k1. 언어 기본
+	void korBasic () {
+		// 언어 += 10;
+		// hp -= 15;
+	}
+	
+	// k2. 언어 보충
+	void korNormal () {
+		// 언어 += 15~30;
+		// hp -= 30;
+	}
+	
+	// k3. 언어 심화
+	void korMaster () {
+		// 언어 += 50~100;
+		// hp -= 50;
+	}
+	
+	// m1. 수리 기본
+	void mthBasic () {
+		// 수리 += 10;
+		// hp -= 15;
+	}
+	
+	// m2. 수리 보충
+	void mthNormal () {
+		// 수리 += 15~30;
+		// hp -= 30;
+	}
+	
+	// m3. 수리 심화
+	void mthMaster () {
+		// 수리 += 50~100;
+		// hp -= 50;
+	}
+	
+	// e1. 외국어 기본
+	void engBasic () {
+		// 외국어 += 10;
+		// hp -= 15;
+	}
+	
+	// e2. 외국어 보충
+	void engNormal () {
+		// 외국어 += 15~30;
+		// hp -= 30;
+	}
+	
+	// e3. 외국어 심화
+	void engMaster () {
+		// 외국어 += 50~100;
+		// hp -= 50;
+	}
+
+	/* 다른 능력치에 관여하는 카드들 */
+	/* */
+	
+	// h1. 운동 기본
+	void hpBasic () {
+		// hp -= 30;
+		// hp_MAX += 0~5;
+	}
+	
+	// h2. 운동 보충
+	void hpNormal () {
+		// hp -= 50;
+		// hp_MAX += 10~15;
+	}
+	
+	// h3. 운동 심화
+	void hpMaster () {
+		// hp -= 100;
+		// hp_MAX += 15~30;
+	}
+	
+	// s1. 복권 구입
+	void lottery () {
+		// money -= 5000;
+		// money += 0 or 5000 or 30000 or 십만 or 백만
+	}
+	
+} // end class
+
+}}}
+
+0.20 버전에서 새로 추가된 클래스 입니다. <br>
+0.20 버전의 카드 시스템에 사용될 카드들의 효과를 모아 놓은 클래스입니다. <br>
 
 
 = 패치노트 =
