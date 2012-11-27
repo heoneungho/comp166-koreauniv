@@ -10,8 +10,8 @@
 
 = Details =
 
- * 라운드를 5개로 나눕니다.
- * 라운드 1에서는 1~10, 2에서는 1~50, 3에서는 1~100, 4에서는 1~500, 5에서는 1~1000범위의 숫자 하나를 프로그램이 랜덤으로 정합니다.
+ * 스테이지를 5개로 나눕니다.
+ * 스테이지 1에서는 1~10, 2에서는 1~50, 3에서는 1~100, 4에서는 1~500, 5에서는 1~1000범위의 숫자 하나를 프로그램이 랜덤으로 정합니다.
  * 플레이어가 한 숫자를 입력하면 입력한 숫자보다 처음 정한 숫자가 크면 Up, 작으면 Down을 출력합니다.
  * 플레이어가 숫자를 맞출 때까지 혹은 맞출 수 있는 기회를 다 사용할 때까지 계속됩니다.
  * 맞춘 경우, 플레이어가 몇 번째에 맞췄는지를 출력합니다.
@@ -42,30 +42,37 @@ public class MainUpDown {
 	//메인 메소드가 오는 클래스입니다.
 	
 	public static void main(String[] args) {
-		
+
+
+		// 게임을 시작합니다.
+
+		// for ( i = 0; 죽을 때 까지; i++) 
+		{스테이지(i); // <--- i는 레벨
+
+		// 게임을 종료
 	}
 	
 
 }
 
 
-public class Round1 {
+public class Stage1 {
 
 }
 
-public class Round2 {
+public class Stage2 {
 
 }
 
-public class Round3 {
+public class Stage3 {
 
 }
 
-public class Round4 {
+public class Stage4 {
 
 }
 
-public class Round5 {
+public class Stage5 {
 
 }
 
@@ -81,94 +88,79 @@ public class LifeCheck {
 
 package upanddown;
 
-public class Chance1 {
+public class Chances {
 	
-	System.out.println("--2의 배수 힌트--");
+	int ran = (int) (Math.random() * 6) + 1;
 	
-	if(ans%2 == 0) {
-		System.out.println("답은 2의 배수 입니다.");
-	} else {
-		System.out.println("답은 2의 배수가 아닙니다.");
-	}
+	switch(ran) {
 	
-}
+	case 1:
+		System.out.println("--2의 배수 힌트--");
+		
+		if(ans%2 == 0) {
+			System.out.println("답은 2의 배수 입니다.");
+		} else {
+			System.out.println("답은 2의 배수가 아닙니다.");
+		}
+		
+		break;
 
-
-package upanddown;
-
-public class Chance2 {
 	
-	System.out.println("--3의 배수 힌트--");
+	case 2:
+		System.out.println("--3의 배수 힌트--");
+		
+		if(ans%3 == 0) {
+			System.out.println("답은 3의 배수 입니다.");
+		} else {
+			System.out.println("답은 3의 배수가 아닙니다.");
+		}
+		
+		break;
 	
-	if(ans%3 == 0) {
-		System.out.println("답은 3의 배수 입니다.");
-	} else {
-		System.out.println("답은 3의 배수가 아닙니다.");
-	}
-
-}
-
-
-package upanddown;
-
-public class Chance3 {
 	
-	System.out.println("--기회 추가--");
-	System.out.println("기회가 1회 추가 되었습니다!");
-	
-	life += 1;
+	case 3:
+		System.out.println("--기회 추가--");
+		System.out.println("기회가 1회 추가 되었습니다!");
+		
+		life += 1;
+		
+		break;
+		
+	case 4:
+		System.out.println("--기회 감소--");
+		System.out.println("기회가 1회 감소 되었습니다 호갱님^^");
+		
+		life -= 1;
+		
+		break;
+		
+	case 5:
+		int mid = (int) (max + min) / 2;
+		
+		System.out.println("--반띵 찬스!!--");
+		
+		if (ans > mid) {
+			min = mid;
+			System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+		} else if(ans < mid) {
+			max = mid;
+			System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+		} else {
+			//답을 맞췄을 경우로 이동!
+		} 
+		
+		break;
+		
+	case 6:
+		System.out.println("꽝이야. 헤헤");
+		break;
 
-}
+		
 
-
-package upanddown;
-
-public class Chance4 {
-
-	System.out.println("--기회 감소--");
-	System.out.println("기회가 1회 감소 되었습니다 호갱님^^");
-	
-	life -= 1;
-
-}
-
-
-package upanddown;
-
-public class Chance5 {
-	
-	int mid = (int) (max + min) / 2;
-	
-	System.out.println("--반띵 찬스!!--");
-	
-	if (ans > mid) {
-		min = mid;
-		System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
-	} else if(ans < mid) {
-		max = mid;
-		System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
-	} else {
-		//답을 맞췄을 경우로 이동!
-	} 
-
-}
-
-
-package upanddown;
-
-public class Chance6 {
-	
-	System.out.println("꽝이야. 헤헤");
-
-}
+	} //스위치문 끝
+} //클래스 끝
 
 
-
-
-public class EndGame {
-	//게임을 종료하는 클래스입니다. 주어진 기회동안 숫자를 맞췄는지에 따라 2가지로 나눠집니다.
-
-}
 
 
 }}}
