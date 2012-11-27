@@ -1894,5 +1894,7 @@ http://comp166-koreauniv.googlecode.com/files/enter.jpg
 *3. 실습실에서 실행 화면*
 - 입실 이후 메인 창
 
+http://comp166-koreauniv.googlecode.com/files/afe.jpg
+
 *4. 실습실에서 실행 화면*
 - 독서실 이용내역보기
