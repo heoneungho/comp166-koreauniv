@@ -1,4 +1,4 @@
-#summary myJongroStoryOld 패치가 진행됨에 따라 구버전의 자료를 누적시키는 곳입니다.
+#summary myJongroStory의 패치가 진행됨에 따라 구버전의 자료를 누적시키는 곳입니다.
 #labels 2012190731임채원
 
 = 프로젝트 설명 (0.10 기반) =
