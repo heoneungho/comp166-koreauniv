@@ -1883,3 +1883,5 @@ public interface time {
 = Result =
 *1. 실습실에서 실행 화면*
 - 메인 창
+
+http://comp166-koreauniv.googlecode.com/files/메인화면.jpg
