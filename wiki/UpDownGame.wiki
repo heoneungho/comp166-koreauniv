@@ -38,23 +38,40 @@
 
 {{{
 
+package upanddown;
+
 public class MainUpDown {
-	//메인 메소드가 오는 클래스입니다.
 	
 	public static void main(String[] args) {
+		
+		int numofguesses = 0;
+		
+		UpDownGame UDG = new UpDownGame();
+		Chances ch = new Chances();
+		GameHelper helper = new GameHelper();
+		
+		int round = 1; //라운드는 1부터
+		boolean alive = true;
+		
+		while (alive == true) {
+			
+			System.out.println("업다운 게임에 오신걸 환영합니다!");
+			String guess = helper.getInput();
+			//맞았는지 틀렸는지 체크 => UpDownGame 클래스에서 불러온다
+			numofguesses++;
+			
+			if(/*죽었을때*/) {
+				alive = false;
+				System.out.println("패배하였습니다.");
+			} else if(/*이겼을때*/) {
+				//이기면 뭔가하겠지?
+			}
+					
+		} //while문 끝
 
+	} //메인 메소드 끝
 
-		// 게임을 시작합니다.
-
-		// for ( i = 0; 죽을 때 까지; i++) 
-		{스테이지(i); // <--- i는 레벨
-
-		// 게임을 종료
-	}
-	
-
-}
-
+} //클래스 끝
 
 public class Stage1 {
 
@@ -77,13 +94,39 @@ public class Stage5 {
 }
 
 
-public class LifeCheck {
-	//플레이어에게 주어진 기회(Life)를 체크하는 클래스입니다.
-	
-	int Life;
+package upanddown;
 
+import java.io.*;
+
+public class GameHelper {
 	
+	public String getInput() {
+		String Input = null;
+		System.out.println("숫자를 입력하세요: ");
+		
+		try {
+            BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+            Input = is.readLine();
+            
+            if (Input.length() == 0) return null;
+            }
+		
+		catch (IOException e) {
+            System.out.println("IOException: " + e);
+            }
+		
+		return Input;
+	}
 }
+
+
+package upanddown;
+
+public class UpDownGame {
+	
+
+}
+
 
 
 package upanddown;
