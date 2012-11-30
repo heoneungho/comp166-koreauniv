@@ -43,104 +43,335 @@ package upanddown;
 import java.util.Scanner;
 
 public class MainUpDown {
+        
+        public static void main(String[] args) {
+                
+                
+                UpDownGame UDG = new UpDownGame();
+                Chances ch = new Chances();
+                GameHelper helper = new GameHelper();
+                
+                int stage = 1; //라운드는 1부터
+                boolean alive = true;
+                
+                System.out.println("업다운 게임에 오신걸 환영합니다!");
+                System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
+                
+                int nu = 0;
+                Scanner sc = new Scanner(System.in);
+                nu = sc.nextInt();
+                
+                while(nu != 1 && nu != 2) {
+                        System.out.println("잘못 입력 하셨습니다.");
+                        System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
+                        nu = sc.nextInt();
+                }
+          
+                if(nu == 2) {
+                  
+                  System.out.println("");
+                  System.out.println("          =도움말=");
+                  System.out.println("-이 게임은 임의로 정해진 숫자를 맞추는 게임입니다.");//도움말 내용
+                  System.out.println("-모두 5개의 스테이지로 이루어져 있으며, 각 스테이지마다 맞춰야 하는 숫자의 범위가 다릅니다.");
+                  System.out.println("-각 스테이지마다 찬스의 기회가 한번씩 주어지며, 찬스는 6가지 중 임의로 한가지가 실행됩니다.");
+                  System.out.println("-다섯 스테이지를 모두 클리어 할 경우 승리하며, 기회를 모두 사용하고 숫자를 맞추지 못하면 패배합니다.");
+                  System.out.println("");
+                  System.out.print("--준비가 되셨으면 1을 입력하여 게임을 시작합니다: ");
+
+                  while(nu != 1) {
+                	  nu = sc.nextInt();
+                  }
+                }
+                
+                if(nu == 1) {
+                	
+                	System.out.println("");
+                	System.out.println("");
+                	System.out.println("");
+                	System.out.println("게임을 시작합니다.");
+                	System.out.println("");
+                	System.out.println("");
+                  
+                	while (alive == true) {
+                		
+                		System.out.println("== Stage " + stage + " ==");
+                		
+                		int guess = 0;
+                		int ans = 0;
+                		int life = 0;
+                		int max = 0;
+                		int min = 0;
+                		int numofguesses = 0;
+                		boolean clear = false;
+                		boolean win = false;
+                		
+                		
+                		switch(stage) {
+	                		
+	                		case 1 :
+	                			
+	                			max = 10;
+	                			min = 1;
+	                			life = 5;
+	                			ans = (int) (Math.random() * 10) + 1;
+	                			
+	                			while(life > 0 && clear == false) {
+	                				
+	                				System.out.println("-life: " + life);
+	                				
+	                				while((guess > max || guess < min)) {
+	                					
+	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+		                				System.out.println("");
+		                				
+			                			guess = helper.getInput();
+			                			System.out.println("");	
+			                			
+	                				}
+	                				
+	                				if(guess == ans) {
+		                				clear = true;
+		                				life--;
+		                			} else if(guess == 0) {
+		                				//찬스 사용!!
+		                			} else if(guess < ans ) {
+		                				System.out.println("== Up!! ==");
+		                				min = guess;
+		                				life--;
+		                			} else{
+		                				System.out.println("== Down!! ==");
+		                				max = guess;
+		                				life--;
+		                			}
+	                				
+	                				guess = 0;
+	                				numofguesses++;
+     				
+	                			}
+	                			
+	                			break;
+	                			
+	                			
+	                		case 2 :
+	                			
+	                			max = 50;
+	                			min = 1;
+	                			life = 6;
+	                			ans = (int) (Math.random() * 50) + 1;
+	                			
+	                			while(life > 0 && clear == false) {
+	                				
+	                				System.out.println("-life: " + life);
+	                				
+	                				while((guess > max || guess < min)) {
+	                					
+	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+		                				
+			                			guess = helper.getInput();
+			                			System.out.println("");	
+			                			
+	                				}
+	                				
+	                				if(guess == ans) {
+		                				clear = true;
+		                				life--;
+		                			} else if(guess == 0) {
+		                				//찬스 사용!!
+		                			} else if(guess < ans ) {
+		                				System.out.println("== Up!! ==");
+		                				min = guess;
+		                				life--;
+		                			} else{
+		                				System.out.println("== Down!! ==");
+		                				max = guess;
+		                				life--;
+		                			}
+	                				
+	                				guess = 0;
+	                				numofguesses++;
+     				
+	                			}
+	                			
+	                			break;
+	                			
+	                			
+	                		case 3 :
+	                			
+	                			max = 100;
+	                			min = 1;
+	                			life = 7;
+	                			ans = (int) (Math.random() * 100) + 1;
+	                			
+	                			while(life > 0 && clear == false) {
+	                				
+	                				System.out.println("-life: " + life);
+	                				
+	                				while((guess > max || guess < min)) {
+	                					
+	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+		                				
+			                			guess = helper.getInput();
+			                			System.out.println("");	
+			                			
+	                				}
+	                				
+	                				if(guess == ans) {
+		                				clear = true;
+		                				life--;
+		                			} else if(guess == 0) {
+		                				//찬스 사용!!
+		                			} else if(guess < ans ) {
+		                				System.out.println("== Up!! ==");
+		                				min = guess;
+		                				life--;
+		                			} else{
+		                				System.out.println("== Down!! ==");
+		                				max = guess;
+		                				life--;
+		                			}
+	                				
+	                				guess = 0;
+	                				numofguesses++;
+     				
+	                			}
+	                			
+	                			break;
+	                			
+	                			
+	                		case 4 :
+	                			
+	                			max = 500;
+	                			min = 1;
+	                			life = 8;
+	                			ans = (int) (Math.random() * 500) + 1;
+	                			
+	                			while(life > 0 && clear == false) {
+	                				
+	                				System.out.println("-life: " + life);
+	                				
+	                				while((guess > max || guess < min)) {
+	                					
+	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+		                				
+			                			guess = helper.getInput();
+			                			System.out.println("");	
+			                			
+	                				}
+	                				
+	                				if(guess == ans) {
+		                				clear = true;
+		                				life--;
+		                			} else if(guess == 0) {
+		                				//찬스 사용!!
+		                			} else if(guess < ans ) {
+		                				System.out.println("== Up!! ==");
+		                				min = guess;
+		                				life--;
+		                			} else{
+		                				System.out.println("== Down!! ==");
+		                				max = guess;
+		                				life--;
+		                			}
+	                				
+	                				guess = 0;
+	                				numofguesses++;
+     				
+	                			}
+	                			
+	                			break;
+	                			
+	                			
+	                		case 5 :
+	                			
+	                			max = 1000;
+	                			min = 1;
+	                			life = 8;
+	                			ans = (int) (Math.random() * 1000) + 1;
+	                			
+	                			while(life > 0 && clear == false && win == false) {
+	                				
+	                				System.out.println("-life: " + life);
+	                				
+	                				while((guess > max || guess < min)) {
+	                					
+	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+		                				
+			                			guess = helper.getInput();
+			                			System.out.println("");	
+			                			
+	                				}
+	                				
+	                				if(guess == ans) {
+		                				win = true;
+		                				life--;
+		                			} else if(guess == 0) {
+		                				//찬스 사용!!
+		                			} else if(guess < ans ) {
+		                				System.out.println("== Up!! ==");
+		                				min = guess;
+		                				life--;
+		                			} else{
+		                				System.out.println("== Down!! ==");
+		                				max = guess;
+		                				life--;
+		                			}
+	                				
+	                				guess = 0;
+	                				numofguesses++;
+     				
+	                			}
+	                			
+	                			break;
 	
-	public static void main(String[] args) {
-		
-		int numofguesses = 0;
-		
-		UpDownGame UDG = new UpDownGame();
-		Chances ch = new Chances();
-		GameHelper helper = new GameHelper();
-		
-		int round = 1; //라운드는 1부터
-		boolean alive = true;
-		
-		System.out.println("업다운 게임에 오신걸 환영합니다!");
-		System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
-		
-		int nu = 0;
-   Scanner sc = new Scanner(System.in);
-		nu = sc.nextInt();
-		
-		while(nu != 1 &&nu != 2) {
-			System.out.println("다시 입력하세요.");
-			System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
-			nu = sc.nextInt();
-		}
-	  
-	  if(nu == 2) {
-		  
-		  System.out.println("");
-		  System.out.println("=도움말=");
-		  System.out.println("도움말도움");//도움말 내용
-		  
-	  }
-	  
-	  else if(nu ==1) {
-		  
-		  while (alive == true) {
-				
-				String guess = helper.getInput();
-				//맞았는지 틀렸는지 체크 => UpDownGame 클래스에서 불러온다
-				numofguesses++;
-				
-				if(/*죽었을때*/) {
-					alive = false;
-					System.out.println("패배하였습니다.");
-				} else if(/*이겼을때*/) {
-					//이기면 뭔가하겠지?
-				}
-						
-			} //while문 끝
-		  
-	  } //if문 끝
-		
-	} //메인 메소드 끝
+	                			
+                		}
+	                			
+                             		
+                		if(clear == true) {
+                			System.out.println("== Stage " + stage + " 클리어!! ==");
+                			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
+                			System.out.println("");
+                			stage++;
+                			clear = false;
+                		} else if(life == 0) { //패배시
+                			alive = false;
+                			System.out.println("정답은 " + ans + "입니다.");
+                			System.out.println("패배하였습니다.");
+                			System.out.println("게임을 종료합니다.");
+                			System.out.println("");
+                		} else if(win == true) {
+                			System.out.println("== Stage " + stage + " 클리어!! ==");
+                			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
+                			System.out.println("");
+                			
+                			System.out.println("모든 스테이지를 클리어 하셨습니다.");
+                			System.out.println("당신은 UpDown게임을 정벅하셨습니다.");
+                			System.out.println("게임을 종료합니다.");
+                			//승리로 끝남!
+                		}
+                                                
+                	} //while문 끝
+                  
+                } //if문 끝
+                
+        } //메인 메소드 끝
 
 } //클래스 끝
 
 
-public class Stage1 {
-
-}
-
-public class Stage2 {
-
-}
-
-public class Stage3 {
-
-}
-
-public class Stage4 {
-
-}
-
-public class Stage5 {
-
-}
-
-
 package upanddown;
 
-import java.io.*;
+import java.util.Scanner;
 
 public class GameHelper {
         
-    public String getInput() {
-        String Input = null;
-        System.out.println("숫자를 입력하세요. ");
+    public int getInput() {
+    	
+        int Input = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=숫자를 입력하세요.=");
         System.out.println("찬스를 사용하시려면 0을 입력하세요.");
-        
-        try {
-    BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
-    Input = is.readLine();
-    if (Input.length() == 0) return null;
-        }
-        
-        catch (IOException e) {
-    System.out.println("IOException: " + e);
-        }
+        Input = sc.nextInt();
         
         return Input;
         
@@ -162,12 +393,12 @@ package upanddown;
 
 public class Chances {
         
-        int ran = (int) (Math.random() * 6) + 1;
+        int ranch = (int) (Math.random() * 6) + 1;
         int ans;
        
         public void pch() {
-        	
-            switch(ran) {
+                
+            switch(ranch) {
             
             case 1:
                     System.out.println("--2의 배수 힌트--");
@@ -232,7 +463,7 @@ public class Chances {
                     
 
             } //스위치문 끝
-        	
+                
         } //함수 
         
 } //클래스 끝
