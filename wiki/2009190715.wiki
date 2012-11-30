@@ -1325,6 +1325,42 @@ public class NewCalendar {
 
 {{{
 
+class StaticSuper {
+
+        static {
+                System.out.println("super static block");
+        }
+        
+        StaticSuper() {    //책에서 문장에는 ()가 빠져있음
+                System.out.println("super constructor");
+        }
+                
+}
+
+
+public class StaticTests extends StaticSuper{
+
+        static int rand;
+        
+        static{
+                rand = (int) (Math.random()*6);
+                System.out.println("static block" + rand);
+}
+        
+        StaticTests(){
+                System.out.println("constructor");
+        }
+        
+        public static void main(String[] args){
+                System.out.println("in main");
+                StaticTests st = new StaticTests();
+                
+        }
+        
+        
+}
+
+
 }}}
 
 = 11. 위험한 행동:예외처리  =
