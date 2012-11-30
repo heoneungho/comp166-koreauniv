@@ -183,10 +183,7 @@ public class GuessGame
                                 p4isRight = true;
 
                         if ( p1isRight || p2isRight || p3isRight || p4isRight)
-                        p1.guess();
-                        p2.guess();
-                        p3.guess();
-                        p4.guess();
+                        
 
                         guessp1 = p1.number;
                         System.out.println("1번 선수가 찍은 숫자: " + guessp1);
