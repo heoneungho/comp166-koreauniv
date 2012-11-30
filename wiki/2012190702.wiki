@@ -312,26 +312,24 @@ class Dog
 		dog1.bark();
 		dog1.name = "Bart";
 
-		System.out.println("개 몇마리로 할까 ?");
-		scanf("%d", &n);
-	
-		Dog[] mydogs = new dog[n];
+			
+		Dog[] mydogs = new dog[100];
 
-		for(i=0;i<n-1;i++)
+		for(i=0;i<99;i++)
 		{
 			myDogs[i] = new Dog();
 		}
-		myDogs[n-1] = dog1;
+		myDogs[99] = dog1;
 
-		for(i=0;i<n-1;i++)
+		for(i=0;i<99;i++)
 		{
 			myDogs[i].name = "Bart" + i ;
 		}
 		
-		myDogs[n-1] = "Bart" + n-1;
+		myDogs[99] = "Bart" + n-1;
 
 		System.out.println("마지막 개의 이름 :");	
-		System.out.println("myDogs[n-1].name);
+		System.out.println("myDogs[99].name);
 	
 		int x = 0;
 		
