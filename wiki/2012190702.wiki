@@ -479,7 +479,7 @@ class XCopy
 
                 XCopy x = new XCopy(); //XCopy 란 변수를 만들어보자 !
 
-                int y = x.go(orig); // y는 XCopy 변수로 만들고 42를 넣자 !
+                int y = x.go(orig); // y는 XCopy 변수로 만들고 42를 넣자 그리고 곱하기 2 !
 
                 System.out.println(orig + " " + y);
         }
@@ -515,9 +515,9 @@ class ClockTestDrive
         {
         Clock c = new Clock(); //Clock 변수를 만들어보자 !
 
-        c.setTime("1245"); // 1245를 넣어보자 !!
-        String tod = c.getTime(); // tod 넌 이걸로 정했다 !
-        System.out.println("time: " + tod); // 시간에 tod를 더하자!
+        c.setTime("1245"); // time에 1245를 넣어보자 !!
+        String tod = c.getTime(); // tod 넌 time 이걸로 정했다 !
+        System.out.println("time: " + tod); // 시간을 tod 참고 출력!!
         }
 }
 
