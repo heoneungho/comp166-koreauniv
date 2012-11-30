@@ -40,6 +40,8 @@
 
 package upanddown;
 
+import java.util.Scanner;
+
 public class MainUpDown {
 	
 	public static void main(String[] args) {
@@ -53,25 +55,50 @@ public class MainUpDown {
 		int round = 1; //라운드는 1부터
 		boolean alive = true;
 		
-		while (alive == true) {
-			
-			System.out.println("업다운 게임에 오신걸 환영합니다!");
-			String guess = helper.getInput();
-			//맞았는지 틀렸는지 체크 => UpDownGame 클래스에서 불러온다
-			numofguesses++;
-			
-			if(/*죽었을때*/) {
-				alive = false;
-				System.out.println("패배하였습니다.");
-			} else if(/*이겼을때*/) {
-				//이기면 뭔가하겠지?
-			}
-					
-		} //while문 끝
-
+		System.out.println("업다운 게임에 오신걸 환영합니다!");
+		System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
+		
+		int nu = 0;
+   Scanner sc = new Scanner(System.in);
+		nu = sc.nextInt();
+		
+		while(nu != 1 &&nu != 2) {
+			System.out.println("다시 입력하세요.");
+			System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
+			nu = sc.nextInt();
+		}
+	  
+	  if(nu == 2) {
+		  
+		  System.out.println("");
+		  System.out.println("=도움말=");
+		  System.out.println("도움말도움");//도움말 내용
+		  
+	  }
+	  
+	  else if(nu ==1) {
+		  
+		  while (alive == true) {
+				
+				String guess = helper.getInput();
+				//맞았는지 틀렸는지 체크 => UpDownGame 클래스에서 불러온다
+				numofguesses++;
+				
+				if(/*죽었을때*/) {
+					alive = false;
+					System.out.println("패배하였습니다.");
+				} else if(/*이겼을때*/) {
+					//이기면 뭔가하겠지?
+				}
+						
+			} //while문 끝
+		  
+	  } //if문 끝
+		
 	} //메인 메소드 끝
 
 } //클래스 끝
+
 
 public class Stage1 {
 
@@ -99,25 +126,27 @@ package upanddown;
 import java.io.*;
 
 public class GameHelper {
-	
-	public String getInput() {
-		String Input = null;
-		System.out.println("숫자를 입력하세요: ");
-		
-		try {
-            BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
-            Input = is.readLine();
-            
-            if (Input.length() == 0) return null;
-            }
-		
-		catch (IOException e) {
-            System.out.println("IOException: " + e);
-            }
-		
-		return Input;
-	}
-}
+        
+    public String getInput() {
+        String Input = null;
+        System.out.println("숫자를 입력하세요. ");
+        System.out.println("찬스를 사용하시려면 0을 입력하세요.");
+        
+        try {
+    BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+    Input = is.readLine();
+    if (Input.length() == 0) return null;
+        }
+        
+        catch (IOException e) {
+    System.out.println("IOException: " + e);
+        }
+        
+        return Input;
+        
+    } //함수 끝
+        
+} //클래스 끝
 
 
 package upanddown;
@@ -132,75 +161,80 @@ public class UpDownGame {
 package upanddown;
 
 public class Chances {
-	
-	int ran = (int) (Math.random() * 6) + 1;
-	
-	switch(ran) {
-	
-	case 1:
-		System.out.println("--2의 배수 힌트--");
-		
-		if(ans%2 == 0) {
-			System.out.println("답은 2의 배수 입니다.");
-		} else {
-			System.out.println("답은 2의 배수가 아닙니다.");
-		}
-		
-		break;
+        
+        int ran = (int) (Math.random() * 6) + 1;
+        int ans;
+       
+        public void pch() {
+        	
+            switch(ran) {
+            
+            case 1:
+                    System.out.println("--2의 배수 힌트--");
+                    
+                    if(ans%2 == 0) {
+                            System.out.println("답은 2의 배수 입니다.");
+                    } else {
+                            System.out.println("답은 2의 배수가 아닙니다.");
+                    }
+                    break;
 
-	
-	case 2:
-		System.out.println("--3의 배수 힌트--");
-		
-		if(ans%3 == 0) {
-			System.out.println("답은 3의 배수 입니다.");
-		} else {
-			System.out.println("답은 3의 배수가 아닙니다.");
-		}
-		
-		break;
-	
-	
-	case 3:
-		System.out.println("--기회 추가--");
-		System.out.println("기회가 1회 추가 되었습니다!");
-		
-		life += 1;
-		
-		break;
-		
-	case 4:
-		System.out.println("--기회 감소--");
-		System.out.println("기회가 1회 감소 되었습니다 호갱님^^");
-		
-		life -= 1;
-		
-		break;
-		
-	case 5:
-		int mid = (int) (max + min) / 2;
-		
-		System.out.println("--반띵 찬스!!--");
-		
-		if (ans > mid) {
-			min = mid;
-			System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
-		} else if(ans < mid) {
-			max = mid;
-			System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
-		} else {
-			//답을 맞췄을 경우로 이동!
-		} 
-		
-		break;
-		
-	case 6:
-		System.out.println("꽝이야. 헤헤");
-		break;
+            
+            case 2:
+                    System.out.println("--3의 배수 힌트--");
+                    
+                    if(ans%3 == 0) {
+                            System.out.println("답은 3의 배수 입니다.");
+                    } else {
+                            System.out.println("답은 3의 배수가 아닙니다.");
+                    }
+                    
+                    break;
+            
+            
+            case 3:
+                    System.out.println("--기회 추가--");
+                    System.out.println("기회가 1회 추가 되었습니다!");
+                    
+                    life += 1;
+                    
+                    break;
+                    
+            case 4:
+                    System.out.println("--기회 감소--");
+                    System.out.println("기회가 1회 감소 되었습니다 호갱님^^");
+                    
+                    life -= 1;
+                    
+                    break;
+                    
+            case 5:
+                    int mid = (int) (max + min) / 2;
+                    
+                    System.out.println("--반띵 찬스!!--");
+                    
+                    if (ans > mid) {
+                            min = mid;
+                            System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+                    } else if(ans < mid) {
+                            max = mid;
+                            System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+                    } else {
+                            //답을 맞췄을 경우로 이동!
+                    } 
+                    
+                    break;
+                    
+            case 6:
+                    System.out.println("꽝이야. 헤헤");
+                    break;
 
-		
+                    
 
-	} //스위치문 끝
+            } //스위치문 끝
+        	
+        } //함수 
+        
 } //클래스 끝
 
 
