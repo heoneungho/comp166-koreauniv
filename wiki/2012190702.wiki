@@ -480,11 +480,11 @@ class XCopy
 {
         public static void main(String [] args)
         {
-                int orig = 42;
+                int orig = 42; //orig 에 42를 넣어보자 !
 
-                XCopy x = new XCopy();
+                XCopy x = new XCopy(); //XCopy 란 변수를 만들어보자 !
 
-                int y = x.go(orig);
+                int y = x.go(orig); // y는 XCopy 변수로 만들고 42를 넣자 !
 
                 System.out.println(orig + " " + y);
         }
@@ -492,7 +492,7 @@ class XCopy
         int go(int arg)
         {
 
-                arg = arg * 2;
+                arg = arg * 2;  // arg 를 2배하자 !
 
                 return arg;
         }
@@ -503,12 +503,12 @@ class Clock
 {
         String time;
 
-        void setTime(String t)
+        void setTime(String t) //시간설정을 해보자!
         {
                 time = t;
         }
 
-        String getTime()
+        String getTime()  // 시간을 보내버리자 ! 값으로
         {
                 return time;
         }
@@ -518,11 +518,11 @@ class ClockTestDrive
 {
         public static void main(String [] args)
         {
-        Clock c = new Clock();
+        Clock c = new Clock(); //Clock 변수를 만들어보자 !
 
-        c.setTime("1245");
-        String tod = c.getTime();
-        System.out.println("time: " + tod);
+        c.setTime("1245"); // 1245를 넣어보자 !!
+        String tod = c.getTime(); // tod 넌 이걸로 정했다 !
+        System.out.println("time: " + tod); // 시간에 tod를 더하자!
         }
 }
 
@@ -543,22 +543,23 @@ public class SimpleDotComTestDrive
 {
         public static void main (String [] args)
         {
-                SimpleDotCom dot = new SimpleDotCom(); // 
-
+                SimpleDotCom dot = new SimpleDotCom(); // SimpleDotCom
+                                                           변수만들었당!!
+ 
                 int[] locations = {2,3,4};
 
                 dot.setLocationCells(locations);
 
-                String userGuess = "2";
+                String userGuess = "2"; // 예측한 숫자를 넣어보자
 
-                String result = dot.checkYourself(userGuess);
+                String result = dot.checkYourself(userGuess); //확인해보자!
 
-                String testResult = "failed";
+                String testResult = "failed"; // 실패!!
 
                 if(result.equals("hit")
-                        testResult = "passed";
+                        testResult = "passed"; // 맞췄노
 
-                System.out.println(testResult);
+                System.out.println(testResult); //결과를 보거라
         }
 }
                                            
