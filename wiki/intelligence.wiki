@@ -1,4 +1,4 @@
-#다중지능검사
+#
 
 = Introduction =
 
