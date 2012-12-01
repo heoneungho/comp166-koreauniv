@@ -3,7 +3,7 @@
 
 = Links for contents =
 
-http://comp166-koreauniv.googlecode.com/files/links.jpg
+http://comp166-koreauniv.googlecode.com/files/link.jpg
 
 <wiki:toc max_depth="1" />
 
