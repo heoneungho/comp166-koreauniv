@@ -56,25 +56,23 @@ public class PlayJongro {
 		Time time = new Time();
 		CardData card = new CardData();
 		
-		Card hand1 = new Card();
-		Card hand2 = new Card();
-		Card hand3 = new Card();
-		Card hand4 = new Card();
-		Card hand5 = new Card();
+		Card[] hand = new Card[5];
+		for(int i=0; i<5; i++)
+			hand[i] = new Card();
 		
 		Deck deck = new Deck();
 		// 기본으로 가지고 있는 카드
 		// (언수외 기본 + 운동 기본 + 복권)
-		deck.korBasic.isExist = true;
-		deck.korBasic.isSelected = true;
-		deck.mthBasic.isExist = true;
-		deck.mthBasic.isSelected = true;
-		deck.engBasic.isExist = true;
-		deck.engBasic.isSelected = true;
-		deck.hpBasic.isExist = true;
-		deck.hpBasic.isSelected = true;
-		deck.lottery.isExist = true;
-		deck.lottery.isSelected = true;
+//		deck.korBasic.isExist = true;
+//		deck.korBasic.isSelected = true;
+//		deck.mthBasic.isExist = true;
+//		deck.mthBasic.isSelected = true;
+//		deck.engBasic.isExist = true;
+//		deck.engBasic.isSelected = true;
+//		deck.hpBasic.isExist = true;
+//		deck.hpBasic.isSelected = true;
+//		deck.lottery.isExist = true;
+//		deck.lottery.isSelected = true;
 		
 		// 1등급, 2등급, 3등급 카드 갯수
 		int GRADE_1 = 4;
@@ -89,54 +87,58 @@ public class PlayJongro {
 		// 4월 (4일[月]~30일) 
 		while(time.month == 4) {
 			// 카드를 새로 지급 받는다. takeCard
-			int randvalue = (int)(Math.random()*100)+1; // 1~50: 1등급, 51~85: 2등급, 86~100: 3등급
-			if(randvalue <= 50) {
-				int randkind = (int)(Math.random()*GRADE_1)+1;
-				// 1등급 카드를 랜덤하게 받는다.
-			} else if (randvalue <= 85) {
-				int randkind = (int)(Math.random()*GRADE_2)+1;
-				// 2등급 카드를 랜덤하게 받는다.
-			} else if (randvalue <= 100) {
-				int randkind = (int)(Math.random()*GRADE_3)+1;
-				// 3등급 카드를 랜덤하게 받는다.
-			} // 5회 반복할 것.
-			
+			for(int i=0; i<5; i++) {
+				int randvalue = (int)(Math.random()*100)+1; // 1~50: 1등급, 51~85: 2등급, 86~100: 3등급
+				if(randvalue <= 50) {
+					int randkind = (int)(Math.random()*GRADE_1)+1;
+					hand[i] = cardSelection(1, randkind);
+					// 1등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 85) {
+					int randkind = (int)(Math.random()*GRADE_2)+1;
+					hand[i] = cardSelection(2, randkind);
+					// 2등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 100) {
+					int randkind = (int)(Math.random()*GRADE_3)+1;
+					hand[i] = cardSelection(3, randkind);
+					// 3등급 카드를 랜덤하게 받는다.
+				} 
+			} // for 끝
 			
 			// 지급된 카드를 보여준다. (반복) showCard
 			int selectHand;
 			do {
 				System.out.println(time.month + "/" + time.day + " 당신의 패입니다.");
-				if(!hand1.isUsed)
-					System.out.println("1: " + hand1.name);
-				if(!hand2.isUsed)
-					System.out.println("2: " + hand2.name);
-				if(!hand3.isUsed)
-					System.out.println("3: " + hand3.name);
-				if(!hand4.isUsed)
-					System.out.println("4: " + hand4.name);
-				if(!hand5.isUsed)
-					System.out.println("5: " + hand5.name);
+				if(!hand[0].isUsed)
+					System.out.println("1: " + hand[0].name);
+				if(!hand[1].isUsed)
+					System.out.println("2: " + hand[1].name);
+				if(!hand[2].isUsed)
+					System.out.println("3: " + hand[2].name);
+				if(!hand[3].isUsed)
+					System.out.println("4: " + hand[3].name);
+				if(!hand[4].isUsed)
+					System.out.println("5: " + hand[4].name);
 				System.out.println("0: 집에 간다(턴을 끝낸다)" );
 				// 카드를 사용한다. (반복) useCard
 				System.out.println("명령을 내려주세요.");
 				Scanner sc = new Scanner(System.in);
 				selectHand = sc.nextInt();
 				switch (selectHand) {
-					case 1: // 사용한다.
-						hand1.isUsed = true;
-						break;
-					case 2: // 사용한다.
-						hand2.isUsed = true;
-						break;
-					case 3: // 사용한다.
-						hand3.isUsed = true;
-						break;
-					case 4: // 사용한다.
-						hand4.isUsed = true;
-						break;
-					case 5: // 사용한다.
-						hand5.isUsed = true;
-						break;
+					case 1: useCard(hand[0], me);
+							hand[0].isUsed = true;
+							break;
+					case 2: useCard(hand[1], me);
+							hand[1].isUsed = true;
+							break;
+					case 3: useCard(hand[2], me);
+							hand[2].isUsed = true;
+							break;
+					case 4: useCard(hand[3], me);
+							hand[3].isUsed = true;
+							break;
+					case 5: useCard(hand[4], me);
+							hand[4].isUsed = true;
+							break;
 					case 0: // 턴을 넘긴다.
 				} // switch 끝
 			} while ( !( selectHand == 0) );
@@ -149,14 +151,7 @@ public class PlayJongro {
 			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
 			
 			// 하루를 마무리 endTime 
- 			time.day++; 
-			time.dow++; 
-			if(time.day == 31) {
-				time.month++;
-			}
-			if(time.dow == 8) {
-				time.dow = 1;
-			}
+			endTime(time);
 			
 			me.hp = me.hp_MAX; // 행동력 회복
 		}
@@ -197,12 +192,68 @@ public class PlayJongro {
 		///////// 패에 든 카드는 무슨 변수를 써야하지???
 	} // takeCard 끝
 	
+	static Card cardSelection (int GRADE, int randkind) {
+		switch(GRADE) {
+			case 1: switch(randkind) {
+						case 1: return Deck.korBasic; 
+						case 2: return Deck.mthBasic; 
+						case 3: return Deck.engBasic; 
+						case 4: return Deck.hpBasic;
+			} // GRADE == 1 ends
+			case 2: switch(randkind) {
+						case 1: return Deck.korNormal;
+						case 2: return Deck.mthNormal;
+						case 3: return Deck.engNormal;
+						case 4: return Deck.hpNormal;
+			} // GRADE == 2 ends
+			case 3: switch(randkind) {
+						case 1: return Deck.korMaster;
+						case 2: return Deck.mthMaster;
+						case 3: return Deck.engMaster;
+						case 4: return Deck.hpMaster;
+						case 5: return Deck.lottery;
+			} // GRADE == 3 ends
+		}
+		return null;
+	}
+	
+	
+	
 	void showCard() {   // 지급된 카드를 보여준다.
 		
 	}
 	
-	void useCard() {   // 카드를 사용한다.
+	static void useCard(Card hand, Status me) {   // 카드를 사용한다.
+		if (hand == Deck.korBasic)
+			CardData.korBasic(me);
+		if (hand == Deck.mthBasic)
+			CardData.mthBasic(me);
+		if (hand == Deck.engBasic)
+			CardData.engBasic(me);
+		if (hand == Deck.hpBasic)
+			CardData.hpBasic(me);
+
 		
+		if (hand == Deck.korNormal)
+			CardData.korNormal(me);
+		if (hand == Deck.mthNormal)
+			CardData.mthNormal(me);
+		if (hand == Deck.engNormal)
+			CardData.engNormal(me);
+		if (hand == Deck.hpNormal)
+			CardData.hpNormal(me);
+		
+		
+		if (hand == Deck.korMaster)
+			CardData.korMaster(me);
+		if (hand == Deck.mthMaster)
+			CardData.mthMaster(me);
+		if (hand == Deck.engMaster)
+			CardData.engMaster(me);
+		if (hand == Deck.hpMaster)
+			CardData.hpMaster(me);
+		if (hand == Deck.lottery)
+			CardData.lottery(me);
 	}
 	
 	void buyCard() {  // 새로운 카드를 덱에 추가할 수 있다.
@@ -217,13 +268,22 @@ public class PlayJongro {
 		
 	}
 	
-	void endTime() {
-		
+	static void endTime(Time time) {
+		time.day++; 
+		time.dow++; 
+		if(time.day == 31) {
+			time.month++;
+		}
+		if(time.dow == 8) {
+			time.dow = 1;
+		}
 	}
 	
 	
 	
 } // class 끝
+
+
 
 
 }}}
@@ -294,87 +354,95 @@ public class CardData {
 	/* k1~3, m1~3, e1~3 (총 9 종류) */
 	
 	// k1. 언어 기본
-	void korBasic () {
-		// 언어 += 10;
-		// hp -= 15;
+	public static void korBasic (Status me) {
+		me.kor += 10;
+		me.hp -= 15;
 	}
 	
 	// k2. 언어 보충
-	void korNormal () {
-		// 언어 += 15~30;
-		// hp -= 30;
+	public static void korNormal (Status me) {
+		me.kor += (int)(Math.random()*16)+15;
+		me.hp -= 30;
 	}
 	
 	// k3. 언어 심화
-	void korMaster () {
-		// 언어 += 50~100;
-		// hp -= 50;
+	public static void korMaster (Status me) {
+		me.kor += (int)(Math.random()*51)+50;
+		me.hp -= 50;
 	}
 	
 	// m1. 수리 기본
-	void mthBasic () {
-		// 수리 += 10;
-		// hp -= 15;
+	public static void mthBasic (Status me) {
+		me.mth += 10;
+		me.hp -= 15;
 	}
 	
 	// m2. 수리 보충
-	void mthNormal () {
-		// 수리 += 15~30;
-		// hp -= 30;
+	public static void mthNormal (Status me) {
+		me.mth += (int)(Math.random()*16)+15;
+		me.hp -= 30;
 	}
 	
 	// m3. 수리 심화
-	void mthMaster () {
-		// 수리 += 50~100;
-		// hp -= 50;
+	public static void mthMaster (Status me) {
+		me.mth += (int)(Math.random()*51)+50;
+		me.hp -= 50;
 	}
 	
 	// e1. 외국어 기본
-	void engBasic () {
-		// 외국어 += 10;
-		// hp -= 15;
+	public static void engBasic (Status me) {
+		me.eng += 10;
+		me.hp -= 15;
 	}
 	
 	// e2. 외국어 보충
-	void engNormal () {
-		// 외국어 += 15~30;
-		// hp -= 30;
+	public static void engNormal (Status me) {
+		me.eng += (int)(Math.random()*16)+15;
+		me.hp -= 30;
 	}
 	
 	// e3. 외국어 심화
-	void engMaster () {
-		// 외국어 += 50~100;
-		// hp -= 50;
+	public static void engMaster (Status me) {
+		me.eng += (int)(Math.random()*51)+50;
+		me.hp -= 50;
 	}
 
 	/* 다른 능력치에 관여하는 카드들 */
 	/* */
 	
 	// h1. 운동 기본
-	void hpBasic () {
-		// hp -= 30;
-		// hp_MAX += 0~5;
+	public static void hpBasic (Status me) {
+		me.hp -= 30;
+		me.hp_MAX += (int)(Math.random()*6);
 	}
 	
 	// h2. 운동 보충
-	void hpNormal () {
-		// hp -= 50;
-		// hp_MAX += 10~15;
+	public static void hpNormal (Status me) {
+		me.hp -= 50;
+		me.hp_MAX += (int)(Math.random()*6)+10;
 	}
 	
 	// h3. 운동 심화
-	void hpMaster () {
-		// hp -= 100;
-		// hp_MAX += 15~30;
+	public static void hpMaster (Status me) {
+		me.hp -= 100;
+		me.hp_MAX += (int)(Math.random()*16)+15;
 	}
 	
 	// s1. 복권 구입
-	void lottery () {
-		// money -= 5000;
-		// money += 0 or 5000 or 30000 or 십만 or 백만
+	public static void lottery (Status me) {
+		me.money -= 5000;
+		int randomforlottery = (int)(Math.random()*5);
+		switch(randomforlottery) {
+			case 0: me.money += 0; break;
+			case 1: me.money += 5000; break;
+			case 2: me.money += 30000; break;
+			case 3: me.money += 100000; break;
+			case 4: me.money += 1000000; break;
+		} // switch 끝
 	}
 	
 } // end class
+
 
 }}}
 
