@@ -3,6 +3,8 @@
 
 = Links for contents =
 
+http://comp166-koreauniv.googlecode.com/files/links.jpg
+
 <wiki:toc max_depth="1" />
 
 = Introduction =
