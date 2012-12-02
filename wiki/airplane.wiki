@@ -3,68 +3,399 @@
 
 = Introduction =
 
-비행기 티켓을 예매하는 프로그램입니다.
+영화를 예매하는 프로그램 입니다.
+
+원래는 비행기를 예매하는 프로그램이었지만, 국가와 도시가 너무 많은 관계로 비슷한 것으로 변경 했습니다.
 
 
 = Details =
 
-* 메인 클래스입니다.*
+package Movie;
+import javax.swing.*;
+import java.awt.event.*;
 
-{{{
- // 처음에 시작을 하면, 어떤 class를 실행할 지 묻습니다.
 
-public class airplane{ } // 우선 아래에 있는 것들은 클래스 안에 집어넣지 않겠습니다.
+public class Age extends JPanel implements ActionListener{
 
-int a;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel jl1 = new JLabel("이용등급");
+	JLabel jl2 = new JLabel("");
+	public void AgePanel(){
+		JButton jrb1 = new JButton("성인");
+		JButton jrb2 = new JButton("청소년");
+		
+		add(jl1);
+		add(jl2);
+		add(jrb1);
+		add(jrb2);
+		jrb1.addActionListener(this);
+		jrb2.addActionListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent ae){
+		String s = ae.getActionCommand();
+		jl2.setText(s);
+	}
+} // 이용 등급을 묻는 클래스 입니다.
 
-if( a = 1 ); // 예매로 갑니다.
-else if( a = 2 ); // 취소로 갑니다.
-else if( a = 3 ); // 확인으로 갑니다.
-else // 오류이므로, 1부터 3사이의 값을 다시 입력하도록 합니다. 
 
-}}} 
+public class Area extends JPanel implements ItemListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel jl5 = new JLabel("어떤 지점입니까?");
+	JLabel jl6 = new JLabel("");
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Area(){
+		JComboBox area = new JComboBox();
+		
+		area.addItem("강남CGV");
+		area.addItem("왕십리CGV");
+		area.addItem("명동CGV");
+		area.addItem("강변CGV");
+		area.addItem("구로CGV");
+		area.addItem("대학로CGV");
+		area.addItem("강동CGV");
+		area.addItem("군자CGV");
+		area.addItem("송파CGV");
+		area.addItem("압구정CGV");
+		area.addItem("공항CGV");
+		area.addItem("상암CGV");
+		area.addItem("목동CGV");
+		area.addItem("미아CGV");
+		
+		add(jl5);
+		add(jl6);
+		add(area);
+		area.addItemListener(this);
+		
+	}
+	
+	public void ItemStateChanged(ItemEvent ie){
+		Object s = ie.getItem();
+		jl6.setText(s.toString());
+	}
+} // 영화관 지점을 선택하는 클래스 입니다.
 
-1.예매  
+public class Date extends JPanel implements ItemListener{
 
-{{{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-class reserve { }
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-//비행기 티켓을 예약하는 class입니다. 이 안에는 도착지역 선택, 시간대 선택, 왕복 여부, 날짜 선택의 메소드가 있습니다.
+	
+	JLabel jl3 = new JLabel("날짜 선택");
+	JLabel jl4 = new JLabel("");
+	
+	public Date() {
+		JComboBox date = new JComboBox();
+		
+		date.addItem("1일");
+		date.addItem("2일");
+		date.addItem("3일");
+		date.addItem("4일");
+		date.addItem("5일");
+		date.addItem("6일");
+		date.addItem("7일");
+		date.addItem("8일");
+		date.addItem("9일");
+		date.addItem("10일");
+		date.addItem("11일");
+		date.addItem("12일");
+		date.addItem("13일");
+		date.addItem("14일");
+		date.addItem("15일");
+		date.addItem("16일");
+		date.addItem("17일");
+		date.addItem("18일");
+		date.addItem("19일");
+		date.addItem("20일");
+		date.addItem("21일");
+		date.addItem("22일");
+		date.addItem("23일");
+		date.addItem("24일");
+		date.addItem("25일");
+		date.addItem("26일");
+		date.addItem("27일");
+		date.addItem("28일");
+		date.addItem("29일");
+		date.addItem("30일");
+		date.addItem("31일");
+		
+		add(jl3);
+		add(jl4);
+		add(date);
+		
+		date.addItemListener(this);
+		}
+	
+	
+} // 날짜를 선택하는 클래스 입니다.
 
-Where();//첫 번째로 도착지역을 묻는 질문이 나옵니다.
 
-Time();//두 번째로 시간대 선택이 나옵니다.
+public class MovieSelect extends JPanel implements ItemListener{
 
-Round_trip();//세 번째로 왕복 여부를 묻습니다.
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-Date();//네 번째로 날짜를 묻습니다.
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
-EndProgram();//예매가 끝나면 프로그램이 종료됩니다.
+	JLabel jl1 = new JLabel("영화 종류");
+	JLabel jl2 = new JLabel("");
+	
+	public MovieSelect(){
+		JComboBox ms = new JComboBox();
+		ms.addItem("내가 살인범이다.");
+		ms.addItem("브레이킹 던");
+		ms.addItem("26년");
+		ms.addItem("늑대소년");
+		ms.addItem("광해");
+		ms.addItem("음치 클리닉");
+		ms.addItem("가디언즈");
+		ms.addItem("돈 크라이 마미");
+		ms.addItem("더블");
+		ms.addItem("노크");
+		ms.addItem("남영동 1985");
+		ms.addItem("개들의 전쟁");
+		
+		add(jl1);
+		add(jl2);
+		add(ms);
+		
+		ms.addItemListener(this);
+	}
 
-}}}
+	public void ItemStateChanged(ItemEvent ie){
+		Object s = ie.getItem();
+		jl2.setText(s.toString());
+		
+	}
 
-2.취소 
+} // 영화를 선택하는 클래스입니다.
 
-{{{
+public class People extends JPanel implements ItemListener{
 
-class cancel { }
- 
-//예매한 티켓을 취소하는 class입니다.
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4822915568546038952L;
 
-//예매한 티켓이 여러 개 일 경우, 어떤 티켓을 취소할 지 선택하는 것이 나옵니다.
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-EndProgram();//취소가 끝나면 프로그램이 종료됩니다.
+	JLabel jl9 = new JLabel("인원수");
+	JLabel jl0 = new JLabel("");
+	
+	public People(){
+		JComboBox pep = new JComboBox();
+		
+		pep.addItem("1명");
+		pep.addItem("2명");
+		pep.addItem("3명");
+		pep.addItem("4명");
+		pep.addItem("5명");
+		pep.addItem("6명");
+		pep.addItem("7명");
+		pep.addItem("8명");
+		pep.addItem("9명");
+		pep.addItem("10명");
+		pep.addItem("11명");
+		pep.addItem("12명");
+		pep.addItem("13명");
+		pep.addItem("14명");
+		pep.addItem("15명");
+		pep.addItem("16명");
+		pep.addItem("17명");
+		pep.addItem("18명");
+		pep.addItem("19명");
+		pep.addItem("20명");
+		pep.addItem("20명 이상");
+		
+		add(jl9);
+		add(jl0);
+		add(pep);
+		pep.addItemListener(this);
+		}
+		
+		public void ItemStateChanged(ItemEvent ie){
+			Object s = ie.getItem();
+			jl0.setText(s.toString());
+			
+		}
+		
+		
+	
+} // 인원수를 택하는 클래스 입니다.
 
-}}}
+@SuppressWarnings("serial")
+public class Seat extends JPanel implements ItemListener{
 
-3.확인 
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-{{{
-class confirm { } // 
+	JLabel jl7 = new JLabel("좌석 선택");
+	JLabel j18 = new JLabel("");
+	
+	public Seat(){
+		JComboBox seat = new JComboBox();
+		seat.addItem("A-1");
+		seat.addItem("A-2");
+		seat.addItem("A-3");
+		seat.addItem("A-4");
+		seat.addItem("A-5");
+		seat.addItem("A-6");
+		seat.addItem("A-7");
+		seat.addItem("A-8");
+		seat.addItem("A-9");
+		seat.addItem("A-10");
+		seat.addItem("B-1");
+		seat.addItem("B-2");
+		seat.addItem("B-3");
+		seat.addItem("B-4");
+		seat.addItem("B-5");
+		seat.addItem("B-6");
+		seat.addItem("B-7");
+		seat.addItem("B-8");
+		seat.addItem("B-9");
+		seat.addItem("B-10");
+		seat.addItem("C-1");
+		seat.addItem("C-2");
+		seat.addItem("C-3");
+		seat.addItem("C-4");
+		seat.addItem("C-5");
+		seat.addItem("C-6");
+		seat.addItem("C-7");
+		seat.addItem("C-8");
+		seat.addItem("C-9");
+		seat.addItem("C-10");
+		seat.addItem("D-1");
+		seat.addItem("D-2");
+		seat.addItem("D-3");
+		seat.addItem("D-4");
+		seat.addItem("D-5");
+		seat.addItem("D-6");
+		seat.addItem("D-7");
+		seat.addItem("D-8");
+		seat.addItem("D-9");
+		seat.addItem("D-10");
+		seat.addItem("E-1");
+		seat.addItem("E-2");
+		seat.addItem("E-3");
+		seat.addItem("E-4");
+		seat.addItem("E-5");
+		seat.addItem("E-6");
+		seat.addItem("E-7");
+		seat.addItem("E-8");
+		seat.addItem("E-9");
+		seat.addItem("E-10");
+		seat.addItem("F-1");
+		seat.addItem("F-2");
+		seat.addItem("F-3");
+		seat.addItem("F-4");
+		seat.addItem("F-5");
+		seat.addItem("F-6");
+		seat.addItem("F-7");
+		seat.addItem("F-8");
+		seat.addItem("F-9");
+		seat.addItem("F-10");
+		seat.addItem("G-1");
+		seat.addItem("G-2");
+		seat.addItem("G-3");
+		seat.addItem("G-4");
+		seat.addItem("G-5");
+		seat.addItem("G-6");
+		seat.addItem("G-7");
+		seat.addItem("G-8");
+		seat.addItem("G-9");
+		seat.addItem("G-10");
+		seat.addItem("H-1");
+		seat.addItem("H-2");
+		seat.addItem("H-3");
+		seat.addItem("H-4");
+		seat.addItem("H-5");
+		seat.addItem("H-6");
+		seat.addItem("H-7");
+		seat.addItem("H-8");
+		seat.addItem("H-9");
+		seat.addItem("H-10");
+		
+		add(jl7);
+		add(j18);
+		add(seat);
+		
+		seat.addItemListener(this);
+	}
+	
+	public void ItemStateChanged(ItemEvent ie){
+		Object s = ie.getItem();
+		j18.setText(s.toString());
+		
+		
+	}
+	
+} // 좌석을 선택하는 클래스 입니다.
 
-//예매가 잘 되었는지 확인하는 class입니다. 확인을 하면 도착지, 날짜, 시간대, 그리고 왕복여부가 나옵니다.
+@SuppressWarnings("serial")
+public class Time extends JPanel implements ItemListener{
 
-EndProgram();//확인이 끝나면 프로그램이 종료됩니다.
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-}}}
+	JLabel j21 = new JLabel("상영 시간");
+	JLabel j22 = new JLabel("");
+	
+	public Time (){
+		JComboBox time = new JComboBox();
+		
+		time.addItem("8:00");
+		time.addItem("10:30");
+		time.addItem("13:00");
+		time.addItem("15:30");
+		time.addItem("18:00");
+		time.addItem("20:30");
+		time.addItem("23:00");
+		time.addItem("01:30");
+		
+		add(j21);
+		add(j22);
+		add(time);
+		time.addItemListener(this);
+			
+	}
+	
+	public void ItemStateChanged(ItemEvent ie){
+		Object s = ie.getItem();
+		j22.setText(s.toString());
+	}
+}// 시간대를 선택하는 클래스입니다.
