@@ -46,7 +46,8 @@ public class BeerSong{
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{public class PhraseOMatic {
+{{{
+public class PhraseOMatic {
 	public static void main(String[] args) {
 		
 		String[] wordListOne = {"동혁","근영","종하","진범"}; //단어 목록 1에들어갈 단어를 지정합니다.
