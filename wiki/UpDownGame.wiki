@@ -73,7 +73,7 @@ public class MainUpDown {
                   System.out.println("          =도움말=");
                   System.out.println("-이 게임은 임의로 정해진 숫자를 맞추는 게임입니다.");//도움말 내용
                   System.out.println("-모두 5개의 스테이지로 이루어져 있으며, 각 스테이지마다 맞춰야 하는 숫자의 범위가 다릅니다.");
-                  System.out.println("-각 스테이지마다 찬스의 기회가 한번씩 주어지며, 찬스는 6가지 중 임의로 한가지가 실행됩니다.");
+                  System.out.println("-찬스의 기회가 한 번 주어지며, 찬스는 0을 입력했을 때 6가지 찬스 중 임의로 한가지가 실행됩니다.");
                   System.out.println("-다섯 스테이지를 모두 클리어 할 경우 승리하며, 기회를 모두 사용하고 숫자를 맞추지 못하면 패배합니다.");
                   System.out.println("");
                   System.out.print("--준비가 되셨으면 1을 입력하여 게임을 시작합니다: ");
@@ -91,61 +91,67 @@ public class MainUpDown {
                 	System.out.println("게임을 시작합니다.");
                 	System.out.println("");
                 	System.out.println("");
+                	
+                	boolean chv = true;
                   
                 	while (alive == true) {
                 		
                 		System.out.println("== Stage " + stage + " ==");
                 		
-                		int guess = 0;
-                		int ans = 0;
-                		int life = 0;
-                		int max = 0;
-                		int min = 0;
-                		int numofguesses = 0;
-                		boolean clear = false;
-                		boolean win = false;
+                		
                 		
                 		
                 		switch(stage) {
 	                		
 	                		case 1 :
 	                			
-	                			max = 10;
-	                			min = 1;
-	                			life = 5;
-	                			ans = (int) (Math.random() * 10) + 1;
+	                			UDG.max = 10;
+	                			UDG.min = 1;
+	                			UDG.life = 5;
+	                			UDG.ans = (int) (Math.random() * 10) + 1;
 	                			
-	                			while(life > 0 && clear == false) {
+	                			while(UDG.life > 0 && UDG.clear == false) {
 	                				
-	                				System.out.println("-life: " + life);
+	                				System.out.println("-life: " + UDG.life);
 	                				
-	                				while((guess > max || guess < min)) {
+	                				do {
 	                					
-	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+	                					System.out.println("-" + UDG.min + "에서 " + UDG.max + " 사이의 숫자를 맞춰야 합니다.");
 		                				System.out.println("");
 		                				
-			                			guess = helper.getInput();
+		                				UDG.guess = helper.getInput();
 			                			System.out.println("");	
 			                			
-	                				}
+			                			if(UDG.guess == 0) {
+			                				break;
+			                			}
+			                			
+	                				} while(UDG.guess > UDG.max || UDG.guess < UDG.min);
 	                				
-	                				if(guess == ans) {
-		                				clear = true;
-		                				life--;
-		                			} else if(guess == 0) {
+	                				if(UDG.guess == UDG.ans) {
+	                					UDG.clear = true;
+	                					UDG.life--;
+		                			} else if(UDG.guess == 0 && chv == true) {
 		                				//찬스 사용!!
-		                			} else if(guess < ans ) {
+		                				ch.pch(UDG);
+		                				chv = false;
+		                				System.out.println("");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess == 0) {
+		                				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess < UDG.ans ) {
 		                				System.out.println("== Up!! ==");
-		                				min = guess;
-		                				life--;
+		                				UDG.min = UDG.guess;
+		                				UDG.life--;
 		                			} else{
 		                				System.out.println("== Down!! ==");
-		                				max = guess;
-		                				life--;
+		                				UDG.max = UDG.guess;
+		                				UDG.life--;
 		                			}
 	                				
-	                				guess = 0;
-	                				numofguesses++;
+	                				UDG.guess = 0;
+	                				UDG.numofguesses++;
      				
 	                			}
 	                			
@@ -154,41 +160,52 @@ public class MainUpDown {
 	                			
 	                		case 2 :
 	                			
-	                			max = 50;
-	                			min = 1;
-	                			life = 6;
-	                			ans = (int) (Math.random() * 50) + 1;
+	                			UDG.max = 50;
+	                			UDG.min = 1;
+	                			UDG.life = 6;
+	                			UDG.ans = (int) (Math.random() * 50) + 1;
 	                			
-	                			while(life > 0 && clear == false) {
+	                			while(UDG.life > 0 && UDG.clear == false) {
 	                				
-	                				System.out.println("-life: " + life);
+	                				System.out.println("-life: " + UDG.life);
 	                				
-	                				while((guess > max || guess < min)) {
+	                				while((UDG.guess > UDG.max || UDG.guess < UDG.min)) {
 	                					
-	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+	                					System.out.println("-" + UDG.min + "에서 " + UDG.max + " 사이의 숫자를 맞춰야 합니다.");
 		                				
-			                			guess = helper.getInput();
+	                					UDG.guess = helper.getInput();
 			                			System.out.println("");	
+			                			
+			                			if(UDG.guess == 0) {
+			                				break;
+			                			}
 			                			
 	                				}
 	                				
-	                				if(guess == ans) {
-		                				clear = true;
-		                				life--;
-		                			} else if(guess == 0) {
+	                				if(UDG.guess == UDG.ans) {
+	                					UDG.clear = true;
+	                					UDG.life--;
+		                			} else if(UDG.guess == 0 && chv == true) {
 		                				//찬스 사용!!
-		                			} else if(guess < ans ) {
+		                				ch.pch(UDG);
+		                				chv = false;
+		                				System.out.println("");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess == 0) {
+		                				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess < UDG.ans ) {
 		                				System.out.println("== Up!! ==");
-		                				min = guess;
-		                				life--;
+		                				UDG.min = UDG.guess;
+		                				UDG.life--;
 		                			} else{
 		                				System.out.println("== Down!! ==");
-		                				max = guess;
-		                				life--;
+		                				UDG.max = UDG.guess;
+		                				UDG.life--;
 		                			}
 	                				
-	                				guess = 0;
-	                				numofguesses++;
+	                				UDG.guess = 0;
+	                				UDG.numofguesses++;
      				
 	                			}
 	                			
@@ -197,41 +214,52 @@ public class MainUpDown {
 	                			
 	                		case 3 :
 	                			
-	                			max = 100;
-	                			min = 1;
-	                			life = 7;
-	                			ans = (int) (Math.random() * 100) + 1;
+	                			UDG.max = 100;
+	                			UDG.min = 1;
+	                			UDG.life = 7;
+	                			UDG.ans = (int) (Math.random() * 100) + 1;
 	                			
-	                			while(life > 0 && clear == false) {
+	                			while(UDG.life > 0 && UDG.clear == false) {
 	                				
-	                				System.out.println("-life: " + life);
+	                				System.out.println("-life: " + UDG.life);
 	                				
-	                				while((guess > max || guess < min)) {
+	                				while((UDG.guess > UDG.max || UDG.guess < UDG.min)) {
 	                					
-	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+	                					System.out.println("-" + UDG.min + "에서 " + UDG.max + " 사이의 숫자를 맞춰야 합니다.");
 		                				
-			                			guess = helper.getInput();
+	                					UDG.guess = helper.getInput();
 			                			System.out.println("");	
+			                			
+			                			if(UDG.guess == 0) {
+			                				break;
+			                			}
 			                			
 	                				}
 	                				
-	                				if(guess == ans) {
-		                				clear = true;
-		                				life--;
-		                			} else if(guess == 0) {
+	                				if(UDG.guess == UDG.ans) {
+	                					UDG.clear = true;
+	                					UDG.life--;
+		                			} else if(UDG.guess == 0 && chv == true) {
 		                				//찬스 사용!!
-		                			} else if(guess < ans ) {
+		                				ch.pch(UDG);
+		                				chv = false;
+		                				System.out.println("");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess == 0) {
+		                				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess < UDG.ans ) {
 		                				System.out.println("== Up!! ==");
-		                				min = guess;
-		                				life--;
+		                				UDG.min = UDG.guess;
+		                				UDG.life--;
 		                			} else{
 		                				System.out.println("== Down!! ==");
-		                				max = guess;
-		                				life--;
+		                				UDG.max = UDG.guess;
+		                				UDG.life--;
 		                			}
 	                				
-	                				guess = 0;
-	                				numofguesses++;
+	                				UDG.guess = 0;
+	                				UDG.numofguesses++;
      				
 	                			}
 	                			
@@ -240,41 +268,52 @@ public class MainUpDown {
 	                			
 	                		case 4 :
 	                			
-	                			max = 500;
-	                			min = 1;
-	                			life = 8;
-	                			ans = (int) (Math.random() * 500) + 1;
+	                			UDG.max = 500;
+	                			UDG.min = 1;
+	                			UDG.life = 8;
+	                			UDG.ans = (int) (Math.random() * 500) + 1;
 	                			
-	                			while(life > 0 && clear == false) {
+	                			while(UDG.life > 0 && UDG.clear == false) {
 	                				
-	                				System.out.println("-life: " + life);
+	                				System.out.println("-life: " + UDG.life);
 	                				
-	                				while((guess > max || guess < min)) {
+	                				while((UDG.guess > UDG.max || UDG.guess < UDG.min)) {
 	                					
-	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+	                					System.out.println("-" + UDG.min + "에서 " + UDG.max + " 사이의 숫자를 맞춰야 합니다.");
 		                				
-			                			guess = helper.getInput();
+	                					UDG.guess = helper.getInput();
 			                			System.out.println("");	
+			                			
+			                			if(UDG.guess == 0) {
+			                				break;
+			                			}
 			                			
 	                				}
 	                				
-	                				if(guess == ans) {
-		                				clear = true;
-		                				life--;
-		                			} else if(guess == 0) {
+	                				if(UDG.guess == UDG.ans) {
+	                					UDG.clear = true;
+	                					UDG.life--;
+		                			} else if(UDG.guess == 0 && chv == true) {
 		                				//찬스 사용!!
-		                			} else if(guess < ans ) {
+		                				ch.pch(UDG);
+		                				chv = false;
+		                				System.out.println("");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess == 0) {
+		                				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess < UDG.ans ) {
 		                				System.out.println("== Up!! ==");
-		                				min = guess;
-		                				life--;
+		                				UDG.min = UDG.guess;
+		                				UDG.life--;
 		                			} else{
 		                				System.out.println("== Down!! ==");
-		                				max = guess;
-		                				life--;
+		                				UDG.max = UDG.guess;
+		                				UDG.life--;
 		                			}
 	                				
-	                				guess = 0;
-	                				numofguesses++;
+	                				UDG.guess = 0;
+	                				UDG.numofguesses++;
      				
 	                			}
 	                			
@@ -283,41 +322,52 @@ public class MainUpDown {
 	                			
 	                		case 5 :
 	                			
-	                			max = 1000;
-	                			min = 1;
-	                			life = 8;
-	                			ans = (int) (Math.random() * 1000) + 1;
+	                			UDG.max = 1000;
+	                			UDG.min = 1;
+	                			UDG.life = 8;
+	                			UDG.ans = (int) (Math.random() * 1000) + 1;
 	                			
-	                			while(life > 0 && clear == false && win == false) {
+	                			while(UDG.life > 0 && UDG.clear == false && UDG.win == false) {
 	                				
-	                				System.out.println("-life: " + life);
+	                				System.out.println("-life: " + UDG.life);
 	                				
-	                				while((guess > max || guess < min)) {
+	                				while((UDG.guess > UDG.max || UDG.guess < UDG.min)) {
 	                					
-	                					System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
+	                					System.out.println("-" + UDG.min + "에서 " + UDG.max + " 사이의 숫자를 맞춰야 합니다.");
 		                				
-			                			guess = helper.getInput();
+	                					UDG.guess = helper.getInput();
 			                			System.out.println("");	
+			                			
+			                			if(UDG.guess == 0) {
+			                				break;
+			                			}
 			                			
 	                				}
 	                				
-	                				if(guess == ans) {
-		                				win = true;
-		                				life--;
-		                			} else if(guess == 0) {
+	                				if(UDG.guess == UDG.ans) {
+	                					UDG.win = true;
+	                					UDG.life--;
+		                			} else if(UDG.guess == 0 && chv == true) {
 		                				//찬스 사용!!
-		                			} else if(guess < ans ) {
+		                				ch.pch(UDG);
+		                				chv = false;
+		                				System.out.println("");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess == 0) {
+		                				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
+		                				UDG.numofguesses--;
+		                			} else if(UDG.guess < UDG.ans ) {
 		                				System.out.println("== Up!! ==");
-		                				min = guess;
-		                				life--;
+		                				UDG.min = UDG.guess;
+		                				UDG.life--;
 		                			} else{
 		                				System.out.println("== Down!! ==");
-		                				max = guess;
-		                				life--;
+		                				UDG.max = UDG.guess;
+		                				UDG.life--;
 		                			}
 	                				
-	                				guess = 0;
-	                				numofguesses++;
+	                				UDG.guess = 0;
+	                				UDG.numofguesses++;
      				
 	                			}
 	                			
@@ -327,26 +377,28 @@ public class MainUpDown {
                 		}
 	                			
                              		
-                		if(clear == true) {
+                		if(UDG.clear == true) {
                 			System.out.println("== Stage " + stage + " 클리어!! ==");
-                			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
+                			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
                 			System.out.println("");
                 			stage++;
-                			clear = false;
-                		} else if(life == 0) { //패배시
+                			UDG.numofguesses = 0;
+                			UDG.clear = false;
+                		} else if(UDG.life == 0) { //패배시
                 			alive = false;
-                			System.out.println("정답은 " + ans + "입니다.");
-                			System.out.println("패배하였습니다.");
-                			System.out.println("게임을 종료합니다.");
+                			System.out.println("- 정답은 " + UDG.ans + "입니다.");
+                			System.out.println("- 패배하였습니다. -");
+                			System.out.println("- Game Over -");
                 			System.out.println("");
-                		} else if(win == true) {
+                		} else if (UDG.win == true) {
                 			System.out.println("== Stage " + stage + " 클리어!! ==");
-                			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
+                			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
                 			System.out.println("");
                 			
-                			System.out.println("모든 스테이지를 클리어 하셨습니다.");
-                			System.out.println("당신은 UpDown게임을 정벅하셨습니다.");
-                			System.out.println("게임을 종료합니다.");
+                			System.out.println(" !! 모든 스테이지를 클리어 하셨습니다. !!");
+                			System.out.println("!! 당신은 UpDown게임을 정벅하셨습니다. !!");
+                			System.out.println("     !! You Win !!");
+                			alive = false;
                 			//승리로 끝남!
                 		}
                                                 
@@ -369,8 +421,8 @@ public class GameHelper {
     	
         int Input = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("=숫자를 입력하세요.=");
-        System.out.println("찬스를 사용하시려면 0을 입력하세요.");
+        System.out.println("  =숫자를 입력하세요.=  ");
+        System.out.println("-찬스를 사용하시려면 0을 입력하세요.-");
         Input = sc.nextInt();
         
         return Input;
@@ -384,8 +436,18 @@ package upanddown;
 
 public class UpDownGame {
 	
+	public int guess = 0;
+	public int ans = 0;
+	public int life = 0;
+	public int max = 0;
+	public int min = 0;
+	public int numofguesses = 0;
+	public boolean clear = false;
+	public boolean win = false;
+	
 
 }
+
 
 
 
@@ -394,70 +456,70 @@ package upanddown;
 public class Chances {
         
         int ranch = (int) (Math.random() * 6) + 1;
-        int ans;
-       
-        public void pch() {
+ 
+        public void pch(UpDownGame UDG) {
                 
             switch(ranch) {
             
             case 1:
-                    System.out.println("--2의 배수 힌트--");
+                    System.out.println("  --2의 배수 힌트--  ");
                     
-                    if(ans%2 == 0) {
-                            System.out.println("답은 2의 배수 입니다.");
+                    if((UDG.ans % 2) == 0) {
+                    	System.out.println("==답은 2의 배수 입니다.==");
                     } else {
-                            System.out.println("답은 2의 배수가 아닙니다.");
+                    	System.out.println("==답은 2의 배수가 아닙니다.==");
                     }
                     break;
 
             
             case 2:
-                    System.out.println("--3의 배수 힌트--");
+                    System.out.println("  --3의 배수 힌트--  ");
                     
-                    if(ans%3 == 0) {
-                            System.out.println("답은 3의 배수 입니다.");
+                    if((UDG.ans % 3) == 0) {
+                    	System.out.println("==답은 3의 배수 입니다.==");
                     } else {
-                            System.out.println("답은 3의 배수가 아닙니다.");
+                    	System.out.println("==답은 3의 배수가 아닙니다.==");
                     }
                     
                     break;
             
             
             case 3:
-                    System.out.println("--기회 추가--");
-                    System.out.println("기회가 1회 추가 되었습니다!");
+                    System.out.println("  --기회 추가--  ");
+                    System.out.println("==기회가 1회 추가 되었습니다!==");
                     
-                    life += 1;
+                    UDG.life++;
                     
                     break;
                     
             case 4:
-                    System.out.println("--기회 감소--");
-                    System.out.println("기회가 1회 감소 되었습니다 호갱님^^");
+                    System.out.println("  --기회 감소--  ");
+                    System.out.println("==기회가 1회 감소 되었습니다 호갱님^^==");
                     
-                    life -= 1;
+                    UDG.life--;
                     
                     break;
                     
             case 5:
-                    int mid = (int) (max + min) / 2;
+            		int mid = (int) (UDG.max + UDG.min) / 2;
+            	
+            	
+                    System.out.println("  --반띵 찬스!!--  ");
                     
-                    System.out.println("--반띵 찬스!!--");
-                    
-                    if (ans > mid) {
-                            min = mid;
-                            System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
-                    } else if(ans < mid) {
-                            max = mid;
-                            System.out.println("답은 " + min + " 보다 크고, " + max + " 보다 작습니다.");
+                    if (UDG.ans > mid) {
+                    	UDG.min = mid;
+                    	System.out.println("==답은 " + UDG.min + " 보다 크고, " + UDG.max + " 보다 작습니다.==");
+                    } else if(UDG.ans < mid) {
+                    	UDG.max = mid;
+                    	System.out.println("==답은 " + UDG.min + " 보다 크고, " + UDG.max + " 보다 작습니다.==");
                     } else {
-                            //답을 맞췄을 경우로 이동!
+                    	UDG.clear = true;
                     } 
                     
                     break;
                     
             case 6:
-                    System.out.println("꽝이야. 헤헤");
+                    System.out.println("  아쉽지만 꽝이네요.  ");
                     break;
 
                     
@@ -470,5 +532,7 @@ public class Chances {
 
 
 
-
 }}}
+
+
+일단 완성. 수정할 부분 있으면 차후 수정하겠습니다.
