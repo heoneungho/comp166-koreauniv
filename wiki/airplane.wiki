@@ -9,7 +9,7 @@
 
 
 = Details =
-
+{{{
 package Movie;
 import javax.swing.*;
 import java.awt.event.*;
@@ -399,3 +399,5 @@ public class Time extends JPanel implements ItemListener{
 		j22.setText(s.toString());
 	}
 }// 시간대를 선택하는 클래스입니다.
+
+}}}
