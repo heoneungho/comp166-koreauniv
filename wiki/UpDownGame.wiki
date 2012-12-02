@@ -384,12 +384,6 @@ public class MainUpDown {
                 			stage++;
                 			UDG.numofguesses = 0;
                 			UDG.clear = false;
-                		} else if(UDG.life == 0) { //패배시
-                			alive = false;
-                			System.out.println("- 정답은 " + UDG.ans + "입니다.");
-                			System.out.println("- 패배하였습니다. -");
-                			System.out.println("- Game Over -");
-                			System.out.println("");
                 		} else if (UDG.win == true) {
                 			System.out.println("== Stage " + stage + " 클리어!! ==");
                 			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
@@ -400,7 +394,13 @@ public class MainUpDown {
                 			System.out.println("     !! You Win !!");
                 			alive = false;
                 			//승리로 끝남!
-                		}
+                		} else if(UDG.life == 0) { //패배시
+                			alive = false;
+                			System.out.println("- 정답은 " + UDG.ans + "입니다.");
+                			System.out.println("- 패배하였습니다. -");
+                			System.out.println("- Game Over -");
+                			System.out.println("");
+                		} 
                                                 
                 	} //while문 끝
                   
