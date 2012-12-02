@@ -79,7 +79,7 @@ public class PhraseOMatic {
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{A
+{{{
 public class ExerciseA {
 	
 	public static void main(String[] args) {
