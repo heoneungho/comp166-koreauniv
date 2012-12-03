@@ -76,7 +76,7 @@ class AniPangTestDrive{
 		while(flag){
 			for(i=1;i<=7;i++){
 				for(j=1;j<=7;j++){
-					Board[i][j]=(char)(Math.random()*7+64);
+					Board[i][j]=(char)(Math.random()*7+65);
 				}
 			}
 			for(i=1;i<=7;i++){
@@ -94,17 +94,16 @@ class AniPangTestDrive{
 			if(flag==false)flag=true;
 			else flag=false;
 		}
-		long start = System.currentTimeMillis();//시간을 제기 시작한다.
-		long end=System.currentTimeMillis();
-		long time=end-start;
+		int time=0;
 		int Score=0;
 		GameHelper helper=new GameHelper();
-		while(time/1000.0<60){
-			  for(i=1;i<=7;i++){
-				  for(j=1;j<=7;j++){
-					  System.out.print(Board[i][j]);
-				  }System.out.print('\n');
-			    }
+		for(i=1;i<=7;i++){
+			  for(j=1;j<=7;j++){
+				  System.out.print(Board[i][j]);
+			  }System.out.print('\n');
+		    }
+		while(time<10){
+			  time++;
 				AniPang Ani= new AniPang();
 				Ani.x=Integer.parseInt(helper.getUserInput("enter info"));
 				Ani.y=Integer.parseInt(helper.getUserInput("enter info"));
@@ -113,18 +112,38 @@ class AniPangTestDrive{
 				Ani.setAni(Board);
 				
 		//	입력받아 Ani로 set +게임판에서 동물 자리 바꾸는 명령 실행
-			int tmp;
+			int tmp=0;
 			tmp=Ani.CheckNPang(Board);
 			if(tmp==0){
 				Ani.setAni(Board);
+				for(i=1;i<=7;i++){
+					  for(j=1;j<=7;j++){
+						  System.out.print(Board[i][j]);
+					  }System.out.print('\n');
+				    }
+				System.out.print("FAIL!"+'\n');
 				continue;
 			}
-			else Ani.Organize(Board);
+			else {
+				Ani.Organize(Board);
+				int tmp2=1;
+				while(tmp2!=0){
+					System.out.print("PANG!"+'\n');
+					for(i=1;i<=7;i++){
+						  for(j=1;j<=7;j++){
+							  System.out.print(Board[i][j]);
+						  }System.out.print('\n');
+					    }
+					tmp2=Ani.CheckNPang(Board);
+					tmp+=tmp2;
+				}
+			}
 			Score+=tmp;
 	 //	게임판 검사+pang
-			end=System.currentTimeMillis();
+		
 		
 		}
+		System.out.print("your score is"+Score);
 	}
 }
 
@@ -178,42 +197,42 @@ public class AniPang{
 	 		else know1=arr[i+1][y+yway];
 	 		if(arr[x+xway][i]==arr[x+xway][i+1] && arr[x+xway][i]==know2){
 	 			know2=arr[x+xway][i];
-		 		Visit2[x+xway][i+1]=Visit2[x][i]+1;
+		 		Visit2[x+xway][i+1]=Visit2[x+xway][i]+1;
 		 		if(Visit2[x+xway][i+1]==3)flag=1;
 		 	}
-	 		else know2=arr[x][i+1];
+	 		else know2=arr[x+xway][i+1];
 	 	}
 	 	if(flag==0)return 0;
 	 	for(i=1;i<=7;i++){
 	 		for(j=1;j<=7;j++){
 	 			if(Visit1[i][j]>=3 && Visit1[i+1][j]<Visit1[i][j]){
 	 				int k;
-	 				for(k=i-Visit1[i][j];k<=i;k++)arr[k][j]='X';
-	 					cnt+=Visit1[i][j];
+	 				for(k=i-Visit1[i][j]+1;k<=i;k++)arr[k][j]='X';
+	 				cnt+=Visit1[i][j];
 	 			}
 	 			if(Visit2[i][j]>=3 && Visit2[i][j+1]<Visit2[i][j]){
 	 				int k;
-	 				for(k=j-Visit2[i][j];k<=j;k++)arr[i][k]='X';
+	 				for(k=j-Visit2[i][j]+1;k<=j;k++)arr[i][k]='X';
 	 				cnt+=Visit2[i][j];
 	 			}
 	 		}
 	 	}
 	 	return cnt;
 	}
+	
 	public void Organize(char arr[][]){
 		int i,j,k;
 		for(i=1;i<=7;i++){int cnt=0;
 			for(j=7;j>=1;j--){
-				if(arr[j][i]=='X'){
+				if(arr[j][i]=='X'){cnt++;
 					for(k=j;k>=1;k--){
 						arr[k][i]=arr[k-1][i];
-						if(arr[k-1][i]=='X')k++;
 					}
-					cnt++;
+					j++;
 				}
 			}
 			for(j=1;j<=cnt;j++){
-				arr[j][i]=(char)(Math.random()*7+64);
+				arr[j][i]=(char)(Math.random()*7+65);
 			}
 		}
 	}
