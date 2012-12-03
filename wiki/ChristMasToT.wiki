@@ -1,0 +1,26 @@
+#크리스마스 때 쓸쓸히 보면서 마음을 다스리자! 2012190702
+
+= Introduction =
+
+크리스마스 때 어울리는 음악을 틀고 멈추고 들으면서 내 자신을 한탄하자 휴ㅠㅠㅠㅠㅠㅠ
+Add your content here.
+
+
+= Details =
+
+버튼 play 와 stop 을 만든다 !
+
+즉, 이벤트를 발생 play 소스와 stop 소스를 받아 !
+
+C 드라이브에 재생할 음악파일을 넣는다 !
+
+그 데이터 위치를 받아서 음악을 재생하는 프로그램을 만든다 !
+
+추가로 그림 or 동영상을 넣으면 화룡점정 !!
+
+awt로 했으니 끌때는 !! System.exit(0) 마무리 !
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
