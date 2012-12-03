@@ -149,13 +149,7 @@ class AniPangTestDrive{
 
 public class AniPang{
 	int x,y,xway,yway;
-	float time;
-	public void timeset(float a){
-		time=a;
-	}
-	public float timeget(){
-		return time;
-	}
+
 	public int setAni(char arr[][]){
 		char temp;
 		temp=arr[x][y];
