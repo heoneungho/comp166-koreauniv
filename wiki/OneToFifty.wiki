@@ -3,6 +3,9 @@
 
 = Introduction =
 http://comp166-koreauniv.googlecode.com/files/150.jpg
+
+위의 이미지는 한창 유행하던 1to50의 모바일버젼입니다.
+
  원래 구상했던 갤러그 혹은 비행기 슈팅게임은 아직 불가능한 실력!
 그러므로 다시 생각해본것이 간단하며 재미있고 중독성까지 겸비한 1to50게임입니다.
 
@@ -14,3 +17,56 @@ http://comp166-koreauniv.googlecode.com/files/150.jpg
   * 5x5 사각형판이 있습니다.
   * 사각형 안에는 1부터 순서대로 난수출력이 되어있습니다.
   * 1부터 차례대로 눌러가며 누른숫자는 다음 난수출력이 되거나 사라집니다.
+
+OneToFifty 클래스
+
+{{{
+
+public class OneToFifty {
+ public static void main(String[] args) {
+  MainFrame mf = new MainFrame(); //메인클래스, 메인프레임을 불러와 실행
+ }
+}
+
+}}}
+
+MainFrame 클래스
+
+{{{
+
+class MainFrame {
+ MainFrame() {}
+ public void init() {}
+ public void start() {}
+ public void run() {}
+ public void TimeCheck() {}
+ public void 마우스이벤트() {}
+
+}
+
+}}}
+
+ImagePanel 클래스
+
+{{{
+
+class ImagePanel {
+ ImagePanel() {}
+ public void counDown() {}
+ public void gamestart() {}
+ public void paint() {}
+ public void ClearTime() {}
+ public void 마우스이벤트() {}
+}
+
+}}}
+
+SelectRect 클래스. 숫자 및 위치 보관용
+
+{{{
+
+class SelectRect {
+ SelectRect() {}
+}
+
+}}}
