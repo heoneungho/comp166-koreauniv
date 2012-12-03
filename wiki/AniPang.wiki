@@ -111,7 +111,7 @@ class AniPangTestDrive{
 				Ani.yway=Integer.parseInt(helper.getUserInput("enter info"));
 				Ani.setAni(Board);
 				
-		//	입력받아 Ani로 set +게임판에서 동물 자리 바꾸는 명령 실행
+		
 			int tmp=0;
 			tmp=Ani.CheckNPang(Board);
 			if(tmp==0){
@@ -139,7 +139,7 @@ class AniPangTestDrive{
 				}
 			}
 			Score+=tmp;
-	 //	게임판 검사+pang
+	 
 		
 		
 		}
