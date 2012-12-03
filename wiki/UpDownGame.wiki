@@ -36,6 +36,9 @@
  
 = Code =
 
+{{{
+
+
 package upanddown;
 
 import java.util.Scanner;
@@ -623,6 +626,9 @@ public class Chances {
         } //함수 
         
 } //클래스 끝
+
+
+}}
 
 
 일단 완성. 수정할 부분 있으면 차후 수정하겠습니다.
