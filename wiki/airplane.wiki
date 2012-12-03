@@ -14,6 +14,26 @@ package Movie;
 import javax.swing.*;
 import java.awt.event.*;
 
+package Movie;
+
+import java.awt.event.ActionEvent;
+
+public class MovieWatching {
+	public static void main(String[] args){	
+		Age p1=new Age();
+		Area p2=new Area();
+		Date p3=new Date();
+		MovieSelect p4 = new MovieSelect();
+		People p5 = new People();
+		Seat p6 = new Seat();
+		Time p7 = new Time();
+		
+		p1.AgePanel();
+		p1.actionPerformed();
+	}
+}
+
+
 
 public class Age extends JPanel implements ActionListener{
 
