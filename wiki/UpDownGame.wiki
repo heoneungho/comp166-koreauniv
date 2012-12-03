@@ -76,6 +76,7 @@ public class MainUpDown {
                   System.out.println("-모두 5개의 스테이지로 이루어져 있으며, 각 스테이지마다 맞춰야 하는 숫자의 범위가 다릅니다.");
                   System.out.println("-찬스의 기회가 한 번 주어지며, 찬스는 0을 입력했을 때 여러 찬스들 중 임의로 한가지가 실행됩니다.");
                   System.out.println("-다섯 스테이지를 모두 클리어 할 경우 승리하며, 기회를 모두 사용하고 숫자를 맞추지 못하면 패배합니다.");
+                  System.out.println("-이 게임은 생각 1%와 운 99%로 승패가 결정되기 때문에 못깨고 징징대셔도 소용 없습니다.");
                   System.out.println("");
                   System.out.print("--준비가 되셨으면 1을 입력하여 게임을 시작합니다: ");
 
