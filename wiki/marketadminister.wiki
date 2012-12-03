@@ -11,3 +11,476 @@ http://comp166-koreauniv.googlecode.com/files/22.jpg
 http://comp166-koreauniv.googlecode.com/files/33.jpg
 http://comp166-koreauniv.googlecode.com/files/44.jpg
 http://comp166-koreauniv.googlecode.com/files/55.jpg
+
+메인클래스
+{{{
+package com.kjh.depart;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.JTextField;
+
+public class admini {
+
+	private JFrame frame;
+	
+	private JButton btnFloor1;
+	private JButton btnFloor2;
+	private JButton btnFloor3;
+	
+	private JButton btntime;
+	
+	private static Floor floor1;
+	private static Floor floor2;
+	private static Floor floor3;
+	
+	private static CurrentTime currentTime;
+	
+	private JTextField txtTimeSelect;
+	
+	//시간 설정 화면 View 객체
+	private JComboBox cbMin;
+	private JComboBox cbHour;
+	private JComboBox cbAP;
+	private JPanel room1;
+	private JPanel room2;
+	private JPanel room3;
+	private JPanel room4;
+	private JPanel room5;
+	private JPanel room6;
+	private JPanel room7;
+	private JPanel room8;
+	private JPanel secom;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JButton btnSet;
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					admini window = new admini();
+					window.frame.setVisible(true);
+					
+					currentTime = new CurrentTime();
+					
+					floor1 = new Floor();
+					floor2 = new Floor();
+					floor3 = new Floor();
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public admini() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setForeground(SystemColor.desktop);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		drawFirst();
+	}
+	
+	private void drawFirst(){
+		btnFloor1 = new JButton("B1");
+		btnFloor1.setBackground(SystemColor.window);
+		btnFloor1.setForeground(UIManager.getColor("Button.disabledShadow"));
+		btnFloor1.setBounds(12, 10, 158, 110);
+		frame.getContentPane().add(btnFloor1);
+		
+		btnFloor2 = new JButton("1F");
+		btnFloor2.setBackground(SystemColor.window);
+		btnFloor2.setForeground(UIManager.getColor("CheckBox.highlight"));
+		btnFloor2.setBounds(264, 10, 158, 110);
+		frame.getContentPane().add(btnFloor2);
+		
+		btnFloor3 = new JButton("2F");
+		btnFloor3.setBackground(SystemColor.window);
+		btnFloor3.setForeground(SystemColor.desktop);
+		btnFloor3.setBounds(133, 142, 158, 110);
+		frame.getContentPane().add(btnFloor3);
+		
+		btntime = new JButton("click");
+		btntime.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btntime.setBounds(325, 186, 97, 23);
+		frame.getContentPane().add(btntime);
+		
+		txtTimeSelect = new JTextField();
+		txtTimeSelect.setText("Time select");
+		txtTimeSelect.setBounds(325, 166, 97, 21);
+		frame.getContentPane().add(txtTimeSelect);
+		txtTimeSelect.setColumns(10);
+		
+		
+		btnFloor1.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  removeFirst();
+			  drawFloor();
+			  drawSensor(floor1);
+			  drawSensorColor(floor1);
+		  }
+		});
+		
+		btnFloor2.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  removeFirst();
+			  drawFloor();
+			  drawSensor(floor2);
+			  drawSensorColor(floor2);
+		  }
+		});
+		btnFloor3.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			  removeFirst();
+			  drawFloor();
+			  drawSensor(floor3);
+			  drawSensorColor(floor3);
+		  }
+		});
+
+
+		btntime.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				removeFirst();
+				drawTime();
+
+			}
+		});
+	}
+	
+	private void removeFirst(){
+		frame.remove(btnFloor1);
+		frame.remove(btnFloor2);
+		frame.remove(btnFloor3);
+		frame.remove(btntime);
+		frame.remove(txtTimeSelect); 
+		frame.repaint();
+	}
+	
+	private void drawFloor(){
+		room1 = new JPanel();
+		room1.setBackground(SystemColor.desktop);
+		room1.setBounds(14, 10, 102, 62);
+		frame.getContentPane().add(room1);
+		
+		room2 = new JPanel();
+		room2.setBackground(SystemColor.desktop);
+		room2.setBounds(115, 10, 102, 62);
+		frame.getContentPane().add(room2);
+		
+		room3 = new JPanel();
+		room3.setBackground(SystemColor.desktop);
+		room3.setBounds(218, 10, 102, 62);
+		frame.getContentPane().add(room3);
+		
+		room4 = new JPanel();
+		room4.setBackground(SystemColor.desktop);
+		room4.setBounds(321, 10, 103, 62);
+		frame.getContentPane().add(room4);
+		
+		room5 = new JPanel();
+		room5.setBackground(SystemColor.desktop);
+		room5.setBounds(14, 147, 102, 62);
+		frame.getContentPane().add(room5);
+		
+		room6 = new JPanel();
+		room6.setBackground(SystemColor.desktop);
+		room6.setBounds(117, 146, 102, 62);
+		frame.getContentPane().add(room6);
+		
+		room7 = new JPanel();
+		room7.setBackground(SystemColor.desktop);
+		room7.setBounds(220, 146, 102, 62);
+		frame.getContentPane().add(room7);
+		
+		room8 = new JPanel();
+		room8.setBackground(SystemColor.desktop);
+		room8.setBounds(323, 146, 102, 62);
+		frame.getContentPane().add(room8);
+		
+		secom = new JPanel();
+		secom.setBackground(SystemColor.window);
+		secom.setBounds(14, 70, 411, 78);
+		frame.getContentPane().add(secom);
+		secom.setLayout(null);
+		
+		JPanel panel_9 = new JPanel();
+		panel_9.setBackground(SystemColor.textHighlight);
+		panel_9.setBounds(17, 10, 379, 59);
+		secom.add(panel_9);
+	}
+	
+	private void drawSensor(Floor floor){
+		floor.store[0] = new Room();
+		floor.store[1] = new Room();
+		floor.store[2] = new Room();
+		floor.store[3] = new Room();
+		floor.store[4] = new Room();
+		floor.store[5] = new Room();
+		floor.store[6] = new Room();
+		floor.store[7] = new Room();
+		
+		if(currentTime.isAp() && currentTime.getHour() < 9 ){
+			System.out.println("ON");
+			floor.store[0].setLight(true);
+			floor.store[1].setLight(true);
+			floor.store[2].setLight(true);
+			floor.store[3].setLight(true);
+			floor.store[4].setLight(true);
+			floor.store[5].setLight(true);
+			floor.store[6].setLight(true);
+			floor.store[7].setLight(true);
+		}else if(!currentTime.isAp() && currentTime.getHour() > 9){
+			System.out.println("ON");
+			floor.store[0].setLight(true);
+			floor.store[1].setLight(true);
+			floor.store[2].setLight(true);
+			floor.store[3].setLight(true);
+			floor.store[4].setLight(true);
+			floor.store[5].setLight(true);
+			floor.store[6].setLight(true);
+			floor.store[7].setLight(true);
+		}else{
+			System.out.println("OFF");
+			floor.store[0].setLight(false);
+			floor.store[1].setLight(false);
+			floor.store[2].setLight(false);
+			floor.store[3].setLight(false);
+			floor.store[4].setLight(false);
+			floor.store[5].setLight(false);
+			floor.store[6].setLight(false);
+			floor.store[7].setLight(false);
+		}
+	
+		if(currentTime.isAp() && currentTime.getHour() > 9){
+			System.out.println("secom on");
+			secom.setBackground(Color.RED);
+		}else if(!currentTime.isAp() && currentTime.getHour() < 9){
+			System.out.println("secom on");
+			secom.setBackground(Color.RED);
+		}else{
+			System.out.println("secom OFF");
+		}
+	}
+	
+	private void drawSensorColor(Floor floor){
+		if(floor.store[0].isLight()){
+			room1.setBackground(Color.blue);
+		}
+		if(floor.store[1].isLight()){
+			room2.setBackground(Color.blue);
+		}
+		if(floor.store[2].isLight()){
+			room3.setBackground(Color.blue);
+		}
+		if(floor.store[3].isLight()){
+			room4.setBackground(Color.blue);
+		}
+		if(floor.store[4].isLight()){
+			room5.setBackground(Color.blue);
+		}
+		if(floor.store[5].isLight()){
+			room6.setBackground(Color.blue);
+		}
+		if(floor.store[6].isLight()){
+			room7.setBackground(Color.blue);
+		}
+		if(floor.store[7].isLight()){
+			room8.setBackground(Color.blue);
+		}
+	}
+	
+	private void drawTime(){
+		cbMin = new JComboBox();
+		cbMin.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "00"}));
+		cbMin.setBounds(220, 139, 214, 41);
+		frame.getContentPane().add(cbMin);
+		cbMin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentTime.setMin(Integer.parseInt(cbMin.getSelectedItem().toString()));
+				System.out.println(currentTime.getMin());
+			}
+		});
+		
+		cbHour = new JComboBox();
+		cbHour.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+		cbHour.setBounds(220, 99, 214, 41);
+		frame.getContentPane().add(cbHour);
+		cbHour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentTime.setHour(Integer.parseInt(cbHour.getSelectedItem().toString()));
+				System.out.println(currentTime.getHour());
+			}
+		});
+		
+		cbAP = new JComboBox();
+		cbAP.setModel(new DefaultComboBoxModel(new String[] {"PM", "AM"}));
+		cbAP.setBounds(220, 61, 214, 41);
+		frame.getContentPane().add(cbAP);
+		cbAP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				if(cbAP.getSelectedIndex() == 0){
+					currentTime.setAp(true);
+				}else{
+					currentTime.setAp(false);
+				}
+			}
+		});
+		
+		room1 = new JPanel();
+		room1.setBackground(Color.YELLOW);
+		room1.setBounds(12, 61, 196, 41);
+		frame.getContentPane().add(room1);
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.CYAN);
+		panel_1.setBounds(12, 99, 196, 41);
+		frame.getContentPane().add(panel_1);
+		
+		panel_2 = new JPanel();
+		panel_2.setBackground(Color.GREEN);
+		panel_2.setBounds(12, 139, 196, 41);
+		frame.getContentPane().add(panel_2);
+		
+		panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
+		panel_3.setBounds(12, 10, 422, 41);
+		frame.getContentPane().add(panel_3);
+		
+		btnSet = new JButton("Set");
+		btnSet.setBounds(173, 217, 97, 23);
+		frame.getContentPane().add(btnSet);
+		btnSet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				removeTime();
+				drawFirst();
+				String ap = "";
+				if(currentTime.isAp()){
+					ap = "PM";
+				}else{
+					ap = "AM";
+				}
+				txtTimeSelect.setText( ap + "." + currentTime.getHour() + " : "+currentTime.getMin() );
+			}
+		});
+	}
+	
+	private void removeTime(){
+		frame.remove(cbMin);
+		frame.remove(cbHour);
+		frame.remove(cbAP);
+		frame.remove(room1);
+		frame.remove(panel_1);
+		frame.remove(panel_2);
+		frame.remove(panel_3);
+		frame.remove(btnSet);
+		frame.repaint();
+	}
+}
+
+}}}
+
+시간 입력받는 클래스
+{{{
+package com.kjh.depart;
+
+public class CurrentTime {
+
+private boolean ap = false;
+
+public boolean isAp() {
+	return ap;
+}
+
+public void setAp(boolean ap) {
+	this.ap = ap;
+}
+
+public int getHour() {
+	return hour;
+}
+
+public void setHour(int hour) {
+	this.hour = hour;
+}
+
+public int getMin() {
+	return min;
+}
+
+public void setMin(int min) {
+	this.min = min;
+}
+
+private int hour, min;
+
+}
+}}}
+매장 상태 설정 클래스
+{{{
+package com.kjh.depart;
+
+public class Room {
+
+	private boolean light = false;
+
+	public boolean isLight() {
+		return light;
+	}
+
+	public void setLight(boolean light) {
+		this.light = light;
+	}
+			
+}
+}}}
+
+매장들을 배열로 받아주는 클래스
+{{{
+
+package com.kjh.depart;
+
+public class Floor {
+	
+	Room [] store = new Room[8];
+	
+}
+}}}
