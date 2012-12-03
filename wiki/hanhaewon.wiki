@@ -3,94 +3,320 @@
 
 = Introduction =
 
- 레스토랑의 메뉴판입니다. 손님이 이 프로그램을 통해 직접 인원수를 입력하고 메뉴를 선택할 수 있습니다.  
-
-
-Add your content here.
-
+ 원래 목적은 '레스토랑의 메뉴판입니다. 손님이 이 프로그램을 통해 직접 인원수를 입력하고 메뉴를 선택할 수 있습니다.' 였습니다. 하지만 너무 복잡하고 어려워서 간단하게 수정했습니다. 메뉴판에서 메뉴를 선택하면 총 합을 나타내주는 프로그램입니다.   
 
 = Details =
 
- 아이패드나 갤럭시탭같은 태블릿PC가 상용화되면서 태블릿PC가 사용되는 범위가 다양해졌습니다. 그에 착안하여 레스토랑의 메뉴판을 태블릿PC에서 이용할 수 있도록 만들어 보려고 합니다.
+- 프로그램을 실행시 메뉴판이 뜹니다. 원하는 메뉴를 선택하고 수량도 정할 수 있습니다.
+- 메뉴를 모두 정했으면 정한 메뉴와 총합을 알려주는 프로그램입니다.
+- 단점은 원래로 돌아갈 수 없어 다음 손님이 오면 다시 프로그램을 재시작해야합니다.
+- 메뉴에 해당하는 키보드 숫자를 누르는 것을 통해 수량을 증가시킬수 있습니다. 
 
- 우선 손님이 들어오면 손님의 인원수에 따라 테이블을 배정합니다. 추가 인원이 있을 경우도 생각해서 테이블을 배정합니다. 이 때 어른과 아이의 인원수를 따로 입력을 받아서 그에 맞는 식기를 제공하도록 합니다.
- 그 후 손님은 메뉴를 정할 수 있습니다. 애피타이저와 메인음식, 디저트와 음료로 나누어져 있습니다. 
-  애피타이저 메뉴를 선택하면 샐러드와 스프를 선택할 수 있습니다. 그날의 추천 에피타이저 메뉴도 제공됩니다.
-  메인음식 메뉴를 클릭하면 메인 메뉴가 뜹니다. 파스타와 리조또, 피자와 스테이크 메뉴가 있습니다. 각각의 메뉴를 클릭하면 해당 사진이 나타납니다.
-  디저트를 클릭하면 디저트 메뉴를 선택할 수 있습니다.
-  음료를 선택하면 탄산과 에이드, 와인 등 음료선택을 할 수 있습니다. 와인 선택 시 종업원에게 정보가 전달되며 신분증 검사를 합니다.  
- 
-1. 메인 클래스 입니다. 
-{{{
 
-public class Menu{
-     
-     
-     Howmany();   //인원수를 파악하고 그에 적합한 테이블로 안내하는 class입니다.
-     ShowMunu();   //메뉴를 보여주는 class입니다.
-    
+= Code =
+
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.text.*;
+import java.util.*;
+
+
+public class Cashier extends JFrame {
+		
+	public static void main(String args[]) {
+		
+		Menu menu = new Menu();
+		menu.launchFrame();  
+	}	
 }
 
-}}}
+class Menu extends JFrame implements KeyListener {
 
-2. 테이블 안내
-{{{
+	private JFrame menuFrame;
+	private JPanel menuNorthPanel,
+				   menuSouthPanel,
+				   menuCenterPanel,
+				   menuTitlePanel,
+				   menuDetailPanel,
+				   menuChoicePanel;
 
-class Howmany{
-// 인원수에 따라 적당한 테이블로 안내하는 class입니다. 총 인원수와 어른수, 아이수, 추가 인원 수의 매소드가 있습니다.
+	private JLabel menuStoreLabel,
+				   menuTitleLabel,
+				   menuHeaderLabel,
+				   menuChoiceLabel[],
+				   menuGuideLabel;
+	
 
-     Howmany();  // 총 인원 수를 묻습니다.
-     Adultnum();   // 어른의 인원 수를 묻습니다.
-     Childnum();  // 아이들의 인원 수를 묻습니다.
-     ExtraAddnum();  //추가 인원을 묻는 class입니다. 
+	public static String choice[] = {" 혜원 수제햄버거        ",
+								   	" 혜원 수제치킨버거    ",
+					   				" 혜원 수제새우버거    ",
+					   				" 혜원 수제불고기버거",
+					   				" 혜원 수제야채버거    ",
+					   				" 콜라                               ",
+					   				" 사이다                           ",
+					   				" 아메리카노                  "};	
+	
+	public static int price[] = {3000,
+					  				4000,
+					  				3500,
+					  				4000,
+					  				4500,
+					  				1500,
+					  				1500,
+					  				2000};
+	
+	public static int ordered[];
+				   
+	String option[] = {"얼마일까요~?"};
+					
 
-     GuideTable(); // 추가 인원까지 고려하여 총 인원수를 계산하여 테이블로 안내하는 class입니다. 
+	public Menu() {
+		menuFrame = new JFrame("어서오세요^^");
+		menuFrame.getContentPane().setLayout(new BorderLayout(0,0));
+		
+		menuNorthPanel = new JPanel();
+		menuNorthPanel.setLayout(new FlowLayout());
+		menuNorthPanel.getBackground();
+		
+		menuSouthPanel = new JPanel();
+		menuSouthPanel.getBackground();
+				
+		menuTitlePanel = new JPanel();
+		menuTitlePanel.setLayout(new BorderLayout(10,10));
+		menuTitlePanel.getBackground();
+		
+		menuDetailPanel = new JPanel();
+		menuDetailPanel.setLayout(new GridLayout(2,1));
+		menuDetailPanel.getBackground();
+			
+		menuCenterPanel = new JPanel();
+		menuCenterPanel.setLayout(new BorderLayout(0,0));
+		menuCenterPanel.getBackground();
+		
+		menuStoreLabel = new JLabel(" 혜원이의 행복한 수제버거가게 ");
+		menuStoreLabel.getForeground();
 
+		menuTitleLabel = new JLabel(" 어서오세요~", JLabel.CENTER);
+		menuTitleLabel.getForeground();
+
+
+		menuHeaderLabel = new JLabel("             메뉴"
+									+"                                 가격"
+									+"        수량");
+		menuHeaderLabel.getForeground();
+
+		
+		menuChoicePanel = new JPanel();
+		menuChoicePanel.setLayout(new GridLayout(choice.length+4,1,0,0));
+		menuChoicePanel.getBackground();
+		menuChoicePanel.add(menuHeaderLabel);
+
+		menuChoiceLabel = new JLabel[choice.length + 2];
+		ordered = new int[choice.length];
+					
+		for (int i = 0; i < choice.length; i++)	{
+			
+			ordered[i] = 0;
+			
+			menuChoiceLabel[i] = new JLabel("  [" + (i+1) + "]  " + choice[i]
+										   +"      "+ price[i]
+										   +"       "+ ordered[i]);
+			menuChoiceLabel[i].getForeground();
+
+			menuChoicePanel.add(menuChoiceLabel[i]);
+		}
+		
+		menuChoiceLabel[choice.length] = new JLabel("  [0]  " + option[0]);
+
+		menuChoiceLabel[choice.length].getForeground();
+
+		menuChoicePanel.add(menuChoiceLabel[choice.length]);
+		
+
+		menuGuideLabel = new JLabel("");
+		menuGuideLabel.getForeground();
+	}
+
+
+	public void launchFrame() {	
+
+		menuFrame.setSize(200,350);
+		
+		menuTitlePanel.add(menuTitleLabel, BorderLayout.WEST);
+		menuTitlePanel.add(menuDetailPanel, BorderLayout.EAST);
+		menuNorthPanel.add(menuStoreLabel, BorderLayout.NORTH);
+		menuSouthPanel.add(menuGuideLabel, BorderLayout.SOUTH);		
+		menuCenterPanel.add(menuTitlePanel, BorderLayout.NORTH);
+		menuCenterPanel.add(menuChoicePanel, BorderLayout.CENTER);
+		menuFrame.getContentPane().add(menuNorthPanel, BorderLayout.NORTH);
+		menuFrame.getContentPane().add(menuCenterPanel, BorderLayout.CENTER);
+		menuFrame.getContentPane().add(menuSouthPanel, BorderLayout.SOUTH);
+		
+		menuFrame.pack();		
+	
+		menuFrame.addKeyListener(this);
+		
+		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		menuFrame.setVisible(true);
+
+	}
+	
+	private void refresh() {
+		for (int i = 0; i < choice.length; i++)	{
+						
+			menuChoiceLabel[i].setText("  [" + (i+1) + "]  " + choice[i]
+										   + "      " + price[i] + "       " + ordered[i]);
+		}		
+	}
+	
+	public void keyTyped(KeyEvent e) { }
+	public void keyReleased(KeyEvent e) { }
+	public void keyPressed(KeyEvent e) { 		
+		switch(e.getKeyCode()) {
+		case 49:
+		case 50:
+		case 51:
+		case 52:
+		case 53:
+		case 54:
+		case 55:
+		case 56:
+			ordered[e.getKeyCode() - 49]++;
+			break;
+		
+		case 48:
+			menuFrame.setVisible(false);
+			SubTotal subTotal = new SubTotal();
+			subTotal.launchFrame();
+			break;
+		}
+	
+		this.refresh();
+	}
 }
-}}}
 
-3. 추가 인원이 있는지에 관한 class 입니다.
-{{{
 
-class ExtraAddnum{
-     int a; //추가 인원이 있는지에 관한 int변수 설정합니다.
-     //추가 인원이 있는지 입력받습니다. 있으면 0 아니면 1. 
+class SubTotal extends JFrame implements KeyListener {
+	
+	int EachTotal = 0;
+	int Total = 0;
 
-     if (a == 0) { }  //추가 인원이 있으면 추가 인원을 입력받습니다.
-     else //추가인원이 없습니다.
+	private JFrame subTotalFrame;
+	private JPanel subTotalNorthPanel,
+				   subTotalSouthPanel,
+				   subTotalCenterPanel,
+				   subTotalTitlePanel,
+				   subTotalDetailPanel,
+				   subTotalOrderedPanel;
+	
+	private JLabel subTotalStoreLabel,
+				   subTotalHeaderLabel,
+				   subTotalOrderedLabel[],
+				   subTotalGrandTotalLabel,
+				   subTotalGuideLabel;
+							   					
+	public SubTotal() {
+		subTotalFrame = new JFrame("**총액입니다**");
+		subTotalFrame.getContentPane().setLayout(new BorderLayout(0,0));
+		
+		subTotalNorthPanel = new JPanel();
+		subTotalNorthPanel.setLayout(new FlowLayout());
+		subTotalNorthPanel.getBackground();
+		
+		subTotalSouthPanel = new JPanel();
+		subTotalSouthPanel.getBackground();
+				
+		subTotalTitlePanel = new JPanel();
+		subTotalTitlePanel.setLayout(new BorderLayout(10,10));
+		subTotalTitlePanel.getBackground();
+		
+		subTotalDetailPanel = new JPanel();
+		subTotalDetailPanel.setLayout(new GridLayout(2,1));
+		subTotalDetailPanel.getBackground();
+			
+		subTotalCenterPanel = new JPanel();
+		subTotalCenterPanel.setLayout(new BorderLayout(0,0));
+		subTotalCenterPanel.getBackground();
+		
+		subTotalStoreLabel = new JLabel("혜원이의 행복한 레스토랑입니다. ");
+		subTotalStoreLabel.getForeground();
 
+
+
+		
+		subTotalHeaderLabel = new JLabel("    메뉴"
+										+"                                  가격"
+										+"       수량"
+										+"    총액 ");
+		subTotalHeaderLabel.getForeground();
+
+		
+		subTotalOrderedPanel = new JPanel();
+		subTotalOrderedPanel.getBackground();
+		subTotalOrderedPanel.add(subTotalHeaderLabel);
+		
+		subTotalOrderedLabel = new JLabel[Menu.choice.length];
+		
+		int count = 0;
+					
+		for (int i = 0; i < Menu.choice.length; i++)	{
+			
+			if (Menu.ordered[i] > 0) {
+			
+			EachTotal = Menu.ordered[i] * Menu.price[i];
+			Total += EachTotal;
+			count++;
+			
+			subTotalOrderedLabel[i] = new JLabel("  " + Menu.choice[i]
+										   	   +"    " + Menu.price[i] 
+										       +"        " + Menu.ordered[i]
+										       +"       " + EachTotal);
+			subTotalOrderedLabel[i].getForeground();
+			
+			subTotalOrderedPanel.add(subTotalOrderedLabel[i]);
+			
+			Menu.ordered[i] = 0;
+			}
+		}
+		
+		subTotalGrandTotalLabel = new JLabel(" 총액   :  " + Total);
+		subTotalGrandTotalLabel.getForeground();	
+		
+		subTotalOrderedPanel.add(subTotalGrandTotalLabel);
+				
+
+		subTotalGuideLabel = new JLabel("");
+		subTotalGuideLabel.getForeground();
+
+		subTotalOrderedPanel.setLayout(new GridLayout(count+2,1,0,0));
+	}
+
+
+	public void launchFrame() {	
+
+		subTotalFrame.setSize(200,350);
+	
+		subTotalTitlePanel.add(subTotalDetailPanel, BorderLayout.EAST);
+		subTotalNorthPanel.add(subTotalStoreLabel, BorderLayout.NORTH);
+		subTotalSouthPanel.add(subTotalGuideLabel, BorderLayout.SOUTH);		
+		subTotalCenterPanel.add(subTotalTitlePanel, BorderLayout.NORTH);
+		subTotalCenterPanel.add(subTotalOrderedPanel, BorderLayout.CENTER);
+		subTotalFrame.getContentPane().add(subTotalNorthPanel, BorderLayout.NORTH);
+		subTotalFrame.getContentPane().add(subTotalCenterPanel, BorderLayout.CENTER);
+		subTotalFrame.getContentPane().add(subTotalSouthPanel, BorderLayout.SOUTH);
+		
+		subTotalFrame.pack();		
+
+		subTotalFrame.addKeyListener(this);
+		
+		subTotalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		subTotalFrame.setVisible(true);
+	}
+
+	public void keyTyped(KeyEvent e) { }
+	public void keyReleased(KeyEvent e) { }
+	
+	public void keyPressed(KeyEvent e) { }
 }
-
-
-}}}
-
-4. 테이블로 안내하는 class입니다.
-{{{
-
-class GuideTable{
-     //인원수에 맞는 table번호를 나타내는 class입니다.
-     // 비어있으면서 인원수에 맞는 테이블을 지정해줍니다.
-}
-
-}}}
-
-5. 메뉴를 보여주는 class입니다.
-{{{
-   //각각의 메뉴옆에 주문버튼이 있어서 메뉴선택이 가능합니다.
-class ShowMenu{
-
-     Appetizer();  //에피타이저 메뉴를 보여주는 매소드입니다. 
-     Mainmanu();  //메인 메뉴를 보여주는 매소드입니다.
-     Dessert();  //디저트를 보여주는 매소드입니다.
-     Drink();  //음료를 보여주는 매소드입니다.
-
-}
-
-}}}
-
-
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
