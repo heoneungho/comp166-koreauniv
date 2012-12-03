@@ -14,7 +14,9 @@
 
 = Code =
 
-{{
+{{{
+
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -320,4 +322,4 @@ class SubTotal extends JFrame implements KeyListener {
 	public void keyPressed(KeyEvent e) { }
 }
 
-}}
+}}}
