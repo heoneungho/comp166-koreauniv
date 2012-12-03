@@ -60,7 +60,7 @@ public class MainUpDown {
                 GameHelper helper = new GameHelper();
                 Decide dec = new Decide();
                 
-                int stage = 1; //라운드는 1부터
+                
                 boolean alive = true;
                 
                 System.out.println("업다운 게임에 오신걸 환영합니다!");
@@ -106,12 +106,12 @@ public class MainUpDown {
                   
                 	while (alive == true) {
                 		
-                		System.out.println("== Stage " + stage + " ==");
+                		System.out.println("== Stage " + UDG.stage + " ==");
                 		
                 		
                 		
                 		
-                		switch(stage) {
+                		switch(UDG.stage) {
 	                		
 	                		case 1 : //스테이지 1
 	                			
@@ -177,14 +177,14 @@ public class MainUpDown {
 	                			
                              		
                 		if(UDG.clear == true) {
-                			System.out.println("== Stage " + stage + " 클리어!! ==");
+                			System.out.println("== Stage " + UDG.stage + " 클리어!! ==");
                 			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
                 			System.out.println("");
-                			stage++;
+                			UDG.stage++;
                 			UDG.numofguesses = 0;
                 			UDG.clear = false;
                 		} else if (UDG.win == true) {
-                			System.out.println("== Stage " + stage + " 클리어!! ==");
+                			System.out.println("== Stage " + UDG.stage + " 클리어!! ==");
                 			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
                 			System.out.println("");
                 			
@@ -205,13 +205,13 @@ public class MainUpDown {
                 			
                 			if(con == 1) { //컨티뉴 기능
                 				alive = true;
-                				if(stage == 1) {
+                				if(UDG.stage == 1) {
                 					UDG.life = 5;
-                				} else if(stage == 2) {
+                				} else if(UDG.stage == 2) {
                 					UDG.life = 6;
-                				} else if(stage == 3) {
+                				} else if(UDG.stage == 3) {
                 					UDG.life = 7;
-                				} else if(stage == 4) {
+                				} else if(UDG.stage == 4) {
                 					UDG.life = 8;
                 				} else {
                 					UDG.life = 8;
@@ -232,6 +232,38 @@ public class MainUpDown {
 } //클래스 끝
 
 
+}}}
+
+
+{{{
+
+package upanddown;
+
+import java.util.Scanner;
+
+public class GameHelper {
+        
+    public int getInput() {
+    	
+        int Input = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("  =숫자를 입력하세요.=  ");
+        System.out.println("-찬스를 사용하시려면 0을 입력하세요.-");
+        Input = sc.nextInt();
+        
+        return Input;
+        
+    } //함수 끝
+        
+} //클래스 끝
+
+
+}}}
+
+
+{{{
+
+
 package upanddown;
 
 public class UpDownGame {
@@ -244,12 +276,17 @@ public class UpDownGame {
 	public int numofguesses = 0;
 	public boolean clear = false;
 	public boolean win = false;
+	public boolean chv = true;
+	public int stage = 1; //라운드는 1부터
 	
 
 }
 
 
+}}}
 
+
+{{{
 
 package upanddown;
 
@@ -404,6 +441,10 @@ public class Chances {
         
 } //클래스 끝
 
+}}}
+
+
+{{{
 
 package upanddown;
 
@@ -423,14 +464,18 @@ public class Decide {
 				UDG.guess = helper.getInput();
 				System.out.println("");	
 			
-				if(UDG.guess == 0) {
+				if(UDG.guess == 0 || UDG.guess == 9998/*치트키*/) {
 					break;
 				}
 			
 			} while(UDG.guess > UDG.max || UDG.guess < UDG.min);
 			
 			if(UDG.guess == UDG.ans) {
-				UDG.clear = true;
+				if(UDG.stage == 5) {
+					UDG.win = true;
+				} else {
+					UDG.clear = true;
+				}
 				UDG.life--;
 			} else if(UDG.guess == 0 && UDG.chv == true) {
 				//찬스 사용!!
@@ -445,6 +490,8 @@ public class Decide {
 				System.out.println("== Up!! ==");
 				UDG.min = UDG.guess;
 				UDG.life--;
+			} else if(UDG.guess == 9998) { //치트키
+				System.out.println(UDG.ans);
 			} else{
 				System.out.println("== Down!! ==");
 				UDG.max = UDG.guess;
@@ -470,3 +517,5 @@ public class Decide {
 컨티뉴 부분 추가, 찬스 대폭추가
 
 폭풍같은 가독성 상승을 위한 Decide 클래스 추가
+
+버그 수정
