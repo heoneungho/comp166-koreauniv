@@ -335,8 +335,8 @@ public class birthday extends JFrame {
         JButton btnNext = new JButton("\uB2E4\uC74C");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		status rela = new status();
-        		rela.show();
+        		blood type = new blood();
+        		type.show();
         	}
         });
         btnNext.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -349,7 +349,83 @@ public class birthday extends JFrame {
 
 }}}
 
-5. 연애/결혼 상태- 콤보박스에 있는 선택지는 페이스북의 것을 사용하였습니다.
+5. 혈액형
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+public class blood extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					blood frame = new blood();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public blood() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("혈액형");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblNewLabel.setBounds(39, 31, 167, 41);
+		contentPane.add(lblNewLabel);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Dialog", Font.BOLD, 25));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "AB", "O"}));
+		comboBox.setBounds(152, 108, 154, 53);
+		contentPane.add(comboBox);
+		
+		JButton btnNewButton = new JButton("다음");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				status rela = new rela();
+				rela.show();
+			}
+		});
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 18));
+		btnNewButton.setBounds(317, 207, 82, 33);
+		contentPane.add(btnNewButton);
+	}
+}
+
+
+}}}
+
+6. 연애/결혼 상태- 콤보박스에 있는 선택지는 페이스북의 것을 사용하였습니다.
 {{{
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -422,7 +498,7 @@ public class status extends JFrame {
 }
 }}}
 
-6.경력 및 학력-직접 입력을 하여 그것을 추가할 수 있도록 만들었습니다! (경력 및 학력도 페이스북의 형식을 기반으로 모티브를 땄습니다.
+7.경력 및 학력-직접 입력을 하여 그것을 추가할 수 있도록 만들었습니다! (경력 및 학력도 페이스북의 형식을 기반으로 모티브를 땄습니다.
 {{{
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -512,7 +588,7 @@ public class school extends JFrame {
 
 }}}
 
-7.관심사 - 경력 및 학력과 마찬가지로 직접 입력하여 추가할 수 있게 하였습니다. (이 또한 페이스북의 '관심사' 카테고리를 기반으로 하였습니다.)
+8.관심사 - 경력 및 학력과 마찬가지로 직접 입력하여 추가할 수 있게 하였습니다. (이 또한 페이스북의 '관심사' 카테고리를 기반으로 하였습니다.)
 {{{
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -624,7 +700,7 @@ public class jf1 extends JFrame {
 		btnSave.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				success done = new success();
+				contact done = new contact();
 				done.show();
 			}
 		});
@@ -636,7 +712,95 @@ public class jf1 extends JFrame {
 }
 }}}
 
-8. 끝! -성공적으로 프로필이 생성되었음을 알립니다.
+9.연락처 - 이메일과 전화번호를 기록할 수 있습니다.
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+public class contact extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					contact frame = new contact();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public contact() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblContactInfo = new JLabel("연락처");
+		lblContactInfo.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblContactInfo.setBounds(22, 12, 204, 56);
+		contentPane.add(lblContactInfo);
+		
+		textField = new JTextField();
+		textField.setBounds(185, 80, 143, 34);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(185, 137, 143, 34);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblEmail = new JLabel("이메일");
+		lblEmail.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblEmail.setBounds(97, 80, 70, 26);
+		contentPane.add(lblEmail);
+		
+		JLabel lblPhone = new JLabel("전화번호");
+		lblPhone.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblPhone.setBounds(97, 140, 70, 25);
+		contentPane.add(lblPhone);
+		
+		JButton btnNewButton = new JButton("다음");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				success ye = new success();
+				ye.show();
+			}
+		});
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 15));
+		btnNewButton.setBounds(304, 221, 88, 26);
+		contentPane.add(btnNewButton);
+	}
+}
+}}}
+
+10. 끝! -성공적으로 프로필이 생성되었음을 알립니다.
 {{{
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
