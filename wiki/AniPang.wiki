@@ -41,6 +41,36 @@ CheckNPang(): 3개이상의 동물들이 일렬로 나열되있는지 검사하�
 
 Organize(): 비어있는공간을 매꾸어주고 랜덤으로 동물들을 생성한다.
 
+= How to Play=
+
+http://comp166-koreauniv.googlecode.com/files/1.png
+
+처음 보드가 주어집니다
+
+http://comp166-koreauniv.googlecode.com/files/2.png
+
+좌표와 그 좌표의 동물을 어디로 이동할지 정합니다.
+
+처음 입력값= (좌표)
+두버째입력값=(행쪽으로 이동방향,열쪽으로이동방향)
+
+http://comp166-koreauniv.googlecode.com/files/3.png
+
+마약 제대로 옯겼으면 PANG! 과함께 보드가 갱신되고 점수가 카운트됩니다(점수는 마지막에 한꺼먼에 나옵니다)
+
+http://comp166-koreauniv.googlecode.com/files/4.png
+
+콤보도 가능합니다. 만약 한번의 명령으로 한번 PANG을하고 갱신된 보드에서 또다시 세개이상의 같은 동물들이 일자로 나열되있으면 PANG이 다시한번 됩니다.
+
+http://comp166-koreauniv.googlecode.com/files/5.png
+
+마약 명령을 내렷으나 PANG이 될수 없다면 FAIL을 출력하고 보드에는 변화가 없습니다.
+
+http://comp166-koreauniv.googlecode.com/files/6.png
+
+이와같이 10번을 명령하면 최종 스코어가 나옵니다.
+
+
 {{{
 
 import java.io.BufferedReader;
