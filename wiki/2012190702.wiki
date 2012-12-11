@@ -686,7 +686,43 @@ public class SimpleDotCom       {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList;
 
+class SimpleDotComTestDrive      {
+	public static void main(String[] args)  {
+		SimpleDotCom dot= new SimpleDotCom();
+		int[] locations = {2,3,4};
+		dot.setLocationCells(locations);
+		String userGuess = "2";
+		String result = dot.checkYourself(userGuess);
+		}
+	}
+
+
+public class DotCom	{
+	private ArrayList<String> locationCells;
+	
+	public void setLocationCells(ArrayList<String> loc)	{
+		locationCells = loc;
+	}
+	
+	public String checkYourself(String userInput)	{
+		String result = "miss";
+		
+		int index = locationCells.indexOf(userInput); //사용자가 추측한 위치가 들어있는지 확인. 있으면 인덱스 번호 없으면 -1
+		
+		if (index >= 0)	{
+			locationCells.remove(index);
+			
+			if(locationCells.isEmpty())	{ //목록이 비었다는 것은 닷컴이 죽었다는것을 알 수 있다.
+				result = "kill";
+			}	else	{
+				result = "hit";
+			}
+		}
+		return result;
+	}
+}
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
