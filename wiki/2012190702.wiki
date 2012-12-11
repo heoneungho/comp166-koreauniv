@@ -571,7 +571,7 @@ public class SimpleDotCom	{
 	}
 
 	public String checkYourself (String stringGuess)	{
-		int guess = Integer.parsInt(stringGuess); // string 변수를 int형으로
+		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
 		String result = "miss";
 		for(int i=0; i < locationCells.length; i++)	{
 			if(guess == locationCells[i])	{
