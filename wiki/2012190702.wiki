@@ -600,18 +600,18 @@ public class SimpleDotCom	{
 {{{
 class SimpleDotComTestDrive      {
 	public static void main(String[] args)  {
-		SimpleDotCom dot= new SimpleDotCom();
-		int[] locations = {2,3,4};
-		dot.setLocationCells(locations);
+		SimpleDotCom dot= new SimpleDotCom(); //SimpleDotcom 을 참조하는 변수만듬
+		int[] locations = {2,3,4}; // location[2,3,4]의 배열 선언
+		dot.setLocationCells(locations); // setLocationCells을 참조
 		String userGuess = "2";
-		String result = dot.checkYourself(userGuess);
+		String result = dot.checkYourself(userGuess); //checkYourSelf로 보내 결과 출력
 		}
 	}
 
 public class SimpleDotCom       {
-	int[] locationCells;
+	int[] locationCells; 
 	int numOfHits = 0;
-	int[] locationCheck;
+	int[] locationCheck; //다른 배열 선언
 	
 	public void setLocationCells (int[] locs)       {
 		locationCells = locs;
@@ -620,12 +620,12 @@ public class SimpleDotCom       {
 		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로 
 		String result = "miss";
 		for(int i=0; i < locationCells.length; i++)		{
-			if(locationCheck[i] == locationCells[i])	{
+			if(locationCheck[i] == locationCells[i])	{ //check를 이용 전에  썼던 답이면 for 문을 나옴 ㅋ
 				break;
 			}
 			if(guess == locationCells[i])   {
 				result = "hit";
-				locationCells[i] = locationCheck[i];
+				locationCells[i] = locationCheck[i]; // 맞추면 Check에 이 값을 대입 중복방지
 				numOfHits++;
 				break;
 				}
