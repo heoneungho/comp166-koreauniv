@@ -549,28 +549,46 @@ class ClockTestDrive
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
-public class SimpleDotComTestDrive
-{
-        public static void main (String [] args)
-        {
-                SimpleDotCom dot = new SimpleDotCom(); // SimpleDotCom
-                                                           변수만들었당!!
- 
-                int[] locations = {2,3,4};
 
-                dot.setLocationCells(locations);
+public class SimpleDotComTestDrive	{
 
-                String userGuess = "2"; // 예측한 숫자를 넣어보자
+	public static void main(String[] args)	{
+		SimpleDotCom dot= new SimpleDotCom();
+		int locations = {2,3,4};
+		dot.setLocationCells(locations);
+		String userGuess = "2";
+		String result = dot.checkYourself(userGuess);
+	}
+}
 
-                String result = dot.checkYourself(userGuess); //확인해보자!
+public class SimpleDotCom	{
+	
+	int[] locationCells;
+	int numOfHits = 0;
 
-                String testResult = "failed"; // 실패!!
+	public void setLocationCells (int[] locs)	{
+		locationCells = locs;
+	}
 
-                if(result.equals("hit")
-                        testResult = "passed"; // 맞췄노
-
-                System.out.println(testResult); //결과를 보거라
-        }
+	public String checkYourself (String stringGuess)	{
+		int guess = Integer.parsInt(stringGuess); // string 변수를 int형으로
+		String result = "miss";
+		for(int i=0; i < locationCells.length; i++)	{
+			if(guess == locationCells[i])	{
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		}
+	
+		if (numOfhits == locationCells.length)	{
+			result = "kill";
+		}
+	
+		System.out.println(result);
+		
+		return result;
+	}
 }
                                            
 }}}
