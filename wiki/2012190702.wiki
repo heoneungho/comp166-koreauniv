@@ -598,6 +598,46 @@ public class SimpleDotCom	{
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+class SimpleDotComTestDrive      {
+	public static void main(String[] args)  {
+		SimpleDotCom dot= new SimpleDotCom();
+		int[] locations = {2,3,4};
+		dot.setLocationCells(locations);
+		String userGuess = "2";
+		String result = dot.checkYourself(userGuess);
+		}
+	}
+
+public class SimpleDotCom       {
+	int[] locationCells;
+	int numOfHits = 0;
+	int[] locationCheck;
+	
+	public void setLocationCells (int[] locs)       {
+		locationCells = locs;
+		}  
+	public String checkYourself (String stringGuess)        {
+		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로 
+		String result = "miss";
+		for(int i=0; i < locationCells.length; i++)		{
+			if(locationCheck[i] == locationCells[i])	{
+				break;
+			}
+			if(guess == locationCells[i])   {
+				result = "hit";
+				locationCells[i] = locationCheck[i];
+				numOfHits++;
+				break;
+				}
+			}
+		if (numOfHits == locationCells.length)  {
+			result = "kill";
+			}
+		System.out.println(result);
+		return result;
+	}
+	       
+}
 
 }}}
 
