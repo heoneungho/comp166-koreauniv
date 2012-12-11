@@ -644,7 +644,43 @@ public class SimpleDotCom       {
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
-에
+class SimpleDotComTestDrive      {
+	public static void main(String[] args)  {
+		SimpleDotCom dot= new SimpleDotCom();
+		int[] locations = {2,3,4};
+		dot.setLocationCells(locations);
+		String userGuess = "2";
+		String result = dot.checkYourself(userGuess);
+		}
+	}
+
+public class SimpleDotCom       {
+	int[] locationCells;
+	int numOfHits = 0;
+	
+	public void setLocationCells (int[] locs)       {
+		locationCells = locs;
+		}  
+	public String checkYourself (String stringGuess)        {
+		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로 
+		String result = "miss";
+		for(int i=0; i < locationCells.length; i++)		{                        
+			if(guess == locationCells[i])   {
+				result = "hit";
+				numOfHits++;
+				locationCells[i] = -1; // locationCells[i]의 배열에 -1 을 넣어 숫자를 넣더라도 -1이므로 틀리게 나옴
+				break;
+				}
+			}
+		if (numOfHits == locationCells.length)  {
+			result = "kill";
+			}
+		System.out.println(result);
+		return result;
+	}
+	       
+}
+
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
