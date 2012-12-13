@@ -103,9 +103,9 @@ public class PhraseOMatic {
 //A.
 public class Exercise1b {
 	public static void main(String[] args) {
+		int x = 1;
 		
-                int x = 1;
-		while(x<10){ 
+                while(x<10){ 
 			x = x+1; //출력값이 나오도록 조건을 추가
 			if(x>3){
 				System.out.println("big x");
@@ -118,9 +118,9 @@ public class Exercise1b {
 //B.
 public class Exercise1b { //클래스가 없으므로 추가
 	public static void main(String[] args) {
+		int x = 5;
 		
-                int x = 5;
-		while(x>1){ 
+                while(x>1){ 
 			x = x-1;
 			if(x<3){
 				System.out.println("small x");
@@ -133,9 +133,9 @@ public class Exercise1b { //클래스가 없으므로 추가
 //C.
 public class Exercise1b { 
 	public static void main(String[] args) { //메인 메소드가 없으므로 추가
+		int x = 5;
 		
-                int x = 5;
-		while(x>1){ 
+                while(x>1){ 
 			x = x-1;
 			if(x<3){
 				System.out.println("small x");
@@ -256,8 +256,7 @@ public class GuessGame {
 }
 
 public class Player {
-	
-        int number = 0;
+	int number = 0;
 	
 	public void guess(){
 		number = (int) (Math.random()*10);
@@ -282,8 +281,7 @@ public class GameLauncher {
 
 //A.
 public class TapeDeck{
-	
-        boolean canRecord = false;
+	boolean canRecord = false;
 	
 	void playTape(){
 		System.out.println("tape playing");
@@ -311,7 +309,6 @@ public class TapeDeckTestDrive {
 
 //B.
 public class DVDPlayer {
-	
 	boolean canRecord = false;
 	
 	void recordDVD(){
@@ -411,7 +408,6 @@ public class Dog {
 {{{
 
 //A.
-
 package Books;
 
 public class Books {
@@ -613,7 +609,6 @@ package SimpleDotCom;
 import java.io.*;
 
 public class GameHelper {
-	
 	public String getUserInput(String prompt){
 		String inputLine = null;
 		System.out.print(prompt + " ");
@@ -670,7 +665,6 @@ public class SimpleDotCom {
 
 
 public class SimpleDotComTestDrive {
-	
 	public static void main(String[] args) {
 		
 		int numOfGuesses = 0; // 사용자 추측 횟수 초기화
@@ -871,11 +865,15 @@ class Dragon extends Monster{
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ * 인터페이스: 100% 추상 클래스(인스턴스를 만들 수 없는 클래스)
+ 
+ * 다형성: 상위클래스 유형을 메소드의 인자나 리턴 유형 또는 배열 유형을 쓸 수 있게 만드는 능력 필요. 추상 메소드, 추상 클래스를 통해 이룸
+ 
+ * 추상 클래스: 반드시 확장해야하는 클래스
+ 
+ * 추상 메소드: 반드시 오버라이드해야하는 메소드
+ 
+ * 다중 상속: 여러 상위클래스에서 상속받는 것
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
