@@ -355,7 +355,8 @@ public class DVDPlayerTestDrive {
 {{{
 
 public class Dog {
-	String name;
+	
+        String name;
 	public static void main(String[] args) { 
 		
                 // Dog 객체를 만들고 접근
@@ -519,7 +520,6 @@ public class Dog {
 }
 
 public class DogTestDrive {
-	
 	public static void main(String[] args) {
 		
 		Dog one = new Dog();
@@ -545,8 +545,7 @@ public class DogTestDrive {
 
 //A.
 public class XCopy {
-
-	public static void main(String[] args) {
+        public static void main(String[] args) {
 		
 		int orig = 42;
 		XCopy x = new XCopy();
@@ -730,23 +729,141 @@ public class SimpleDotComTestDrive {
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속: 공통적인 코드를 어떤 클래스에 넣은 다음, 다른 더 구체적인 클래스에 공통적인 클래스가 상위클래스라는 것을 알려주는 것. 
+ 
+ * 다형성: 상위클래스로 선언된 레퍼런스를 이용하여 하위클래스 객체를 참조하는 것.
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
 
+public class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+        
+        void sleep(){
+        }
+        
+        void roam(){
+        }
+}
+
+class Feline extends Animal{
+        void roam(){
+        }
+}
+
+class Lion extends Feline{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Tiger extends Feline{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Cat extends Feline{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Hippo extends Animal{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Canine extends Animal{
+        void roam(){
+        }
+}
+
+class Wolf extends Canine{
+        void makeNoise(){
+        }
+
+        void eat(boolean food){
+        }
+}
+
+class Dog extends Canine{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 상위 클래스의 메소드를 하위 클래스에서 상속받아 재정의하는 것.
+
+ * 오버로딩: 이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것.
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+// 정답은 1번.
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+
+		for(int x=0; x<3; x++){
+			ma[x].frighten(x);
+		}
+
+	}
+
+}
+
+class Monster{
+	boolean frighten(int d){
+		System.out.println("arrrgh");
+		return true;
+	}
+} // 세 번째 줄 결과가 "arrrgh"출력이고, frighten() 메소드가 오버라이드 된 형태이므로
+
+class Vampire extends Monster{
+	boolean frighten(int x){
+		System.out.println("a bite?");
+		return false;
+	}
+} // 첫 번째 줄 결과가 "a bite?"출력이고, frighten() 메소드를 오버라이드한 형태
+
+class Dragon extends Monster{
+	boolean frighten(int degree){
+		System.out.println("breath fire");
+		return true;
+	}
+}
 
 }}}
 
@@ -777,6 +894,9 @@ public class SimpleDotComTestDrive {
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+
+
 
 }}}
 
