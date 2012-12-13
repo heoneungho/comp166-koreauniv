@@ -1077,7 +1077,7 @@ public class NewBoardActivity extends Activity {
 }}}
 =출처=
 http://www.androidhive.info/
-위에서 제시된 기능과 책을 참조해 가면서 이 프로젝트에 필요한 것만 선별 하여 연결하였습니다.
+Androidhive에서 제시된 기능과 책을 참조해 가면서 이 프로젝트에 필요한 것만 선별 하여 연결하였습니다.
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
