@@ -42,7 +42,6 @@ public class Beersong {
 		} //while문 끝
 
 	} //main클래스 끝
-
 } //클래스 끝
 
 /* 고치면 
@@ -85,7 +84,6 @@ public class PhraseOMatic {
 		//구문 출력
 		System.out.println("I live in a " + phrase + ".");
 	}
-
 }
 
 }}}
@@ -112,7 +110,6 @@ public class Exercise1b {
 			}
 		}
 	}
-
 }
 
 //B.
@@ -127,7 +124,6 @@ public class Exercise1b { //클래스가 없으므로 추가
 			}
 		}
 	}
-
 }
 
 //C.
@@ -142,7 +138,6 @@ public class Exercise1b {
 			}
 		}
 	}
-
 }
 
 }}}
@@ -251,7 +246,6 @@ public class GuessGame {
 			}
 			
 		}
-		
 	}
 }
 
@@ -270,7 +264,6 @@ public class GameLauncher {
 		GuessGame game = new GuessGame();
 		game.startGame();
 	}
-
 }
 
 }}}
@@ -303,7 +296,6 @@ public class TapeDeckTestDrive {
 			t.recordTape();
 		}
 	}
-
 }
 
 
@@ -318,7 +310,6 @@ public class DVDPlayer {
 	void playDVD(){
 		System.out.println("DVD playing");
 	} // playDVD에 대한 메소드 삽입
-
 }
 
 public class DVDPlayerTestDrive {
@@ -332,10 +323,10 @@ public class DVDPlayerTestDrive {
 			d.recordDVD();
 		}
 	}
-
 }
 
 }}}
+
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
@@ -352,9 +343,9 @@ public class DVDPlayerTestDrive {
 {{{
 
 public class Dog {
+	String name;
 	
-        String name;
-	public static void main(String[] args) { 
+        public static void main(String[] args) { 
 		
                 // Dog 객체를 만들고 접근
 		Dog dog1 = new Dog();
@@ -398,7 +389,6 @@ public class Dog {
 	
 	public void chaseCat(){
 	}
-
 }
 
 }}}
@@ -440,7 +430,6 @@ public class BooksTestDrive {
 		}
 
 	}
-
 }
 
 
@@ -472,7 +461,6 @@ public class Hobbits {
 		}
 
 	}
-
 }
 
 }}}
@@ -481,6 +469,7 @@ public class Hobbits {
 
  * 누가 이겼나요?: 밥
  * 문제가 된 부분은 어딘가요?: 켄트의 방식으로 메소드를 만들면 10개의 객체가 아닌 마지막으로 만든 객체 하나만 사용 가능
+
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
@@ -499,7 +488,6 @@ public class Hobbits {
 package Dog;
 
 public class Dog {
-	
 	int size;
 	String name;
 	
@@ -512,7 +500,6 @@ public class Dog {
 			System.out.println("Yip! Yip!");
 		}
 	}
-
 }
 
 public class DogTestDrive {
@@ -530,7 +517,6 @@ public class DogTestDrive {
 		three.bark();
 
 	}
-
 }
 
 }}}
@@ -542,19 +528,15 @@ public class DogTestDrive {
 //A.
 public class XCopy {
         public static void main(String[] args) {
-		
 		int orig = 42;
 		XCopy x = new XCopy();
 		int y = x.go(orig);
 		System.out.println(orig + " " + y); // orig 값은  변하지 않고 y는 인자값의 두배로 리턴됨
-		
 	}
 
 	int go(int arg){
-		
 		arg = arg*2;
 		return arg;
-		
 	}
 }
 // 결과 : 42 84
@@ -586,7 +568,6 @@ public class ClockTestDrive {
 		System.out.println("time: " + tod);
 		
 	}
-
 }
 
 }}}
@@ -624,12 +605,10 @@ public class GameHelper {
 		
 		return inputLine;
 	}
-
 }
 
 
 public class SimpleDotCom {
-	
 	int [] locationCells; 
 	int numOfHits = 0; // 맞춘 횟수 초기화
 	
@@ -638,7 +617,6 @@ public class SimpleDotCom {
 	}
 
 	public String checkYourself(String stringGuess){
-		
 		int guess = Integer.parseInt(stringGuess); // String 을 int 로 변환
 		String result = "miss"; // 기본 값 지정
 		
@@ -658,7 +636,6 @@ public class SimpleDotCom {
 		
 		return result;
 	}
-
 }
 
 
@@ -686,10 +663,10 @@ public class SimpleDotComTestDrive {
 		}
 		
 	}
-
 }
 
 }}}
+
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
 
@@ -716,6 +693,7 @@ public class SimpleDotComTestDrive {
 {{{
 
 }}}
+
 
 = 07. 객체마을에서의 더 나은 삶:미래를 준비합시다  =
 
@@ -833,7 +811,6 @@ public class MonsterTestDrive {
 		}
 
 	}
-
 }
 
 class Monster{
@@ -859,6 +836,7 @@ class Dragon extends Monster{
 
 }}}
 
+
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
 
 *231p~ 심각한 다형성* _요약_
@@ -872,6 +850,7 @@ class Dragon extends Monster{
  * 추상 메소드: 반드시 오버라이드해야하는 메소드, 하위클래스에서 프로토콜을 정의할 수 있음.
  
  * 다중 상속: 여러 상위클래스에서 상속받는 것.
+
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
@@ -896,6 +875,7 @@ class Dragon extends Monster{
 {{{
 
 }}}
+
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
 
@@ -925,13 +905,17 @@ public class Calender {
 		c.set(2004,0,7,15,40); // 시각 설정
 		long day1 = c.getTimeInMillis(); // 시간을 밀리초 단위로 표현한 값 리턴
 		day1 += 1000*60*60;
-		c.setTimeInMillis(day1); // 시각 갱신
+		
+                c.setTimeInMillis(day1); // 시각 갱신
 		System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
-		c.add(c.DATE, 35); // 35일 뒤
+		
+                c.add(c.DATE, 35); // 35일 뒤
 		System.out.println("add 35 days " + c.getTime());
-		c.roll(c.DATE, 35); // 35일 뒤
+		
+                c.roll(c.DATE, 35); // 35일 뒤
 		System.out.println("roll 35 days " + c.getTime());
-		c.set(c.DATE, 1); // 날짜를 1로 설정
+		
+                c.set(c.DATE, 1); // 날짜를 1로 설정
 		System.out.println("set to 1 " + c.getTime());
 	}
 }
@@ -978,11 +962,33 @@ public class StaticTests extends StaticSuper{
 
 }}}
 
+
 = 11. 위험한 행동:예외처리  =
 
 *357p try/catch* _구현후 주석달기_
 
 {{{
+
+public class Exception {
+	public static void main(String[] args) {
+		// 일련의 과정
+		
+		public void takeRisk() throws BadException{ // 외부에 BadException 던질 수 있다는 것을 알림
+			if(abandonAllHope){
+				throw new BadException(); // 새로운 Exception객체 던짐
+			}
+		}
+		
+		public void crossFigners(){
+			try{
+				anObject.takeRisk();
+			}catch(BadException ex){
+				System.out.println("Aaargh!");
+				ex.printStackTrace(); // 예외 상황을 해결할 수 없을 때 스택 트레이스를 출력
+			}
+		}
+	}
+}
 
 }}}
 
@@ -990,13 +996,100 @@ public class StaticTests extends StaticSuper{
 
 {{{
 
+import javax.sound.midi.*; // 미디 패키지 불러오기
+
+public class MiniMiniMusicApp {
+	public static void main(String[] args) {
+		MiniMiniMusicApp mini = new MiniMiniMusicApp();
+		mini.play();
+	}
+	
+	public void play(){
+		try{
+			Sequencer player = MidiSystem.getSequencer(); // Sequencer 받아오기
+			player.open();
+			
+			Sequence seq = new Sequence(Sequence.PPQ, 4); 
+			
+			Track track = seq.createTrack(); // Sequence에 Track 요청
+			
+			// Track에 미디 이벤트 집어넣기
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 1, 44, 100);
+			MidiEvent noteOn = new MidiEvent(a, 1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128, 1, 44, 100);
+			MidiEvent noteoff = new MidiEvent(b, 16);
+			track.add(noteoff); 
+			
+			player.setSequence(seq); // Sequencer에 Sequence 보내기
+			
+			player.start(); // Sequencer의 start() 메소드 호출
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+}
+
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
 
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine {
+	public static void main(String[] args) {
+		MiniMusicCmdLine mini = new MiniMusicCmdLine();
+		
+		if(args.length<2){
+			System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+		} else{
+			int instrument = Integer.parseInt(args[0]); // 악기 설정
+			int note = Integer.parseInt(args[1]); // 음 높이 설정
+			mini.play(instrument, note);
+		}
+	}
+	
+	public void play(int instrument, int note){
+		try{
+			Sequencer player = MidiSystem.getSequencer(); // Sequencer 받아오기
+			player.open();
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			Track track = seq.createTrack(); // Sequence에 Track 요청
+			
+			// 무엇, 언제할지 결정
+			MidiEvent event = null;
+			
+			ShortMessage first = new ShortMessage();
+			first.setMessage(192, 1, instrument, 0);
+			MidiEvent changeInstrument = new MidiEvent(first, 1);
+			track.add(changeInstrument);
+			
+			// Track에 미디 이벤트 집어넣기
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 1, note, 100);
+			MidiEvent noteOn = new MidiEvent(a, 1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128, 1, note, 100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff);
+			player.setSequence(seq); // Sequencer에 Sequence 보내기
+			
+			player.start(); // Sequencer의 start() 메소드 호출
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+}
+
 }}}
+
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
 
@@ -1036,6 +1129,7 @@ public class StaticTests extends StaticSuper{
 
 }}}
 
+
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
 
 *452p 비트박스 프로그램* _구현후 주석달기_
@@ -1043,6 +1137,7 @@ public class StaticTests extends StaticSuper{
 {{{
 
 }}}
+
 
 = 14. 객체 저장:직렬화와 입출력  =
 
