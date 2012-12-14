@@ -393,10 +393,19 @@ class Hobbits
  * 인스턴스 변수 vs 지역 변수:
  
 *107p Dog* _실행_
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation. All rights reserved.
 
-{{{
+C:\Users\Administrator>d:
 
-}}}
+D:\>cd 박명훈
+
+D:\박명훈>cd 대학공부/컴퓨터공부/Java프로그래밍
+
+D:\박명훈\대학공부\컴퓨터공부\Java프로그래밍>java Dog1TestDrive
+Wooof! Wooof!
+Yip! Yip!
+Ruff! Ruff!
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
