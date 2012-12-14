@@ -286,10 +286,64 @@ class TapeDeckTestDrive {
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
+class Books //Books란 객체를 만들기 위한 코드
+{
+	String title;
+	String author;
+} 
+ 
+class BooksTestDrive //Books를 테스트하기 위한 코드
+{
+	public static void main(String[] args) 
+	{
+		Books[] mybooks = new Books[3]; // mybooks란 이름을 가진 Books 배열 변수를 선언하고, 길이가 3인 Books배열을 만들어서 mybooks에 대입한다.
+		int x=0;
+		mybooks[0] = new Books();
+		mybooks[1] = new Books();
+		mybooks[2] = new Books(); // mybooks 배열에 Books객체 3개를 만들어서 대입한다.
+		mybooks[0].title = "The Grapes of Java";
+		mybooks[1].title = "The Java Gatsby";
+		mybooks[2].title = "The Java Cookbook";
+		mybooks[0].author = "bob";
+		mybooks[1].author = "sue";
+		mybooks[2].author = "ian";
 
-{{{
+		while(x<3)
+		{
+			System.out.print(mybooks[x].title);
+			System.out.print(" by ");
+			System.out.println(mybooks[x].author);
+			x = x+1;
+		}
+	}
+}
+class Hobbits 
+{
+	String name;
 
-}}}
+	public static void main(String[] args) 
+	{
+		Hobbits[] h = new Hobbits[3];
+		int z = -1;
+		
+		while (z < 2)
+		{
+			z = z+1;
+			h[z] = new Hobbits();
+			h[z].name = "bilbo";
+			if (z==1)
+			{
+				h[z].name = "frodo";
+			}
+			if (z==2)
+			{
+				h[z].name = "sam";
+			}
+			System.out.print(h[z].name + " is  a ");
+			System.out.println("good Hobbit name");
+		}
+	}
+}
 
 *101p 레퍼런스 도용사건* _요약_
 
