@@ -197,7 +197,7 @@ public class GuessGame {
 				p4isRight=true;
 			}
 			
-			if(p1isRight||p2isRight||p3isRight){
+			if(p1isRight||p2isRight||p3isRight||p4isRight){
 				System.out.println("맞춘 선수가 있습니다");
 				System.out.println("1번 선수: " + p1isRight);
 				System.out.println("2번 선수: " + p2isRight);
