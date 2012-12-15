@@ -1889,7 +1889,7 @@ import java.io.ObjectOutputStream;
 public class BeatBox {
 
     JPanel mainPanel;
-    ArrayList<JCheckBox> checkboxList; // 체크상자를 ArrayList에 저장합니다.
+    ArrayList<JCheckBox> checkboxList;
     Sequencer sequencer;
     Sequence sequence;
     Track track;
@@ -1899,11 +1899,9 @@ public class BeatBox {
        "Open Hi-Hat","Acoustic Snare", "Crash Cymbal", "Hand Clap", 
        "High Tom", "Hi Bongo", "Maracas", "Whistle", "Low Conga", 
        "Cowbell", "Vibraslap", "Low-mid Tom", "High Agogo", 
-       "Open Hi Conga"}; // GUI 레이블을 만들 때 사용할 악기명 String 배열로 저장합니다.
+       "Open Hi Conga"}; 
     int[] instruments = {35,42,46,38,49,39,50,60,70,72,64,56,58,47,67,63};
-                // 실제 드럼 '건반'을 나타냅니다. 드럼 채널은 피아노의 각 건반이 서로 다른 드럼을 나타내는 것과 같다고 보면 됩니다.
-           // 35 - 베이스, 42 - 건반....
-
+                
     public static void main (String[] args) {
         new BeatBox().buildGUI();
     }
@@ -1914,8 +1912,7 @@ public class BeatBox {
         BorderLayout layout = new BorderLayout();
         JPanel background = new JPanel(layout);
         background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-                                        // 비어있는 경계선을 사용하여 패널 둘레와 구성요소가 들어가는 자리 사이에 빈 공간 생성.
-
+                                      
         checkboxList = new ArrayList<JCheckBox>();
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
 
@@ -1978,72 +1975,67 @@ public class BeatBox {
     } 
 
     public void buildTrackAndStart() {
-      int[] trackList = null; // 박자에 대한 값.
-    
+      int[] trackList = null;     
       sequence.deleteTrack(track);
-      track = sequence.createTrack(); // 초기화
+      track = sequence.createTrack(); 
 
-        for (int i = 0; i < 16; i++) { // 열 16개를 모두 초기화
+        for (int i = 0; i < 16; i++) { 
           trackList = new int[16];
  
           int key = instruments[i];   
 
           for (int j = 0; j < 16; j++ ) {         
               JCheckBox jc = (JCheckBox) checkboxList.get(j + (16*i));
-              if ( jc.isSelected()) { // 주크박스가 선택되었으면 건반값을 집어넣는다.
+              if ( jc.isSelected()) { 
                  trackList[j] = key;
-              } else { // 선택되지 않았으면 연주하지 않는다.
-                 trackList[j] = 0;
+              } else {                  trackList[j] = 0;
               }                    
-           } // 안 for문 끝
+           } 
          
-           makeTracks(trackList); // 16개에 대해 모두 실행
+           makeTracks(trackList); 
            track.add(makeEvent(176,1,127,0,16));  
-       } // 밖 for문 끝
+       } 
 
        track.add(makeEvent(192,9,1,0,15));      
        try {
            sequencer.setSequence(sequence); 
-             sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY); // 루프 반복 횟수를 지정하기 위한 메소드.                   
+             sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
            sequencer.start();
            sequencer.setTempoInBPM(120);
-       } catch(Exception e) {e.printStackTrace();} // 연주
-    } // buildTrackAndStart 메소드 끝
+       } catch(Exception e) {e.printStackTrace();} 
+    } 
             
            
     public class MyStartListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
             buildTrackAndStart();
         }
-    } // 내부 클래스 끝
+    }
 
     public class MyStopListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
             sequencer.stop();
         }
-    } // 내부 클래스 끝
+    } 
 
     public class MyUpTempoListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
               float tempoFactor = sequencer.getTempoFactor(); 
-            sequencer.setTempoFactor((float)(tempoFactor * 1.03)); // 속도를 빠르게
+            sequencer.setTempoFactor((float)(tempoFactor * 1.03)); 
         }
-     } // 내부 클래스 끝
-
+     } 
      public class MyDownTempoListener implements ActionListener {
          public void actionPerformed(ActionEvent a) {
               float tempoFactor = sequencer.getTempoFactor();
-            sequencer.setTempoFactor((float)(tempoFactor * .97)); // 속도를 느리게
-        }
-    } // 내부 클래스 끝
+            sequencer.setTempoFactor((float)(tempoFactor * .97));         }
+    } 
 
-     // ================= 새로 추가된 부분 ====================
      public class MySendListener implements ActionListener {
-         public void actionPerformed(ActionEvent a) { // 사용자가 버튼을 클릭해서 ActionEvent가 발생된 경우에 실행.  
-           boolean[] checkboxState = new boolean[256]; // 체크박스
+         public void actionPerformed(ActionEvent a) {       
+     boolean[] checkboxState = new boolean[256]; 
 
            for (int i = 0; i < 256; i++) {
-               JCheckBox check = (JCheckBox) checkboxList.get(i); // 체크박스를 훑어보면서 체크박스의 상태 확인후 위의 체크박스에 추가.
+               JCheckBox check = (JCheckBox) checkboxList.get(i); 
                if (check.isSelected()) {
                   checkboxState[i] = true;
                }
@@ -2058,8 +2050,7 @@ public class BeatBox {
                ex.printStackTrace();
            }
 
-         } // 메소드 끝
-       } // 클래스 
+         }        } 
 
 
 
@@ -2071,7 +2062,7 @@ public class BeatBox {
                 FileInputStream fileIn = new FileInputStream(
                     new File("Checkbox.ser"));
                 ObjectInputStream is = new ObjectInputStream(fileIn);
-                checkboxState = (boolean[]) is.readObject(); // 파일에서 객체 하나를 읽은 다음 부울 배열로 다시 캐스트.
+                checkboxState = (boolean[]) is.readObject(); 
 
             } catch(Exception ex) {ex.printStackTrace();}
 
@@ -2088,10 +2079,8 @@ public class BeatBox {
 
           sequencer.stop(); 
           buildTrackAndStart();
-        } // 메소드 끝
-    } // 클래스 끝
-      
-      // ================ 추가 끝 =====================
+        } 
+    } 
      
      
     public void makeTracks(int[] list) {        
@@ -2116,7 +2105,7 @@ public class BeatBox {
         return event;
     }
 
-} // 클래스  끝
+} 
 
 
 
