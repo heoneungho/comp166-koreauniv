@@ -50,12 +50,11 @@ package upanddown;
 
 import java.util.Scanner;
 
-public class MainUpDown {
+public class MainUpDown extends UpDownGame {
         
         public static void main(String[] args) {
                 
                 
-                UpDownGame UDG = new UpDownGame();
                 Chances ch = new Chances();
                 GameHelper helper = new GameHelper();
                 Decide dec = new Decide();
@@ -106,69 +105,69 @@ public class MainUpDown {
                   
                 	while (alive == true) {
                 		
-                		System.out.println("== Stage " + UDG.stage + " ==");
+                		System.out.println("== Stage " + stage + " ==");
                 		
                 		
                 		
                 		
-                		switch(UDG.stage) {
+                		switch(stage) {
 	                		
 	                		case 1 : //스테이지 1
 	                			
-	                			UDG.max = 10;
-	                			UDG.min = 1;
-	                			UDG.life = 5;
-	                			UDG.ans = (int) (Math.random() * 10) + 1;
+	                			max = 10;
+	                			min = 1;
+	                			life = 5;
+	                			ans = (int) (Math.random() * 10) + 1;
 	                			
-                				dec.dec(UDG, ch, helper);
+                				dec.dec(ch, helper);
                 				
                 				break;
 	                			
 	                			
 	                		case 2 :
 	                			
-	                			UDG.max = 50;
-	                			UDG.min = 1;
-	                			UDG.life = 6;
-	                			UDG.ans = (int) (Math.random() * 50) + 1;
+	                			max = 50;
+	                			min = 1;
+	                			life = 6;
+	                			ans = (int) (Math.random() * 50) + 1;
 	                			
-                				dec.dec(UDG, ch, helper);
+                				dec.dec(ch, helper);
 	                			
 	                			break;
 	                			
 	                			
 	                		case 3 :
 	                			
-	                			UDG.max = 100;
-	                			UDG.min = 1;
-	                			UDG.life = 7;
-	                			UDG.ans = (int) (Math.random() * 100) + 1;
+	                			max = 100;
+	                			min = 1;
+	                			life = 7;
+	                			ans = (int) (Math.random() * 100) + 1;
 	                			
-                				dec.dec(UDG, ch, helper);
+                				dec.dec(ch, helper);
 	                			
 	                			break;
 	                			
 	                			
 	                		case 4 :
 	                			
-	                			UDG.max = 500;
-	                			UDG.min = 1;
-	                			UDG.life = 8;
-	                			UDG.ans = (int) (Math.random() * 500) + 1;
+	                			max = 500;
+	                			min = 1;
+	                			life = 8;
+	                			ans = (int) (Math.random() * 500) + 1;
 	                			
-	                			dec.dec(UDG, ch, helper);
+	                			dec.dec(ch, helper);
 	                			
 	                			break;
 	                			
 	                			
 	                		case 5 :
 	                			
-	                			UDG.max = 1000;
-	                			UDG.min = 1;
-	                			UDG.life = 8;
-	                			UDG.ans = (int) (Math.random() * 1000) + 1;
+	                			max = 1000;
+	                			min = 1;
+	                			life = 8;
+	                			ans = (int) (Math.random() * 1000) + 1;
 	                			
-	                			dec.dec(UDG, ch, helper);
+	                			dec.dec(ch, helper);
 	                			
 	                			break;
 	
@@ -176,16 +175,16 @@ public class MainUpDown {
                 		}
 	                			
                              		
-                		if(UDG.clear == true) {
-                			System.out.println("== Stage " + UDG.stage + " 클리어!! ==");
-                			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
+                		if(clear == true) {
+                			System.out.println("== Stage " + stage + " 클리어!! ==");
+                			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
                 			System.out.println("");
-                			UDG.stage++;
-                			UDG.numofguesses = 0;
-                			UDG.clear = false;
-                		} else if (UDG.win == true) {
-                			System.out.println("== Stage " + UDG.stage + " 클리어!! ==");
-                			System.out.println("-시도 횟수 : " + UDG.numofguesses + " -남은 기회 : " + UDG.life);
+                			stage++;
+                			numofguesses = 0;
+                			clear = false;
+                		} else if (win == true) {
+                			System.out.println("== Stage " + stage + " 클리어!! ==");
+                			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
                 			System.out.println("");
                 			
                 			System.out.println(" !! 모든 스테이지를 클리어 하셨습니다. !!");
@@ -193,9 +192,9 @@ public class MainUpDown {
                 			System.out.println("     !! You Win !!");
                 			alive = false;
                 			//승리로 끝남!
-                		} else if(UDG.life == 0) { //패배시
+                		} else if(life == 0) { //패배시
                 			alive = false;
-                			System.out.println("- 정답은 " + UDG.ans + "입니다.");
+                			System.out.println("- 정답은 " + ans + "입니다.");
                 			System.out.println("- 패배하였습니다.");
                 			System.out.println("- Game Over -");
                 			System.out.println("");
@@ -205,18 +204,19 @@ public class MainUpDown {
                 			
                 			if(con == 1) { //컨티뉴 기능
                 				alive = true;
-                				if(UDG.stage == 1) {
-                					UDG.life = 5;
-                				} else if(UDG.stage == 2) {
-                					UDG.life = 6;
-                				} else if(UDG.stage == 3) {
-                					UDG.life = 7;
-                				} else if(UDG.stage == 4) {
-                					UDG.life = 8;
+                				if(stage == 1) {
+                					life = 5;
+                				} else if(stage == 2) {
+                					life = 6;
+                				} else if(stage == 3) {
+                					life = 7;
+                				} else if(stage == 4) {
+                					life = 8;
                 				} else {
-                					UDG.life = 8;
+                					life = 8;
                 				}
                 				System.out.println("");
+                				numofguesses = 0;
                 			} else {
                 				System.out.println("");
                 				System.out.println("=게임을 종료합니다.=");
@@ -230,7 +230,6 @@ public class MainUpDown {
         } //메인 메소드 끝
 
 } //클래스 끝
-
 
 }}}
 
@@ -268,19 +267,20 @@ package upanddown;
 
 public class UpDownGame {
 	
-	public int guess = 0;
-	public int ans = 0;
-	public int life = 0;
-	public int max = 0;
-	public int min = 0;
-	public int numofguesses = 0;
-	public boolean clear = false;
-	public boolean win = false;
-	public boolean chv = true;
-	public int stage = 1; //라운드는 1부터
+	public static int guess = 0;
+	public static int ans = 0;
+	public static int life = 0;
+	public static int max = 0;
+	public static int min = 0;
+	public static int numofguesses = 0;
+	public static boolean clear = false;
+	public static boolean win = false;
+	public static boolean chv = true;
+	public static int stage = 1; //라운드는 1부터
 	
 
 }
+
 
 
 }}}
@@ -290,11 +290,11 @@ public class UpDownGame {
 
 package upanddown;
 
-public class Chances {
+public class Chances extends UpDownGame {
         
         int ranch = (int) (Math.random() * 20) + 1;
  
-        public void pch(UpDownGame UDG) {
+        public void pch() {
                 
             switch(ranch) {
             
@@ -302,7 +302,7 @@ public class Chances {
             case 11:
                     System.out.println("  --짝/홀 찬스--  ");
                     
-                    if((UDG.ans % 2) == 0) {
+                    if((ans % 2) == 0) {
                     	System.out.println("==답은 '짝수' 입니다.==");
                     } else {
                     	System.out.println("==답은 '홀수' 입니다.==");
@@ -314,7 +314,7 @@ public class Chances {
             case 12:
                     System.out.println("  --3의 배수 찬스--  ");
                     
-                    if((UDG.ans % 3) == 0) {
+                    if((ans % 3) == 0) {
                     	System.out.println("==답은 '3의 배수' 입니다.==");
                     } else {
                     	System.out.println("==답은 3의 배수가 아닙니다.==");
@@ -328,7 +328,7 @@ public class Chances {
                     System.out.println("  --기회 추가--  ");
                     System.out.println("==기회가 '1회 추가' 되었습니다!==");
                     
-                    UDG.life++;
+                    life++;
                     
                     break;
                     
@@ -337,25 +337,25 @@ public class Chances {
             		System.out.println("  --기회 감소--  ");
             		System.out.println("==기회가 '1회 감소' 되었습니다 호갱님^^==");
                     
-                    UDG.life--;
+                    life--;
                     
                     break;
                     
             case 5:
             case 15:
-            		int mid = (int) (UDG.max + UDG.min) / 2;
+            		int mid = (int) (max + min) / 2;
             	
             		
             		System.out.println("  --반띵 찬스!!--  ");
                     
-            		if (UDG.ans > mid) {
-            		UDG.min = mid;
-                    	System.out.println("==답은 " + UDG.min + " 보다 크고, " + UDG.max + " 보다 작습니다.==");
-                    } else if(UDG.ans < mid) {
-                    	UDG.max = mid;
-                    	System.out.println("==답은 " + UDG.min + " 보다 크고, " + UDG.max + " 보다 작습니다.==");
+            		if (ans > mid) {
+            		min = mid;
+                    	System.out.println("==답은 " + min + " 보다 크고, " + max + " 보다 작습니다.==");
+                    } else if(ans < mid) {
+                    	max = mid;
+                    	System.out.println("==답은 " + min + " 보다 크고, " + max + " 보다 작습니다.==");
                     } else {
-                    	UDG.clear = true;
+                    	clear = true;
                     } 
                     
                     break;
@@ -369,12 +369,12 @@ public class Chances {
             case 17:
             		int one = 0;
             	
-            		if(UDG.ans < 10) {
-            			one = (int) UDG.ans;
-            		} else if(UDG.ans < 100) {
-            			one = (int) UDG.ans % 10;
-            		} else if(UDG.ans < 1000) {
-            			one = (int) (UDG.ans % 100) % 10;
+            		if(ans < 10) {
+            			one = (int) ans;
+            		} else if(ans < 100) {
+            			one = (int) ans % 10;
+            		} else if(ans < 1000) {
+            			one = (int) (ans % 100) % 10;
             		} else {
             			one = 0;
             		}
@@ -388,18 +388,18 @@ public class Chances {
             case 18:
             		int fin = 0;
             		
-            		if(UDG.ans < 10) {
-            			fin = (int) UDG.ans;
-            		} else if(UDG.ans < 100) {
-            			fin = (int) UDG.ans / 10;
-            		} else if(UDG.ans < 1000) {
-            			fin = (int) UDG.ans / 100;
+            		if(ans < 10) {
+            			fin = (int) ans;
+            		} else if(ans < 100) {
+            			fin = (int) ans / 10;
+            		} else if(ans < 1000) {
+            			fin = (int) ans / 100;
             		} else {
             			fin = 1;
             		}
             		
             		System.out.println("  --윗 자리 찬스--");
-            		System.out.println("==정답의 가장 윗자리 숫자는 '" + fin + "'입니다.==");
+            		System.out.println("==정답의 가장 윗자리 숫자는 '" + fin + "' 입니다.==");
             		
             		break;
             		
@@ -407,12 +407,14 @@ public class Chances {
             case 19:
             		System.out.println("  --몇 자리 찬스--  ");
             	
-            		if(UDG.ans < 10) {
-            			System.out.println("==정답은 '한 자리 수'입니다.");
-            		} else if(UDG.ans < 100) {
-            			System.out.println("==정답은 '두 자리 수'입니다.");
-            		} else if(UDG.ans < 1000) {
-            			System.out.println("==정답은 '세 자리 수'입니다.");
+            		if(ans < 10) {
+            			System.out.println("==정답은 '한 자리 수'입니다.==");
+            		} else if(ans < 100) {
+            			System.out.println("==정답은 '두 자리 수'입니다.==");
+            		} else if(ans < 1000) {
+            			System.out.println("==정답은 '세 자리 수'입니다.==");
+            		} else {
+            			System.out.println("==!!정답은 '네자리 수'입니다.=!!==");
             		}
             		
             		break;
@@ -421,7 +423,7 @@ public class Chances {
             		System.out.println("  --!!클리어 찬스!!--");
             		System.out.println("==이번 스테이지가 클리어 됩니다.==");
             		
-            		UDG.clear = true;
+            		clear = true;
             		
             		break;
             		
@@ -429,7 +431,7 @@ public class Chances {
             		System.out.println("  --패배 찬스--  ");
             		System.out.println("==그냥 아무 이유없이 패배합니다.==");
             		
-            		UDG.life = 0;
+            		life = 0;
             		
             		break;
 
@@ -448,65 +450,64 @@ public class Chances {
 
 package upanddown;
 
-public class Decide {
+public class Decide extends UpDownGame{
 	
-	public void dec(UpDownGame UDG, Chances ch, GameHelper helper) {
+	public void dec(Chances ch, GameHelper helper) {
 		
-		while(UDG.life > 0 && UDG.clear == false && UDG.win == false) {
-		
-			System.out.println("-life: " + UDG.life);
+		while(life > 0 && clear == false && win == false) {
 		
 			do {
-			
-				System.out.println("-" + UDG.min + "에서 " + UDG.max + " 사이의 숫자를 맞춰야 합니다.");
+				
+				System.out.println("-life: " + life);
+				System.out.println("-" + min + "에서 " + max + " 사이의 숫자를 맞춰야 합니다.");
 				System.out.println("");
 			
-				UDG.guess = helper.getInput();
+				guess = helper.getInput();
 				System.out.println("");	
 			
-				if(UDG.guess == 0 || UDG.guess == 9998/*치트키*/) {
+				if(guess == 0 || guess == 9998/*치트키*/) {
 					break;
 				}
 			
-			} while(UDG.guess > UDG.max || UDG.guess < UDG.min);
+			} while(guess > max || guess < min);
 			
-			if(UDG.guess == UDG.ans) {
-				if(UDG.stage == 5) {
-					UDG.win = true;
+			if(guess == ans) {
+				if(stage == 5) {
+					win = true;
 				} else {
-					UDG.clear = true;
+					clear = true;
 				}
-				UDG.life--;
-			} else if(UDG.guess == 0 && UDG.chv == true) {
+				life--;
+			} else if(guess == 0 && chv == true) {
 				//찬스 사용!!
-				ch.pch(UDG);
-				UDG.chv = false;
+				ch.pch();
+				chv = false;
 				System.out.println("");
-				UDG.numofguesses--;
-			} else if(UDG.guess == 0) {
+				numofguesses--;
+			} else if(guess == 0) {
 				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
-				UDG.numofguesses--;
-			} else if(UDG.guess < UDG.ans ) {
+				numofguesses--;
+			} else if(guess < ans ) {
 				System.out.println("== Up!! ==");
-				UDG.min = UDG.guess;
-				UDG.life--;
-			} else if(UDG.guess == 9998) { //치트키
-				System.out.println(UDG.ans);
+				min = guess;
+				life--;
+			} else if(guess == 9998) { //치트키
+				System.out.println(ans);
+				numofguesses--;
 			} else{
 				System.out.println("== Down!! ==");
-				UDG.max = UDG.guess;
-				UDG.life--;
+				max = guess;
+				life--;
 			}
 		
-			UDG.guess = 0;
-			UDG.numofguesses++;
+			guess = 0;
+			numofguesses++;
 		
 		}
 
 	}
 	
 }
-
 
 
 }}}
@@ -519,3 +520,6 @@ public class Decide {
 폭풍같은 가독성 상승을 위한 Decide 클래스 추가
 
 버그 수정
+
+-기말고사 답안지에 썼던 것처럼 상속 관계 이용해서 변수들의 가독성을 높였습니다.
++ 자잘한 것들 살짝 수정
