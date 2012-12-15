@@ -26,21 +26,19 @@ Add your content here.  Format your content with:
 
 = Code =
 
-PhoneBookElement클래스입니다. 
+Element클래스입니다. 
 {{{
-
-package PhoneBook;
 
 
 //이름과 전화번호, 메모를 나타내는 클래스.
-public class PhoneBookElement {
+public class Element {
 	private String name;
 	private String number;
 	private String memo;
 	
 	// 이름과 전화번호, 메모를 입력하는 메소드 
 
-	public PhoneBookElement(String name, String number, String memo) {
+	public Element(String name, String number, String memo) {
 		this.name = name;
 		this.number = number;
 		this.memo = memo;
@@ -71,26 +69,24 @@ public class PhoneBookElement {
 		this.memo = memo;
 	}
 }
-
 }}}
 
-PhoneBookGUI 클래스입니다.
+GUI 클래스입니다.
 {{{
-package PhoneBook;
 
 import javax.swing.JOptionPane;
 
 
 // GUI를 제공하는 클래스.
 
-public class PhoneBookGUI {
-	private PhoneBookFunction theDirectory = null;
+public class GUI {
+	private Function theDirectory = null;
 
 	// GUI를 표시하고, 전화번호부 기능을 수행하는 함수 
-	public void processCommands(PhoneBookFunction thePhoneBookFunction) {
+	public void processCommands(Function theFunction) {
 		String[] commands = { "Add/Change PhoneNumber \nand Add memo", "Find PhoneNumber",
 				"Delete PhoneNumber", "Save Directory", "Exit" };
-		theDirectory = thePhoneBookFunction; // 매개변수로 받아온 기능 수행 클래스를
+		theDirectory = theFunction; // 매개변수로 받아온 기능 수행 클래스를
 									     	  // 등록
 		int choice;
 
@@ -205,9 +201,8 @@ public class PhoneBookGUI {
 }
 }}}
 
-PhoneBookFunction 클래스입니다.
+Function 클래스입니다.
 {{{
-package PhoneBook;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -220,12 +215,12 @@ import java.io.PrintWriter;
 // 전화번호부 기능을 수행하는 클래스.
 // 보기, 추가 , 삭제, 저장기능을 수행한다.
 
-public class PhoneBookFunction {
+public class Function {
 	private static final int INITIAL_CAPACITY = 100; // 최대 저장 갯수
 	private int capacity = INITIAL_CAPACITY; // 최대 저장 갯수 설정
 	private int size = 0; // 현재 저장 갯수
-	private PhoneBookElement[] theDirectory = 
-			new PhoneBookElement[capacity]; // 전화번호부를 생성
+	private Element[] theDirectory = 
+			new Element[capacity]; // 전화번호부를 생성
 	private String sourceName = null; // 전화번호부 파일
 	private boolean modified = false; // 전화번호부 수정 여부
 
@@ -334,14 +329,14 @@ public class PhoneBookFunction {
 		if (size >= capacity) { // 현재 저장되어 있는 개수가 최대 저장 개수보다 크면
 			reallocate(); // 저장 용량을 할당한다.(용량 증가)
 		}
-		theDirectory[size] = new PhoneBookElement(name, number,memo); // 추가
+		theDirectory[size] = new Element(name, number,memo); // 추가
 		size++; // 현재 저장 개수 증가
 	}
 
 	// 용량이 가득찼을 경우 용량을 더 할당해주는 함수 
 	private void reallocate() {
 		capacity *= 2; // 최대 용량을 두배로 늘린다.
-		PhoneBookElement[] newDirectory = new PhoneBookElement[capacity];
+		Element[] newDirectory = new Element[capacity];
 		// 임시 전화번호부 배열을 생성한다.
 		System.arraycopy(theDirectory, 0, newDirectory, 0, theDirectory.length);
 		// 기존 전화번호부 배열의 내용을 임시 전화번호부 배열에 복사한다.
@@ -362,29 +357,28 @@ public class PhoneBookFunction {
 }
 }}}
 
-PhoneBookMain 클래스입니다
+Application 클래스입니다
 {{{
-package PhoneBook;
 
 import java.io.IOException;
 
 
-	public class PhoneBookMain {
+	public class Application {
 
 		public static void main(String[] args) {
 
-			PhoneBookFunction PhoneBookFunction = new PhoneBookFunction();
+			Function Function = new Function();
 			// 전화번호부 기능을 수행할 클래스 생성.
 			
 			try {
-					PhoneBookFunction.loadData("pd.txt"); 
+					Function.loadData("pd.txt"); 
 					// 파일로부터 저장된 연락처들을 읽어들인다.
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-			PhoneBookGUI PhoneBookFunctionInterface = new PhoneBookGUI(); // GUI 생성
-			PhoneBookFunctionInterface.processCommands(PhoneBookFunction);
+			GUI FunctionInterface = new GUI(); // GUI 생성
+			FunctionInterface.processCommands(Function);
 			// 전화번호부 기능을 활성화
 		}
 }
