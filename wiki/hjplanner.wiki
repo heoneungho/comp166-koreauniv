@@ -8,7 +8,7 @@
 = Details =
 원래는 플래너를 만드려고 했으나, 날짜별로 저장하고 로딩하는 알고리즘으로 프로그래밍하는게 너무 어려워서 간단한 음료수 자판기를 만들어 봤습니다.
 
-1. <img src=http://cfile204.uf.daum.net/image/197AF0344DDC9AED348D6E>
+1. http://www.lottelem.co.kr/ADM/uploadfile/%EC%8B%A0%ED%98%95PET%EC%9E%90%ED%8C%90%EA%B8%B02.jpg
 
 
  
