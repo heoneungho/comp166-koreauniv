@@ -67,12 +67,25 @@ public class MainUpDown extends UpDownGame {
                 
                 int nu = 0;
                 Scanner sc = new Scanner(System.in);
-                nu = sc.nextInt();
-                
-                while(nu != 1 && nu != 2) {
+                try {
+                	nu = sc.nextInt();
+                } catch (java.util.InputMismatchException ex) {
+                	System.out.println("");
+                	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
+                	err = true;
+                }
+
+                while(nu != 1 && nu != 2 && !err) {
                         System.out.println("잘못 입력 하셨습니다.");
                         System.out.print("게임을 하시려면 1을, 도움말을 보시려면 2를 입력하세요 : ");
-                        nu = sc.nextInt();
+                        try {
+                            nu = sc.nextInt();
+                        } catch (java.util.InputMismatchException ex) {
+                        	System.out.println("");
+                        	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
+                        	err = true;
+                        }
+
                 }
           
                 if(nu == 2) {
@@ -87,8 +100,14 @@ public class MainUpDown extends UpDownGame {
                   System.out.println("");
                   System.out.print("--준비가 되셨으면 1을 입력하여 게임을 시작합니다: ");
 
-                  while(nu != 1) {
-                	  nu = sc.nextInt();
+                  while(nu != 1 && !err) {
+                	  try{
+                		  nu = sc.nextInt();
+                	  } catch (java.util.InputMismatchException ex) {
+                      	System.out.println("");
+                    	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
+                    	err = true;
+                	  }
                   }
                 }
                 
@@ -103,12 +122,10 @@ public class MainUpDown extends UpDownGame {
                 	
                 	
                   
-                	while (alive == true) {
+                	while (alive == true && !err) {
                 		
                 		System.out.println("== Stage " + stage + " ==");
-                		
-                		
-                		
+
                 		
                 		switch(stage) {
 	                		
@@ -175,14 +192,14 @@ public class MainUpDown extends UpDownGame {
                 		}
 	                			
                              		
-                		if(clear == true) {
+                		if(clear) {
                 			System.out.println("== Stage " + stage + " 클리어!! ==");
                 			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
                 			System.out.println("");
                 			stage++;
                 			numofguesses = 0;
                 			clear = false;
-                		} else if (win == true) {
+                		} else if (win) {
                 			System.out.println("== Stage " + stage + " 클리어!! ==");
                 			System.out.println("-시도 횟수 : " + numofguesses + " -남은 기회 : " + life);
                 			System.out.println("");
@@ -200,9 +217,18 @@ public class MainUpDown extends UpDownGame {
                 			System.out.println("");
                 			System.out.print("-이어 하시려면 1을, 종료하시려면 아무 숫자나 입력하세요 :");
                 			
-                			int con = sc.nextInt();
+                			int con = 0;
                 			
-                			if(con == 1) { //컨티뉴 기능
+                			try{
+                				con = sc.nextInt();
+                			} catch (java.util.InputMismatchException ex) {
+                				System.out.println("");
+                              	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
+                            	err = true;
+                			}
+                			
+                			
+                			if(con == 1 && !err) { //컨티뉴 기능
                 				alive = true;
                 				if(stage == 1) {
                 					life = 5;
@@ -217,15 +243,24 @@ public class MainUpDown extends UpDownGame {
                 				}
                 				System.out.println("");
                 				numofguesses = 0;
-                			} else {
+                			} else if(!err) {
                 				System.out.println("");
                 				System.out.println("=게임을 종료합니다.=");
                 			}
                 		} 
+                		
+                		if(err) {
+                			break;
+                		}
                                                 
                 	} //while문 끝
+                	
                   
                 } //if문 끝
+                
+                if(err) {
+            		System.out.println("!! 에러로 게임을 종료합니다. !!");
+            	}
                 
         } //메인 메소드 끝
 
@@ -240,22 +275,29 @@ package upanddown;
 
 import java.util.Scanner;
 
-public class GameHelper {
+public class GameHelper extends UpDownGame {
         
     public int getInput() {
     	
         int Input = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("  =숫자를 입력하세요.=  ");
-        System.out.println("-찬스를 사용하시려면 0을 입력하세요.-");
-        Input = sc.nextInt();
-        
+        try {
+        	
+            System.out.println("  =숫자를 입력하세요.=  ");
+            System.out.println("-찬스를 사용하시려면 0을 입력하세요.-");
+            Input = sc.nextInt();
+        	
+        } catch (java.util.InputMismatchException ex) {
+        	System.out.println("");
+        	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
+        	err = true;
+        }
+
         return Input;
         
     } //함수 끝
         
 } //클래스 끝
-
 
 }}}
 
@@ -277,10 +319,9 @@ public class UpDownGame {
 	public static boolean win = false;
 	public static boolean chv = true;
 	public static int stage = 1; //라운드는 1부터
+	public static boolean err = false;
 	
-
 }
-
 
 
 }}}
@@ -454,7 +495,7 @@ public class Decide extends UpDownGame{
 	
 	public void dec(Chances ch, GameHelper helper) {
 		
-		while(life > 0 && clear == false && win == false) {
+		while(life > 0 && !clear && !win) {
 		
 			do {
 				
@@ -471,35 +512,42 @@ public class Decide extends UpDownGame{
 			
 			} while(guess > max || guess < min);
 			
-			if(guess == ans) {
-				if(stage == 5) {
-					win = true;
-				} else {
-					clear = true;
+			
+			if(!err) {
+				
+				if(guess == ans) {
+					if(stage == 5) {
+						win = true;
+					} else {
+						clear = true;
+					}
+					life--;
+				} else if(guess == 0 && chv) {
+					//찬스 사용!!
+					ch.pch();
+					chv = false;
+					System.out.println("");
+					numofguesses--;
+				} else if(guess == 0) {
+					System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
+					numofguesses--;
+				} else if(guess < ans) {
+					System.out.println("== Up!! ==");
+					min = guess;
+					life--;
+				} else if(guess == 9998) { //치트키
+					System.out.println(ans);
+					numofguesses--;
+				} else{
+					System.out.println("== Down!! ==");
+					max = guess;
+					life--;
 				}
-				life--;
-			} else if(guess == 0 && chv == true) {
-				//찬스 사용!!
-				ch.pch();
-				chv = false;
-				System.out.println("");
-				numofguesses--;
-			} else if(guess == 0) {
-				System.out.println("!! 찬스 기회를 모두 사용하여 사용 하실 수 없습니다. !!");
-				numofguesses--;
-			} else if(guess < ans ) {
-				System.out.println("== Up!! ==");
-				min = guess;
-				life--;
-			} else if(guess == 9998) { //치트키
-				System.out.println(ans);
-				numofguesses--;
-			} else{
-				System.out.println("== Down!! ==");
-				max = guess;
-				life--;
+			
+			} else if(err) {
+				break;
 			}
-		
+			
 			guess = 0;
 			numofguesses++;
 		
@@ -508,6 +556,7 @@ public class Decide extends UpDownGame{
 	}
 	
 }
+
 
 
 }}}
@@ -523,3 +572,5 @@ public class Decide extends UpDownGame{
 
 -기말고사 답안지에 썼던 것처럼 상속 관계 이용해서 변수들의 가독성을 높였습니다.
 + 자잘한 것들 살짝 수정
+
+-try catch 구문으로 숫자 입력받을 때 숫자 아닌거 들어오면 게임을 종료하도록 설정.
