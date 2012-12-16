@@ -73,7 +73,7 @@ class Dnode { // Dnode 클래스를 선언해줍니다. 같은 클래스 내에�
 		before=newprev;
 	}
 	
-	int time_hour() { // 시간을 리턴한다/
+	int time_hour() { // 시간을 리턴한다
 		return time_hour;
 	}
 	int time_minute() {
