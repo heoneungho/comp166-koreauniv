@@ -802,6 +802,75 @@ cf) 오버라이드
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+        void sleep(){
+        }
+        void roam(){
+        }
+}
+
+class Feline extends Animal{
+        void roam(){
+        }
+}
+
+class Lion extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Tiger extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Cat extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+
+class Hippo extends Animal{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Canine extends Animal{
+        void roam(){
+        }
+}
+
+class Wolf extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Dog extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
 
 }}}
  
@@ -1013,7 +1082,28 @@ class SimUnit {
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
 
+public class Calender {
+        public static void main(String[] args) {
+                Calendar c = Calendar.getInstance();
+                c.set(2004,0,7,15,40); // 현재 시각 설정하기
+                long day1 = c.getTimeInMillis(); // 밀리초 단위로 시간 표현
+                day1 += 1000*60*60;
+                
+                c.setTimeInMillis(day1); 
+                System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
+                
+                c.add(c.DATE, 35); // 35일 add
+                System.out.println("add 35 days " + c.getTime());
+                
+                c.roll(c.DATE, 35); 
+                System.out.println("roll 35 days " + c.getTime());
+                
+                c.set(c.DATE, 1); // 1로 날짜 설정
+                System.out.println("set to 1 " + c.getTime());
+        }
+}
 }}}
 
 *342p 집중토론* _요약_
@@ -1073,7 +1163,20 @@ constructor
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public void takeRisk() throws BadException { 
+     if (abandonAllHope){
+           throw new BadEXception(); 
+    }
+}
 
+public void crossFingers(){
+     try{
+               anObject.takeRisk();
+     } catch (BadException ex){
+        System.out.println("Aaargh!");
+        ex.printStackTrace();
+     }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
