@@ -749,12 +749,80 @@ public class GameHelper
  * 상속: 이 관계는 하위클래스가 상위클래스의 멤버를 물려받는다는 것을 의미합니다. 클래스의 멤버에는 인스턴스 변수와 메소드가 있습니다. 하위클래스는 상위클래스보다 더 구체적입니다. 
 
 
- * 다형성: 
+ * 다형성: 부모의 레퍼런스 변수가 자식을 가르키도록 하는 것 입니다.
 }}}
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
 
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+        void sleep(){
+        }
+        void roam(){
+        }
+}
+
+class Feline extends Animal{
+        void roam(){
+        }
+}
+
+class Lion extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Tiger extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Cat extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+
+class Hippo extends Animal{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Canine extends Animal{
+        void roam(){
+        }
+}
+
+class Wolf extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Dog extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
