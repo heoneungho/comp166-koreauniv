@@ -16,8 +16,610 @@
 
 Add your content here.  Format your content with:
 
-Dnode 클래스 : 메소드들을 서로 연결시켜 주는 클래스입니다.
+Dnode 클래스 : 프로그램의 시작과 끝을 알려주는 클래스입니다.
 
-MainForm 클래스 :  
+{{{
+class Dnode { // Dnode 클래스를 선언해줍니다. 같은 클래스 내에서만 접근가능하게 하기위해 private로 선언
+	private int number; // 자동차 번호판
+	private int time_hour,time_second,time_minute; // 주차 시간
+	private int price; // 가격
+	
+	private Dnode before,next; // 실행시 다음행동 이전행동을 연결해주는것.
+	
+	Dnode() { // 디노드 자신을 초기화
+		this(0,null,null,0,0,0,0);
+	}
+	
+	Dnode(int car_number,Dnode p,Dnode q,int time_hour,int time_minute,int time_second, int price) { // 생성자
+		this.number = car_number; // this를 쓰는 이유는 자기 자신의 변수를 호출하기 위해서임
+		this.before = p;
+		this.next = q;
+		this.time_hour = time_hour;
+		this.time_minute = time_minute;
+		this.time_second = time_second;
+		this.setPrice(price);
+	}
+
+	
+	public void set_number(int car_number ,int time_hour,int time_minute,int time_second, int price) { // 숫자관련된것을 설정하는 메소드
+		this.number=car_number; // 자동차 번호
+		this.time_hour = time_hour; // 시간중 시
+		this.time_minute = time_minute; // 시간중 분
+		this.time_second = time_second; // 시간중 초
+		this.setPrice(price); // 가격
+	}
+	
+	public void setNext(Dnode newnext) {
+		next=newnext;
+	}
+	
+	public void setBefore(Dnode newprev) {
+		before=newprev;
+	}
+	
+	int time_hour() { // 시간을 리턴한다/
+		return time_hour;
+	}
+	int time_minute() {
+		return time_minute;
+	}
+	int time_second() {
+		return time_second;
+	}
+	
+	int car_number() { // 번호판을 리턴한다
+		return number;
+	}
+	
+	public Dnode getNext() { // 게터, 세터
+		return next;
+	}
+	
+	public Dnode getBefore() {
+		return before;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+}
+}}}
+
+MainForm 클래스 : 
+
+{{{
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
+import java.awt.event.ActionListener;
+
+//  @author 2012190712
+
+public class MainForm extends JFrame { // 변수 선언
+	private JButton enterButton;
+	private JButton exitButton;
+	private JPanel jPanel1;
+	private JPanel jPanel2;
+	private JPanel jPanel3;
+	private JPanel jPanel4;
+	private JPanel jPanel5;
+	private JPanel parkingArea;
+
+	private JLabel sector1;
+	private JLabel sector2;
+	private JLabel sector3;
+	private JLabel sector4;
+	private JLabel sector5;
+	private JLabel sector6;
+	private JLabel sector7;
+	private JLabel sector8;
+	private JLabel ticketBox;
+
+	private JTextArea textArea;
+
+	Parking park= new Parking();
+	String car_number = "";
+
+
+	public MainForm() { // 레이아웃 구성
+		jPanel1 = new JPanel();
+		jPanel2 = new JPanel();
+		jPanel3 = new JPanel();
+		jPanel4 = new JPanel();
+		jPanel5 = new JPanel();
+
+		sector1 = new JLabel();
+		sector2 = new JLabel();
+		sector3 = new JLabel();
+		sector4 = new JLabel();
+		sector5 = new JLabel();
+		sector6 = new JLabel();
+		sector7 = new JLabel();
+		sector8 = new JLabel();
+
+		parkingArea = new JPanel();
+
+		enterButton = new JButton();
+		exitButton = new JButton();
+
+		ticketBox = new JLabel();
+		textArea = new JTextArea();
+
+		sector1.setText("1");		
+		sector1.setFont(new Font("Nanum Gothic", 0, 15));
+		sector2.setText("2");		
+		sector2.setFont(new Font("Nanum Gothic", 0, 15));
+		sector3.setText("3");		
+		sector3.setFont(new Font("Nanum Gothic", 0, 15));
+		sector4.setText("4");		
+		sector4.setFont(new Font("Nanum Gothic", 0, 15));
+		sector5.setText("5");		
+		sector5.setFont(new Font("Nanum Gothic", 0, 15));
+		sector6.setText("6");		
+		sector6.setFont(new Font("Nanum Gothic", 0, 15));
+		sector7.setText("7");		
+		sector7.setFont(new Font("Nanum Gothic", 0, 15));
+		sector8.setText("8");		
+		sector8.setFont(new Font("Nanum Gothic", 0, 15));
+
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // 닫기버튼
+
+		setBackground(new java.awt.Color(234, 234, 234));
+		parkingArea.setBackground(new java.awt.Color(234, 234, 234));
+
+		jPanel1.setBackground(new java.awt.Color(234, 234, 234));
+		jPanel2.setBackground(new java.awt.Color(234, 234, 234));
+		jPanel3.setBackground(new java.awt.Color(234, 234, 234));
+		jPanel4.setBackground(new java.awt.Color(234, 234, 234));
+		jPanel5.setBackground(new java.awt.Color(234, 234, 234));
+
+		initComponents();
+	}
+
+
+	private void initComponents() { // 레이아웃 설정
+		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+		jPanel1.setLayout(jPanel1Layout);
+		jPanel1Layout.setHorizontalGroup(
+				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel1Layout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addComponent(sector2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(sector1, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+								.addContainerGap())
+				);
+		jPanel1Layout.setVerticalGroup(
+				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(sector1, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(sector2, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap())
+				);
+		parkingArea.add(jPanel1);
+
+		GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
+		jPanel3.setLayout(jPanel3Layout);
+		jPanel3Layout.setHorizontalGroup(
+				jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel3Layout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addComponent(sector4, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+								.addComponent(sector3, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+								.addContainerGap())
+				);
+		jPanel3Layout.setVerticalGroup(
+				jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(sector3, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(sector4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap())
+				);
+		parkingArea.add(jPanel3);
+
+
+		GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
+		jPanel4.setLayout(jPanel4Layout);
+		jPanel4Layout.setHorizontalGroup(
+				jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel4Layout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addComponent(sector5, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+								.addComponent(sector6, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+								.addContainerGap())
+				);
+		jPanel4Layout.setVerticalGroup(
+				jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel4Layout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(sector5, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(sector6, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap())
+				);
+		parkingArea.add(jPanel4);
+
+		GroupLayout jPanel5Layout = new GroupLayout(jPanel5);
+		jPanel5.setLayout(jPanel5Layout);
+		jPanel5Layout.setHorizontalGroup(
+				jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel5Layout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addComponent(sector8, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+								.addComponent(sector7, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+								.addContainerGap())
+				);
+		jPanel5Layout.setVerticalGroup(
+				jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(sector7, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(sector8, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap())
+				);
+		parkingArea.add(jPanel5);
+
+		ticketBox.setBackground(new java.awt.Color(204, 204, 204));
+		ticketBox.setHorizontalAlignment(SwingConstants.CENTER);
+		ticketBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled2.png")));
+
+		textArea.setText("저희 착한주차장을 이용해주셔서 감사합니다.");
+		textArea.setEditable(false);
+		textArea.setFocusable(false);
+		textArea.setFont(new Font("Nanum Gothic", 0, 24));
+
+		exitButton.setFont(new Font("Synchro LET", 0, 13));
+		exitButton.setText("OUT");
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				exitButtonActionPerformed(evt);
+			}
+		});
+
+		enterButton.setFont(new Font("Synchro LET", 0, 13));
+		enterButton.setText("IN");
+		enterButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				enterButtonActionPerformed(evt);
+			}
+		});
+
+		GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
+		jPanel2.setLayout(jPanel2Layout);
+		jPanel2Layout.setHorizontalGroup(
+				jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel2Layout.createSequentialGroup()
+						.addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addGroup(jPanel2Layout.createSequentialGroup()
+										.addGap(146, 146, 146)
+										.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+										.addGap(145, 145, 145)
+										.addComponent(enterButton, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
+										.addGap(0, 0, Short.MAX_VALUE))
+										.addGroup(jPanel2Layout.createSequentialGroup()
+												.addContainerGap()
+												.addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+														.addGroup(jPanel2Layout.createSequentialGroup()
+																.addGap(6, 6, 6)
+																.addComponent(ticketBox, GroupLayout.PREFERRED_SIZE, 599, GroupLayout.PREFERRED_SIZE)
+																.addGap(0, 6, Short.MAX_VALUE))
+																.addComponent(textArea))))
+																.addContainerGap())
+				);
+		jPanel2Layout.setVerticalGroup(
+				jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel2Layout.createSequentialGroup()
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+						.addComponent(ticketBox)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+						.addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addComponent(enterButton)
+								.addComponent(exitButton))
+								.addGap(76, 76, 76))
+				);
+
+
+		GroupLayout layout = new GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+						.addComponent(parkingArea, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap())
+				);
+		layout.setVerticalGroup(
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+								.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+								.addComponent(parkingArea, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addContainerGap())
+				);
+
+		pack();
+	}
+
+
+	private void enterButtonActionPerformed(ActionEvent evt) { // 엔터버튼 클릭시 실행되는 메소드
+		try{
+			car_number = JOptionPane.showInputDialog("차량 번호를 입력하세요");
+			if (car_number.length() != 4) {
+				JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
+			} else {
+				if (park.check(Integer.parseInt(car_number))) {
+					JOptionPane.showMessageDialog(null, "차량 번호가 중복됩니다.");
+				} else {
+					if (park.isFull()) {
+						JOptionPane.showMessageDialog(null, "주차공간이 없습니다. 잠시만 기다려 주세요.");
+					} else {
+						int option = JOptionPane.showConfirmDialog(null, "선불 금액을 내시겠습니까?", null, JOptionPane.YES_NO_OPTION);
+						switch (option) {
+						case JOptionPane.YES_OPTION:
+							String price = JOptionPane.showInputDialog("금액을 입력해주십시오.");
+							setPosition(car_number, Integer.parseInt(price));
+							break;
+						case JOptionPane.NO_OPTION: case JOptionPane.CLOSED_OPTION:
+							setPosition(car_number, 0);
+							break;
+						}
+					}
+				}
+			}
+		} catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
+		}
+	}
+	
+
+
+	private void exitButtonActionPerformed(ActionEvent evt) { // exit버튼 클릭시 실행되는 메소드
+		try{
+			car_number = JOptionPane.showInputDialog("차량 번호 4자리를 입력하세요");
+			if (car_number.length() != 4) {
+				JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
+			} else {
+				if(park.isEmpty())
+					JOptionPane.showMessageDialog(null, "더 이상 나갈 차가 없습니다.");
+				else {
+					if(park.check(Integer.parseInt(car_number))) {
+						removePosition(car_number);	
+					} else {
+						JOptionPane.showMessageDialog(null, "그런 차는 주차되어 있지 않습니다");
+					}
+				}
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
+		} 
+	}
+
+
+	private void setPosition(String car_number, int price) { // 주차장에 차량을 추가하는 메소드
+		park.Add(Integer.parseInt(car_number), price);
+		textArea.setText("'" + car_number + "' 님 어서오십시오.");
+		if (sector1.getText() == "1") {
+			sector1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector1.setText(car_number);
+		} else if (sector2.getText() == "2") {
+			sector2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector2.setText(car_number);
+		} else if (sector3.getText() == "3") {
+			sector3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector3.setText(car_number);
+		} else if (sector4.getText() == "4") {
+			sector4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector4.setText(car_number);
+		} else if (sector5.getText() == "5") {
+			sector5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector5.setText(car_number);
+		} else if (sector6.getText() == "6") {
+			sector6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector6.setText(car_number);
+		} else if (sector7.getText() == "7") {
+			sector7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector7.setText(car_number);
+		} else if (sector8.getText() == "8") {
+			sector8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
+			sector8.setText(car_number);
+		}
+	}
+
+
+	private void removePosition(String car_number) { // 주차장의 차량을 제거하는 메소드
+		textArea.setText("'" + car_number + "' 님 안녕히가십시오.\n"+ park.Delete(Integer.parseInt(car_number)));
+		if (sector1.getText().equals(car_number)) {
+			sector1.setIcon(null);
+			sector1.setText("1");
+		} else if (sector2.getText().equals(car_number)) {
+			sector2.setIcon(null);
+			sector2.setText("2");
+		} else if (sector3.getText().equals(car_number)) {
+			sector3.setIcon(null);
+			sector3.setText("3");
+		} else if (sector4.getText().equals(car_number)) {
+			sector4.setIcon(null);
+			sector4.setText("4");
+		} else if (sector5.getText().equals(car_number)) {
+			sector5.setIcon(null);
+			sector5.setText("5");
+		} else if (sector6.getText().equals(car_number)) {
+			sector6.setIcon(null);
+			sector6.setText("6");
+		} else if (sector7.getText().equals(car_number)) {
+			sector7.setIcon(null);
+			sector7.setText("7");
+		} else if (sector8.getText().equals(car_number)) {
+			sector8.setIcon(null);
+			sector8.setText("8");
+		}
+	}
+
+
+	public static void main(String args[]) { // 프로그램 main 부분, 프로그램 창 같은걸 깔끔하게 해줌, 트라이캣치부분은 없어도 됩니다.
+		try {
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (InstantiationException ex) {
+			Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IllegalAccessException ex) {
+			Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (UnsupportedLookAndFeelException ex) {
+			Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new MainForm().setVisible(true);
+			}
+		});
+	}
+}
+}}} 
 
 Parking 클래스 : 
+
+{{{
+import java.util.Calendar;
+
+
+public class Parking { // 주차공간 하나에 대한 객체, 번호판, 시간, 요금정보를 담고 있습니다.
+	private Dnode header,tailer;
+	private Calendar time;
+	private int car_count;
+	
+	public Parking() {
+		header=new Dnode();
+		tailer = new Dnode();
+		header.setNext(tailer);
+		header.setBefore(null);
+		tailer.setBefore(header);
+		tailer.setNext(null);
+		car_count = 0;
+	}
+
+	public boolean isEmpty() {
+		if(header.getNext()==tailer) {
+			return true;
+		}
+		return false;
+	}
+	public boolean isFull() {
+		if(car_count == 8) {
+			return true;
+		}
+	return false;
+	}
+	
+	public boolean check(int car_number) {
+		Dnode check = header.getNext();
+		while(check!=tailer) {
+			if(check.car_number()==car_number) {
+				return true;
+			}
+			check=check.getNext();
+		}
+		return false;
+	}
+	
+
+	public void Add(int car_number, int price) { // 주차공간에 자동차 추가
+		car_count++;
+		time = Calendar.getInstance();
+		if(header.getNext()==tailer) {
+			Dnode start = new Dnode(car_number,header,tailer,time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE),time.get(Calendar.SECOND), price);
+			header.setNext(start);
+			tailer.setBefore(start);
+		} else {
+			Dnode check = header.getNext();
+			while(check.getNext()!=tailer) {
+				check = check.getNext();
+			}
+			Dnode newnode = new Dnode(car_number,check,tailer,time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE),time.get(Calendar.SECOND), price);
+			check.setNext(newnode);
+			tailer.setBefore(newnode);
+		}
+	}
+
+
+	public String Delete(int car_number) { // 주차공간에서 자동차 삭제
+		car_count--;
+		int minute ,second, def, pre_price, price, remain_price;
+		Dnode delete_node = header.getNext();
+		time = Calendar.getInstance();
+		while(delete_node != tailer) {
+			if(delete_node.car_number()==car_number) {
+				minute = time.get(Calendar.MINUTE) - delete_node.time_minute();
+				second = time.get(Calendar.SECOND) - delete_node.time_second();
+				def = minute*60+second;
+				minute = def%3600/60;
+				second = def%3600%60;
+				price = def*10; 
+				pre_price = delete_node.getPrice();
+				remain_price = pre_price - price;
+				Dnode Prev = delete_node.getBefore();
+				Dnode Next = delete_node.getNext();
+				Prev.setNext(Next);
+				Next.setBefore(Prev);
+				if (remain_price < 0) {
+					return "이용시간은 "+ minute + "분 " + second + "초 입니다.\n" +
+							"요금은 " + price + "원 입니다.\n" +
+							"추가로 내실 금액은 " + -remain_price + "원 입니다.\n" +	
+							"저희 주차장을 이용해 주셔서 감사합니다.";
+				} else {
+					return "이용시간은 "+ minute + "분 " + second + "초 입니다.\n" +
+							"요금은 " + price + "원 입니다.\n" +
+							"돌려 받으 실 금액은 " + remain_price + "원 입니다.\n" +	
+							"저희 주차장을 이용해 주셔서 감사합니다.";
+				}
+			}
+			delete_node=delete_node.getNext();
+		}
+		return null;
+	}
+}
+}}}
