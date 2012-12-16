@@ -159,13 +159,13 @@ public class MainForm extends JFrame { // 변수 선언
 
 
 	public MainForm() { // 레이아웃 구성
-		jPanel1 = new JPanel();
-		jPanel2 = new JPanel();
-		jPanel3 = new JPanel();
-		jPanel4 = new JPanel();
-		jPanel5 = new JPanel();
+		jPanel1 = new JPanel(); // 섹터 1,2
+		jPanel2 = new JPanel(); // 왼쪽화면, 주차이미지와 텍스트
+		jPanel3 = new JPanel(); // 섹터 3,4
+		jPanel4 = new JPanel(); // 섹터 5,6
+		jPanel5 = new JPanel(); // 섹터 7.8
 
-		sector1 = new JLabel();
+		sector1 = new JLabel(); // 주차공간
 		sector2 = new JLabel();
 		sector3 = new JLabel();
 		sector4 = new JLabel();
@@ -182,7 +182,7 @@ public class MainForm extends JFrame { // 변수 선언
 		ticketBox = new JLabel();
 		textArea = new JTextArea();
 
-		sector1.setText("1");		
+		sector1.setText("1");
 		sector1.setFont(new Font("Nanum Gothic", 0, 15));
 		sector2.setText("2");		
 		sector2.setFont(new Font("Nanum Gothic", 0, 15));
