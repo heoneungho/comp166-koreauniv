@@ -1362,20 +1362,20 @@ arrrgh
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수: 힙은 모든 객체가 사는 곳으로써 객체속의 변수(인스턴스 변수)는 그 객체속에서 삽니다.
+ * 스택에서의 변수: 스택은 메소드와 지역변수가 사는 곳으로 스택 프레임에 해당 메소드와 지역변수가 들어 있습니다.
+ * 생성자: 생성자는 객체를 생성할 때 실행되는 코드가 들어있으므로, 객체 만들기 전에 무언가 필요하다면 생성자를 이용해 설정할 수 있다.
+ * 널 레퍼런스: 널 레퍼런스는 리모컨의 기능을 해제하는 것과 같으므로, 객체를 제거할때 쓰일 수 있다.
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 객체를 지원하는 역할을 하며 보통 객체가 살아있는 동안 항상 객체와 함께 합니다. 객체와 함게 힙에서 살며 객체의 상태를 저장합니다.
+ * 지역 변수:  메소드에 있는 알고리즘을 작동시키려면 메소드 안에 지역 변수를 이용해야 한다. 그 메소드가 끝나면 지역변수 또한 없어지게 된다.
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
-
+import java.util.*;class V2Radiator {        V2Radiator(ArrayList<SimUnit> list)     { // ArrayList를 넘겨줍니다.                for(int x = 5; x < 5 ; x++){                        list.add(new SimUnit("V2Radiator")); // "V2Radiator" 객체를 추가합니다.                }        }}// 불필요하게 V3를 호출할 때마다 V2생성자를 호출할 때 ArrayList를 전달하는 것을 막기위해 상속을 안합니다.class V3Radiator {        V3Radiator(ArrayList<SimUnit> lglist){                //super(lglist)를 빼줍니다.                for(int g = 0; g < 10 ; g++){                        lglist.add(new SimUnit("V3Radiator"));//"V3Radiator" 객체를 추가합니다.                }        }}class RetentionBot{        RetentionBot(ArrayList<SimUnit> rlist){                rlist.add(new SimUnit("Rention")); // "Rention" 객체를 추가합니다.        }}public class TestLifeSupportSim{        public static void main(String[] args){                ArrayList<SimUnit> aList = new ArrayList<SimUnit>(); // ArrayList를 생성합니다.                V2Radiator v2 = new V2Radiator(aList);// V2Radiator 객체를  생성합니다.                V3Radiator v3 = new V3Radiator(aList);// V3Radiator 객체를  생성합니다.                for(int z = 0 ; z < 20 ; z++){                        RetentionBot ret = new RetentionBot(aList); //RententionBot객체를 생성합니다.                }        }}class SimUnit {        String botType;        SimUnit(String type){                botType = type;        }        int powerUse(){                if("Retention".equals(botType)){                        return 2;                                       }else{                        return 4;                }        }}
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
