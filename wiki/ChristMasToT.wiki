@@ -24,3 +24,85 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+
+소스 여기다 적나 ??
+
+import sun.audio.*;
+import javax.swing.*;
+import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class JongHa_1 extends Frame implements ActionListener {
+	private Button playbtn, stopbtn;
+	private AudioStream audio = null;
+	Image img;
+	ImageIcon ico;
+	
+	public void paintComponent(Graphics g)	{
+		Image image = new ImageIcon("Tree.jpg").getImage();
+		g.drawImage(image,3,4,this);
+	}
+		
+	public static void main(String[] args)	{
+		new JongHa_1();
+	}
+
+	public void actionPerformed(ActionEvent e)	{
+		if(e.getSource() == playbtn)	{
+			play();
+		}
+		else if(e.getSource() == stopbtn)	{
+			stop();
+		}
+		}
+	public void play()	{
+		try	{
+			System.out.println("Play");
+			String Filename = "C:\\MC2.wav";
+			
+			InputStream in = new FileInputStream(Filename);
+			audio = new AudioStream(in);
+			AudioPlayer.player.start(audio);
+			
+		} catch(Exception ex)	{
+			ex.printStackTrace();
+		}
+		}
+	public void stop()	{
+		System.out.println("Stop");
+		if(audio != null)	{
+			AudioPlayer.player.stop(audio);
+			audio = null;
+		}
+		}
+	public void paint(Graphics g)
+	  {
+	   if (img != null)
+	    g.drawImage(img, 10, 0, this);
+	  }
+	
+	public JongHa_1()	{
+		super("PlayMusic");
+		playbtn = new Button("Play");
+		stopbtn = new Button("Stop");
+		Panel pane = new Panel();
+		pane.add(playbtn);
+		pane.add(stopbtn);
+		playbtn.addActionListener(this);
+		stopbtn.addActionListener(this);
+		img = Toolkit.getDefaultToolkit().getImage("tree.jpg");
+		this.add(pane, "South");
+		this.setSize(200,240);
+		this.setVisible(true);
+		this.addWindowListener(new WindowAdapter()
+		  {
+			   public void windowClosing(WindowEvent evt)
+			   {
+			    dispose();
+			    System.exit(0);
+			   }
+		});
+	}
+}
