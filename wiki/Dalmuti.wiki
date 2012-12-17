@@ -642,3 +642,11 @@ public class Screen
 }
 
 }}}
+
+
+
+= 참고 =
+
+자바 API 문서를 참조했습니다. Collection.shffle, Collection.swap 이나 dispose 같은 것들은 
+
+http://xrath.com/javase/ko/6/docs/ko/api/index.html?overview-summary.html
