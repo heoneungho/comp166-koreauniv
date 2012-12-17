@@ -2124,4 +2124,4 @@ http://comp166-koreauniv.googlecode.com/files/hhh.JPG
 
 <컴퓨터교육과 2012190723 유영훈 님의 Reading Room Manager 소스코드>
 
-http://comp166-koreauniv.googlecode.com/files/ReadingRoomManager_2012190723_유영훈.zip
+http://comp166-koreauniv.googlecode.com/files/ReadingRoomManager_2012190723.zip
