@@ -446,6 +446,9 @@ writeFile() {} // 파일에 독서실의 상황 및 내역을 써 넣음
 
 
 *9. 현재까지 기록을 읽는 클래스(readLog)*
+
+http://comp166-koreauniv.googlecode.com/files/rL.jpg
+
 {{{
 public class readLog {
 
