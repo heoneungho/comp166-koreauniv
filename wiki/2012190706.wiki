@@ -1375,6 +1375,61 @@ arrrgh
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+package ch9;
+
+
+
+import java.util.*;
+
+class V2Radiator {
+	V2Radiator(ArrayList<SimUnit> list)	{ //Simunit 유형의 어레이 리스트를 이용합니다.
+		for(int x = 0; x < 5 ; x++){ // for문을 이용해 5번 반복시킵니다.
+			list.add(new SimUnit("V2Radiator")); // V2Radiator객체를 list에 추가시킵니다.
+		}
+	}
+}
+
+
+class V3Radiator { // extends V2Radiator 를 지워서 불필요하게 상속되는 것을 막습니다.
+	V3Radiator(ArrayList<SimUnit> lglist){ //SimUnit 유형의 어레이 리스트를 이용합니다.
+		//super(lglist); 가 없어야 합니다.
+		for(int g = 0; g < 10 ; g++){ //for 문을 이용해 10번 반복합니다.
+			lglist.add(new SimUnit("V3Radiator")); //V3Radiator객체를 lglist에 추가시킵니다.
+		}
+	}
+}
+
+class RetentionBot{
+	RetentionBot(ArrayList<SimUnit> rlist){
+		rlist.add(new SimUnit("Rention")); // Rention 객체를 rlist에 추가시킵니다.
+	}
+}
+
+public class TestLifeSupportSim{
+	public static void main(String[] args){
+		ArrayList<SimUnit> aList = new ArrayList<SimUnit>(); // aList 라는 SimUnit유형의 어레이 리스트를 만듭니다.
+		V2Radiator v2 = new V2Radiator(aList);// v2 라는 V2Radiator 객체를  민듭니다.
+		V3Radiator v3 = new V3Radiator(aList);// v3 라는 V3Radiator 객체를  만듭니다.
+		for(int z = 0 ; z < 20 ; z++){
+			RetentionBot ret = new RetentionBot(aList); //ret라는 RententionBot 객체를 만듭니다.
+		}
+	}
+}
+
+class SimUnit {
+	String botType;
+	SimUnit(String type){
+		botType = type;
+	}
+	int powerUse(){
+		if("Retention".equals(botType)){
+			return 2;  // botType 값이 Retention 이면 2를 반홥합니다.                     
+		}else{
+			return 4; // 아니라면 4를 반환합니다.
+		}
+	}
+}
+
 
 
 }}}
