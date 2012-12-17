@@ -1332,6 +1332,7 @@ class DotComBust
 
 {{{
 // Animal 클래스의 계층 구조입니다.
+// Animal이 상위 클래스입니다.
 class Animal {
 	String picture;
 	boolean food;
