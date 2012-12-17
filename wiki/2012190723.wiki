@@ -192,7 +192,7 @@ class GuessGame {
 		p3=new Player();
 		p4=new Player();
 
-		int guessp1=0;
+		int guessp1=0; // 각 객체가 찍은 숫자를 저장하기위한 변수입니다.
 		int guessp2=0;
 		int guessp3=0;
 		int guessp4=0;
@@ -214,7 +214,7 @@ class GuessGame {
 			p4.guess();
 
 			guessp1=p1.number;
-			System.out.println("1번 선수가 찍은 숫자:"+guessp1);
+			System.out.println("1번 선수가 찍은 숫자:"+guessp1); // 각 선수가 찍은 숫자를 알아냅니다.
 
 			guessp2=p2.number;
 			System.out.println("2번 선수가 찍은 숫자:"+guessp2);
@@ -255,6 +255,7 @@ class GuessGame {
 	}
 }
 
+// Player 클래스입니다.
 class Player{
 	int number=0;
 
@@ -264,6 +265,7 @@ class Player{
 	}
 }
 
+// GameLauncher 클래스입니다.
 public class GameLauncher{
 	public static void main (String[]args){
 		GuessGame game=new GuessGame();
