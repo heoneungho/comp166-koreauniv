@@ -20,7 +20,11 @@ http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
  
  - OS: Microsoft Windows XP Professional KN SP3 (32-bit)
 
- - JAVA: 
+ - Eclipse IDE for Java Developers
+
+ - Version: 1.5.1.20121004-1506
+
+ - Build id: 20121004-1855
 
 || *개발기간* ||
 
