@@ -22,6 +22,10 @@ http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
 
  - JAVA: 
 
+|| *개발기간* ||
+
+ *2012년 10월* 
+
 = Background&Details&Outline =
 
 
