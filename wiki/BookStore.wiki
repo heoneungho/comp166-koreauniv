@@ -79,7 +79,7 @@ class BookInfo implements Serializable
 }}}	 
 	 
 	 
-*BookField 클래스*	 
+BookField 클래스	 
 {{{
 class BookField//검색시 책분야를 선택하기위해 사용되는 클래스
 {
@@ -140,7 +140,7 @@ class bookFrame extends JFrame{
 	}
 }
 }}}
-BookStore 클래스 메인함수가있음
+Bookstore 클래스 메인함수가있음
 {{{
 class BookStore {
 	
