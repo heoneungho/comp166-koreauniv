@@ -1,4 +1,5 @@
 #summary 이성호천재
+#labels i
 
 <wiki:toc max_depth="1" />
 
@@ -676,7 +677,48 @@ public static void main(String[] args){
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
-
+public class Animal{
+ char picture;
+ int food
+ int boudaries;
+ int location;
+ boolean hunger;
+ void sound(){ }
+ void eat(){ }
+ void sleep(){ }
+ void roam(){ }
+}
+class Feline extends Animal{
+ void roam(){ }
+ void sleep(){ }
+}
+class Hippo extends Animal{
+ void sound(){ }
+ void eat(){ }
+}
+class Lion extends Feline{
+ void sound(){ }
+ void eat(){ }
+}
+class Tiger extends Feline{
+ void sound(){ }
+ void eat(){ }
+}
+class Cat extends Feline{
+ void sound(){ }
+ void eat(){ }
+}
+class Canine extends Animal{
+ void roam(){ }
+}
+class Wolf extends Canine{
+ void sound(){ }
+ void eat(){ }
+}
+class Dog extends Canine{
+ void sound(){ }
+ void eat(){ }
+}
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
