@@ -646,21 +646,25 @@ public class Screen
 
 = 스크린샷 =
 
-시작 화면 입니다.
+*시작 화면 입니다.
 http://comp166-koreauniv.googlecode.com/files/Dal1.JPG
 
-게임 진행 화면입니다.
+*게임 진행 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/Dal2.JPG
 
-
+*음수 장수의 카드를 내려놓을 때
 http://comp166-koreauniv.googlecode.com/files/Dal3.JPG
 
+*이상한 숫자의 카드를 내려놓을 때
 http://comp166-koreauniv.googlecode.com/files/Dal4.JPG
-j
+
+*모든 카드 장수를 합친 그 숫자의 카드보다 많이 내려놓을 때
 http://comp166-koreauniv.googlecode.com/files/Dal5.JPG
 
+*가지고 있는 장수보다 많은 수의 카드를 사용하려 할 때
 http://comp166-koreauniv.googlecode.com/files/Dal6.JPG
 
+*게임 끝날 때 화면
 http://comp166-koreauniv.googlecode.com/files/Dal7.JPG
 
 
