@@ -651,7 +651,66 @@ public static void main(String[] args){
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+import java.io.*;
+class GameHelper{ // 게임헬퍼 클래스 선언
+        public String getUserInput(String prompt){
+                String inputLine=null;
+                System.out.print(prompt+" ");
+                try{
+                        BufferedReader is=new BufferedReader(new InputStreamReader(System.in));
+                        inputLine=is.readLine();
+                        if(inputLine.length()==0) return null;
+                }catch(IOException e){
+                        System.out.println("IOexception: "+e);
+                }
+                return inputLine;
 
+        }
+}
+
+public class SimpleDotCom { // 닷컴 클래스 선언
+        int[] locationCells;
+        int numOfHits=0;
+                public void setLocationCells(int[] locs){
+                locationCells=locs;
+        }
+        public String checkYourself(String stringGuess){ // 히트상태인지 체크한다
+                int guess=Integer.parseInt(stringGuess);
+                String result="miss";
+                for(int i=0;i<locationCells.length;i++){
+                        if(guess==locationCells[i]){
+                                result="hit";
+                                locationCells[i]=-1;
+                                numOfHits++;
+                                break;
+                        }
+                }
+                if(numOfHits==locationCells.length)result="kill";
+                System.out.println(result);
+                return result;
+        }
+}
+
+class SimpleDotComTestDrive{ // 테스트클래스 선언
+        public static void main(String [] args){
+                int numOfGuesses=0;
+                                GameHelper helper= new GameHelper();
+                                SimpleDotCom theDotCom = new SimpleDotCom(); // 닷컴객체 생성
+                                int randomNum= (int)(Math.random()*5);
+                                int [] locations={randomNum,randomNum+1,randomNum+2};
+                                theDotCom.setLocationCells(locations);
+                                boolean isAlive=true;
+                                while(isAlive==true){
+                                        String guess = helper.getUserInput("enter a number");
+                                        String result= theDotCom.checkYourself(guess);
+                                        numOfGuesses++;
+                                if(result.equals("kill")){
+                                        isAlive=false;
+                                        System.out.println(numOfGuesses + "guesses");
+                                }
+                                }
+        }
+}
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
