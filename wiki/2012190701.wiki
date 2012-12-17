@@ -1648,6 +1648,64 @@ public class MiniMiniMusicApp
 
 {{{
 
+
+import javax.sound.midi.*;
+
+
+public class MiniMusicCmdLine //첫번째
+{
+	public static void main(String[] args)
+	{
+		MiniMusicCmdLine mini = new MiniMusicCmdLine();//객체 생성
+		
+		if(args.length < 2 )//input숫자의 개수가 2개보다 작으면
+			System.out.println("악기와 음 높이르 ㄹ지정하는 인자를 입력하세요.");
+		else
+		{
+			int instrument = Integer.parseInt(args[0]);//악기 설정
+			int note = Integer.parseInt(args[1]);//노트 설정
+			mini.play(instrument,note);//play 메소드 실행하면서 인자로 넘겨줍니다.
+			
+		}
+	}//main 끝
+	
+	public void play(int instrument, int note)
+	{
+		try
+		{
+			Sequencer player = MidiSystem.getSequencer();//시퀀서를 생성합니다.
+			player.open();//open 하지 않으면 실행할 수 없습니다.
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+			Track track = seq.createTrack();//track 을 생성합니다.
+			
+			MidiEvent event = null;//event 생성
+			
+			ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+		}
+		
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+}
+
+
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
