@@ -425,6 +425,9 @@ readdata(){}// 독서실의 상황 및 내역을 읽어옴
 
 
 *8. 데이터를 파일에 저장하는 클래스(writeFile)*
+
+http://comp166-koreauniv.googlecode.com/files/wF.jpg
+
 {{{
 public class writeFile {
 
