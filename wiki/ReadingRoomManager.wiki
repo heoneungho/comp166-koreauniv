@@ -14,15 +14,13 @@ http://comp166-koreauniv.googlecode.com/files/Intro1.JPG
 
 || *개발환경* ||
 
-
  - Intel(R) Core(TM)2 DUO CPU E7200 @ 2.53GHz
  
  - 2.53GHz, 2.00GB RAM
  
  - OS: Microsoft Windows XP Professional KN SP3 (32-bit)
 
- - Eclipse IDE for Java Developers (Version: 1.5.1)
-
+ - Eclipse IDE for Java Developers ( Version: 1.5.1 )
 
 || *개발기간* ||
 
