@@ -123,6 +123,9 @@ http://comp166-koreauniv.googlecode.com/files/이용내역.JPG
 
 *5)클래스/인터페이스 설정*
 
+http://comp166-koreauniv.googlecode.com/files/계승다이어그램.JPG
+
+
 *1. 메인 클래스(mainYoungHoon)*
 {{{
 public class mainYoungHoon{
