@@ -889,7 +889,35 @@ public class Calender{
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{ // 클래스 선언
 
+  static{
+    System.out.println("super static block");
+  }
+
+  StaticSuper{
+    System.out.println(
+      "super constructor");
+  }
+}
+
+public class StaticTests extends StaticSuper{ // 메소드 확장
+  static int rand;
+
+  static{
+    rand = (int) (Math.random() * 6);
+    System.out.println("static block " + rand);
+  }
+
+  staticTests(){
+    System.out.println("constructor");
+  }
+
+  public static void main(String [] args){ // 메인메소드
+    System.out.println("in main");
+    StaticTests st = new StaticTests();
+  }
+}
 }}}
 
 = 11. 위험한 행동:예외처리  =
