@@ -2012,15 +2012,18 @@ http://comp166-koreauniv.googlecode.com/files/ddd.JPG
 
 http://comp166-koreauniv.googlecode.com/files/leave.jpg
 
-*6 - 2. 실습실에서 실행 화면*
+*6 - 2. 집에서 실행 화면*
 
 http://comp166-koreauniv.googlecode.com/files/eee.JPG
 
+7) *퇴실이후 메인 창입니다.*
+
+- 독서실 내역 칸에 퇴실 내역이 추가되었습니다.
 
 *1-7. 실습실에서 실행 화면*
-- 퇴실 이후 메인 창
 
 http://comp166-koreauniv.googlecode.com/files/amain.jpg
+
 
 = Report(통계/느낀점/참고문헌) =
 
