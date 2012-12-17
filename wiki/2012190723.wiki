@@ -676,6 +676,7 @@ class SimpleDotCom { //SimpleDotCom 클래스를 생성합니다.
 	}
 }
 
+// 테스트 드라이브 클래스입니다.
 public class SimpleDotComTestDrive { 
 
 	public static void main(String[] args) {
@@ -936,7 +937,7 @@ class SimpleDotCom { // SimpleDotCom클래스를 생성합니다.
 
 {{{
 // 세번째 옵션을 구현한 코드입니다.
-import java.util.ArrayList;
+import java.util.ArrayList; // ArrayList를 이용합니다.
 
 public class DotCom
 {
