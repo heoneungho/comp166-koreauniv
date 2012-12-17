@@ -1440,6 +1440,7 @@ public class logWindow extends JFrame implements ActionListener, ItemListener {
 
 ===============================================================================================================
 
+
 /* 환경 설정을 위한 config 클래스입니다. */
 
 import java.awt.*;
@@ -1466,6 +1467,7 @@ public class config extends JFrame implements ActionListener {
 	JPanel pan2;
 	JPanel pan3;
 
+	// TextField가 여러개 쓰일 것에 대비해 12개 생성했습니다.
 	JTextField tf0;
 	JTextField tf1;
 	JTextField tf10;
@@ -1563,7 +1565,6 @@ public class config extends JFrame implements ActionListener {
 
 	}
 }
-
 
 
 ===============================================================================================================
