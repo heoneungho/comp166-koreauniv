@@ -645,7 +645,77 @@ public static void main(String[] args){
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+import java.io.*;public class GameHelper { // 게임헬퍼 클래스
+        public String getUserInput (String prompt){
+                String inputLine = null;
+                System.out.print(prompt + " ");
+                        try{
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if (inputLine.length() == 0)
+                                 return "a";
+                } catch(IOException e){
+                        System.out.println("IOException: " + e);
+                }
+                return inputLine;
+                }
+        }
 
+public class SimpleDotComTestDrive {
+        public static void main(String[] args){
+                                                int numOfGuesses=0;
+                                GameHelper helper = new GameHelper();
+                                SimpleDotCom theDotCom = new SimpleDotCom();
+                                int randomNum = (int) (Math.random() * 5);
+                                int[] locations = {randomNum, randomNum+1, randomNum+2};
+                                boolean[] hitCells = new boolean[3]; // 새로 배열을 만들어 줍니다. 불린배열로 만듭니다.
+                                theDotCom.sethitCells(hitCells);
+                                theDotCom.setLocationCells(locations); // 닷컴 클래스로 새로만든 배열을 배열을 넘겨줍니다
+                                boolean isAlive = true;
+                                                while(isAlive == true){
+                                                        String guess = "a";
+                                                        while(guess == "a") // 입력값이 없는 경우를 대비하여 getUserInput 메소드에서의 리턴값에 따라 다시 입력값을 받도록 함
+                                                        {
+                                                        guess = helper.getUserInput("enter a number");
+                                                        }
+                                                        String result = theDotCom.checkYourself(guess);
+                                                        numOfGuesses++;
+                                                        if(result.equals("kill")){
+                                                                isAlive = false;
+                                                                System.out.println(numOfGuesses + "guesses");
+                                                        }
+                                                }
+        }
+}
+
+public class SimpleDotCom{
+        int[] locationCells;
+        boolean[] hitCells = new boolean[3];
+                int numOfHits = 0;
+                public void setLocationCells(int[] locs){
+                                locationCells = locs;
+                }
+                public void sethitCells(boolean[] shc){ //새로 만든 메소드로 불린 배열을 받아옵니다
+                        hitCells = shc;
+                }
+                public String checkYourself(String stringGuess){
+                        int guess = Integer.parseInt(stringGuess);
+                        String result = "miss";
+                        for(int i = 0; i < locationCells.length; i++){
+                                if(guess == locationCells[i] && hitCells[i]!=true){ //이미 맞춘 배열인지 확인합니다
+                                result = "hit";
+                                numOfHits++;
+                                hitCells[i] = true; // 맞춘 배열이기때문에 불린 값을 트루로 바꿔줍니다
+                                break;
+                        }
+                        }
+                        if (numOfHits == locationCells.length){
+                        result = "kill";
+                        }
+                        System.out.println(result);
+                        return result;
+                        }
+}
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
