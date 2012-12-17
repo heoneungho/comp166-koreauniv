@@ -1967,11 +1967,19 @@ http://comp166-koreauniv.googlecode.com/files/enter.jpg
 
 http://comp166-koreauniv.googlecode.com/files/bbb.JPG
 
+3) *입실 이후 메인 창입니다.*
 
-*1-3. 실습실에서 실행 화면*
-- 입실 이후 메인 창
+- 입실자가 자리에 앉았으므로 자리에는 회원 번호가 빨간색으로 표시됩니다. 
+
+- 밑에 독서실 이용 내역 칸에는 회원이 언제 몇 번 자리에 입실했는지 표시됩니다.
+
+*3 - 1. 실습실에서 실행 화면*
 
 http://comp166-koreauniv.googlecode.com/files/afe.jpg
+
+*3 - 2. 집에서 실행 화면*
+
+http://comp166-koreauniv.googlecode.com/files/ccc.jpg
 
 *1-4. 실습실에서 실행 화면*
 - 독서실 이용내역보기
