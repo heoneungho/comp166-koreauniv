@@ -1,44 +1,536 @@
 #summary 2012190703 김민형
-= Introduction =
 
-피자를 주문하는 프로그램입니다. 인터넷이 발달한 현재는 피자 주문을 인터넷으로도 할 수 있습니다. 주문 사이트에 접속을 하면 먼저 자신의 이름과 전화번호를 적습니다. 그리고 피자의 도우 및 토핑을 직접 선택합니다. 그리고 크기 및 수량도 선택합니다. 필요한 음료수의 종류 및 수량도 선택합니다. 그렇게 선택을 하고 나면 자동적으로 총 선택한 가격이 계산됩니다. 그 후 고객은 자신이 가지고 있는 할인 카드를 선택하거나 없으면 선택하지 않으면 됩니다. 그리고 결제수단을 카드로 할 것인지 돈으로 할 것인지 선택합니다. 할인 카드까지 선택하면 최종 결제 가격이 계산되고 고객은 최종 배송지를 적습니다. 이렇게 피자 주문이 완료됩니다.
+피자를 주문하는 프로그램입니다. 피자의 사이즈를 선택합니다. 원하는 토핑의 가짓수를 선택합니다. 토핑을 선택합니다. 원하는 갯수 만큼 피자를 주문 할 수 있습니다. 마지막에 최종 가격을 출력해줍니다,
 
-= Details =
+Class Pizza
+------------
 
-<<주문정보>>
+public class Pizza {
+
+ String size;
+ boolean combination;
+ boolean seafood;
+ boolean bulgogi;
+ boolean potato;
+ boolean sweet_potato;
+ 
+
+ enum PizzaSize {
+ S(9900), R(13900), F(16900);
+ private double cost;
+
+ PizzaSize(double cost) {
+ this.cost = cost;
+ }
+
+ public double getCost() {
+ return cost;
+ }
+ }
+
+ PizzaSize pizzaSize;
+
+ public int cntNumToppings() {
+ int toppings = 0;
+ if (combination) {
+ toppings += 1;
+ }
+ if (seafood) {
+ toppings += 1;
+ }
+ if (bulgogi) {
+ toppings += 1;
+ }
+ if (potato) {
+ toppings += 1;
+ }
+ if (sweet_potato) {
+ toppings += 1;
+ }
+ return toppings;
+ }
+
+ public String getSize() {
+ return size;
+ }
+
+ public Pizza(String size, boolean combination, boolean seafood, boolean bulgogi, boolean potato, boolean sweet_potato) {
+ this.size = size;
+ this.combination = combination;
+ this.seafood = seafood;
+ this.bulgogi = bulgogi;
+ this.potato = potato;
+ this.sweet_potato = sweet_potato;
+ }
+
+ public double getCost() {
+ double cost = 0.0;
+ if (getSize().equalsIgnoreCase("s"))
+ cost = pizzaSize.S.cost;
+ if (getSize().equalsIgnoreCase("r"))
+ cost = pizzaSize.R.cost;
+ if (getSize().equalsIgnoreCase("f"))
+ cost = pizzaSize.F.cost;
+ return cost;
+ }
+}
 
 
-1. 주문 날짜 및 시간
 
-public class OrderTime{}
 
-2. 고객 정보 : 이름, 전화번호
 
-public class CustomerInfo{}
 
-3. 메뉴 선택 : 피자 종류 [도우][토핑]
-                        피자 크기
-                        피자 수량
 
-public class PizzaInfo{}
 
-4. 음료 선택 : 미선택
-                         선택 [종류][수량]
 
-public class DrinkInfo{}
+Class PizzaOrder
+----------------
 
-5. 할인카드
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
-public class DiscountCard{}
+public class PizzaOrder {
 
-6. 결제수단
+ ArrayList<Pizza> pizzaOrders = new ArrayList<Pizza>();
+ static int numOfPizzas;
+ boolean combination;
+ boolean seafood;
+ boolean bulgogi;
+ boolean potato;
+ boolean sweet_potato;
+ String sizeOfPizza = null;
+ double total = 0.0;
+ Pizza pizza;
 
-public class Payment{}
+ public static void main(String[] args) {
+ Scanner scan = new Scanner(System.in);
+ String orderedToppings = null;
+ int toppings = 0;
+ String wantMore = "n";
+ PizzaOrder order = new PizzaOrder();
+ do {
+ order.combination = false;
+ order.seafood = false;
+ order.bulgogi = false;
+ order.potato = false;
+ order.sweet_potato = false;
+ 
+ System.out.println("원하는 피자의 사이즈를 입력 하세요.(s/r/f) : ");
+ order.sizeOfPizza = scan.next();
+ System.out.println("원하는 토핑의 가짓수를 입력 하세요.(0 to 5): ");
+ toppings = scan.nextInt();
+ if (toppings > 0) {
+ System.out.println("원하는 토핑의 종류를 입력 하세요.(토핑 하나 당 3000원) combination/seafood/bulgogo/potato/sweet_potato : (각각의 토핑은 / 으로 구분되어야함)");
+ orderedToppings = scan.next();
+ StringTokenizer token = new StringTokenizer(orderedToppings,"/");
+ while (token.hasMoreTokens()) {
+ String topping = token.nextToken();
+ if (topping.equalsIgnoreCase("combination"))
+ order.combination = true;
+ if (topping.equalsIgnoreCase("seafood"))
+ order.seafood = true;
+ if (topping.equalsIgnoreCase("bulgogi"))
+ order.bulgogi = true;
+ if (topping.equalsIgnoreCase("potato"))
+ order.potato = true;
+ if (topping.equalsIgnoreCase("sweet_potato"))
+ order.sweet_potato = true;
 
-7. 결제 가격: 총 가격 -  할인 가격
+}
 
-public class Price{}
+ }
 
-8. 최종 확인 및 배송지 결정
+ System.out.println("피자를 더 주문 하시겠습니까? y/n : ");
+ wantMore = scan.next();
+ order.addPizza();
+ } while (wantMore.equals("y"));
+ order.printPizzaOrder();
 
-public class FinalDecision{}
+ }
+
+ public void printPizzaOrder() {
+ for (int i = 0; i < pizzaOrders.size(); i++) {
+ Pizza p = pizzaOrders.get(i);
+ int temp = p.cntNumToppings();
+ System.out.println("---------------------------------------------");
+ System.out.println("피자의 사이즈 = " + p.getSize());
+ System.out.println("토핑의 가짓수: " + temp);
+ if (temp > 0) {
+ if (p.combination)
+ System.out.println("*combination");
+ if (p.seafood)
+ System.out.println("*seafood");
+ if (p.bulgogi)
+ System.out.println("*bulgogi");
+  if (p.potato)
+ System.out.println("*potato");
+ if (p.sweet_potato)
+ System.out.println("*sweet_potato");
+}
+ double crustCost = p.getCost();
+ double toppingsCost = 3000*p.cntNumToppings();
+ System.out.println("주문한 피자의 수량 : " + getNoOfPizzas());
+ System.out.println("피자의 가격: " + crustCost+"원");
+ System.out.println("토핑의 가격: " + toppingsCost+"원");
+ System.out.println("피자의 최종 가격: " + (crustCost + toppingsCost)+"원");
+ }
+ 
+  }
+
+ public void addPizza() {
+ numOfPizzas += 1;
+ pizza = new Pizza(sizeOfPizza, combination, seafood, bulgogi, potato, sweet_potato);
+ pizzaOrders.add(pizza);
+ updateTotal(pizza.getCost() + pizza.cntNumToppings());
+ }
+
+ public int getNoOfPizzas() {
+ return numOfPizzas;
+ }
+
+ public void updateTotal(double cost) {
+ total += cost;
+ }
+
+ public double getTotalCost() {
+ return total;
+ }
+
+}
+
+
+
+
+
+
+
+이 코드는 gui를 구현하려고 했으나 중간에 실패한 코드에요 ㅜㅠ
+Class Pizza
+------------
+
+public class Pizza {
+
+ String size;
+ boolean combination;
+ boolean seafood;
+ boolean bulgogi;
+ boolean potato;
+ boolean sweet_potato;
+ 
+
+ enum PizzaSize {
+ S(9900), R(13900), F(16900);
+ private double cost;
+
+ PizzaSize(double cost) {
+ this.cost = cost;
+ }
+
+ public double getCost() {
+ return cost;
+ }
+ }
+
+ PizzaSize pizzaSize;
+
+ public int cntNumToppings() {
+ int toppings = 0;
+ if (combination) {
+ toppings += 1;
+ }
+ if (seafood) {
+ toppings += 1;
+ }
+ if (bulgogi) {
+ toppings += 1;
+ }
+ if (potato) {
+ toppings += 1;
+ }
+ if (sweet_potato) {
+ toppings += 1;
+ }
+ return toppings;
+ }
+
+ public String getSize() {
+ return size;
+ }
+
+ public Pizza(String size, boolean combination, boolean seafood, boolean bulgogi, boolean potato, boolean sweet_potato) {
+ this.size = size;
+ this.combination = combination;
+ this.seafood = seafood;
+ this.bulgogi = bulgogi;
+ this.potato = potato;
+ this.sweet_potato = sweet_potato;
+ }
+
+ public double getCost() {
+ double cost = 0.0;
+ if (getSize().equalsIgnoreCase("s"))
+ cost = pizzaSize.S.cost;
+ if (getSize().equalsIgnoreCase("r"))
+ cost = pizzaSize.R.cost;
+ if (getSize().equalsIgnoreCase("f"))
+ cost = pizzaSize.F.cost;
+ return cost;
+ }
+}
+
+
+
+
+
+
+
+
+
+Class PizzaOrder
+----------------
+
+package pizza;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
+
+public class PizzaOrder {
+
+ ArrayList<Pizza> pizzaOrders = new ArrayList<Pizza>();
+ static int numOfPizzas;
+ boolean combination;
+ boolean seafood;
+ boolean bulgogi;
+ boolean potato;
+ boolean sweet_potato;
+ String sizeOfPizza = null;
+ double total = 0.0;
+ Pizza pizza;
+
+ public static void main(String[] args) {
+ Scanner scan = new Scanner(System.in);
+ String orderedToppings = null;
+ int toppings = 0;
+ String wantMore = "n";
+ PizzaOrder order = new PizzaOrder();
+ do {
+ order.combination = false;
+ order.seafood = false;
+ order.bulgogi = false;
+ order.potato = false;
+ order.sweet_potato = false;
+ 
+int maincontrol;
+JOptionPane.showMessageDialog(null,"원하는 피자의 사이즈를 입력 하세요.(s/r/f) : ");
+int size=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t S \n"
+
+	 +"(2)\t R \n"  
+
+	+"(3)\tF \n"
++"(0) exit"))); 
+ switch(size){  
+
+	    
+
+	 case 0: System.exit(size);  
+
+	    
+
+	 case 1: 
+		JOptionPane.showMessageDialog(null,"s사이즈를 주문하셨습니다");
+maincontrol = 0; 
+
+	     break;  
+	    
+
+
+	 case 2:  
+		JOptionPane.showMessageDialog(null,"r사이즈를 주문하셨습니다");
+	     
+
+	         maincontrol=0;  
+
+	       break;  
+
+	   case 3:
+		JOptionPane.showMessageDialog(null,"f사이즈를 주문하셨습니다");
+		maincontrol=0;
+		break;
+
+	    
+
+	
+
+	    
+
+	 
+	 }  
+ 
+ 
+ 
+ int asl;
+ JOptionPane.showMessageDialog(null," 원하는 토핑의 가짓수를 입력 하세요.(1 to 5):");
+ int toppingnumber=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t 1 \n"
+
+ 	 +"(2)\t 2 \n"  
+
+ 	+"(3)\t3 \n"
+ +"(4)\t4 \n"
+ +"(5)\t5 \n"
+ +"(0) exit"))); 
+  switch(toppingnumber){  
+
+ 	    
+
+ 	 case 0: System.exit(toppingnumber);  
+
+ 	    
+
+ 	 case 1: 
+ 		JOptionPane.showMessageDialog(null,"1개의 토핑을 넣으셨습니다");
+ asl = 0; 
+
+ 	     break;  
+ 	    
+
+
+ 	 case 2:  
+ 		JOptionPane.showMessageDialog(null,"2개의 토핑을 넣으셨습니다");
+ 	     
+
+ 	         asl=0;  
+
+ 	       break;  
+
+ 	   case 3: 
+ 		JOptionPane.showMessageDialog(null,"3개의 토핑을 넣으셨습니다");
+ 		asl=0;
+ 		break;
+ 	 case 4: 
+ 		JOptionPane.showMessageDialog(null,"4개의 토핑을 넣으셨습니다");
+ 		asl=0;
+ 		break;
+  case 5: 
+ 		JOptionPane.showMessageDialog(null,"5개의 토핑을 넣으셨습니다");
+ 		asl=0;
+ 		break;
+ 	    
+
+ 	
+
+ 	    
+
+ 	 
+ 	 }  
+ 
+ if (toppingnumber > 0) {
+	 int aaa;
+ 
+ JOptionPane.showMessageDialog(null," 원하는 토핑의 종류를 입력 하세요. combination/seafood/bulgogi/potato/sweet_potato : (각각의 토핑은 / 으로 구분되어야함)");
+ int topping=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t combination \n"
+
+ 	 +"(2)\t seafood \n"  
+
+ 	+"(3)\t bulgogi \n"
+ +"(4)\t potato\n"
+ +"(5)\t sweet_potato \n"
+ +"(0) exit"))); 
+  switch(topping){  
+
+ 	    
+
+ 	 case 0: System.exit(topping);  
+
+ 	    
+
+ 	 case 1: 
+ 		JOptionPane.showMessageDialog(null,"combination");
+ aaa = 0; 
+
+ 	     break;  
+ 	    
+
+
+ 	 case 2:  
+ 		JOptionPane.showMessageDialog(null,"seafood");
+ 	     
+
+ 	         aaa=0;  
+
+ 	       break;  
+
+ 	   case 3: 
+ 		JOptionPane.showMessageDialog(null,"bulgogi");
+ 		aaa=0;
+ 		break;
+ 	 case 4: 
+ 		JOptionPane.showMessageDialog(null,"potato");
+ 		aaa=0;
+ 		break;
+  case 5: 
+ 		JOptionPane.showMessageDialog(null,"sweet_potato");
+ 		aaa=0;
+ 		break;
+  }
+
+ }
+
+ JOptionPane.showMessageDialog(null,"피자를 더 주문 하시겠습니까? y/n : ");
+ wantMore = scan.next();
+ order.addPizza();
+ } while (wantMore.equals("y"));
+ order.printPizzaOrder();
+
+ }
+
+ public void printPizzaOrder() {
+ for (int i = 0; i < pizzaOrders.size(); i++) {
+ Pizza p = pizzaOrders.get(i);
+ int temp = p.cntNumToppings();
+ JOptionPane.showMessageDialog(null,"---------------------------------------------");
+ JOptionPane.showMessageDialog(null,"피자의 사이즈 = " + p.getSize());
+ JOptionPane.showMessageDialog(null,"토핑의 가짓수: " + temp);
+ if (temp > 0) {
+ if (p.combination)
+ JOptionPane.showMessageDialog(null,"*combination");
+ if (p.seafood)
+ JOptionPane.showMessageDialog(null,"*seafood");
+ if (p.bulgogi)
+ JOptionPane.showMessageDialog(null,"*bulgogi");
+  if (p.potato)
+ JOptionPane.showMessageDialog(null,"*potato");
+ if (p.sweet_potato)
+ JOptionPane.showMessageDialog(null,"*sweet_potato");
+}
+ double crustCost = p.getCost();
+ double toppingsCost = 3000 * p.cntNumToppings();
+ JOptionPane.showMessageDialog(null,"주문한 피자의 수량 : " + getNoOfPizzas());
+ JOptionPane.showMessageDialog(null,"피자의 가격: 원" + crustCost);
+ JOptionPane.showMessageDialog(null,"토핑의 가격: 원" + toppingsCost);
+ JOptionPane.showMessageDialog(null,"피자의 최종 가격: 원" + (crustCost + toppingsCost));
+ }
+ }
+
+ public void addPizza() {
+ numOfPizzas += 1;
+ pizza = new Pizza(sizeOfPizza, combination, seafood, bulgogi, potato, sweet_potato);
+ pizzaOrders.add(pizza);
+ updateTotal(pizza.getCost() + pizza.cntNumToppings());
+ }
+
+ public int getNoOfPizzas() {
+ return numOfPizzas;
+ }
+
+ public void updateTotal(double cost) {
+ total += cost;
+ }
+
+ public double getTotalCost() {
+ return total;
+ }
+
+}
