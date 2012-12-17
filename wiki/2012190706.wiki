@@ -1663,6 +1663,36 @@ public class SimpleGui1{
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+package ch12_1;
+
+import javax.swing.*;
+import java.awt.event.*; //   ActionListener와 ActionEvent가 들어있는 패키지를 사용하기 위한 import 선언문
+
+public class SimpleGui1B implements ActionListener { //인터페이스를 구현합니다. 이 구문은 SimpleGui1B의 객체는 ActionListener 임을 나타냅니다.
+	JButton button; // JButton을 만듭니다. 
+
+	public static void main(String []args){
+		SimpleGui1B gui=new SimpleGui1B(); //gui 라는 SimpleGui1B의 객체를 만듭니다.
+		gui.go(); //go 메소드를 실행합니다.
+
+	}
+
+	public void go(){
+		JFrame frame= new JFrame(); // JFrame를 만듭니다.
+		button=new JButton("click me"); // JButton을 만드는데 그 버튼이 click me 를 나타냅니다.
+
+		button.addActionListener(this); // button에 등록합니다.
+
+		frame.getContentPane().add(button); //프레임에 button 을 추가시킵니다.
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 이렇게 하면 창을 닫았을 때 프로그램이 바로 종료됩니다.
+		frame.setSize(300,300);// 프레임의 크기를 픽셀 단위로 지정합니다.
+		frame.setVisible(true); // 화면에 표시되도록 합니다.
+	}
+	public void actionPerformed(ActionEvent event){ // 실제 이벤트를 처리하는 메소드입니다.
+		button.setText("I've been clicked!");
+		
+	}
+}
 
 }}}
 
