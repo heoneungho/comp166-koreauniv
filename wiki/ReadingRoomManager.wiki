@@ -125,7 +125,7 @@ http://comp166-koreauniv.googlecode.com/files/이용내역.JPG
 
 *계승다이어그램*
 
-http://comp166-koreauniv.googlecode.com/files/계승다이어그램.jpg
+http://comp166-koreauniv.googlecode.com/files/chart.jpg
 
 
 *1. 메인 클래스(mainYoungHoon)*
