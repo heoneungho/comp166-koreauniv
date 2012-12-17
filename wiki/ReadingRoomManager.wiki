@@ -1980,4 +1980,10 @@ http://comp166-koreauniv.googlecode.com/files/amain.jpg
 
 3) *참고문헌*
 
+ - 『Head First Java』, 케이시 시에라, 버트 베이츠 저, 서환수 역, 한빛미디어
+
+ - 『뇌를 자극하는 Java 프로그래밍』, 김윤명 저, 한빛미디어
+
+ - 『자바의 정석(2ND EDITION)』, 남궁성 저, 도우출판
+
 = Download(소스코드제출) =
