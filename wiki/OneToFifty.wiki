@@ -9,6 +9,9 @@ http://comp166-koreauniv.googlecode.com/files/150.jpg
  원래 구상했던 갤러그 혹은 비행기 슈팅게임은 아직 불가능한 실력!
 그러므로 다시 생각해본것이 간단하며 재미있고 중독성까지 겸비한 1to50게임입니다.
 
+= Screen Shots =
+
+
 
 
 = Details =
@@ -17,6 +20,8 @@ http://comp166-koreauniv.googlecode.com/files/150.jpg
   * 5x5 사각형판이 있습니다.
   * 사각형 안에는 1부터 순서대로 난수출력이 되어있습니다.
   * 1부터 차례대로 눌러가며 누른숫자는 다음 난수출력이 되거나 사라집니다.
+  * 게임이 끝나면 시간이 기록되며 최고기록이 나오면 따로 저장됩니다.
+
 
 OneToFifty 클래스
 
