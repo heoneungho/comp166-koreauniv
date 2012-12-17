@@ -129,6 +129,9 @@ http://comp166-koreauniv.googlecode.com/files/chart.jpg
 
 
 *1. 메인 클래스(mainYoungHoon)*
+
+http://comp166-koreauniv.googlecode.com/files/mY.jpg
+
 {{{
 public class mainYoungHoon{
 
