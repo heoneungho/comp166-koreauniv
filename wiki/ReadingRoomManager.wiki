@@ -486,6 +486,9 @@ message() {}
 
 
 *11. 시스템 시간을 저장하는 인터페이스*
+
+http://comp166-koreauniv.googlecode.com/files/time.jpg
+
 {{{
 
 import java.util.Calendar;
