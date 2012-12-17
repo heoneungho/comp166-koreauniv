@@ -1775,6 +1775,64 @@ public class SimpleGui1B implements ActionListener//인터페이스를 구현합
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener {
+        
+        JFrame frame;//프레임
+        
+        public static void main(String[] args) {
+                SimpleGui3C gui = new SimpleGui3C();//객체 생성
+                gui.go();//go 메소드 호출
+        }
+
+        public void go() {
+                frame = new JFrame();//프레임 생성
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//X버튼 누르면 종료
+                
+                JButton button = new JButton("Change colors");//버튼 생성 후 버튼에 메시지 넣음
+                button.addActionListener(this);//액션 리스너 구현
+                
+                MyDrawPanel drawPanel = new MyDrawPanel();//패널 생성
+                
+                frame.getContentPane().add(BorderLayout.SOUTH,button);//버튼을 추가함
+                frame.getContentPane().add(BorderLayout.CENTER,drawPanel);//패널을 추가함
+                frame.setSize(300,300);//사이즈 설정
+                frame.setVisible(true);//눈에 보이게
+        }
+        public void actionPerformed(ActionEvent event) {
+                frame.repaint();//액션이 감지되면 실행
+        }
+}
+
+class MyDrawPanel extends JPanel
+{
+	public void paintComponent(Graphics g)
+	{
+		Graphics2D g2d = (Graphics2D) g;//타입 캐스트로 호출함
+		
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
+		//RGB값 설정
+		
+		Color startColor = new Color(red,green,blue);//시작 컬러
+		
+		red = (int) (Math.random() * 256);
+		green = (int) (Math.random() * 256);
+		blue = (int) (Math.random() * 256);
+		//RGB값 설정
+		
+		Color endColor = new Color(red,green,blue);//마지막 컬러
+		
+		GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor);
+		g2d.setPaint(gradient);
+		g2d.fillOval(70,70,100,100);
+	}
+}
+
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
