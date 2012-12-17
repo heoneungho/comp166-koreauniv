@@ -84,11 +84,11 @@ class BookInfo implements Serializable
 			return showdata;
 		}
 }
+}}}	 
 	 
 	 
-	 
-	 
-
+BookField클래스	 
+{{{
 class BookField//검색시 책분야를 선택하기위해 사용되는 클래스
 {
 	String field;
@@ -102,10 +102,10 @@ class BookField//검색시 책분야를 선택하기위해 사용되는 클래�
 	}
 	
 }
+}}}
 
-
-
-
+bookFrame클래스
+{{{
 class bookFrame extends JFrame{
 	//프로그램시작과 동시에 기본적은 gui를 구축하는 클래스
 	public bookFrame(String str)
@@ -147,7 +147,9 @@ class bookFrame extends JFrame{
 		
 	}
 }
-
+}}}
+BookStore클래스 메인함수가있음
+{{{
 class BookStore {
 	
 	
@@ -157,12 +159,12 @@ class BookStore {
 		bookFrame bframe = new bookFrame("Book Store!!!");//bookFrame클래스를 형성하면서 기본적인 gui가 구축됨
 	}
 }
-	
+}}}	
 
 
 
-
-
+BookManage클래스
+{{{
 class BookManage//책정보를 관리하기위한 클래스
 {
 	HashSet<BookInfo> bookStore = new HashSet<BookInfo>();//책의 정보는 해쉬셋으로 관리
@@ -262,10 +264,10 @@ class BookManage//책정보를 관리하기위한 클래스
 	}
 	
 }
+}}}
 
-
-
-
+SearchHandler클래스
+{{{
 class SearchHandler implements ActionListener//검색 버튼이 눌렸을때 실행될 부분
 {
 	JTextField Search_field;
@@ -336,7 +338,9 @@ class SearchHandler implements ActionListener//검색 버튼이 눌렸을때 실
 	}
 	
 }
-
+}}}
+addHandler클래스
+{{{
 class addHandler implements ActionListener//추가버튼이 눌렸을때 시행될부분
 {
 	//추가버튼이 눌리면 inputData메소드가 실행됨
@@ -347,9 +351,9 @@ class addHandler implements ActionListener//추가버튼이 눌렸을때 시행�
 	}
 	
 }
-
-
-
+}}}
+SaveHandler클래스
+{{{
 class SaveHandler implements ActionListener//저장 버튼이 눌렸을때 실행될부분
 {
 	public void actionPerformed(ActionEvent e)
@@ -360,6 +364,9 @@ class SaveHandler implements ActionListener//저장 버튼이 눌렸을때 실�
 		
 	}	
 }
+}}}
+SellFrame클래스
+{{{
 class SellFrame extends JFrame
 {
 	public SellFrame(String str)
@@ -384,6 +391,9 @@ class SellFrame extends JFrame
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 }
+}}}
+SellHandler클래스
+{{{
 class SellHandler implements ActionListener//판매 버튼이 눌리면 실행되는 부분
 {
 	public void actionPerformed(ActionEvent e)
@@ -392,6 +402,9 @@ class SellHandler implements ActionListener//판매 버튼이 눌리면 실행�
 
 	}
 }
+}}}
+SellResultHandler클래스
+{{{
 class SellResultHandler implements ActionListener
 {
 	JTextField sf;
@@ -443,12 +456,4 @@ class SellResultHandler implements ActionListener
 	
 	
 }
-
-
-
-
-
-
-
-
 }}}
