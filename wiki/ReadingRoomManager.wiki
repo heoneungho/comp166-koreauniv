@@ -1934,7 +1934,7 @@ public interface time {
 
 }}}
 
-= Result =
+= Result(실행화면) =
 
 http://comp166-koreauniv.googlecode.com/files/result.jpg
 
