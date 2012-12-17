@@ -1907,6 +1907,61 @@ public class TwoButtons
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation 
+{
+
+        int x=70;
+        int y=70;
+        //원의 x, y좌표를 설정합니다.
+        
+        public static void main(String args[]){
+                SimpleAnimation gui=new SimpleAnimation();
+                gui.go();
+        }
+        
+        public void go()
+        {
+                JFrame frame=new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                MyDrawPanel drawPanel = new MyDrawPanel();// 위젯을 만들고 프레임에 집어 넣습니다.
+
+                frame.getContentPane().add(drawPanel);
+                frame.setSize(300,300);
+                frame.setVisible(true);
+
+                for(int i=0;i<300;i++){ // 130번 반복합니다.
+
+                        x++;
+                        y++;
+                        //x와 y 좌표를 증가시킵니다.
+                        
+                        drawPanel.repaint(); // 스스로 다시 칠하라고 패널에게 말합니다.
+
+                        try{
+                                Thread.sleep(50); //속도를 약간 줄입니다.
+                        }catch(Exception ex){}
+                }
+
+        } // go()메소드 끝
+
+        @SuppressWarnings("serial")
+		class MyDrawPanel extends JPanel//내부 클래스에요
+        {
+                public void paintComponent(Graphics g)
+                {
+                        g.setColor(Color.white);
+                        g.fillRect(0,0,this.getWidth(),this.getHeight());//지나온 자리를 지워줘요
+
+                        g.setColor(Color.green);
+                        g.fillOval(x, y, 40, 40); //지속적으로 갱신되는 외부클래스의 x, y 좌표를 사용합니다.
+
+                }
+        } // 내부 클래스 끝
+} // 외부 클래스 끝
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
