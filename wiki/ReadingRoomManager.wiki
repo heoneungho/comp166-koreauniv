@@ -400,6 +400,9 @@ actionPerformed() {} // 버튼 설정
 
 
 *7. 데이터를 파일로부터 읽는 클래스(readFile)*
+
+http://comp166-koreauniv.googlecode.com/files/rF.jpg
+
 {{{
 public class readFile{
 
