@@ -647,21 +647,21 @@ public class Screen
 = 스크린샷 =
 
 시작 화면 입니다.
-http://comp166-koreauniv.googlecode.com/files/Dalmuti1.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal1.jpg
 
 게임 진행 화면입니다.
-http://comp166-koreauniv.googlecode.com/files/Dalmuti2.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal2.jpg
 
 
-http://comp166-koreauniv.googlecode.com/files/Dalmuti3.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal3.jpg
 
-http://comp166-koreauniv.googlecode.com/files/Dalmuti4.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal4.jpg
 
-http://comp166-koreauniv.googlecode.com/files/Dalmuti5.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal5.jpg
 
-http://comp166-koreauniv.googlecode.com/files/Dalmuti6.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal6.jpg
 
-http://comp166-koreauniv.googlecode.com/files/Dalmuti7.bmp
+http://comp166-koreauniv.googlecode.com/files/Dal7.jpg
 
 
 = 참고 =
