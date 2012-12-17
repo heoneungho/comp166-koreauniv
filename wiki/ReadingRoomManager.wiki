@@ -1569,6 +1569,7 @@ public class config extends JFrame implements ActionListener {
 
 ===============================================================================================================
 
+
 /* 파일을 읽어오는 readFile 클래스입니다. */
 
 import java.io.BufferedReader;
@@ -1617,7 +1618,7 @@ public class readFile {
 			}
 		} catch (IOException e) {// 만약 위의 부분을 실행중 io익셉션이 발생할 경우에는
 			// temp에 아래 기본 가격을 저장하고
-			String temp = "800,400,6000,300,150,80000,3000,1000,20000,5000,2500,30000";
+			String temp = "1000,500,10000,2000,1000,15000,3000,1000,20000,5000,2500,30000";
 			try {// 파일을 생성하여 써 넣음
 				FileWriter w = new FileWriter("config.cfg");
 				w.write(temp);
