@@ -2081,6 +2081,9 @@ http://comp166-koreauniv.googlecode.com/files/hhh.JPG
 
 1) *통계*
 
+|| 클래스명 || 라인 수 || 객체 및 변수 || 메소드 ||
+|| mainYoungHoon || 8 || 0 || 1 ||
+
 2) *프로젝트 느낀점*
 
 
