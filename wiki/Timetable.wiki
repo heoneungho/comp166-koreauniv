@@ -49,10 +49,13 @@
 = 실행화면 =
 
 http://comp166-koreauniv.googlecode.com/files/lsh1.jpg
+시작화면
 
 http://comp166-koreauniv.googlecode.com/files/lsh2.jpg
+주차할 차를 받는 과정. In 버튼
 
 http://comp166-koreauniv.googlecode.com/files/lsh3.jpg
+주차종료, 상황판에 메세지 출력. OUT 버튼
 
 
 = Details =
