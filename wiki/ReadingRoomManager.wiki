@@ -322,6 +322,9 @@ actionPerformed(){} // 버튼 작동 설정
 
 
 *5. 내역 화면 클래스(logWindow)*
+
+http://comp166-koreauniv.googlecode.com/files/fhrm.jpg
+
 {{{
 public class logWindow{
 
