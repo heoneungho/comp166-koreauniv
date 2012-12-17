@@ -1974,10 +1974,10 @@ http://comp166-koreauniv.googlecode.com/files/amain.jpg
 
 = Report =
 
- 1) 통계
+1) 통계
 
- 2) 프로젝트 느낀점
+2) 프로젝트 느낀점
 
- 3) 참고문헌
+3) 참고문헌
 
 = Download(소스코드제출) =
