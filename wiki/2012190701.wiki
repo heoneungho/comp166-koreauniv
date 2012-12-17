@@ -1713,6 +1713,22 @@ public class MiniMusicCmdLine //첫번째
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+
+public class SimpleGui1{
+        public static void main(String []args){
+                JFrame frame = new JFrame(); // 프레임을 생성합니다.
+                JButton button = new JButton("click me");  //버튼을 생성합니다.
+
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // X버튼을 누르면 창이 종료되도록 설정합니다.
+
+                frame.getContentPane().add(button); // 프레임에 버튼을 추가해줍니다.
+
+                frame.setSize(300,300); // 프레임의 크기를 픽셀단위로 지정합니다.
+
+                frame.setVisible(true); // 화면에 표시되도록 설정합니다.
+        }
+}
 
 }}}
 
