@@ -647,21 +647,21 @@ public class Screen
 = 스크린샷 =
 
 시작 화면 입니다.
-http://comp166-koreauniv.googlecode.com/files/Dal1.jpg
+http://comp166-koreauniv.googlecode.com/files/Dal1.JPG
 
 게임 진행 화면입니다.
-http://comp166-koreauniv.googlecode.com/files/Dal2.jpg
+http://comp166-koreauniv.googlecode.com/files/Dal2.JPG
 
 
-http://comp166-koreauniv.googlecode.com/files/Dal3.jpg
+http://comp166-koreauniv.googlecode.com/files/Dal3.JPG
 
-http://comp166-koreauniv.googlecode.com/files/Dal4.jpg
+http://comp166-koreauniv.googlecode.com/files/Dal4.JPG
+j
+http://comp166-koreauniv.googlecode.com/files/Dal5.JPG
 
-http://comp166-koreauniv.googlecode.com/files/Dal5.jpg
+http://comp166-koreauniv.googlecode.com/files/Dal6.JPG
 
-http://comp166-koreauniv.googlecode.com/files/Dal6.jpg
-
-http://comp166-koreauniv.googlecode.com/files/Dal7.jpg
+http://comp166-koreauniv.googlecode.com/files/Dal7.JPG
 
 
 = 참고 =
