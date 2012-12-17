@@ -1827,6 +1827,62 @@ public class TwoButtons { //TwoButtons 클래스를 만듭니다.
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+package ch12_4;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation {
+
+// 메인 GUI 클래스에 원의 x와 y좌표를 저장하기 위한 인스턴스 변수 두개를 만듭니다.
+	int x=70; //x라는 int 변수에 70을 넣습니다.
+	int y=70; //y라는 int 변수에 70을 넣습니다.
+	
+
+	public static void main(String args[]){
+		SimpleAnimation gui=new SimpleAnimation(); //gui라는 SimpleAnimation 의 객체를 만듭니다.
+		gui.go(); //go 메소드를 실행시킵니다.
+	}
+	public void go(){
+		JFrame frame=new JFrame(); //JFrame을 만듭니다.
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 이렇게 하면 창을 닫았을 때 프로그램이 바로 종료됩니다.
+
+// 위젯을 만들고 프레임에 집어넣기만 하면 됩니다.
+		MyDrawPanel drawPanel = new MyDrawPanel(); 
+
+		frame.getContentPane().add(drawPanel); //판에 drawPanel 을 추가시킵니다.
+		frame.setSize(300,300); // 프레임의 크기를 픽셀 단위로 지정합니다.
+
+		frame.setVisible(true); // 화면에 표시되도록 합니다.
+
+		for(int i=0;i<300;i++){ // for 순환문을 이용해 130번 반복합니다.
+
+			x++; // x를 1 증가시킵니다.
+			y++; // y를 1 증가시킵니다.
+
+			drawPanel.repaint(); // 스스로 다시 칠하라고 패널에게 말합니다. 그러면 새로운 위치에 있는 원을 볼 수 있습니다.
+
+			try{
+				Thread.sleep(50); // 속도를 약간 줄입니다.
+			}catch(Exception ex){}
+		}
+
+	} // go()메소드 끝
+
+	
+// 내부 클래스 부분입니다.
+	class MyDrawPanel extends JPanel{ // JPanel 을 상속받습니다.
+		private static final long serialVersionUID = 1L;
+		public void paintComponent(Graphics g){
+			g.setColor(Color.green);
+			g.fillRect(0,0,this.getWidth(),this.getHeight()); //getWidth()와 getHeight()는 JPanel 로부터 상속 받은 메소드입니다.
+
+			g.setColor(Color.green);
+			g.fillOval(x, y, 40, 40); //지속적으로 갱신되는 외부 클래스의 x와 y좌표를 사용합니다.
+
+		}
+	} // 내부 클래스 끝
+} // 외부 클래스 끝
 
 }}}
 
