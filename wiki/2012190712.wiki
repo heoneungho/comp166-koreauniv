@@ -1371,7 +1371,52 @@ public class MiniMiniMusicApp{
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
 
+public class MiniMusicCmdLine { // 첫번째
+	
+	public static void main(String[] args){
+		MiniMusicCmdLine mini = new MiniMusicCmdLine();
+		if (args.length < 2){
+			System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+		} else{
+			int instrument = Integer.parseInt(args[0]);
+			int note = Integer.parseInt(args[1]);
+			mini.play(instrument, note);
+		}
+	} // main 끝
+	
+	public void play(int instrument, int note) {
+		
+		try{
+			
+			Sequencer player = MidiSystem.getSequencer(); // Sequencer을 받아서 연다.
+			player.open();
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			Track track = seq.createTrack(); // Sequence에 Track을 요청
+			
+			MidiEvent event = null;
+			
+			ShortMessage first = new ShortMessage(); // Track에 MidiEvent를 집어넣는다.
+			first.setMessage(192, 1, instrument, 0);
+			MidiEvent changeInstrument = new MidiEvent(first,1);
+			track.add(changeInstrument);
+
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144,1,note,100);
+			MidiEvent noteOn = new MidiEvent(a,1);
+			track.add(noteOn);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128,1,note,100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff);
+			player.setSequence(seq); // Sequencer에 Sequence를 보낸다.
+			player.start(); // Sequencer의 Start()메소드를 호출한다.
+			
+		}catch(Exception ex){ ex.printStackTrace();}
+	} // play메소드 끝
+} // class 끝
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
