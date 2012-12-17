@@ -2083,6 +2083,18 @@ http://comp166-koreauniv.googlecode.com/files/hhh.JPG
 
 || 클래스명 || 라인 수 || 객체 및 변수 || 메소드 ||
 || mainYoungHoon || 8 || 0 || 1 ||
+|| mainWindow || 174 || 13 || 8 ||
+|| enterWindow || 167 || 21 || 6 ||
+|| leaveWindow || 222 || 35 || 7 ||
+|| logWindow || 332 || 44 || 10 ||
+|| config || 124 || 25 || 4 ||
+|| readFile || 98 || 15 || 3 ||
+|| writeFile || 112 || 8 || 2 ||
+|| readLog || 81 || 13 || 2 ||
+|| message || 38 || 2 || 2 ||
+|| time || 14 || 7 || 0 ||
+|| 총 || 1370 || 183 || 45 ||
+|| 평균(반올림) || 125 || 17 || 4 ||
 
 2) *프로젝트 느낀점*
 
