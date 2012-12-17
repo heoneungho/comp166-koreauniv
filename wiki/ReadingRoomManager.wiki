@@ -1945,11 +1945,21 @@ http://comp166-koreauniv.googlecode.com/files/result.jpg
 - 여기서 각 자리를 클릭하면 입실 창이 뜹니다.
 
 *1-1. 실습실에서 실행 화면*
-- 메인 창
 
 http://comp166-koreauniv.googlecode.com/files/메인화면.jpg
 
-*1-2. 실습실에서 실행 화면*
+*1-2. 집에서 실행 화면*
+
+http://comp166-koreauniv.googlecode.com/files/aaa.JPG
+
+2) *입실 창 실행 화면입니다.*
+
+- 메인 창에서 자리를 클릭하면 입실 창이 뜹니다. 
+
+- 여기서는 회원 번호, 
+
+
+*2-1. 실습실에서 실행 화면*
 - 입실 창
 
 http://comp166-koreauniv.googlecode.com/files/enter.jpg
