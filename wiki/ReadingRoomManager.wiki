@@ -147,6 +147,9 @@ mainWindow cl = new mainWindow();// 메인윈도우 객체 생성
 }}}
 
 *2. 메인 화면 클래스(mainWindow)*
+
+http://comp166-koreauniv.googlecode.com/files/mW.jpg
+
 {{{
 class mainWindow extends JFrame {
 
