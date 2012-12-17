@@ -1479,6 +1479,32 @@ class Calendar {
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+package ch10_1;
+
+class StaticSuper{ 
+	static{
+		System.out.println("super static block"); //super static block 을 출력합니다.
+	}
+	StaticSuper(){ // StaticSuper 생성자를 만듭니다.
+		System.out.println("super constructor"); // super constructor 를 출력합니다.
+ 	}
+}
+
+public class StaticTests extends StaticSuper { // StaticSuper가 StaticTests에게 상속합니다.
+	static int rand;
+	
+	static{
+		rand=(int)(Math.random()*6); // 0부터 5까지의 임의의 수를 만듭니다.
+		System.out.println("static block"+rand); // static block + 임의의 수를 충력합니다.
+	}
+	StaticTests(){ //StaticTests 의 생성자를 만듭니다.
+		System.out.println("constructor"); // constructor 를 출력합니다.
+	}
+	public static void main(String[]args){ // 메인 함수입니다.
+		System.out.println("in main"); // in main 을 출력합니다.
+	}
+	StaticTests st=new StaticTests(); // 메인 메소드 밖으로 나와야 합니다.
+}
 
 }}}
 
