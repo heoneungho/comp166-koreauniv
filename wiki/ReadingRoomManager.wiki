@@ -1938,6 +1938,12 @@ public interface time {
 
 http://comp166-koreauniv.googlecode.com/files/result.jpg
 
+1) *메인 창 실행 화면입니다.*
+
+- 프로그램 첫 실행하면 보이는 화면입니다. 
+
+- 여기서 각 자리를 클릭하면 입실 창이 뜹니다.
+
 *1-1. 실습실에서 실행 화면*
 - 메인 창
 
