@@ -2030,6 +2030,13 @@ http://comp166-koreauniv.googlecode.com/files/amain.jpg
 
 http://comp166-koreauniv.googlecode.com/files/fff.JPG
 
+8) *퇴실이후 이용내역 창입니다.*
+
+- 내역에 퇴실 내역이 추가되었습니다.
+
+*8 - 1. 집에서 실행 화면*
+
+http://comp166-koreauniv.googlecode.com/files/ggg.jpg
 
 
 = Report(통계/느낀점/참고문헌) =
