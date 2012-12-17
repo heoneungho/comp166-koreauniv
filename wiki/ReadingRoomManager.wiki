@@ -244,6 +244,9 @@ new enterWindow(jariNumber);// 그것을 매개변수로 입실 창 띄우기
 }}}
 
 *3. 입실 화면 클래스(enterWindow)*
+
+http://comp166-koreauniv.googlecode.com/files/eW.jpg
+
 {{{
 class enterWindow{
 
