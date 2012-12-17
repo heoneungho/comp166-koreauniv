@@ -1981,10 +1981,22 @@ http://comp166-koreauniv.googlecode.com/files/afe.jpg
 
 http://comp166-koreauniv.googlecode.com/files/ccc.JPG
 
-*1-4. 실습실에서 실행 화면*
-- 독서실 이용내역보기
+4) *독서실 이용내역입니다.*
+
+- 이용내역 창에서는 과거 기록까지 전부 볼 수 있습니다.
+
+- 회원 정보, 입실 시간, 퇴실 시간, 이용 요금 등 볼 수 있습니다.
+
+- 통계 기능도 있으며, 회원 번호와 날짜로 검색 할 수 있습니다.
+
+*4 - 1. 실습실에서 실행 화면*
 
 http://comp166-koreauniv.googlecode.com/files/log.jpg
+
+*4 - 2. 집에서 실행 화면*
+
+http://comp166-koreauniv.googlecode.com/files/ddd.JPG
+
 
 
 *1-5. 실습실에서 실행 화면*
