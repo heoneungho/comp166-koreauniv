@@ -1762,6 +1762,65 @@ class MyDrawPanel extends JPanel{
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+package ch12_3;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*; // ActionListener와 ActionEvent가 들어있는 패키지를 사용하기 위한 import 선언문
+
+
+
+public class TwoButtons { //TwoButtons 클래스를 만듭니다.
+
+	JFrame frame; //frame 이라는 JFrame 변수를 만듭니다.
+	JLabel label; //lable 이라는 JLable 변수를 만듭니다.
+
+	public static void main(String args[]){
+		TwoButtons gui = new TwoButtons(); //gui 라는 TwoButtons 의 객체를 만듭니다.
+		gui.go(); //go메소드를 실행시킵니다.
+	}
+
+	public void go(){
+		frame=new JFrame(); //JFrame을 만듭니다.
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 이렇게 하면 창을 닫았을 때 프로그램이 바로 종료됩니다.
+
+
+
+		JButton labelButton = new JButton ("Change Label"); //JButton을 만들고 그 버튼은 Change Label 을 나타냅니다.
+
+		labelButton.addActionListener(new LabelListener()); //버튼의 리스너 등록 메소드에 this가 아닌 다른 리스너 클래스를 가지고 만든 객체를 전달합니다
+
+		JButton colorButton = new JButton ("Change Circle"); //JButton을 만들고 그 버튼은 Change Circle 을 나타냅니다.
+
+		colorButton.addActionListener(new ColorListener()); //버튼의 리스너 등록 메소드에 this가 아닌 다른 리스너 클래스를 가지고 만든 객체를 전달합니다
+
+		label = new JLabel("I'm a lebel"); //JLabel을 만들고 그 라벨은 I'm a label 을 나타냅니다.
+		MyDrawPanel drawPanel = new MyDrawPanel(); //drawPanel 이라는 McDrawPanel 의 객체를 만듭니다.
+
+
+		frame.getContentPane().add(BorderLayout.SOUTH, colorButton); //colorButton은 판에서 south 지역 입니다.
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel); //drawPanel은 판에서 center 지역 입니다.
+		frame.getContentPane().add(BorderLayout.EAST, labelButton); //labelButton은 판에서 east 지역 입니다.
+		frame.getContentPane().add(BorderLayout.WEST, label); //label은 판에서 west 지역 입니다.
+
+		frame.setSize(300,300); // 프레임의 크기를 픽셀 단위로 지정합니다.
+
+		frame.setVisible(true); // 화면에 표시되도록 합니다.
+
+	}
+
+	class LabelListener implements ActionListener{ //LabelKistencer 이름을 갖는 액션리스너 입니다.
+		public void actionPerformed(ActionEvent event){
+			label.setText("Ouch!"); // 내부 클래스에서도 'label' 변수를 사용할 수 있습니다.
+		}
+	} // 내부 클래스 끝
+
+	class ColorListener implements ActionListener{ //ColorListener 이름을 갖는 액션리스너 입니다.
+		public void actionPerformed(ActionEvent event){
+			frame.repaint(); // 내부 클래스에서는 외부 클래스 객체에 대한 레퍼런스 없이 그냥 'frame' 인스턴스 변수를 사용하면 됩니다.
+		}
+	} // 내부 클래스 끝
+}
 
 }}}
 
