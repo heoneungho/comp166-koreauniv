@@ -901,7 +901,7 @@ class StaticSuper{ // 클래스 선언
   }
 }
 
-public class StaticTests extends StaticSuper{ // 메소드 확장
+public class StaticTests extends StaticSuper{ // 클래스 확장
   static int rand;
 
   static{
@@ -925,7 +925,21 @@ public class StaticTests extends StaticSuper{ // 메소드 확장
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public void takeRisk() throws BadException{ // 예외를 선언하는 과정
+  if(abandonAllHope){
+    throw new BadException(); // 새로운 Exception 객체를 만들고 던진다.
+  }
+}
 
+public void crossFingers(){
+  try{
+    anObject.takeRisk();
+  }
+  catch(BadException ex){
+    System.out.println("Aaargh!");
+    ex.printStackTrace(); // 예외상황을 해결할 수 없다면 적어도 스택 트레이스를 출력하는 정도는 해 줘야 한다.
+  }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
