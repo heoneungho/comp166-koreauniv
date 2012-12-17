@@ -1950,3 +1950,6 @@ http://comp166-koreauniv.googlecode.com/files/leave.jpg
 - 퇴실 이후 메인 창
 
 http://comp166-koreauniv.googlecode.com/files/amain.jpg
+
+= Report =
+
