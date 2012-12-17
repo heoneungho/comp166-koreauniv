@@ -12,7 +12,6 @@
 프로그램이 시작되면 그전에 저장된 정보를 불러들임
 
 1.검색메뉴 : 제목,저자,출판사,분야 4가지 조건으로 검색할수있다.
-  검색해서 찾은 책을 바로 판매할수있도록 검색이후 판매메뉴로 넘어갈수있게 구현
 
 2. 판매메뉴 : 책의 이름과 구매수량을 입력 하게 함 
  입력된 책이 없을경우, 구매수량보다 재고가 적을경우 각각에 에러메세지 출력
@@ -23,3 +22,52 @@
 4.종료메뉴 : 프로그램종료
 
 = Details =
+{{
+
+
+class BookInfo implements Serializable
+	 {	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		//책의 정보가 담긴 클래스 
+		String bookName;
+		String bookAuthor;
+		String bookPublisher;
+		String bookField;
+		int bookPrice;
+		int bookCount;
+		 
+		public BookInfo(String bookName,String bookAuthor, String bookPublisher,String bookField,int bookPrice,int bookCount)  //생성자
+		 {
+			 this.bookName = bookName;
+			 this.bookAuthor = bookAuthor;
+			 this.bookPublisher = bookPublisher;
+			 this.bookField = bookField;
+			 this.bookPrice = bookPrice;
+			 this.bookCount = bookCount;
+			 
+		 }
+		public int hashCode()//해시코드
+		{
+			return bookField.hashCode();
+		}
+		public boolean equals(Object ob)//비교를 위한 메소드  책이름과 저자가 같으면 같은책으로 간주
+		{
+			BookInfo bi = (BookInfo)ob;
+			if( (this.bookName.equals(bi.bookName)) &&(this.bookAuthor.equals(bi.bookAuthor)) )
+				return true;
+			else
+				return false;
+		}
+		public String showData()//데이터의 출력을 위한 메소드
+		{
+			String showdata = String.format("제목 : %-15s	저자 :%-10s출판사 : %-6s  분야 : %-6s  재고 : %d  가격 : %d",bookName,bookAuthor,bookPublisher,bookField,bookCount,bookPrice);
+			return showdata;
+		}
+}
+
+
+
+}}
