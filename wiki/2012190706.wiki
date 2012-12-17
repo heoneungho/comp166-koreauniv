@@ -1513,6 +1513,9 @@ public class StaticTests extends StaticSuper { // StaticSuper가 StaticTests에�
 *357p try/catch* _구현후 주석달기_
 
 {{{
+
+package ch11;
+
 public void takeRisk() throws BadException { //예외를 선언하는 과정을 통해 BadException 을 던질수 있다는 것을 외부에 알립니다.
      if (abandonAllHope){
            throw new BadEXception(); //새로운 Exception 객체를 만들고 던집니다. 
@@ -1533,6 +1536,46 @@ public void crossFingers(){
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+package ch11_1;
+
+import javax.sound.midi.*; // 미디 패키지를 불러옵니다.
+
+public class MiniMiniMusicApp {
+
+	public static void main(String [] args){
+		MiniMiniMusicApp mini = new MiniMiniMusicApp(); //mini라는 MiniMiniMusicApp 객체를 만듭니다.
+		mini.play(); // play라는 메소드를 실행시킵니다.
+	} // main 메소드 끝
+	public void play(){
+		try{
+			Sequencer player = MidiSystem.getSequencer(); //Sequencer를 받아서 엽니다.
+			player.open();
+
+			Sequence seq = new Sequence(Sequence.PPQ, 4); //Sequencer 생성자로 넘기는 인자에 대해서는 신경 쓰지 않아도 됩니다.
+			Track track = seq.createTrack(); // Sequence에 Track을 요청합니다.
+
+			// 인스턴트 코드입니다.
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144,1,44,100);
+			MidiEvent noteOn = new MidiEvent(a,1);
+			track.add(noteOn);
+
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128,1,44,100);
+			MidiEvent noteOff = new MidiEvent(b,16);
+			track.add(noteOff);
+
+		
+			player.setSequence(seq); //Sequencer에 Sequence를 보냅니다.
+
+			player.start(); // Sequencer의 start()메소드를 호출합니다.
+
+		} catch (Exception ex){
+			ex.printStackTrace();
+		}
+
+	} // play 메소드 끝
+} // 클래스 끝
 
 }}}
 
