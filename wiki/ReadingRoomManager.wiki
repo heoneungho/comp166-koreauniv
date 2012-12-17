@@ -463,6 +463,9 @@ readLog(){} // 생성자
 
 
 *10. 상황을 출력하는 클래스(message)*
+
+http://comp166-koreauniv.googlecode.com/files/me.jpg
+
 {{{
 public class message{
 
