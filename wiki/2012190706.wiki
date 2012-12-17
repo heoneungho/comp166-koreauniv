@@ -1582,6 +1582,55 @@ public class MiniMiniMusicApp {
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+package ch11_2;
+
+import javax.sound.midi.*; //미디 패키지를 불러옵니다.
+
+public class MiniMusicCmdLine { // 첫번째
+
+	public static void main(String[]args){
+		MiniMusicCmdLine mini = new MiniMusicCmdLine(); //mini라는 MiniMusicCmdLine 객체를 만듭니다.
+		if(args.length<2){ // 인자의 개수가 2보다 작다면 아래의 코드를 실행합니다.
+			System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요."); //악기와 음 높이를 지정하는 인자를 입력하세요. 를 출력합니다.
+		}else{
+			int instrument = Integer.parseInt(args[0]); //args[0] 의 값인 String 값을 int로 바꿉니다. 그리고 instrument 저장합니다.
+			int note = Integer.parseInt(args[1]); //args[1] 의 값인 String 값을 int로 바꿉니다. 그리고 note에 저장합니다.
+			mini.play(instrument, note); //play 메소드를 실행합니다.
+		}
+	} // main 끝
+
+
+	public void play (int instrument, int note){
+		try{
+			Sequencer player = MidiSystem.getSequencer();//Sequencer를 받아서 엽니다.
+			player.open(); // open 메소드를 실행합니다.
+			Sequence seq = new Sequence(Sequence.PPQ, 4); // Sequencer 생성자로 넘기는 인자에 대해서는 신경 쓰지 않아도 됩니다.
+			Track track = seq.createTrack(); //Sequence에 Track을 요청합니다.
+
+			MidiEvent event = null; event 를 null로 설정합니다.
+
+			//인스턴스 코드입니다.
+			ShortMessage first = new ShortMessage(); 
+			first.setMessage(192,1,instrument,0);
+			MidiEvent changeInstrument = new MidiEvent(first, 1);
+			track.add(changeInstrument);
+
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144,1,note,100);
+			MidiEvent noteOn = new MidiEvent(a,1);
+			track.add(noteOn);
+
+			ShortMessage b = new ShortMessage();
+			a.setMessage(128,1,note,100);
+			MidiEvent noteOff = new MidiEvent(b,16);
+			
+			
+			track.add(noteOff); //track 에 noteOff를 추가시킵니다.
+			player.setSequence(seq); //setSequence 메소드를 실행시킵니다.
+			player.start(); //start 메소드를 실행시킵니다.
+		}catch(Exception ex){ex.printStackTrace();}
+	} // play 메소드 끝
+} // 클래스 끝
 
 }}}
 
