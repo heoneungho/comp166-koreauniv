@@ -1618,7 +1618,92 @@ public class SimpleAnimation {
 *420p 뮤직 비디오* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
+import javax.swing.*;
+import java.awt.*;
+public class MiniMusicPlayer3 {   
+	
+	static JFrame f = new JFrame("My First Music Video"); // 프레임을 생성 합니다.  
+	static MyDrawPanel m1; // 패널을 생성합니다.     
+	
+	public static void main(String [] args) {       
+		MiniMusicPlayer3 mini = new MiniMusicPlayer3(); // 객체를 생성합니다.  
+		mini.go(); // go메소드 호출    
+		}    
+	
+	public void setUpGui() {        
+		m1 = new MyDrawPanel(); // 패널을 만듭니다.
+		f.setContentPane(m1); // 패널을 집어넣습니다.          
+		f.setBounds(30, 30, 300, 300); // 경계를 설정합니다.  
+		f.setVisible(true); // 보이도록 설정      
+		}     
+	
+	public void go() {    
+		setUpGui();// 메소드 실행    
+		try{              
+			Sequencer sequencer = MidiSystem.getSequencer();    
+			sequencer.open();      
+			sequencer.addControllerEventListener(m1, new int[] {127});  
+			Sequence seq = new Sequence(Sequence.PPQ, 4);                  
+			Track track = seq.createTrack();                
+			
+			int r = 0;     
+			for(int i = 0; i < 60 ; i+=4)       
+			{                              
+				r=(int)((Math.random()*50)+1);    
+				track.add(makeEvent(144,1,r,100,i));      
+				track.add(makeEvent(176,1,127,0,i));         
+				track.add(makeEvent(128,1,r,100,i+2));      
+			} // 반복적으로 음악을 만들고 집어넣습니다.    
+			
+			sequencer.setSequence(seq);       
+			sequencer.start();          
+			sequencer.setTempoInBPM(120);     
+			}  catch(Exception ex) {ex.printStackTrace(); }      
+		}// 메소드 끝   
+	
+	public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {    
+		MidiEvent event = null;                 
+		try{                  
+			ShortMessage a = new ShortMessage();             
+			a. setMessage(comd,chan,one,two);               
+			event = new MidiEvent(a, tick);            
+			
+		}  catch(Exception e) { }     
+		return event;      
+	} // 메소드 끝      
 
+class MyDrawPanel extends JPanel implements ControllerEventListener {  
+	boolean msg = false;       
+	
+	public void controlChange(ShortMessage event) {  
+		msg = true;                   
+		repaint(); // 색 설정  
+		}             
+	
+	public void paintComponent(Graphics g) {       
+		if(msg)  {                
+			Graphics2D g2= (Graphics2D)g;  
+			
+			int r = (int) (Math.random()*250);     
+			int gr=(int) (Math.random()*250);    
+			int b= (int ) (Math.random()*250);  
+			
+			g.setColor(new Color(r,gr,b));                       
+			
+			int ht=(int) ((Math.random()*120)+10);       
+			int width=(int) ((Math.random()*120)+10);                
+			
+			int x=(int) ((Math.random()*40)+10);        
+			int y=(int) ((Math.random()*40)+10);          
+			
+			g.fillRect(x, y, ht, width);                  
+			msg = false;                    
+			
+		} // if문 끝         
+	} // 메소드 끝
+}// 내부 클래스 끝
+}//클래스 끝
 }}}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
