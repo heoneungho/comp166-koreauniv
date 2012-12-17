@@ -426,7 +426,7 @@ public class GameHelper//게임을 도와주는 클래스
 
 }}}
 
-4.전지전능하신 GameHelper 와 Player이 있는 클래스
+4.전지전능하신 GameHelper와 Player이 있는 클래스
 {{{
 
 import java.util.*;
@@ -478,7 +478,8 @@ class Player extends GameMaster//Player은 GameMaster을 확장합니다.
                                 myList.add(arrangeList.get(i)); break;
                 }
                 //일정한 카드숫자씩 arrangeList에서부터 나눠가집니다.
-                
+                //제 아이디업니다!!
+
                 arrangeMyCard();//사용자가 보기 편하도록 카드를 오름차순으로 정렬해줍니다.
         }
         void putDownCard(Card a,int n)//카드를 내려놓는 메소드입니다.
