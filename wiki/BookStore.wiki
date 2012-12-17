@@ -22,10 +22,8 @@
 4.종료메뉴 : 프로그램종료
 
 = Details =
+
 {{{
-
-
-
 
 import java.util.Scanner;
 import java.io.*;
@@ -35,12 +33,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
-
-
-
-	
-	
 
 class BookInfo implements Serializable
 	 {	
@@ -87,7 +79,7 @@ class BookInfo implements Serializable
 }}}	 
 	 
 	 
-*BookField 클래스	 
+*BookField 클래스*	 
 {{{
 class BookField//검색시 책분야를 선택하기위해 사용되는 클래스
 {
