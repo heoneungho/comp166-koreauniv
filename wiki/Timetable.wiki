@@ -43,11 +43,7 @@
 
 = 실행화면 =
 
-http://comp166-koreauniv.googlecode.com/files/first.jpg
 
-http://comp166-koreauniv.googlecode.com/files/second.jpg
-
-http://comp166-koreauniv.googlecode.com/files/third.jpg
 
 
 = Details =
