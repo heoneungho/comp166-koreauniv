@@ -1972,7 +1972,7 @@ http://comp166-koreauniv.googlecode.com/files/leave.jpg
 
 http://comp166-koreauniv.googlecode.com/files/amain.jpg
 
-= Report =
+= Report(통계/느낀점/참고문헌) =
 
 1) *통계*
 
