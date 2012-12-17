@@ -728,7 +728,36 @@ public class DotCom	{
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
+import java.util.*;
 
+public class DotCom	{
+	private ArrayList<String> locationCells;
+	private String name;
+
+	public void setLocationCells(ArrayList loc)	{
+		locationCells = loc;
+	}
+
+	public void setName(String n)	{
+		name = n;
+	}
+
+	public String checkYourself(String userInput)	{
+		String status = "miss";
+		int index = locationCells.indexOf(userInput); //어레이리스트에 없으면 -1 .... 확인!
+		if(index >= 0)	{
+			locationCells.remove(index); // 리스트의 remove를 써서 삭제 
+			if(locationCells.isEmpty())	{
+				status = "kill";
+				System.out.println("Ouch You sunk " + name + "	:	( ");  // 닷컴이 맞춤 ㅠ
+			}	else	{
+				status = "hit";
+			}
+		}
+		return status; // miss hit kill 중 결과 빠샤!!
+
+	}
+}
 }}}
 
 = 07. 객체마을에서의 더 나은 삶:미래를 준비합시다  =
