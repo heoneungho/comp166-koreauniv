@@ -99,12 +99,10 @@ public class Dalmuti //달무티!
                 
                 System.out.println("---===The End===---");//게임이 끝남을 알리는 출력문
                 
-                for(Player tmp : rank)//순위를 출력해줘요.기말고사 이후 구현
+                for(int i = 1; i < 5 ; i++)//순위를 출력해줘요.기말고사 이후 구현
                 {
-                	int i = 1;
-                	System.out.println(i++ +"등 : Player"+ tmp.getMyName());
+                	System.out.println(i+"등 : Player"+ rank.get(i-1).getMyName());
                 }
-                
                 
         }
                 
