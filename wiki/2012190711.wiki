@@ -950,6 +950,50 @@ public class Animal {
 
 {{{
 
+public class MonsterTestDrive
+{
+        public static void main(String[] args)
+        {
+                Monster[] ma = new Monster[3];//Monster 객체배열
+
+                ma[0] = new Vampire();
+                ma[1] = new Dragon();
+                ma[2] = new Monster(); //각자 넣어줌
+
+                for(int x = 0; x < 3; x++)
+                {
+                        ma[x].frighten(x);//순서대로 frighten 메소드 호출
+                }
+        }
+}
+
+class Monster
+{
+        boolean frighten(int d)
+        {
+                System.out.println("arrrgh");
+                return true;
+        }
+}
+
+class Vampire extends Monster//Monster를 상속
+{
+        boolean frighten(int x)//오버라이드
+        {
+                System.out.println("a bite?");
+                return false;
+        }
+}
+
+class Dragon extends Monster
+{
+        boolean frighten(int degree)
+        {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
@@ -979,6 +1023,73 @@ public class Animal {
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+import java.util.*;
+
+class V2Radiator
+{
+        V2Radiator(ArrayList<SimUnit> list)//생성자로 add메소드 호출
+        {
+                for(int x = 5; x < 5 ; x++)
+                {
+                        list.add(new SimUnit("V2Radiator"));
+                }
+        }
+}
+
+class V3Radiator //extends V2Radiator
+{
+        V3Radiator(ArrayList<SimUnit> lglist)
+        {
+                //super(lglist); 
+                for(int g = 0; g < 10 ; g++)
+                {
+                        lglist.add(new SimUnit("V3Radiator"));
+                }
+        }
+}
+
+class RetentionBot
+{
+        RetentionBot(ArrayList<SimUnit> rlist)
+        {
+                rlist.add(new SimUnit("Rention"));
+        }
+}
+
+public class TestLifeSupportSim 
+{
+        public static void main(String[] args)
+        {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();
+                V2Radiator v2 = new V2Radiator(aList);
+                V3Radiator v3 = new V3Radiator(aList);
+                for(int z = 0 ; z < 20 ; z++)
+                {
+                        RetentionBot ret = new RetentionBot(aList);
+                } // 객체가 생성되고 생성자가 실행
+        }
+}
+
+class SimUnit //전력 소모량의 차이의 문제는 생성될 때마다 메시지를 출력하라는 생성자를 만들면 문제를 빨리 찾을 수 있다.
+{
+        String botType;
+        SimUnit(String type)
+        {
+                botType = type;
+        }
+        int powerUse()
+        {
+                if("Retention".equals(botType))
+                {
+                        return 2;                       
+                }
+                else
+                {
+                        return 4;
+                }
+        }
+}
 
 }}}
 
