@@ -2365,3 +2365,6 @@ public class NameList{
 ○ GUI 기반이 아닌 단순히 입력을 통해 옛날의 머드게임과 같은 버전을 먼저 만드는 것을 목표로 함 <br>
 <br>
 을 구현 시키는 것이 목표입니다. <br>
+
+Download <br>
+http://comp166-koreauniv.googlecode.com/files/2012190731.zip<br>
