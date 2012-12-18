@@ -791,7 +791,7 @@ ActionPerformed() 한개 뿐이기에 overriding 한다. */
                     } 
 /*여기 까지, 메뉴 선택에 대한 if문*/
 
-/*이제, cash or card에 대한 if문.
+/*이제, cash or card에 대한 if문.*/
 
                     if(cash.isSelected() == true) {
 
