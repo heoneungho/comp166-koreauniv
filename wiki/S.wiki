@@ -354,7 +354,7 @@ public class PizzaOrder {
  
 int maincontrol;
 JOptionPane.showMessageDialog(null,"원하는 피자의 사이즈를 입력 하세요.(s/r/f) : ");
-int size=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t S \n"
+int size=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1)\t S \n"
 
 	 +"(2)\t R \n"  
 
@@ -369,7 +369,7 @@ int size=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t S \n"
 	    
 
 	 case 1: 
-		JOptionPane.showMessageDialog(null,"s사이즈를 주문하셨습니다");
+		JOptionPane.showMessageDialog(null,"S사이즈를 주문하셨습니다");
 maincontrol = 0; 
 
 	     break;  
@@ -377,7 +377,7 @@ maincontrol = 0;
 
 
 	 case 2:  
-		JOptionPane.showMessageDialog(null,"r사이즈를 주문하셨습니다");
+		JOptionPane.showMessageDialog(null,"R사이즈를 주문하셨습니다");
 	     
 
 	         maincontrol=0;  
@@ -385,7 +385,7 @@ maincontrol = 0;
 	       break;  
 
 	   case 3:
-		JOptionPane.showMessageDialog(null,"f사이즈를 주문하셨습니다");
+		JOptionPane.showMessageDialog(null,"F사이즈를 주문하셨습니다");
 		maincontrol=0;
 		break;
 
@@ -402,9 +402,9 @@ maincontrol = 0;
  
  int asl;
  JOptionPane.showMessageDialog(null," 원하는 토핑의 가짓수를 입력 하세요.(1 to 5):");
- int toppingnumber=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t 1 \n"
+ int toppingnumber=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1)\t1 \n"
 
- 	 +"(2)\t 2 \n"  
+ 	 +"(2)\t2 \n"  
 
  	+"(3)\t3 \n"
  +"(4)\t4 \n"
@@ -459,7 +459,7 @@ maincontrol = 0;
 	 int aaa;
  
  JOptionPane.showMessageDialog(null," 원하는 토핑의 종류를 입력 하세요. combination/seafood/bulgogi/potato/sweet_potato : (각각의 토핑은 / 으로 구분되어야함)");
- int topping=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t combination \n"
+ int topping=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1)\t combination \n"
 
  	 +"(2)\t seafood \n"  
 
