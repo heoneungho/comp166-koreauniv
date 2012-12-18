@@ -235,3 +235,16 @@ public static int[] makeaperfume(){
 	 } //makeaperfume method 끝
 
 }}}
+
+<실행화면>
+http://comp166-koreauniv.googlecode.com/files/zz.PNG
+http://comp166-koreauniv.googlecode.com/files/zzz.PNG
+http://comp166-koreauniv.googlecode.com/files/zzzz.PNG
+http://comp166-koreauniv.googlecode.com/files/zzzzz.PNG
+http://comp166-koreauniv.googlecode.com/files/zzzzzz.PNG
+http://comp166-koreauniv.googlecode.com/files/zsdf.PNG
+http://comp166-koreauniv.googlecode.com/files/sdsf.PNG
+http://comp166-koreauniv.googlecode.com/files/dsfasdf.PNG
+http://comp166-koreauniv.googlecode.com/files/sdfggg.PNG
+http://comp166-koreauniv.googlecode.com/files/qqqqqq.PNG
+http://comp166-koreauniv.googlecode.com/files/2012190718
