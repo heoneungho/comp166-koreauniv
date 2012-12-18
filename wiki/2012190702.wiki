@@ -1277,7 +1277,47 @@ public class TwoButtons	{
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
 
+public class SimpleAnimation	{
+	int x = 70;
+	int y = 70;
+
+	public static void main(String[] args)	{
+		SimpleAnimation gui = new SimpleAnimation();
+		gui.go();
+	}
+
+	public void go()	{
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+		frame.getContentPane().add(drawPanel);
+		frame.setSize(300, 300);
+		frame.setVisible(true);
+	
+		for(int i =0; i<130; i++)	{	//애니매이션 만들기 !!  130번 반복!!
+			x++;
+			y++; //좌표 더해서 움직이는 효과
+
+			drawPanel.repaint();	//repaint 해서 흔적 x
+			
+			try	{
+				Thread.sleep(50); // 움직이는 속도설정
+			}	catch(Exception ex)	{	}
+		}
+	}
+
+	class MyDrawPanel extends JPanel	{
+		public void paintComponent(Graphics g)	{
+			g.setColor(Color.green); // 색상 초록!
+			g.fillOval(x,y,40,40); // 위치 설정 크기 설정
+		}
+	}
+}
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
