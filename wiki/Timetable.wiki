@@ -74,11 +74,11 @@ Dnode부분과 메인문의 try-catch(화면창을 부드럽게 만
 
 = CLASS 구성 =
 
-* Dnode 클래스
+* 1. Dnode 클래스
 
 1) 프로그램의 시작과 끝을 알려주는 클래스입니다. 
 
-* mainForm 클래스
+* 2. mainForm 클래스
 
 1) 변수선언, 레이아웃 구성
 
@@ -92,7 +92,7 @@ Dnode부분과 메인문의 try-catch(화면창을 부드럽게 만
 
 6) main문
 
-* parking 클래스
+* 3. parking 클래스
 
 1) 주차공간 하나에 대한 객체, 번호판, 시간, 요금정보
 
