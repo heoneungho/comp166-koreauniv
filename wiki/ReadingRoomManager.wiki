@@ -2122,6 +2122,8 @@ http://comp166-koreauniv.googlecode.com/files/hhh.JPG
 
  -  http://blog.naver.com/gdrtlee?Redirect=Log&logNo=100156264113, File Reader와 File Writer에 대한 이해를 위해 본 블로그.
 
+ -  http://blog.naver.com/skykingkjs?Redirect=Log&logNo=150144409872, 스트링 토크나이저에 대한 이해를 위해 본 블로그.
+
 = Download(소스코드제출) =
 
 <컴퓨터교육과 2012190723 유영훈 님의 Reading Room Manager 소스코드>
