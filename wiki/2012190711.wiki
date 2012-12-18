@@ -600,32 +600,33 @@ public class SimpleDotComTestDrive {
 }
 
 public class SimpleDotCom {
-        int[] locationCells;
-        int numOfHits=0;
-        
-        public void setLocationCells(int[] locs){
-                locationCells=locs;
+    int[] locationCells;
+    int numOfHits = 0;
+    
+    public void setLocationCells(int[] locs)
+    {
+        locationCells = locs;
+    }
+    
+    public String checkYourself(String stringGuess) {
+        int guess = Integer.parseInt(stringGuess); //string을 int로 변환
+        String result = "miss"; //리턴결과를 저장할 변수 (초기값 miss)
+        for (int i = 0; i < locationCells.length; i++) //배열의 각 원소에 대해 반복
+        {
+            if (guess == locationCells[i]) {
+                result = "hit";
+                numOfHits++;
+                break;
+            } //if문 끝
+        }//for문 끝
+        if (numOfHits == locationCells.length) //죽었을 때
+        {
+            result = "kill";
         }
-
-        public String checkYourself(String stringGuess){
-                int guess=Integer.parseInt(stringGuess);
-                String result="miss";
-                for(int i=0;i<locationCells.length;i++){
-                        if(guess==locationCells[i]){
-                                result="hit";
-                                numOfHits++;
-                                break;
-                        }
-                }
-                if(numOfHits==locationCells.length){
-                result="kill";
-                
-                }
-                System.out.println(result);
-                        return result;
-        }
-
-}
+        System.out.println(result);
+        return result;
+    }//메소드 끝
+}//클래스 끝
 
 import java.io.*;
 public class GameHelper {
