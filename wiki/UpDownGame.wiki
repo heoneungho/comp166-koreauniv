@@ -576,3 +576,9 @@ public class Decide extends UpDownGame{
 -try catch 구문으로 숫자 입력받을 때 숫자 아닌거 들어오면 게임을 종료하도록 설정.
 
 boolean == true, false라고 되어있던거 가독성 좋게 수정
+
+
+
+= Downloads = 
+
+http://comp166-koreauniv.googlecode.com/files/UpDownGame.zip
