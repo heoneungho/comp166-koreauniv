@@ -1229,7 +1229,49 @@ class MyDrawPanel extends JPanel {
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+public class TwoButtons	{
+	JFrame frame;
+	JLabel label;
 
+	public static void main(String[] args)	{
+		TwoButtons gui = new TwoButtons();
+		gui.go();
+	}
+
+	public void go()	{
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //끄기 설정
+		
+		JButton labelButton = new JButton("Change Label");
+		labelButton.addActionListener(new LabelListener()); // Change Label적힌 버튼 생성후 이벤트로 연결
+		
+		JButton colorButton = new JButton("Change Circle"); // Change Circle적힌 버튼 생성후 이벤트로 연결
+		colorButton.addActionListener(new ColorListener());
+
+		label = new JLabel("I'm a label");
+		MyDrawPanel drawPanel = new MyDrawPanel();
+		
+		frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(BorderLayout.EAST, labelButton);
+		frame.getContentPane().add(BorderLayout.WEST, label); //버튼의 위치설정
+		
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+
+	class LabelListener implements ActionListener	{ //label 이벤트
+		public void actionPerformed (ActionEvent event)	{
+			label.setText("Ouch!");
+		}	
+	}
+
+	class ColorListener implements ActionListener	{ // color 이벤트
+		public void actionPerformed (ActionEvent event)	{
+			frame.repaint();
+		}
+	}
+}
 }}}
 
 *418p 간단한 애니메이션* _구현후 주석달기_
