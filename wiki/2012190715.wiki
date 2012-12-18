@@ -228,58 +228,72 @@ public class GuessGame {
 }}}
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 {{{
-A. 
+A :
+public class TapeDeck 
+{
 
->TapeDeck.java
-class TapeDeck{
+        boolean canRecord = false; //canRecord = false로 세팅
+        
+        void playTape()//playTape 메소드 생성
+        {
+                System.out.println("tape playing");             
+        }
+        
+        void recordTape()//recordTape 메소드 생성
+        {
+                System.out.println("tape recording");
+                
+        }       
 
-	boolean canRecord = false;
-
-	void playTape() {
-	 System.out.Println("tape playing");
-	}
-
-	void recordTape() {
-	 System.out.Println("tape recording");
-	}
-   }
-
->TapeDeckTestDrive.java
-class TapeDeckTestDrive {
-	public static void main(String [] args) {
-		TapeDeck t = new TapeDeck();
-		t.canRecord = true;
-		t.playtape();
-
-		if(t.canRecord == true) {
-			t.recordTape();
-		}
-	}
 }
 
-B,
+public class TapeDeckTestDrive 
+{
+        public static void main(String[] args) 
+        {
+                TapeDeck t = new TapeDeck();
+                //TapeDeck 타입의 변수 객체t를 만들어줍니다
+                t.canRecord = true;//t의 canRecord를 true로
+                t.playTape();//t의 playTape메소드 실행
+                
+                if(t.canRecord == true)
+                {
+                        t.recordTape();
+                }
+        }
+}
 
->DvDPlayer.java
-class DVDPlayer {
-	boolean canRecord = false;
-	void recordDVD () {
-	 System.out.println("DVD recording");
-	}
-	void playDVD() {
-	  System.out.println("DVD playing");
-	}
- }
+B:
 
->DVDPlayerTestDrive.java
-class DVDPlayerTestDrive {
-	public static void main(String [] args) {
-		DVDPlayer d = new DVDPlayer();
-		d.canRecord = true;
-		d.playDVD();
-		if(d.canRecord == true) {
-			d.recordDVD();
-		}
-	}
+public class DVDPlayer
+{
+        boolean canRecord = false;//canRecord = false로 세팅
+        
+        void recordDVD()//recordDVD메소드 생성
+        {
+                System.out.println("DVD recording");
+                
+        }
+        void playDVD()//playDVD메소드 생성
+        {
+                System.out.println("DVD Playing");
+        }
+        //playDVD method 를 만들가
+}
+
+public class DVDPlayerTestDrive 
+{
+        public static void main(String[] args) {
+                
+                DVDPlayer d = new DVDPlayer();//DVDPlayer형의 새로운 객체 생성
+                d.canRecord = true;//d의 canRecord에 true를 넣기
+                d.playDVD();
+                
+                if(d.canRecord == true)
+                {
+                        d.recordDVD();
+                }
+        }
 }
 }}}
 
@@ -1222,7 +1236,61 @@ public class MiniMiniMusicApp {
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
 
+
+public class MiniMusicCmdLine
+{
+        public static void main(String[] args)
+        {
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();//객체 생성
+                
+                if(args.length < 2 )
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                else
+                {
+                        int instrument = Integer.parseInt(args[0]);//악기 설정
+                        int note = Integer.parseInt(args[1]);//노트 설정
+                        mini.play(instrument,note);//play 메소드 실행하면서 인자로 넘겨줌
+                        
+                }
+        }
+        
+        public void play(int instrument, int note)
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//시퀀서를 생성
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();//track 을 생성
+                        
+                        MidiEvent event = null;//event 생성
+                        
+                        ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+                }
+                
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                }
+        }
+}
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
@@ -1253,74 +1321,54 @@ public class SimpleGui1 {
 
 {{{
 import javax.swing.*;
-import java.awt.event.*;
 
-public class SimpleGuilB implements ActionListener {
-	JButton button;
-
-	public static void main(String[] args) {
-		SimpleGuilB gui = new SimpleGuilB();
-		gui.go();
-	}
-	
-	public void go() {
-		JFrame frame = new JFrame();
-		button = new JButton("click me");
-		
-		button.addActionListener(this);
-		
-		frame.getContentPane().add(button);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300,300);
-		frame.setVisible(true);
-	}
-	
-	public void actionPerformed(ActionEvent event) {
-		button.setText("I've been clicked! Wow");
-	}
+public class SimpleGui1{
+        public static void main(String []args){
+                JFrame frame = new JFrame(); // 프레임을 생성
+                JButton button = new JButton("click me");  // 버튼을 생성
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 버튼 누를 때 창이 종료되도록 설정
+                frame.getContentPane().add(button); // 프레임에 버튼을 추가
+                frame.setSize(300,300); // 프레임의 크기를 픽셀단위로 지정
+                frame.setVisible(true); // 화면에 표시되도록 설정
+        }
 }
-
-
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-public class SimpleGui3C implements ActionListener {
-	
-	JFrame frame;
-	
-	public static void main(String[] args) {
-		SimpleGui3C gui = new SimpleGui3C();
-		gui.go();
-	}
-
-	public void go() {
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JButton button = new JButton("Change colors");
-		button.addActionListener(this);
-		
-		MyDrawPanel drawPanel = new MyDrawPanel();
-		
-		frame.getContentPane().add(BorderLayout.SOUTH,button);
-		frame.getContentPane().add(BorderLayout.CENTER,drawPanel);	
-		frame.setSize(300,300);
-		frame.setVisible(true);
-	}
-	public void actionPerformed(ActionEvent event) {
-		frame.repaint();
-	}
+public class SimpleGui1B implements ActionListener
+{
+        JButton button;
+        
+        public static void main(String[] args)
+        {
+                SimpleGui1B gui = new SimpleGui1B();//객체 생성
+                gui.go();//go 메소드 실행
+        }
+        
+        public void go()
+        {
+                JFrame frame = new JFrame();//프레임 생성
+                button = new JButton("Click me");//버튼을 생성하고 Click me라고 메시지를 전달
+                
+                button.addActionListener(this);//버튼에 액션 리스너를 집어넣기
+                
+                frame.getContentPane().add(button);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(300, 300);
+                frame.setVisible(true);
+                
+        }
+        
+        public void actionPerformed(ActionEvent event)//ActionListener 메소드 구현
+        {
+                button.setText("I've been clicked!");
+        }
 }
-
-// 다시 구현해볼 것!
-
-
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
@@ -1395,47 +1443,56 @@ public class TwoButtons
 import javax.swing.*;
 import java.awt.*;
 
-public class SimpleAnimation {
+public class SimpleAnimation 
+{
 
-		int x = 70;
-		int y = 70;
-		
-		public static void main(String[] args) {
-			SimpleAnimation gui = new SimpleAnimation ();
-			gui.go();
-		}
-		
-		public void go() {
-			JFrame frame = new JFrame();
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
-			MyDrawPanel drawPanel = new MyDrawPanel();
-			
-			frame.getContentPane().add(drawPanel);
-			frame.setSize(300,300);
-			frame.setVisible(true);
-			
-			for (int i = 0; i < 130; i++) {
-				x++;
-				y++;
-				drawPanel.repaint();
-				
-				try{
-					Thread.sleep(50);
-				} catch(Exception ex) {}
-			}
-		}
-		
-		class MyDrawPanel extends JPanel{
-			
-			public void paintComponet(Graphics g) {
-				g.setColor(Color.white);
-				g.fillRect(0,0,this.getWidth(),this.getHeight());
-				
-				g.setColor(Color.green);
-				g.fillOval(x,y,40,40);
-				}
-		}
+        int x=70;
+        int y=70;
+        //원의 x, y좌표를 설정
+        
+        public static void main(String args[]){
+                SimpleAnimation gui=new SimpleAnimation();
+                gui.go();
+        }
+        
+        public void go()
+        {
+                JFrame frame=new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                MyDrawPanel drawPanel = new MyDrawPanel();// 위젯을 만들고 프레임에 집어 넣기
+                frame.getContentPane().add(drawPanel);
+                frame.setSize(300,300);
+                frame.setVisible(true);
+
+                for(int i=0;i<300;i++){ // 반복
+
+                        x++;
+                        y++;
+                        //x와 y 좌표를 증가
+                        
+                        drawPanel.repaint();
+
+                        try{
+                                Thread.sleep(50); //속도를 약간 줄임
+                        }catch(Exception ex){}
+                }
+
+        } 
+
+        @SuppressWarnings("serial")
+                class MyDrawPanel extends JPanel
+        {
+                public void paintComponent(Graphics g)
+                {
+                        g.setColor(Color.white);
+                        g.fillRect(0,0,this.getWidth(),this.getHeight());
+
+                        g.setColor(Color.green);
+                        g.fillOval(x, y, 40, 40); //지속적으로 갱신되는 외부클래스의 x, y 좌표를 사용
+
+                }
+        }
 }
 
 }}}
