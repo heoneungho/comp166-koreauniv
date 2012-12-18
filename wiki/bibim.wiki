@@ -1,0 +1,839 @@
+#2012190732 조혜경
+
+= Introduction =
+
+주문자들이 몇 번의 입력과 몇 번의 클릭만으로 주문할 수 있도록 만들어진 프로그램입니다.
+
+
+= Details =
+
+원래 IQTEST를 하려고 했으나, class가 너무 많이 필요해서 복잡하고 GUI구상이 너무 어
+
+려워져서, class가 한개만 필요한 단순한 GUI프로그램으로 대체하였습니다.
+
+────────────────────────────────────────────────────────────────────────
+
+Question1. 왜 이 프로그램을 만들었는가?
+
+Answer1.
+
+ 제가 평소에 치킨 같은 배달 음식을 시킬 때, 어느 날은 주문이 너무 밀려서 판매자 쪽에서
+
+계속 통화중이여서 전화 연결이 느려지거나, 주문을 못한 적이 많았습니다. 그래서 손쉽게 
+
+주문할 수 있고, 판매자 입장에서도 주문자의 전화보다 음식만드는 일에 집중 할 수 있게 
+
+일석이조인 것 같아서 만들게 되었습니다.
+
+────────────────────────────────────────────────────────────────────────
+
+Question2. 이 프로그램만이 가지고 있는 기능은 무엇인가?
+
+Answer2.
+
+1)사용자의 이름과 주소를 직접 입력합니다.
+
+2)주문시, 가장 중요한 연락처는 숫자가 아닌 다른 문자는 절대 입력할 수 없으며, 
+
+기본적으로 010이 셋팅되어 있습니다.(try-catch 이용)
+
+3)양과 결제 방식을 선택할 수 있습니다.
+
+4)밑반찬은 4개까지 선택가능하며, 그 이상 선택하고 주문시 경고창이 뜹니다.
+
+5)주재료 역시 1개까지 선택가능하며, 그 이상 선택하고 주문시 경고창이 뜹니다.
+
+6)주문 완료시, 내가 선택한 결제 방식 및 가격 그리고 주문 내역을 알 수 있습니다.
+
+7)중요한 밑반찬 및 주재료 선택에는 파란색(B=205)을 넣어서 강조하였습니다.
+
+8)GUI를 이용해서 클릭만으로도 주문이 성립되게 하였습니다.
+
+9)클래스가 1개 밖에 없는데도 불구하고, 코드가 알아보기 쉽습니다.
+
+10)if, if else, else문을 적절히 이용하였습니다.
+
+
+────────────────────────────────────────────────────────────────────────
+
+Question3. 있었으면 좋았을 법한 기능 혹은 단점은 무엇인가?
+
+Answer3.
+
+1)주문자의 주문내역이 txt파일로 저장되었으면 좋았을 법하다.
+
+2)class를 여러 개로 나눴으면 좋았을 법하다.
+
+3)if문이 너무 많이 사용되었다.
+
+4)비빔밥의 특성상 여러 그릇을 한꺼번에 주문하지 못한다는 점이 아쉽다.
+
+────────────────────────────────────────────────────────────────────────
+
+Question4. 12/4 이후 바뀐 점은?
+
+Answer4.
+
+1)결제 수단을 radiobutton을 이용한 형식으로 바꾸었다.
+
+2)연락처에 숫자 이외의 것에 입력을 못하게 하였다.
+
+3)결제 수단, 가격 및 주문 내역을 소비자가 다시 확인 할 수 있게 하였다.
+
+4)밑반찬 및 주재료가 허용 갯수 초과하여 주문시, 경고창이 뜨게 하였다.
+
+────────────────────────────────────────────────────────────────────────
+
+Question5. 실행화면?
+
+Answer5.
+
+1)초기 화면.
+
+a.이름, 주소는 직접 입력한다.
+
+b.연락처를 입력한다.(반드시 숫자만 허용.)
+
+c.양과 결제방식을 클릭한다.
+
+d.먹고 싶은 밑반찬 및 주메뉴를 고른다.
+
+e.주문 완료를 누른다.
+
+http://comp166-koreauniv.googlecode.com/files/초기화면2.jpg
+
+2)정보 입력.
+
+a.기본 정보를 입력했을 때.
+
+http://comp166-koreauniv.googlecode.com/files/실행한_화면3.jpg
+
+3)밑반찬을 4개를 초과하여 선택했을 경우
+
+a.주문 완료를 누른다면 경고창이 뜬다.
+
+http://comp166-koreauniv.googlecode.com/files/5개_골랐을_경우4.jpg
+
+4)밑반찬은 4개가 되었으나, 주메뉴를 1개 초과하여 선택하였을 경우
+
+a.주문 완료를 누른다면 경고창이 뜬다.
+
+http://comp166-koreauniv.googlecode.com/files/주재료_2개골랐을_경우5.jpg
+
+5)이제 갯수에 맞게 주문을 완료하였다.
+
+a.결제 수단
+
+http://comp166-koreauniv.googlecode.com/files/방식6.jpg
+
+b.결제 금액
+
+http://comp166-koreauniv.googlecode.com/files/금액7.jpg
+
+c.주문 내역
+
+http://comp166-koreauniv.googlecode.com/files/주문_내역8.jpg
+
+d.주문 완료
+
+http://comp166-koreauniv.googlecode.com/files/주문_완료9.jpg
+
+────────────────────────────────────────────────────────────────────────
+
+Question6. 코드 소개?
+
+Answer6.
+
+{{{
+
+
+import java.awt.*;
+
+import java.awt.event.*;
+
+import javax.swing.*;
+
+public class Bibim extends JFrame implements ActionListener, KeyListener {
+
+    
+        JLabel lab1, lab2, lab3, lab4, lab5, sideItem, mainItem;
+
+        Button button;
+
+        JTextField text1, text2, text3;
+
+        ButtonGroup group1, group2;
+
+        JRadioButton small, medium, large, cash, card;
+
+        JCheckBox chk1, chk2, chk3, chk4, chk5, chk6, chk7, chk8, chk9, chk10,
+
+                  chk11, chk12, chk13, chk14, chk15, chk16, chk17, chk18;
+
+
+        Bibim() {
+
+            
+
+                getContentPane().setLayout(null);
+
+                setBackground(Color.white);
+
+                
+
+                lab1 = new JLabel("이름: ");
+
+                lab2 = new JLabel("주소: ");
+
+                lab3 = new JLabel("연락처: "); 
+
+                lab4 = new JLabel("양:");
+                
+                lab5 = new JLabel("결제 수단:");
+                          
+
+                sideItem = new JLabel("밑반찬을 선택하시오.(택4) : "); 
+                                                                                                                                                                 
+                sideItem.setForeground(new Color(0, 0, 205));
+
+
+                mainItem = new JLabel("주재료를 선택하시오.(택1): ");
+
+                mainItem.setForeground(new Color(0, 0, 205)); 
+
+
+                text1 = new JTextField(20);
+
+                text2 = new JTextField(20);
+
+                text3 = new JTextField(20);
+
+                text3.setText("010");
+
+
+                small = new JRadioButton("소 (4000원)", true);
+
+                medium = new JRadioButton("중 (5000원)", false);
+
+                large = new JRadioButton("대 (6000원)", false);
+
+
+                group1 = new ButtonGroup();
+
+                group1.add(small);
+
+                group1.add(medium);
+
+                group1.add(large);
+                
+                
+                cash = new JRadioButton("현금 결제", false);
+
+                card = new JRadioButton("카드 결제", false);
+
+                group2 = new ButtonGroup();
+
+                group2.add(cash);
+
+                group2.add(card);
+
+                chk1 = new JCheckBox("느타리버섯 나물", false);
+
+                chk2 = new JCheckBox("호박 나물", false);
+
+                chk3 = new JCheckBox("고사리 나물", false);
+
+                chk4 = new JCheckBox("콩나물 무침", false);
+
+                chk5 = new JCheckBox("시금치 나물", false);
+
+                chk6 = new JCheckBox("채썬 당근", false);
+
+                chk7 = new JCheckBox("달걀후라이", false);
+
+                chk8 = new JCheckBox("상추", false);
+
+                chk9 = new JCheckBox("무채", false);
+
+
+                chk10 = new JCheckBox("연어", false);
+
+                chk11 = new JCheckBox("불고기", false);
+
+                chk12 = new JCheckBox("치즈날치알", false);
+
+                chk13 = new JCheckBox("참치", false);
+
+                chk14 = new JCheckBox("볶은 김치", false);
+
+                chk15 = new JCheckBox("닭갈비", false);
+
+                chk16 = new JCheckBox("새우", false);
+
+                chk17 = new JCheckBox("제육 볶음", false);
+
+                chk18 = new JCheckBox("낙지", false);
+
+
+                button = new Button("주문 완료");
+
+                small.addActionListener(this);
+
+                medium.addActionListener(this);
+
+                large.addActionListener(this);
+                
+                cash.addActionListener(this);
+
+                card.addActionListener(this);
+
+                chk1.addActionListener(this);
+
+                chk2.addActionListener(this);
+
+                chk3.addActionListener(this);
+
+                chk4.addActionListener(this);
+
+                chk5.addActionListener(this);
+
+                chk6.addActionListener(this);
+
+                chk7.addActionListener(this);
+
+                chk8.addActionListener(this);
+
+                chk9.addActionListener(this);
+
+
+                chk10.addActionListener(this);
+
+                chk11.addActionListener(this);
+
+                chk12.addActionListener(this);
+
+                chk13.addActionListener(this);
+
+                chk14.addActionListener(this);
+
+                chk15.addActionListener(this);
+
+                chk16.addActionListener(this);
+
+                chk17.addActionListener(this);
+
+                chk18.addActionListener(this);
+
+
+                text3.addKeyListener(this);
+
+                button.addActionListener(this);
+
+
+                lab1.setBounds(50, 50, 200, 20); 
+
+                lab2.setBounds(50, 80, 200, 20);
+
+                lab3.setBounds(50, 110, 200, 20);
+
+                
+
+                text1.setBounds(200, 50, 200, 20);
+
+                text2.setBounds(200, 80, 200, 20);
+
+                text3.setBounds(200, 110, 200, 20);
+
+                lab4.setBounds(50, 140, 200, 20);
+                
+                small.setBounds(200, 140, 100, 20);
+
+                medium.setBounds(300, 140, 100, 20);
+
+                large.setBounds(400, 140, 100, 20);
+                
+                lab5.setBounds(50, 170, 200, 20);
+                
+                cash.setBounds(200, 170, 100, 20);
+
+                card.setBounds(300, 170, 100, 20);
+
+                sideItem.setBounds(50, 200, 300, 20);
+
+                chk1.setBounds(50, 230, 300, 20);
+
+                chk2.setBounds(50, 260, 300, 20);
+
+                chk3.setBounds(50, 290, 300, 20);
+
+                chk4.setBounds(50, 320, 300, 20);
+
+                chk5.setBounds(50, 350, 300, 20);
+
+                chk6.setBounds(50, 380, 300, 20);
+
+                chk7.setBounds(50, 410, 300, 20);
+
+                chk8.setBounds(50, 440, 300, 20);
+
+                chk9.setBounds(50, 470, 300, 20);
+
+
+                mainItem.setBounds(350, 200, 300, 20);
+
+                chk10.setBounds(350, 230, 300, 20);
+
+                chk11.setBounds(350, 260, 300, 20);
+
+                chk12.setBounds(350, 290, 300, 20);
+
+                chk13.setBounds(350, 320, 300, 20);
+
+                chk14.setBounds(350, 350, 300, 20);
+
+                chk15.setBounds(350, 380, 300, 20);
+
+                chk16.setBounds(350, 410, 300, 20);
+
+                chk17.setBounds(350, 440, 300, 20);
+
+                chk18.setBounds(350, 470, 300, 20);
+
+                button.setBounds(50, 600, 100, 20);
+
+                add(lab1);
+
+                add(lab2);
+
+                add(lab3);
+
+                add(text1);
+
+                add(text2);
+
+                add(text3);
+
+                add(lab4);
+                
+                add(small);
+
+                add(medium);
+
+                add(large);
+                
+                add(lab5);
+                
+                add(cash);
+
+                add(card);
+
+                add(sideItem);
+
+                add(chk1);
+
+                add(chk2);
+
+                add(chk3);
+
+                add(chk4);
+
+                add(chk5);
+
+                add(chk6);
+
+                add(chk7);
+
+                add(chk8);
+
+                add(chk9);
+
+                add(mainItem);
+
+                add(chk10);
+
+                add(chk11);
+
+                add(chk12);
+
+                add(chk13);
+
+                add(chk14);
+
+                add(chk15);
+
+                add(chk16);
+
+                add(chk17);
+
+                add(chk18);
+
+                add(button);
+
+                text3.selectAll();
+
+                setVisible(true);
+
+                
+
+                setSize(700, 700); //숫자 작게 고침 불필요한 공간 제거
+
+        }
+
+
+        public void keyTyped(KeyEvent e) { 
+
+        }
+
+
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+
+        public void keyReleased(KeyEvent e) { //여기가 그 트라이 캐치 이용해서 숫자 못쓰게 고친부분.
+
+
+
+                try {
+
+                        Integer.parseInt(text3.getText());
+
+                } catch (NumberFormatException fe) {
+
+                        text3.setText("0");
+
+                }
+
+
+
+        }
+
+
+        public void actionPerformed(ActionEvent e) {
+
+                           
+            if (e.getSource() == button) {
+
+                                           
+                    String item1 = new String();
+
+                    String item2 = new String();
+
+                    String item3 = new String();
+
+                    String item4 = new String();
+
+                    String item5 = new String();
+
+                    String item6 = new String();
+
+                    String item7 = new String();
+
+                    String item8 = new String();
+
+                    String item9 = new String();
+
+                    String item10 = new String();
+
+                    String item11 = new String();
+
+                    String item12 = new String();
+
+                    String item13 = new String();
+
+                    String item14 = new String();
+
+                    String item15 = new String();
+
+                    String item16 = new String();
+
+                    String item17 = new String();
+
+                    String item18 = new String();
+
+          
+                    String Cash = new String();
+                    
+                    String Card = new String();
+                    
+                    
+                    String Small = new String();
+
+                    String Medium = new String();
+
+                    String Large = new String();
+
+
+                    // 너무 단순한 방법이라 설명이 필요없을꺼같지만 그럼 내가 너무 재수 없을까봐
+
+                    // 간단히 설명하자면 sideItem은 밑반찬, mainItem은 주재료를 카운트하는 인스턴트변수임.
+
+                    // 각 체크박스마다 하나씩 올려서 일정 갯수 이상이면 오류를 뜨게하는 방법이지!
+
+                    
+
+                    int sideItem = 0; 
+
+                    int mainItem = 0;
+
+                    
+
+                    if(chk1.isSelected() == true) {
+
+                        item1 = "느타리버섯 나물,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk2.isSelected() == true) {
+
+                        item2 = "호박 나물,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk3.isSelected() == true) {
+
+                        item3 = "고사리 나물,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk4.isSelected() == true) {
+
+                        item4 = "콩나물 무침,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk5.isSelected() == true) {
+
+                        item5 = "시금치 나물,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk6.isSelected() == true) {
+
+                        item6 = "채썬 당근,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk7.isSelected() == true) {
+
+                        item7 = "달걀후라이,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk8.isSelected() == true) {
+
+                        item8 = "상추,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk9.isSelected() == true) {
+
+                        item9 = "무채,\n";
+
+                        sideItem++;
+
+                    }
+
+                    if(chk10.isSelected() == true) {
+
+                        item10 = "연어\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk11.isSelected() == true) {
+
+                        item11 = "불고기\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk12.isSelected() == true) {
+
+                        item12 = "치즈 날치알\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk13.isSelected() == true) {
+
+                        item13 = "참치\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk14.isSelected() == true) {
+
+                        item14 = "볶음김치\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk15.isSelected() == true) {
+
+                        item15 = "닭갈비\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk16.isSelected() == true) {
+
+                        item16 = "새우\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk17.isSelected() == true) {
+
+                        item17 = "제육볶음\n";
+
+                        mainItem++;
+
+                    }
+
+                    if(chk18.isSelected() == true) {
+
+                        item18 = "낙지\n";
+
+                        mainItem++;
+
+                    } 
+                    if(cash.isSelected() == true) {
+
+                        Cash = "현금 결제\n";
+                        
+                    JOptionPane.showMessageDialog(this, text1.getText()  + "고객님,\n " + Cash + "를 선택하셨습니다.",
+
+                                "결제 방식", JOptionPane.INFORMATION_MESSAGE);
+
+
+                   
+                    } 
+                    if(card.isSelected() == true) {
+
+                        Card = "카드 결제\n";
+                        
+                        JOptionPane.showMessageDialog(this, text1.getText()  +"고객님,\n " + Card + "를 선택하셨습니다.",
+
+                                "결제 방식", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    
+                    }
+                   
+                    if(small.isSelected() == true) {
+
+                        Small = "소\n";
+                        
+                        JOptionPane.showMessageDialog(this, text1.getText()  +"고객님,\n " + Small +"를 선택하셨습니다. \n"+"4000원이 결제될 예정입니다.",
+
+                                "결제 금액", JOptionPane.INFORMATION_MESSAGE);
+                        
+                    }
+                        
+                       if(medium.isSelected() == true) {
+
+                                    Medium = "중\n";
+                                    
+                                    JOptionPane.showMessageDialog(this, text1.getText()  +"고객님,\n " + Medium + "을  선택하셨습니다. \n"+"5000원이 결제될 예정입니다.",  
+                                            
+
+                                            "결제 금액", JOptionPane.INFORMATION_MESSAGE);
+                                    
+                       }
+                                  
+                     if(large.isSelected() == true) {
+
+                                        Large = "대\n";
+                                        
+                                        JOptionPane.showMessageDialog(this, text1.getText()  +"고객님,\n " + Large + "를 선택하셨습니다. \n"+"6000원이 결제될 예정입니다.",
+
+                                                "결제 금액", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+                    
+                    }
+                                    
+                    if(sideItem >= 5) {
+
+                    JOptionPane.showMessageDialog(this, text1.getText()  + "고객님, 밑반찬은 4개까지만 골라주세요",
+
+                                 "주문 오류", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (mainItem >= 2) {
+
+                    JOptionPane.showMessageDialog(this, text1.getText()  + "고객님, 주재료는 1개까지만 골라주세요",
+
+                                 "주문 오류", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+
+                 
+
+                    JOptionPane.showMessageDialog(this, item1 + item2 + item3 + item4 + item5 + item6 + item7 + item8 + item9 + "의 밑반찬과 \n\n"
+
+                            + item10 + item11 + item12 + item13 + item14 + item15 + item16 + item17 + item18 + "를 선택하셨습니다. ",
+
+                            "주문 내역", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+                    JOptionPane.showMessageDialog(this, text1.getText() + "고객님, 주문해 주셔서 감사합니다."
+
+                            + "\n\n주문하신 비빔밥이 15분내로 배달 될 예정입니다. \n\n 15분 후에 맛있게 드세요.♡ ",
+
+                            "주문 완료", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+
+                       }
+                       
+                    }
+                    
+            
+                       
+             
+
+        
+
+
+   
+
+        public static void main(String[] args) {
+
+                Bibim bibimorder = new Bibim();
+
+        }
+
+
+        }
+
+
+ 
+
+
+}}}
