@@ -1658,6 +1658,122 @@ public class SimpleAnimation
 
 {{{
 
+
+import javax.sound.midi.*;
+import javax.swing.*;
+import java.awt.*;
+
+public class MiniMusicPlayer3 
+{
+
+        static JFrame f = new JFrame("My First Music Video");//JFrame 생성
+        static MyDrawPanel m1;
+
+        public static void main(String [] args)
+        {
+                MiniMusicPlayer3 mini = new MiniMusicPlayer3();
+                mini.go();
+        }
+
+        public void setUpGui()
+        {
+                m1 = new MyDrawPanel();//패널 생성
+                f.setContentPane(m1);//프레임에 패널추가
+                f.setBounds(30, 30, 300, 300);//프레임 크기설정
+                f.setVisible(true);//프레임이 보이게한다
+        }
+
+        public void go()
+        {
+                setUpGui();//gui기본설정
+          
+                try{//음악틀기
+
+                        Sequencer sequencer = MidiSystem.getSequencer();
+                        sequencer.open();
+                        sequencer.addControllerEventListener(m1, new int[] {127});
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();
+
+                        int r = 0; 
+                        for(int i = 0; i < 60 ; i+=4)
+                        {
+
+                                r=(int)((Math.random()*50)+1);
+                                track.add(makeEvent(144,1,r,100,i));
+                                track.add(makeEvent(176,1,127,0,i));
+                                track.add(makeEvent(128,1,r,100,i+2));
+                        }
+
+                        sequencer.setSequence(seq);
+                        sequencer.start();
+                        sequencer.setTempoInBPM(120);
+                } 
+                
+                catch(Exception ex) 
+                {
+                        ex.printStackTrace();
+                }
+        }
+
+        public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick)
+        {
+                MidiEvent event = null;
+               
+                try{
+                        ShortMessage a = new ShortMessage();
+                        a. setMessage(comd,chan,one,two);
+                        event = new MidiEvent(a, tick);
+                }
+                catch(Exception e)
+                {
+                        
+                }
+                
+                return event;
+
+        }
+
+    
+        class MyDrawPanel extends JPanel implements ControllerEventListener
+        {
+                boolean msg = false;
+
+                public void controlChange(ShortMessage event)
+                {
+                        msg = true;
+                        repaint();//색 설정
+                }
+
+                public void paintComponent(Graphics g)
+                {
+                        if(msg)
+                        {
+
+                                @SuppressWarnings("unused")
+                                                                Graphics2D g2= (Graphics2D)g;
+
+                                int r = (int) (Math.random()*250);
+                                int gr=(int) (Math.random()*250);
+                                int b= (int ) (Math.random()*250);
+
+                                g.setColor(new Color(r,gr,b));
+
+                                int ht=(int) ((Math.random()*120)+10);
+                                int width=(int) ((Math.random()*120)+10);
+
+                                int x=(int) ((Math.random()*40)+10);
+                                int y=(int) ((Math.random()*40)+10);
+
+                                g.fillRect(x, y, ht, width);
+                                msg = false;
+                        }
+                }
+        }
+}
+
+
+
 }}}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
@@ -1666,6 +1782,241 @@ public class SimpleAnimation
 
 {{{
 
+
+import java.awt.*;
+import javax.swing.*;
+import javax.sound.midi.*;
+import java.util.*;
+import java.awt.event.*;
+
+public class BeatBox
+{
+
+    JPanel mainPanel;
+    ArrayList<JCheckBox> checkboxList; //ArrayList 생성
+    Sequencer sequencer;
+    Sequence sequence;
+    Track track;
+    JFrame theFrame;
+
+    String[] instrumentNames = {"Bass Drum", "Closed Hi-Hat", 
+       "Open Hi-Hat","Acoustic Snare", "Crash Cymbal", "Hand Clap", 
+       "High Tom", "Hi Bongo", "Maracas", "Whistle", "Low Conga", 
+       "Cowbell", "Vibraslap", "Low-mid Tom", "High Agogo", 
+       "Open Hi Conga"}; 
+    // 악기명 정보 초기화
+    
+    int[] instruments = {35,42,46,38,49,39,50,60,70,72,64,56,58,47,67,63};             
+
+    public static void main (String[] args) 
+    {
+        new BeatBox().buildGUI();//Gui를 구축
+    }
+  
+    public void buildGUI() 
+    {
+        theFrame = new JFrame("Cyber BeatBox");//JFrame생성
+        theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//x누르면 꺼짐
+        BorderLayout layout = new BorderLayout();//Layout설정
+        JPanel background = new JPanel(layout);//JPanel생성
+
+        background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));//배치
+
+        checkboxList = new ArrayList<JCheckBox>();
+        Box buttonBox = new Box(BoxLayout.Y_AXIS);
+
+        JButton start = new JButton("Start");//Start버튼 생성
+        start.addActionListener(new MyStartListener());//Start버튼에 액션리스너 추가
+        buttonBox.add(start);         
+          
+        JButton stop = new JButton("Stop");//Stop버튼 생성
+        stop.addActionListener(new MyStopListener());//Stop버튼에 액션리스너 추가
+        buttonBox.add(stop);
+
+        JButton upTempo = new JButton("Tempo Up");//Tempo Up 버튼추가
+        upTempo.addActionListener(new MyUpTempoListener());//Tempo UP버튼에 액션리스너추가
+        buttonBox.add(upTempo);
+
+        JButton downTempo = new JButton("Tempo Down");//Tempo Up 버튼추가
+        downTempo.addActionListener(new MyDownTempoListener());//Tempo Up버튼에 액션리스너추가 buttonBox.add(downTempo);
+
+        Box nameBox = new Box(BoxLayout.Y_AXIS);
+        
+        for (int i = 0; i < 16; i++) 
+        {
+           nameBox.add(new Label(instrumentNames[i]));
+        }
+        
+        background.add(BorderLayout.EAST, buttonBox);
+        background.add(BorderLayout.WEST, nameBox);
+
+        theFrame.getContentPane().add(background);
+          
+        GridLayout grid = new GridLayout(16,16);
+        
+        grid.setVgap(1);
+        grid.setHgap(2);
+        
+        mainPanel = new JPanel(grid);
+        
+        background.add(BorderLayout.CENTER, mainPanel);
+
+        for (int i = 0; i < 256; i++)
+        {                    
+            JCheckBox c = new JCheckBox();
+            c.setSelected(false);
+            checkboxList.add(c);
+            mainPanel.add(c);            
+        }
+
+        setUpMidi();
+
+        theFrame.setBounds(50,50,300,300);//프레임 크기 설정
+        theFrame.pack();
+        theFrame.setVisible(true);
+        
+    }
+    
+   //음악관련된 코드
+    public void setUpMidi()
+    {
+      try 
+      {
+        sequencer = MidiSystem.getSequencer();
+        sequencer.open();
+        sequence = new Sequence(Sequence.PPQ,4);
+        track = sequence.createTrack();
+        sequencer.setTempoInBPM(120);
+        
+      } 
+      catch(Exception e) 
+      {
+          e.printStackTrace();
+      }
+    } 
+
+    public void buildTrackAndStart()
+    {
+     
+        int[] trackList = null; 
+    
+        sequence.deleteTrack(track);
+        track = sequence.createTrack();//새트랙 생성
+
+                for (int i = 0; i < 16; i++) { 
+                  trackList = new int[16];
+         
+                  int key = instruments[i];//건반 번호 설정   
+        
+                  for (int j = 0; j < 16; j++ ) 
+                  {         
+                      JCheckBox jc = (JCheckBox) checkboxList.get(j + (16*i));
+                     
+                      if ( jc.isSelected()) 
+                      { 
+                         trackList[j] = key;
+                      } 
+                      else 
+                      { 
+                         trackList[j] = 0;
+                      }   
+                     
+                      
+                   } 
+                 
+                   makeTracks(trackList); 
+                   track.add(makeEvent(176,1,127,0,16));  
+                   
+               } 
+        
+               track.add(makeEvent(192,9,1,0,15));
+               
+               try {
+                   sequencer.setSequence(sequence); 
+                     sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY); //반복횟수지정
+                   sequencer.start();
+                   sequencer.setTempoInBPM(120);
+               } 
+               catch(Exception e) 
+               {
+                   e.printStackTrace();
+               } 
+               
+               
+    } 
+            
+           
+    public class MyStartListener implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent a) 
+        {
+            buildTrackAndStart();
+        }
+    } 
+
+    public class MyStopListener implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent a) 
+        {
+            sequencer.stop();//시퀀서를 멈춤
+        }
+    } 
+
+    public class MyUpTempoListener implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent a) 
+        {
+              float tempoFactor = sequencer.getTempoFactor(); 
+            sequencer.setTempoFactor((float)(tempoFactor * 1.03)); //속도증가
+        }
+     } 
+
+     public class MyDownTempoListener implements ActionListener 
+     {
+         public void actionPerformed(ActionEvent a)
+         {
+              float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float)(tempoFactor * .97)); // 속도감소
+        }
+    } 
+
+    public void makeTracks(int[] list)
+    {        
+       
+       for (int i = 0; i < 16; i++) 
+       {
+          int key = list[i];
+
+          if (key != 0) 
+          {
+             track.add(makeEvent(144,9,key, 100, i));
+             track.add(makeEvent(128,9,key, 100, i+1));
+             //NOTE ON과 NOTE OFF 이벤트를 만들고 트랙에 추가합니다.
+          }
+       }
+    }
+        
+    public  MidiEvent makeEvent(int comd, int chan, int one, int two, int tick)
+    {
+        MidiEvent event = null;
+        
+        try 
+        {
+            ShortMessage a = new ShortMessage();
+            a.setMessage(comd, chan, one, two);
+            event = new MidiEvent(a, tick);
+
+        } 
+        catch(Exception e) 
+        {
+                e.printStackTrace(); 
+        }
+        return event;
+    }
+
+} 
+
+
 }}}
 
 = 14. 객체 저장:직렬화와 입출력  =
@@ -1673,5 +2024,103 @@ public class SimpleAnimation
 *496p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
+
+import java.awt.*;
+import javax.swing.*;
+import javax.sound.midi.*;
+import java.util.*;
+import java.awt.event.*;
+import java.io.*;
+
+public class BeatBox 
+{
+
+    //위와 중복되는 코드는 생략
+     public void buildGui()
+     {
+
+        JButton save = new JButton("save");
+        serial.addActionListener(new SaveListener());
+        buttonBox.add(save);
+        
+        
+        JButton read = new JButton("read");
+        restore.addActionListener(new ReadListener());
+        buttonBox.add(read);
+        
+      } 
+    public class SaveListener implements ActionListener
+    {
+        
+        public void actionPerformed(ActionEvent e)
+        {
+                boolean[] checkboxState = new boolean[256];//프로그램의 현재상태를 저장하기위한 객체생성
+                
+                for(int i = 0; i < 256; i++)
+                {
+                        JCheckBox check = (JCheckBox) checkboxList.get(i);
+                        if(check.isSelected())
+                        {
+                                checkboxState[i] = true;
+                        }
+                }
+        
+                try
+                {//외부에 파일형태로저장
+                        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(new File("Checkbox.ser")));
+                        os.writeObject(checkboxState);
+                        os.close();
+                }
+                catch(IOException ex)
+                {
+                  return;
+                }
+
+        }
+   }
+
+    public class ReadListener implements ActionListener
+    {
+
+
+        public void actionPerformed(ActionEvent e)
+        {
+                boolean[] checkboxState = null;
+                
+                try
+                {
+                        ObjectInputStream is = new ObjectInputStream( new FileInputStream(new File("Checkbox.ser")));
+                        checkboxState = (boolean[]) is.readObject();
+                        is.close();
+                }
+                catch(IOException ex)
+                {
+                        return;
+                }
+                catch(ClassNotFoundException ex)
+                {
+                         return;
+                }
+               //외부의 파일로부터 만들어진 checkboxState 를 이용해서 복구
+                for(int i = 0 ; i < 256; i ++)
+                {
+                        JCheckBox check = (JCheckBox) checkboxList.get(i);
+                        if(checkboxState[i])
+                                check.setSelected(true);
+                        else
+                                check.setSelected(false);
+                }
+                
+           
+                sequencer.stop();
+                buildTrackAndStart();
+
+                
+        }
+        
+    }
+
+}
+
 
 }}}
