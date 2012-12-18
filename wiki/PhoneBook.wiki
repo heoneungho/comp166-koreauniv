@@ -438,3 +438,7 @@ public static void main(String[] args){
 }
 
 }}}
+
+= 실행화면 =
+*처음 메인 화면입니다
+http://comp166-koreauniv.googlecode.com/files/캡쳐1.JPG
