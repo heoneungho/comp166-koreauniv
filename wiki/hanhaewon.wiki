@@ -329,3 +329,13 @@ class SubTotal extends JFrame implements KeyListener {
 = 스크린샷 = 
 
 1. 프로그램을 처음 실행하면 화면 왼쪽에 실행창이 뜹니다.
+http://comp166-koreauniv.googlecode.com/files/haewon1.jpg
+
+2. 숫자키보드를 누르면 수량이 증가합니다.
+http://comp166-koreauniv.googlecode.com/files/haewon3.jpg
+
+3. 0을 누르면 주문한 메뉴와 총액이 나옵니다.
+http://comp166-koreauniv.googlecode.com/files/haewon3.jpg
+
+= 프로젝트를 마치며 = 
+ 프로그램을 구현하기에 앞서 손님이 메뉴를 주문하는 모습을 생각해보니 한번에 딱딱 말하지 않고 "새우버거하나랑 콜라하나요. 아 새우버거 하나 더주세요"라고 하는 경우가 많았다. 손님이 많은 음식점의 경우 그러한 수정 내용을 일일히 적기에 어려움이 있기에 검색을 통해 키보드로 입력받는 프로그램을 생각해 내었다. 
