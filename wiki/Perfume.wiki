@@ -22,9 +22,9 @@ import javax.swing.JOptionPane;
 
    public class Perfume {
       public static void main(String[] args) throws IOException {  
-         int maincontrol=0;  
+         int maincontrol=0;  // 로그인화면에서 향수만들기 화면으로 넘어가도록 변수 maincontrol을 만들고, while문을 써 main method를 구현했습니다.
 	     
-         JOptionPane.showMessageDialog(null, "Welcome"+"\n\n **SeungWon's PERFUME**");  
+         JOptionPane.showMessageDialog(null, "Welcome"+"\n\n **SeungWon's PERFUME**"); //GUI 사용 출력 형태입니다. 
 	 JOptionPane.showMessageDialog(null, "당신만을 위한 특별한 향수를 만들어 보아요^0^");  
  
          while(maincontrol==0){
@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
      		+"(2)\t 비회원으로 만들기 \n")));
 	 
             switch(customer){
-	 
+	 // switch문을 활용하여 고객이 로그인을 원하는지 회원가입 혹은 비회원으로 구매를 원하는지 입력 받도록 하였습니다.
                case 0:  String id=JOptionPane.showInputDialog("id:");
 	 	        String password=JOptionPane.showInputDialog("password:");
 	                maincontrol=1;
@@ -53,8 +53,8 @@ import javax.swing.JOptionPane;
 	 	        int ageput = (Integer.parseInt(JOptionPane.showInputDialog( "나이:" +"\n (1)\t 10~20 \n" +"(2)\t 20~30 \n " +"(3)\t 30~40 \n " +"(4)\t 40~50 \n " +"(5)\t 50~60 \n ")));
 	 	        maincontrol=1;
 	 	        break;
-	     }
-        }
+	     } //switch문 끝
+        } //while문 끝
 	     while(maincontrol==1){  
 	          int menu=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t향수 만들기 \n" +"(0)\tExit \n")));  
 	          switch(menu){  
@@ -62,7 +62,7 @@ import javax.swing.JOptionPane;
 	          		case 1: makeaperfume();  
 	          		        maincontrol=1;  
 	          		        break;  
-	        		}
+	        		} //여기서도 swich문을 사용하여 고객이 향수를 구매하는 화면으로 넘어가기를 원하는지, 그냥 끝내기를 원하는지 입력받도록 하였습니다.
 	        	}
         }  
 
