@@ -74,7 +74,7 @@
 }}}
 
 =Code=
-orderGame.java
+*orderGame.java*
 
 {{{
 
@@ -169,7 +169,7 @@ public class orderGame extends JFrame {
 
 }}}
 
-about.java
+*about.java*
 
 {{{
 import java.awt.BorderLayout;
@@ -233,6 +233,826 @@ public class about extends JFrame {
 		txtAboutOrderGame.setText("ABOUT Order Game");
 		contentPane.add(txtAboutOrderGame);
 		txtAboutOrderGame.setColumns(10);
+	}
+
+}
+}}}
+
+*SelectGame.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+
+
+@SuppressWarnings("serial")
+public class SelectGame extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Create the frame.
+	 */
+	public SelectGame() {
+		setTitle("Select Game");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel lblHistory = new JLabel("HISTORY");	//역사순서 게임선택 라벨
+		lblHistory.setForeground(Color.BLUE);
+		lblHistory.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHistory.setFont(new Font("굴림", Font.BOLD, 40));
+		lblHistory.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				historyGame hg = new historyGame();
+				hg.show();
+			}
+		});
+		contentPane.add(lblHistory);
+		
+		JLabel lblRecipe = new JLabel("RECIPE");	//조리순서 게임선택 라벨
+		lblRecipe.setForeground(Color.PINK);
+		lblRecipe.setFont(new Font("굴림", Font.BOLD, 40));
+		lblRecipe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRecipe.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				recipeGame rg = new recipeGame();
+				rg.show();
+			}
+		});
+		contentPane.add(lblRecipe);
+		
+		JLabel lblStory = new JLabel("STORY");	//이야기순서 게임선택 라벨
+		lblStory.setForeground(Color.ORANGE);
+		lblStory.setFont(new Font("굴림", Font.BOLD, 40));
+		lblStory.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStory.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				storyGame sg = new storyGame();
+				sg.show();
+			}
+		});
+		contentPane.add(lblStory);
+		
+		JLabel lblLyric = new JLabel("LYRIC");	//노래가사순서 게임선택 라벨
+		lblLyric.setForeground(Color.GREEN);
+		lblLyric.setFont(new Font("굴림", Font.BOLD, 40));
+		lblLyric.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLyric.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				lyricGame lg = new lyricGame();
+				lg.show();
+			}
+		});
+		contentPane.add(lblLyric);
+	}
+
+}
+}}}
+
+*Game.java*
+
+{{{
+//전체 게임의 상위 클래스
+public interface Game {
+
+	public int[] makeAnswer(int[] answer);	//정답 랜덤 생성 메소드
+	public String theAnswer (int[] answer);	//int로 저장된 정답 String으로 변환하는 메소드
+}
+}}}
+
+*historyGame.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.text.JTextComponent;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import java.awt.Panel;
+import java.awt.Button;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Color;
+
+
+@SuppressWarnings("serial")
+public class historyGame extends JFrame implements Game{
+
+	private JPanel contentPane;
+	private JTextField txtHistoryOrderGame;
+	private JButton btnDone;
+	private Panel panel;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JTextField textAnswer;
+	private int[] ansList = {1,2,3,4,5};
+
+	/**
+	 * Create the frame.
+	 */
+	@SuppressWarnings("deprecation")
+	public historyGame() {
+		setTitle("History Order Game");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtHistoryOrderGame = new JTextField();
+		txtHistoryOrderGame.setForeground(SystemColor.text);
+		txtHistoryOrderGame.setBackground(SystemColor.inactiveCaption);
+		txtHistoryOrderGame.setFont(new Font("굴림", Font.BOLD, 17));
+		txtHistoryOrderGame.setEditable(false);
+		txtHistoryOrderGame.setBounds(5, 5, 432, 27);
+		txtHistoryOrderGame.setHorizontalAlignment(SwingConstants.CENTER);
+		txtHistoryOrderGame.setText("\uD55C\uAD6D\uC0AC");
+		contentPane.add(txtHistoryOrderGame);
+		txtHistoryOrderGame.setColumns(10);
+		
+		
+		panel = new Panel();
+		panel.setBackground(new Color(220, 220, 220));
+		panel.setBounds(5, 33, 432, 205);
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		ansList = makeAnswer(ansList);	//정답생성
+		
+		//문제생성
+		label = new JLabel(ansList[1]+". \uADE0\uC5ED\uBC95 \uC2E4\uC2DC");
+		label.setForeground(new Color(128, 128, 0));
+		panel.add(label);
+		
+		label_1 = new JLabel(ansList[0]+". \uBCD1\uC790\uD638\uB780");
+		label_1.setForeground(new Color(0, 206, 209));
+		panel.add(label_1);
+		
+		label_2 = new JLabel(ansList[3]+". \uBC15\uC815\uD76C \uC815\uBD80 \uC131\uB9BD");
+		label_2.setForeground(new Color(128, 0, 128));
+		panel.add(label_2);
+		
+		label_3 = new JLabel(ansList[4]+". 6\uC6D4 \uBBFC\uC8FC \uD56D\uC7C1");
+		label_3.setForeground(new Color(128, 0, 0));
+		panel.add(label_3);
+		
+		label_4 = new JLabel(ansList[2]+". \uB300\uD55C\uBBFC\uAD6D \uC784\uC2DC\uC815\uBD80 \uC218\uB9BD");
+		label_4.setForeground(new Color(25, 25, 112));
+		panel.add(label_4);
+		
+		textAnswer = new JTextField();	//답안작성란
+		textAnswer.setFont(new Font("굴림", Font.PLAIN, 15));
+		textAnswer.setBounds(15, 239, 240, 27);
+		contentPane.add(textAnswer);
+		textAnswer.setColumns(10);
+		
+		btnDone = new JButton("DONE");	//정답제출 버튼
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(textAnswer.getText().equals(theAnswer(ansList))){
+					RightResult rr = new RightResult();
+					rr.show();
+				}
+				else {
+					WrongResult wr = new WrongResult();
+					wr.show();
+				}
+
+			}
+		});
+		btnDone.setBounds(282, 239, 148, 27);
+		contentPane.add(btnDone);
+	}
+
+	@Override
+	public int[] makeAnswer(int[] answer) {
+		for(int i = 0; i < answer.length; i++){
+			answer[i]=((int)(Math.random()*answer.length)+1);
+			for(int j=0;j<i;j++){
+				if(answer[i]==answer[j]){
+					i--;
+					break;
+				}
+			}
+		}
+		return answer;
+	}
+
+	@Override
+	public String theAnswer(int[] answer) {
+		String Ans = Integer.toString(answer[0]);
+		for(int i=1;i<answer.length;i++){
+			Ans = Ans+ Integer.toString(answer[i]);
+		}
+		return Ans;
+	}
+}
+}}}
+
+*recipeGame.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Panel;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+@SuppressWarnings("serial")
+public class recipeGame extends JFrame implements Game{
+
+	private JPanel contentPane;
+	private JTextField txtRecipeOrderGame;
+	private JTextField textAnswer;
+	private int[] ansList = {1,2,3,4,5,6};
+
+	/**
+	 * Create the frame.
+	 */
+	public recipeGame() {
+		setTitle("Recipe Order Game");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 505, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtRecipeOrderGame = new JTextField();
+		txtRecipeOrderGame.setEditable(false);
+		txtRecipeOrderGame.setForeground(new Color(255, 165, 0));
+		txtRecipeOrderGame.setBackground(new Color(173, 255, 47));
+		txtRecipeOrderGame.setFont(new Font("굴림", Font.BOLD, 17));
+		txtRecipeOrderGame.setBounds(5, 5, 488, 27);
+		txtRecipeOrderGame.setHorizontalAlignment(SwingConstants.CENTER);
+		txtRecipeOrderGame.setText("\uC5D0\uADF8\uD0C0\uB974\uD2B8");
+		contentPane.add(txtRecipeOrderGame);
+		txtRecipeOrderGame.setColumns(10);
+		
+		textAnswer = new JTextField();
+		textAnswer.setFont(new Font("굴림", Font.PLAIN, 15));
+		textAnswer.setBounds(15, 239, 240, 27);
+		contentPane.add(textAnswer);
+		textAnswer.setColumns(10);
+		
+		Panel panel = new Panel();
+		panel.setBackground(new Color(255, 228, 181));
+		panel.setBounds(5, 33, 488, 205);
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		ansList = makeAnswer(ansList);
+		
+		JLabel label = new JLabel(ansList[2]+". \uAC15\uB825\uBD84, \uBC15\uB825\uBD84, \uBD84\uC720\uB97C \uCCB4\uC5D0 \uB0B4\uB9B0 \uD6C4 \uBC84\uD130\uB97C \uB123\uACE0 \uC798\uAC8C \uBD80\uC21C\uB2E4.");
+		label.setForeground(new Color(255, 99, 71));
+		panel.add(label);
+		
+		JLabel label_1 = new JLabel(ansList[0]+". \uC6B0\uC720,\uBC14\uB2D0\uB77C\uBE48,\uB2EC\uAC40\uB178\uB978\uC790,\uC124\uD0D5,\uBC15\uB825\uBD84,\uBC84\uD130,\uB7FC\uC744 \uC0AC\uC6A9\uD558\uC5EC \uCEE4\uC2A4\uD130\uB4DC \uD06C\uB9BC\uC744 \uB9CC\uB4E0\uB2E4.");
+		label_1.setForeground(new Color(30, 144, 255));
+		panel.add(label_1);
+		
+		JLabel label_2 = new JLabel(ansList[4]+". \uCC2C\uBB3C\uC5D0 \uC18C\uAE08\uACFC \uC124\uD0D5\uC744 \uB179\uC778\uB2E4.");
+		label_2.setForeground(new Color(50, 205, 50));
+		panel.add(label_2);
+		
+		JLabel label_3 = new JLabel(ansList[1]+". \uCEE4\uC2A4\uD0C0\uB4DC \uD06C\uB9BC\uC744 3/4\uC815\uB3C4 \uB2F4\uACE0 \uC608\uC5F4\uB41C \uC624\uBE10\uC628\uB3C4 180\uB3C4\uC5D0\uC11C 25\uBD84 \uAC00\uB7C9 \uAD7D\uB294\uB2E4.");
+		label_3.setForeground(new Color(255, 99, 71));
+		panel.add(label_3);
+		
+		JLabel label_4 = new JLabel(ansList[5]+". \uAC00\uC6B4\uB370\uB97C \uC6C0\uD479\uD558\uAC8C \uB9CC\uB4E0 \uB4A4 \uCC2C\uBB3C\uC744 \uC870\uAE08\uC529 \uBD93\uACE0 \uBC18\uC8FD\uD558\uC5EC \uB0C9\uC7A5\uACE0\uC5D0\uC11C 20~30\uBD84 \uD734\uC9C0.");
+		label_4.setForeground(new Color(30, 144, 255));
+		panel.add(label_4);
+		
+		JLabel label_5 = new JLabel(ansList[3]+". \uBC18\uC8FD\uC744 \uB450\uAED8 3mm\uC815\uB3C4\uB85C \uBC00\uC5B4 \uBAA8\uC591\uD2C0\uB85C \uBAA8\uC591\uC744 \uB9CC\uB4E4\uACE0 \uB0C9\uC7A5\uACE0\uC5D0 20\uBD84 \uC815\uB3C4 \uD734\uC9C0.");
+		label_5.setForeground(new Color(50, 205, 50));
+		panel.add(label_5);
+		
+		JButton btnDone = new JButton("DONE");
+		btnDone.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				if(textAnswer.getText().equals(theAnswer(ansList))) {
+					RightResult rr = new RightResult();
+					rr.show();
+				}
+				else {
+					WrongResult wr = new WrongResult();
+					wr.show();
+				}
+			}
+		});
+		btnDone.setBounds(282, 239, 148, 27);
+		contentPane.add(btnDone);
+	}
+
+	@Override
+	public int[] makeAnswer(int[] answer) {
+		for(int i = 0; i < answer.length; i++){
+			answer[i]=((int)(Math.random()*answer.length)+1);
+			for(int j=0;j<i;j++){
+				if(answer[i]==answer[j]){
+					i--;
+					break;
+				}
+			}
+		}
+		return answer;
+	}
+
+	@Override
+	public String theAnswer(int[] answer) {
+		String Ans = Integer.toString(answer[0]);
+		for(int i=1;i<answer.length;i++){
+			Ans = Ans+ Integer.toString(answer[i]);
+		}
+		return Ans;
+	}
+}
+}}}
+
+*storyGame.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Panel;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+@SuppressWarnings("serial")
+public class storyGame extends JFrame implements Game{
+
+	private JPanel contentPane;
+	private JTextField txtStoryOrderGame;
+	private JTextField textAnswer;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_4;
+	private JLabel label_5;
+	private JLabel label_6;
+	private int[] ansList = {1,2,3,4,5,6,7};
+
+	/**
+	 * Create the frame.
+	 */
+	public storyGame() {
+		setTitle("Story Order Game");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 461, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtStoryOrderGame = new JTextField();
+		txtStoryOrderGame.setForeground(new Color(0, 0, 255));
+		txtStoryOrderGame.setBackground(new Color(255, 0, 0));
+		txtStoryOrderGame.setEditable(false);
+		txtStoryOrderGame.setFont(new Font("굴림", Font.BOLD, 17));
+		txtStoryOrderGame.setBounds(5, 5, 445, 27);
+		txtStoryOrderGame.setHorizontalAlignment(SwingConstants.CENTER);
+		txtStoryOrderGame.setText("\uBBF8\uC548\uD558\uB2E4 \uC0AC\uB791\uD55C\uB2E4");
+		contentPane.add(txtStoryOrderGame);
+		txtStoryOrderGame.setColumns(10);
+		
+		textAnswer = new JTextField();
+		textAnswer.setFont(new Font("굴림", Font.PLAIN, 15));
+		textAnswer.setBounds(15, 239, 240, 27);
+		contentPane.add(textAnswer);
+		textAnswer.setColumns(10);
+		
+		Panel panel = new Panel();
+		panel.setBackground(new Color(153, 50, 204));
+		panel.setBounds(5, 33, 445, 205);
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		ansList = makeAnswer(ansList);
+		
+		label = new JLabel(ansList[3]+". \uBB34\uD601\uC740 \uC790\uC2E0\uC758 \uC2EC\uC7A5\uC744 \uC724\uC5D0\uAC8C \uAE30\uC99D\uD558\uACE0 \uC138\uC0C1\uC744 \uB5A0\uB09C\uB2E4.");
+		label.setForeground(new Color(253, 245, 230));
+		label.setBackground(new Color(128, 0, 128));
+		panel.add(label);
+		
+		label_1 = new JLabel(ansList[4]+". \uD654\uB824\uD558\uAC8C \uC0AC\uB294 \uC0DD\uBAA8\uB97C \uBCF4\uC790 \uBCF5\uC218\uB97C \uACB0\uC2EC.");
+		label_1.setForeground(new Color(255, 182, 193));
+		panel.add(label_1);
+		
+		JLabel label_2 = new JLabel(ansList[1]+". 1\uB144 \uD6C4 \uC2DC\uB4DC\uB2C8\uC5D0 \uC788\uB294 \uBB34\uD601\uC5D0 \uBE44\uC11D \uC55E\uC5D0\uC11C \uC740\uCC44\uB294 \uC138\uC0C1\uACFC \uC774\uBCC4\uD568.");
+		label_2.setForeground(new Color(253, 245, 230));
+		label_2.setBackground(new Color(128, 0, 128));
+		panel.add(label_2);
+		
+		JLabel label_3 = new JLabel(ansList[5]+". \uD0DC\uC5B4\uB098\uC790\uB9C8\uC790 \uC0DD\uBAA8\uC5D0\uAC8C, \uD638\uC8FC\uB85C \uC785\uC591\uB41C \uD6C4 \uC591\uBD80\uBAA8\uC5D0\uAC8C \uBC84\uB9BC \uBC1B\uC740 \uBB34\uD601.");
+		label_3.setForeground(new Color(255, 182, 193));
+		panel.add(label_3);
+		
+		label_4 = new JLabel(ansList[6]+". \uC9C0\uC601\uC744 \uAD6C\uD558\uB2E4\uAC00 \uB9DE\uC740 \uC720\uD0C4 \uC911 \uC81C\uAC70 \uD558\uC9C0 \uBABB\uD55C 1\uBC1C\uC774 \uBA38\uB9AC\uC5D0 \uBC15\uD78C \uCC44 \uD55C\uAD6D\uD589.");
+		label_4.setForeground(new Color(253, 245, 230));
+		label_4.setBackground(new Color(128, 0, 128));
+		panel.add(label_4);
+		
+		label_5 = new JLabel(ansList[0]+". \uD638\uC8FC\uC5D0\uC11C \uC6B0\uC5F0\uD788 \uB9CC\uB0AC\uB358 \uC740\uCC44\uB97C \uB2E4\uC2DC \uB9CC\uB098\uACE0 \uC0AC\uB791\uD558\uAC8C \uB428.");
+		label_5.setForeground(new Color(255, 182, 193));
+		panel.add(label_5);
+		
+		label_6 = new JLabel(ansList[2]+". \uC740\uCC44\uB294 \uAD50\uD1B5\uC0AC\uACE0\uB85C \uBCD1\uC6D0\uC5D0 \uC788\uB294 \uC724\uC758 \uACC1\uC744 \uB5A0\uB0A0 \uC218 \uC5C6\uC5B4 \uD798\uB4E4\uC5B4 \uD568.");
+		label_6.setForeground(new Color(253, 245, 230));
+		label_6.setBackground(new Color(128, 0, 128));
+		panel.add(label_6);
+		
+		JButton btnDone = new JButton("DONE");
+		btnDone.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				if(textAnswer.getText().equals(theAnswer(ansList))) {
+					RightResult rr  = new RightResult();
+					rr.show();
+				}
+				else {
+					WrongResult wr = new WrongResult();
+					wr.show();
+				}
+			}
+		});
+		btnDone.setBounds(282, 239, 148, 27);
+		contentPane.add(btnDone);
+	}
+
+	@Override
+	public int[] makeAnswer(int[] answer) {
+		for(int i = 0; i < answer.length; i++){
+			answer[i]=((int)(Math.random()*answer.length)+1);
+			for(int j=0;j<i;j++){
+				if(answer[i]==answer[j]){
+					i--;
+					break;
+				}
+			}
+		}
+		return answer;
+	}
+
+	@Override
+	public String theAnswer(int[] answer) {
+		String Ans = Integer.toString(answer[0]);
+		for(int i=1;i<answer.length;i++){
+			Ans = Ans+ Integer.toString(answer[i]);
+		}
+		return Ans;
+	}
+}
+}}}
+
+*lyricGame.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Panel;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import java.awt.SystemColor;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+
+@SuppressWarnings("serial")
+public class lyricGame extends JFrame implements Game{
+
+	private JPanel contentPane;
+	private JTextField txtLyricOrderGame;
+	private JTextField textAnswer;
+	private JButton btnDone;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JLabel label_5;
+	private int[] ansList = {1,2,3,4,5,6};
+
+	/**
+	 * Create the frame.
+	 */
+	public lyricGame() {
+		setTitle("Lyric Order Game");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtLyricOrderGame = new JTextField();
+		txtLyricOrderGame.setEditable(false);
+		txtLyricOrderGame.setBackground(new Color(127, 255, 212));
+		txtLyricOrderGame.setBounds(5, 5, 432, 27);
+		txtLyricOrderGame.setFont(new Font("굴림", Font.BOLD, 17));
+		txtLyricOrderGame.setHorizontalAlignment(SwingConstants.CENTER);
+		txtLyricOrderGame.setText("Sherlock\u00B7\uC15C\uB85D(Clue+Note)");
+		contentPane.add(txtLyricOrderGame);
+		txtLyricOrderGame.setColumns(10);
+		
+		textAnswer = new JTextField();
+		textAnswer.setFont(new Font("굴림", Font.PLAIN, 15));
+		textAnswer.setBounds(15, 239, 240, 27);
+		contentPane.add(textAnswer);
+		textAnswer.setColumns(10);
+		
+		Panel panel = new Panel();
+		panel.setBackground(new Color(34, 139, 34));
+		panel.setBounds(5, 33, 432, 205);
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		ansList = makeAnswer(ansList);
+		
+		label = new JLabel(ansList[0]+". \uC774 \uD604\uC7A5\uC744 \uBC97\uC5B4\uB098\uC120 \uC548 \uB3FC / \uBA85\uBC31\uD55C \uC774 \uC0AC\uAC74 \uC18D\uC5D0 \uAE34\uC7A5\uD558\uC9C0 \uB9C8");
+		label.setForeground(new Color(224, 255, 255));
+		panel.add(label);
+		
+		label_1 = new JLabel(ansList[3]+". \uC9C0\uAE08 \uB0B4 \uC55E\uC5D0 \uB108\uB294 \uC2E4\uC7AC \uD558\uC9C0 \uC54A\uC544 / \uBD84\uBA85 \uC54C\uC9C0\uB9CC \uB108\uB97C \uC2EC\uBB38\uD558\uACA0\uC5B4");
+		label_1.setForeground(new Color(224, 255, 255));
+		panel.add(label_1);
+		
+		label_2 = new JLabel(ansList[2]+". \uC6A9\uC758\uC120\uC0C1\uC758 \uB110 \uCC3E\uC544\uB0C8\uC5B4 \uB09C Freeze!");
+		label_2.setForeground(new Color(224, 255, 255));
+		panel.add(label_2);
+		
+		label_3 = new JLabel(ansList[4]+". \uB108\uC758 \uB5A8\uB9B0 \uC228\uACB0 \uD558\uB098\uAE4C\uC9C0 \uB193\uCE58\uC9C0 \uC54A\uC544");
+		label_3.setForeground(new Color(224, 255, 255));
+		panel.add(label_3);
+		
+		label_4 = new JLabel(ansList[1]+". \uC544\uBB34\uAC83\uB3C4 \uBAA8\uB978\uB2E8 \uC5BC\uAD74\uB85C \uB10C");
+		label_4.setForeground(new Color(224, 255, 255));
+		panel.add(label_4);
+		
+		label_5 = new JLabel(ansList[5]+". \uBC94\uC778\uC740 \uC774 \uC548\uC5D0 \uC788\uC5B4 \uC544\uBB34\uB3C4 \uB098\uAC08 \uC218 \uC5C6\uC5B4");
+		label_5.setForeground(new Color(224, 255, 255));
+		panel.add(label_5);
+		
+		btnDone = new JButton("DONE");
+		btnDone.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				if(textAnswer.getText().equals(theAnswer(ansList))) {
+					RightResult rr = new RightResult();
+					rr.show();
+				}
+				else {
+					WrongResult wr = new WrongResult();
+					wr.show();
+				}
+			}
+		});
+
+		btnDone.setBounds(282, 239, 148, 27);
+		contentPane.add(btnDone);
+		
+	}
+
+	@Override
+	public int[] makeAnswer(int[] answer) {
+		for(int i = 0; i < answer.length; i++){
+			answer[i]=((int)(Math.random()*answer.length)+1);
+			for(int j=0;j<i;j++){
+				if(answer[i]==answer[j]){
+					i--;
+					break;
+				}
+			}
+		}
+		return answer;
+	}
+
+	@Override
+	public String theAnswer(int[] answer) {
+		String Ans = Integer.toString(answer[0]);
+		for(int i=1;i<answer.length;i++){
+			Ans = Ans+ Integer.toString(answer[i]);
+		}
+		return Ans;
+	}
+}
+}}}
+
+*Result.java*
+
+{{{
+//RightResult.class와 WrongResult.class의 상위 클래스
+public interface Result {
+	}
+}}}
+
+*RightResult.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+
+@SuppressWarnings("serial")
+public class RightResult extends JFrame implements Result{
+
+	private JPanel contentPane;
+	private JTextField txtGoodJob;
+
+	/**
+	 * Create the frame.
+	 */
+	public RightResult() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.PINK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtGoodJob = new JTextField();
+		txtGoodJob.setForeground(Color.RED);
+		txtGoodJob.setBackground(Color.CYAN);
+		txtGoodJob.setEditable(false);
+		txtGoodJob.setBounds(0, 10, 442, 75);
+		txtGoodJob.setFont(new Font("굴림", Font.PLAIN, 60));
+		txtGoodJob.setHorizontalAlignment(SwingConstants.CENTER);
+		txtGoodJob.setText("Good Job~!");
+		contentPane.add(txtGoodJob);
+		txtGoodJob.setColumns(10);
+		
+		JButton btnExit = new JButton("EXIT");	//나가기버튼
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(getDefaultCloseOperation());
+			}
+		});
+		btnExit.setBounds(0, 194, 214, 62);
+		contentPane.add(btnExit);
+		
+		JButton btnAnother = new JButton("ANOTHER");	//다른문제 선택버튼
+		btnAnother.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				SelectGame sg = new SelectGame();
+				sg.show();
+			}
+		});
+		btnAnother.setBounds(228, 194, 214, 62);
+		contentPane.add(btnAnother);
+	}
+}
+}}}
+
+*WrongResult.java*
+
+{{{
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+
+public class WrongResult extends JFrame implements Result{
+
+	private JPanel contentPane;
+	private JTextField txtWrong;
+
+
+	/**
+	 * Create the frame.
+	 */
+	public WrongResult() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(189, 183, 107));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtWrong = new JTextField();
+		txtWrong.setBackground(Color.GRAY);
+		txtWrong.setEditable(false);
+		txtWrong.setBounds(0, 10, 442, 75);
+		txtWrong.setFont(new Font("굴림", Font.PLAIN, 60));
+		txtWrong.setHorizontalAlignment(SwingConstants.CENTER);
+		txtWrong.setText("Wrong...");
+		contentPane.add(txtWrong);
+		txtWrong.setColumns(10);
+		
+		JButton btnRetry = new JButton("RETRY");	//재시도 버튼
+		btnRetry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnRetry.setBounds(0, 194, 214, 62);
+		contentPane.add(btnRetry);
+		
+		JButton btnGiveUp = new JButton("GIVE UP");	//포기 버튼
+		btnGiveUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(getDefaultCloseOperation());
+			}
+		});
+		btnGiveUp.setBounds(228, 194, 214, 62);
+		contentPane.add(btnGiveUp);
 	}
 
 }
