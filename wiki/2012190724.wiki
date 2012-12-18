@@ -298,7 +298,7 @@ myDogs[0]=new Dog();
 myDogs[1]=new Dog();
 myDogs[2]=new Dog();
 myDogs[3]=new Dog();
-myDogs[4]= dog3;
+myDogs[4]= dog1;
 // 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
 
 myDogs[0].name="Fred";
