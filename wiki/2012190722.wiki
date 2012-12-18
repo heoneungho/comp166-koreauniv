@@ -1595,6 +1595,63 @@ public class TwoButtons {
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation 
+{
+
+        int x=70;
+        int y=70;    
+        public static void main(String args[]){
+                SimpleAnimation gui=new SimpleAnimation();
+                gui.go();
+        }
+        
+        public void go()
+        {
+                JFrame frame=new JFrame();//JFrame생성
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//x를 누르면 꺼짐
+
+                MyDrawPanel drawPanel = new MyDrawPanel();
+
+                frame.getContentPane().add(drawPanel);//프레임에 패널추가
+                frame.setSize(300,300);//프레임크기설정
+                frame.setVisible(true);//프레임이보이게함
+
+                for(int i=0;i<300;i++){ // 반복
+
+                        x++;
+                        y++;
+                        
+                        drawPanel.repaint(); 
+
+                        try{
+                                Thread.sleep(50); 
+                        }catch(Exception ex)
+                         {
+
+                          }
+                }
+
+        } 
+
+       
+         class MyDrawPanel extends JPanel
+        {
+                public void paintComponent(Graphics g)
+                {
+                        g.setColor(Color.white);
+                        g.fillRect(0,0,this.getWidth(),this.getHeight());//하얀색으로 색칠함
+
+                        g.setColor(Color.green);
+                        g.fillOval(x, y, 40, 40); //초록색으로 색칠
+
+                }
+        } 
+} 
+
+
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
