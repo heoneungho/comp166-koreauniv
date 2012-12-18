@@ -335,7 +335,7 @@ class SubTotal extends JFrame implements KeyListener {
 http://comp166-koreauniv.googlecode.com/files/haewon1.jpg
 
 2. 숫자키보드를 누르면 수량이 증가합니다.
-http://comp166-koreauniv.googlecode.com/files/haewon3.jpg
+http://comp166-koreauniv.googlecode.com/files/haewon2.jpg
 
 3. 0을 누르면 주문한 메뉴와 총액이 나옵니다.
 http://comp166-koreauniv.googlecode.com/files/haewon3.jpg
