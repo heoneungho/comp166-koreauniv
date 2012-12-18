@@ -964,14 +964,6 @@ public static void main(String[] args) {
 *452p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
-
-}}}
-
-= 14. 객체 저장:직렬화와 입출력  =
-
-*496p 비트박스 프로그램* _구현후 주석달기_
-
-{{{
 import java.awt.*;
 import javax.swing.*;
 import javax.sound.midi.*;
@@ -1143,5 +1135,13 @@ public MidiEvent makeEvent(int comd,int chan ,int one,int two,int tick){
    returnevent;
    }
 }//클래스 끝
+}}}
+
+= 14. 객체 저장:직렬화와 입출력  =
+
+*496p 비트박스 프로그램* _구현후 주석달기_
+
+{{{
+
 
 }}}
