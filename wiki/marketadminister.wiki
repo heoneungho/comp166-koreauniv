@@ -27,18 +27,32 @@ GUI를 사용하였고 자바의 장점인 객체지향적 특성을 최대한 �
       매장 조명의 on/off를 설정해주는 클래스
 = 실행화면 =
 1.초기화면입니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창1.jpg
+
 2.아무 층을 눌렀을 때 조명은 꺼져있고 바닥은 빨간 센서가 들어와 있습니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창2.jpg
+
 3.초기화면에서 timeselect버튼을 클릭하면 뜨는 화면입니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창3.jpg
+
 4.오후 3시3분으로 시간을 설정합니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창4.jpg
+
 5.set버튼을 누르고 아무 층을 눌렀을 때 조명이 켜지고 빨간 센서가 꺼집니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창5.jpg
+
 6.back버튼과 다시 timeselect버튼을 누르고 시간을 오전 2시 4분으로 설정합니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창7.jpg
-7.set버튼을 누르고 아무 층이나 누르면 조명이 꺼지고 바닥의 빨간 센서가 들어오는 것을 볼 수 있습니다.
+
+7.set버튼을 누르고 아무 층이나 누르면 조명이 꺼지고 바닥의 빨간 센서가 들어오는 것을 
+볼 수 있습니다.
+
 http://comp166-koreauniv.googlecode.com/files/자바실행창9.jpg
 
 
