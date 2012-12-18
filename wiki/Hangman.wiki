@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-부탁해 정공형
+#부탁해 정공형
 
 = Introduction =
 
