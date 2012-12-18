@@ -21,11 +21,15 @@ Add your content here.  Format your content with:
 
 ◎ 전화번호부 작성 후 저장 기능
 
+
+
 = 실행 화면 스크린샷 =
+
 == 1.우선 전체 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/1%EC%A0%84%EC%B2%B4.PNG
 
-== 2.추가 버튼을 눌렀을 때 나타나는 화면입니다. ==
+
+== 2."전화번호 추가/변경 및 메모 추가" 버튼을 눌렀을 때 나타나는 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/2%EC%9D%B4%EB%A6%84%EC%9D%84%20%EC%9E%85%EB%A0%A5%ED%95%98%EC%84%B8%EC%9A%94.PNG
 
 http://comp166-koreauniv.googlecode.com/files/3%EC%A0%84%ED%99%94%EB%B2%88%ED%98%B8%EB%A5%BC%20%EC%9E%85%EB%A0%A5%ED%95%98%EC%84%B8%EC%9A%94.PNG
@@ -34,21 +38,33 @@ http://comp166-koreauniv.googlecode.com/files/4%EB%A9%94%EB%AA%A8%EB%A5%BC%20%EC
 
 http://comp166-koreauniv.googlecode.com/files/5%EC%B6%94%EA%B0%80.PNG
 
-== 3.찾기 버튼을 누루고 허능호를 찾기 했을 때 나타나는 화면입니다. ==
+
+== 3."전화번호 찾기" 버튼을 누루고 허능호를 찾기 했을 때 나타나는 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/6%EC%B0%BE%EA%B8%B0.PNG
 
-== 4.현재상황을 저장하기를 누르고 나서 저장된 내용이 메모장에 있나 확인해 본 화면입니다. ==
+
+
+== 4."현재상태 저장" 버튼을 누르고 나서 저장된 내용이 메모장에 있나 확인해 본 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/8%EB%A9%94%EB%AA%A8%EC%9E%A5%20%ED%99%94%EB%A9%B4.PNG
 
-== 5.저장한 허능호에 관한 전화번호부를 삭제한 화면입니다. ==
+
+
+== 5."전화번호 삭제" 버튼을 눌러 이제막 저장했던 허능호에 관한 전화번호부를 삭제한 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/7%EC%82%AD%EC%A0%9C.PNG
+
+
 
 == 6.삭제한 이후 메모장에 허능호에 관한 내용이 삭제 된것을 확인해 본 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/10%EC%82%AD%EC%A0%9C%ED%9B%84%EC%9D%98%EB%A9%94%EB%AA%A8%EC%9E%A5.PNG
 
+
+
 == 7.메뉴창의 X표를 눌렀을 때 '나가기' 버튼을 누루게 하기 위한 JOptionPane.showMessageDialog 창을 확인해 본 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/9%20X%ED%91%9C%20%EB%88%8C%EB%A0%80%EC%9D%84%EB%95%8C.PNG
 
+
+
+== 8."나가기" 버튼을 눌러 프로그램을 종료합니다. ==
 
 
 = Code =
