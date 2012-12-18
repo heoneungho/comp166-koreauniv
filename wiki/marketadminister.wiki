@@ -6,6 +6,11 @@
 GUI를 사용하였고 자바의 장점인 객체지향적 특성을 최대한 사용하려고 노력하였습니다.
 참조한 코드는 없고 모르는 부분은 책, 인터넷을 통해 찾아봤고, 이클립스의 도움을 많이 받았습니다.
 
+발표 후
+ 실행 창에 back이라는 버튼을 추가하여 편리성을 증가시켰습니다.
+ 그리고 단순 if문을 for문으로 바꾸어 간단하게 코드를 구성하였습니다.
+ panel같은 경우도 8개의 panel을 배열로 바꾸어 주어 더 코드를 짧게 고쳤습니다.
+
 = 참고문헌 =
 1)	Head First JAVA(한빛미디어) - 케이시 시에라, 버트 베이츠 저
 2)	JAVA의 정석(도우출판) – 남궁성
@@ -21,6 +26,21 @@ GUI를 사용하였고 자바의 장점인 객체지향적 특성을 최대한 �
 4.	Room class
       매장 조명의 on/off를 설정해주는 클래스
 = 실행화면 =
+1.초기화면입니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창1.jpg
+2.아무 층을 눌렀을 때 조명은 꺼져있고 바닥은 빨간 센서가 들어와 있습니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창2.jpg
+3.초기화면에서 timeselect버튼을 클릭하면 뜨는 화면입니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창3.jpg
+4.오후 3시3분으로 시간을 설정합니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창4.jpg
+5.set버튼을 누르고 아무 층을 눌렀을 때 조명이 켜지고 빨간 센서가 꺼집니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창5.jpg
+6.back버튼과 다시 timeselect버튼을 누르고 시간을 오전 2시 4분으로 설정합니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창7.jpg
+7.set버튼을 누르고 아무 층이나 누르면 조명이 꺼지고 바닥의 빨간 센서가 들어오는 것을 볼 수 있습니다.
+http://comp166-koreauniv.googlecode.com/files/자바실행창9.jpg
+
 
 
 = Details =
