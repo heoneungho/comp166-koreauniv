@@ -109,11 +109,11 @@
 
 http://comp166-koreauniv.googlecode.com/files/lsh1.jpg
 
-2. 주차할 차를 받는 과정. In 버튼 클릭시
+2. 주차할 차를 받는 과정. in 버튼 클릭시
 
 http://comp166-koreauniv.googlecode.com/files/lsh2.jpg
 
-3. 주차종료, 상황판에 메세지 출력. OUT 버튼 동작 완료시
+3. 주차종료, 상황판에 메세지 출력. out 버튼 동작 완료시
 
 http://comp166-koreauniv.googlecode.com/files/lsh3.jpg
 
