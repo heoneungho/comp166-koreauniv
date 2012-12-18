@@ -736,7 +736,7 @@ public class Tetris extends Applet implements Runnable, ActionListener {
 	
 	
 }
-
+}}}
 = Screenshot =
 1.초기화면
 http://comp166-koreauniv.googlecode.com/files/tetris초기화면.png 
@@ -756,5 +756,3 @@ http://comp166-koreauniv.googlecode.com/files/tetris종료화면.png
 4.(오류수정) http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=+java.lang.NullPointerException
 
 
-
-}}}
