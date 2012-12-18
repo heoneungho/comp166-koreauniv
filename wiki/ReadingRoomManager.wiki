@@ -2120,7 +2120,7 @@ http://comp166-koreauniv.googlecode.com/files/hhh.JPG
 
  - 『자바의 정석(2ND EDITION)』, 남궁성 저, 도우출판
 
- - http://blog.naver.com/gdrtlee?Redirect=Log&logNo=100156264113, FileReader와 FileWriter에 대한 이해를 위해 본 블로그.
+ -  http://blog.naver.com/gdrtlee?Redirect=Log&logNo=100156264113, File Reader와 File Writer에 대한 이해를 위해 본 블로그.
 
 = Download(소스코드제출) =
 
