@@ -9,7 +9,7 @@
 자세한 코드 개요
 
 Class
-
+{{{
 public class Hangman{
 
 String input=JOptionPane.showInputDialog("Hangman에 오신걸 환영함!\n문제로 낼 단어를 입력하세요:"); //단어를 입력받음 
@@ -163,3 +163,4 @@ hang.arr();
 hang.compar();
 } 
 } 
+}}}
