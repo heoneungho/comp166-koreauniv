@@ -519,24 +519,34 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
                 setSize(700, 700); //700*700 size의 가장 큰 틀 
 }
 
-
-        public void keyTyped(KeyEvent e) {  
-
-        }
+/*KeyListener 클래스의 모든 메소드*/
 
 
-        public void keyPressed(KeyEvent e) {
+
+        public void keyTyped(KeyEvent e) {  //누른 키가 문자키일때,
 
         }
 
 
-        public void keyReleased(KeyEvent e) { 
+        public void keyPressed(KeyEvent e) {//키가 눌려졌을 때,
 
-                try {
+        }
 
-                        Integer.parseInt(text3.getText());
 
-                } catch (NumberFormatException fe) {
+        public void keyReleased(KeyEvent e) { //키를 놓았을 때
+
+
+                try { 
+
+//연락처(text3)에 숫자 외의 것이 들이가지 않게 하는 try - catch문
+
+                        Integer.parseInt(text3.getText()); 
+
+//int(정수)입력(getText).
+
+                } catch (NumberFormatException fe) { 
+
+//숫자 형식이 아닐때, 0이 나온다.
 
                         text3.setText("0");
 
@@ -547,13 +557,28 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
         }
 
 
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) { 
+
+/*ActionLisener 는 버튼이 클릭되었을때 수행하는 이벤트를 포함하고 있다.
+
+ActionListener는 인터페이스이기 때문에 이를 쓰기 위해서는 그가 포함하고 있는 모든
+
+
+메소드를 Overriding해주어야 하는데, 이때 ActionListener가 포함하고 있는 메소드는
+
+ActionPerformed() 한개 뿐이기에 overriding 한다. */
+
+
+
 
                            
-            if (e.getSource() == button) {
+            if (e.getSource() == button) { //주문 완료 버튼을 눌렀을때의 if문
 
                                            
                     String item1 = new String();
+
+ //음식 1~16가지 및 card, cash, small, medium, large의 string 선언. 
+//나중에 안내창 및 경고문에 뜨게 하기 위함.
 
                     String item2 = new String();
 
@@ -607,9 +632,12 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                     int mainItem = 0;
 
+//밑반찬과 주메뉴의 갯수를 세기 위해 초기화함.
                     
 
                     if(chk1.isSelected() == true) {
+
+ //느타리버섯 나물을 선택했을 경우, 인스턴스변수 sideItem 이 1 증가.
 
                         item1 = "느타리버섯 나물,\n";
 
@@ -619,6 +647,8 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                     if(chk2.isSelected() == true) {
 
+ //호박 나물을 선택했을 경우, 인스턴스변수 sideItem 이 1 증가.
+
                         item2 = "호박 나물,\n";
 
                         sideItem++;
@@ -627,6 +657,7 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                     if(chk3.isSelected() == true) {
 
+ //이하 동일.
                         item3 = "고사리 나물,\n";
 
                         sideItem++;
@@ -685,11 +716,15 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                         item10 = "연어\n";
 
+ //연어를 선택했을 경우, 인스턴스변수 mainItem 이 1 증가.
+
                         mainItem++;
 
                     }
 
                     if(chk11.isSelected() == true) {
+
+ //불고기를 선택했을 경우, 인스턴스변수 mainItem 이 1 증가.
 
                         item11 = "불고기\n";
 
@@ -698,6 +733,8 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
                     }
 
                     if(chk12.isSelected() == true) {
+
+//이하 동일.
 
                         item12 = "치즈 날치알\n";
 
@@ -752,6 +789,10 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
                         mainItem++;
 
                     } 
+/*여기 까지, 메뉴 선택에 대한 if문*/
+
+/*이제, cash or card에 대한 if문.
+
                     if(cash.isSelected() == true) {
 
                         Cash = "현금 결제\n";
@@ -760,7 +801,8 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                                 "결제 방식", JOptionPane.INFORMATION_MESSAGE);
 
-
+//cash를 선택하였다면, JOptionPane를 이용하여, 
+//"XXX고객님, 현금결제를 선택하였습니다."라는 안내문이 출력된다.
                    
                     } 
                     if(card.isSelected() == true) {
@@ -771,10 +813,13 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                                 "결제 방식", JOptionPane.INFORMATION_MESSAGE);
 
+//card를 선택하였다면, JOptionPane를 이용하여, 
+//"XXX고객님, 카드결제를 선택하였습니다."라는 안내문이 출력된다.
 
                     
                     }
                    
+/*양을 출력하는 if문*/
                     if(small.isSelected() == true) {
 
                         Small = "소\n";
@@ -782,6 +827,11 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
                         JOptionPane.showMessageDialog(this, text1.getText()  +"고객님,\n " + Small +"를 선택하셨습니다. \n"+"4000원이 결제될 예정입니다.",
 
                                 "결제 금액", JOptionPane.INFORMATION_MESSAGE);
+
+//같은 방식으로 
+//소를 선택하였다면, JOptionPane를 이용하여, 
+//"XXX고객님, 소를 선택하였습니다. 4000원이 결제될 예정입니다."라는 안내문이 출력된다.
+
                         
                     }
                         
@@ -794,7 +844,7 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                                             "결제 금액", JOptionPane.INFORMATION_MESSAGE);
                                     
-                       }
+//이하 동일.                       }
                                   
                      if(large.isSelected() == true) {
 
@@ -808,20 +858,24 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                     
                     }
-                                    
-                    if(sideItem >= 5) {
+                                   
+/*갯수세어서, 안내문이 나오는 if문이다.
+ 
+                    if(sideItem >= 5) { //sideItem이 5이상이면, 주문 오류!
 
                     JOptionPane.showMessageDialog(this, text1.getText()  + "고객님, 밑반찬은 4개까지만 골라주세요",
 
                                  "주문 오류", JOptionPane.INFORMATION_MESSAGE);
 
-                    } else if (mainItem >= 2) {
+                    } else if (mainItem >= 2) { //mainItem이 5이상이면, 주문 오류!
 
                     JOptionPane.showMessageDialog(this, text1.getText()  + "고객님, 주재료는 1개까지만 골라주세요",
 
                                  "주문 오류", JOptionPane.INFORMATION_MESSAGE);
 
-                    } else {
+                    } else { 
+
+//갯수를 잘 맞게 설정하였다면, 어떤 것을 선택하였는지 안내문과 함께 출력된다.
 
                  
 
@@ -831,7 +885,7 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                             "주문 내역", JOptionPane.INFORMATION_MESSAGE);
 
-
+//주문 완료가 되었다는, 안내문 출력.
 
                     JOptionPane.showMessageDialog(this, text1.getText() + "고객님, 주문해 주셔서 감사합니다."
 
@@ -854,9 +908,9 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
    
 
-        public static void main(String[] args) {
+        public static void main(String[] args) { //메인
 
-                Bibim bibimorder = new Bibim();
+                Bibim bibimorder = new Bibim(); //Bibim 메소드 생성
 
         }
 
