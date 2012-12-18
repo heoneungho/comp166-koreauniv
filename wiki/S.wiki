@@ -30,7 +30,7 @@
 Class Pizza
 ------------
 {{{
-public class Pizza {
+public class Pizza {//PizzaOrder클래스를 실행시킬 하위 Pizza클래스
 
  String size;
  boolean combination;
@@ -132,7 +132,7 @@ public class PizzaOrder {
  double total = 0.0;
  Pizza pizza;
 
- public static void main(String[] args) {
+ public static void main(String[] args) {//main클래스 선언
  Scanner scan = new Scanner(System.in);
  String orderedToppings = null;
  int toppings = 0;
