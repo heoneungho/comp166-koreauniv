@@ -939,7 +939,192 @@ public class SimpleDotCom3TestDrive {
 
 {{{
 
+package DotCom;
 
+import java.io.*;
+import java.util.*;
+
+public class GameHelper {
+	private static final String alphabet = "abcdefg";
+	private int gridLength = 7;
+	private int gridSize = 49;
+	private int[] grid = new int[gridSize];
+	private int comCount = 0;
+	
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(
+			new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length()==0)
+				return null;
+		}catch(IOException e){
+			System.out.println("OException: " + e);
+		}
+		
+		return inputLine.toLowerCase();
+	}
+	
+	public ArrayList<String> placeDotCom(int comSize){
+		ArrayList<String> alphaCells = new ArrayList<String>(); // 'f6'과 같은 좌표가 들어감
+		String temp = null; // 나중에 연결하기 위한 임시 String 배열
+		int[] coords = new int[comSize]; // 현재 후보 좌표
+		int attempts = 0; // 시도 횟수를 세기 위한 카운터
+		boolean success = false; // 적당한 위치를 찾았는지 표시하기 위한 플래그
+		int location = 0; // 현재 시작 위치
+		
+		comCount++; // n번째 닷컴
+		int incr = 1; // 수평 방향으로 증가시킬 값 설정
+		if((comCount%2)==1){ // 홀수 번째 닷컴인 경우(수직으로 배치)
+			incr = gridLength; // 수직 방향으로 증가시킬 값 설정
+		}
+		
+		while(!success & attempts<200){ // 주 검색 순환문(32)
+			location = (int)(Math.random()*gridSize); // 임의 시작 위치를 구함
+			int x = 0; // 위치시킬 닷컴의 n번째 위치
+			success = true; // 성공할 것으로 가정함
+			while(success && x<comSize){ // 닷컴이 들어갈 자리가 비었는지 확인
+				if(grid[location]==0){
+					coords[x++] = location; // 위치 저장
+					location += incr; // 다음 칸 확인
+					if(location>=gridSize){ // 경계를 벗어난 경우
+						success = false; // 실패
+					}
+					if(x>0 & (location % gridLength==0)){ // 경계를 벗어난 경우(오른쪽)
+						success = false; // 실패
+					}
+				}else{ // 이미 사용 중인 경우
+					success = false; // 실패
+				}
+			}
+		} // while문 끝
+		
+		int x = 0; // 위치를 알파벳 좌표로 바꿈
+		int row = 0;
+		int column = 0;
+		
+		while(x<comSize){
+			grid[coords[x]] = 1; // 기본 그리드 좌표를 '사용 중'으로 표시
+			row = (int)(coords[x]/gridLength); // 행 값을 구함
+			column = coords[x]%gridLength; // 열 값을 구함
+			temp = String.valueOf(alphabet.charAt(column)); // 숫자된 열을 알파벳으로 구함
+			
+			alphaCells.add(temp.concat(Integer.toString(row)));
+			x++;
+		}
+		
+		return alphaCells;
+	}
+}
+
+
+import java.util.*;
+
+public class DotComBust { // 사용 변수 초기화
+	private GameHelper helper = new GameHelper();
+	private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>(); // DotCom객체로 이루어진 ArrayList 만들기
+	private int numOfGuesses = 0;
+	
+	private void setUpGame(){ // 닷컴 객체 몇 개를 만들고 위치 지정
+		DotCom one = new DotCom();
+		one.setName("Pets.com");
+		DotCom two = new DotCom();
+		two.setName("eToys.com");
+		DotCom three = new DotCom();
+		three.setName("Go2.com");
+		dotComsList.add(one);
+		dotComsList.add(two);
+		dotComsList.add(three);
+
+		System.out.println("Your goal is to sink three dot coms.");
+		System.out.println("Pets.com, eToys.com, Go2.com");
+		System.out.println("Try to sink them all in the fewest number of guesses"); // 게임 방법 설명
+		
+		for (DotCom dotComToSet : dotComsList){ // 닷컴 반복
+			ArrayList<String> newLocation = helper.placeDotCom(3); // 보조 메소드 호출
+			dotComToSet.setLocationCells(newLocation); 
+		} // for문 끝
+	} // setUpGame 메소드 끝
+	
+	private void startPlaying(){
+		while(!dotComsList.isEmpty()){
+			String userGuess = helper.getUserInput("Enter a guess");
+			checkUserGuess(userGuess);
+		} // while문 끝
+		
+		finishGame();
+	} // setUpGame 메소드 끝
+	
+	private void checkUserGuess(String userGuess){
+		numOfGuesses++; // 사용자 추측 횟수 증가
+		String result = "miss";
+		
+		for(DotCom dotComToTest : dotComsList){ // 모든 닷컴 객체에 대해 반복
+			result = dotComToTest.checkYourself(userGuess); 
+			if(result.equals("hit"))
+				break;
+			if(result.equals("kill")){
+				dotComsList.remove(dotComToTest);
+				break;
+			}
+		} // for문 끝
+		
+		System.out.println(result);
+	} // 메소드 끝
+	
+	private void finishGame(){
+		System.out.println("All Dot Coms are dead! Your stock is now worthless");
+		if(numOfGuesses<=18){
+			System.out.println("It only took you " + numOfGuesses + " guesses.");
+			System.out.println("You got out before your options sank");
+		}else{
+			System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
+			System.out.println("Fish are dancing with your options");
+		}
+	}
+	
+	public static void main (String[] args){
+		DotComBust game = new DotComBust(); // 게임 객체 만들기
+		game.setUpGame();
+		game.startPlaying();
+	} // 메소드 끝
+}
+
+
+import java.util.*;
+
+public class DotCom {
+	private ArrayList<String> locationCells;
+	private String name;
+	
+	public void setLocationCells(ArrayList loc){ // 닷컴 위치 갱신 세터 메소드
+		locationCells = loc;
+	}
+	
+	public void setName(String n){ // 세터 메소드
+		name = n;
+	}
+	
+	public String checkYourself(String userInput){
+		String status = "miss";
+		int index = locationCells.indexOf(userInput);
+		
+		if(index>=0){
+			locationCells.remove(index); 
+			if(locationCells.isEmpty()){ // 모든 위치를 맞췄는지 확인
+				status = "kill";
+				System.out.println("Ouch! You sunk " + name + "   :  ("); // 닷컴이 가라앉을 때
+			}else{
+				status = "hit";
+			}
+		} // if문
+		
+		return status;
+	} // 메소드 끝
+} // 클래스 끝
 
 }}}
 
