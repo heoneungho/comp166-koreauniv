@@ -239,7 +239,7 @@ public class OverNT extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("3. \uC601\uD654 \uC120\uD0DD (19+)");
+		JLabel lblNewLabel = new JLabel("3. \uC601\uD654 \uC120\uD0DD (18+)");
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 18));
 		lblNewLabel.setBounds(125, 25, 169, 32);
 		contentPane.add(lblNewLabel);
