@@ -1,0 +1,227 @@
+#summary 향수만들기 프로그램!.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+{{{
+package test;
+	import java.io.*;  
+	import javax.swing.JOptionPane;  
+	public class Perfume {
+	 public static void main(String[] args) throws IOException {  
+	    int maincontrol=0;  
+	     
+	    JOptionPane.showMessageDialog(null, "Welcome"+"\n\n **SeungWon's PERFUME**");  
+	    JOptionPane.showMessageDialog(null, "당신만을 위한 특별한 향수를 만들어 보아요^0^");  
+ while(maincontrol==0){
+	 int customer=(Integer.parseInt(JOptionPane.showInputDialog( "\n(0) \t 로그인\n" +"\n(1) \t 회원가입\n"
+     		+"(2)\t 비회원으로 만들기 \n")));
+	 switch(customer){
+	 case 0: String id=JOptionPane.showInputDialog("id:");
+	 							String password=JOptionPane.showInputDialog("password:");
+	 							maincontrol=1;
+	 							break;
+	 case 1: 	String idmake=JOptionPane.showInputDialog("id:");
+								String passwordmake=JOptionPane.showInputDialog("password:");			
+								String name=JOptionPane.showInputDialog("이름:");	
+								int sex = (Integer.parseInt(JOptionPane.showInputDialog( "성별:" +"\n(1) \t male \n"
+						        		+"(2)\t female \n"))); 
+						 	        int age = (Integer.parseInt(JOptionPane.showInputDialog( "나이:" +"\n (1)\t 10~20 \n"
+						        		+"(2)\t 20~30 \n " +"(3)\t 30~40 \n " +"(4)\t 40~50 \n " +"(5)\t 50~60 \n ")));
+								String address=JOptionPane.showInputDialog("주소:");
+								String email=JOptionPane.showInputDialog("email:");
+								maincontrol=1;
+								break;
+	 case 2: JOptionPane.showMessageDialog(null, "향수 만드는 데 필요한 고객 사항을 알려주세요~");
+	         String nameput=JOptionPane.showInputDialog("이름:");
+	 	        int sexput = (Integer.parseInt(JOptionPane.showInputDialog( "성별:" +"\n(1) \t male \n"
+	        		+"(2)\t female \n"))); 
+	 	        int ageput = (Integer.parseInt(JOptionPane.showInputDialog( "나이:" +"\n (1)\t 10~20 \n"
+	        		+"(2)\t 20~30 \n " +"(3)\t 30~40 \n " +"(4)\t 40~50 \n " +"(5)\t 50~60 \n ")));
+	 	        maincontrol=1;
+	 	        break;
+	  
+	 	        }
+	 	 
+	 	
+	 	
+ }
+	     while(maincontrol==1){  
+	          int menu=(Integer.parseInt(JOptionPane.showInputDialog( "\n(1) \t향수 만들기 \n"
+		        		+"(0)\tExit \n")));  
+	          switch(menu){  
+	          		case 0: System.exit(menu);  
+	          		case 1: makeaperfume();  
+	          								maincontrol=1;  
+	          		break;  
+	        						}
+	        			}
+	 		}  
+public static int[] makeaperfume(){  
+		 int a=0, b=0, c=0, d=0, e=0, f=0, g=0;
+	  String itemname = null;  
+	  int quantity=0;  
+	  int k =0;  
+	  while(k==0){  
+	      int value=(Integer.parseInt(JOptionPane.showInputDialog(   
+	     "나에게 어울리는 향이 무엇인지 곰곰이 생각하여 골라주세요^^\n\n" 
+	     +"(1)   시프레 - 시원한 식물향이 나는 지중해 느낌의 향 \n\n" 
+	     +"(2)   시트러스 - 레몬이나 오렌지 등 감귤류의 톡 쏘는 상쾌한 향 \n\n" 
+	     +"(3)   플로랄 - 꽃 향, 주로 여성향수 로 사요 \n\n" 
+	     +"(4)   우디 -나무 향, 주로 남성 향수로 사용 \n\n" 
+	     +"(5)   오리엔탈 - 동양에서 가져온 무거우며 달콯한 향  \n\n" 
+	    +" (6)   머스크 - 사향노루의 페로몬, 주로 남성 향수로 사용 \n\n" 
+	    +"(7)   푸제르  - 부드럽고 감미로운 허브 향 \n\n" 
+	     +"\n" 
+	    +"(0)\t Return to Main Menu"))); 
+	   int count[]=new int[7];  
+	     if(a==0 && b==0 && c==0 && d==0 && e==0 && f==0 && g==0 ) {
+	     
+	    switch(value){   
+	        
+	    case 1:     itemname="시프레";  
+	            
+	              quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	            	       "원하시는 양을 골라주세요^^\n\n"  
+	            	     +"(1)   30ml \n\n" 
+	            	     +"(2)   50ml \n\n" 
+	            	     +"(3)   100ml \n\n" 
+	            	    
+	            	     +"\n" 
+	            	    +"(0)\t Return to Main Menu")));   
+	              			a++;  
+	                 k=1;  
+	                break;  
+	     case 2:       
+	                 itemname="시트러스";  
+	                 
+	                 quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	              	       "원하시는 양을 골라주세요^^\n\n"  
+	              	     +"(1)   30ml \n\n" 
+	              	     +"(2)   50ml \n\n" 
+	              	     +"(3)   100ml \n\n" 
+	              	    
+	              	     +"\n" 
+	              	    +"(0)\t Return to Main Menu")));   
+	                 
+	                 b++;
+	                 k=1;  
+	                 break;  
+	     case 3:  
+	                     itemname="플로랄";  
+	                     
+	                    quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	                 	       "원하시는 양을 골라주세요^^\n\n"  
+	                 	     +"(1)   30ml \n\n" 
+	                 	     +"(2)   50ml \n\n" 
+	                 	     +"(3)   100ml \n\n" 
+	                 	    
+	                 	     +"\n" 
+	                 	    +"(0)\t Return to Main Menu")));   
+	                      
+	                    	c++;  
+	                    	k=1;
+	                     
+	                    	break;  
+	    case 4:   
+	                itemname="우디";  
+	                 
+	                 quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	              	       "원하시는 양을 골라주세요^^\n\n"  
+	              	     +"(1)   30ml \n\n" 
+	              	     +"(2)   50ml \n\n" 
+	              	     +"(3)   100ml \n\n" 
+	              	    
+	              	     +"\n" 
+	              	    +"(0)\t Return to Main Menu")));   
+	                  
+	                 
+	                 d++;  
+	                 k=1;
+	                 
+	                 break;  
+	    case 5:  
+	                    itemname="오리엔탈";  
+	                      
+	                    quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	                 	       "원하시는 양을 골라주세요^^\n\n"  
+	                 	     +"(1)   30ml \n\n" 
+	                 	     +"(2)   50ml \n\n" 
+	                 	     +"(3)   100ml \n\n" 
+	                 	    
+	                 	     +"\n" 
+	                 	    +"(0)\t Return to Main Menu")));   
+	                      
+	               
+	                    e++;  
+	                    k=1;
+	                     
+	                    break;  
+	     case 6:  
+	                             itemname="머스크";  
+	                            
+	                             quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	                          	       "원하시는 양을 골라주세요^^\n\n"  
+	                          	     +"(1)   30ml \n\n" 
+	                          	     +"(2)   50ml \n\n" 
+	                          	     +"(3)   100ml \n\n" 
+	                          	    
+	                          	     +"\n" 
+	                          	    +"(0)\t Return to Main Menu")));   
+	                               
+	                             f++; 
+	                             k=1;  
+	                             break;  
+	     case 7:  
+	                         itemname="푸제르";  
+	                         
+	                         quantity =(Integer.parseInt(JOptionPane.showInputDialog(   
+	                      	       "원하시는 양을 골라주세요^^\n\n"  
+	                      	     +"(1)   30ml \n\n" 
+	                      	     +"(2)   50ml \n\n" 
+	                      	     +"(3)   100ml \n\n" 
+	                      	    
+	                      	     +"\n" 
+	                      	    +"(0)\t Return to Main Menu")));   
+	                          
+	                        
+	                         g++;  
+	                         k=1;  
+	                         break;  
+	   
+	     case 0:                     k=1;  
+	                               		break;  
+	     default:  
+	            k=0;  
+	            break;  
+	     }     
+	     }
+	     int record=JOptionPane.showConfirmDialog(null, " Blend할 다른 향을 고르시겠습니까?");  
+	         if(record==JOptionPane.YES_OPTION)
+	         { k=0; } 
+	            
+	         else if(record==JOptionPane.NO_OPTION)  
+	             {k=1;  
+	             int kind =(Integer.parseInt(JOptionPane.showInputDialog(   
+               	       "향수의 종류를 골라주세요^^\n\n"  
+               	     +"(1) Perfume: 향이 가장 진한 향수, 향의 지속시간이 길고 그윽한 향을 오랫동안 즐길 수 있습니다. \n\n" 
+               	     +"(2) Eau de Perfume: 향은 진하지만 지속 시간은 Perfume보다 짧습니다. \n\n" 
+              	     +"(3) Eau de Tolette: 가장 흔하게 쓰이는 향수로서 지속시간이 짧으며 부담이없고 은은하게 사용가능 합니다. \n\n" 
+              
+              	     +"(4) Eau de Cologne: 매우 가벼운 향이며 지속시간이 매우 짧아 순간적인 기분 전환에 제일 좋습니다. \n\n"
+               	    
+               	     +"\n" 
+               	    +"(0)\t Return to Main Menu")));   
+                    
+	             JOptionPane.showMessageDialog(null,"구매해주셔서 감사합니다, 당신을 위한 special한 향수로 보답하겠습니다. ");  
+	             }  
+	        else System.exit(k);  
+	        }  
+	 return new int[7];  
+	 }  
+	 } 
+
+}}}
