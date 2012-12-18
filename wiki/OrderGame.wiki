@@ -73,10 +73,11 @@
      게임에 대한 설명을 보여주는 화면.
 }}}
 
-http://comp166-koreauniv.googlecode.com/files/OrderGame_main.jpg
 
 =Code=
 *orderGame.java*
+
+http://comp166-koreauniv.googlecode.com/files/OrderGame_main.jpg
 
 {{{
 
@@ -242,6 +243,8 @@ public class about extends JFrame {
 
 *SelectGame.java*
 
+http://comp166-koreauniv.googlecode.com/files/OrderGame_select.jpg
+
 {{{
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -346,6 +349,8 @@ public interface Game {
 }}}
 
 *historyGame.java*
+
+http://comp166-koreauniv.googlecode.com/files/OrderGame_history.jpg
 
 {{{
 import java.awt.BorderLayout;
