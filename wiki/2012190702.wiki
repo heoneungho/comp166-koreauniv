@@ -1121,19 +1121,109 @@ public class MiniMusicCmdeLine()	{
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
 
+public class SimpleGuil	{
+	public static void main(String[] args)	{
+		JFrame frame = new JFrame(); //프레임을 만들어보자
+		JButton button = new JButton(); //버튼을 만들어보자
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //끄기 설정
+		frame.getContentPane().add(button); // 버튼추가
+		frame.setSize(300,300); // 사이즈 설정
+		frame.setVisible(true); //보이는게 사실임?? 사실임!!
+	}
+
+}
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.event.*; //event쓰기 위해 필요행!
 
+public class SimpleGuilB implements ActionListener	{
+	JButton button;
+
+	public static void main(String[] args)	{
+		SimpleGuilB gui = new SimpleGuilB();
+		gui.go;
+	}
+
+	public void go()	{
+		JFrame frame = new JFrame();
+		button = new JButton("click me");
+		
+		button.addActionListener(this); //클릭하면 이벤트로 ㄱㄱ
+		
+		frame.getContentPane().add(button); //버튼추가
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //끄기 추가
+		frame.setSize(300,300); // 사이즈 설정
+		frame.setVisible(true); // 보인다!
+	}
+
+	public void actionPerformed (ActionEvent event)	{
+		button.setText("I've been clicked!"); //이벤트설정
+	}
+}
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
+public class SimpleGui3C implements ActionListener	{
+	JFrame frame;
+
+	public static void main(String[] args)	{
+		SimpleGui3C gui = new SimpleGui3c();
+		gui.go;
+	}
+
+	public void go()	{
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //끄기 기능
+
+		JButton button = new JButton("Change colors"); //버튼에 글씨 적고 추가
+		button.addActionListener(this);
+
+		MyDrawPanel drawPanel = new MyDrawPanel();
+	
+		frame.getContentPane().add(BorderLayout.SOUTH, button); // button 추가
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel); //drawPanel 추가
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent event)	{
+		frame.repaint();
+	}
+}
+
+class MyDrawPanel extends JPanel {
+	public void paintComponent(Graphics g)	{
+		Graphics2D g2d = (Graphics2D) g;
+
+		int red = (int)(Math.random()*256);
+		int green = (int)(Math.random()*256);
+		int blue = (int)(Math.random()*256);
+		Color startColor = new Color(red, green, blue); // 시작색 랜덤설정
+
+		
+		int red = (int)(Math.random()*256);
+		int green = (int)(Math.random()*256);
+		int blue = (int)(Math.random()*256);
+		Color endColor = new Color(red, green, blue); //끝색 랜덤설정
+
+		GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor); //원에 색추가
+		g2d.setPaint(gradient);
+		g2d.fillOval(70,70,100,100);
+	}
+}
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
