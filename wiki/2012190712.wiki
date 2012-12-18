@@ -1877,5 +1877,232 @@ public class BeatBox{
 *496p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
+import java.awt.*;
+import javax.swing.*;
+import javax.sound.midi.*;
+import java.util.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class Beatbox2{
+	
+	JPanel mainPanel;  
+	ArrayList<JCheckBox> checkboxList; // 체크상자를 ArrayList에 저장합니다. 
+	Sequencer sequencer;  
+	Sequence sequence;  
+	Track track;  
+	JFrame theFrame;
+	String[] instrumentNames = {"Bass Drum", "Closed Hi-Hat", "Open Hi-Hat","Acoustic Snare", "Crash Cymbal", "Hand Clap", "High Tom", "Hi Bongo", "Maracas", "Whistle", "Low Conga", "Cowbell", "Vibraslap", "Low-mid Tom", "High Agogo",  "Open Hi Conga"}; // GUI 레이블을 만들 때 사용할 악기명 String 배열로 저장합니다. 
+	int[] instruments = {35,42,46,38,49,39,50,60,70,72,64,56,58,47,67,63}; // 실제 드럼 '건반'을 나타냅니다. 드럼 채널은 피아노의 각 건반이 서로 다른 드럼을 나타내는 것과 같다고 보면 됩니다.   
+	// 35번 건반은 베이스 드럼을, 42번 건반은 하이햇을 나타내는 식입니다.  
+	
+	public static void main (String[] args) {  
+		new Beatbox2().buildGUI();  
+		}    
+	
+	public void buildGUI() {   
+		theFrame = new JFrame("Cyber BeatBox");   
+		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+		BorderLayout layout = new BorderLayout();     
+		JPanel background = new JPanel(layout);   
+		background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); // 비어있는 경계선을 사용하여 패널 둘레와 구성요소가 들어가는 자리 사이에 빈 공간을 만들 수 있습니다.       
+		
+		checkboxList = new ArrayList<JCheckBox>();  
+		Box buttonBox = new Box(BoxLayout.Y_AXIS);    
+		
+		JButton start = new JButton("Start");    
+		start.addActionListener(new MyStartListener());  
+		buttonBox.add(start);    
+		
+		JButton stop = new JButton("Stop");  
+		stop.addActionListener(new MyStopListener());    
+		buttonBox.add(stop);    
+		
+		JButton upTempo = new JButton("Tempo Up");    
+		upTempo.addActionListener(new MyUpTempoListener());   
+		buttonBox.add(upTempo);    
+		
+		JButton downTempo = new JButton("Tempo Down");  
+		downTempo.addActionListener(new MyDownTempoListener()); 
+		buttonBox.add(downTempo);   
+		
+		Box nameBox = new Box(BoxLayout.Y_AXIS);           
+		for (int i = 0; i < 16; i++) {     
+			nameBox.add(new Label(instrumentNames[i]));  
+			}               
+		
+		background.add(BorderLayout.EAST, buttonBox); 
+		background.add(BorderLayout.WEST, nameBox);     
+		
+		theFrame.getContentPane().add(background);               
+		GridLayout grid = new GridLayout(16,16);             
+		grid.setVgap(1);      
+		grid.setHgap(2);    
+		mainPanel = new JPanel(grid);   
+		background.add(BorderLayout.CENTER, mainPanel);   
+		
+		for (int i = 0; i < 256; i++) { // 체크상자를 만들고 모든 값을 'false'로 설정한 다음 arraylist와 gui패널에 추가합니다.
+			JCheckBox c = new JCheckBox();    
+			c.setSelected(false);    
+			checkboxList.add(c);         
+			mainPanel.add(c);    
+			}//순환문 끝
+		
+		setUpMidi();       
+		
+		theFrame.setBounds(50,50,300,300);   
+		theFrame.pack();     
+		theFrame.setVisible(true);     
+		}//buidGUI 메소드 끝  
+	
+	public void setUpMidi() { // 시퀀서, 시퀀스, 트랙을 만들기 위한 일반적인 미디 관련 코드
+		try {     
+			sequencer = MidiSystem.getSequencer();  
+			sequencer.open();     
+			sequence = new Sequence(Sequence.PPQ,4);  
+			track = sequence.createTrack();
+			sequencer.setTempoInBPM(120);       
+			
+		} catch(Exception e) {e.printStackTrace();}  
+		}     
+	
+	public void buildTrackAndStart() {   
+		int[] trackList = null; // 각 악기의 열여섯 박자에 대한 값을 원소가 16개인 배열에 저장합니다.     
+		
+		sequence.deleteTrack(track); // 기존 트랙을 제거하고 트랙을 새로 만듭니다. 
+		track = sequence.createTrack(); 
+		
+		for (int i = 0; i < 16; i++) { // 열 16개에 대해 모두 같은 작업을 처리합니다.     
+			trackList = new int[16];       
+			
+			int key = instruments[i]; // 어떤 악기인지를 나타내는 건반 번호를 설정합니다.         
+			
+			for (int j = 0; j < 16; j++ ) { // 이 열에 들어있는 모든 박자에 대해 같은 작업을 반복합니다.
+				
+				JCheckBox jc = (JCheckBox) checkboxList.get(j + (16*i));      
+				if ( jc.isSelected()){ // 이 박자에 해당하는 체크상자가 선택되었는지 확인합니다. 그렇다면 배열에 건반을 집어넣고 아니면 0으로 설정합니다. 
+					trackList[j] = key;    
+					} else {    
+						trackList[j] = 0;    
+						}                         
+				} // 안쪽 for문 끝   
+			
+			makeTracks(trackList); // 이 악기의 16개의 모든 박자에 대해 이벤트를 만들고 트랙에 추가합니다.      
+			track.add(makeEvent(176,1,127,0,16)); 
+			
+		} // 바깥쪽 for문 끝         
+		
+		track.add(makeEvent(192,9,1,0,15)); // 16번째 박자에는 반드시 이벤트가 있어야 합니다. 이렇게 하지 않으면 다시 시작하기 전에 16박자가 모두 끝나지 않을 수도 있습니다. 
+		try {
+			sequencer.setSequence(sequence);  
+			sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY); //루프 반복 횟수를 지정하기 위한 메소드.  
+			sequencer.start(); // 연주합니다.     
+			sequencer.setTempoInBPM(120);        
+			} catch(Exception e) {e.printStackTrace();}                  
+		} // buildTrackAndStart 메소드 끝                
+	
+public class MySendListener implements ActionListener{
+	
+	public void actionPerformed(ActionEvent a){ // 사용자가 버튼을 클릭해서 ActionEvent가 발생된 경우에 실행됨
+		boolean[] checkboxState = new boolean[256]; // 각 체크상자의 상태를 담아두기 위한 부울 배열을 만든다.
+		
+		for(int i=0;i<256;i++){
+			JCheckBox check = (JCheckBox) checkboxList.get(i); // 각 체크상자의 상태를 확인하고 그 결과를 부울배열에 추가
+			if(check.isSelected()){
+				checkboxState[i] = true;
+			}
+		}
+		
+		try{
+			FileOutputStream fileStream = new FileOutputStream(new File("Checkbox.ser"));
+			ObjectOutputStream os = new ObjectOutputStream(fileStream);
+			os.writeObject(checkboxState);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+}
+
+public class MyReadInListener implements ActionListener{
+	public void actionPerformed(ActionEvent a){
+		boolean[] checkboxState = null;
+		try{
+			FileInputStream fileIn = new FileInputStream(new File("Checkbox.ser"));
+			ObjectInputStream is = new ObjectInputStream(fileIn);
+			checkboxState = (boolean[]) is.readObject(); // 파일에서 객체하나를 읽은 다음 부울배열로 다시 캐스트
+		}catch(Exception ex) {ex.printStackTrace();}
+		
+		for(int i = 0; i < 256; i++){  // 각각의 체크상자의 상태를 원래대로 복구
+			JCheckBox check = (JCheckBox) checkboxList.get(i);
+		if(checkboxState[i]){
+				check.setSelected(true);
+			}else{
+				check.setSelected(false);
+			}
+			sequencer.stop(); // 현재 연주중인것을 멈추고 시퀀스를 재구성
+			buildTrackAndStart();
+		}
+	}
+}
+		
+
+	
+	
+	
+	
+	public class MyStartListener implements ActionListener { // 첫번째 내부클래스
+		public void actionPerformed(ActionEvent a) {  
+			buildTrackAndStart();   
+			}   
+		} // 내부 클래스 끝
+	
+	public class MyStopListener implements ActionListener {
+		public void actionPerformed(ActionEvent a)  {   
+			sequencer.stop();  
+			}  
+		} // 내부 클래스 끝  
+	
+	public class MyUpTempoListener implements ActionListener { 
+		public void actionPerformed(ActionEvent a) {      
+			float tempoFactor = sequencer.getTempoFactor();       
+			sequencer.setTempoFactor((float)(tempoFactor * 1.03)); // 속도를 빠르게증가시킵니다.  
+			}  
+		} // 내부 클래스 끝   
+	
+	public class MyDownTempoListener implements ActionListener{     
+		public void actionPerformed(ActionEvent a) {   
+			float tempoFactor = sequencer.getTempoFactor(); 
+			sequencer.setTempoFactor((float)(tempoFactor * .97)); // 속도를 느리게감소시킵니다.      
+			}    
+		} // 내부 클래스 끝   
+	
+	public void makeTracks(int[] list) { //한 악기의 16박자 전체에 대해 이벤트를 만듭니다.0 또는 해당 악기의 건반 번호가 들어갑니다. 
+                     for (int i = 0; i < 16; i++) {  
+                    	 int key = list[i];       
+                    	 
+                    	 if (key != 0) {        
+                    		 track.add(makeEvent(144,9,key, 100, i)); //NOTE ON과 NOTE OFF 이벤트를 만들고 트랙에 추가합니다.  
+                    		 track.add(makeEvent(128,9,key, 100, i+1));             
+                    		 }     
+                    	 }  
+	}
+	
+
+	
+	public  MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {  
+		MidiEvent event = null;           
+		try  {   
+			ShortMessage a = new ShortMessage();     
+			a.setMessage(comd, chan, one, two);         
+			event = new MidiEvent(a, tick);     
+			
+		}catch(Exception e){e.printStackTrace();}  
+		return event;   
+	}
+}
 
 }}}
