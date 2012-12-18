@@ -578,6 +578,10 @@ public class Decide extends UpDownGame{
 boolean == true, false라고 되어있던거 가독성 좋게 수정
 
 
+= ScreenShots = 
+
+<img src = "http://comp166-koreauniv.googlecode.com/files/up1.png">
+
 
 = Downloads = 
 
