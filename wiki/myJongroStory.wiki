@@ -1947,18 +1947,18 @@ public class PlayJongro {
 <br>
 이 클래스는 메인 메소드를 갖고 있습니다. 처음에 게임 소개글이 뜨고, DotCom 게임과 같이 반복문을 통해 플레이어가 한 턴 한 턴을 보낼 수 있게 합니다. <br>
 
-main(String[] args): 이 프로그램을 전반적으로 통제하고있는 메인함수입니다. <br>
-static void takeCard(Card[] hand, Status me): 덱에서 카드를 랜덤하게 패로 옮깁니다. <br>
-static void showTime(Time time): 
-static void messageOfHpMoney(Status me):
-static void showCard(Card[] hand, Status me): 패로 들어온 카드를 보여줍니다. <br>
-static int ordering (Card[] hand, Status me):
-static void shop(Status me, Time time):
-static Card cardSelection(int GRADE, int randkind):
-static String nameCard(Card hand)
-static void useCard(Card hand, Status me): 패에 들어온 카드를 택해서 사용하거나 하루를 넘깁니다. <br>
-static void prepareTest(int month, Status me): `v0.3에서 구현예정 모의고사를 치룹니다.` <br>
-void endTime(): 하루가 끝나고 시간 관련 인스턴스 변수들을 다음 날로 처리 해줍니다. <br>
+*main(String[] args)*: 이 프로그램을 전반적으로 통제하고있는 메인함수입니다. <br>
+*static void takeCard(Card[] hand, Status me)*: 패(hand)에 카드의 랜덤한 값을 옮겨서 패를 배정해줍니다. <br>
+*static void showTime(Time time)*: 시간 정보를 출력해줍니다. <br>
+*static void messageOfHpMoney(Status me)*: 행동력과 돈 정보를 출력해줍니다.<br>
+*static void showCard(Card[] hand, Status me)*: 패로 들어온 카드를 보여줍니다. <br>
+*static int ordering (Card[] hand, Status me)*: 보여준 카드를 실질적으로 사용하게 도와주는 메소드입니다. useCard가 안에 들어있습니다. 반환하는 int는 턴을 마칠 때까지 카드를 사용하게 할 수 있도록 특정 숫자가 올때까지 반복하기위해 쓰이는 값입니다.<br>
+*static void shop(Status me, Time time)*: 일요일마다 가능한 가게에 관한 메소드들 입니다.
+*static Card cardSelection(int GRADE, int randkind)*: takeCard 메소드에 랜덤한 값을 주는 메소드입니다. <br>
+*static String nameCard(Card hand)*: 카드의 이름을 붙여주는 메소드입니다. <br>
+*static void useCard(Card hand, Status me)*: 패에 들어온 카드를 택해서 사용하거나 하루를 넘깁니다. <br>
+*static void prepareTest(int month, Status me)*: 매달 마지막 목요일에 치르는 모의고사에 관한 메소드입니다. <br>
+*void endTime()*: 하루가 끝나고 시간 관련 인스턴스 변수들을 다음 날로 처리 해줍니다. <br>
 <br>
 
 *b) Status.java <br>
@@ -2017,6 +2017,7 @@ public class Status {
 }}}
 
 게임 내 주인공 캐릭터의 능력치와 자금 현황을 표기합니다. <br>
+첫 정식 버전에서 아이템에 관련된 변수들이 추가되었습니다. <br>
 
 *c) Time.java* <br>
 
@@ -2260,6 +2261,7 @@ public class CardData {
 
 0.20 버전에서 새로 추가된 클래스 입니다. <br>
 0.20 버전의 카드 시스템에 사용될 카드들의 효과를 모아 놓은 클래스입니다. <br>
+각 메소드들은 하나의 행동을 나타냅니다. 여기 메소드들의 자세한 설명은 *공략* 부분에 설명하도록 하겠습니다. <br>
 
 *e) Card.java* <br>
 
@@ -2275,8 +2277,9 @@ public class Card {
 }}}
 
 카드 한 장 한 장의 정보를 담을 클래스입니다. 카드 자체의 능력을 제외하고는 모든 카드의 정보를 담습니다. <br>
+첫 정식 버전에서 덱에서 카드를 넣었다 뺏다하는 기능을 넣지 않기로 했기 때문에 isSelected와 isExist를 삭제해습니다. <br>
 
-*f) Deck.java* <br>
+*f) NameList.java* <br>
 
 {{{
 public class NameList{
@@ -2310,8 +2313,34 @@ public class NameList{
 }}}
 
 위의 Card 클래스와 연계되어 있으며 카드들의 종류를 보여줍니다. <br>
+첫 정식 버전에서는 덱의 느낌보다는 단순히 가지고 있는 카드의 리스트와 비슷한 느낌을 주어서 클래스 이름을 아예 이름 목록이란 뜻의 NameList라고 바꾸었습니다. <br>
 
 = 패치노트 =
+
+*v 1.00*
+
+첫 정식 버전이 나왔습니다. <br>
+게임의 방식은 0.20 버전과 크게 다른 것이 없습니다. 전 버전과 다른 점을 나열해 보겠습니다. <br>
+
+*★ 게임 외적인 부분* 
+
+○ ''Deck' 클래스의 이름을 'NameList'로 변경'<br>
+○ '값과 상관 없는 숫자를 눌렀을 때 경고나 무시되고 다시 입력을 받는 시스템 도입'<br>
+○ '많은 것들을 메소드를 이용해 소스의 양을 줄임'<br>
+
+*★ 게임 내적인 부분* 
+
+○ '사용 가능한 카드의 갯수가 5개에서 3개(아이템을 이용해 5개까지 이용가능)로 변경'<br>
+○ '총 16 종류의 아이템 구현'<br>
+○ '카드를 덱에서 넣었다 뺏다하고 구입하는 방식에서 기존 카드를 강화시켜가는 방식 채택 (단, 강화시키는 것은 아직 구현하지 못함)'<br>
+○ '매달 마지막 목요일에 모의고사를 침'<br>
+○ '매주 일요일에는 아이템을 사거나 카드를 강화할 수 있음'<br>
+○ '하루가 지나거나 중요한 이벤트를 놓지지 않도록 잠시 시간을 멈추게 하는 메소드를 넣어 좀 더 게임의 가독성을 높임'<br>
+
+*★ 알려진 버그*
+
+○ '카드 중에서 복권구입이 어떤 컴퓨터에서는(제작자의 집 컴퓨터) 작동하지 않고, 어떤 컴퓨터에서는(라이시움) 작동함' <br>
+○ '의도하지 않은 숫자를 넣으면 알아서 검열해주지만, 의도하지 않은 숫자가 아닌 문자를 넣으면 예외 오류가 뜸' <br>
 
 *v 0.20*
 
