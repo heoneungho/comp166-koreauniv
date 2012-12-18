@@ -1153,27 +1153,100 @@ class SimUnit {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 인스턴스없이 메소드를 실행할 수 있는 메소드.
+ * 정적 메소드를 선언하는 방법: static으로 선언한다.
+ * static final: 상수로 만든다! (ex)pi = 3.14..
+ * 널 레퍼런스: 아무것도 가리키지 않는 레퍼런스
+ * 오토 박싱: 원시유형을 컬렉션에 집어넣거나, 컬렉션에서 꺼낼 때, 거의 언제나 원시 유형이 들어갈 자리에 그 유형에 해당하는 래퍼 객체를 집어넣거나, 반대로 어떤 래퍼 객체가 들어갈 자리에 원시값을 집어넣을 수 있게하준다.
+ * 정적 임포트: 정적 클래스, 정적 변수, enum 값 등을 사용할 때 활용.
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
 
+package calendar;
+
+import java.util.*;
+
+public class CalendarUsage {
+
+        public static void main(String[] args) {
+
+                Calendar c = Calendar.getInstance();
+                
+                c.set(1992,4,27,18,15); // 년,월,일,시,분 설정
+                long day1 = c.getTimeInMillis(); // 1970년 1월 1일부터 경과한 시간을 밀리초 단위로 표현.
+                day1 += 1000 * 60 * 60; // 밀리초단위로 한시간을 나타냅니다.
+                c.setTimeInMillis(day1); // 한시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("새 시간 " + c.get(c.HOUR_OF_DAY));
+
+                c.add(c.DATE, 35); // 35일을 더한다.
+                System.out.println("35일 후 " + c.getTime());
+
+                c.roll(c.DATE, 35); // 35일을 더하지만 달은 변경하지 않는다.
+                System.out.println("35일을 굴리면 " + c.getTime());
+
+                c.set(c.DATE, 1); // 날짜를 1일로 설정.
+                System.out.println("1일로 설정 " + c.getTime());
+        }
+}
+
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 정적변수는 절차위주의 프로그래밍 썼던 비효율적인 변수 할당 방법이므로 바람직하지 않다.
+ * 지역 변수: 정적변수는 이미 자바 환경 자체에 녹아들어가 있고 때에 따라서는 정적 변수를 쓰는 것이 편리할 때도 있으므로 정적변수를 매도해서만은 안된다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
+
 {{{
+
+package compiler10;
+
+public class StaticSuper {
+
+        static {
+                System.out.println("super static block");
+        }
+        
+        StaticSuper() { // 생성자 메소드여야 하므로 ()을 넣어준다.
+                System.out.println("super constructor");
+        }
+
+}
+
+
+
+package compiler10;
+
+public class StaticTests extends StaticSuper {
+
+        static int rand; 
+        
+        static {
+                rand = (int) (Math.random() * 6);
+                System.out.println("static block " + rand);
+        }
+        
+        StaticTests() {
+                System.out.println("constructor");
+        }
+        
+        public static void main(String[] args) {
+                System.out.println("in main");
+                StaticTests st = new StaticTests();
+        }
+        
+}
+
+/* 출력 결과 :
+ super static block
+ static block 0
+ in main
+ super constructor
+ constructor */
 
 }}}
 
