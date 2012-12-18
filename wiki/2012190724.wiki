@@ -305,7 +305,6 @@ myDogs[0].name="Fred";
 myDogs[1].name="Marge";
 myDogs[2].name="A";
 myDogs[3].name="B"; 
-myDogs[4].name="C";
 
 System.out.print("마지막 개의 이름:");
 System.out.println(myDogs[4].name); 
