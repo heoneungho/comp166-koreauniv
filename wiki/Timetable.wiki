@@ -106,8 +106,8 @@
 
 = 실행화면 =
 
-|| *시작화면* || : 왼쪽이 상황판 및 주차장 이미지, 오른쪽이 주차공간
- 
+|| *시작화면* ||
+
 
 http://comp166-koreauniv.googlecode.com/files/lshstart.jpg
 
