@@ -928,6 +928,8 @@ public interface Result {
 
 *RightResult.java*
 
+http://comp166-koreauniv.googlecode.com/files/OrderGame_right.jpg
+
 {{{
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
