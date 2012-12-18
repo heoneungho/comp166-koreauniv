@@ -1994,7 +1994,197 @@ public class MiniMusicPlayer3 {
 *452p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
+package ch13;
 
+import java.awt.*;
+import javax.swing.*;
+import javax.sound.midi.*;
+import java.util.*;
+import java.awt.event.*;
+
+public class BeatBox {
+
+
+	JPanel mainPanel; //JPanel 을 만듭니다.
+	ArrayList<JCheckBox> checkboxList; // 체크상자를 ArrayList에 저장합니다.
+	Sequencer sequencer; //Sequencer를 만듭니다.
+	Sequence sequence; //Sequence를 만듭니다.
+	Track track; //Track 을 만듭니다.
+	JFrame theFrame; //JFrame 을 만듭니다.
+
+// GUI 레이블을 만들 때 사용할 악기명을 String 배열로 저장합니다.
+	String[]instrumentNames = {"Bass Drum","Closed Hi-Hat",
+			"Open Hi-Hat","Acoustic Snare","Crash Cymbal","Hand Clap",
+			"High Tom","Hi Bongo","Maracas","Whistle","Low Conga",
+			"Cowbell","Vibraslap","Low-mid Tom","High Agogo",
+	"Open Hi Conga"};
+
+	int []instruments ={35,42,46,38,49,39,50,60,70,72,64,56,58,47,67,63}; // 실제 드럼'건반'을 나타냅니다. 드럼 채널은 피아노의 각 건반이 서로 다른 드럼을 나타내는 것과 같다고 보면 됩니다. 35번 건반은 베이스 드럼을, 42번 건반은 하이햇(H-Hat)을 나타내는 것을 말합니다.
+
+	public static void main(String [] args){
+		new BeatBox().buildGUI(); //buildGUI 메소드를 실행시킵니다.
+	}
+
+	public void buildGUI(){
+		theFrame = new JFrame("Cyber BeatBox"); // JFrame을 만들고 Cyber BeatBox를 나타냅니다.
+		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 이렇게 하면 창을 닫았을 때 프로그램이 바로 종료됩니다.
+		BorderLayout layout = new BorderLayout(); //layout 이라는 BorderLayout 객체를 만듭니다.
+		JPanel background = new JPanel(layout); //background 라는 JPanel 객체를 만듭니다. 
+		background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); //비어있는 경계선(empty border)을 사용하여 패널 둘레와 구성요소가 들어가는 자리 사이에 빈 공간을 만들 수 있습니다.
+
+		checkboxList = new ArrayList<JCheckBox>(); //checkboxList라는 어레이 리스트를 만듭니다. 이 어레이 리스트는 JCheckBox객체를 담습니다.
+		Box buttonBox = new Box(BoxLayout.Y_AXIS); //buttonBox라는 Box객체를 만듭니다.
+
+
+		JButton start = new JButton("Start"); //start 라는 JButton 을 만을고 그위에 Start를 나타내게 합니다.
+		start.addActionListener(new MyStartListener()); //start에 액션리스너를 추가시킵니다.
+		buttonBox.add(start); //buttonBox에 start를 넣습니다.
+
+		JButton stop = new JButton("Stop"); //stop 이라는 JButton 을 만들고 그 위에 Stop를 나타내게 합니다.
+		stop.addActionListener (new MyStopListener()); //stop에 액션리스너를 추가시킵니다.
+		buttonBox.add(stop); //buttonBox에 stop을 넣습니다.
+
+		JButton upTempo = new JButton("upTempo"); //upTempo라는 JButton 을 만들고 그 위에 upTempo를 나타내게 합니다.
+		upTempo.addActionListener(new MyUpTempoListener()); //upTempo에 액션리스너를 추가시킵니다.
+		buttonBox.add(upTempo, "upTempo"); //buttonBox에 upTempo를 넣습니다.
+
+		JButton downTempo = new JButton("Tempo Down"); //downTempo라는 JButton 을 만들고 그 위에 Tempo Down을 나타내게 합니다.
+		downTempo.addActionListener(new MyDownTempoListener()); //downTempo에 액션리스너를 추가시킵니다.
+		buttonBox.add(downTempo, "downTempo"); //buttonBox에 downTempo를 넣습니다.
+
+		Box nameBox = new Box(BoxLayout.Y_AXIS); //nameBox라는 Box객체를 만듭니다. 이것들은 y축 기준으로 배치됩니다. 
+		for(int i=0; i<16; i++){
+			nameBox.add(new Label(instrumentNames[i])); //for문을 이용해 nameBox에 악기이름을 추가시킵니다.
+		}
+
+
+		background.add(BorderLayout.EAST, buttonBox); //buttonBox의 위치를 east 지역으로 합니다.
+		background.add(BorderLayout.WEST, nameBox); //nameBox의 위치를 west 지역으로 합니다.
+
+		theFrame.getContentPane().add(background); //판에 background를 추가시킵니다.
+
+		GridLayout grid = new GridLayout(16,16); //grid란른 GridLayout 객체를 만듭니다.
+		grid.setVgap(1);
+		grid.setHgap(2);
+		mainPanel = new JPanel(grid); //JPanel 을 만듭니다.
+		background.add(BorderLayout.CENTER,mainPanel); //mainPanel 의 위치를 center지역으로 합니다.
+
+		for(int i=0;i<256;i++)
+		{
+			JCheckBox c = new JCheckBox();
+			c.setSelected(false);
+			checkboxList.add(c);
+			mainPanel.add(c);
+		}//순환문 끝, 체크상자를 만들고 모든값을 'false'로 설정한 다음 ArrayList와 GUI 패널에 추가합니다.
+
+		setUpMidi(); //setUpMidi메소들를 실행시킵니다.
+
+		theFrame.setBounds(50,50,300,300);
+		theFrame.pack(); //pack 메소드를 실행시킵니다.
+		theFrame.setVisible(true); // theFrame이 보이도록 합니다.    
+
+	}// buildGUI 메소드 끝
+
+
+	public void setUpMidi(){
+		try{
+			sequencer= MidiSystem. getSequencer(); //시퀀서를 받습니다.
+			sequencer.open(); //시퀀서를 엽니다.
+			sequence = new Sequence(Sequence.PPQ,4);
+			track = sequence.createTrack(); //트랙을 만듭니다.
+			sequencer.setTempoInBPM(120);
+		}catch(Exception e){e.printStackTrace();}
+	}//setUpMidi 메소드 끝
+
+// 체크상자의 상태를 MIDI이벤트로 바꾼 다음 그 이벤트를 트랙에 추가합니다.
+	public void buildTrackAndStart(){
+		int [] trackList = null; // 각 악기의 열여섯 박자에 대한 값을 원소가 16개인 배열에 저장합니다. 어떤 악기가 특정 박자에서 연주되어야하면 그 원소의 값에 건반 번호를 넣습니다. 반대로 연주되어야 하지 않는다면 0을 집어넣습니다.
+
+		sequence.deleteTrack(track); //기존 트랙을 제거합니다.
+		track = sequence.createTrack(); //새로운 트랙을 만듭니다.
+
+
+		for(int i = 0; i< 16; i++){
+			trackList = new int[16]; //열 16개 모두에 대해 같은 작업을 처리합니다.
+
+			int key = instruments[i]; // 어떤 악기인지를 나타내는 건반 번호를 설정합니다.
+
+
+			for(int j = 0; j<16 ; j ++) // 모든 박자에 대해 같은 작업을 반복합니다.
+			{
+				JCheckBox jc = checkboxList.get(j + (16*i));
+				if(jc.isSelected()){
+					trackList[j] = key;
+				}else{
+					trackList[j] = 0;
+				}
+			} //안쪽 for문 끝, 박자에 해당하는 체크상자가 선택되었는지 확인합니다. 선택되어 있으면 배열의 그 자리에 건반값을 집어넣습니다. 그렇지 않으면 그 박자에서는 그 악기를 연주하지 않아야 하므로 0으로 설정합니다.
+
+			makeTracks(trackList); //악기의 16개의 모든 박자에 대해 이벤트를 만듭니다.
+			track.add(makeEvent(176,1,127,0,16)); //트랙에 추가합니다.
+		}// 바깥쪽 for문 끝
+
+		track.add(makeEvent(192,9,1,0,15)); //16번째 박자에는 반드시 이벤트가 있어야 합니다. 이렇게 하지 않으면 다시 시작하기 전에 16박자가 모두 끝나지 않을 수도 있습니다.
+		try{
+			sequencer.setSequence(sequence);
+			sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY); //루프 반복 회수를 지정하기 위한 메소드입니다.
+			sequencer.start(); //start메소드를 실행합니다.
+			sequencer.setTempoInBPM(120);
+		}catch(Exception e){e.printStackTrace();}
+	} // buildTrackAndStart 메소드 끝
+
+	public class MyStartListener implements ActionListener { //Start 버튼의 액션리스너입니다.
+		public void actionPerformed(ActionEvent a){
+			buildTrackAndStart();
+		}
+	} // 내부 클래스 끝 ,첫번째 내부 클래스.버튼의 리스너 입니다.
+
+	public class MyStopListener implements ActionListener{ //Stop 버튼의 액션리스너입니다.
+		public void actionPerformed(ActionEvent a){
+			sequencer.stop();
+		}
+	}// 내부 클래스 끝
+
+	public class MyUpTempoListener implements ActionListener{ //Tempo Up 버튼의 액션리스너입니다.
+		public void actionPerformed(ActionEvent a){
+			float tempoFactor = sequencer.getTempoFactor();
+			sequencer.setTempoFactor((float)(tempoFactor * 1.03)); //시퀀서의 빠르기를 주어진 배율을 가지고 변경합니다. 빠르기를 3%증가시켰습니다.
+		}
+	}// 내부 클래스 끝
+	public class MyDownTempoListener implements ActionListener { //Tempo Down 버튼의 액션리스너입니다.
+		public void actionPerformed(ActionEvent a){
+			float tempoFactor = sequencer.getTempoFactor();
+			sequencer.setTempoFactor((float)(tempoFactor* .97)); //시퀀서의 빠르기를 주어진 배율을 가지고 변경합니다. 빠르기를 3%감소시켰습니다.
+		}
+	}// 내부 클래스 끝
+
+	
+
+	public void makeTracks(int [] list){ // 한 악기의 16박자 전체에 대해 이벤트를 만듭니다. int[]배열에는 그 악기에 해당하는 건반 번호 또는 0이 들어갑니다. 0이 들어있다면 그 박자에서는 해당 악기가 연주되지 않아야 합니다. 0이 아닌 값이 들어있다면 이벤트를 만들어서 트랙에 추가합니다.
+		for(int i=0;i<16;i++){
+			int key = list[i];
+
+			if(key!=0){
+
+		
+				track.add(makeEvent(144,9,key,100,i));
+				track.add(makeEvent(128,9,key,100,i+1));
+			} //NOTE ON과 NOTE OFF 이벤트를 만들고 트랙에 추가합니다.
+		}
+	}
+
+	public MidiEvent makeEvent(int comd, int chan , int one, int two, int tick){
+		MidiEvent event = null;
+		try{
+			ShortMessage a = new ShortMessage(); //메세지 인스턴스를 만듭니다.
+			a.setMessage(comd,chan,one,two); // SetMessage()를 호출하여 지시사항을 전달합니다.
+			event = new MidiEvent ( a, tick); //메세지에 대한 MidiEvent 인스턴스를 만듭니다.
+
+		}catch(Exception e){e.printStackTrace();}
+		return event; //이벤트를 리턴합니다.
+
+	}
+} //클래스 끝
 }}}
 
 = 14. 객체 저장:직렬화와 입출력  =
