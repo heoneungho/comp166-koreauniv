@@ -112,7 +112,7 @@ http://comp166-koreauniv.googlecode.com/files/실행한_화면3.jpg
 
 a.주문 완료를 누른다면 경고창이 뜬다.
 
-http://comp166-koreauniv.googlecode.com/files/5개_골랐을_경우4.jpg
+http://comp166-koreauniv.googlecode.com/files/5개.jpg
 
 4)밑반찬은 4개가 되었으나, 주메뉴를 1개 초과하여 선택하였을 경우
 
