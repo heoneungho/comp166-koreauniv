@@ -859,7 +859,7 @@ ActionPerformed() 한개 뿐이기에 overriding 한다. */
                     
                     }
                                    
-/*갯수세어서, 안내문이 나오는 if문이다.
+/*갯수세어서, 안내문이 나오는 if문이다.*/
  
                     if(sideItem >= 5) { //sideItem이 5이상이면, 주문 오류!
 
