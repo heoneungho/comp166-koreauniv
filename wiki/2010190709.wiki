@@ -1260,13 +1260,33 @@ class SimUnit{
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
+
+public class CalendarEx {
+	public static void main(String[] args){
+		Calendar c= Calendar.getInstance();
+		c.set(2004,0,7,15,40);
+		long day1=c.getTimeInMillis();
+		day1+=1000*60*60;
+		c.setTimeInMillis(day1);
+		System.out.println("new hour "+ c.get(c.HOUR_OF_DAY));
+		c.add(c.DATE, 35);
+		System.out.println("add 35 days " + c.getTime());
+		c.roll(c.DATE, 35);
+		System.out.println("roll 35 days " + c.getTime());
+		c.set(c.DATE, 1);
+		System.out.println("set to 1 " + c.getTime());
+	}
+	
+
+}
 
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 객체지향 프로그래밍에서 많이 사용되는 변수
+ * 지역 변수: 클래스라는 객체안에 존재, 클래스에 속하는 인스턴스에 의해서 공유
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
