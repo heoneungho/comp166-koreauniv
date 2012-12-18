@@ -205,14 +205,18 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 lab5 = new JLabel("결제 수단:"); //결제 수단:이라는 문구(라벨) 생성
                           
 
-                sideItem = new JLabel("밑반찬을 선택하시오.(택4) : "); //밑반찬을 선택하시오.(택4):이라는 문구(라벨) 생성
+                sideItem = new JLabel("밑반찬을 선택하시오.(택4) : "); 
+//밑반찬을 선택하시오.(택4):이라는 문구(라벨) 생성
                                                                                                                                                                  
-                sideItem.setForeground(new Color(0, 0, 205));//RGB중 B를 선택하여 파란색이 나옴.
+                sideItem.setForeground(new Color(0, 0, 205));
+//RGB중 B를 선택하여 파란색이 나옴.
 
 
-                mainItem = new JLabel("주재료를 선택하시오.(택1): "); //주재료를 선택하시오.(택1):이라는 문구(라벨) 생성
+                mainItem = new JLabel("주재료를 선택하시오.(택1): "); 
+//주재료를 선택하시오.(택1):이라는 문구(라벨) 생성
 
-                mainItem.setForeground(new Color(0, 0, 205)); //RGB중 B를 선택하여 파란색이 나옴.
+                mainItem.setForeground(new Color(0, 0, 205)); 
+//RGB중 B를 선택하여 파란색이 나옴.
 
 
 
@@ -225,12 +229,15 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 text3.setText("010"); //기본적으로 010 세팅.
 
 
-                small = new JRadioButton("소 (4000원)", true); //라디오버튼 생성. 소 (4000원)이라고 적혀있음. true 기에 이미 선택되어 있다.
+                small = new JRadioButton("소 (4000원)", true);
+ //라디오버튼 생성. 소 (4000원)이라고 적혀있음. true 기에 이미 선택되어 있다.
 
-                medium = new JRadioButton("중 (5000원)", false); //라디오버튼 생성. 중 (5000원)이라고 적혀있음. false 기에 선택되어 있지 않다.
+                medium = new JRadioButton("중 (5000원)", false);
+ //라디오버튼 생성. 중 (5000원)이라고 적혀있음. false 기에 선택되어 있지 않다.
 
 
-                large = new JRadioButton("대 (6000원)", false);  //라디오버튼 생성. 대 (6000원)이라고 적혀있음. false 기에 선택되어 있지 않다.
+                large = new JRadioButton("대 (6000원)", false);  
+//라디오버튼 생성. 대 (6000원)이라고 적혀있음. false 기에 선택되어 있지 않다.
 
 
 
@@ -243,9 +250,11 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 group1.add(large); //그룹 1에 small, medium, large를 추가함.
                 
                 
-                cash = new JRadioButton("현금 결제", false); /*라디오 버튼 생성. 현금 결제라고 적혀있음. false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르시라고 일부러 둘다 false처리 하였다.*/
+                cash = new JRadioButton("현금 결제", false); /*라디오 버튼 생성. 현금 결제라고 적혀있음. 
+false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르시라고 일부러 둘다 false처리 하였다.*/
 
-                card = new JRadioButton("카드 결제", false); //라디오버튼 생성. 카드결제라고 적혀있음. false 기에 선택되어 있지 않다.
+                card = new JRadioButton("카드 결제", false); //라디오버튼 생성. 카드결제라고 적혀있음. 
+//false 기에 선택되어 있지 않다.
 
                 group2 = new ButtonGroup(); //라디오 버튼 그룹2 생성.
 
@@ -253,7 +262,9 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
                 group2.add(card); //그룹 2에 cash, card를 추가.
 
-                chk1 = new JCheckBox("느타리버섯 나물", false); //각종 밑반찬 checkbox 생성.
+                chk1 = new JCheckBox("느타리버섯 나물", false);
+
+ //각종 밑반찬 checkbox 생성.
 
                 chk2 = new JCheckBox("호박 나물", false);
 
@@ -272,7 +283,9 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 chk9 = new JCheckBox("무채", false);
 
 
-                chk10 = new JCheckBox("연어", false); //각종 주재료 checkbox 생성.
+                chk10 = new JCheckBox("연어", false); 
+
+//각종 주재료 checkbox 생성.
 
                 chk11 = new JCheckBox("불고기", false);
 
@@ -293,7 +306,9 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
                 button = new Button("주문 완료"); //주문 완료 버튼 생성.
 
-                small.addActionListener(this); //For, 라디오버튼, 체크박스, 텍스트 필드 후 입력에 대한 처리를 위한 actionlistener
+                small.addActionListener(this); 
+
+//For, 라디오버튼, 체크박스, 텍스트 필드 후 입력에 대한 처리를 위한 Actionlistener
 
                 medium.addActionListener(this);
 
@@ -345,16 +360,24 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
                 button.addActionListener(this);
 
-
+/*setBounds(x좌표,y좌표,가로,세로)/*
                 lab1.setBounds(50, 50, 200, 20); 
+
+//글씨의 위치는 (50,50) 그 모양은 가로=200, 세로=20 (200*20인 직사각형)
 
                 lab2.setBounds(50, 80, 200, 20);
 
+//즉, lab1보다 30정도 아래에 있다.
+
+
                 lab3.setBounds(50, 110, 200, 20);
 
-                
-
+               
                 text1.setBounds(200, 50, 200, 20);
+
+//x=200, y=500, 200*20인 직사각형
+
+//나머지는 유사함으로 생략하겠다.
 
                 text2.setBounds(200, 80, 200, 20);
 
@@ -417,9 +440,9 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
                 button.setBounds(50, 600, 100, 20);
 
-                add(lab1);
+                add(lab1); //awt의 선언으로 사용된 add(). lab1추가.
 
-                add(lab2);
+                add(lab2); //이하 동일.
 
                 add(lab3);
 
@@ -486,6 +509,8 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 add(button);
 
                 text3.selectAll();
+
+  //텍스트필드에 마우스 클릭됬을 때, 글자 고치기 쉽게 하기 위해 모든 글자를 선택
 
                 setVisible(true);
 
