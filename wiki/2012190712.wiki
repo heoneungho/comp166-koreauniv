@@ -1183,35 +1183,35 @@ class Dragon extends Monster{ // 드래곤이 몬스터를 확장한다.
 
 {{{
 import java.util.*;
-class V2Radiator{
+class V2Radiator{ // 클래스 선언
 	V2Radiator(ArrayList list){
-		for(int x=0; x<5; x++){
+		for(int x=0; x<5; x++){ // 심플유닛 생성
 			list.add(new SimUnit("V2Radiator"));
 		}
 	}
 }
 
-class V3Radiator extends V2Radiator{
+class V3Radiator extends V2Radiator{ // 클래스 선언
 	V3Radiator(ArrayList lglist){
-		super(lglist);
-		for(int g=0; g<10; g++){
+		super(lglist); // 상위클래스에서 가져옴
+		for(int g=0; g<10; g++){ // 심플유닛 생성
 			lglist.add(new SimUnit("V3Radiator"));
 		}
 	}
 }
 
-class RetentionBot{
-	RetentionBot(ArrayList rlist){
-		rlist.add(new SimUnit("Retention"));
+class RetentionBot{ // 클래스 선언
+	RetentionBot(ArrayList rlist){ 
+		rlist.add(new SimUnit("Retention"));//심플유닛 생성
 	}
 }
 
 public class TestLifeSupportSim{
 	public static void main(String [] args){
-		ArrayList aList = new ArrayList();
+		ArrayList aList = new ArrayList(); // 배열을 생성
 		V2Radiator v2 = new V2Radiator(aList);
 		V3Radiator v3 = new V3Radiator(aList);
-		for(int z=0; z<20; z++){
+		for(int z=0; z<20; z++){ // 실행될때마다 메세지를 출력
 			RetentionBot ret = new RetentionBot(aList);
 			System.out.println(z+1 + "unit");
 		}
