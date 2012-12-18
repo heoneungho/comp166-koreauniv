@@ -770,12 +770,55 @@ public class DotCom	{
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+public class Animal	{
+	void makeNoise();
+	void eat();
+	void sleep();
+	void roma();
+}
+
+public class Feline extends Animal	{
+	void roam();
+}
+
+public class Hippo extends Animal	{
+	void makeNoise();
+	void eat();
+}
+
+public class Canine extends Animal	{
+	void roam();
+}
+
+public class Lion extends Feline	{
+	void makeNoise();
+	void eat();
+}
+
+public class Tiger extends Feline	{
+	void makeNoise();
+	void eat();
+}
+
+public class Cat extends Feline		{
+	void makeNoise();
+	void eat();
+
+public class Wolf extends Canine	{
+	void makeNoise();
+	void eat();
+}
+
+public class Dog extends Canine		{
+	void makeNoise();	
+	void eat();
+}
 
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
+ * 오버라이드: 이름만 같을 뿐 서로 다른 메소드
  * 오버로딩:  이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
