@@ -21,8 +21,11 @@ Add your content here.  Format your content with:
 
 ◎ 전화번호부 작성 후 저장 기능
 
+= 실행 화면 스크린샷 =
+== 1.우선 전체 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/1%EC%A0%84%EC%B2%B4.PNG
 
-
+2.추가 시키기
 
 = Code =
 
