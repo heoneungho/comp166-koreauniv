@@ -158,7 +158,7 @@ Answer6.
 
 import java.awt.*;//for. frame 이용
 
-import java.awt.event.*; //for. frame 이용
+import java.awt.event.*; //for. frame, keyevent 이용
 
 import javax.swing.*; //GUI 이용, for. JOptionPane
 
@@ -216,29 +216,31 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
 
 
-                text1 = new JTextField(20);
+                text1 = new JTextField(20); //크기를 20으로 설정.
 
                 text2 = new JTextField(20);
 
                 text3 = new JTextField(20);
 
-                text3.setText("010");
+                text3.setText("010"); //기본적으로 010 세팅.
 
 
-                small = new JRadioButton("소 (4000원)", true);
+                small = new JRadioButton("소 (4000원)", true); //라디오버튼 생성. 소 (4000원)이라고 적혀있음. true 기에 이미 선택되어 있다.
 
-                medium = new JRadioButton("중 (5000원)", false);
-
-                large = new JRadioButton("대 (6000원)", false);
+                medium = new JRadioButton("중 (5000원)", false); //라디오버튼 생성. 중 (5000원)이라고 적혀있음. false 기에 선택되어 있지 않다.
 
 
-                group1 = new ButtonGroup();
+                large = new JRadioButton("대 (6000원)", false);  //라디오버튼 생성. 대 (6000원)이라고 적혀있음. false 기에 선택되어 있지 않다.
+
+
+
+                group1 = new ButtonGroup(); //라디오 버튼 그룹1 생성.
 
                 group1.add(small);
 
                 group1.add(medium);
 
-                group1.add(large);
+                group1.add(large); //그룹 1에 small, medium, large를 추가함.
                 
                 
                 cash = new JRadioButton("현금 결제", false);
