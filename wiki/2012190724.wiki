@@ -584,27 +584,69 @@ class SimUnit {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 클래스의 인스턴스 없이 메소드를 실행 할 수 있도록 한 메소드
+ * 정적 메소드를 선언하는 방법: 메소드 앞에 static을 붙인다
+ * static final: static final로 선언된 변수는 상수이다.
+ * 널 레퍼런스: 아무것도 가리키지 않는 레퍼런스이다.
+ * 오토 박싱: 원시값과 래퍼 객체 사이의 변환을 자동으로 처리해주는 기능이다
+ * 정적 임포트: 타이핑을 전부 할 필요 없이 코드를 짧게 작성할 수 있도록 도와주는 기능. 정적 클래스나 정적변수 등을 사용할 때 활용한다.
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
+public class Calendarrrr {
+  public static void main(String args[]){
+   Calendar c=Calendar.getInstance();
+   
+     c.set(2011, 11,10, 00, 40); // 시작을 2011년 12월 10일 00:40으로 설정
+      long day1 = c.getTimeInMillis(); // 1970년 1월 1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴
+     day1 += 1000*60*60;
+     c.setTimeInMillis(day1); // 한시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신
+     System.out.println("new hour"+c.get(Calendar.HOUR_OF_DAY));
+     c.add(Calendar.DATE, 35); // 35일을 더합니다.
+     System.out.println("add 35 days"+c.getTime());
+     c.roll(Calendar.DATE, 35); // 35일 뒤로 넘깁니다. 달은 바뀌지 않습니다.
+     System.out.println("roll 35 days"+c.getTime());
+     c.set(Calendar.DATE,1); // 날짜를 1로 설정합니다. 
+     System.out.println("set to 1"+c.getTime());       
+}}
 
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 정적 변수는 객체지향적이기 보다 프로시저 위주의 프로그래밍에서 사용한 비효율적인 변수다. 전역변수랑 비슷하다.
+ * 정적 변수: API에 정적변수가 많다. 객체의 자연적인 상태의 한 부분이다. 시스템에서 필수적인 것도 있다. 필수적이라고 할 수 없는 것들도 분명히 유용하게 쓰인다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper {
+   static { // 초기화
+     System.out.println("super static block");
+}
+   StaticSuper() { // 생성자 메소드에 ()를 붙여준다
+     System.out.println("super constructor");
+}
+}
+
+public class StaticTests extends StaticSuper { 
+   static int rand;
+   static { // 초기화
+     rand = (int) (Math.random() * 6);
+     System.out.println("static block " + rand);
+}
+
+StaticTests() {
+   System.out.println("constructor");
+}
+
+public static void main(String[] args) {
+   System.out.println("in main");
+   StaticTests st = new StaticTests();
+}
+}
 
 }}}
 
