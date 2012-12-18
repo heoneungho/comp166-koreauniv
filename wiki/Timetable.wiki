@@ -78,7 +78,7 @@
 
 * 1. Dnode 클래스
 
-1) 프로그램의 시작과 끝을 알려주는 클래스입니다. 
+1) 행위의 시작과 끝을 알려주는 클래스입니다. 
 
 * 2. mainForm 클래스
 
@@ -159,7 +159,7 @@ http://comp166-koreauniv.googlecode.com/files/lshout3.jpg
 
 Add your content here.  Format your content with:
 
-* Dnode 클래스 : 프로그램의 시작과 끝을 알려주는 클래스입니다.
+* Dnode 클래스 : 행위의 시작과 끝을 알려주는 클래스입니다.
 
 {{{
 class Dnode { // Dnode 클래스를 선언해줍니다. 같은 클래스 내에서만 접근가능하게 하기위해 private로 선언
