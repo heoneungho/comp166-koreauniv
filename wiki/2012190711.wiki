@@ -887,7 +887,57 @@ public class GameHelper {
 
 {{{
 
+public class Animal {
+        String picture; //동물의 사진
+        String food; //먹는 음식의 형식
+        int hunger; //배고픈 정도
+        int boundaries; //돌아다니는 공간
+        int location; // 동물의 위치
+        
+        public void makeNoise(){} //소리를 낼 때의 행동
+        public void eat(){} //음식을 접했을 때의 행동
+        public void sleep(){} //잠들어 있을 때의 행동
+        public void roam(){} //돌아다닐 때의 행동
+        
+}
 
+ class Feline extends Animal{
+         public void roam(){}
+ }
+ 
+ class Hippo extends Animal{
+         public void makeNoise(){}
+         public void eat(){}
+ }
+ 
+ class Canine extends Animal{
+         public void roam(){}
+ }
+ 
+ class Lion extends Feline{
+         public void makeNoise(){}
+         public void eat(){}
+ }
+ 
+ class Tiger extends Feline{
+         public void makeNoise(){}
+         public void eat(){}
+ }
+ 
+ class Cat extends Feline{
+         public void makeNoise(){}
+         public void eat(){}
+ }
+ 
+ class Wolf extends Canine{
+         public void makeNoise(){}
+         public void eat(){}
+ }
+ 
+ class Dog extends Canine{
+         public void makeNoise(){}
+         public void eat(){}
+ }
 
 }}}
  
