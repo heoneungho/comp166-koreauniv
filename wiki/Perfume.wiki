@@ -1,8 +1,8 @@
-#summary 향수만들기 프로그램!.
+#summary 2012190718 한승원 향수만들기 프로그램입니다!^0^.
 
 = Introduction =
 
-Add your content here.
+저는 평상시 향수에 관심이 많아 자신만을 위한 향수를 만드는 프로그램을 만들어 보고자 했습니다. 
 
 
 = Details =
