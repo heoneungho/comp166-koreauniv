@@ -259,7 +259,7 @@ public void Add(){
 
 //데이터 수정 함수
 //Table에 이름과 텍스트필드에 이름이 같을경우 수정이 가능한 루틴 입니다.
-//따라서 이름 필드가 바뀌면 수정을 못하게 됩니다. 이걸 아직 처리 못했습니다.
+
 public void Ins(){
 	for (i=0; i < x ;i++ ){
 		if(table.getValueAt(i,0).equals(tf_Name.getText())) {
@@ -473,8 +473,14 @@ http://comp166-koreauniv.googlecode.com/files/캡처9.JPG
 
 = 참고문헌 =
 *Head First Java 케이시 시에라, 버트 베이츠 저 서환수 역 한빛미디어
+
 *난 정말 JAVA를 공부한 적이 없다구요 윤성우 저 김문석 감수 오렌지미디어
+
 *자바의 정석 2ed edition 남궁성 저 도우출판
+
+*파일 입출력의 이해를 돕기 위해서 참고한 네이버 블로그(이 블로그에서 아래 주소가 가리키는 내용외에 관련된 다른 내용도 참고)
+http://blog.naver.com/ksj_7701?Redirect=Log&logNo=130130735056
+
 
 = 소스코드 제출 =
 http://comp166-koreauniv.googlecode.com/files/2012190724ProfileManagerbinsrc.zip
