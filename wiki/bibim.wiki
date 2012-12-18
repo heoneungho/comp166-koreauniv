@@ -144,6 +144,15 @@ Question6. 코드 소개?
 
 Answer6.
 
+1)Bibim이라는 클래스와 메소드 하나로 이루어져있는 간단한 코드.
+
+2)import javax.swing.*;을 사용하여, Label, TextField,RadioButton,CheckBox를 사용하였다.
+
+3)OptionPane를 이용하여, 결과창을 보여주었다.
+
+4)if문을 사용하여 주재료와 밑반찬의 갯수를 제한 하였다. 
+
+
 {{{
 
 
