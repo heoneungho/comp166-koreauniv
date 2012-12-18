@@ -243,17 +243,17 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 group1.add(large); //그룹 1에 small, medium, large를 추가함.
                 
                 
-                cash = new JRadioButton("현금 결제", false);
+                cash = new JRadioButton("현금 결제", false); /*라디오 버튼 생성. 현금 결제라고 적혀있음. false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르시라고 일부러 둘다 false처리 하였다.*/
 
-                card = new JRadioButton("카드 결제", false);
+                card = new JRadioButton("카드 결제", false); //라디오버튼 생성. 카드결제라고 적혀있음. false 기에 선택되어 있지 않다.
 
-                group2 = new ButtonGroup();
+                group2 = new ButtonGroup(); //라디오 버튼 그룹2 생성.
 
                 group2.add(cash);
 
-                group2.add(card);
+                group2.add(card); //그룹 2에 cash, card를 추가.
 
-                chk1 = new JCheckBox("느타리버섯 나물", false);
+                chk1 = new JCheckBox("느타리버섯 나물", false); //각종 밑반찬 checkbox 생성.
 
                 chk2 = new JCheckBox("호박 나물", false);
 
@@ -272,7 +272,7 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 chk9 = new JCheckBox("무채", false);
 
 
-                chk10 = new JCheckBox("연어", false);
+                chk10 = new JCheckBox("연어", false); //각종 주재료 checkbox 생성.
 
                 chk11 = new JCheckBox("불고기", false);
 
@@ -291,9 +291,9 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                 chk18 = new JCheckBox("낙지", false);
 
 
-                button = new Button("주문 완료");
+                button = new Button("주문 완료"); //주문 완료 버튼 생성.
 
-                small.addActionListener(this);
+                small.addActionListener(this); //For, 라디오버튼, 체크박스, 텍스트 필드 후 입력에 대한 처리를 위한 actionlistener
 
                 medium.addActionListener(this);
 
