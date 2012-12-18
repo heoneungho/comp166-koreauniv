@@ -237,14 +237,24 @@ public static int[] makeaperfume(){
 }}}
 
 <실행화면>
+* Seungwon's Perfume 사이트로 들어가는 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/zz.PNG
+* login, 회원가입, 비회원 구매를 선택하는 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/zzz.PNG
+* 회원가입을 선택했을 경우, 다음과 같이 id와 성별등을 입력하는 화면이 나옵니다.
 http://comp166-koreauniv.googlecode.com/files/zzzz.PNG
 http://comp166-koreauniv.googlecode.com/files/zzzzz.PNG
+* 향수 제작 단계 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/zzzzzz.PNG
+* 원하는 향을 고르는 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/zsdf.PNG
+* 향수의 양을 고르는 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/sdsf.PNG
+* 다른 향을 blend할지 묻는 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/dsfasdf.PNG
+* 향의 강도를 고르는 화면입니다.
 http://comp166-koreauniv.googlecode.com/files/sdfggg.PNG
+* 종료화면입니다.
 http://comp166-koreauniv.googlecode.com/files/qqqqqq.PNG
-http://comp166-koreauniv.googlecode.com/files/2012190718
+
+<압축파일>http://comp166-koreauniv.googlecode.com/files/2012190718 한승원 Perfume.zip
