@@ -1070,6 +1070,7 @@ public class WrongResult extends JFrame implements Result{
 =Downloads=
 
 http://comp166-koreauniv.googlecode.com/files/2012190704_채유연.zip
+
        
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
