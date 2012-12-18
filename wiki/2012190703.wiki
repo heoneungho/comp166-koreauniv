@@ -582,8 +582,8 @@ System.out.println(result);
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
-{{{ㄱ
-/* DotCom 게임 최종 완성 코드입니다.DotCom, DotComBust, GameHelper 클래스들이있습니다. */
+{{{
+
 
 import java.io.*;
 import java.util.*;
