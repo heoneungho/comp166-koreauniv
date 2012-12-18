@@ -584,7 +584,6 @@ public class SimpleDotCom {
 	}
 
 }
-
 import java.io.*;
 public class GameHelper {
 	public String getUserInput(String prompt){
@@ -1191,6 +1190,59 @@ class Dragon extends Monster{//int형 변수를 받아 boolean값을 리턴한�
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+//상속부분을 제거하여 20:(5+10)=4:3이 되게 하였다.
+
+import java.util.ArrayList;
+class V2Radiator {
+    V2Radiator(ArrayList list){
+        for(int x=0;x<5;x++){
+            list.add(new SimUnit("V2Radiator"));
+        }
+    }
+
+}
+
+class V3Radiator{
+    V3Radiator(ArrayList lglist){
+        //super(lglist); 상위클래스의 메소드를 오버라이드 하는 것
+        for(int g=0;g<10;g++){
+            lglist.add(new SimUnit("V3Radiator"));
+        }
+    }
+}
+
+class RetentionBot{
+    RetentionBot(ArrayList rlist){
+        rlist.add(new SimUnit("Retention"));
+    }
+}
+
+public class TestLifeSupportSim{
+    public static void main(String[] args){
+        ArrayList aList =new ArrayList();
+        V2Radiator v2 = new V2Radiator(aList);
+        V3Radiator v3 = new V3Radiator(aList);
+        for(int z=0;z<20;z++){
+            RetentionBot ret = new RetentionBot(aList);
+        }
+    }
+}
+
+
+class SimUnit{
+    String botType;
+    SimUnit(String type){
+        botType = type;
+    }
+    int powerUse(){
+        if("retention".equals(botType)){
+            return 2;
+        } else{
+            return 4;
+        }
+    }
+} 
+
 
 }}}
 
@@ -1198,12 +1250,12 @@ class Dragon extends Monster{//int형 변수를 받아 boolean값을 리턴한�
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 클래스의 인스턴스없이 메소드를 실행할 수 있다.
+ * 정적 메소드를 선언하는 방법: static을 붙여 사용한다.
+ * static final: 이렇게 선언된 변수는 상수이고 final로 지정한 변수는 값을 바꿀 수 없다.
+ * 널 레퍼런스: 리모콘 기능을 해제하는 것
+ * 오토 박싱: 원시값과 객체 사이의 경계를 없애는 것
+ * 정적 임포트: 정적클래스, 정적 변수, enum 등을 사용할 때 타이핑을 적게 하도록 돕는다.
 
 *339p Calendar* _구현후 주석달기_
 
