@@ -949,7 +949,22 @@ class SimUnit	{
 *339p Calendar* _구현후 주석달기_
 
 {{{
-
+public Class Calendar	{
+	public static void main(String[] args)	{
+		Calendar c = Calendar.getInstance();
+		c.set(2012,12,18,12,40); //지금 시간으로 맞춰보자
+		long day1 = c.getTimeInMillis(); //시간을 밀리초로 
+		day += 1000 * 60 * 60;
+		c.setTimeInMillis(day1); // 한 시가에 해당하는 밀리초만큼의 시간을 더하고 시각을 갱신
+		System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
+		c.add(c.DATE, 35); //35일을 더함
+		System.out.println("add 35 days " + c.getTime());
+		c.roll(c.DATE, 35); //35일 뒤로 넘김 , 달은 넘어가지 않음.
+		System.out.println("roll 35 days " + c.getTime());
+		c.set(c.DATE, 1); //날짜를 1로 설정
+		System.out.println("set to 1" + c.getTime());
+	}
+}
 }}}
 
 *342p 집중토론* _요약_
