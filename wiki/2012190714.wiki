@@ -874,6 +874,62 @@ class Dragon extends Monster{
 
 {{{
 
+import java.util.*;
+
+class V2Radiator{
+	V2Radiator(ArrayList list){
+		for(int x=0; x<5; x++){
+			list.add(new SimUnit("V2Radiator"));
+		}	
+	}
+}
+
+class V3Radiator{ //불필요한 상속을 제거
+	V3Radiator(ArrayList lglist){ //super(lglist) 삭제
+		for(int g=0; g<10; g++){
+			lglist.add(new SimUnit("V3Radiator"));
+		}
+	}
+}
+
+class RetentionBot{
+	RetentionBot(ArrayList rlist){
+		rlist.add(new SimUnit("Retention"));
+	}
+}
+
+public class TestLifeSupportSim {
+	public static void main(String[] args) {
+		ArrayList aList = new ArrayList();
+		V2Radiator v2 = new V2Radiator(aList);
+		V3Radiator v3 = new V3Radiator(aList);
+		
+		for(int z=0; z<20; z++){
+			RetentionBot ret = new RetentionBot(aList);
+		}
+	}
+}
+
+class SimUnit{
+	String botType;
+	
+	SimUnit(String type){
+		botType = type;
+	}
+	
+	int powerUse(){
+		if("Retention".equals(botType)){
+			System.out.println("2 energy"); // 에너지 소모량 표현
+			return 2;
+		} else{
+			System.out.println("4 energy");
+			return 4;
+		}
+	}
+}
+
+// 상속을 제거해야 사라가 의도한 대로 결과를 얻음
+
 }}}
 
 
@@ -1097,11 +1153,54 @@ public class MiniMusicCmdLine {
 
 {{{
 
+import javax.swing.*; // 스윙 패키지 선언
+
+public class SimpleGui1 {
+	public static void main(String[] args) {
+		JFrame frame = new JFrame(); // 프레임 버튼 만들기
+		JButton button = new JButton("click me");
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 창을 닫았을 때 프로그램 바로 종료
+		frame.getContentPane().add(button); // 버튼 추가
+		frame.setSize(300, 300); // 프레임 크기 지정
+		frame.setVisible(true); // 마지막으로 화면에 표시
+	}
+}
+
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+
+package SimpleGui1B;
+import javax.swing.*;
+import java.awt.event.*; // event 패키지 선언
+
+public class SimpleGui1B implements ActionListener { // 인터페이스 구현
+	JButton button;
+	
+	public static void main(String[] args) {
+		SimpleGui1B gui = new SimpleGui1B();
+		gui.go();
+	}
+	
+	public void go(){
+		JFrame frame = new JFrame();
+		button = new JButton("click me");
+		
+		button.addActionListener(this); // 버튼에 등록(인자가 ActionListener를 구현한 클래스의 객체
+		
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300, 300);
+		frame.setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent event){ // 실제 이벤트 처리 메소드
+		button.setText("I've been clicked!"); // 버튼에서는 이 메소드를 호출하여 이벤트가 일어났다는 것을 알려줌
+	}
+}
 
 }}}
 
@@ -1109,17 +1208,119 @@ public class MiniMusicCmdLine {
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener {
+	JFrame frame;
+	
+	public static void main(String[] args) {
+		SimpleGui3C gui = new SimpleGui3C();
+		gui.go();
+	}
+	
+	public void go(){
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton button = new JButton("Change colors");
+		button.addActionListener(this); // 리스너를 버튼에 추가
+		
+		MyDrawPanel drawPanel = new MyDrawPanel();
+		
+		frame.getContentPane().add(BorderLayout.SOUTH, button); // 위젯 추가
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.setSize(300, 300);
+		frame.setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent event){
+		frame.repaint(); // 버튼을 클릭했을 때 프레임의 repaint() 메소드 호출
+	}
+
+}
+
+class MyDrawPanel extends JPanel{ // 그래디언트의 시작과 끝 색을 무작위로 지정
+	public void paintComponent(Graphics g){
+		Graphics2D g2d = (Graphics2D) g; 
+		
+		int red = (int)(Math.random()*256);
+		int green = (int)(Math.random()*256);
+		int blue = (int)(Math.random()*256);
+		Color startColor = new Color(red, green, blue);
+		
+		red = (int)(Math.random()*256);
+		green = (int)(Math.random()*256);
+		blue = (int)(Math.random()*256);
+		Color endColor = new Color(red, green, blue);
+		
+		GradientPaint gradient = new GradientPaint(70, 70, startColor, 150, 150, endColor);
+		g2d.setPaint(gradient); // 그래디언트 지정
+		g2d.fillOval(70, 70, 100, 100);
+	}
+}
+
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class TwoButtons { // ActionListener를 구현하지 않음
+	JFrame frame; 
+	JLabel label; 
+	
+	public static void main(String args[]){
+		TwoButtons gui = new TwoButtons();
+		gui.go();
+	}
+	
+	public void go(){
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton labelButton = new JButton ("Change Label"); // 버튼의 리스너 등록 메소드에 내부 클래스로 만든 객체 전달
+        labelButton.addActionListener(new LabelListener());
+
+        JButton colorButton = new JButton ("Change Circle"); 
+        colorButton.addActionListener(new ColorListener());
+
+        label = new JLabel("I'm a lebel");
+        MyDrawPanel drawPanel = new MyDrawPanel();
+        
+        frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+        frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+        frame.getContentPane().add(BorderLayout.EAST, labelButton);
+        frame.getContentPane().add(BorderLayout.WEST, label);
+
+        frame.setSize(300,300);
+        frame.setVisible(true);
+    }
+	
+	class LabelListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			label.setText("Ouch!"); // label 변수 사용
+		}
+	} // 내부 클래스 끝
+	
+	class ColorListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			frame.repaint(); // 내부 클래스에서는 frame 인스턴스 변수를 사용
+		}
+	} // 내부 클래스 끝
+}
+
 }}}
 
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+
 
 }}}
 
