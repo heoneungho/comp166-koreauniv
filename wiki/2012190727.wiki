@@ -6,22 +6,25 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-public class BeerSong{           //class 선언
-      public static void main(String[] args)  {           //main함수 선언
-           int beerNum = 99;           beerNum이라는 정수형변수 선언 후 99값 저장
-           String word = "bottles";        //복수형
+
+public class BeerSong{
+           
+      public static void main(String[] args)  {  
+           int beerNum = 99;   //beerNum에 99저장           
+           String word = "bottles";   //복수형
 
            while (beerNum > 0) {           //while 순환문 시작
-
-                 if (beerNum == 1) {
-                       word = "bottle";             //단수형(한 병인 경우)
-                }
 
                System.out.println(beerNum + " " + word + " of beer on the wall");
                System.out.println(beerNum + " " + word + " of beer.");
                System.out.println("Take one down.");
                System.out.println("Pass it around.");
                beerNum = beerNum - 1;
+
+               if (beerNum == 1) {
+                       word = "bottle";   //단수형(한 병인 경우)
+                }
+
 
                if (beerNum > 0 ) {
                      System.out.println(beerNum + " " + word + " of beer on the wall");
@@ -32,6 +35,7 @@ public class BeerSong{           //class 선언
      } // main 클래스 끝
 } // 클래스 끝
 
+맥주의 갯수가 1일 경우에 bottles가 아닌 bottle로 출력되도록 if문의 위치를 변경하였습니다.
 
 }}}
 
@@ -40,24 +44,13 @@ public class BeerSong{           //class 선언
 {{{
 
 public class PhraseOMatic{
+
      public static void main (String[] args) {
 
      // 세 종류의 단어목록을 만듭니다. 적당히 필요한 단어를 추가해도 됩니다. 
-          String[] wordListOne = {"24/7", "multi-
-Tier", "30,000 foot", "B-to-B", "win-win", "front-
-end", "web-based", "pervasive", "smart"", "six-
-sigma", "critical-path", "dynamic"};
-
-     String[] wordListTwo = { "empowered", "stricky",
-"valued-added", "oriented", "centric", "distributed", 
-"clustered", "branded", "outside-the-box", "positioned",
-"networked", "focused", "leveraged", "aligned",
-"targeted", "shared", "cooperative", "accelerated"};
-
-     String[] wordListThree = {"process", "tipping-
-point", "solution", "architecture", "core competency",
-"strategy", "mindshare", "portal", "space", "vision", 
-"paradigm", "mission"};
+          String[] wordListOne = { "red", "orange", "green", "blue" };
+          String[] wordListTwo = { "is", "seems", "looks", "sounds" };
+          String[] wordListThree = { "happy", "good", "warm", "nice" }; 
 
      //각 목록에 단어가 몇 개씩 들어있는지 확인합니다.
      int oneLength = wordListOne.length;
@@ -70,36 +63,54 @@ point", "solution", "architecture", "core competency",
      int rand3 = (int) (Math.random() * threeLength);
 
      //이제 구문을 만듭니다.
-     String phase = wordListOne[rand1] + " " +
-wordListTwo[rand2] + " " + wordLIstThree[rand3];
+     String phase = wordListOne[rand1] + " " +wordListTwo[rand2] + " " + wordLIstThree[rand3];
 
+     //구문을 출력합니다.
      System.out.println("What we need is a " + phase);
-     }
-}
+     }//main class 끝
+
+}//class 끝
 
 }}}
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신: 프로그램실행, 보안, 동적 바인딩 지원, 바이트 코드가 만들어진 후 바이트 코드가 실행되기 전까지 다른 누군가가 건드리지 않았는지 확인하는 작업 수행
- * 컴파일러: 파일전송, 문법확인, 바이트코드작성, 데이터유형위반사항검사, 접근위반 방지
+ * 자바 가상 머신: 
+ 1. 프로그램실행, 보안, 동적 바인딩 지원, 
+ 2. 바이트 코드가 만들어진 후 바이트 코드가 실행되기 전까지 다른 누군가가 건드리지 않았는지 확인하는 작업 수행
+
+ * 컴파일러: 
+ 1. 파일전송 
+ 2. 문법확인
+ 3. 바이트코드작성
+ 4. 데이터유형위반사항검사
+ 5. 접근위반 방지
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+//big x를 여러번 출력하는 프로그램
 class Exercise1b {
+
      public static void main(String [] args) {
-          int x = 1;
-          while ( x < 10 ) {
-               x = x + 1;
+
+          int x = 1;  //x에 1 저장
+          while ( x < 10 ) {  //while문 실행
+          
+               x = x + 1;  //x를 1씩 증가시킴
+          
                if ( x > 3 ) {
                     System.out.println("big x");
-               }
-          }
-     }
-}
+               }  //if문 끝
+          }  //while문 끝
+     }  //main class 끝
+}  //class 끝
 
+
+//small x를 여러번 출력하는 프로그램
 class Foo{
+
      public static void main(String [] args) {
           int x = 5;
           while ( x > 1 ) {
@@ -111,7 +122,11 @@ class Foo{
      }
 }
 
+
+//small x를 여러번 출력하는 프로그램
+
 class Exercise1b {
+
      public static void main(String [] args) {
           int x = 5;
           while ( x > 1) {
@@ -131,28 +146,117 @@ class Exercise1b {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수: 객체에서 자신에 대해 아는 것. 객체의 상태(데이터). 객체를 부르는 다른 이름
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것. 객체의 상태(데이터) 객체를 부르는 다른 이름
  * 메소드: 객체에서 할 수 있는 일
  * 클래스: 객체를 만들기 위한 청사진
- * 테스트용 클래스:
+ * 테스트용 클래스: 새로운 클래스를 테스트하는 것
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:TurnOn(), TurnOff(), VolumeUp(), VolumeDown(), 
+ * 인스턴스 변수: channel, volume, power
+ * 메소드: TurnOn(), TurnOff(), VolumeUp(), VolumeDown(), 
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
 
-public class GuessGame
+public class GuessGame{
+
+     Player p1;      //player 변수 4개를 저장하기 위한 인스턴스 변수 네 개
+      Player p2;
+     Player p3;
+     Player p4;
+
+     public void startGame( ) {
+
+          p1 = new Player();
+          p2 = new Player();
+          p3 = new Player();
+          p4 = new Player();
+
+          int guessp1 = 0; 
+            int guessp2 = 0;
+          int guessp3 = 0;
+          int guessp4 = 0;
+
+          boolean p1isRight = false; 
+            boolean p2isRight = false; 
+            boolean p3isRight = false;
+          boolean p4isRight = false;
+
+          int targetNumber = (int) (Math.random() * 10);
+                                                               
+            System.out.println("0 이상 9 이하의 숫자를 맞춰보세요.");
+
+          while(true){
+                
+               System.out.println("맞춰야 할 숫자는 " + targetNumber + "입니다.0");
+
+               p1.guess();
+                  p2.guess();
+               p3.guess();
+               p4.guess();
+
+               guessp1 = p1.number;
+               System.out.println("1번 선수가 찍은 숫자: " + guessp1);
+
+               guessp2 = p2.number;
+               System.out.println("2번 선수가 찍은 숫자: " + guessp2);
+
+               guessp3 = p3.number;
+               System.out.println("3번 선수가 찍은 숫자: " + guessp3);
+
+               guessp4 = p4.number;
+               System.out.println("4번 선수가 찍은 숫자: " + guessp4);
+
+                  if ( guessp1 == targetNumber)
+                        p1isRight = true;
+               if ( guessp2 == targetNumber)
+                        p2isRight = true;
+               if ( guessp3 == targetNumber)
+                        p3isRight = true;
+               if ( guessp4 == targetNumber)
+                        p4isRight = true;
+
+                  if ( p1isRight || p2isRight || p3isRight || p4isRight)
+               {
+                        System.out.println("맞춘 선수가 있습니다.");
+                        System.out.println("1번 선수: " + p1isRight);
+                        System.out.println("2번 선수: " + p2isRight);
+                        System.out.println("3번 선수: " + p3isRight);
+                        System.out.println("4번 선수: " + p4isRight);
+                        System.out.println("게임 끝.");
+                           
+                        break;
+               } else {
+                        System.out.println("다시 시도해야 합니다.");
+               }
+        }
+    }
+}
 
 
+public class Player
+{
+     int number = 0;
+ 
+      public void guess() {
+          number = (int) (Math.random() * 10);
+          System.out.println("찍은 숫자: " + number);
+     }
+}
 
 
+public class GameLauncher{
 
+        public static void main(String[] args)
+        {
+               GuessGame game = new GuessGame();
+               game.startGame();
+          }
+}
 
 }}}
 
@@ -161,18 +265,23 @@ public class GuessGame
 {{{
 
 class TapeDeck{
+
      boolean canRecord = false;
+
      void playTape() {
           System.out.println("tape playing");
      }
+
      void recordTape() {
           System.out.println("tape recording");
      }
 }
 
 class TapeDeckTestDrive{
+
      public static void main(String [] args) {
-          TapeDeck += new TapeDeck();
+
+          TapeDeck t = new TapeDeck();
           t.canRecord = true;
           t.playTape();
 
@@ -182,21 +291,29 @@ class TapeDeckTestDrive{
      }
 } 
 
+
+
 class DVDPlayer{
+
      boolean canRecord = false;
+
      void recordDVD() {
           System.out.println("DVD recordings");
      }
+
      void playDVD() {
           System.out.println("DVD recording");
      }
 }
 
 class DVDPlayerTestDrive {
+
      public static void main(String [] args) {
+
           DVDPlayer d = new DVDPlayer();
           d.canRecord = true;
           d.playDVD();
+
           if (d.canRecord == true) {
                d.recordDVD();
           }
@@ -211,14 +328,19 @@ class DVDPlayerTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+* 원시변수 vs 레퍼런스변수:
+
+ 원시변수 : 정수와 부울값과 같은 기본적인 값이 저장됩니다.
+ 레퍼런스 변수 : 객체의 레퍼런스가 저장됩니다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
 
 class Dog {
+
      String name;
+
      public static void main (String[] args) {
           // Dog 객체를 만들고 접근합니다.
           Dog dog 1 = new Dog();
@@ -227,10 +349,10 @@ class Dog {
 
           // 이번에는 Dog 배열을 만듭니다.
           Dog[] myDogs = new Dog[3];
-          // 그리고 개를 몇 마리 집어넣습니다.
           myDogs[0] = new Dog();
           myDogs[1] = new Dog();
-          myDogs[2] = dog1;
+          myDogs[2] = 
+
 
           // 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
           myDogs[0].name = "Fred";
