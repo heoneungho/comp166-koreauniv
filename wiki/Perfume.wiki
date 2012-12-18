@@ -67,10 +67,11 @@ import javax.swing.JOptionPane;
         }  
 
 public static int[] makeaperfume(){  
-          int a=0, b=0, c=0, d=0, e=0, f=0, g=0; // if문에서 쓰일 변수를 지정해줍니다.
+          int a=0, b=0, c=0, d=0, e=0, f=0, g=0;
 	  String itemname = null;  
 	  int quantity=0;  
-	  int k =0;  
+	  int k =0;   // if문과 switch문에서 쓰일 변수를 지정해줍니다.
+
 	  while(k==0){  
 	      int value=(Integer.parseInt(JOptionPane.showInputDialog(  
 	     "나에게 어울리는 향이 무엇인지 곰곰이 생각하여 골라주세요^^\n\n" 
@@ -204,8 +205,8 @@ public static int[] makeaperfume(){
 	     default:  
 	            k=0;  
 	            break;  
-	     }     
-	     }
+	     }     //switch문 끝
+	     }// if문 끝
 	     
              int record=JOptionPane.showConfirmDialog(null, " Blend할 다른 향을 고르시겠습니까?");  
 //여기서 추가로 blend할 향을 받습니다. 만약 yes를 선택하면 다시 위로 돌아갑니다.
@@ -230,7 +231,7 @@ public static int[] makeaperfume(){
 	        else System.exit(k);  
 	        }  
 	 return new int[7];  
-	 }  
-	 } 
+	 }  //while문 끝
+	 } //makeaperfume method 끝
 
 }}}
