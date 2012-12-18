@@ -73,6 +73,8 @@
      게임에 대한 설명을 보여주는 화면.
 }}}
 
+http://comp166-koreauniv.googlecode.com/files/메인화면.bmp
+
 =Code=
 *orderGame.java*
 
