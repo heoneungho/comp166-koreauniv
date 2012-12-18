@@ -174,7 +174,7 @@ public class PizzaOrder {
  wantMore = scan.next();
  order.addPizza();
  } while (wantMore.equals("y"));
- order.printPizzaOrder();
+ order.printPizzaOrder(); //y를 입력하면 printPizzaOrder클래스 다시 실행
 
  }
 
