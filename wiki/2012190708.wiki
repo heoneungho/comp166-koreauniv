@@ -532,10 +532,92 @@ class ClockTestDrive {
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
+소프트웨어 개발 방법으로, 비즈니스의 요구가 시시각각 변동이 심할 경우에 적합. 고객이 원하는 양질의 소프트웨어를 빠른 시간안에 전달하는 것을 목적으로 하며 일련의 규칙들이 있음
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+package SimpleDotCom; 
+ 
+import java.io.*; 
+ 
+public class GameHelper { 
+        public String getUserInput(String prompt){ 
+                String inputLine = null; 
+                System.out.print(prompt + " "); 
+                 
+                try{ 
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in)); 
+                        inputLine = is.readLine(); 
+                        if(inputLine.length() == 0) 
+                                return null; 
+                } 
+                 
+                catch(IOException e){ 
+                        System.out.println("IOException: " + e); 
+                } 
+                 
+                return inputLine; 
+        } 
+} 
+ 
+ 
+public class SimpleDotCom { 
+        int [] locationCells;  
+        int numOfHits = 0; // 맞춘 횟수 초기화 
+         
+        public void setLocationCells(int [] locs){ 
+                locationCells = locs; 
+        } 
+ 
+        public String checkYourself(String stringGuess){ 
+                int guess = Integer.parseInt(stringGuess); // String 을 int 로 변환 
+                String result = "miss"; // 기본 값 지정 
+                 
+                for(int i=0; i<locationCells.length; i++){ // 맞춘 횟수 확인하는 반복문 
+                        if(guess == locationCells[i]){ 
+                                result = "hit"; 
+                                numOfHits++; 
+                                break; 
+                        } 
+                } 
+                 
+                if(numOfHits == locationCells.length){  
+                        result = "kill"; 
+                } 
+                 
+                System.out.println(result); 
+                 
+                return result; 
+        } 
+} 
+ 
+ 
+public class SimpleDotComTestDrive { 
+        public static void main(String[] args) { 
+                 
+                int numOfGuesses = 0; // 사용자 추측 횟수 초기화 
+                GameHelper helper = new GameHelper();  
+                         
+                SimpleDotCom theDotCom = new SimpleDotCom(); // 닷컴 객체 생성 
+                int randomNum = (int)(Math.random()*5); // 난수 써서 셀 위치 배열 
+                         
+                int[] locations = {randomNum, randomNum+1, randomNum+2}; 
+                theDotCom.setLocationCells(locations); // 닷컴 위치 지정 
+                boolean isAlive = true; 
+                         
+                while(isAlive == true){ 
+                        String guess = helper.getUserInput("enter a number"); 
+                        String result = theDotCom.checkYourself(guess); 
+                        numOfGuesses++; 
+                        if(result.equals("kill")){ 
+                                isAlive = false; 
+                                System.out.println(numOfGuesses + " guesses"); 
+                        } 
+                } 
+                 
+        } 
+}
 
 }}}
 
@@ -544,18 +626,266 @@ class ClockTestDrive {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+package DotCom1; 
+ 
+import java.io.*; 
+ 
+public class GameHelper { 
+        public String getUserInput(String prompt){ 
+                String inputLine = null; 
+                System.out.print(prompt + " "); 
+                 
+                try{ 
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in)); 
+                        inputLine = is.readLine(); 
+                        if(inputLine.length() == 0) 
+                                return null; 
+                }catch(IOException e){ 
+                        System.out.println("IOException: " + e); 
+                } 
+                 
+                return inputLine; 
+        } 
+} 
+ 
+ 
+public class SimpleDotCom1 { 
+    int[] locationCells; 
+    boolean[] hitCells; // 새로운 행렬 설정 
+    int numOfHits = 0; 
+     
+    public void setLocationCells(int[] locs) { 
+        locationCells = locs; 
+    } 
+     
+    public void setHitCells(boolean[] hits) { 
+        hitCells = hits; 
+    } 
+     
+    public String checkYourself (String stringGuess) { 
+        int guess = Integer.parseInt(stringGuess); 
+        String result = "miss"; 
+         
+        for(int i = 0; i < locationCells.length; i++) { 
+                if ((guess == locationCells[i])) { 
+                        if (hitCells[i] == true) 
+                                break; // 맞췄을 때 빠져나오기 
+                result = "hit"; 
+                numOfHits++; 
+                hitCells[i] = true; // 맞았으면 true로 바뀜. 
+                break; 
+            } 
+        } 
+         
+        if (numOfHits == locationCells.length) { 
+                result = "kill"; 
+        } 
+         
+        System.out.println(result); 
+         
+        return result; 
+    } 
+} 
+ 
+ 
+public class SimpleDotCom1TestDrive { 
+        public static void main(String[] args) { 
+                int numOfGuesses = 0; 
+                GameHelper helper = new GameHelper();  
+                         
+                SimpleDotCom1 theDotCom1 = new SimpleDotCom1(); 
+                int randomNum = (int)(Math.random()*5); 
+                         
+                int[] locations = {randomNum, randomNum+1, randomNum+2}; 
+                theDotCom1.setLocationCells(locations); 
+                boolean[] hits = {false, false, false}; // 초기값 설정 
+                theDotCom1.setHitCells(hits); // 새로운 배열 추가 
+                boolean isAlive = true; 
+                         
+                while(isAlive == true){ 
+                        String guess = helper.getUserInput("enter a number"); 
+                        String result = theDotCom1.checkYourself(guess); 
+                        numOfGuesses++; 
+                        if(result.equals("kill")){ 
+                                isAlive = false; 
+                                System.out.println(numOfGuesses + " guesses"); 
+                        } 
+                } 
+        } 
+}
 
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+package DotCom2;
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)
+				return null;
+		}catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+
+public class SimpleDotCom2 {
+    int[] locationCells;
+    int numOfHits = 0;
+    
+    public void setLocationCells(int[] locs) {
+    	locationCells = locs;
+    }
+    
+    public String checkYourself (String stringGuess) {
+    	int guess = Integer.parseInt(stringGuess);
+    	String result = "miss";
+    	
+    	for(int i = 0; i < locationCells.length; i++) {
+    		if ((guess == locationCells[i])) {
+            	result = "hit";
+            	numOfHits++;
+            	locationCells[i] = -1; // 값을 -1로 바꿈
+            	break;
+            }
+    	}
+    	
+    	if (numOfHits == locationCells.length) {
+    		result = "kill";
+    	}
+    	
+    	System.out.println(result);
+    	
+    	return result;
+    }
+}
+
+
+public class SimpleDotCom2TestDrive {
+	public static void main(String[] args) {
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper(); 
+			
+		SimpleDotCom2 theDotCom2 = new SimpleDotCom2();
+		int randomNum = (int)(Math.random()*5);
+			
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		theDotCom2.setLocationCells(locations);
+		boolean isAlive = true;
+			
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom2.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");
+			}
+		}
+	}
+}
+
+
 
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+package DotCom3;
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)
+				return null;
+		}catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+
+import java.util.ArrayList;
+
+public class SimpleDotCom3 {
+	private ArrayList<String> locationCells;
+    
+    public void setLocationCells(ArrayList<String> loc) {
+            locationCells = loc;
+    }
+    
+    public String checkYourself (String userInput) {
+    	String result = "miss";
+    	int index = locationCells.indexOf(userInput);
+    	
+    	if (index >= 0) {
+    		locationCells.remove(index);
+    		if (locationCells.isEmpty()) {
+    			result = "kill";
+    		}else{
+    			result = "hit";
+    		}
+    	} 
+    	
+    	System.out.println(result);
+    	return result;
+    }
+}
+
+
+import java.util.ArrayList;
+
+public class SimpleDotCom3TestDrive {
+	public static void main(String[] args){
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper();
+                
+		SimpleDotCom3 theDotCom3 = new SimpleDotCom3();
+		int randomNum = (int) (Math.random() * 5);
+                
+		ArrayList<String> locations = new ArrayList();
+		locations.add(String.valueOf(randomNum));
+		locations.add(String.valueOf(randomNum+1));
+		locations.add(String.valueOf(randomNum+2));
+        theDotCom3.setLocationCells(locations);
+        boolean isAlive = true;
+                
+        while(isAlive == true) {
+        	String guess = helper.getUserInput("enter a number");
+        	String result = theDotCom3.checkYourself(guess);
+        	numOfGuesses++;
+        	if(result.equals("kill")) {
+        		isAlive = false;
+        		System.out.println(numOfGuesses + " guesses");
+        	}
+        }
+    }
+}
+
+
 
 }}}
 
@@ -569,23 +899,139 @@ class ClockTestDrive {
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속:공통적인 코드를 어떤 클래스에 넣은 다음, 다른 더 구체적인 클래스에 공통적인 클래스가 상위클래스라는 것을 알려주는 것이다.
+ * 다형성: 상위클래스로 선언된 레퍼런스를 이용하여 하위클래스 객체를 참조하는 것이다.
+
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+public class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+        
+        void sleep(){
+        }
+        
+        void roam(){
+        }
+}
+
+class Feline extends Animal{
+        void roam(){
+        }
+}
+
+class Lion extends Feline{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Tiger extends Feline{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Cat extends Feline{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Hippo extends Animal{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
+
+class Canine extends Animal{
+        void roam(){
+        }
+}
+
+class Wolf extends Canine{
+        void makeNoise(){
+        }
+
+        void eat(boolean food){
+        }
+}
+
+class Dog extends Canine{
+        void makeNoise(){
+        }
+        
+        void eat(boolean food){
+        }
+}
 
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 상위 클래스의 메소드를 하위 클래스에서 상속받아 재정의하는 것.
+
+ * 오버로딩: 이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것.
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+// 정답은 1번.
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+
+		for(int x=0; x<3; x++){
+			ma[x].frighten(x);
+		}
+
+	}
+}
+
+class Monster{
+	boolean frighten(int d){
+		System.out.println("arrrgh");
+		return true;
+	}
+} // 세 번째 줄 결과가 "arrrgh"출력이고, frighten() 메소드가 오버라이드 된 형태이므로
+
+class Vampire extends Monster{
+	boolean frighten(int x){
+		System.out.println("a bite?");
+		return false;
+	}
+} // 첫 번째 줄 결과가 "a bite?"출력이고, frighten() 메소드를 오버라이드한 형태
+
+class Dragon extends Monster{
+	boolean frighten(int degree){
+		System.out.println("breath fire");
+		return true;
+	}
+}
 
 }}}
 
@@ -593,29 +1039,86 @@ class ClockTestDrive {
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ *인터페이스: 100% 추상 클래스(인스턴스를 만들 수 없는 클래스), 서로 다른 클래스간의 공통 부분을 정의할 때 사용하며 인터페이스를 상속받는 클래스에서 메소드를 세부적으로 구현 가능.
+ *다형성: 상위클래스 유형을 메소드의 인자나 리턴 유형 또는 배열 유형을 쓸 수 있게 만드는 능력 필요. 추상 메소드, 추상 클래스를 통해 이룸.
+ *추상 클래스: 반드시 확장해야하는 클래스, 추상 메소드 혹은 구상 메소드를 가질 수 있음.
+ *추상 메소드: 반드시 오버라이드해야하는 메소드, 하위클래스에서 프로토콜을 정의할 수 있음.
+ *다중 상속: 여러 상위클래스에서 상속받는 것.
+
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ *힙에서의 변수: 모든 객체 가능. 
+ *스택에서의 변수: 지역 변수, 객체 레퍼런스 변수.
+ *생성자: 객체를 생성할 때 실행되는 코드가 들어있음. 즉, 어떤 클래스 유형에 대해 new 키워드를 사용했을 대 실행되는 코드가 들어있음.
+ *널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException이 생김.
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ *인스턴스 변수: 클래스 내에서 선언한 것, 각각의 개별 객체가 가지고 있는 필드를 나타냄.
+ *지역 변수: 스택 변수, 메소드 안에서 선언한 것, 메소드 매개변수도 포함. 
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+import java.util.*;
+
+class V2Radiator{
+	V2Radiator(ArrayList list){
+		for(int x=0; x<5; x++){
+			list.add(new SimUnit("V2Radiator"));
+		}	
+	}
+}
+
+class V3Radiator{ //불필요한 상속을 제거
+	V3Radiator(ArrayList lglist){ //super(lglist) 삭제
+		for(int g=0; g<10; g++){
+			lglist.add(new SimUnit("V3Radiator"));
+		}
+	}
+}
+
+class RetentionBot{
+	RetentionBot(ArrayList rlist){
+		rlist.add(new SimUnit("Retention"));
+	}
+}
+
+public class TestLifeSupportSim {
+	public static void main(String[] args) {
+		ArrayList aList = new ArrayList();
+		V2Radiator v2 = new V2Radiator(aList);
+		V3Radiator v3 = new V3Radiator(aList);
+		
+		for(int z=0; z<20; z++){
+			RetentionBot ret = new RetentionBot(aList);
+		}
+	}
+}
+
+class SimUnit{
+	String botType;
+	
+	SimUnit(String type){
+		botType = type;
+	}
+	
+	int powerUse(){
+		if("Retention".equals(botType)){
+			System.out.println("2 energy"); // 에너지 소모량 표현
+			return 2;
+		} else{
+			System.out.println("4 energy");
+			return 4;
+		}
+	}
+}
+
+// 상속을 제거해야 사라가 의도한 대로 결과를 얻음
 
 }}}
 
