@@ -886,6 +886,134 @@ public class DotCom
 
 {{{
 
+
+class Animal
+{
+        String picture;
+        Boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise()
+        {
+                //소리내는 메소드
+        }
+
+        void eat()
+        {
+                //먹는 메소드
+        }
+
+        void sleep()
+        {
+                //자는 메소드
+        }
+
+        void roam()
+        {
+                //돌아다닐때 메소드
+        }
+
+}
+class Feline extends Animal//Feline은 Animal을 상속한다
+{
+        void roam()
+        {
+              
+        }
+}
+
+class Canine extends Animal//Canine은 Animal을 상속한다.
+{
+        void roam()
+        {
+              
+        }
+}
+
+class Lion extends Feline//Lion은 Feline을 상속한다.
+{
+        void makeNoise()
+        {
+                
+        }
+
+        void eat()
+        {
+                
+        }
+}
+
+class Tiger extends Feline//Tiger는 Feline를 상속한다
+{
+        void makeNoise()
+        {
+                
+        }
+
+        void eat()
+        {
+                
+        }
+}
+
+
+
+class Cat extends Feline//Cat은 Feline을 상속한다.
+{
+        void makeNoise()
+        {
+                
+        }
+
+        void eat()
+        {
+                
+        }
+}
+
+class Hiippo extends Animal//Hippo는 Animal을 상속한다
+{
+        void makeNoise()
+        {
+               
+        }
+
+        void eat()
+        {
+           
+        }
+}
+
+class Wolf extends Canine//Wolf는 Canine를  상속한다.
+{
+        void makeNoise()
+        {
+                
+        }
+
+        void eat()
+        {
+              
+        }
+}
+
+class Dog extends Canine//Dog는 Canine를 상속한다.
+{
+        void makeNoise()
+        {
+                
+        }
+
+        void eat()
+        {
+            
+        }
+}
+
+
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
@@ -897,6 +1025,52 @@ public class DotCom
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+1번
+
+public class MonsterTestDrive
+{
+        public static void main(String[] args)
+        {
+                Monster[] ma = new Monster[3];//Monster객체 배열을 생성
+
+                ma[0] = new Vampire();
+                ma[1] = new Dragon();
+                ma[2] = new Monster();
+
+                for(int x = 0; x < 3; x++)
+                {
+                        ma[x].frighten(x);//순차적으로 접근하면서 frighten 메소드 호출
+                }
+        }
+}
+
+class Monster
+{
+        boolean frighten(int d)
+        {
+                System.out.println("arrrgh");
+                return true;
+        }
+}
+
+class Vampire extends Monster//Vampire는 Monster을 상속
+{
+        boolean frighten(int x)//메소드를 오버라이드
+        {
+                System.out.println("a bite?");
+                return false;
+        }
+}
+
+class Dragon extends Monster//Dragon은 Monster을 상속
+{
+        boolean frighten(int degree)
+        {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+
 
 }}}
 
@@ -928,6 +1102,74 @@ public class DotCom
 
 {{{
 
+import java.util.*;
+
+class V2Radiator
+{
+        V2Radiator(ArrayList<SimUnit> list)//생성자를 이용해서 add 메소드사용
+        {
+                for(int x = 5; x < 5 ; x++)
+                {
+                        list.add(new SimUnit("V2Radiator"));
+                }
+        }
+}
+
+class V3Radiator //extends V2Radiator
+{
+        V3Radiator(ArrayList<SimUnit> lglist)//생성자를 이용해서 add메소드호출
+        {
+                //super(lglist); 
+                for(int g = 0; g < 10 ; g++)
+                {
+                        lglist.add(new SimUnit("V3Radiator"));
+                }
+        }
+}
+
+class RetentionBot
+{
+        RetentionBot(ArrayList<SimUnit> rlist)//생성자를 이용해서 add메소드호출
+        {
+                rlist.add(new SimUnit("Rention"));
+        }
+}
+
+public class TestLifeSupportSim 
+{
+        public static void main(String[] args)
+        {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();
+                V2Radiator v2 = new V2Radiator(aList);
+                V3Radiator v3 = new V3Radiator(aList);
+                for(int z = 0 ; z < 20 ; z++)
+                {
+                        RetentionBot ret = new RetentionBot(aList);//객체가생성되면서 생성자안에 있는 내용이 실행됨
+                }
+        }
+}
+
+class SimUnit
+{
+        String botType;
+        SimUnit(String type)
+        {
+                botType = type;
+        }
+        int powerUse()
+        {
+                if("Retention".equals(botType))
+                {
+                        return 2;                       
+                }
+                else
+                {
+                        return 4;
+                }
+        }
+}
+
+
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
@@ -946,6 +1188,29 @@ public class DotCom
 
 {{{
 
+import java.util.*;
+public class Calenderuse
+{
+        public static void main(String[] args)
+        {
+                Calender c = Calender.getInstance();
+                c.set(2004,0,7,15,40);//시각을 2004년 1월 7일 15:40 으로 설정
+                long day1 = c.getTimeInMillis();//1970년 1월1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴
+                day1 += 1000 * 60 * 60;//1시간에 해당하는 밀리초
+                c.setTimeInMillis(day1);//한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);//35일을 더하기
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);//35일 뒤로 
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);//날짜를 1로 설정합니다.
+                System.out.println("set to 1 " + c.getTime());
+                
+        
+        }
+}
+
+
 }}}
 
 *342p 집중토론* _요약_
@@ -957,6 +1222,36 @@ public class DotCom
 
 {{{
 
+class StaticSuper
+{
+        static
+        {
+                System.out.println("super static blokc");
+        }
+        
+        StaticSuper()//생성자
+        {
+                System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper//StaticTests 는 StaticSuper을 상속
+{
+        static int rand;
+        
+        static
+        {
+                rand = (int) (Math.random() * 6);
+                System.out.println("static block " + rand);
+        }
+        
+        StaticTests()//생성자
+        {
+                System.out.println("in main");
+                StaticTests st = new StaticTests();//StaticTests 객체를 생성합니다.
+        }
+}
+
 }}}
 
 = 11. 위험한 행동:예외처리  =
@@ -965,17 +1260,147 @@ public class DotCom
 
 {{{
 
+public class Test
+{
+
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();    //예외가 발생하는부분
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");//예외를 처리하는부분.
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
+}
+
+
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
 
+import javax.sound.midi.*;
+
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();//play 메소드 호출
+        }
+        
+        public void play()//play 메소드
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//Sequencer를 얻음
+                        player.open();//Sequencer를 연다
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        
+                        
+                        Track track = seq.createTrack();//Track를 생성
+                        
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn);
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff);
+                        
+                 
+                      
+              
+                        
+                        player.setSequence(seq);//Sequencer에 Sequence를 보냅니다.
+                        
+                        player.start();//Sequencer의 start()메소드를 호출.
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }
+}
+
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine { 
+
+        public static void main(String[]args){
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();//MiniMusicCmdLine 생성
+                if(args.length<2){
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                }else{
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument, note);//인자를 전달하면서 play메소드호출
+                }
+        } 
+
+         
+        public void play (int instrument, int note){//play메소드
+                try{
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();
+
+                        MidiEvent event = null;
+
+                        ShortMessage first = new ShortMessage();
+                        first.setMessage(192,1,instrument,0);
+                        MidiEvent changeInstrument = new MidiEvent(first, 1);
+                        track.add(changeInstrument);
+
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144,1,note,100);
+                        MidiEvent noteOn = new MidiEvent(a,1);
+                        track.add(noteOn);
+
+                        ShortMessage b = new ShortMessage();
+                        a.setMessage(128,1,note,100);
+                        MidiEvent noteOff = new MidiEvent(b,16);
+                        track.add(noteOff);
+                        player.setSequence(seq);
+                        player.start();
+                }catch(Exception ex){ex.printStackTrace();}
+        } 
+} 
+
 
 }}}
 
@@ -985,11 +1410,57 @@ public class DotCom
 
 {{{
 
+import javax.swing.*;
+
+public class SimpleGui1{
+        public static void main(String []args){
+                JFrame frame = new JFrame(); // JFrame 생성
+                JButton button = new JButton("click me");  //JButton 생성
+
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // X버튼을 누르면 창이 종료된다.
+                frame.getContentPane().add(button); // 버튼을 추가
+
+                frame.setSize(300,300); // 프레임의 크기설정
+
+                frame.setVisible(true); // 프레임이 보이게된다.
+        }
+}
+
+
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+
+import javax.swing.*;
+import java.awt.event.*; // Actionlistener와 이벤트가 들어있는 패키지를 사용
+
+public class SimpleGui1B implements ActionListener {
+        JButton button; // 버튼을 생성합니다. 
+
+        public static void main(String []args){
+                SimpleGui1B gui=new SimpleGui1B();
+                gui.go();
+
+        }
+
+        public void go(){
+                JFrame frame= new JFrame();//JFrame생성
+                button=new JButton("cliick me"); // JButton생성
+
+                button.addActionListener(this); // 버튼에 ActionListener추가
+
+                frame.getContentPane().add(button);//프레임에 버튼추가
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// x누르면 꺼지게 함
+                frame.setSize(300,300);//프레임크기설정
+                frame.setVisible(true);//프레임이 보이게함
+        }
+        public void actionPerformed(ActionEvent event){ // 버튼에 action이 실행될때 실행되는 메소드
+                button.setText("I've been clicked!");
+        }
+}
+
 
 }}}
 
@@ -997,11 +1468,126 @@ public class DotCom
 
 {{{
 
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener {
+        
+        JFrame frame;
+        
+        public static void main(String[] args) {
+                SimpleGui3C gui = new SimpleGui3C();
+                gui.go();//go 메소드 호출
+        }
+
+        public void go() {
+                frame = new JFrame();//JFrame 생성
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//X버튼 누르면 종료
+                
+                JButton button = new JButton("Change colors");//JButton 생성
+                button.addActionListener(this);//버튼에 ActionListener를 추가
+                
+                MyDrawPanel drawPanel = new MyDrawPanel();//JPanel 생성
+                
+                frame.getContentPane().add(BorderLayout.SOUTH,button);//버튼을 추가
+                frame.getContentPane().add(BorderLayout.CENTER,drawPanel);//프레임에 패널을 추가
+                frame.setSize(300,300);//프레임 크기 설정
+                frame.setVisible(true);//프레임이 보이게함
+        }
+        public void actionPerformed(ActionEvent event) {// 액션이 일어나면 실행되는코드
+                frame.repaint();
+        }
+}
+
+class MyDrawPanel extends JPanel
+{
+        public void paintComponent(Graphics g)
+        {
+                Graphics2D g2d = (Graphics2D) g;
+                
+                int red = (int) (Math.random() * 256);
+                int green = (int) (Math.random() * 256);
+                int blue = (int) (Math.random() * 256);
+                //RGB값 설정
+                
+                Color startColor = new Color(red,green,blue);//시작 컬러설정
+                
+                red = (int) (Math.random() * 256);
+                green = (int) (Math.random() * 256);
+                blue = (int) (Math.random() * 256);
+                //RGB값 설정
+                
+                Color endColor = new Color(red,green,blue);//마지막 컬러
+                
+                GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor);
+                g2d.setPaint(gradient);
+                g2d.fillOval(70,70,100,100);
+        }
+}
+
+
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class TwoButtons {
+
+        JFrame frame; 
+        JLabel label; 
+
+        public static void main(String args[]){
+                TwoButtons gui = new TwoButtons();
+                gui.go();
+        }
+
+        public void go(){
+                frame=new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                JButton labelButton = new JButton ("Change Label");//JButton생성
+         
+                labelButton.addActionListener(new LabelListener());//버튼에 ActionListener추가
+
+                JButton colorButton = new JButton ("Change Circle");//JButton생성
+              
+                colorButton.addActionListener(new ColorListener());//버튼에 ActionListener추가
+
+                label = new JLabel("I'm a lebel");//JLabel생성
+                MyDrawPanel drawPanel = new MyDrawPanel();
+
+                // 프레임에 버튼,패널,레이블을 추가
+                frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+                frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+                frame.getContentPane().add(BorderLayout.EAST, labelButton);
+                frame.getContentPane().add(BorderLayout.WEST, label);
+
+                frame.setSize(300,300);//프레임크기설정
+                frame.setVisible(true);//프레임이 보이게함
+        }
+
+        class LabelListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        label.setText("Ouch!"); 
+                }
+        } 
+
+        class ColorListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        frame.repaint(); 
+                }
+        } 
+}
+
 
 }}}
 
