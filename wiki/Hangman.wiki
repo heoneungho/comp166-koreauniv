@@ -8,8 +8,7 @@
 
 자세한 코드 개요
 
-
-import javax.swing.*;
+Class
 
 public class Hangman{
 
@@ -25,7 +24,7 @@ int k=0; //입력 받은 문자가 문자열과 일치하는게 없을때
 
 String letter=" "; //입력 받은 문자 
 String str1=""; //correct or incorrect
-String str2="\n ___  <그림참조 김근영>";
+String str2="\n ___  ";
 String str3="\n | |";
 String str4="\n | ";
 String str5="\n | ";
