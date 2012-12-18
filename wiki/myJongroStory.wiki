@@ -32,7 +32,7 @@ http://www.jongro.co.kr/images/academy/jongro/jongro_pic02_16_on.jpg
 
 
 
-= 프로젝트 설명 (0.20 기반) =
+= 프로젝트 설명 (1.00 기반) =
 
 기본적인 프로젝트의 작동 방법은 수업시간에 했던 DotCom게임처럼 (DotCome게임에서는) 한 턴마다 예상지점에 공격을 했듯, 이 프로젝트는 한 턴 대신 하루동안 자신의 행동력을 최대한 이용해서 카드를 사용합니다. 이를 통해 능력치를 향상시키고 결국 수능에서 좋은 점수를 받는 것을 목표로 합니다.<br>
 <br>
@@ -44,246 +44,1903 @@ http://www.jongro.co.kr/images/academy/jongro/jongro_pic02_16_on.jpg
 <br>
 {{{
 
-package myJongroStory020;
-
 import java.util.Scanner;
 
 public class PlayJongro {
-	
+
 	public static void main(String[] args) {
-		
+
 		Status me = new Status();
 		Time time = new Time();
-		CardData card = new CardData();
-		
-		Card[] hand = new Card[5];
-		for(int i=0; i<5; i++)
-			hand[i] = new Card();
-		
-		Deck deck = new Deck();
-		// 기본으로 가지고 있는 카드
-		// (언수외 기본 + 운동 기본 + 복권)
-//		deck.korBasic.isExist = true;
-//		deck.korBasic.isSelected = true;
-//		deck.mthBasic.isExist = true;
-//		deck.mthBasic.isSelected = true;
-//		deck.engBasic.isExist = true;
-//		deck.engBasic.isSelected = true;
-//		deck.hpBasic.isExist = true;
-//		deck.hpBasic.isSelected = true;
-//		deck.lottery.isExist = true;
-//		deck.lottery.isSelected = true;
-		
-		// 1등급, 2등급, 3등급 카드 갯수
-		int GRADE_1 = 4;
-		int GRADE_2 = 4;
-		int GRADE_3 = 5;
-		
-		
+
+		Card[] hand;
+		hand = new Card[5];
+
+		hand[0] = new Card();
+		hand[1] = new Card();
+		hand[2] = new Card();
+		hand[3] = new Card();
+		hand[4] = new Card();
+
 		System.out.println("My Jongro Story를 플레이 해주셔서 감사합니다!");
 		System.out.println("게임을 시작합니다!");
-		System.out.println("자세한 사항은 http://code.google.com/p/comp166-koreauniv/wiki/myJongroStory를 참조하세요.");
-		
-		// 4월 (4일[月]~30일) 
-		while(time.month == 4) {
-			// 카드를 새로 지급 받는다. takeCard
-			for(int i=0; i<5; i++) {
-				int randvalue = (int)(Math.random()*100)+1; // 1~50: 1등급, 51~85: 2등급, 86~100: 3등급
-				if(randvalue <= 50) {
-					int randkind = (int)(Math.random()*GRADE_1)+1;
-					hand[i] = cardSelection(1, randkind);
-					// 1등급 카드를 랜덤하게 받는다.
-				} else if (randvalue <= 85) {
-					int randkind = (int)(Math.random()*GRADE_2)+1;
-					hand[i] = cardSelection(2, randkind);
-					// 2등급 카드를 랜덤하게 받는다.
-				} else if (randvalue <= 100) {
-					int randkind = (int)(Math.random()*GRADE_3)+1;
-					hand[i] = cardSelection(3, randkind);
-					// 3등급 카드를 랜덤하게 받는다.
-				} 
-			} // for 끝
-			
-			// 지급된 카드를 보여준다. (반복) showCard
+		System.out
+		.println("자세한 사항은 http://code.google.com/p/comp166-koreauniv/wiki/myJongroStory를 참조하세요.");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		// 4월 (4일[月]~30일)
+		while (time.month == 4) {
+
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
 			int selectHand;
-			do {
-				System.out.println(time.month + "/" + time.day + " 당신의 패입니다.");
-				if(!hand[0].isUsed)
-					System.out.println("1: " + hand[0].name);
-				if(!hand[1].isUsed)
-					System.out.println("2: " + hand[1].name);
-				if(!hand[2].isUsed)
-					System.out.println("3: " + hand[2].name);
-				if(!hand[3].isUsed)
-					System.out.println("4: " + hand[3].name);
-				if(!hand[4].isUsed)
-					System.out.println("5: " + hand[4].name);
-				System.out.println("0: 집에 간다(턴을 끝낸다)" );
-				// 카드를 사용한다. (반복) useCard
-				System.out.println("명령을 내려주세요.");
-				Scanner sc = new Scanner(System.in);
-				selectHand = sc.nextInt();
-				switch (selectHand) {
-					case 1: useCard(hand[0], me);
-							hand[0].isUsed = true;
-							break;
-					case 2: useCard(hand[1], me);
-							hand[1].isUsed = true;
-							break;
-					case 3: useCard(hand[2], me);
-							hand[2].isUsed = true;
-							break;
-					case 4: useCard(hand[3], me);
-							hand[3].isUsed = true;
-							break;
-					case 5: useCard(hand[4], me);
-							hand[4].isUsed = true;
-							break;
-					case 0: // 턴을 넘긴다.
-				} // switch 끝
-			} while ( !( selectHand == 0) );
-			
-			if (time.dow == 7) { // 일요일
-				// 새로운 카드를 덱에 추가할 수 있다. buyCard v0.3에 구현
-				// 덱의 구성 카드를 바꿀 수 있다. changeCard v0.3에 구현
-			me.money += 100000;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
 			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("EBS 반영이 올해는 70%라는 군!");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+				
+			}
+			// 일요일일 때, (끝)
+
 			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 28) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
 			
-			// 하루를 마무리 endTime 
-			endTime(time);
+			if(me.aprBasicPMP==true) {
+				System.out.println("보통 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강으로 복습을 해볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*4;
+				me.mth += (int) Math.random()*4;
+				me.eng += (int) Math.random()*4;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			
 			me.hp = me.hp_MAX; // 행동력 회복
 		}
-		
+
 		// 5월
-		while(time.month == 5) {
+		while (time.month == 5) {
+			
+
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("봄에는 식단을 조절해야겠다!");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 26) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
+			
+			if(me.aprBasicPMP==true) {
+				System.out.println("보통 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강으로 복습을 해볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*4;
+				me.mth += (int) Math.random()*4;
+				me.eng += (int) Math.random()*4;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+			
+			me.hp = me.hp_MAX; // 행동력 회복
+
 		}
-		
+
 		// 6월
-		while(time.month == 6) {
+		while (time.month == 6) {
+			
+
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("여름에는 아이스팩을 사두는 것이 좋을 것 같군!");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 30) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
+			
+			if(me.aprBasicPMP==true) {
+				System.out.println("보통 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강으로 복습을 해볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*4;
+				me.mth += (int) Math.random()*4;
+				me.eng += (int) Math.random()*4;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+			
+			if(me.junPigSave==true) {
+				System.out.println("황금돼지저금통이 돈을 낳았다!");
+				System.out.println("돈이 " + me.money + "만원에서");
+				me.money += (int) Math.random() * 5;
+				System.out.println(" " + me.money + "만원이 되었습니다!");
+				
+				int i = (int) Math.random() * 100;
+				if(i <= 4) {
+					me.junPigSave = false;
+					System.out.println("불행하게도 황금돼지저금통이 더 이상 돈을 낳지 않습니다.");
+				}
+			}
+			
+			me.hp = me.hp_MAX; // 행동력 회복
 		}
-		
+
 		// 7월
-		while(time.month == 7) {
+		while (time.month == 7) {
+			
+
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("10월에는 신기한 아이템이 생긴다는데?");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 28) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
+			
+			if(me.junNormalPMP==true) {
+				System.out.println("향상된 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강으로 복습을 해볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*10;
+				me.mth += (int) Math.random()*10;
+				me.eng += (int) Math.random()*10;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+			
+			if(me.junPigSave==true) {
+				System.out.println("황금돼지저금통이 돈을 낳았다!");
+				System.out.println("돈이 " + me.money + "만원에서");
+				me.money += (int) Math.random() * 5;
+				System.out.println(" " + me.money + "만원이 되었습니다!");
+				
+				int i = (int) Math.random() * 100;
+				if(i <= 4) {
+					me.junPigSave = false;
+					System.out.println("불행하게도 황금돼지저금통이 더 이상 돈을 낳지 않습니다.");
+				}
+			}
+			
+			me.hp = me.hp_MAX; // 행동력 회복
 		}
+
+		System.out.println("8월부터 9월 15일까지는 폭염이 시작됩니다!! 아이스팩을 구입하도록 합시다!");
 		
 		// 8월
-		while(time.month == 8) {
+		while (time.month == 8) {
+			if(me.augMusicPlayer=true) {
+				int i = (int) Math.random() *100;
+				if(i <= 5) {
+					System.out.println("기분 좋은 노래를 들으니 힘이 더 납니다!");
+					System.out.println("추가 행동력을 얻습니다!");
+					me.hp += 5;
+				}
+			}
+			
+			int summerCounter = (int) Math.random() *100;
+			
+			if((summerCounter < 30) && (me.augIcePack==false) ) {
+				System.out.println("너무 더워서 공부가 잘 되지 않습니다... 아이스팩을 사줘...");
+				me.hp /= 2;
+				System.out.println("(행동력을 절반 잃습니다...)");
+			}
+
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("박진기가 표풀이 특강을 연다는데...?");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 25) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
+			
+			if(me.junNormalPMP==true) {
+				System.out.println("향상된 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강으로 복습을 해볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*10;
+				me.mth += (int) Math.random()*10;
+				me.eng += (int) Math.random()*10;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+			
+			if(me.junPigSave==true) {
+				System.out.println("황금돼지저금통이 돈을 낳았다!");
+				System.out.println("돈이 " + me.money + "만원에서");
+				me.money += (int) Math.random() * 5;
+				System.out.println(" " + me.money + "만원이 되었습니다!");
+				
+				int i = (int) Math.random() * 100;
+				if(i <= 4) {
+					me.junPigSave = false;
+					System.out.println("불행하게도 황금돼지저금통이 더 이상 돈을 낳지 않습니다.");
+				}
+			}
+			
+			me.hp = me.hp_MAX; // 행동력 회복
 		}
-		
+
 		// 9월
-		while(time.month == 9) {
+		while (time.month == 9) {
+			
+			if(me.augMusicPlayer=true) {
+				int i = (int) Math.random() *100;
+				if(i <= 5) {
+					System.out.println("기분 좋은 노래를 들으니 힘이 더 납니다!");
+					System.out.println("추가 행동력을 얻습니다!");
+					me.hp += 5;
+				}
+			}
+			
+			int summerCounter = (int) Math.random() *100;
+			
+			if((summerCounter < 30) && (me.augIcePack==false) && (time.day <= 15)) {
+				System.out.println("너무 더워서 공부가 잘 되지 않습니다... 아이스팩을 사줘...");
+				me.hp /= 2;
+				System.out.println("(행동력을 절반 잃습니다...)");
+			}
+			
+			
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("올 수능도 예년처럼 나온다는군...");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 29) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
+			
+			if(me.junNormalPMP==true) {
+				System.out.println("향상된 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강으로 복습을 해볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*10;
+				me.mth += (int) Math.random()*10;
+				me.eng += (int) Math.random()*10;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+			
+			if(me.junPigSave==true) {
+				System.out.println("황금돼지저금통이 돈을 낳았다!");
+				System.out.println("돈이 " + me.money + "만원에서");
+				me.money += (int) Math.random() * 5;
+				System.out.println(" " + me.money + "만원이 되었습니다!");
+				
+				int i = (int) Math.random() * 100;
+				if(i <= 4) {
+					me.junPigSave = false;
+					System.out.println("불행하게도 황금돼지저금통이 더 이상 돈을 낳지 않습니다.");
+				}
+			}
+			
+			me.hp = me.hp_MAX; // 행동력 회복
 		}
-		
+
 		// 10월
-		while(time.month == 10) {
+		while (time.month == 10) {
+			
+			if(me.augMusicPlayer=true) {
+				int i = (int) Math.random() *100;
+				if(i <= 5) {
+					System.out.println("기분 좋은 노래를 들으니 힘이 더 납니다!");
+					System.out.println("추가 행동력을 얻습니다!");
+					me.hp += 5;
+				}
+			}
+
+			int parentCounter = (int) Math.random()*100;
+			
+			if((me.octParentKnowledge==true) && (parentCounter >= 5)) {
+				System.out.println("채원아... 힘을 내렴!!!");
+				System.out.println("오늘은 어떤 공부든 할 수 있을 것같다!");
+				me.hp = 999;
+			}
+			
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("EBS는 언어와 외국어 위주로 보는것이 좋다고 하네...");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			if(time.day == 27) {
+				prepareTest(time.month, me);
+			}
+			
+			if(me.junPigSave==true) {
+				System.out.println("황금돼지저금통이 돈을 낳았다!");
+				System.out.println("돈이 " + me.money + "만원에서");
+				me.money += (int) Math.random() * 5;
+				System.out.println(" " + me.money + "만원이 되었습니다!");
+				
+				int i = (int) Math.random() * 100;
+				if(i <= 4) {
+					me.junPigSave = false;
+					System.out.println("불행하게도 황금돼지저금통이 더 이상 돈을 낳지 않습니다.");
+				}
+			}
+			
+			if(me.sepMasterPMP==true) {
+				System.out.println("최후의 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강을 찍어볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*30;
+				me.mth += (int) Math.random()*30;
+				me.eng += (int) Math.random()*30;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+
+			int godCounter = (int) Math.random()*100;
+			
+			if((me.octGodKnowledge==true) && (godCounter >= 5) && !(time.day == 1)) {
+				System.out.println("꿈에서 신이 나와 지식을 나누어 주었다...");
+				System.out.println("신: 너에게 하루를 다시 준다면 어떡하겠니?");
+				time.day--;
+				time.dow--;
+				if (time.dow == 0) {
+					time.dow = 7;
+				}			
+			}
+			
+			endTime(time); // 하루를 마무리
+			me.hp = me.hp_MAX; // 행동력 회복
 		}
-		
+
 		// 11월
-		while(time.month == 11) {
+		while ((time.month == 11) && (time.day < 11)) {
+			
+			if(me.augMusicPlayer=true) {
+				int i = (int) Math.random() *100;
+				if(i <= 5) {
+					System.out.println("기분 좋은 노래를 들으니 힘이 더 납니다!");
+					System.out.println("추가 행동력을 얻습니다!");
+					me.hp += 5;
+				}
+			}
+			
+			int parentCounter = (int) Math.random()*100;
+			
+			if((me.octParentKnowledge==true) && (parentCounter >= 5)) {
+				System.out.println("채원아... 힘을 내렴!!!");
+				System.out.println("오늘은 어떤 공부든 할 수 있을 것같다!");
+				me.hp = 999;
+			}
+			
+			takeCard(hand,me); // 패를 새로 지급 받는다.
+
+			int selectHand;
+
+			// 평일 혹은 토요일일 때,
+			if (!(time.dow == 7)) {
+				do {
+					showTime(time); // 시간을 보여준다.
+					messageOfHpMoney(me); // 행동력과 돈의 상황을 보여준다. 
+					showCard(hand, me); // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+					selectHand = ordering(hand, me); // 패 사용에 관련.
+				} while (!(selectHand == 0)); // 0(집에 간다)을 선택했을 시에는 하루를 넘긴다.
+			}
+			// 평일 혹은 토요일일 때, (끝)
+
+			// 일요일일 때,
+			if (time.dow == 7) { 
+				int sundayChoice = 1;
+				while(!(sundayChoice == 0)) {
+					System.out
+					.println(time.month + "월  " + time.day + "일 일요일 입니다.");
+					System.out.println("일요일에는 무엇을 할까요?");
+					System.out.println("1. 카드를 강화한다.(아직구현X)");
+					System.out.println("2. 아이템을 구입한다.");
+					System.out.println("0. 휴식한다. (턴을 끝낸다)");
+
+					Scanner sc = new Scanner(System.in);
+					sundayChoice = sc.nextInt();
+
+					switch(sundayChoice) {
+					case 1: //inhance(); 
+						break;
+					case 2: shop(me, time);
+					break;
+					case 0: 
+						break;
+					}
+				}
+				me.money += me.allowance;
+				System.out.println("용돈을 " + me.allowance + "원 받았습니다!");
+				
+				if(me.maySmartPhone==true) {
+					if(me.money >= 3) {
+						System.out.println("스마트폰을 이용해 입시정보를 얻었습니다!");
+						System.out.println("올 수능 날씨는 꽤나 포근하다고 하네?");
+						
+						me.money -= 3;
+						System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+						
+						me.kor += (int) Math.random()*4;
+						me.mth += (int) Math.random()*4;
+						me.eng += (int) Math.random()*4;
+						
+						System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+					} else {
+						System.out.println("요금을 지불하지 않아. 효과를 받지 못합니다.");
+					}
+				}
+			}
+			// 일요일일 때, (끝)
+
+			if(time.day == 10) {
+				prepareTest(time.month, me);
+			}
+
+			endTime(time); // 하루를 마무리
+			
+			if(me.junPigSave==true) {
+				System.out.println("황금돼지저금통이 돈을 낳았다!");
+				System.out.println("돈이 " + me.money + "만원에서");
+				me.money += (int) Math.random() * 5;
+				System.out.println(" " + me.money + "만원이 되었습니다!");
+				
+				int i = (int) Math.random() * 100;
+				if(i <= 4) {
+					me.junPigSave = false;
+					System.out.println("불행하게도 황금돼지저금통이 더 이상 돈을 낳지 않습니다.");
+				}
+			}
+			
+			if(me.sepMasterPMP==true) {
+				System.out.println("최후의 PMP의 효과가 적용되었습니다!");
+				System.out.println("어디 한 번 인강을 찍어볼까?");
+				
+				System.out.println("언어, 수리, 외국어가 " + me.kor + " " + me.mth + " " + me.eng + "  →  ");
+				
+				me.kor += (int) Math.random()*30;
+				me.mth += (int) Math.random()*30;
+				me.eng += (int) Math.random()*30;
+				
+				System.out.println(me.kor + " " + me.mth + " " + me.eng + " 로 상승했습니다.");
+			}
+			
+			int godCounter = (int) Math.random()*100;
+			
+			if((me.octGodKnowledge==true) && (godCounter >= 5) && !(time.day == 1)) {
+				System.out.println("꿈에서 신이 나와 지식을 나누어 주었다...");
+				System.out.println("신: 너에게 하루를 다시 준다면 어떡하겠니?");
+				time.day--;
+				time.dow--;
+				if (time.dow == 0) {
+					time.dow = 7;
+				}			
+			}
+			
+			me.hp = me.hp_MAX; // 행동력 회복
 		}
-		
-		// 엔딩
-		
+
+		System.out.println("게임이 끝났습니다! 수고하셨습니다!");
+
 	} // main 끝
+
 	
-	void takeCard () {   // 카드를 새로 지급 받는다.
-		///////// 패에 든 카드는 무슨 변수를 써야하지???
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+	static void takeCard(Card[] hand, Status me) { // 카드를 새로 지급 받는다.
+
+		// 1등급, 2등급, 3등급 카드 갯수
+		int GRADE_1 = 4;
+		int GRADE_2 = 4;
+		int GRADE_3 = 6;
+
+		do  {
+			for (int i = 0; i < 3; i++) {
+				int randvalue = (int) (Math.random() * 100) + 1; // 1~50: 1등급 (50%)
+				// 51~85: 2등급 (35%)
+				// 86~100: 3등급 (15%)
+
+				if (randvalue <= 50) {
+					int randkind = (int) (Math.random() * GRADE_1) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 1;
+					// 1등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 85) {
+					int randkind = (int) (Math.random() * GRADE_2) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 2;
+					// 2등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 100) {
+					int randkind = (int) (Math.random() * GRADE_3) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 3;
+					// 3등급 카드를 랜덤하게 받는다.
+				}
+			} // for 끝
+
+			for (int i = 0; i < 3; i++) {
+				hand[i].name = nameCard(hand[i]); // 카드에 이름을 삽입해준다. nameCard
+			}
+
+			if(me.fourthSlot == true) {
+				int i = 3;
+				int randvalue = (int) (Math.random() * 100) + 1; // 1~50: 1등급 (50%)
+				// 51~85: 2등급 (35%)
+				// 86~100: 3등급 (15%)
+
+				if (randvalue <= 50) {
+					int randkind = (int) (Math.random() * GRADE_1) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 1;
+					// 1등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 85) {
+					int randkind = (int) (Math.random() * GRADE_2) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 2;
+					// 2등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 100) {
+					int randkind = (int) (Math.random() * GRADE_3) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 3;
+					// 3등급 카드를 랜덤하게 받는다.
+				}
+
+				hand[i].name = nameCard(hand[i]);
+			}
+
+			if(me.fifthSlot == true) {
+				int i = 3;
+				int randvalue = (int) (Math.random() * 100) + 1; // 1~50: 1등급 (50%)
+				// 51~85: 2등급 (35%)
+				// 86~100: 3등급 (15%)
+
+				if (randvalue <= 50) {
+					int randkind = (int) (Math.random() * GRADE_1) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 1;
+					// 1등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 85) {
+					int randkind = (int) (Math.random() * GRADE_2) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 2;
+					// 2등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 100) {
+					int randkind = (int) (Math.random() * GRADE_3) + 1;
+					hand[i].cardnum = randkind;
+					hand[i].isUsed = false;
+					hand[i].value = 3;
+					// 3등급 카드를 랜덤하게 받는다.
+				}
+
+				hand[i].name = nameCard(hand[i]);
+			}
+		} while ((hand[0].name == null) || (hand[1].name == null)
+				|| (hand[2].name == null) || (hand[3].name == null)
+				|| (hand[4].name == null)); // 버그 수정용
 	} // takeCard 끝
-	
-	static Card cardSelection (int GRADE, int randkind) {
-		switch(GRADE) {
-			case 1: switch(randkind) {
-						case 1: return Deck.korBasic; 
-						case 2: return Deck.mthBasic; 
-						case 3: return Deck.engBasic; 
-						case 4: return Deck.hpBasic;
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static void showTime(Time time) {
+		if (!(time.dow == 7)) {
+			System.out.println("=====================================");
+			System.out.print(time.month + "월  " + time.day + "일 ");
+			switch (time.dow) {
+			case 1:
+				System.out.println("월요일입니다.");
+				break;
+			case 2:
+				System.out.println("화요일입니다.");
+				break;
+			case 3:
+				System.out.println("수요일입니다.");
+				break;
+			case 4:
+				System.out.println("목요일입니다.");
+				break;
+			case 5:
+				System.out.println("금요일입니다.");
+				break;
+			case 6:
+				System.out.println("토요일입니다.");
+				break;
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static void messageOfHpMoney(Status me) {
+		System.out.println("당신의 패입니다.");
+		System.out.println("남은 행동력:  " + me.hp + "/" + me.hp_MAX);
+		System.out.println("남은 돈:  " + me.money + " 만원");
+	}
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static void showCard(Card[] hand, Status me) { // 현재 패를 보여준다. (혹은 집에 가기를 원한다든가...)
+		if (!hand[0].isUsed)
+			System.out.println("1: " + hand[0].name);
+		if (!hand[1].isUsed)
+			System.out.println("2: " + hand[1].name);
+		if (!hand[2].isUsed)
+			System.out.println("3: " + hand[2].name);
+		if(me.fourthSlot == true)
+			if (!hand[3].isUsed)
+				System.out.println("4: " + hand[3].name);
+		if(me.fifthSlot == true)
+			if (!hand[4].isUsed)
+				System.out.println("5: " + hand[4].name);
+		System.out.println("0: 집에 간다(턴을 끝낸다)");
+	}
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static int ordering (Card[] hand, Status me) {
+
+		System.out.println("명령을 내려주세요.");
+		Scanner sc = new Scanner(System.in);
+		int selectHand = sc.nextInt();
+		System.out.println("=====================================");
+		switch (selectHand) {
+		case 1:
+			hand[0].isUsed = true;
+			useCard(hand[0], me);
+			break;
+		case 2:
+			hand[1].isUsed = true;
+			useCard(hand[1], me);
+			break;
+		case 3:
+			hand[2].isUsed = true;
+			useCard(hand[2], me);
+			break;
+		case 4:
+			hand[3].isUsed = true;
+			useCard(hand[3], me);
+			break;
+		case 5:
+			hand[4].isUsed = true;
+			useCard(hand[4], me);
+			break;
+		case 0: // 턴을 넘긴다.
+		} // switch 끝
+
+		return selectHand;
+	}
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	void inhance() {
+
+	}
+
+	static void shop(Status me, Time time) {
+		System.out.println("상점에 오신 것을 환영합니다!");
+		int shopChoice = 0;
+		while(!(shopChoice == 9)) {
+			System.out.println("현재 " + me.money + "만 원 갖고 있습니다.");
+
+			if((me.fourthSlot==false) && (me.fifthSlot==false))
+				System.out.println("0. 추가 슬롯 → 10 만 원");
+			if((me.fourthSlot==true) && (me.fifthSlot==false))
+				System.out.println("0. 추가 슬롯 → 30 만 원");
+			System.out.println("9. 상점을 나간다.");
+
+
+			if(time.month==4) { // 4월의 아이템
+				if(me.aprActionJumpingRope==false)
+					System.out.println("1. (4월한정) 느낌표 줄넘기(최대 행동력 +10) → 만 원");
+				if(me.aprBasicPMP==false)
+					System.out.println("2. (4월한정) 보통 PMP(6월까지 매일 능력치 소폭 상승) → 15 만 원");	
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 1) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.aprActionJumpingRope == false) {
+						me.aprActionJumpingRope = true;
+						me.hp_MAX += 10;
+						me.money -= 1;
+						break;
+					}
+				case 2:
+					if(me.money < 15) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.aprBasicPMP == false) {
+						me.aprBasicPMP = true;
+						me.money -= 15;
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==5) { // 5월의 아이템
+				if(me.maySmartPhone==false)
+					System.out.println("1. (5월한정) 스마트폰 구입(매주 일요일 돈 3 만 원 감소, 능력치 보통 상승) → 30 만 원.");
+				if(me.mayFirstPen==false)
+					System.out.println("2. (5월한정) 모나미 볼펜 세트(시험을 잘 칠 확률이 높아짐) → 만 원");
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 30) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.maySmartPhone == false) {
+						me.maySmartPhone = true;
+						me.money -= 30;
+						break;
+					}
+				case 2:
+					if(me.money < 1) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.mayFirstPen == false) {
+						me.mayFirstPen = true;
+						me.money -= 1;
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==6) { // 6월의 아이템
+				if(me.junNormalPMP==false)
+					System.out.println("1. (6월한정) 향상된 PMP(9월까지 매일 능력치 소폭 상승) → 30 만 원");
+				if(me.junPigSave==false)
+					System.out.println("2. (6월한정) 황금돼지저금통(매일 소량의 돈 획득, 5% 확률로 파괴 → 30 만 원");
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 30) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.junNormalPMP == false) {
+						me.junNormalPMP = true;
+						me.money -= 30;
+						break;
+					}
+				case 2:
+					if(me.money < 30) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.junPigSave == false) {
+						me.junPigSave = true;
+						me.money -= 30;
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==7) { // 7월의 아이템
+				if(me.julSecondPen==false)
+					System.out.println("1. (7월한정) 하이테크 볼펜 세트(시험을 잘 칠 확률이 높아짐) → 3 만 원.");
+				if(me.julCookingSet==false)
+					System.out.println("2. (7월한정) 엄마께 조리도구 선물(현 최대 행동력을 두배로) → 50 만 원");
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 3 ) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.julSecondPen == false) {
+						me.julSecondPen = true;
+						me.money -= 3;
+						break;
+					}
+				case 2:
+					if(me.money < 50) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.julCookingSet == false) {
+						me.julCookingSet = true;
+						me.money -= 50;
+						me.hp_MAX *= 2;
+						System.out.println("더욱 맛있는 음식을 먹으며 공부를 한다!");
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==8) { // 8월의 아이템
+				if(me.augMusicPlayer==false)
+					System.out.println("1. (8월한정) MP3 플레이어 구입(하루의 시작에 5% 확률로 추가 행동력 지급 → 10 만 원");
+				if(me.augIcePack==false)
+					System.out.println("2. (8월한정) 아이스팩(폭염에 의한 탈진 방지) → 7 만 원");
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 10 ) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.augMusicPlayer == false) {
+						me.augMusicPlayer = true;
+						me.money -= 10;
+						break;
+					}
+				case 2:
+					if(me.money < 7) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.augIcePack == false) {
+						me.augIcePack = true;
+						me.money -= 7;
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==9) { // 9월의 아이템
+				if(me.sepThirdPen==false)
+					System.out.println("1. (9월한정) 몽블랑 만년필 세트(시험을 잘 칠 확률이 높아짐) → 30 만 원");
+				if(me.sepMasterPMP==false)
+					System.out.println("2. (9월한정) 최후의 PMP(11월까지 매일 능력치 소폭 상승) → 50 만 원.");
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 30 ) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.sepThirdPen == false) {
+						me.sepThirdPen = true;
+						me.money -= 30;
+						break;
+					}
+				case 2:
+					if(me.money < 50) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.sepMasterPMP == false) {
+						me.sepMasterPMP = true;
+						me.money -= 50;
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==10) { // 10월의 아이템
+				if(me.octGodKnowledge==false)
+					System.out.println("1. (10월한정) 신의 가르침(???) → 100 만 원.");
+				if(me.octParentKnowledge==false)
+					System.out.println("2. (10월한정) 부모님의 가르침(???) → 100 만 원.");
+				Scanner sc = new Scanner(System.in);
+				shopChoice = sc.nextInt();
+				System.out.println("===================================");
+				switch(shopChoice) {
+				case 0: 
+					if(me.money < 10) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if ((me.money < 30) && (me.fourthSlot == true)) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if((me.fourthSlot) == false && (me.fifthSlot==false)) {
+						me.fourthSlot = true;
+						me.money -= 10;
+						break;
+					} else if ((me.fourthSlot) == true &&(me.fifthSlot==false)) {
+						me.fifthSlot = true;
+						me.money -= 30;
+						break;
+					}
+				case 1:
+					if(me.money < 100 ) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.octGodKnowledge == false) {
+						me.octGodKnowledge = true;
+						me.money -= 100;
+						break;
+					}
+				case 2:
+					if(me.money < 100) {
+						System.out.println("돈이 부족합니다!");
+						break;
+					} else if (me.octParentKnowledge == false) {
+						me.octParentKnowledge = true;
+						me.money -= 100;
+						break;
+					}
+				default:
+					break;
+				}
+			}
+
+
+			if(time.month==11) { // 11월의 아이템
+				System.out.println("11월은 한정 아이템이 없습니다.");
+				shopChoice = 9;
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static Card cardSelection(int GRADE, int randkind) {
+		switch (GRADE) {
+		case 1:
+			switch (randkind) {
+			case 0:
+				return NameList.korBasic;
+			case 1:
+				return NameList.mthBasic;
+			case 2:
+				return NameList.engBasic;
+			case 3:
+				return NameList.hpBasic;
 			} // GRADE == 1 ends
-			case 2: switch(randkind) {
-						case 1: return Deck.korNormal;
-						case 2: return Deck.mthNormal;
-						case 3: return Deck.engNormal;
-						case 4: return Deck.hpNormal;
+		case 2:
+			switch (randkind) {
+			case 0:
+				return NameList.korNormal;
+			case 1:
+				return NameList.mthNormal;
+			case 2:
+				return NameList.engNormal;
+			case 3:
+				return NameList.hpNormal;
 			} // GRADE == 2 ends
-			case 3: switch(randkind) {
-						case 1: return Deck.korMaster;
-						case 2: return Deck.mthMaster;
-						case 3: return Deck.engMaster;
-						case 4: return Deck.hpMaster;
-						case 5: return Deck.lottery;
+		case 3:
+			switch (randkind) {
+			case 0:
+				return NameList.korMaster;
+			case 1:
+				return NameList.mthMaster;
+			case 2:
+				return NameList.engMaster;
+			case 3:
+				return NameList.hpMaster;
+			case 4:
+				return NameList.lottery;
+			case 5:
+				return NameList.albaBasic;
 			} // GRADE == 3 ends
 		}
 		return null;
 	}
-	
-	
-	
-	void showCard() {   // 지급된 카드를 보여준다.
-		
-	}
-	
-	static void useCard(Card hand, Status me) {   // 카드를 사용한다.
-		if (hand == Deck.korBasic)
-			CardData.korBasic(me);
-		if (hand == Deck.mthBasic)
-			CardData.mthBasic(me);
-		if (hand == Deck.engBasic)
-			CardData.engBasic(me);
-		if (hand == Deck.hpBasic)
-			CardData.hpBasic(me);
 
-		
-		if (hand == Deck.korNormal)
-			CardData.korNormal(me);
-		if (hand == Deck.mthNormal)
-			CardData.mthNormal(me);
-		if (hand == Deck.engNormal)
-			CardData.engNormal(me);
-		if (hand == Deck.hpNormal)
-			CardData.hpNormal(me);
-		
-		
-		if (hand == Deck.korMaster)
-			CardData.korMaster(me);
-		if (hand == Deck.mthMaster)
-			CardData.mthMaster(me);
-		if (hand == Deck.engMaster)
-			CardData.engMaster(me);
-		if (hand == Deck.hpMaster)
-			CardData.hpMaster(me);
-		if (hand == Deck.lottery)
-			CardData.lottery(me);
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static String nameCard(Card hand) { // 카드에 이름을 삽입해준다. 
+		switch (hand.value) {
+		case 1:
+			switch (hand.cardnum) {
+			case 0:
+				return "★☆☆ 언어기본(15)";
+			case 1:
+				return "★☆☆ 수리기본(15)";
+			case 2:
+				return "★☆☆ 외국어기본(15)";
+			case 3:
+				return "★☆☆ 운동기본(30)";
+			} // value == 1 ends
+
+		case 2:
+			switch (hand.cardnum) {
+			case 0:
+				return "★★☆ 언어보충(30)";
+			case 1:
+				return "★★☆ 수리보충(30)";
+			case 2:
+				return "★★☆ 외국어보충(30)";
+			case 3:
+				return "★★☆ 운동보충(50)";
+			} // value == 2 ends
+
+		case 3:
+			switch (hand.cardnum) {
+			case 0:
+				return "★★★ 언어보충(50)";
+			case 1:
+				return "★★★ 수리보충(50)";
+			case 2:
+				return "★★★ 외국어보충(50)";
+			case 3:
+				return "★★★ 운동보충(100)";
+			case 4:
+				return "★★★ 복권구입(돈 만 원)";
+			case 5:
+				return "★★★ 알바기본(30)";
+			} // value == 3 ends
+		}
+		return null;
 	}
-	
-	void buyCard() {  // 새로운 카드를 덱에 추가할 수 있다.
-		
+
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static void useCard(Card hand, Status me) { // 카드를 사용한다.
+		switch (hand.value) {
+		case 1:
+			switch (hand.cardnum) {
+			case 0:
+				CardData.korBasic(me, hand);
+				break;
+			case 1:
+				CardData.mthBasic(me, hand);
+				break;
+			case 2:
+				CardData.engBasic(me, hand);
+				break;
+			case 3:
+				CardData.hpBasic(me, hand);
+				break;
+			}
+			break;
+			// value == 1 ends
+
+		case 2:
+			switch (hand.cardnum) {
+			case 0:
+				CardData.korNormal(me, hand);
+				break;
+			case 1:
+				CardData.mthNormal(me, hand);
+				break;
+			case 2:
+				CardData.engNormal(me, hand);
+				break;
+			case 3:
+				CardData.hpNormal(me, hand);
+				break;
+			}
+			break;
+			// value == 2 ends
+
+		case 3:
+			switch (hand.cardnum) {
+			case 0:
+				CardData.korMaster(me, hand);
+				break;
+			case 1:
+				CardData.mthMaster(me, hand);
+				break;
+			case 2:
+				CardData.engMaster(me, hand);
+				break;
+			case 3:
+				CardData.hpMaster(me, hand);
+				break;
+			case 4:
+				CardData.lottery(me, hand);
+				break;
+			case 5:
+				CardData.albaBasic(me, hand);
+				break;
+			}
+			break;
+			// value == 3 ends
+		}
 	}
-	
-	void changeCard() {   // 덱의 구성 카드를 바꿀 수 있다.
+
+	//------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
+
+	static void prepareTest(int month, Status me) { // 마지막 목요일에는 모의고사를 친다.
+		int type = (int) (Math.random()*8);
+		int [] kor = new int[8];
+		int [] mth = new int[8];
+		int [] eng = new int[8];
+		if(type == 1) { // 물물물
+			kor[0]=98; kor[1]=94; kor[2]=86; kor[3]=74; kor[4]=54; kor[5]=44; kor[6]=32; kor[7]=20;
+			mth[0]=96; mth[1]=88; mth[2]=82; mth[3]=70; mth[4]=70; mth[5]=50; mth[6]=40; mth[7]=25;
+			eng[0]=97; eng[1]=94; eng[2]=88; eng[3]=83; eng[4]=75; eng[5]=55; eng[6]=43; eng[7]=26;
+		}
+		if(type == 2) { // 불물물
+			kor[0]=90; kor[1]=82; kor[2]=72; kor[3]=60; kor[4]=52; kor[5]=40; kor[6]=28; kor[7]=6;
+			mth[0]=96; mth[1]=88; mth[2]=82; mth[3]=70; mth[4]=70; mth[5]=50; mth[6]=40; mth[7]=25;
+			eng[0]=97; eng[1]=94; eng[2]=88; eng[3]=83; eng[4]=75; eng[5]=55; eng[6]=43; eng[7]=26;
+		}
+		if(type == 3) { // 물불물
+			kor[0]=98; kor[1]=94; kor[2]=86; kor[3]=74; kor[4]=54; kor[5]=44; kor[6]=32; kor[7]=20;
+			mth[0]=72; mth[1]=68; mth[2]=54; mth[3]=48; mth[4]=44; mth[5]=30; mth[6]=24; mth[7]=11;
+			eng[0]=97; eng[1]=94; eng[2]=88; eng[3]=83; eng[4]=75; eng[5]=55; eng[6]=43; eng[7]=26;
+		}
+		if(type == 4) { // 물물불
+			kor[0]=98; kor[1]=94; kor[2]=86; kor[3]=74; kor[4]=54; kor[5]=44; kor[6]=32; kor[7]=20;
+			mth[0]=96; mth[1]=88; mth[2]=82; mth[3]=70; mth[4]=70; mth[5]=50; mth[6]=40; mth[7]=25;
+			eng[0]=88; eng[1]=83; eng[2]=75; eng[3]=64; eng[4]=55; eng[5]=42; eng[6]=32; eng[7]=12;
+		}
+		if(type == 5) { // 불불물
+			kor[0]=90; kor[1]=82; kor[2]=72; kor[3]=60; kor[4]=52; kor[5]=40; kor[6]=28; kor[7]=6;
+			mth[0]=72; mth[1]=68; mth[2]=54; mth[3]=48; mth[4]=44; mth[5]=30; mth[6]=24; mth[7]=11;
+			eng[0]=97; eng[1]=94; eng[2]=88; eng[3]=83; eng[4]=75; eng[5]=55; eng[6]=43; eng[7]=26;
+		}
+		if(type == 6) { // 불물불
+			kor[0]=90; kor[1]=82; kor[2]=72; kor[3]=60; kor[4]=52; kor[5]=40; kor[6]=28; kor[7]=6;
+			mth[0]=96; mth[1]=88; mth[2]=82; mth[3]=70; mth[4]=70; mth[5]=50; mth[6]=40; mth[7]=25;
+			eng[0]=88; eng[1]=83; eng[2]=75; eng[3]=64; eng[4]=55; eng[5]=42; eng[6]=32; eng[7]=12;
+		}
+		if(type == 7) { // 물불불
+			kor[0]=98; kor[1]=94; kor[2]=86; kor[3]=74; kor[4]=54; kor[5]=44; kor[6]=32; kor[7]=20;
+			mth[0]=72; mth[1]=68; mth[2]=54; mth[3]=48; mth[4]=44; mth[5]=30; mth[6]=24; mth[7]=11;
+			eng[0]=88; eng[1]=83; eng[2]=75; eng[3]=64; eng[4]=55; eng[5]=42; eng[6]=32; eng[7]=12;
+		}
+		if(type == 8) { // 불불불
+			kor[0]=90; kor[1]=82; kor[2]=72; kor[3]=60; kor[4]=52; kor[5]=40; kor[6]=28; kor[7]=6;
+			mth[0]=72; mth[1]=68; mth[2]=54; mth[3]=48; mth[4]=44; mth[5]=30; mth[6]=24; mth[7]=11;
+			eng[0]=88; eng[1]=83; eng[2]=75; eng[3]=64; eng[4]=55; eng[5]=42; eng[6]=32; eng[7]=12;
+		}
+
+		int changedKor, changedMth, changedEng;
+
+		changedKor = me.kor/((month-3)*(month-2));
+		changedMth = me.mth/((month-3)*(month-2));
+		changedEng = me.eng/((month-3)*(month-2));
 		
+		if(me.mayFirstPen==true) {
+			changedKor += (int) Math.random()*2;
+			changedMth += (int) Math.random()*2;
+			changedEng += (int) Math.random()*2;
+		}
+		if(me.julSecondPen==true) {
+			changedKor += (int) Math.random()*3;
+			changedMth += (int) Math.random()*3;
+			changedEng += (int) Math.random()*3;
+		}
+		if(me.sepThirdPen==true) {
+			changedKor += (int) Math.random()*5;
+			changedMth += (int) Math.random()*5;
+			changedEng += (int) Math.random()*5;
+		}
+
+		int korGrade, mthGrade, engGrade;
+		int korCent = 0, mthCent=0, engCent = 0;
+
+		if(changedKor >= kor[0])
+			korGrade = 1;
+		else if(changedKor>= kor[1])
+			korGrade = 2;
+		else if(changedKor>= kor[2])
+			korGrade = 3;
+		else if(changedKor>= kor[3])
+			korGrade = 4;
+		else if(changedKor>= kor[4])
+			korGrade = 5;
+		else if(changedKor>= kor[5])
+			korGrade = 6;
+		else if(changedKor>= kor[6])
+			korGrade = 7;
+		else if(changedKor>= kor[7])
+			korGrade = 8;
+		else 
+			korGrade = 9;
+
+		if(changedMth >= mth[0])
+			mthGrade = 1;
+		else if(changedMth>= mth[1])
+			mthGrade = 2;
+		else if(changedMth>= mth[2])
+			mthGrade = 3;
+		else if(changedMth>= mth[3])
+			mthGrade = 4;
+		else if(changedMth>= mth[4])
+			mthGrade = 5;
+		else if(changedMth>= mth[5])
+			mthGrade = 6;
+		else if(changedMth>= mth[6])
+			mthGrade = 7;
+		else if(changedMth>= mth[7])
+			mthGrade = 8;
+		else 
+			mthGrade = 9;
+
+		if(changedEng >= eng[0])
+			engGrade = 1;
+		else if(changedEng>= eng[1])
+			engGrade = 2;
+		else if(changedEng>= eng[2])
+			engGrade = 3;
+		else if(changedEng>= eng[3])
+			engGrade = 4;
+		else if(changedEng>= eng[4])
+			engGrade = 5;
+		else if(changedEng>= eng[5])
+			engGrade = 6;
+		else if(changedEng>= eng[6])
+			engGrade = 7;
+		else if(changedEng>= eng[7])
+			engGrade = 8;
+		else 
+			engGrade = 9;
+
+		if(korGrade == 1) {
+			korCent = 96 + (int) (changedKor/kor[0])*4 - 4;
+			if(korCent>100) korCent = 100;
+		} else if (korGrade == 2)
+			korCent = 89 + (int) (changedKor/kor[1])*7 - 7;
+		else if (korGrade == 3)
+			korCent = 77 + (int) (changedKor/kor[2])*12 - 12;
+		else if (korGrade == 4)
+			korCent = 60 + (int) (changedKor/kor[3])*17 - 17;
+		else if (korGrade == 5)
+			korCent = 40 + (int) (changedKor/kor[4])*20 - 20;
+		else if (korGrade == 6)
+			korCent = 23 + (int) (changedKor/kor[5])*17 - 17;
+		else if (korGrade == 7) 
+			korCent = 11 + (int) (changedKor/kor[6])*12 - 12;
+		else if (korGrade == 8)
+			korCent = 4 + (int) (changedKor/kor[7])*7 - 7;
+		else if (korGrade == 9)
+			korCent = (int) (changedKor/kor[7])*4 - 4;
+
+		if(mthGrade == 1) {
+			mthCent = 96 + (int) (changedMth/mth[0])*4 - 4;
+			if(mthCent>100) mthCent = 100;
+		} else if (mthGrade == 2)
+			mthCent = 89 + (int) (changedMth/mth[1])*7 - 7;
+		else if (mthGrade == 3)
+			mthCent = 77 + (int) (changedMth/mth[2])*12 - 12;
+		else if (mthGrade == 4)
+			mthCent = 60 + (int) (changedMth/mth[3])*17 - 17;
+		else if (mthGrade == 5)
+			mthCent = 40 + (int) (changedMth/mth[4])*20 - 20;
+		else if (mthGrade == 6)
+			mthCent = 23 + (int) (changedMth/mth[5])*17 - 17;
+		else if (mthGrade == 7) 
+			mthCent = 11 + (int) (changedMth/mth[6])*12 - 12;
+		else if (mthGrade == 8)
+			mthCent = 4 + (int) (changedMth/mth[7])*7 - 7;
+		else if (mthGrade == 9)
+			mthCent = (int) (changedMth/mth[7])*4 - 4;
+
+		if(engGrade == 1) {
+			engCent = 96 + (int) (changedEng/eng[0])*4 - 4;
+			if(engCent>100) engCent = 100;
+		} else if (engGrade == 2)
+			engCent = 89 + (int) (changedEng/eng[1])*7 - 7;
+		else if (engGrade == 3)
+			engCent = 77 + (int) (changedEng/eng[2])*12 - 12;
+		else if (engGrade == 4)
+			engCent = 60 + (int) (changedEng/eng[3])*17 - 17;
+		else if (engGrade == 5)
+			engCent = 40 + (int) (changedEng/eng[4])*20 - 20;
+		else if (engGrade == 6)
+			engCent = 23 + (int) (changedEng/eng[5])*17 - 17;
+		else if (engGrade == 7) 
+			engCent = 11 + (int) (changedEng/eng[6])*12 - 12;
+		else if (engGrade == 8)
+			engCent = 4 + (int) (changedEng/eng[7])*7 - 7;
+		else if (engGrade == 9)
+			engCent = (int) (changedEng/eng[7])*4 - 4;
+
+		if(!(month==11)) {
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println(month + "월의 성적표입니다.");
+			System.out.println("언어:  " + korGrade + "등급" + " / 백분위  " + korCent);
+			System.out.println("수리:  " + mthGrade + "등급" + " / 백분위  " + mthCent);
+			System.out.println("외국어:  " + engGrade + "등급" + " / 백분위  " + engCent);
+			
+			if(korCent+mthCent+engCent >= 296) {
+				System.out.println("매우 우수한 성적이시군요!!");
+				System.out.println("보상: 10 만원 + 용돈: 추가 만 원");
+				me.money += 10;
+				me.allowance++;
+			} else if(korCent+mthCent+engCent >= 291) {
+				System.out.println("우수한 성적을 받았습니다!");
+				System.out.println("보상: 5 만원");
+				me.money += 5;
+			} else if(korCent+mthCent+engCent >= 288) {
+				System.out.println("조금만 더 노력하면 최상위권이 될 것같습니다!");
+				System.out.println("보상: 3 만 원");
+				me.money += 3;
+			} else {
+				System.out.println("수고하셨습니다!");
+			}
+			
+		} else {
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("과연 최종 결과는??!?");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("");
+			System.out.println("2012 대학수학능력검정시험 성적표입니다.");
+			System.out.println("언어:  " + korGrade + "등급" + " / 백분위  " + korCent);
+			System.out.println("수리:  " + mthGrade + "등급" + " / 백분위  " + mthCent);
+			System.out.println("외국어:  " + engGrade + "등급" + " / 백분위  " + engCent);
+		}
 	}
-	
-	void prepareTest() {  // 마지막 목요일에는 모의고사를 친다.
-		
-	}
-	
+
 	static void endTime(Time time) {
-		time.day++; 
-		time.dow++; 
-		if(time.day == 31) {
+		time.day++;
+		time.dow++;
+		if (time.day == 31) {
 			time.month++;
 		}
-		if(time.dow == 8) {
+		if (time.dow == 8) {
 			time.dow = 1;
 		}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	
-	
+
 } // class 끝
-
-
 
 
 }}}
@@ -291,12 +1948,16 @@ public class PlayJongro {
 이 클래스는 메인 메소드를 갖고 있습니다. 처음에 게임 소개글이 뜨고, DotCom 게임과 같이 반복문을 통해 플레이어가 한 턴 한 턴을 보낼 수 있게 합니다. <br>
 
 main(String[] args): 이 프로그램을 전반적으로 통제하고있는 메인함수입니다. <br>
-void takeCard(): 덱에서 카드를 랜덤하게 패로 옮깁니다. <br>
-void showCard(): 패로 들어온 카드를 보여줍니다. <br>
-void useCard(): 패에 들어온 카드를 택해서 사용하거나 하루를 넘깁니다. <br>
-void buyCard(): `v0.3에서 구현예정 새로운 카드를 덱에 추가합니다.` <br>
-void changeCard(): `v0.3에서 구현예정 덱의 카드 구성을 바꿉니다.` <br>
-void prepareTest(): `v0.3에서 구현예정 모의고사를 치룹니다.` <br>
+static void takeCard(Card[] hand, Status me): 덱에서 카드를 랜덤하게 패로 옮깁니다. <br>
+static void showTime(Time time): 
+static void messageOfHpMoney(Status me):
+static void showCard(Card[] hand, Status me): 패로 들어온 카드를 보여줍니다. <br>
+static int ordering (Card[] hand, Status me):
+static void shop(Status me, Time time):
+static Card cardSelection(int GRADE, int randkind):
+static String nameCard(Card hand)
+static void useCard(Card hand, Status me): 패에 들어온 카드를 택해서 사용하거나 하루를 넘깁니다. <br>
+static void prepareTest(int month, Status me): `v0.3에서 구현예정 모의고사를 치룹니다.` <br>
 void endTime(): 하루가 끝나고 시간 관련 인스턴스 변수들을 다음 날로 처리 해줍니다. <br>
 <br>
 
@@ -305,6 +1966,8 @@ void endTime(): 하루가 끝나고 시간 관련 인스턴스 변수들을 다�
 {{{
 
 package myJongroStory020;
+
+
 
 public class Status {
 	String name = "임채원";
@@ -315,9 +1978,41 @@ public class Status {
 	public int hp_MAX = 30; // 행동력 최대치
 	public int hp = 30; // 행동력
 	
-	public double money = 100000; // 자금
+	public int money = 10; // 자금
+	public int allowance = 3; // 용돈
+	
+	
+	// 카드 강화 현황
+	
+	
+	// 아이템 구입 현황
+	
+	public static boolean fourthSlot = false; // 4번째 슬롯
+	public static boolean fifthSlot = false; // 5번째 슬롯	
+	
+	public static boolean aprActionJumpingRope = false;
+	public static boolean aprBasicPMP = false; 
+	
+	public static boolean maySmartPhone = false; 
+	public static boolean mayFirstPen = false; 
+	
+	public static boolean junNormalPMP = false; 
+	public static boolean junPigSave = false; 
+	
+	public static boolean julSecondPen = false; 
+	public static boolean julCookingSet = false; 
+	
+	public static boolean augMusicPlayer = false; 
+	public static boolean augIcePack = false; 
+	
+	public static boolean sepThirdPen = false; 
+	public static boolean sepMasterPMP = false; 
+	
+	public static boolean octGodKnowledge = false; 
+	public static boolean octParentKnowledge = false; 
 	
 }
+
 
 }}}
 
@@ -345,106 +2040,223 @@ public class Time {
 
 {{{
 
-package myJongroStory020;
-
 public class CardData {
 	// 각 카드의 능력치를 나타내는 class다.
-	
+
 	/* 언어, 수리, 외국어 기본적인 능력치를 올려주는 카드들 */
 	/* k1~3, m1~3, e1~3 (총 9 종류) */
-	
+
 	// k1. 언어 기본
-	public static void korBasic (Status me) {
-		me.kor += 10;
-		me.hp -= 15;
+	public static void korBasic (Status me, Card hand) {
+		if(me.hp < 15) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("언어 능력이 " + me.kor + " → ");
+			me.kor += 10;
+			me.hp -= 15;
+			System.out.println(me.kor);
+		}
 	}
-	
+
 	// k2. 언어 보충
-	public static void korNormal (Status me) {
-		me.kor += (int)(Math.random()*16)+15;
-		me.hp -= 30;
+	public static void korNormal (Status me, Card hand) {
+		if(me.hp < 30) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("언어 능력이 " + me.kor + " → ");
+			me.kor += (int)(Math.random()*16)+15;
+			me.hp -= 30;
+			System.out.println(me.kor);
+		}
 	}
-	
+
 	// k3. 언어 심화
-	public static void korMaster (Status me) {
-		me.kor += (int)(Math.random()*51)+50;
-		me.hp -= 50;
+	public static void korMaster (Status me, Card hand) {
+		if(me.hp < 50) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("언어 능력이 " + me.kor + " → ");
+			me.kor += (int)(Math.random()*51)+50;
+			me.hp -= 50;
+			System.out.println(me.kor);
+		}
 	}
-	
+
 	// m1. 수리 기본
-	public static void mthBasic (Status me) {
-		me.mth += 10;
-		me.hp -= 15;
+	public static void mthBasic (Status me, Card hand) {
+		if(me.hp < 15) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("수리 능력이 " + me.mth + " → ");
+			me.mth += 10;
+			me.hp -= 15;
+			System.out.println(me.mth);
+		}
 	}
-	
+
 	// m2. 수리 보충
-	public static void mthNormal (Status me) {
-		me.mth += (int)(Math.random()*16)+15;
-		me.hp -= 30;
+	public static void mthNormal (Status me, Card hand) {
+		if(me.hp < 30) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("수리 능력이 " + me.mth + " → ");
+			me.mth += (int)(Math.random()*16)+15;
+			me.hp -= 30;
+			System.out.println(me.mth);
+		}
 	}
-	
+
 	// m3. 수리 심화
-	public static void mthMaster (Status me) {
-		me.mth += (int)(Math.random()*51)+50;
-		me.hp -= 50;
+	public static void mthMaster (Status me, Card hand) {
+		if(me.hp < 50) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("수리 능력이 " + me.mth + " → ");
+			me.mth += (int)(Math.random()*51)+50;
+			me.hp -= 50;
+			System.out.println(me.mth);
+		}
 	}
-	
+
 	// e1. 외국어 기본
-	public static void engBasic (Status me) {
-		me.eng += 10;
-		me.hp -= 15;
+	public static void engBasic (Status me, Card hand) {
+		if(me.hp < 15) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("외국어 능력이 " + me.eng + " → ");
+			me.eng += 10;
+			me.hp -= 15;
+			System.out.println(me.eng);
+		}
 	}
-	
+
 	// e2. 외국어 보충
-	public static void engNormal (Status me) {
-		me.eng += (int)(Math.random()*16)+15;
-		me.hp -= 30;
+	public static void engNormal (Status me, Card hand) {
+		if(me.hp < 30) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("외국어 능력이 " + me.eng + " → ");
+			me.eng += (int)(Math.random()*16)+15;
+			me.hp -= 30;
+			System.out.println(me.eng);
+		}
 	}
-	
+
 	// e3. 외국어 심화
-	public static void engMaster (Status me) {
-		me.eng += (int)(Math.random()*51)+50;
-		me.hp -= 50;
+	public static void engMaster (Status me, Card hand) {
+		if(me.hp < 50) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("외국어 능력이 " + me.eng + " → ");
+			me.eng += (int)(Math.random()*51)+50;
+			me.hp -= 50;
+			System.out.println(me.eng);
+		}
 	}
 
 	/* 다른 능력치에 관여하는 카드들 */
 	/* */
-	
+
 	// h1. 운동 기본
-	public static void hpBasic (Status me) {
-		me.hp -= 30;
-		me.hp_MAX += (int)(Math.random()*6);
+	public static void hpBasic (Status me, Card hand) {
+		if(me.hp < 30) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("최대 행동력이 " + me.hp_MAX + " → ");
+			me.hp -= 30;
+			me.hp_MAX += (int)(Math.random()*6);
+			System.out.println(me.hp_MAX);
+		}
 	}
-	
+
 	// h2. 운동 보충
-	public static void hpNormal (Status me) {
-		me.hp -= 50;
-		me.hp_MAX += (int)(Math.random()*6)+10;
+	public static void hpNormal (Status me, Card hand) {
+		if(me.hp < 50) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("최대 행동력이 " + me.hp_MAX + " → ");
+			me.hp -= 50;
+			me.hp_MAX += (int)(Math.random()*6)+10;
+			System.out.println(me.hp_MAX);
+		}
 	}
-	
+
 	// h3. 운동 심화
-	public static void hpMaster (Status me) {
-		me.hp -= 100;
-		me.hp_MAX += (int)(Math.random()*16)+15;
+	public static void hpMaster (Status me, Card hand) {
+		if(me.hp < 100) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			System.out.print("최대 행동력이 " + me.hp_MAX + " → ");
+			me.hp -= 100;
+			me.hp_MAX += (int)(Math.random()*16)+15;
+			System.out.println(me.hp_MAX);
+		}
 	}
-	
+
 	// s1. 복권 구입
-	public static void lottery (Status me) {
-		me.money -= 5000;
-		int randomforlottery = (int)(Math.random()*5);
-		switch(randomforlottery) {
-			case 0: me.money += 0; break;
-			case 1: me.money += 5000; break;
-			case 2: me.money += 30000; break;
-			case 3: me.money += 100000; break;
-			case 4: me.money += 1000000; break;
-		} // switch 끝
+	public static void lottery (Status me, Card hand) {
+		if(me.money < 1) {
+			System.out.println("돈이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			me.money -= 1;
+			int p=0;
+			int randomforlottery = (int)(Math.random()*100)+1;
+
+			if(randomforlottery<=50) // 꽝 50%
+				p = 0;
+			if( (randomforlottery>=51) && (randomforlottery<=85) ) // 본전 35%
+				p = 1;
+			if( (randomforlottery>=86) && (randomforlottery<=95) ) // 3만원 10%
+				p = 2;
+			if( (randomforlottery>=96) && (randomforlottery<=99) ) // 10만원 4%
+				p = 3;
+			if(randomforlottery == 100) // 100만원 1%
+				p = 4;
+
+			switch(p) {
+			case 0: me.money += 0; System.out.println("꽝!"); break;
+			case 1: me.money += 1; System.out.println("본전 따셨네요ㅠ"); break;
+			case 2: me.money += 3; System.out.println("삼만원 따셨습니다!"); break;
+			case 3: me.money += 10; System.out.println("십만원 따셨어요 +_+"); break;
+			case 4: me.money += 100; System.out.println("백만원 따셨습니다... 돈 더 필요없어!!"); break;
+			} // switch 끝
+		}
 	}
+
+	// s2. 아르바이트기본
+	public static void albaBasic (Status me, Card hand) {
+		if(me.hp < 30) {
+			System.out.println("행동력이 부족합니다.");
+			hand.isUsed = false;
+		} else {
+			me.money += 1;
+			me.hp -= 30;
+			System.out.println("배식 누나를 도와서 만원을 벌었습니다 ^^;;");
+		}
+
+	}
+
+} // end class
+
 	
 } // end class
 
 
 }}}
+
 
 0.20 버전에서 새로 추가된 클래스 입니다. <br>
 0.20 버전의 카드 시스템에 사용될 카드들의 효과를 모아 놓은 클래스입니다. <br>
@@ -453,11 +2265,7 @@ public class CardData {
 
 {{{
 
-package myJongroStory020;
-
-class Card {
-	boolean isExist = false; // 덱에 있는가?
-	boolean isSelected = false; // 패로 나올수 있는가?
+public class Card {
 	boolean isUsed = false; // 패에서 쓰인 카드인가?
 	int value; // 1등급, 2등급, 3등급 (높을수록좋다)
 	int cardnum; // 카드의 번호
@@ -471,37 +2279,32 @@ class Card {
 *f) Deck.java* <br>
 
 {{{
-package myJongroStory020;
-
-class Deck{
+public class NameList{
 	
 	// 1등급
-	Card korBasic;
-	Card mthBasic;
-	Card engBasic;
-	Card hpBasic;
+	static Card korBasic;
+	static Card mthBasic;
+	static Card engBasic;
+	static Card hpBasic;
 	// 4개
 	
 	
 	// 2등급
-	Card korNormal;
-	Card mthNormal;
-	Card engNormal;
-	Card hpNormal;
+	static Card korNormal;
+	static Card mthNormal;
+	static Card engNormal;
+	static Card hpNormal;
 	// 4개
 	
 	
 	// 3등급
-	Card korMaster;
-	Card mthMaster;
-	Card engMaster;
-	Card hpMaster;
-	Card lottery;
-	// 5개
-
-
-	
-
+	static Card korMaster;
+	static Card mthMaster;
+	static Card engMaster;
+	static Card hpMaster;
+	static Card lottery;
+	static Card albaBasic;
+	// 6개
 }
 
 }}}
