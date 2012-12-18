@@ -1232,4 +1232,4 @@ public class End extends JFrame {
 
 }}}
 
-http://comp166-koreauniv.googlecode.com/files/1.Start.JPG
+http://comp166-koreauniv.googlecode.com/files/1.Start.jpg
