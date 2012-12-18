@@ -532,7 +532,7 @@ class Dog {
 	}
 
 }
-class DogTestDrive{
+public class DogTestDrive{
 
 	public static void main(String[]args){
 		// Dog 객체들을 생성합니다.
