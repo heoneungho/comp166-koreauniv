@@ -1031,7 +1031,42 @@ public class TryCatch	{
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;	//미디패키지 불러오기
 
+public class MiniMiniMusicApp	{
+	public static void main(String[] args)	{
+		MiniMiniMusicApp mini = new MiniMiniMusicApp();
+		mini.play();
+	}
+
+	public void play()	{
+		try	{
+			Sequencer player = MidiSystem.getSequencer(); //sequencer 를 받아서 열기
+			player.open();
+
+			Sequencer seq = new Sequence(Sequence.PPQ, 4);
+
+			Track track = seq.createTrack(); //sequencer 에 트랙 요청
+
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 1, 44, 100);
+			MidiEvent noteOn = new MidiEvent(a,1);
+			track.add(noteOn);
+
+			ShortMessage b = new ShortMessage();
+			a.setMessage(128, 1, 44, 100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff); // 트랙에 이벤트 넣기
+
+			player.setSequence(seq);
+	
+			player.start(); // 플레이 !
+
+		}	catch (Exception ex)	{
+				ex.printStackTrace();
+		}
+	}
+}
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
