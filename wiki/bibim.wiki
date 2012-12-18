@@ -512,14 +512,15 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
   //텍스트필드에 마우스 클릭됬을 때, 글자 고치기 쉽게 하기 위해 모든 글자를 선택
 
-                setVisible(true);
+                setVisible(true); //awt, 윈도우 화면에 보여주기 위함.
 
                 
 
-                setSize(700, 700);         }
+                setSize(700, 700); //700*700 size의 가장 큰 틀 
+}
 
 
-        public void keyTyped(KeyEvent e) { 
+        public void keyTyped(KeyEvent e) {  
 
         }
 
