@@ -824,7 +824,37 @@ public class Dog extends Canine		{
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class MonsterTestDrive	{
+	public static void main(String[] args)	{
+		Monster [] ma = new Monster[3]; //ma 리스트 생성
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Moster();
+		for(int x=0; x<3; x++)	
+			ma[x].frighten(x);
+	}
+}
 
+class Monster	{  //몬스터 클래스 생성
+	boolean frighten(int z)	{
+		System.out.println("arrrgh");
+		return true;
+	}
+}
+
+class Vampire extends Monster	{	//몬스터의 하위 클래스 뱀파이어 생성
+	boolean frighten(byte b)	{
+		System.out.println("a bite?");
+		return true;
+	}
+}
+
+class Dragon extends Monster	{	//몬스터의 하위 클래스 드래곤 생성
+	boolean frighten(int degree)	{
+		System.out.println("breath fire");
+		return true;
+	}
+}
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
