@@ -67,12 +67,12 @@ import javax.swing.JOptionPane;
         }  
 
 public static int[] makeaperfume(){  
-          int a=0, b=0, c=0, d=0, e=0, f=0, g=0;
+          int a=0, b=0, c=0, d=0, e=0, f=0, g=0; // if문에서 쓰일 변수를 지정해줍니다.
 	  String itemname = null;  
 	  int quantity=0;  
 	  int k =0;  
 	  while(k==0){  
-	      int value=(Integer.parseInt(JOptionPane.showInputDialog(   
+	      int value=(Integer.parseInt(JOptionPane.showInputDialog(  
 	     "나에게 어울리는 향이 무엇인지 곰곰이 생각하여 골라주세요^^\n\n" 
 	     +"(1)   시프레 - 시원한 식물향이 나는 지중해 느낌의 향 \n\n" 
 	     +"(2)   시트러스 - 레몬이나 오렌지 등 감귤류의 톡 쏘는 상쾌한 향 \n\n" 
@@ -82,12 +82,12 @@ public static int[] makeaperfume(){
 	     +" (6)   머스크 - 사향노루의 페로몬, 주로 남성 향수로 사용 \n\n" 
 	     +"(7)   푸제르  - 부드럽고 감미로운 허브 향 \n\n" 
 	     +"\n" 
-	     +"(0)\t Return to Main Menu"))); 
+	     +"(0)\t Return to Main Menu"))); //향의 종류를 고르는 GUI화면입니다.
 	   
              int count[]=new int[7];  
 	     
              if(a==0 && b==0 && c==0 && d==0 && e==0 && f==0 && g==0 ) {
-	     
+	   
 	    switch(value){   
 	        
 	    case 1:     itemname="시프레";  
@@ -104,6 +104,7 @@ public static int[] makeaperfume(){
                              a++;  
 	                     k=1;  
 	                     break;  
+//향을 고른 후에는 향수의 양을 고르고, 변수를 증가시켜 다음 향을 골라서 blend시킬 때 이 화면이 또 실행되지 않게합니다.
 	     case 2:       
 	                 itemname="시트러스";  
 	                 
@@ -207,6 +208,7 @@ public static int[] makeaperfume(){
 	     }
 	     
              int record=JOptionPane.showConfirmDialog(null, " Blend할 다른 향을 고르시겠습니까?");  
+//여기서 추가로 blend할 향을 받습니다. 만약 yes를 선택하면 다시 위로 돌아갑니다.
 	         if(record==JOptionPane.YES_OPTION)
 	         { k=0; } 
 	            
@@ -222,9 +224,9 @@ public static int[] makeaperfume(){
                	    
                	     +"\n" 
                	    +"(0)\t Return to Main Menu")));   
-                    
-	             JOptionPane.showMessageDialog(null,"구매해주셔서 감사합니다, 당신을 위한 special한 향수로 보답하겠습니다. ");  
-	             }  
+                   	             JOptionPane.showMessageDialog(null,"구매해주셔서 감사합니다, 당신을 위한 special한 향수로 보답하겠습니다. ");  
+	             }   //향의 종류를 다 선택한 후에 향의 강도를 선택하고, 프로그램이종료됩니다.
+
 	        else System.exit(k);  
 	        }  
 	 return new int[7];  
