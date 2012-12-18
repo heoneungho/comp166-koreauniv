@@ -156,59 +156,64 @@ Answer6.
 {{{
 
 
-import java.awt.*;
+import java.awt.*;//for. frame 이용
 
-import java.awt.event.*;
+import java.awt.event.*; //for. frame 이용
 
-import javax.swing.*;
+import javax.swing.*; //GUI 이용, for. JOptionPane
 
 public class Bibim extends JFrame implements ActionListener, KeyListener {
+ //Bibim class 설정 , JFrame 사용을 위한 extends 
+ /*1.ActionListener를 통해 버튼에 액션이 일어나면 실행.
+   2.KeyListener를 통해 해당 입력 필드에서 엔터 액션이 일어나면 실행.*/
 
     
-        JLabel lab1, lab2, lab3, lab4, lab5, sideItem, mainItem;
+        JLabel lab1, lab2, lab3, lab4, lab5, sideItem, mainItem; //JLabel을 위한 변수선언-for.이름, 주소, 연락처 등
 
-        Button button;
+        Button button; //for.주문완료 버튼
 
-        JTextField text1, text2, text3;
+        JTextField text1, text2, text3; //이름, 주소, 연락처를 입력하기 위한 TextField 변수
 
-        ButtonGroup group1, group2;
+        ButtonGroup group1, group2; //양 과 결제수단을 위한 buttongroup.
 
-        JRadioButton small, medium, large, cash, card;
+        JRadioButton small, medium, large, cash, card; //양과 결제 수단을 위한 button선언.
 
         JCheckBox chk1, chk2, chk3, chk4, chk5, chk6, chk7, chk8, chk9, chk10,
 
                   chk11, chk12, chk13, chk14, chk15, chk16, chk17, chk18;
+//메뉴 선택을 위한 checkbox 선언
 
-
-        Bibim() {
+        Bibim() { //Bibim 메소드
 
             
 
-                getContentPane().setLayout(null);
+                getContentPane().setLayout(null);//보더레이아웃으로 설정
 
-                setBackground(Color.white);
+
+                setBackground(Color.white);//배경색 = white
 
                 
 
-                lab1 = new JLabel("이름: ");
+                lab1 = new JLabel("이름: "); //이름:이라는 문구(라벨) 생성
 
-                lab2 = new JLabel("주소: ");
+                lab2 = new JLabel("주소: "); //주소:이라는 문구(라벨) 생성
 
-                lab3 = new JLabel("연락처: "); 
+                lab3 = new JLabel("연락처: "); //연락처:이라는 문구(라벨) 생성
 
-                lab4 = new JLabel("양:");
+                lab4 = new JLabel("양:"); //양:이라는 문구(라벨) 생성
                 
-                lab5 = new JLabel("결제 수단:");
+                lab5 = new JLabel("결제 수단:"); //결제 수단:이라는 문구(라벨) 생성
                           
 
-                sideItem = new JLabel("밑반찬을 선택하시오.(택4) : "); 
+                sideItem = new JLabel("밑반찬을 선택하시오.(택4) : "); //밑반찬을 선택하시오.(택4):이라는 문구(라벨) 생성
                                                                                                                                                                  
-                sideItem.setForeground(new Color(0, 0, 205));
+                sideItem.setForeground(new Color(0, 0, 205));//RGB중 B를 선택하여 파란색이 나옴.
 
 
-                mainItem = new JLabel("주재료를 선택하시오.(택1): ");
+                mainItem = new JLabel("주재료를 선택하시오.(택1): "); //주재료를 선택하시오.(택1):이라는 문구(라벨) 생성
 
-                mainItem.setForeground(new Color(0, 0, 205)); 
+                mainItem.setForeground(new Color(0, 0, 205)); //RGB중 B를 선택하여 파란색이 나옴.
+
 
 
                 text1 = new JTextField(20);
@@ -484,9 +489,7 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
                 
 
-                setSize(700, 700); //숫자 작게 고침 불필요한 공간 제거
-
-        }
+                setSize(700, 700);         }
 
 
         public void keyTyped(KeyEvent e) { 
@@ -499,9 +502,7 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
         }
 
 
-        public void keyReleased(KeyEvent e) { //여기가 그 트라이 캐치 이용해서 숫자 못쓰게 고친부분.
-
-
+        public void keyReleased(KeyEvent e) { 
 
                 try {
 
@@ -571,13 +572,6 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
                     String Medium = new String();
 
                     String Large = new String();
-
-
-                    // 너무 단순한 방법이라 설명이 필요없을꺼같지만 그럼 내가 너무 재수 없을까봐
-
-                    // 간단히 설명하자면 sideItem은 밑반찬, mainItem은 주재료를 카운트하는 인스턴트변수임.
-
-                    // 각 체크박스마다 하나씩 올려서 일정 갯수 이상이면 오류를 뜨게하는 방법이지!
 
                     
 
