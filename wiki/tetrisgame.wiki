@@ -45,48 +45,707 @@ Add your content here.  Format your content with:
 {{{
 
 import java.applet.*;
-import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
+public class Tetris extends Applet implements Runnable, ActionListener {
 
-public class tetris extends Applet {
-	Color [] kindOfBlock;
-	int timePeriod;
-	Random ran;
-	boolean dropOk;
+	Thread thread;
 	
-	public void setKindOfColor(){
-		//블락의 종류별로 색깔을 설정한다.
+	Image image;
+	Graphics graphics;//그래픽 구현
+	
+	boolean[][]matrixInfo;//블록의 유무 나타내는 변수
+	Color[] blockColor;//블록의 색깔
+	Color[][] backColor;//배경의 색깔
+	
+	int blockType, currentBlock, score, gameState, timePeriod, spacePosFinal;//블록의 종류, 현재블록, 점수, 게임상태, 시간간격, 스페이스눌렀을때 위치
+	int [] blockX, blockY;//블록의 x위치, y위치
+	boolean dropOk;	//드롭을 체크하는 변수
+	
+//###########################thread###################################		
+	public void init()//초기화부분
+	{
+		
+		setLayout(new BorderLayout());//BorderLayout생성
+
+		//JFrame frame=new JFrame();
+		JPanel panel=new JPanel();//페널 생성
+		//frame.getContentPane().add(panel);
+		JButton button=new JButton("START");//버튼 생성 및 남쪽에 추가
+		button.addActionListener(this);
+		//frame.getContentPane().add(BorderLayout.SOUTH, button);
+		//frame.setSize(200,200);
+		//frame.setVisible(true);
+		panel.add(button);
+		add("South", panel);
+		
+		image=createImage(300,600);//이미지 크기
+		graphics=image.getGraphics();
+		//graphics.setColor(Color.black);
+		//graphics.fillRect(0, 0, 100, 200);
+		
+		matrixInfo=new boolean[10][20];//참 또는 거짓인 값 배경에 저장
+		backColor=new Color[10][20];//배경 색 저장 배열
+		blockColor=new Color[7];// block의 색깔
+		setBlockColor();
+		
+		blockX=new int[4];//4개로 구성된 블락의 X위치 
+		blockY=new int[4];//4개로 구성된 블락의 Y위치 
+		currentBlock=0;
+		
+
+		blockType=(int)((Math.random()*7)%7);//블락의 종류를 랜덤으로 결정
+		setBlockMatrix(blockType);
+		drawBlock();//블락그리는 메소드
+		drawMap();//배경그리는 메소드
+		drawGrid();//그리드그리는 메소드
+		
+		score=0;//점수
+		timePeriod=1000;//시간간격
+		gameState=1;//게임의 진행상태
+		
+		addKeyListener(new MyKeyHandler());
 	}
 	
-	public void rotateBlock(){
-		//블락 별로 모양을 변형시키는 메소드
+	public void start()
+	{
+			thread=new Thread(this);
+			thread.start();
 	}
 	
-	public void dropBlock(){
-		if(dropOk){
-			//한 칸 내려온다.
+	public void paint(Graphics g)
+	{
+		g.drawImage(image,0,0,this);
+	}
+	
+	public void stop()
+	{
+		if((thread!=null)&&(thread.isAlive())){
+			thread=null;
+		}
+	}
+//###########################thread###################################		
+	public void setBlockMatrix(int type)//블록을 설정하는 메소드
+	{
+		switch(type){
+		case 0:
+			blockX[0]=4; blockY[0]=0;
+			blockX[1]=5; blockY[1]=0;
+			blockX[2]=4; blockY[2]=1;
+			blockX[3]=5; blockY[3]=1;
+			break;
+		case 1:
+			blockX[0]=5; blockY[0]=0;
+			blockX[1]=4; blockY[1]=1;
+			blockX[2]=5; blockY[2]=1;
+			blockX[3]=6; blockY[3]=1;	
+			break;
+		case 2:
+			blockX[0]=6; blockY[0]=0;
+			blockX[1]=4; blockY[1]=1;
+			blockX[2]=5; blockY[2]=1;
+			blockX[3]=6; blockY[3]=1;	
+			break;
+		case 3:
+			blockX[0]=4; blockY[0]=0;
+			blockX[1]=4; blockY[1]=1;
+			blockX[2]=5; blockY[2]=1;
+			blockX[3]=6; blockY[3]=1;	
+			break;
+		case 4:
+			blockX[0]=5; blockY[0]=0;
+			blockX[1]=6; blockY[1]=0;
+			blockX[2]=4; blockY[2]=1;
+			blockX[3]=5; blockY[3]=1;	
+			break;	
+		case 5:
+			blockX[0]=4; blockY[0]=0;
+			blockX[1]=5; blockY[1]=0;
+			blockX[2]=5; blockY[2]=1;
+			blockX[3]=6; blockY[3]=1;	
+			break;	
+		case 6:
+			blockX[0]=3; blockY[0]=0;
+			blockX[1]=4; blockY[1]=0;
+			blockX[2]=5; blockY[2]=0;
+			blockX[3]=6; blockY[3]=0;	
+			break;			
+		}
+	}
+	
+	public void rotateBlock()//블록을 회전시키는 메소드
+	{
+		switch(blockType){
+		case 1:
+			switch(currentBlock){
+	case 0:
+		blockX[0]=blockX[0]+1; blockY[0]=blockY[0];
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]-2;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]-1;
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3];	
+
+		break;
+	case 1:
+		blockX[0]=blockX[0]-1; blockY[0]=blockY[0]+1;
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2];
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3]-1;	
+		break;
+	case 2:
+		blockX[0]=blockX[0]-1; blockY[0]=blockY[0]-1;
+		blockX[1]=blockX[1]-1; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2];
+		blockX[3]=blockX[3]+1; blockY[3]=blockY[3]-1;
+		break;		
+	case 3:
+		blockX[0]=blockX[0]+1; blockY[0]=blockY[0];
+		blockX[1]=blockX[1]-1; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]+1;
+		blockX[3]=blockX[3]+1; blockY[3]=blockY[3]+2;	
+		break;							
+		}
+		break;
+	case 2:
+		switch(currentBlock){
+	case 0:
+		blockX[0]=blockX[0]; blockY[0]=blockY[0]+1;
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]-2;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]-1;
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3];				
+		break;
+	case 1:
+		blockX[0]=blockX[0]-2; blockY[0]=blockY[0];
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2];
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3]-1;	
+		break;
+	case 2:
+		blockX[0]=blockX[0]+1; blockY[0]=blockY[0]-2;
+		blockX[1]=blockX[1]; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]+1; blockY[2]=blockY[2];
+		blockX[3]=blockX[3]+2; blockY[3]=blockY[3]-1;			
+		break;		
+	case 3:
+		blockX[0]=blockX[0]+1; blockY[0]=blockY[0]+1;
+		blockX[1]=blockX[1]-2; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]-1; blockY[2]=blockY[2]+1;
+		blockX[3]=blockX[3]; blockY[3]=blockY[3]+2;	
+		break;							
+		}
+		break;				
+	case 3:
+		switch(currentBlock){
+	case 0:
+		blockX[0]=blockX[0]+2; blockY[0]=blockY[0]-1;
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]-2;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]-1;
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3];	
+		break;
+	case 1:
+		blockX[0]=blockX[0]; blockY[0]=blockY[0]+2;
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2];
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3]-1;	
+		break;
+	case 2:
+		blockX[0]=blockX[0]-1; blockY[0]=blockY[0];
+		blockX[1]=blockX[1]; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]+1; blockY[2]=blockY[2];
+		blockX[3]=blockX[3]+2; blockY[3]=blockY[3]-1;
+		break;		
+	case 3:
+		blockX[0]=blockX[0]-1; blockY[0]=blockY[0]-1;
+		blockX[1]=blockX[1]-2; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]-1; blockY[2]=blockY[2]+1;
+		blockX[3]=blockX[3]; blockY[3]=blockY[3]+2;	
+		break;							
+		}
+		break;				
+	case 4:
+		switch(currentBlock){
+	case 0:
+	case 2:
+		blockX[0]=blockX[0]; blockY[0]=blockY[0]-1;
+		blockX[1]=blockX[1]-1; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]+2; blockY[2]=blockY[2]-1;
+		blockX[3]=blockX[3]+1; blockY[3]=blockY[3];	
+		break;
+	case 1:
+	case 3:
+		blockX[0]=blockX[0]; blockY[0]=blockY[0]+1;
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]-2; blockY[2]=blockY[2]+1;
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3];
+		break;				
+		}
+		break;
+	case 5:
+		switch(currentBlock){
+	case 0:
+	case 2:
+		blockX[0]=blockX[0]+2; blockY[0]=blockY[0]-1;
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]-1;
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3];	
+		break;		
+	case 1:
+	case 3:
+		blockX[0]=blockX[0]-2; blockY[0]=blockY[0]+1;
+		blockX[1]=blockX[1]-1; blockY[1]=blockY[1];
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]+1;
+		blockX[3]=blockX[3]+1; blockY[3]=blockY[3];
+		break;
+		}
+		break;	
+	case 6:
+		switch(currentBlock){
+	case 0:
+	case 2:
+		blockX[0]=blockX[0]+2; blockY[0]=blockY[0];
+		blockX[1]=blockX[1]+1; blockY[1]=blockY[1]+1;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]+2;
+		blockX[3]=blockX[3]-1; blockY[3]=blockY[3]+3;
+		break;
+	case 1:
+	case 3:
+		blockX[0]=blockX[0]-2; blockY[0]=blockY[0];
+		blockX[1]=blockX[1]-1; blockY[1]=blockY[1]-1;
+		blockX[2]=blockX[2]; blockY[2]=blockY[2]-2;
+		blockX[3]=blockX[3]+1; blockY[3]=blockY[3]-3;	
+		break;		
+		}
+		break;				
+	}
+		
+		
+	}
+	public void setBlockColor()//블락의 색깔을 정하는 메소드
+	{
+		blockColor[0]=new Color(255,255,0);
+		blockColor[1]=new Color(95,0,255);
+		blockColor[2]=new Color(255,187,0);
+		blockColor[3]=new Color(0,0,255);
+		blockColor[4]=new Color(0,255,0);
+		blockColor[5]=new Color(255,0,0);
+		blockColor[6]=new Color(0,255,255);
+		
+		
+	}
+	
+	public void run()
+	{
+		while(true)
+		{
+			try{
+				thread.sleep(timePeriod);
+			}catch(InterruptedException ie){}
+			
+			dropBlock();
+			
+			switch(gameState){//gamestate에 따라 화면 결정
+			case 1:
+				firstScreen();
+				break;				
+			case 2:
+				drawBlock();
+				drawMap();
+				drawGrid();
+				break;
+			default:
+				score();				
+				break;
+			}
+			
+			repaint();
+		}
+	}
+
+	
+	public void score()//점수 띄우는 부분
+	{
+		graphics.drawRect(60,350,200,100);
+		graphics.setColor(Color.white);
+		graphics.fillRect(60,350,200,100);
+		graphics.setColor(Color.black);
+		graphics.setColor(Color.black);
+		graphics.drawString("score: "+score, 100,400);		
+	}
+	
+	public void firstScreen()//초기화면
+	{
+		graphics.drawRect(60,350,200,100);
+		graphics.setColor(Color.white);
+		graphics.fillRect(60,350,200,100);
+		graphics.setColor(Color.black);
+		graphics.drawString("TETRIS term project", 100,400);				
+	}
+	
+	public boolean checkDrop1()//한칸 밑으로 내려갈수 있는지 체크하는 메소드
+	{
+		boolean dropOk1=true;
+		
+		for(int i=0;i<4;i++){
+			if((blockY[i]+1)!=20){
+				if(matrixInfo[blockX[i]][blockY[i]+1])
+					dropOk1=false;
+			}else{
+				dropOk1=false;
+			}
+		}
+		return dropOk1;
+	}
+	
+	public boolean checkDrop2()//두칸 밑으로 내려갈 수 있는지 체크하는 메소드
+	{
+		boolean dropOk2=true;
+		
+		for(int i=0;i<4;i++){
+			if((blockY[i]+1)<19){
+				if(matrixInfo[blockX[i]][blockY[i]+1]||matrixInfo[blockX[i]][blockY[i]+2])
+					dropOk2=false;
+			}
+			
+			else{
+				dropOk2=false;
+			}
+		}
+		return dropOk2;
+	}
+	
+	public boolean checkDrop3()//한번에 어디까지 내려갈수 있는지 메소드
+	{
+		int a,b;
+		int[] spacePos=new int[4];
+		boolean dropOk3=true;
+		
+		for(int i=0;i<4;i++){
+			spacePos[i]=0;
+			for(int j=1;j<20;j++){
+				if((blockY[i]+j)<20){
+					//System.out.println(j);
+					if(!(matrixInfo[blockX[i]][blockY[i]+j])){
+						System.out.println("j: "+ j);
+						//dropOk3=false;
+						spacePos[i]=blockY[i]+j-2;
+						System.out.println("spacePos[i]" + spacePos[i]);
+					}
+				}
+				
+				else{
+					//dropOk3=false;
+				}
+			}
+			
+		}
+		//System.out.println(spacePos[0]);
+		a = Math.min(spacePos[0],spacePos[1]);
+		b = Math.min(spacePos[2],spacePos[3]);
+		spacePosFinal=Math.min(a, b);
+		System.out.println("spacePosFinal: " + spacePosFinal);
+		return dropOk3;
+	}
+	
+	public void dropBlock()//한칸 내려가는 메소드
+	{		
+		removeBlock();
+		
+		if(checkDrop1()){
+			for(int j=0;j<4;j++){
+				blockY[j]=blockY[j]+1;
+			}
+		}
+			else{
+				drawBlock();
+				nextBlock();
+				
+			}
+	}
+	
+	public boolean checkMove(int dir)//좌우로 움직일 수 있는지 체크
+	{
+		boolean moveOk =true;
+		
+		removeBlock();
+		
+		for(int i=0;i<4;i++){
+			if(((blockX[i]+dir)>=0)&&((blockX[i]+dir)<10)){
+				if(matrixInfo[blockX[i]+dir][blockY[i]])
+					moveOk=false;
+			}else{
+				moveOk=false;
+			}
+		}
+		
+		if(!moveOk)
+			drawBlock();
+		
+		return moveOk;
+	}
+	
+	
+	public void lineClear()//한줄이 가득찼을 때 사용되는 메소드
+	{
+		boolean lineClearCheck;
+		
+		for(int row=19;row>=0;row--){
+			lineClearCheck=true;
+			for(int col=0;col<10;col++){
+				if(!matrixInfo[col][row])
+					lineClearCheck=false;
+			}
+		
+		
+			if(lineClearCheck){
+				score+=10;//점수획득
+			
+				for(int delRow=row; delRow>0;delRow--){
+					for(int delCol=0;delCol<10;delCol++){
+						matrixInfo[delCol][delRow]=matrixInfo[delCol][delRow-1];
+						backColor[delCol][delRow]=backColor[delCol][delRow-1];
+						}
+				}
+				
+				for(int i=0; i<10; i++){
+					matrixInfo[0][i]=false;
+					backColor[0][i]=Color.black;
+				}
+				row++;
+			}
+		}
+	}
+	
+	public void nextBlock()//다음블록을 정하는 메소드
+	{
+		blockType=(int)((Math.random()*7)%7);
+		currentBlock=0;
+		lineClear();
+		setBlockMatrix(blockType);
+		checkGameOver();
+	}
+	
+	public void checkGameOver()//게임오버인지 체크하는 메소드
+	{
+		for(int i=0;i<4;i++){
+			if(matrixInfo[blockX[i]][blockY[i]]){
+				if(gameState==2){
+					gameState=3;
+				}
+			}
+		}
+	}
+	public void removeBlock()//블락을 제거하는 메소드
+	{
+		for(int i=0;i<4;i++){
+			matrixInfo[blockX[i]][blockY[i]]=false;
+			backColor[blockX[i]][blockY[i]]=Color.black;
+			
+		}
+	}
+	
+/*	
+	public boolean checkFullDrop()
+	{
+		boolean fulldropOk=true;
+		
+		for(int i=0;i<4;i++){
+			if((blockY[i]+1)!=20){
+				for(int j=0;j<19;j++){
+					if(matrixInfo[blockX[i]][blockY[i]+j])
+						fulldropOk=false;
+				}
+			}else{
+				fulldropOk=false;
+			}
+		}
+		return fulldropOk;
+	}
+	*/
+	public void drawBlock()//블락을 그리는 메소드
+	{
+		for(int i=0;i<4;i++){
+			matrixInfo[blockX[i]][blockY[i]]=true;
+			backColor[blockX[i]][blockY[i]]=blockColor[blockType];
+		}
+	}
+	
+	public void drawMap()//배경을 그리는 메소드
+	{
+		for(int i=0; i<10;i++){
+			for(int j=0;j<20;j++){
+				if(matrixInfo[i][j]){
+					graphics.setColor(backColor[i][j]);
+					graphics.fillRect(i*30,j*30,30,30);//생성위치와 크기
+					
+				}else{
+					graphics.setColor(Color.black);
+					graphics.fillRect(i*30,j*30,30,30);
+				}
+			}
+		}
+	}
+	
+	public void drawGrid()//그리드 그리는 메소드
+	{
+		graphics.setColor(new Color(100,100,100));
+		
+		for(int i=0;i<10;i++){
+			for(int j=0; j<20;j++){
+				graphics.drawRect(i*30,j*30,30,30);
+			}
+		}
+	}
+	
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		currentBlock=0;
+		
+		for(int i=0; i<10; i++){
+			for(int j=0; j<20; j++){
+				matrixInfo[i][j]=false;
+			}
+		}
+			blockType=(int)((Math.random()*7)%7);
+			setBlockMatrix(blockType);
+			
+			drawBlock();
+			drawMap();
+			drawGrid();
+			
+			score=0;
+			timePeriod=1000;
+			gameState=2;
+			
+			this.requestFocus();
+	}
+	
+	public boolean checkTurn()//턴을 체크하는 메소드
+	{
+		boolean turnOk=true;
+		
+		for(int i=0;i<4;i++){
+			if((blockX[i]>=0)&&(blockX[i]<10)&&(blockY[i]>=0)&&(blockY[i]<20)){
+				if(matrixInfo[blockX[i]][blockY[i]])
+					turnOk=false;
+			}else{
+				turnOk=false;
+			}
+		}
+		
+		return turnOk;
+	}
+	
+	
+	
+	class MyKeyHandler extends KeyAdapter//키입역에 따른 행동을 나타내는 메소드
+	{
+		public void keyPressed(KeyEvent e)
+		{
+			int keyCode=(int)e.getKeyCode();
+			
+			if(keyCode==KeyEvent.VK_LEFT){
+				if(checkMove(-1)){
+					for(int i=0; i<4;i++){
+						blockX[i]=blockX[i]-1;
+					}
+				}
+			}
+			
+			if(keyCode==KeyEvent.VK_RIGHT){
+				if(checkMove(1)){
+					for(int i=0;i<4;i++){
+						blockX[i]=blockX[i]+1;
+					}
+				}
+			}
+			
+			if(keyCode==KeyEvent.VK_DOWN){
+				removeBlock();
+				
+				if(checkDrop2()){					
+					for(int i=0;i<4;i++){
+						if((blockY[i]+1)<19)
+							blockY[i]=blockY[i]+2;
+						else if((blockY[i]+1)==19)
+							blockY[i]=blockY[i]+1;
+						else
+							blockY[i]=blockY[i];
+					}
+				}
+				
+				else{
+					drawBlock();
+				}
+			}
+			
+			
+			
+			if(keyCode==KeyEvent.VK_SPACE){				
+				removeBlock();
+				if(checkDrop3()){				
+					for(int i=0;i<4;i++){
+						blockY[i]=blockY[i]+spacePosFinal;
+					}
+				}
+				else{
+					drawBlock();
+				}
+				//repaint();
+			}
+			
+			if(keyCode==KeyEvent.VK_UP){
+				int [] tempX=new int [4];
+				int [] tempY=new int [4];
+				
+				for(int i=0; i<4;i++){
+					tempX[i]=blockX[i];
+					tempY[i]=blockY[i];
+				}
+				
+				removeBlock();
+				rotateBlock();
+				
+				if(checkTurn()){
+					if(currentBlock<4){
+						currentBlock++;
+					}else{
+						currentBlock=0;
+					}
+				}else{
+					for(int i=0;i<4;i++){
+						blockX[i]=tempX[i];
+						blockY[i]=tempY[i];
+						matrixInfo[blockX[i]][blockY[i]]=true;
+						backColor[blockX[i]][blockY[i]]=blockColor[blockType];
+					}
+				}
+			}
+			
+			drawBlock();
+			drawMap();
+			drawGrid();
+			repaint();
+			
+			
 		}
 		
 	}
 	
-	public void nextBlock(){
-		//난수를 이용하여 블락 종류를 결정한다.
-	}
 	
-	public void stopBlock(){
-		//가장 높은 블락까지 도달하면 멈춘다.
-	}
-	
-	public void lineClear(){
-		//한 줄이 다 차면 없앤다.
-	}
-	
-	public void isGameover(){
-		//끝에 까지 블락이 쌓이면 게임이 종료된다.
-	}
-
-
 }
+
+= 참고자료 =
+
+
+= 참고자료 =
+1.Java Foundations / First Edition / John Lewis 외 2인 / Addison Wesley 
+2.(runnable,thread) http://blog.daum.net/_blog/BlogTypeView.do?blogid=0OZ7Y&articleno=138&categoryId=0&regdt=20100310164312#ajax_history_home
+3.(rgb)http://search.naver.com/search.naver?where=nexearch&query=rgb+%EC%83%89%EC%83%81%ED%91%9C&ie=utf8&sm=tab_she&qdt=0
+4.(오류수정) http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=+java.lang.NullPointerException
+
+
 
 }}}
