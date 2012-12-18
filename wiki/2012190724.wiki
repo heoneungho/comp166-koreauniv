@@ -199,7 +199,9 @@ int number=0;
 
 public void guess(){
 number=(int)(Math.random()*10);
-System.out.println("찍은 숫자:"+number);}}
+System.out.println("찍은 숫자:"+number);
+ }
+}
 
 public class GameLauncher{
 
@@ -213,6 +215,59 @@ game.startGame();
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+A
+
+class TapeDeck{ // TapeDeck 클래스 생성
+boolean canRecord=false; // canRecord를 Boolean값으로 설정
+void playTape(){
+System.out.println("tape playing");
+}
+void recordTape(){
+System.out.println("tape recording");
+  }
+}
+class TapeDeckTestDrive{ // TapeDeckTest 클래스 생성
+
+public static void main(String[]args){
+
+   TapeDeck t=new TapeDeck(); // 이름이 t인 객체 생성
+     t.canRecord=true;
+     t.playTape();
+   
+   if(t.canRecord==true){
+     t.recordTape();
+}
+}
+}
+
+B
+
+class DVDPlayer{
+
+boolean canRecord=false; // canRecord를 Boolean값으로 설정
+
+void recordDVD(){
+System.out.println("DVD recording");
+}
+
+void playDVD(){ 
+System.out.println("DVD playing");
+}
+}
+
+class DVDPlayerTestDrive{
+
+public static void main(String[]args){
+   DVDPlayer d = new DVDPlayer();
+   d.canRecord=true;
+   d.playDVD();
+
+   if(d.canRecord==true){
+    d.recordDVD();
+}
+}
+}
 
 }}}
 
