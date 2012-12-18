@@ -10,7 +10,7 @@
 
 public class Beersong//클래스 선언
   
-       public static void main(string[] args){//메인함수선선
+       public static void main(string[] args){//메인함수선언
                //변수설정
               int beerNum = 99;
               string word = "bottles";
@@ -43,6 +43,27 @@ public class Beersong//클래스 선언
 
 {{{
 
+Public class PhraseOMatic{
+	Public static void main(string[] args){
+
+	String[] wordListOne = { “messi","ronaldo","rooney","falcao","hulk"}
+	String[] wordListTwo = {“xavi","inesta","fabregas","deco","ji"}
+	String[] wordListThree = {“silva","pepe","carvalho","ramos","puyol"}
+
+	int oneLength = wordListOne.length;
+	int twoLength = wordListOne.length;
+	int threeLength = wordListOne.length;
+
+	int rnad1 = (int) (Math.random() * oneLength);
+	int rand2 = (int) (Math.random() * twoLength);
+	int rand3 = (int) (Math.random() * threeLength);
+
+	String phrase = wordListOne[rand1] + “ “ + wordListTwo[rand2] + “ “ + wordListThree[rand3];
+
+	System.out.println(“What we need is a “ + phrase);
+	}
+}
+
 }}}
 
 *52p 집중토론* _요약_
@@ -53,6 +74,41 @@ public class Beersong//클래스 선언
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class Exercise1b{
+	Public static void main(String[] args){
+		int x = 1;
+		while ( x < 10 ){
+		if ( x > 3){
+		System.out.println(“big x”);
+}
+}
+}
+}//x가 4,5,6,7,8,9일 때 출력
+
+Class Exercise1b
+public static void main(String[] args){
+	int x = 5;
+	while ( x > 1){
+	x = x – 1;
+	if (x < 3){
+	System.out.println(“small x”);
+}
+}
+}//클래스 선언해주기
+
+Class Exercise1b{
+	Public static void main(string[] args){
+	int x = 5;
+	while ( x > 1){
+	x = x – 1;
+	if (x < 3){
+	System.out.println(“small x”);
+}
+}
+}//메인함수 선언해주기
+
+
 
 }}}
 
