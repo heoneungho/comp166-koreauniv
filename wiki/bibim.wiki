@@ -837,3 +837,17 @@ public class Bibim extends JFrame implements ActionListener, KeyListener {
 
 
 }}}
+
+────────────────────────────────────────────────────────────────────────
+
+Question7. 참고 자료는 무엇인가?
+
+Answer7.
+
+1)기본 소스코드
+
+http://www.roseindia.net/tutorial/java/core/pizzaorderApplication.html 
+
+2)<head first java> 및 <나는 자바를 공부한 적이 없어요> 의 책 
+
+3)손코딩
