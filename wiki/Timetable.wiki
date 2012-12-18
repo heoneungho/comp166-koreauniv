@@ -157,41 +157,41 @@ class Dnode { // Dnode 클래스를 선언해줍니다. 같은 클래스 내에�
 		this.setPrice(price); // 가격
 	}
 	
-	public void setNext(Dnode newnext) {
+	public void setNext(Dnode newnext) { // 다음 디노드를 설정해준다.
 		next=newnext;
 	}
 	
-	public void setBefore(Dnode newprev) {
+	public void setBefore(Dnode newprev) { // 이전 디노드를 설정해준다.
 		before=newprev;
 	}
 	
 	int time_hour() { // 시간을 리턴한다
 		return time_hour;
 	}
-	int time_minute() {
+	int time_minute() { // 분을 리턴한다.
 		return time_minute;
 	}
-	int time_second() {
+	int time_second() { // 초를 리턴한다.
 		return time_second;
 	}
 	
-	int car_number() { // 번호판을 리턴한다
+	int car_number() { // 번호판을 리턴한다.
 		return number;
 	}
 	
-	public Dnode getNext() { // 게터, 세터
+	public Dnode getNext() { // 다음 노드를 불러온다.
 		return next;
 	}
 	
-	public Dnode getBefore() {
+	public Dnode getBefore() { // 이전노드를 불러온다.
 		return before;
 	}
 
-	public int getPrice() {
+	public int getPrice() { // 가격을 불러온다.
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(int price) { // 가격을 설정한다.
 		this.price = price;
 	}
 }
@@ -225,39 +225,39 @@ import java.awt.event.ActionListener;
 //  @author 2012190712
 
 public class MainForm extends JFrame { // 변수 선언
-	private JButton enterButton;
-	private JButton exitButton;
-	private JPanel jPanel1;
-	private JPanel jPanel2;
-	private JPanel jPanel3;
-	private JPanel jPanel4;
-	private JPanel jPanel5;
-	private JPanel parkingArea;
+	private JButton enterButton; // in 버튼
+	private JButton exitButton; // out 버튼
+	private JPanel jPanel1; // 자동차 1,2
+	private JPanel jPanel2; // 왼쪽화면
+	private JPanel jPanel3; // 자동차 3,4
+	private JPanel jPanel4; // 자동차 5,6
+	private JPanel jPanel5; // 자동차 7,8
+	private JPanel parkingArea; // 오른쪽 주차공간 8개
 
-	private JLabel sector1;
-	private JLabel sector2;
+	private JLabel sector1; // 자동차 주차공간 1~8
+	private JLabel sector2; 
 	private JLabel sector3;
 	private JLabel sector4;
 	private JLabel sector5;
 	private JLabel sector6;
 	private JLabel sector7;
 	private JLabel sector8;
-	private JLabel ticketBox;
+	private JLabel ticketBox; // 왼쪽 아래 주차장 이미지
 
-	private JTextArea textArea;
+	private JTextArea textArea; // 주차장 이미지 위에있는 배너
 
-	Parking park= new Parking();
-	String car_number = "";
+	Parking park= new Parking(); // 주차공간에 담을 주차공간에 대한 정보 객체를 만든다.
+	String car_number = "";  // 자동차번호 변수
 
 
 	public MainForm() { // 레이아웃 구성
-		jPanel1 = new JPanel(); // 섹터 1,2
-		jPanel2 = new JPanel(); // 왼쪽화면, 주차이미지와 텍스트
-		jPanel3 = new JPanel(); // 섹터 3,4
-		jPanel4 = new JPanel(); // 섹터 5,6
-		jPanel5 = new JPanel(); // 섹터 7.8
+		jPanel1 = new JPanel(); // 패널을 만든다
+		jPanel2 = new JPanel();
+		jPanel3 = new JPanel();
+		jPanel4 = new JPanel();
+		jPanel5 = new JPanel();
 
-		sector1 = new JLabel(); // 주차공간
+		sector1 = new JLabel(); // 섹터를 만든다.
 		sector2 = new JLabel();
 		sector3 = new JLabel();
 		sector4 = new JLabel();
@@ -274,8 +274,8 @@ public class MainForm extends JFrame { // 변수 선언
 		ticketBox = new JLabel();
 		textArea = new JTextArea();
 
-		sector1.setText("1");
-		sector1.setFont(new Font("Nanum Gothic", 0, 15));
+		sector1.setText("1");	// 주차공간에 적는 숫자. 1~8
+		sector1.setFont(new Font("Nanum Gothic", 0, 15)); // 폰트를 나눔고딕으로
 		sector2.setText("2");		
 		sector2.setFont(new Font("Nanum Gothic", 0, 15));
 		sector3.setText("3");		
@@ -291,23 +291,23 @@ public class MainForm extends JFrame { // 변수 선언
 		sector8.setText("8");		
 		sector8.setFont(new Font("Nanum Gothic", 0, 15));
 
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // 닫기버튼
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // x버튼을 누르면 창을 꺼지게한다.
 
-		setBackground(new java.awt.Color(234, 234, 234));
-		parkingArea.setBackground(new java.awt.Color(234, 234, 234));
+		setBackground(new java.awt.Color(234, 234, 234)); // 전체 배경색
+		parkingArea.setBackground(new java.awt.Color(234, 234, 234)); // 패널의 이름이 parkingArea. 오른쪽 배경색
 
-		jPanel1.setBackground(new java.awt.Color(234, 234, 234));
+		jPanel1.setBackground(new java.awt.Color(234, 234, 234)); // 오른쪽 배경색
 		jPanel2.setBackground(new java.awt.Color(234, 234, 234));
 		jPanel3.setBackground(new java.awt.Color(234, 234, 234));
 		jPanel4.setBackground(new java.awt.Color(234, 234, 234));
 		jPanel5.setBackground(new java.awt.Color(234, 234, 234));
 
-		initComponents();
+		initComponents(); // initComponents 호풀
 	}
 
 
-	private void initComponents() { // 레이아웃 설정
-		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+	private void initComponents() { // 레이아웃 설정 GUI 자동구성입니다.
+		GroupLayout jPanel1Layout = new GroupLayout(jPanel1); // 생성
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -396,32 +396,32 @@ public class MainForm extends JFrame { // 변수 선언
 				);
 		parkingArea.add(jPanel5);
 
-		ticketBox.setBackground(new java.awt.Color(204, 204, 204));
-		ticketBox.setHorizontalAlignment(SwingConstants.CENTER);
-		ticketBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled2.png")));
+		ticketBox.setBackground(new java.awt.Color(204, 204, 204)); // 왼쪽하면아래 배경색
+		ticketBox.setHorizontalAlignment(SwingConstants.CENTER); // 가운데정렬
+		ticketBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled2.png"))); // 주차이미지를 불러온다.
 
-		textArea.setText("저희 착한주차장을 이용해주셔서 감사합니다.");
-		textArea.setEditable(false);
-		textArea.setFocusable(false);
-		textArea.setFont(new Font("Nanum Gothic", 0, 24));
+		textArea.setText("저희 착한주차장을 이용해주셔서 감사합니다."); // 상황판
+		textArea.setEditable(false); // 에디트를 못하게 설정
+		textArea.setFocusable(false); // 초점이 맞춰지게 안함
+		textArea.setFont(new Font("Nanum Gothic", 0, 24)); // 폰트설정
 
-		exitButton.setFont(new Font("Synchro LET", 0, 13));
+		exitButton.setFont(new Font("Synchro LET", 0, 13)); // out 설정
 		exitButton.setText("OUT");
-		exitButton.addActionListener(new ActionListener() {
+		exitButton.addActionListener(new ActionListener() { // 버튼을 누르면 실행되는 활동
 			public void actionPerformed(ActionEvent evt) {
 				exitButtonActionPerformed(evt);
 			}
 		});
 
-		enterButton.setFont(new Font("Synchro LET", 0, 13));
+		enterButton.setFont(new Font("Synchro LET", 0, 13)); // in 버튼 설정
 		enterButton.setText("IN");
-		enterButton.addActionListener(new java.awt.event.ActionListener() {
+		enterButton.addActionListener(new java.awt.event.ActionListener() { // 버튼을 누르면 실행되는 활동
 			public void actionPerformed(ActionEvent evt) {
 				enterButtonActionPerformed(evt);
 			}
 		});
 
-		GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
+		GroupLayout jPanel2Layout = new GroupLayout(jPanel2); // 레이아웃 설정 자동구성입니다.
 		jPanel2.setLayout(jPanel2Layout);
 		jPanel2Layout.setHorizontalGroup(
 				jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -484,67 +484,67 @@ public class MainForm extends JFrame { // 변수 선언
 
 
 	private void enterButtonActionPerformed(ActionEvent evt) { // 엔터버튼 클릭시 실행되는 메소드
-		try{
-			car_number = JOptionPane.showInputDialog("차량 번호를 입력하세요");
-			if (car_number.length() != 4) {
+		try{ // 예외처리 try-catch 부문
+			car_number = JOptionPane.showInputDialog("차량 번호를 입력하세요"); // in버튼 클릭시
+			if (car_number.length() != 4) { // 차 번호가 4자리가 아닐때
 				JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
-			} else {
-				if (park.check(Integer.parseInt(car_number))) {
+			} else { // 차 번호가 4자리일때
+				if (park.check(Integer.parseInt(car_number))) { // park개체를 만들어서 check메소드 호출, 차량 번호가 중복되일때
 					JOptionPane.showMessageDialog(null, "차량 번호가 중복됩니다.");
 				} else {
-					if (park.isFull()) {
+					if (park.isFull()) { // 주차공간이 꽉 찼을때
 						JOptionPane.showMessageDialog(null, "주차공간이 없습니다. 잠시만 기다려 주세요.");
-					} else {
+					} else { // 차량번호를 제대로 입력하고, 주차공간이 남았을때
 						int option = JOptionPane.showConfirmDialog(null, "선불 금액을 내시겠습니까?", null, JOptionPane.YES_NO_OPTION);
 						switch (option) {
-						case JOptionPane.YES_OPTION:
+						case JOptionPane.YES_OPTION: // 예를 선택했을 시
 							String price = JOptionPane.showInputDialog("금액을 입력해주십시오.");
-							setPosition(car_number, Integer.parseInt(price));
+							setPosition(car_number, Integer.parseInt(price)); // 예외처리 다 빠져나왔을 때. 주차공간에 차량번호를 넣는다.
 							break;
-						case JOptionPane.NO_OPTION: case JOptionPane.CLOSED_OPTION:
-							setPosition(car_number, 0);
+						case JOptionPane.NO_OPTION: case JOptionPane.CLOSED_OPTION: // 아니오를 선택했을시
+							setPosition(car_number, 0); // 예외처리 다 빠져나왔을 때. 주차공간에 차량번호를 넣는다.
 							break;
 						}
 					}
 				}
 			}
-		} catch(NumberFormatException e){
+		} catch(NumberFormatException e){ // 차량번호가 숫자가 아닐때
 			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
-		} catch(Exception e) {
+		} catch(Exception e) { // 나머지 예외
 			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
 		}
 	}
 	
 
 
-	private void exitButtonActionPerformed(ActionEvent evt) { // exit버튼 클릭시 실행되는 메소드
-		try{
-			car_number = JOptionPane.showInputDialog("차량 번호 4자리를 입력하세요");
-			if (car_number.length() != 4) {
+	private void exitButtonActionPerformed(ActionEvent evt) { // out버튼 클릭시 실행되는 메소드
+		try{ // 예외처리 try-catch 부문
+			car_number = JOptionPane.showInputDialog("차량 번호 4자리를 입력하세요"); // out버튼 클릭시
+			if (car_number.length() != 4) { // 차량번호가 4자리가 아닐시
 				JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
 			} else {
-				if(park.isEmpty())
+				if(park.isEmpty()) // 주차공간이 비었을 시
 					JOptionPane.showMessageDialog(null, "더 이상 나갈 차가 없습니다.");
 				else {
-					if(park.check(Integer.parseInt(car_number))) {
+					if(park.check(Integer.parseInt(car_number))) { // 주차되어있는 차 번호 확인
 						removePosition(car_number);	
-					} else {
+					} else { // 주차되어 있지 않을때
 						JOptionPane.showMessageDialog(null, "그런 차는 주차되어 있지 않습니다");
 					}
 				}
 			}
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) { // 차량번호가 숫자가 아닐 때
 			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
-		} catch(Exception e) {
+		} catch(Exception e) { // 예외처리
 			JOptionPane.showMessageDialog(null, "차량번호가 잘못되었습니다.");
 		} 
 	}
 
 
 	private void setPosition(String car_number, int price) { // 주차장에 차량을 추가하는 메소드
-		park.Add(Integer.parseInt(car_number), price);
-		textArea.setText("'" + car_number + "' 님 어서오십시오.");
-		if (sector1.getText() == "1") {
+		park.Add(Integer.parseInt(car_number), price); // 디노드 추가
+		textArea.setText("'" + car_number + "' 님 어서오십시오."); // 상황판
+		if (sector1.getText() == "1") { // 자동차이미지 추가
 			sector1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/car.png")));
 			sector1.setText(car_number);
 		} else if (sector2.getText() == "2") {
@@ -573,10 +573,10 @@ public class MainForm extends JFrame { // 변수 선언
 
 
 	private void removePosition(String car_number) { // 주차장의 차량을 제거하는 메소드
-		textArea.setText("'" + car_number + "' 님 안녕히가십시오.\n"+ park.Delete(Integer.parseInt(car_number)));
-		if (sector1.getText().equals(car_number)) {
-			sector1.setIcon(null);
-			sector1.setText("1");
+		textArea.setText("'" + car_number + "' 님 안녕히가십시오.\n"+ park.Delete(Integer.parseInt(car_number))); // 상황판
+		if (sector1.getText().equals(car_number)) { // 입력한 차번호와 주차된 차 번호를 비교
+			sector1.setIcon(null); // 차를 비운다.
+			sector1.setText("1"); // 다시 주차공간을 기존의 숫자 1로 설정
 		} else if (sector2.getText().equals(car_number)) {
 			sector2.setIcon(null);
 			sector2.setText("2");
@@ -621,8 +621,8 @@ public class MainForm extends JFrame { // 변수 선언
 		}
 
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new MainForm().setVisible(true);
+			public void run() { // 넷빈즈
+				new MainForm().setVisible(true); // 보일 수 있게 하는것.
 			}
 		});
 	}
@@ -636,27 +636,27 @@ import java.util.Calendar;
 
 
 public class Parking { // 주차공간 하나에 대한 객체, 번호판, 시간, 요금정보를 담고 있습니다.
-	private Dnode header,tailer;
-	private Calendar time;
-	private int car_count;
+	private Dnode header,tailer; // 헤더 테일러 선언
+	private Calendar time; // 시간정보
+	private int car_count; // 자동차 갯수
 	
 	public Parking() {
-		header=new Dnode();
+		header=new Dnode(); // 디노드 형성
 		tailer = new Dnode();
-		header.setNext(tailer);
-		header.setBefore(null);
-		tailer.setBefore(header);
-		tailer.setNext(null);
-		car_count = 0;
+		header.setNext(tailer); // 헤더다음에 테일러가 온다.
+		header.setBefore(null); // 헤더가 맨 처음이다
+		tailer.setBefore(header); // 테일러 이전에 헤더가 온다.
+		tailer.setNext(null); // 테일러가 맨마지막이다.
+		car_count = 0; // 초기화 해주는것
 	}
 
-	public boolean isEmpty() {
-		if(header.getNext()==tailer) {
+	public boolean isEmpty() { // 자동차가 한대도 없을때, 자동차가 비어있는지 확인하기 위해
+		if(header.getNext()==tailer) { // 머리 다음이 꼬리인게 아무것도 없는 상태, 주차공간이 비어있는 상태
 			return true;
 		}
 		return false;
 	}
-	public boolean isFull() {
+	public boolean isFull() { // 자동차가 8번까지 꽉 차있을때 
 		if(car_count == 8) {
 			return true;
 		}
@@ -664,70 +664,72 @@ public class Parking { // 주차공간 하나에 대한 객체, 번호판, 시�
 	}
 	
 	public boolean check(int car_number) {
-		Dnode check = header.getNext();
-		while(check!=tailer) {
-			if(check.car_number()==car_number) {
+		Dnode check = header.getNext(); // 머리의 다음노드
+		while(check!=tailer) { // 노드가 꼬리가 아닐때
+			if(check.car_number()==car_number) { // 노드에 자동차 번호와 체크하려는 차 번호가 같을때, 차번호 중복 확인
 				return true;
 			}
-			check=check.getNext();
+			check=check.getNext(); // 차번호 중복 처음부터 넘어가면서 확인
 		}
 		return false;
 	}
 	
 
 	public void Add(int car_number, int price) { // 주차공간에 자동차 추가
-		car_count++;
-		time = Calendar.getInstance();
-		if(header.getNext()==tailer) {
+		car_count++; // 자동차갯수 추가
+		time = Calendar.getInstance(); // 초기와
+		if(header.getNext()==tailer) { // 주차공간이 비었을때
 			Dnode start = new Dnode(car_number,header,tailer,time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE),time.get(Calendar.SECOND), price);
-			header.setNext(start);
-			tailer.setBefore(start);
-		} else {
-			Dnode check = header.getNext();
-			while(check.getNext()!=tailer) {
-				check = check.getNext();
+			// 노드에다가 시간정보 입력
+			header.setNext(start); // 머리 다음에 start 를 넣겠다.
+			tailer.setBefore(start); // 꼬리 이전에 start 를 넣겠다.
+		} else { // 하나라도 차 있을때
+			Dnode check = header.getNext(); // 머리의 다음노드
+			while(check.getNext()!=tailer) { // 노드가 꼬리가 아닐때
+				check = check.getNext(); // 다음의 체크노드를 설정해주고 그것을 꼬리 이전까지 다시 반복, 체크가 결국 꼬리 앞껄로 설정
 			}
 			Dnode newnode = new Dnode(car_number,check,tailer,time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE),time.get(Calendar.SECOND), price);
-			check.setNext(newnode);
-			tailer.setBefore(newnode);
+			// 노드에다가 시간정보 입력
+			check.setNext(newnode);  // (체크 - 뉴노드 - 꼬리)
+			tailer.setBefore(newnode); // 꼬리 이전에 new node를 넣겠다.
 		}
 	}
 
 
 	public String Delete(int car_number) { // 주차공간에서 자동차 삭제
-		car_count--;
+		car_count--; // 자동차갯수 감수
 		int minute ,second, def, pre_price, price, remain_price;
-		Dnode delete_node = header.getNext();
-		time = Calendar.getInstance();
-		while(delete_node != tailer) {
-			if(delete_node.car_number()==car_number) {
-				minute = time.get(Calendar.MINUTE) - delete_node.time_minute();
-				second = time.get(Calendar.SECOND) - delete_node.time_second();
-				def = minute*60+second;
-				minute = def%3600/60;
-				second = def%3600%60;
-				price = def*10; 
-				pre_price = delete_node.getPrice();
-				remain_price = pre_price - price;
-				Dnode Prev = delete_node.getBefore();
-				Dnode Next = delete_node.getNext();
-				Prev.setNext(Next);
-				Next.setBefore(Prev);
-				if (remain_price < 0) {
+		Dnode delete_node = header.getNext(); // 머리의 다음노드
+		time = Calendar.getInstance(); // 타임 설정
+		while(delete_node != tailer) { // 노드가 꼬리가 아닐때, 안에 차들이 있을때
+			if(delete_node.car_number()==car_number) { // 입력한 차 번호의 차가 존재할때.
+				minute = time.get(Calendar.MINUTE) - delete_node.time_minute(); // 주차시간
+				second = time.get(Calendar.SECOND) - delete_node.time_second(); // 주차시간
+				def = minute*60+second; // 초로 환산
+				minute = def%3600/60; // 분으로 환산
+				second = def%3600%60; // 초로 환산
+				price = def*10; // 1초에 10원
+				pre_price = delete_node.getPrice(); // 선불
+				remain_price = pre_price - price; // 선불금액 - 이용한 금액
+				Dnode Prev = delete_node.getBefore(); // 뺄 자동차의 압차
+				Dnode Next = delete_node.getNext(); // 뺄 자동차의 뒷차
+				Prev.setNext(Next); // 앞차의 다음을 뒷차로 하겠다.
+				Next.setBefore(Prev); // 뒷차의 앞을 앞차로 하겠다.
+				if (remain_price < 0) { // 선불 요금보다 사용한 금액이 더 많을때
 					return "이용시간은 "+ minute + "분 " + second + "초 입니다.\n" +
 							"요금은 " + price + "원 입니다.\n" +
 							"추가로 내실 금액은 " + -remain_price + "원 입니다.\n" +	
 							"저희 주차장을 이용해 주셔서 감사합니다.";
-				} else {
+				} else { // 선불 요금이 사용한 금액보다 많을때
 					return "이용시간은 "+ minute + "분 " + second + "초 입니다.\n" +
 							"요금은 " + price + "원 입니다.\n" +
 							"돌려 받으 실 금액은 " + remain_price + "원 입니다.\n" +	
 							"저희 주차장을 이용해 주셔서 감사합니다.";
 				}
 			}
-			delete_node=delete_node.getNext();
+			delete_node=delete_node.getNext(); // 차를 찾지 못하면 다음 섹터로 찾는것 ex) 1번섹터에 업으면 2번섹터로
 		}
-		return null;
+		 return null;
 	}
 }
 }}}
