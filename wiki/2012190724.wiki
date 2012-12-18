@@ -41,6 +41,25 @@ System.out.println("No more bottles of beer on the wall");
 
 {{{
 
+public class PhraseOMatic{
+   public static void main(String[]args){ //세 종류의 단어 목록을 만든다
+     String[]wordListOne={"monotonic","corollary "};
+     String[]wordListTwo={"jerk","secant"};
+     String[]wordListThree={"perimeter","mnemonic"};
+
+     int oneLength=wordListOne.length;
+     int twoLength=wordListTwo.length;
+     int threeLength=wordListThree.length;//난수 발생
+
+     int rand1=(int) (Math.random()*oneLength);
+     int rand2=(int) (Math.random()*twoLength);
+     int rand3=(int) (Math.random()*threeLength);
+     String phrase=wordListOne[rand1]+""+wordListTwo[rand2]+""+wordListThree[rand3];//구문 출력
+
+System.out.println("What we need is a"+phrase); 
+}
+}
+
 }}}
 
 *52p 집중토론* _요약_
@@ -53,43 +72,43 @@ System.out.println("No more bottles of beer on the wall");
 {{{ 
 A
 class Exercise1b {
-public static void main(Strinc [] args) {
-int x = 1;
-while ( x < 10 ) {
-X = X+1;
-if (x > 3) {
-System.out.println("big x");
-}
-}
-}
+  public static void main(Strinc [] args) {
+   int x = 1;
+   while ( x < 10 ) {
+    X = X+1;
+     if (x > 3) {
+       System.out.println("big x");
+     }
+   }
+  }
 }
 
 B
 Class Foo{
-public static void main(String [] args) {
-int x = 5;
-while ( x > 1){
-x = x -1;
-if(x<3){
-System.ot.println("small x");
-}
-}
-}
+   public static void main(String [] args) {
+    int x = 5;
+    while ( x > 1){
+     x = x -1;
+      if(x<3){
+        System.ot.println("small x");
+      }
+    }
+   }
 }
 
 C
 
 class Exercise1b {
-public static void main(String [] args){
+   public static void main(String [] args){
 
-int x = 5;
-while ( x > 1) {
-x = x - 1;
-if ( x < 3) {
-System.out.println("small x");
-}
-}
-}
+    int x = 5;
+    while ( x > 1) {
+      x = x - 1;
+      if ( x < 3) {
+        System.out.println("small x");
+      }
+    }
+   }
 }
 }}}
 
@@ -184,11 +203,11 @@ if(p1isRight|p2isRight|p3isRight|p4isRight){
       System.out.println("3번 선수:" + p3isRight);
       System.out.println("4번 선수:" + p4isRight);
       System.out.println("게임 끝.");
-     break;
+      break;
 }
 
-else{
-System.out.println("다시 시도해야 합니다."); 
+ else{
+   System.out.println("다시 시도해야 합니다."); 
      }
     }
   }
@@ -210,6 +229,7 @@ GuessGame game=new GuessGame();
 game.startGame();
   }
 }
+
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
@@ -219,17 +239,17 @@ game.startGame();
 A
 
 class TapeDeck{ // TapeDeck 클래스 생성
-boolean canRecord=false; // canRecord를 Boolean값으로 설정
-void playTape(){
-System.out.println("tape playing");
-}
-void recordTape(){
-System.out.println("tape recording");
-  }
+  boolean canRecord=false; // canRecord를 Boolean값으로 설정
+   void playTape(){
+    System.out.println("tape playing");
+   }
+   void recordTape(){
+    System.out.println("tape recording");
+   }
 }
 class TapeDeckTestDrive{ // TapeDeckTest 클래스 생성
 
-public static void main(String[]args){
+ public static void main(String[]args){
 
    TapeDeck t=new TapeDeck(); // 이름이 t인 객체 생성
      t.canRecord=true;
@@ -238,35 +258,35 @@ public static void main(String[]args){
    if(t.canRecord==true){
      t.recordTape();
    }
-}
+ }
 }
 
 B
 
 class DVDPlayer{
 
-boolean canRecord=false; // canRecord를 Boolean값으로 설정
+  boolean canRecord=false; // canRecord를 Boolean값으로 설정
 
-void recordDVD(){
-System.out.println("DVD recording");
-}
+    void recordDVD(){
+     System.out.println("DVD recording");
+    }
 
-void playDVD(){ 
-System.out.println("DVD playing");
-}
+    void playDVD(){ 
+      System.out.println("DVD playing");
+    }
 }
 
 class DVDPlayerTestDrive{
 
-public static void main(String[]args){
-   DVDPlayer d = new DVDPlayer();
-   d.canRecord=true;
-   d.playDVD();
+   public static void main(String[]args){
+     DVDPlayer d = new DVDPlayer();
+     d.canRecord=true;
+     d.playDVD();
 
-   if(d.canRecord==true){
-    d.recordDVD();
+       if(d.canRecord==true){
+        d.recordDVD();
+       }
    }
-}
 }
 
 }}}
@@ -284,47 +304,46 @@ public static void main(String[]args){
 {{{
 class Dog { 
 
-String name;
+ String name;
 
-public static void main(String[]args){ // Dog 객체를 만들고 접근합니다.
+   public static void main(String[]args){ // Dog 객체를 만들고 접근합니다.
 
-Dog dog1 = new Dog();
-dog1.bark();
-dog1.name="Bart";
+    Dog dog1 = new Dog();
+    dog1.bark();
+    dog1.name="Bart";
 
 //이번에는 Dog 배열을 만듭니다
-Dog[]myDogs=new Dog[5]; // 개를 5마리를 집어넣었습니다
-myDogs[0]=new Dog();
-myDogs[1]=new Dog();
-myDogs[2]=new Dog();
-myDogs[3]=new Dog();
-myDogs[4]= dog1;
-// 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+    Dog[]myDogs=new Dog[5]; // 개 5마리를 집어넣는다
+    myDogs[0]=new Dog();
+   myDogs[1]=new Dog();
+   myDogs[2]=new Dog();
+   myDogs[3]=new Dog();
+   myDogs[4]= dog1;
 
-myDogs[0].name="Fred";
-myDogs[1].name="Marge";
-myDogs[2].name="A";
-myDogs[3].name="B"; 
+   myDogs[0].name="Fred";
+   myDogs[1].name="Marge";
+   myDogs[2].name="A";
+   myDogs[3].name="B"; 
 
-System.out.print("마지막 개의 이름:");
-System.out.println(myDogs[4].name); 
+    System.out.print("마지막 개의 이름:");
+    System.out.println(myDogs[4].name); 
 // 순환문을 써서 배열에 있는 모든 개가 짖게 한다.
 
-int x=0;
-while(x<myDogs.length){
-myDogs[x].bark();
-x=x+1;
-  }
+   int x=0;
+   while(x<myDogs.length){
+    myDogs[x].bark();
+    x=x+1;
+   }
 }
 
 public void bark(){
   System.out.println(name + "이(가) 왈!하고 짖습니다.");
 }
 
-public void eat(){
-}
-public void chaseCat(){
-}
+ public void eat(){
+ }
+ public void chaseCat(){
+ }
 }
 
 }}}
@@ -343,25 +362,25 @@ String author;
 class BooksTestDrive {
  public static void main(String[]args){
 
-  Books[]myBooks=new Books[3];
-  int x=0;// Books 객체를 생성합니다.
+   Books[]myBooks=new Books[3];
+   int x=0;// Books 객체를 생성합니다.
 
-  myBooks[0]=new Books();
-  myBooks[1]=new Books();
-  myBooks[2]=new Books();// 객체들의 속성을 채워줍니다.
-  myBooks[0].title="The Grapes of Java";
-  myBooks[1].title="The Java Gatsby";
-  myBooks[2].title="The Java Cookbook";
-  myBooks[0].author="bob";
-  myBooks[1].author="sue";
-  myBooks[2].author="ian";
+   myBooks[0]=new Books();
+   myBooks[1]=new Books();
+   myBooks[2]=new Books();// 객체들의 속성을 채워줍니다.
+   myBooks[0].title="The Grapes of Java";
+   myBooks[1].title="The Java Gatsby";
+   myBooks[2].title="The Java Cookbook";
+   myBooks[0].author="bob";
+   myBooks[1].author="sue";
+   myBooks[2].author="ian";
 
-while(x<3){
-   System.out.print(myBooks[x].title);
-   System.out.print("by");
-   System.out.println(myBooks[x].author);
-   x = x+1;
-}
+   while(x<3){
+     System.out.print(myBooks[x].title);
+     System.out.print("by");
+     System.out.println(myBooks[x].author);
+       x = x+1;
+   }
 }
 }
 
@@ -552,6 +571,70 @@ public class ClockTestDrive {
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+class Animal {
+   String picture;
+   Boolean food;
+   int hunger;
+   float boundaries;
+   float location;
+
+   void makeNoise() // 소리내기 메소드{ 
+   }
+   void eat() // 먹기 메소드{
+   }
+   void sleep() // 잠자기 메소드{
+   }
+   void roam() // 깨어있기 메소드{
+   }
+}
+
+class Feline extends Animal // Feline은 Animal을 상속{
+   void roam(){
+   }
+}
+
+class Lion extends Feline // Lion은 Feline을 상속{  
+   void makeNoise(){
+   }
+   void eat(){
+   }
+}
+class Cat extends Feline// Cat은 Feline을 상속{
+   void makeNoise(){
+   }
+   void eat(){
+   }
+}
+class Tiger extends Feline // Tiger는 Feline을 상속{
+   void makeNoise(){
+   }
+   void eat(){
+   }
+}
+
+class Hippo extends Animal // Hippo는 Animal을 상속{
+   void makeNoise(){
+   }
+   void eat(){
+   }
+}
+class Canine extends Animal // Canine은 Animal을 상속{
+   void roam(){
+   }
+}
+class Dog extends Canine // Dog는 Canine을 상속{
+   void makeNoise(){
+   }
+   void eat(){
+   }
+}
+
+class Wolf extends Canine // Wolf는 Canine을 상속{
+   void makeNoise(){
+   }
+   void eat(){
+   }
+}
 
 }}}
  
@@ -563,6 +646,39 @@ public class ClockTestDrive {
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class MonsterTestDrive {
+   public static void main(String[] args) {
+     Monster [] ma = new Monster[3]; // 배열 생성
+      ma[0] = new Vampire();
+      ma[1] = new Dragon();
+      ma[2] = new Monster();
+
+     for(int x = 0; x < 3; x++) {
+      ma[x].frighten(x);
+     }
+   }
+}
+
+class Monster {
+   boolean frighten(int d){
+     System.out.println("arrrgh");
+     return true;
+   }
+}
+
+class Vampire extends Monster //Monster를 상속받는다 {
+    boolean frighten (int x) { //오버라이드
+     System.out.println("a bite?");
+     return false;
+    }
+}
+
+class Dragon extends Monster//Monster를 상속받는다 {
+    boolean frighten (int degree) {
+     System.out.println("breath fire");
+     return true;
+    }
+}
 
 }}}
 
@@ -571,10 +687,10 @@ public class ClockTestDrive {
 *231p~ 심각한 다형성* _요약_
 
  * 인터페이스: 
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ * 다형성: 부모의 레퍼런스 변수가 자식을 가리키도록 하는 것. 상위클래스를 상속하는 여러가지 클래스들을 하나의 레퍼런스 변수로 가리키게 할 수 있다.
+ * 추상 클래스:상속을 위한 클래스다
+ * 추상 메소드:추상클래스가 아닌 클래스에 추상 메소드를 집어 넣을 수 없다.
+ * 다중 상속:한 클래스가 여러 부모 클래스에서 동시에 상속받는것
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
