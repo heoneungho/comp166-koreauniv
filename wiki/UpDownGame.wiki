@@ -580,7 +580,32 @@ boolean == true, false라고 되어있던거 가독성 좋게 수정
 
 = ScreenShots = 
 
+1. 실행 초기화면
 <img src = "http://comp166-koreauniv.googlecode.com/files/up1.png">
+
+2. 도움말 이후 시작화면
+<img src = "http://comp166-koreauniv.googlecode.com/files/up2.png">
+
+3. 게임 진행 화면 & 한 스테이지 클리어 화면
+<img src = "http://comp166-koreauniv.googlecode.com/files/up3.png">
+
+4. 찬스 사용 화면
+<img src = "http://comp166-koreauniv.googlecode.com/files/up4.png">
+
+5. 찬스 사용 이후 또 사용하려는 화면
+<img src = "http://comp166-koreauniv.googlecode.com/files/up5.png">
+
+6. 범위 밖 숫자 입력시
+<img src = "http://comp166-koreauniv.googlecode.com/files/up6.png">
+
+7. 숫자 아닌거 입력시 종료
+<img src = "http://comp166-koreauniv.googlecode.com/files/up7.png">
+
+8. 패배 장면
+<img src = "http://comp166-koreauniv.googlecode.com/files/up8.png">
+
+9. 모든 스테이지 클리어 = win 장면
+<img src = "http://comp166-koreauniv.googlecode.com/files/up9.png">
 
 
 = Downloads = 
