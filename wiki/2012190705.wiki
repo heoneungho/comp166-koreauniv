@@ -46,9 +46,9 @@ public class Beersong//클래스 선언
 Public class PhraseOMatic{
 	Public static void main(string[] args){
 
-	String[] wordListOne = { “messi","ronaldo","rooney","falcao","hulk"}
-	String[] wordListTwo = {“xavi","inesta","fabregas","deco","ji"}
-	String[] wordListThree = {“silva","pepe","carvalho","ramos","puyol"}
+	String[] wordListOne = { “messi","ronaldo","rooney","falcao","hulk"};
+	String[] wordListTwo = {“xavi","inesta","fabregas","deco","ji"};
+	String[] wordListThree = {“silva","pepe","carvalho","ramos","puyol"};
 
 	int oneLength = wordListOne.length;
 	int twoLength = wordListOne.length;
