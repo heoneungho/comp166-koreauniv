@@ -177,18 +177,18 @@ public class GuessGame{
           p4 = new Player();
 
           int guessp1 = 0; 
-            int guessp2 = 0;
+          int guessp2 = 0;
           int guessp3 = 0;
           int guessp4 = 0;
 
           boolean p1isRight = false; 
-            boolean p2isRight = false; 
-            boolean p3isRight = false;
+          boolean p2isRight = false; 
+          boolean p3isRight = false;
           boolean p4isRight = false;
 
           int targetNumber = (int) (Math.random() * 10);
                                                                
-            System.out.println("0 이상 9 이하의 숫자를 맞춰보세요.");
+          System.out.println("0 이상 9 이하의 숫자를 맞춰보세요.");
 
           while(true){
                 
@@ -240,12 +240,12 @@ public class GuessGame{
 
 public class Player
 {
-     int number = 0;
+      int number = 0;
  
       public void guess() {
           number = (int) (Math.random() * 10);
           System.out.println("찍은 숫자: " + number);
-     }
+      }
 }
 
 
@@ -255,7 +255,7 @@ public class GameLauncher{
         {
                GuessGame game = new GuessGame();
                game.startGame();
-          }
+         }
 }
 
 }}}
@@ -348,24 +348,23 @@ class Dog {
           dog1.name = "Bart";
 
           // 이번에는 Dog 배열을 만듭니다.
-          Dog[] myDogs = new Dog[3];
-          myDogs[0] = new Dog();
-          myDogs[1] = new Dog();
-          myDogs[2] = 
+          Dog[] myDogs = new Dog[7];
 
+          for(i = 0; i < 7; i++) 
+               mydog[i] = new Dog();
 
-          // 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
-          myDogs[0].name = "Fred";
-          myDogs[1].name = "Marge";
-
-          // myDogs[2]의 이름이 뭐였지?
-          System.out.print("마지막 개의 이름: ");
-          System.out.println(myDogs[2].name);
+          mydog[0].name = "red";
+          mydog[1].name = "orange";
+          mydog[2].name = "yellow";
+          mydog[3].name = "green";
+          mydog[4].name = "blue";
+          mydog[5].name = "nam";
+          mydog[6].name = "purple";        
 
           //이제 순환문을 사용하여 배열에 속해있는 모든 개가 짖도록 합시다.
           int x = 0;
-          while(x < myDogs.length) {
-               myDogs[x].bark();
+          while(x < mydog.length) {
+               mydog[x].bark();
                x = x + 1;
           }
      }
@@ -373,8 +372,6 @@ class Dog {
      public void bark() {
           System.out.println(name + "이(가) 왈! 하고 짖습니다.");
      }
-     public void eat() {  }
-     public void chaseCat() {  }
 }
 
 
@@ -391,18 +388,23 @@ class Books {
 }
 
 class BooksTestDrive {
+
      public static void main(String [] args) {
+
           Books [] myBooks = new Books[3];
           int x = 0;
           myBooks[0] = new Books();
           myBooks[1] = new Books();
           myBooks[2] = new Books();
+
           myBooks[0].title = "The Grapes of Java";
           myBooks[1].title = "The Java Gatsby";
           myBooks[2].title = "The Java Cookbook";
+
           myBooks[0].author = "bob";
           myBooks[1].author = "sue";
           myBooks[2].author = "ian";
+
           while ( x < 3) {
                System.out.print(myBooks[x].title);
                System.out.print(" by ");
@@ -413,8 +415,11 @@ class BooksTestDrive {
 }
 
 class Habbits{
+
      String name;
+
      public static void main (String [] args) {
+
            Hobbits [] h = new Hobbits[3];
                int z = -1;
                while( z < 2) {
@@ -438,26 +443,31 @@ class Habbits{
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트가 refc값을 계속하여 초기화한다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
+ * 캡슐화: 변수에 직접 접근하지 못하게 막는다. 
+ * 게터와 세터: private로 선언된 변수에 대해 간접적으로 접근 가능
  * 인스턴스 변수 vs 지역 변수:
- 
+
+ 인스턴스 변수 : 클래스 안에서 선언.
+ 지역 변수 : 메소드 안에서 선언. 
+
 *107p Dog* _실행_
 
 {{{
 
 class Dog {
+
      int size;
      String name;
  
      void bark() {
+
           if (size > 60) {
                System.out.println("Wooof!  Wooof!");
           } else if (size > 14) {
@@ -491,7 +501,9 @@ class DogTestDrive{
 {{{
 
 class XCopy {
+
      public static void main(String [] args) {
+
           int orig = 42;
           XCopy x = new XCopy();
           int y = x.go(orig);
@@ -505,17 +517,22 @@ class XCopy {
 } 
 
 class Clock{
+
      String time;
+
      void setTime(String t) {
           time = t;
      }
+
      String getTime() {
           return time;
      }
 }
 
 class ClockTestDrive{
+
      public static void main(String [] args) {
+
           Clock c = new Clock();
           c.setTime("1245");
           String tod = c.getTime();
@@ -530,30 +547,134 @@ class ClockTestDrive{
 
 *135p XP* _요약_ 익스트림 프로그래밍(XP, eXtreme Programming)이라는 방법은 
 
- * 익스트림 프로그래밍이란?
- 
+ * 익스트림 프로그래밍이란? 
+
+ - 켄트 백 등이 제안한 소프트웨어 개발 방법
+ - 비즈니스 상의 요구가 시시각각 변동이 심한 경우에 적합한 개발 방법
+ - '고객이 원하는 양질의 소프트웨어를 빠른 시간안에 전달하는 것'이 목적
+ -  실천방법
+   1. Whole team
+   2. Planning Game
+   3. Customer Tests
+   4. Small Releases
+   5. Simple Design
+   6. Test-driven Development
+   7. Pair Programming
+   8. Design Improvement
+   9. Continuous Integration
+   10. Collective Code Ownership
+   11. Coding Standard
+
+
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
 
-public class SimpleDotComTestDrive {
-     public static void main (String [] args) {
-          SimpleDotCom dot = new SimpleDotCom();
-          // SimpleDotCom클래스의 인스턴스를 만든다.
+import java.io.*;
+public class GameHelper{
 
-          int[] locations = {2, 3, 4};
-          dot.setLocationCells(locations);
-    
-          String userGuess = "2";
-          String result = dot.checkYourself(userGuess);
-          String testResult = "failed";
-          if (result.equals("hits")) {
-               testResult = "passed";
-          }
-          System.out.println(testresult);
+     public String getUserInput(String prompt){                 
+
+            String inputLine = null;
+          System.out.print(prompt + " ");
+
+          try{
+               BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+               inputLine = is.readLine();
+
+               if(inputLine.length() == 0) 
+                    return null;
+          } catch(IOException e){
+               System.out.println("IOException: " + e);
+           }
+                
+          return inputline;
      }
-} 
+}
 
+public String checkYourself(String stringGuess){
+
+     int guess = Integer.parseInt(stringGuess);         
+     String result = "miss";                   
+        
+     for(int cell : locationCells){
+          if (guess == cells){ 
+               result = "hit"; 
+                  numOfHits++;
+               break;                 }
+          }
+          if(numOfHits == locationCells.length){
+                result = "kill"; 
+          }
+        
+          System.out.println(result); 
+          return result; 
+}
+
+public class SimpleDotcomTestDrive{
+
+     public static void main(String[] args){
+          SimpelDotCom dot = new SimpleDotCom();
+
+          int[] locations = {2, 3, 4};        
+          dot.setLocationCells(locations); 
+          String userGuess = "2"; 
+          String result = dot.checkYourself(userGuess);
+     }
+}
+
+public class SimpleDotCom{
+
+     int[] locationCells;
+     int numOfHits = 0;
+        
+     public void setLocationCells(int[] locs){
+          locationCells = locs;
+     }
+        
+     public String checekYourself(String stringGuess){
+
+          int guess = Integer.parseInt(stringGuess);
+          String result = "miss";
+
+          for(int i = 0; i < locationCells.length;i++){
+               if (guess == locationCells[i]){
+                    result = "hit";
+                        numOfgits++;
+                }
+          }
+        
+        if(numOfHits == locationCells.length){ 
+              result = "kill"; 
+        }
+
+        System.out.println(result);
+        return result;
+}
+        
+public static void main(String[] args){
+
+     int numOfGuesses = 0;         
+     GameHelper helper = new GameHelper(); 
+
+     SimpleDotCom theDotCom = new SimpleDotCom(); 
+     int randomNum = (int)(Math.random() * 5); 
+     int[] locations = {randomNum, randomNum+1, randomNum+2};
+     theDotCom.setLocationCells(locations); 
+     boolean isAlive = true; 
+
+      while(isAlive == true){
+ 
+          String guess = helper.getUserInput("enter a number");
+          String result = theDotCom.checkYourself(guess); 
+          numOfGuesses++; 
+          
+          if(result.equals("kill")){ 
+               isAlive = false; 
+               System.out.println(numOfGuesses + " guesses");
+          }
+     }
+}
 
 }}}
 
@@ -563,8 +684,87 @@ public class SimpleDotComTestDrive {
 
 {{{
 
+import java.io.*;
 
+public class GameHelper {        
 
+     public String getUserInput (String prompt){
+         String inputLine = null;
+         System.out.print(prompt + " ");
+
+         try{
+              BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+              inputLine = is.readLine();
+              if (inputLine.length() == 0)
+                   return "a";
+         } catch(IOException e){
+              System.out.println("IOException: " + e);
+         }
+         
+          return inputLine;
+     }
+}
+
+public class SimpleDotComTestDrive {
+
+     public static void main(String[] args){
+          int numOfGuesses=0;
+          GameHelper helper = new GameHelper();
+          SimpleDotCom theDotCom = new SimpleDotCom();
+          
+          int randomNum = (int) (Math.random() * 5);
+          int[] locations = {randomNum, randomNum+1, randomNum+2};
+          boolean[] hitCells = new boolean[3];  
+          theDotCom.sethitCells(hitCells);
+          theDotCom.setLocationCells(locations); 
+            boolean isAlive = true;
+                                                
+          while(isAlive == true){
+               String guess = "a";
+
+               while(guess == "a"){
+                    guess = helper.getUserInput("enter a number");
+               }
+          
+          String result = theDotCom.checkYourself(guess);
+          numOfGuesses++;
+          if(result.equals("kill")){
+               isAlive = false;
+               System.out.println(numOfGuesses + "guesses");
+          }
+     }
+}
+
+}
+
+public class SimpleDotCom{
+        int[] locationCells;
+        boolean[] hitCells = new boolean[3];
+                int numOfHits = 0;
+                public void setLocationCells(int[] locs){
+                                locationCells = locs;
+                }
+                public void sethitCells(boolean[] shc){ //새로 만든 메소드로 불린 배열을 받아옵니다
+                        hitCells = shc;
+                }
+                public String checkYourself(String stringGuess){
+                        int guess = Integer.parseInt(stringGuess);
+                        String result = "miss";
+                        for(int i = 0; i < locationCells.length; i++){
+                                if(guess == locationCells[i] && hitCells[i]!=true){ //이미 맞춘 배열인지 확인합니다
+                                result = "hit";
+                                numOfHits++;
+                                hitCells[i] = true; // 맞춘 배열이기때문에 불린 값을 트루로 바꿔줍니다
+                                break;
+                        }
+                        }
+                        if (numOfHits == locationCells.length){
+                        result = "kill";
+                        }
+                        System.out.println(result);
+                        return result;
+                        }
+}
 
 }}}
 
