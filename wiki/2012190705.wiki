@@ -249,7 +249,7 @@ class TapeDeck {
  
 class TapeTestTestDrive { 
         public static void main(String[] args){ 
-                TapeDeck t = new TapeDeck();//TapeDeck객체 생성이 안되어 있으므로 추가해준다. 
+                TapeDeck t = new TapeDeck();//TapeDeck객체 생성이 안되어 있으므로 추가해주기. 
                 t.canRecord=true; 
                 t.playTape(); 
                  
@@ -267,7 +267,7 @@ class DVDPlayer {
         boolean canRecord=false; 
          
         void playDVD(){ 
-                System.out.println("DVD playing");//playDVD 메소드가 빠져있으므로 추가해 주어야한다. 
+                System.out.println("DVD playing");//playDVD 메소드가 빠져있으므로 추가해주기. 
         } 
          
         void recordDVD(){ 
