@@ -18,8 +18,11 @@
 <출력화면>
 
 주문한 피자의 수량
+
 피자의 가격
+
 토핑의 갯수 및 가격
+
 피자의 최종가격
 
 출처:http://www.roseindia.net/answers/viewqa/Java-Beginners/8741-Pizza-Order...html
@@ -50,6 +53,8 @@ public class Pizza {
  }
  }
 
+//S.R.F사이즈에 따라 다른 cost값 return
+
  PizzaSize pizzaSize;
 
  public int cntNumToppings() {
@@ -71,6 +76,8 @@ public class Pizza {
  }
  return toppings;
  }
+
+//토핑을 고르면 toppings의 숫자 올려줌
 
  public String getSize() {
  return size;
