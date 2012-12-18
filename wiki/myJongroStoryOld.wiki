@@ -1,6 +1,514 @@
 #summary myJongroStory의 패치가 진행됨에 따라 구버전의 자료를 누적시키는 곳입니다.
 #labels 2012190731임채원
 
+#summary 2012190731 임채원의 자바 프로젝트 홈페이지입니다.
+
+<wiki:toc max_depth="1" />
+
+= 프로젝트 설명 (0.20 기반) =
+
+기본적인 프로젝트의 작동 방법은 수업시간에 했던 DotCom게임처럼 (DotCome게임에서는) 한 턴마다 예상지점에 공격을 했듯, 이 프로젝트는 한 턴 대신 하루동안 자신의 행동력을 최대한 이용해서 카드를 사용합니다. 이를 통해 능력치를 향상시키고 결국 수능에서 좋은 점수를 받는 것을 목표로 합니다.<br>
+<br>
+다음은 주요 클래스에 대한 설명입니다. <br>
+<br>
+
+*a) PlayJongro.java* <br>
+
+<br>
+{{{
+
+package myJongroStory020;
+
+import java.util.Scanner;
+
+public class PlayJongro {
+	
+	public static void main(String[] args) {
+		
+		Status me = new Status();
+		Time time = new Time();
+		CardData card = new CardData();
+		
+		Card[] hand = new Card[5];
+		for(int i=0; i<5; i++)
+			hand[i] = new Card();
+		
+		Deck deck = new Deck();
+		// 기본으로 가지고 있는 카드
+		// (언수외 기본 + 운동 기본 + 복권)
+//		deck.korBasic.isExist = true;
+//		deck.korBasic.isSelected = true;
+//		deck.mthBasic.isExist = true;
+//		deck.mthBasic.isSelected = true;
+//		deck.engBasic.isExist = true;
+//		deck.engBasic.isSelected = true;
+//		deck.hpBasic.isExist = true;
+//		deck.hpBasic.isSelected = true;
+//		deck.lottery.isExist = true;
+//		deck.lottery.isSelected = true;
+		
+		// 1등급, 2등급, 3등급 카드 갯수
+		int GRADE_1 = 4;
+		int GRADE_2 = 4;
+		int GRADE_3 = 5;
+		
+		
+		System.out.println("My Jongro Story를 플레이 해주셔서 감사합니다!");
+		System.out.println("게임을 시작합니다!");
+		System.out.println("자세한 사항은 http://code.google.com/p/comp166-koreauniv/wiki/myJongroStory를 참조하세요.");
+		
+		// 4월 (4일[月]~30일) 
+		while(time.month == 4) {
+			// 카드를 새로 지급 받는다. takeCard
+			for(int i=0; i<5; i++) {
+				int randvalue = (int)(Math.random()*100)+1; // 1~50: 1등급, 51~85: 2등급, 86~100: 3등급
+				if(randvalue <= 50) {
+					int randkind = (int)(Math.random()*GRADE_1)+1;
+					hand[i] = cardSelection(1, randkind);
+					// 1등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 85) {
+					int randkind = (int)(Math.random()*GRADE_2)+1;
+					hand[i] = cardSelection(2, randkind);
+					// 2등급 카드를 랜덤하게 받는다.
+				} else if (randvalue <= 100) {
+					int randkind = (int)(Math.random()*GRADE_3)+1;
+					hand[i] = cardSelection(3, randkind);
+					// 3등급 카드를 랜덤하게 받는다.
+				} 
+			} // for 끝
+			
+			// 지급된 카드를 보여준다. (반복) showCard
+			int selectHand;
+			do {
+				System.out.println(time.month + "/" + time.day + " 당신의 패입니다.");
+				if(!hand[0].isUsed)
+					System.out.println("1: " + hand[0].name);
+				if(!hand[1].isUsed)
+					System.out.println("2: " + hand[1].name);
+				if(!hand[2].isUsed)
+					System.out.println("3: " + hand[2].name);
+				if(!hand[3].isUsed)
+					System.out.println("4: " + hand[3].name);
+				if(!hand[4].isUsed)
+					System.out.println("5: " + hand[4].name);
+				System.out.println("0: 집에 간다(턴을 끝낸다)" );
+				// 카드를 사용한다. (반복) useCard
+				System.out.println("명령을 내려주세요.");
+				Scanner sc = new Scanner(System.in);
+				selectHand = sc.nextInt();
+				switch (selectHand) {
+					case 1: useCard(hand[0], me);
+							hand[0].isUsed = true;
+							break;
+					case 2: useCard(hand[1], me);
+							hand[1].isUsed = true;
+							break;
+					case 3: useCard(hand[2], me);
+							hand[2].isUsed = true;
+							break;
+					case 4: useCard(hand[3], me);
+							hand[3].isUsed = true;
+							break;
+					case 5: useCard(hand[4], me);
+							hand[4].isUsed = true;
+							break;
+					case 0: // 턴을 넘긴다.
+				} // switch 끝
+			} while ( !( selectHand == 0) );
+			
+			if (time.dow == 7) { // 일요일
+				// 새로운 카드를 덱에 추가할 수 있다. buyCard v0.3에 구현
+				// 덱의 구성 카드를 바꿀 수 있다. changeCard v0.3에 구현
+			me.money += 100000;
+			}
+			// 마지막 목요일에는 모의고사를 친다. // prepareTest v0.3에 구현
+			
+			// 하루를 마무리 endTime 
+			endTime(time);
+			
+			me.hp = me.hp_MAX; // 행동력 회복
+		}
+		
+		// 5월
+		while(time.month == 5) {
+		}
+		
+		// 6월
+		while(time.month == 6) {
+		}
+		
+		// 7월
+		while(time.month == 7) {
+		}
+		
+		// 8월
+		while(time.month == 8) {
+		}
+		
+		// 9월
+		while(time.month == 9) {
+		}
+		
+		// 10월
+		while(time.month == 10) {
+		}
+		
+		// 11월
+		while(time.month == 11) {
+		}
+		
+		// 엔딩
+		
+	} // main 끝
+	
+	void takeCard () {   // 카드를 새로 지급 받는다.
+		///////// 패에 든 카드는 무슨 변수를 써야하지???
+	} // takeCard 끝
+	
+	static Card cardSelection (int GRADE, int randkind) {
+		switch(GRADE) {
+			case 1: switch(randkind) {
+						case 1: return Deck.korBasic; 
+						case 2: return Deck.mthBasic; 
+						case 3: return Deck.engBasic; 
+						case 4: return Deck.hpBasic;
+			} // GRADE == 1 ends
+			case 2: switch(randkind) {
+						case 1: return Deck.korNormal;
+						case 2: return Deck.mthNormal;
+						case 3: return Deck.engNormal;
+						case 4: return Deck.hpNormal;
+			} // GRADE == 2 ends
+			case 3: switch(randkind) {
+						case 1: return Deck.korMaster;
+						case 2: return Deck.mthMaster;
+						case 3: return Deck.engMaster;
+						case 4: return Deck.hpMaster;
+						case 5: return Deck.lottery;
+			} // GRADE == 3 ends
+		}
+		return null;
+	}
+	
+	
+	
+	void showCard() {   // 지급된 카드를 보여준다.
+		
+	}
+	
+	static void useCard(Card hand, Status me) {   // 카드를 사용한다.
+		if (hand == Deck.korBasic)
+			CardData.korBasic(me);
+		if (hand == Deck.mthBasic)
+			CardData.mthBasic(me);
+		if (hand == Deck.engBasic)
+			CardData.engBasic(me);
+		if (hand == Deck.hpBasic)
+			CardData.hpBasic(me);
+
+		
+		if (hand == Deck.korNormal)
+			CardData.korNormal(me);
+		if (hand == Deck.mthNormal)
+			CardData.mthNormal(me);
+		if (hand == Deck.engNormal)
+			CardData.engNormal(me);
+		if (hand == Deck.hpNormal)
+			CardData.hpNormal(me);
+		
+		
+		if (hand == Deck.korMaster)
+			CardData.korMaster(me);
+		if (hand == Deck.mthMaster)
+			CardData.mthMaster(me);
+		if (hand == Deck.engMaster)
+			CardData.engMaster(me);
+		if (hand == Deck.hpMaster)
+			CardData.hpMaster(me);
+		if (hand == Deck.lottery)
+			CardData.lottery(me);
+	}
+	
+	void buyCard() {  // 새로운 카드를 덱에 추가할 수 있다.
+		
+	}
+	
+	void changeCard() {   // 덱의 구성 카드를 바꿀 수 있다.
+		
+	}
+	
+	void prepareTest() {  // 마지막 목요일에는 모의고사를 친다.
+		
+	}
+	
+	static void endTime(Time time) {
+		time.day++; 
+		time.dow++; 
+		if(time.day == 31) {
+			time.month++;
+		}
+		if(time.dow == 8) {
+			time.dow = 1;
+		}
+	}
+	
+	
+	
+} // class 끝
+
+
+
+
+}}}
+<br>
+이 클래스는 메인 메소드를 갖고 있습니다. 처음에 게임 소개글이 뜨고, DotCom 게임과 같이 반복문을 통해 플레이어가 한 턴 한 턴을 보낼 수 있게 합니다. <br>
+
+main(String[] args): 이 프로그램을 전반적으로 통제하고있는 메인함수입니다. <br>
+void takeCard(): 덱에서 카드를 랜덤하게 패로 옮깁니다. <br>
+void showCard(): 패로 들어온 카드를 보여줍니다. <br>
+void useCard(): 패에 들어온 카드를 택해서 사용하거나 하루를 넘깁니다. <br>
+void buyCard(): `v0.3에서 구현예정 새로운 카드를 덱에 추가합니다.` <br>
+void changeCard(): `v0.3에서 구현예정 덱의 카드 구성을 바꿉니다.` <br>
+void prepareTest(): `v0.3에서 구현예정 모의고사를 치룹니다.` <br>
+void endTime(): 하루가 끝나고 시간 관련 인스턴스 변수들을 다음 날로 처리 해줍니다. <br>
+<br>
+
+*b) Status.java <br>
+
+{{{
+
+package myJongroStory020;
+
+public class Status {
+	String name = "임채원";
+	public int kor = 100; // 언어
+	public int mth = 100; // 수리
+	public int eng = 100; // 외국어
+	
+	public int hp_MAX = 30; // 행동력 최대치
+	public int hp = 30; // 행동력
+	
+	public double money = 100000; // 자금
+	
+}
+
+}}}
+
+게임 내 주인공 캐릭터의 능력치와 자금 현황을 표기합니다. <br>
+
+*c) Time.java* <br>
+
+{{{
+
+package myJongroStory020;
+
+public class Time {
+	public int month = 4;
+	public int day = 4; // 4월 4일 (월요일)에 시작 11월 10일 (목요일)에 끝	
+	public int dow = 1; // 1 -> 월요일, 2 -> 화요일, ..., 7 -> 일요일 (Day of Week)
+
+}
+
+}}}
+
+0.10 버전의 Status에 있던 시간 관련 변수들을 따로 보관하게 했습니다. <br>
+가독성이 좋아졌습니다. <br>
+
+*d) CardData.java* <br>
+
+{{{
+
+package myJongroStory020;
+
+public class CardData {
+	// 각 카드의 능력치를 나타내는 class다.
+	
+	/* 언어, 수리, 외국어 기본적인 능력치를 올려주는 카드들 */
+	/* k1~3, m1~3, e1~3 (총 9 종류) */
+	
+	// k1. 언어 기본
+	public static void korBasic (Status me) {
+		me.kor += 10;
+		me.hp -= 15;
+	}
+	
+	// k2. 언어 보충
+	public static void korNormal (Status me) {
+		me.kor += (int)(Math.random()*16)+15;
+		me.hp -= 30;
+	}
+	
+	// k3. 언어 심화
+	public static void korMaster (Status me) {
+		me.kor += (int)(Math.random()*51)+50;
+		me.hp -= 50;
+	}
+	
+	// m1. 수리 기본
+	public static void mthBasic (Status me) {
+		me.mth += 10;
+		me.hp -= 15;
+	}
+	
+	// m2. 수리 보충
+	public static void mthNormal (Status me) {
+		me.mth += (int)(Math.random()*16)+15;
+		me.hp -= 30;
+	}
+	
+	// m3. 수리 심화
+	public static void mthMaster (Status me) {
+		me.mth += (int)(Math.random()*51)+50;
+		me.hp -= 50;
+	}
+	
+	// e1. 외국어 기본
+	public static void engBasic (Status me) {
+		me.eng += 10;
+		me.hp -= 15;
+	}
+	
+	// e2. 외국어 보충
+	public static void engNormal (Status me) {
+		me.eng += (int)(Math.random()*16)+15;
+		me.hp -= 30;
+	}
+	
+	// e3. 외국어 심화
+	public static void engMaster (Status me) {
+		me.eng += (int)(Math.random()*51)+50;
+		me.hp -= 50;
+	}
+
+	/* 다른 능력치에 관여하는 카드들 */
+	/* */
+	
+	// h1. 운동 기본
+	public static void hpBasic (Status me) {
+		me.hp -= 30;
+		me.hp_MAX += (int)(Math.random()*6);
+	}
+	
+	// h2. 운동 보충
+	public static void hpNormal (Status me) {
+		me.hp -= 50;
+		me.hp_MAX += (int)(Math.random()*6)+10;
+	}
+	
+	// h3. 운동 심화
+	public static void hpMaster (Status me) {
+		me.hp -= 100;
+		me.hp_MAX += (int)(Math.random()*16)+15;
+	}
+	
+	// s1. 복권 구입
+	public static void lottery (Status me) {
+		me.money -= 5000;
+		int randomforlottery = (int)(Math.random()*5);
+		switch(randomforlottery) {
+			case 0: me.money += 0; break;
+			case 1: me.money += 5000; break;
+			case 2: me.money += 30000; break;
+			case 3: me.money += 100000; break;
+			case 4: me.money += 1000000; break;
+		} // switch 끝
+	}
+	
+} // end class
+
+
+}}}
+
+0.20 버전에서 새로 추가된 클래스 입니다. <br>
+0.20 버전의 카드 시스템에 사용될 카드들의 효과를 모아 놓은 클래스입니다. <br>
+
+*e) Card.java* <br>
+
+{{{
+
+package myJongroStory020;
+
+class Card {
+	boolean isExist = false; // 덱에 있는가?
+	boolean isSelected = false; // 패로 나올수 있는가?
+	boolean isUsed = false; // 패에서 쓰인 카드인가?
+	int value; // 1등급, 2등급, 3등급 (높을수록좋다)
+	int cardnum; // 카드의 번호
+	String name = new String();
+}
+
+}}}
+
+카드 한 장 한 장의 정보를 담을 클래스입니다. 카드 자체의 능력을 제외하고는 모든 카드의 정보를 담습니다. <br>
+
+*f) Deck.java* <br>
+
+{{{
+package myJongroStory020;
+
+class Deck{
+	
+	// 1등급
+	Card korBasic;
+	Card mthBasic;
+	Card engBasic;
+	Card hpBasic;
+	// 4개
+	
+	
+	// 2등급
+	Card korNormal;
+	Card mthNormal;
+	Card engNormal;
+	Card hpNormal;
+	// 4개
+	
+	
+	// 3등급
+	Card korMaster;
+	Card mthMaster;
+	Card engMaster;
+	Card hpMaster;
+	Card lottery;
+	// 5개
+
+
+	
+
+}
+
+}}}
+
+위의 Card 클래스와 연계되어 있으며 카드들의 종류를 보여줍니다. <br>
+
+= 패치노트 =
+
+*v 0.20*
+
+0.10 버전을 구현하려고 했으나, 게임이 단순히 능력치만 올리는 루즈한 게임이 될 것으로 예상되어 게임의 큰 틀은 유지하되, 진행 방법을 조금 더 흥미롭게 하기 위해서 하루하루 행동력을 이용하는 방법을 바꿈. <br>
+(일주일 모두 거의 똑같은 패턴의 방법을 바꾸고 마치 카드놀이를 하듯 할 수 있는 행동을 랜덤하게 설정하고 고를 수 있는 것도 제한적으로 하려고 함) <br>
+<br>
+○ '0.10 버전에서 구현하려고 했던 것들을 다시 새로운 시스템에 맞춰 구현' <br>
+○ 'GameMenu 클래스의 필요성이 사려져서 삭제' <br>
+○ 'Time 클래스 추가 (Status의 시간 관련 변수를 따로 처리)' <br>
+○ 'CardData 클래스 추가 (새로운 카드 시스템 관련 클래스)' <br>
+○ 'Card 클래스 추가' <br>
+○ 'Deck 클래스 추가' <br>
+
+*v 0.10*
+
+가장 초기버전인 0.10 버전에서는 <br>
+<br> 
+○ '하루하루 행동력 최대로 올린 다음 하루를 시작' <br>
+○ '행동을 하면 행동력을 감소' <br>
+○ '특정 행동을 하면 특정 능력치가 증가 혹은 감소' <br>
+○ '11월 10일이 되면 게임을 종료' <br>
+○ GUI 기반이 아닌 단순히 입력을 통해 옛날의 머드게임과 같은 버전을 먼저 만드는 것을 목표로 함 <br>
+<br>
+을 구현 시키는 것이 목표입니다. <br>
+
+
+
 = 프로젝트 설명 (0.10 기반) =
 
 기본적인 프로젝트의 작동 방법은 수업시간에 했던 DotCom게임처럼 (DotCome게임에서는) 한 턴마다 예상지점에 공격을 했듯, 이 프로젝트는 한 턴 대신 하루, 공격 대신에 행동력을 이용해 특정 행동을 하고 행동력을 모두 소모하면 하루를 넘겨 또 다른 하루를 갖는 것입니다. <br>
