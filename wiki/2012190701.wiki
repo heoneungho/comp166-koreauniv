@@ -2597,7 +2597,7 @@ public class BeatBox
             buildTrackAndStart();
         }
     } // 내부 클래스 끝
-
+      //복붙한다면 멍청이같이 이 주석을 똑같이 붙여넣겠지?-근영
     public class MyStopListener implements ActionListener 
     {
         public void actionPerformed(ActionEvent a) 
