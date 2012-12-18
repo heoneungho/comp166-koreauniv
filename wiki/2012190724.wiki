@@ -275,24 +275,132 @@ public static void main(String[]args){
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 변수는 크게 원시변수와 레퍼런스 변수로 나눌 수 있다.
+   원시 변수에는 정수, 부우르 부동소수점 수와 같은 단순한 비트 패턴으로 나타낼 수 있는 값이 들어간다.
+   객체 레퍼런스에는 객체에 대한 레퍼런스가 들어간다
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog { 
+
+String name;
+
+public static void main(String[]args){ // Dog 객체를 만들고 접근합니다.
+
+Dog dog1 = new Dog();
+dog1.bark();
+dog1.name="Bart";
+
+//이번에는 Dog 배열을 만듭니다
+Dog[]myDogs=new Dog[5]; // 개를 5마리를 집어넣었습니다
+myDogs[0]=new Dog();
+myDogs[1]=new Dog();
+myDogs[2]=new Dog();
+myDogs[3]=new Dog();
+myDogs[4]= dog3;
+// 배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+
+myDogs[0].name="Fred";
+myDogs[1].name="Marge";
+myDogs[2].name="A";
+myDogs[3].name="B"; 
+myDogs[4].name="C";
+
+System.out.print("마지막 개의 이름:");
+System.out.println(myDogs[4].name); 
+// 순환문을 써서 배열에 있는 모든 개가 짖게 한다.
+
+int x=0;
+while(x<myDogs.length){
+myDogs[x].bark();
+x=x+1;
+  }
+}
+
+public void bark(){
+  System.out.println(name + "이(가) 왈!하고 짖습니다.");
+}
+
+public void eat(){
+}
+public void chaseCat(){
+}
+}
 
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+// Books 클래스를 생성합니다.
+class Books{
+  String title;
+String author;
+}
+
+class BooksTestDrive {
+ public static void main(String[]args){
+
+  Books[]myBooks=new Books[3];
+  int x=0;// Books 객체를 생성합니다.
+
+  myBooks[0]=new Books();
+  myBooks[1]=new Books();
+  myBooks[2]=new Books();// 객체들의 속성을 채워줍니다.
+  myBooks[0].title="The Grapes of Java";
+  myBooks[1].title="The Java Gatsby";
+  myBooks[2].title="The Java Cookbook";
+  myBooks[0].author="bob";
+  myBooks[1].author="sue";
+  myBooks[2].author="ian";
+
+while(x<3){
+   System.out.print(myBooks[x].title);
+   System.out.print("by");
+   System.out.println(myBooks[x].author);
+   x = x+1;
+}
+}
+}
+
+B
+
+// Hobbits 클래스를 생성합니다.
+class Hobbits {
+
+  String name;
+
+  public static void main (String [] args) {
+
+    Hobbits [] h = new Hobbits[3];
+    int z = 0; // 
+
+while (z<3){// 배열의 인덱스는 0부터 이므로 z<4가 아니고 z<3으로 바꾸고 z = z+1;의 위치를 바꿔주었다.
+ h[z] = new Hobbits(); //객체를 생성합니다.
+ h[z].name = "bilbo";
+ 
+ if (z==1) {
+   h[z].name = "frodo";
+}
+ if (z==2) {
+   h[z].name = "sam";
+}
+
+ System.out.print(h[z].name + " is a ");
+ System.out.println("good hobbit name");
+ z = z + 1; 
+}
+}}
 
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트는 while문이 돌때마다 새로운 객체를 레퍼런스변수에 대입해서 while문이 돌기 바로 직전 객체는 사라진다
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
