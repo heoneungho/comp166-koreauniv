@@ -106,18 +106,51 @@
 
 = 실행화면 =
 
-1. 시작화면, 왼쪽이 상황판 및 주차장 이미지, 오른쪽이 주차공간
+|| *시작화면* || : 왼쪽이 상황판 및 주차장 이미지, 오른쪽이 주차공간
  
 
-http://comp166-koreauniv.googlecode.com/files/lsh1.jpg
+http://comp166-koreauniv.googlecode.com/files/lshstart.jpg
 
-2. 주차할 차를 받는 과정. in 버튼 클릭시
+|| *in버튼* || 
 
-http://comp166-koreauniv.googlecode.com/files/lsh2.jpg
+1. in버튼 클릭시
 
-3. 주차종료, 상황판에 메세지 출력. out 버튼 동작 완료시
+http://comp166-koreauniv.googlecode.com/files/lshin1.jpg
 
-http://comp166-koreauniv.googlecode.com/files/lsh3.jpg
+2. in버튼 정상적인 차 번호 입력후
+
+http://comp166-koreauniv.googlecode.com/files/lshin2.jpg
+
+3. 기존에 있는 차량번호 입력시
+
+http://comp166-koreauniv.googlecode.com/files/lshin3.jpg
+
+4. 4자리가 아닌 차량번호를 입력했을 경우
+
+http://comp166-koreauniv.googlecode.com/files/lshin4.jpg
+
+5. in 버튼에서 정상적인 차량번호를 입력 후, 취소버튼을 누르면 바로 주차
+
+http://comp166-koreauniv.googlecode.com/files/lshin5.jpg
+
+6. 정상적으로 주차된 화면
+
+http://comp166-koreauniv.googlecode.com/files/lshin6.jpg
+
+|| *out버튼* ||
+
+1. out버튼을 눌렀을 때
+
+http://comp166-koreauniv.googlecode.com/files/lshout1.jpg
+
+2. 없는 차 번호를 입력했을 시
+
+http://comp166-koreauniv.googlecode.com/files/lshout2.jpg
+
+3. 정상적으로 차 번호를 입력했을 경우
+
+http://comp166-koreauniv.googlecode.com/files/lshout3.jpg
+
 
 --------------------
 
