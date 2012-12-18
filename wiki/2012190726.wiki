@@ -1127,17 +1127,137 @@ public class Dragon extends Monster {
 
 {{{
 
+package except;
+
+public class Try1 {
+
+        public static void main(String[] args) {
+                
+                public void takeRisk() throws BadException {
+                        if (abandonAllHope) {
+                                throw new BadException();
+                        }
+                }
+                
+                public void crossFingers() {
+                        try {
+                                anObject.takeRisk(); //예외가 발생 할 수 있는 행동
+                        } catch (BadException ex) {  //예외가 발생되면 catch 안에 있는걸 실행!
+                                System.out.println("Aaargh!");
+                                ex.printStackTrance();
+                        }
+                }
+                
+        }
+}
+
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
 
+package musicApp;
+
+import javax.sound.midi.*;
+
+public class MiniMiniMusicApp {
+
+                public static void main(String[] args) {
+                        MiniMiniMusicApp mini = new MiniMiniMusicApp(); //미니미니뮤직앱 생성
+                        mini.play(); //실행
+                } //main 메소드 끝
+                
+                public void play() {
+                        
+                        try {
+                                Sequencer player = MidiSystem.getSequencer(); //sequencer를 받아서 엽니다.
+                                player.open();
+                                
+                                Sequence seq = new Sequence(Sequence.PPQ, 4);
+                                
+                                
+                                Track track = seq.createTrack(); // sequencer에 track을 요청.
+                                
+                                ShortMessage a = new ShortMessage(); 
+                                a.setMessage(144, 1, 44, 100);
+                                MidiEvent noteOn = new MidiEvent(a, 1);
+                                track.add(noteOn);
+                                
+                                ShortMessage b = new ShortMessage();
+                                b.setMessage(128, 1, 44, 100);
+                                MidiEvent noteOff = new MidiEvent(b, 16);
+                                track.add(noteOff); //track에 MidiEvent를 집어넣습니다.
+                                
+                                player.setSequence(seq); // sequencer에 sequence를 보냅니다.
+                                
+                                player.start(); //sequencer의 start() 메소드 호출.
+                        
+                        } catch (Exception ex) {
+                                ex.printStackTrace();
+                        }
+
+                } // play 메소드 끝
+} // 클래스 
+
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+package musicApp2;
+
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine {
+
+                public static void main(String[] args) {
+                        MiniMusicCmdLine mini = new MiniMusicCmdLine(); 
+                        if (args.length < 2) {
+                                System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                        } else {
+                                int instrument = Integer.parseInt(args[0]); //악기 선택.
+                                int note = Integer.parseInt(args[1]); //음높이 선택.
+                                mini.play(instrument, note); //실행
+                        }
+                } // main 끝
+                
+                public void play(int instrument, int note) {
+                        
+                        try {
+                                
+                                Sequencer player = MidiSystem.getSequencer(); 
+                                player.open();
+                                Sequence seq = new Sequence(Sequence.PPQ, 4);
+                                Track track = seq.createTrack(); 
+                                
+                                MidiEvent event = null; //초기화.
+                                
+                                ShortMessage first = new ShortMessage();
+                                first.setMessage(192, 1, instrument, 0);
+                                MidiEvent changeInstrument = new MidiEvent(first,1);
+                                track.add(changeInstrument); //악기 변경.
+                                
+                                ShortMessage a = new ShortMessage(); 
+                                a.setMessage(144, 1, 44, 100);
+                                MidiEvent noteOn = new MidiEvent(a, 1);
+                                track.add(noteOn);
+                                
+                                ShortMessage b = new ShortMessage();
+                                b.setMessage(128, 1, 44, 100);
+                                MidiEvent noteOff = new MidiEvent(b, 16);
+                                track.add(noteOff);
+                                player.setSequence(seq); 
+                                player.start(); 
+                        
+                        } catch (Exception ex) {
+                                ex.printStackTrace();
+                        }
+
+                } // play 메소드 끝
+} // 클래스
 
 }}}
 
@@ -1209,11 +1329,160 @@ public class SimpleGui1B implements ActionListener { //인터페이스를 구현
 
 {{{
 
+package simpleGUI3;
+
+import javax.swing.*;
+import java.awt.*;
+
+class MyDrawPanel extends JPanel{
+
+        public void paintComponent (Graphics g) {
+
+                Graphics2D g2d = (Graphics2D) g;
+                
+                int red = (int) (Math.random() * 256);
+                int green = (int) (Math.random() * 256);
+                int blue = (int) (Math.random() * 256);
+                Color startColor = new Color(red, green, blue);
+                
+                red = (int) (Math.random() * 256);
+                green = (int) (Math.random() * 256);
+                blue = (int) (Math.random() * 256);
+                Color endColor = new Color(red, green, blue);
+                
+                GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor); // 시작점의 좌표와 색, 끝점의 좌표와 색 표시
+                g2d.setPaint(gradient);
+                g2d.fillOval(70,70,100,100); // 색
+        }
+}
+
+
+package SimpleGUI3;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3A implements ActionListener {
+
+        JFrame frame;
+        
+        public static void main(String[] args) {
+                SimpleGui3A gui = new SimpleGui3A();
+                gui.go();
+        }
+        
+        public void go() {
+                frame = new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+                JButton button = new JButton("Change colors");
+                button.addActionListener(this); //액션리스너 추가
+                
+                MyDrawPanel drawPanel = new MyDrawPanel();
+                
+                frame.getContentPane().add(BorderLayout.SOUTH, button);
+                frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+                frame.setSize(300,300);
+                frame.setVisible(true);
+        }
+        
+        public void actionPerformed (ActionEvent event) {
+                frame.repaint(); // 액션이벤트 작동(클릭)시 repaint함수 작동.
+        }       
+}
+
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+
+package SimpleGUI4;
+
+import javax.swing.*;
+import java.awt.*;
+
+class MyDrawPanel extends JPanel{
+
+        public void paintComponent (Graphics g) {
+
+                Graphics2D g2d = (Graphics2D) g;
+                
+                int red = (int) (Math.random() * 256);
+                int green = (int) (Math.random() * 256);
+                int blue = (int) (Math.random() * 256);
+                Color startColor = new Color(red, green, blue);
+                
+                red = (int) (Math.random() * 256);
+                green = (int) (Math.random() * 256);
+                blue = (int) (Math.random() * 256);
+                Color endColor = new Color(red, green, blue);
+                
+                GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor);
+                g2d.setPaint(gradient);
+                g2d.fillOval(70,70,100,100);
+        }
+}
+
+
+package SimpleGUI4;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class TwoButtons {
+        
+        JFrame frame;
+        JLabel label;
+        
+        public static void main(String[] args) {
+
+                TwoButtons gui = new TwoButtons ();
+                gui.go();
+
+        }
+        
+        public void go() {
+
+                frame = new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+                JButton labelButton = new JButton("Change Label"); //첫번째 버튼
+                labelButton.addActionListener(new LabelListener());
+                
+                JButton colorButton = new JButton("Change Circle"); //두번째 버튼
+                colorButton.addActionListener(new ColorListner());
+                
+                label = new JLabel("I'm a label");
+                MyDrawPanel drawPanel = new MyDrawPanel();
+                
+                frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+                frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+                frame.getContentPane().add(BorderLayout.EAST, labelButton);
+                frame.getContentPane().add(BorderLayout.WEST, label); //버튼과 라벨들을 배치한다.
+                
+                frame.setSize(300,300);
+                frame.setVisible(true);
+
+        }
+        
+        class LabelListener implements ActionListener { //첫번째 버튼 액션
+                public void actionPerformed(ActionEvent event) {
+                        label.setText("Ouch!");
+                }
+        }
+        
+        class ColorListner implements ActionListener { //두번째 버튼 액션
+                public void actionPerformed(ActionEvent event) {
+                        frame.repaint();
+                }
+        }
 
 }}}
 
@@ -1221,11 +1490,175 @@ public class SimpleGui1B implements ActionListener { //인터페이스를 구현
 
 {{{
 
+package animation;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation {
+
+    int x = 70;
+    int y = 70;
+
+    public static void main (String[] args) {
+
+       SimpleAnimation gui = new SimpleAnimation ();
+       gui.go();
+   }
+
+   public void go() {
+
+       JFrame frame = new JFrame();
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+       MyDrawPanel drawPanel = new MyDrawPanel();       
+
+       frame.getContentPane().add(drawPanel);
+       frame.setSize(300,300);
+       frame.setVisible(true);
+
+
+       for (int i = 0; i < 130; i++) {
+          x++;
+          y++;
+          drawPanel.repaint();
+  
+          try {
+            Thread.sleep(50);
+          } catch(Exception ex) { }
+       }
+    
+   }//메소드 끝
+
+
+    class MyDrawPanel extends JPanel { //내부 클래스
+    
+       public void paintComponent(Graphics g) {
+
+          g.setColor(Color.white);
+          g.fillRect(0,0,this.getWidth(), this.getHeight());
+
+          g.setColor(Color.green);
+          g.fillOval(x,y,40,40);
+
+       } //내부 클래스 끝
+    }
+ 
+} 
+
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
 
 {{{
+
+package musicvideo;
+
+import javax.sound.midi.*;
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
+
+
+public class MiniMusicPlayer3 {
+
+    static JFrame f = new JFrame("My First Music Video");
+    static MyDrawPanel ml;
+
+    public static void main(String[] args) {
+           MiniMusicPlayer3 mini = new MiniMusicPlayer3();
+           mini.go();
+     }
+   
+     public  void setUpGui() {
+       ml = new MyDrawPanel();
+       f.setContentPane(ml);
+       f.setBounds(30,30, 300,300);
+       f.setVisible(true);
+    } //메소드 끝
+ 
+
+    public void go() {
+
+       setUpGui();
+
+       try {
+
+         Sequencer sequencer = MidiSystem.getSequencer();         
+         sequencer.open();
+        
+         sequencer.addControllerEventListener(ml, new int[] {127});
+         Sequence seq = new Sequence(Sequence.PPQ, 4);
+         Track track = seq.createTrack();     
+
+      int r = 0;
+      for (int i = 0; i < 60; i+= 4) {
+
+          r = (int) ((Math.random() * 50) + 1);
+         
+          track.add(makeEvent(144,1,r,100,i));
+        
+          track.add(makeEvent(176,1,127,0,i));
+         
+          track.add(makeEvent(128,1,r,100,i + 2));
+       }
+
+          sequencer.setSequence(seq);
+          sequencer.start();
+          sequencer.setTempoInBPM(120);
+
+      } catch (Exception ex) {ex.printStackTrace();}
+  } //go 메소드 끝
+
+
+   public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {
+          MidiEvent event = null;
+
+          try {
+            ShortMessage a = new ShortMessage();
+            a.setMessage(comd, chan, one, two);
+            event = new MidiEvent(a, tick);
+            
+          }catch(Exception e) { }
+          return event;
+       } //메소드 끝
+
+
+
+ class MyDrawPanel extends JPanel implements ControllerEventListener {
+      
+      boolean msg = false;
+
+      public void controlChange(ShortMessage event) {
+         msg = true;       
+         repaint();         
+      }
+
+      public void paintComponent(Graphics g) {
+       if (msg) {
+            
+         Graphics2D g2 = (Graphics2D) g;
+
+         int r = (int) (Math.random() * 250);
+         int gr = (int) (Math.random() * 250);
+         int b = (int) (Math.random() * 250);
+
+         g.setColor(new Color(r,gr,b));
+
+         int ht = (int) ((Math.random() * 120) + 10);
+         int width = (int) ((Math.random() * 120) + 10);
+
+         int x = (int) ((Math.random() * 40) + 10);
+         int y = (int) ((Math.random() * 40) + 10);
+         
+         g.fillRect(x,y,ht, width);
+         msg = false;
+
+       } // if문 끝
+     } // 메소드 끝
+   }  // 내부 클래스 끝
+
+} // 클래스 닫기
 
 }}}
 
