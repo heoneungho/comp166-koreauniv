@@ -20,10 +20,10 @@ Add your content here.  Format your content with:
 ◎ 메모를 통해 부가적인 추가사항 기재 가능
 
 ◎ 전화번호부 작성 후 저장 기능
+  
 
-
-
-
+  
+  
 
 = 실행 화면 스크린샷 =
 
