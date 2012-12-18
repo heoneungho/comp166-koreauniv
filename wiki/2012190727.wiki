@@ -684,87 +684,6 @@ public static void main(String[] args){
 
 {{{
 
-import java.io.*;
-
-public class GameHelper {        
-
-     public String getUserInput (String prompt){
-         String inputLine = null;
-         System.out.print(prompt + " ");
-
-         try{
-              BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
-              inputLine = is.readLine();
-              if (inputLine.length() == 0)
-                   return "a";
-         } catch(IOException e){
-              System.out.println("IOException: " + e);
-         }
-         
-          return inputLine;
-     }
-}
-
-public class SimpleDotComTestDrive {
-
-     public static void main(String[] args){
-          int numOfGuesses=0;
-          GameHelper helper = new GameHelper();
-          SimpleDotCom theDotCom = new SimpleDotCom();
-          
-          int randomNum = (int) (Math.random() * 5);
-          int[] locations = {randomNum, randomNum+1, randomNum+2};
-          boolean[] hitCells = new boolean[3];  
-          theDotCom.sethitCells(hitCells);
-          theDotCom.setLocationCells(locations); 
-            boolean isAlive = true;
-                                                
-          while(isAlive == true){
-               String guess = "a";
-
-               while(guess == "a"){
-                    guess = helper.getUserInput("enter a number");
-               }
-          
-          String result = theDotCom.checkYourself(guess);
-          numOfGuesses++;
-          if(result.equals("kill")){
-               isAlive = false;
-               System.out.println(numOfGuesses + "guesses");
-          }
-     }
-}
-
-}
-
-public class SimpleDotCom{
-        int[] locationCells;
-        boolean[] hitCells = new boolean[3];
-                int numOfHits = 0;
-                public void setLocationCells(int[] locs){
-                                locationCells = locs;
-                }
-                public void sethitCells(boolean[] shc){ //새로 만든 메소드로 불린 배열을 받아옵니다
-                        hitCells = shc;
-                }
-                public String checkYourself(String stringGuess){
-                        int guess = Integer.parseInt(stringGuess);
-                        String result = "miss";
-                        for(int i = 0; i < locationCells.length; i++){
-                                if(guess == locationCells[i] && hitCells[i]!=true){ //이미 맞춘 배열인지 확인합니다
-                                result = "hit";
-                                numOfHits++;
-                                hitCells[i] = true; // 맞춘 배열이기때문에 불린 값을 트루로 바꿔줍니다
-                                break;
-                        }
-                        }
-                        if (numOfHits == locationCells.length){
-                        result = "kill";
-                        }
-                        System.out.println(result);
-                        return result;
-                        }
-}
 
 }}}
 
@@ -796,6 +715,58 @@ public class SimpleDotCom{
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+
+class Animal {
+     String picture;
+     boolean food;
+     int hunger;
+     float boundaries;
+     float location;
+
+     void makeNoise(){}
+     void eat(boolean food){}
+     void sleep(){}
+     void roam(){}
+}
+
+class Feline extends Animal{
+     void roam();
+}
+
+class Lion extends Feline{
+     void makeNoise();
+     void eat(boolean food){}
+}
+
+class Tiger extends Feline{
+     void makeNoise();
+     void eat(boolean food);
+}
+
+class Cat extends Feline{
+     void makeNoise();
+     void eat(boolean food);
+}
+
+class Hippo extends Animal{
+        void makeNoise();
+        void eat(boolean food);
+}
+
+class Canine extends Animal{
+        void roam();
+}
+
+class Wolf extends Canine{
+        void makeNoise();
+        void eat(boolean food);
+}
+
+class Dog extends Canine{
+        void makeNoise();
+        void eat(boolean food);
+}
+
 
 }}}
  
@@ -938,7 +909,29 @@ class SimUnit {
 
 {{{
 
+import java.util.*;
 
+public class Calender {
+
+     public static void main(String[] args) {
+
+          Calendar c = Calendar.getInstance();
+          c.set(2004,0,7,15,40); // 현재 시각 설정하기
+            long day1 = c.getTimeInMillis(); // 밀리초 단위로 시간 표현
+            day1 += 1000*60*60;
+                
+          c.setTimeInMillis(day1); 
+          System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
+                
+          c.add(c.DATE, 35); // 35일 add
+          System.out.println("add 35 days " + c.getTime());
+                
+          c.roll(c.DATE, 35); 
+          System.out.println("roll 35 days " + c.getTime());
+                
+          c.set(c.DATE, 1); // 1로 날짜 설정
+     }
+}
 
 }}}
 
@@ -1286,6 +1279,7 @@ public class SimpleAnimation {
 
 
 
+
 }}}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
@@ -1294,7 +1288,187 @@ public class SimpleAnimation {
 
 {{{
 
+import java.awt.*;
+import javax.swing.*;
+import javax.sound.midi.*;
+import java.util.*;
+import java.awt.event.*;
 
+public class BeatBox {
+
+     JPanel mainPanel;
+     ArrayList<JCheckBox> checkboxList;
+     Sequencer sequencer;
+     Sequencer sequence;
+     Track track;
+     JFrame theFrame;
+        
+     String[] instrumentNames = {"Bass Drum", "Closed Hi-Hat","Open Hi-Hat","Acoustic Snare","Crash Cymbal","Hand Clap", "Cowbell","Vibraslap","Low-mid Tom","High Agogo","Open Hi Conga"};
+
+     int[] instruments = {35,45,46,38,49,39,50,60,70,72,64,56,58,47,67,63};
+        
+     public static void main (String[] args) {
+          new BeatBox().buildGUI();
+     }
+        
+     public void buildGUI() {
+          theFrame = new JFrame("Cyber BeatBox");
+          theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          BorderLayout layout = new BorderLayout();
+          JPanel background = new JPanel(layout);
+          background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+                
+          checkboxList = new ArrayList<JCheckBox>();
+          Box buttonBox = new Box(BoxLayout.Y_AXIS);
+                
+          JButton start = new JButton("Start");
+          start.addActionListener(new MyStartListener());
+          buttonBox.add(start);
+                
+          JButton start = new JButton("Stop");
+          stop.addActionListener(new MyStopListener());
+          buttonBox.add(stop);
+                
+          JButton upTempo = new JButton("Tempo Up");
+          upTempo.addActionListener(new MyUpTempoListener());
+          buttonBox.add(upTempo);
+                
+          JButton downTempo = new JButton("Tempo Down");
+          downTempo.addActionListener(new MyDownTempoListener());
+          buttonBox.add(downTempo);
+                
+          Box nameBox = new Box(BoxLayout.Y_AXIS);
+          for(int i = 0; i< 16; i++) {
+               nameBox.add(new Label(instrumentNames[i]));
+          }
+                
+          background.add(BorderLayout.EAST,buttonBox);
+          background.add(BorderLayout.WEST,nameBox);
+                
+          theFrame.getContentPane().add(background);
+                
+          GridLayout grid = new GridLayout(16,16);
+          grid.setVgap(1);
+          grid.setHgap(2);
+          mainPanel = new JPanel(grid);
+          background.add(BorderLayout.CENTER,mainPanel);
+                
+          for(int i = 0; i < 256; i++) {
+               JCheckBox c = new JCheckBox();
+               c.setSelected(false);
+               checkboxList.add(c);
+               mainPanel.add(c);
+          }
+                
+          setUpMidi();
+                
+          theFrame.setBounds(50,50,300,300);
+          theFrame.pack();
+          theFrame.setVisible(true);
+     }
+        
+     public void setUpMidi() {
+
+          try {
+               sequencer = MidiSystem.getSequencer();
+               sequencer.open();
+               sequence = new Sequence(Sequence.PPQ,4);
+               track = sequence.createTrack();
+               sequencer.setTempoInBPM(120);
+                        
+          } catch(Exception e) {e.printStackTrace();}
+     }
+        
+     public void buildTrackAndStart() {
+
+          int[] trackList = null;
+                
+          sequence.deleteTrack(track);
+          track = sequence.createTrack();
+                
+          for(int i = 0; i< 16; i++) {
+               trackList = new int[16];
+                        
+               int key = instruments[i];
+                        
+                for(int j=0; j<16; j++) {
+
+                     JCheckBox jc = checkboxList.get(j+(16*i));
+                     if(jc.isSelected()) {
+                          trackList[j] = key;
+                     } else {
+                          trackList[j] = 0;
+                     }
+                }
+                        
+                makeTracks(trackList);
+                track.add(makeEvent(176,1,127,0,16));
+          }
+                
+          track.add(makeEvent(192,9,1,0,15));
+          try {
+               sequencer.setSequence(sequence);
+               sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
+               sequencer.start();
+               sequencer.setTempoInBPM(120);
+          } catch(Exception e) {e.printStackTrace();}
+     }
+        
+     public class MyStartListener implements ActionListener {
+
+          public void actionPerformed(ActionEvent a) {
+               buildTrackAndStart();
+          }
+     }
+        
+     public class MyStopListener implements ActionListener {
+
+          public void actionPerformed(ActionEvent a) {
+               sequencer.stop();
+          }
+     }
+        
+     public class MyUpTempoListener implements ActionListener {
+
+          public void actionPerformed(ActionEvent a) {
+
+               float tempoFactor = sequencer.getTempoFactor();
+               sequencer.setTempoFactor((factor)(tempoFactor * 1.03));
+          }
+     }
+        
+     public class MyDownTempoListener implements ActionListener {
+
+          public void actionPerformed(ActionEvent a) {
+
+               float tempoFactor = sequencer.getTempoFactor();
+               sequencer.setTempoFactor((float)(tempoFactor*.97));
+          }
+     }
+        
+     public void makeTracks(int[] list) {
+
+          for(int i=0; i<16; i++) {
+               int key = list[i];
+                        
+                    if(key !=0) {
+                         track.add(makeEvent(144,9,key,100,i));
+                         track.add(makeEvent(128,9,key,100,i+1));
+                    }
+          }
+     }
+        
+     public MidiEvent makeEvent(int comd,int chan,int one,int two, int tick) {
+
+      MidiEvent event = null;
+     try {
+          ShortMessage a = new ShortMessage();
+          a.setMessage(comd,chan,one,two);
+          event = new MidiEvent(a,tick);
+     } catch(Exception e) {e.printStackTrace();}
+     return event;
+     }
+}
 
 }}}
 
