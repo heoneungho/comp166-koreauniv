@@ -1010,7 +1010,22 @@ public class StatifcTests extends StaticSuper	{
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class TryCatch	{
+	public void takeRise() throws BadException	{ // BadException 이 던질 수있다는것을 외보에 알림
+		if(abandonAllHope)	{
+			throw new BadException(); //새로운 Exception 객체
+		}
+	}
 
+	public void vrossFingers()	{
+		try	{
+			anObject.takeRisk();
+			} catch (BadException ex)	{
+			System.out.println("Aaargh!");
+			ex.printStackTrace(); //스택 트레이스 출력
+		}
+	}
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
