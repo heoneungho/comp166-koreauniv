@@ -1232,4 +1232,108 @@ public class End extends JFrame {
 
 }}}
 
+1. Start
+
+어느 지점을 이용할 지 정합니다.
+
 http://comp166-koreauniv.googlecode.com/files/1.Start.jpg
+
+
+
+
+2.Age
+
+영화 나이대를 선택합니다.
+
+http://comp166-koreauniv.googlecode.com/files/2.Age.jpg
+
+
+
+
+3.OverNT
+
+18세 이상 영화입니다.
+
+http://comp166-koreauniv.googlecode.com/files/3.OverNT.jpg
+
+
+
+
+
+3-2.OverFif
+
+15세 이상 영화입니다.
+
+http://comp166-koreauniv.googlecode.com/files/3-3.OverFif.jpg
+
+
+
+
+
+
+3-3.OverTw
+
+12세 이상 영화입니다,
+
+http://comp166-koreauniv.googlecode.com/files/3-2.OverTw.jpg
+
+
+
+
+
+3-4.All
+
+전체 이용가 영화입니다.
+
+http://comp166-koreauniv.googlecode.com/files/3-4.All.jpg
+
+
+
+
+
+4.Time
+
+시간대를 선택합니다.
+
+http://comp166-koreauniv.googlecode.com/files/4.Time.jpg
+
+
+
+
+
+5.People
+
+인원수를 선택합니다.
+
+http://comp166-koreauniv.googlecode.com/files/5.People.jpg
+
+
+
+
+
+6.Date
+
+날짜를 선택합니다.
+
+http://comp166-koreauniv.googlecode.com/files/6.Date.jpg
+
+
+
+
+
+7.Seat
+
+인원수 만큼 좌석을 선택합니다.
+
+http://comp166-koreauniv.googlecode.com/files/7.Seat.jpg
+
+
+
+
+
+
+8.End
+
+종료합니다.
+
+http://comp166-koreauniv.googlecode.com/files/8.End.jpg
