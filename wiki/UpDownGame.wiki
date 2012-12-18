@@ -70,8 +70,6 @@ public class MainUpDown extends UpDownGame {
                 try {
                 	nu = sc.nextInt();
                 } catch (java.util.InputMismatchException ex) {
-                	System.out.println("");
-                	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
                 	err = true;
                 }
 
@@ -81,8 +79,6 @@ public class MainUpDown extends UpDownGame {
                         try {
                             nu = sc.nextInt();
                         } catch (java.util.InputMismatchException ex) {
-                        	System.out.println("");
-                        	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
                         	err = true;
                         }
 
@@ -104,8 +100,6 @@ public class MainUpDown extends UpDownGame {
                 	  try{
                 		  nu = sc.nextInt();
                 	  } catch (java.util.InputMismatchException ex) {
-                      	System.out.println("");
-                    	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
                     	err = true;
                 	  }
                   }
@@ -222,8 +216,6 @@ public class MainUpDown extends UpDownGame {
                 			try{
                 				con = sc.nextInt();
                 			} catch (java.util.InputMismatchException ex) {
-                				System.out.println("");
-                              	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
                             	err = true;
                 			}
                 			
@@ -259,6 +251,8 @@ public class MainUpDown extends UpDownGame {
                 } //if문 끝
                 
                 if(err) {
+    				System.out.println("");
+                  	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
             		System.out.println("!! 에러로 게임을 종료합니다. !!");
             	}
                 
@@ -288,8 +282,6 @@ public class GameHelper extends UpDownGame {
             Input = sc.nextInt();
         	
         } catch (java.util.InputMismatchException ex) {
-        	System.out.println("");
-        	System.out.println("숫자를 입력하라니까요 ㅡㅡ");
         	err = true;
         }
 
@@ -321,6 +313,7 @@ public class UpDownGame {
 	public static int stage = 1; //라운드는 1부터
 	public static boolean err = false;
 	
+
 }
 
 
@@ -556,7 +549,6 @@ public class Decide extends UpDownGame{
 	}
 	
 }
-
 
 
 }}}
