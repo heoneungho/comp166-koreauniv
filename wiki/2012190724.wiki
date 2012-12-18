@@ -532,6 +532,72 @@ public class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
+   int[] locationCells;//int 형 배열을 선언
+   int numOfHits = 0;//numOfHits를 0으로 초기화
+    public void setLocationCells(int [] locs){
+     locationCells = locs;
+   }
+
+  public String checkYourself(String stringGuess){
+    int guess = Integer.parseInt(stringGuess);string 타입의 수를 int 형으로 변환
+    String result = "miss";//기본값 miss로 선언
+    for(int i = 0 ;i < locationCells.length; i++){// 추측값 원소와 비교
+      if(guess == locationCells[i]){
+         result = "hit";
+         numOfHits++;
+        break;//반복문을 빠져나옵니다.
+      }
+    }
+    if(numOfHits == locationCells.length){
+     result = "kill";
+     }
+    System.out.println(result);
+    return result;
+ }
+}
+
+public class SimpleDotComGame {
+  public static void main(String[] args){
+
+   int numOfGuesses = 0;
+   GameHelper helper = new GameHelper();
+
+   SimpleDotCom theDotCom = new SimpleDotCom();
+   int randomNum = (int) (Math.random() * 5);
+
+   int[] locations = {randomNum, randomNum + 1,randomNum + 2};
+   theDotCom.setLocationCells(locations);
+   boolean isAlive = true;
+
+   while(isAlive == true){
+     String guess = helper.getUserInput("enter a number");
+     String result = theDotCom.checkYourself(guess);
+     numOfGuesses++;
+     if(result.equals("kill")){
+       isAlive = false;
+       System.out.println(numOfGuesses + " guesses"); 
+     }
+    }
+   }
+}
+import java.io.*;//가져오기를 선언해줍니다.System.in을 사용하기 위해서이다
+public class GameHelper{
+
+  public String getUserInput(String prompt){
+    String inputLine = null;
+    System.out.println(prompt + " ");
+    try{ // 예외처리를 한다
+     BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+     inputLine = is.readLine();
+     if(inputLine.length() == 0 )return null;
+    }
+    catch (IOException e){
+     System.out.println("IOException: " + e);
+    }
+    return inputLine;
+  }
+}
 
 }}}
 
