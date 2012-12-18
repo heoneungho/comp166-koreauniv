@@ -1254,7 +1254,7 @@ http://comp166-koreauniv.googlecode.com/files/2.Age.jpg
 
 18세 이상 영화입니다.
 
-http://comp166-koreauniv.googlecode.com/files/3.OverNT.jpg
+http://comp166-koreauniv.googlecode.com/files/3.OverET.jpg
 
 
 
@@ -1276,7 +1276,7 @@ http://comp166-koreauniv.googlecode.com/files/3-3.OverFif.jpg
 
 12세 이상 영화입니다,
 
-http://comp166-koreauniv.googlecode.com/files/3-2.OverTw.jpg
+http://comp166-koreauniv.googlecode.com/files/3-2.OverTwe.jpg
 
 
 
@@ -1286,7 +1286,7 @@ http://comp166-koreauniv.googlecode.com/files/3-2.OverTw.jpg
 
 전체 이용가 영화입니다.
 
-http://comp166-koreauniv.googlecode.com/files/3-4.All.jpg
+http://comp166-koreauniv.googlecode.com/files/3-4.Allp.jpg
 
 
 
