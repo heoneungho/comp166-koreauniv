@@ -8,7 +8,33 @@
 
 {{{
 
-ㅁㅁㅁ
+public class Beersong//클래스 선언
+  
+       public static void main(string[] args){//메인함수선선
+               //변수설정
+              int beerNum = 99;
+              string word = "bottles";
+
+              while(beerNum > 0){
+
+              if(beerNum == 1){//맥주병이 한개인 경우
+                  word = "bottle";
+              }//맥주병이 한개라도 있다면
+
+              System.out.println(beerNum + " " + word + "of beer on thw wall");
+              System.out.println(beerNum + " " + word + "of beer.");
+              System.out.println("Take one down.");
+              System.out.println("Pass it around.");
+              beerNum = beerNum - 1;
+
+              if (beerNum > 0){
+             System.out.println(beerNum + " " + word + "of beer on the wall");
+              }else{
+             System.out.println("No more bottles of beer on the wall");
+              }//else 문끝
+           }//while 순환문 끝
+       }//main 클래스끝
+}//클래스끝
 
 
 }}}
