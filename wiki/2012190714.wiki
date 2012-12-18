@@ -674,11 +674,178 @@ public class SimpleDotComTestDrive {
 
 {{{
 
+package DotCom1;
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)
+				return null;
+		}catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+
+public class SimpleDotCom1 {
+    int[] locationCells;
+    boolean[] hitCells; // 새로운 행렬 설정
+    int numOfHits = 0;
+    
+    public void setLocationCells(int[] locs) {
+    	locationCells = locs;
+    }
+    
+    public void setHitCells(boolean[] hits) {
+    	hitCells = hits;
+    }
+    
+    public String checkYourself (String stringGuess) {
+    	int guess = Integer.parseInt(stringGuess);
+    	String result = "miss";
+    	
+    	for(int i = 0; i < locationCells.length; i++) {
+    		if ((guess == locationCells[i])) {
+    			if (hitCells[i] == true)
+    				break; // 맞췄을 때 빠져나오기
+            	result = "hit";
+            	numOfHits++;
+            	hitCells[i] = true; // 맞았으면 true로 바뀜.
+            	break;
+            }
+    	}
+    	
+    	if (numOfHits == locationCells.length) {
+    		result = "kill";
+    	}
+    	
+    	System.out.println(result);
+    	
+    	return result;
+    }
+}
+
+
+public class SimpleDotCom1TestDrive {
+	public static void main(String[] args) {
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper(); 
+			
+		SimpleDotCom1 theDotCom1 = new SimpleDotCom1();
+		int randomNum = (int)(Math.random()*5);
+			
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		theDotCom1.setLocationCells(locations);
+		boolean[] hits = {false, false, false}; // 초기값 설정
+		theDotCom1.setHitCells(hits); // 새로운 배열 추가
+		boolean isAlive = true;
+			
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom1.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");
+			}
+		}
+	}
+}
+
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+
+package DotCom2;
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)
+				return null;
+		}catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+
+public class SimpleDotCom2 {
+    int[] locationCells;
+    int numOfHits = 0;
+    
+    public void setLocationCells(int[] locs) {
+    	locationCells = locs;
+    }
+    
+    public String checkYourself (String stringGuess) {
+    	int guess = Integer.parseInt(stringGuess);
+    	String result = "miss";
+    	
+    	for(int i = 0; i < locationCells.length; i++) {
+    		if ((guess == locationCells[i])) {
+            	result = "hit";
+            	numOfHits++;
+            	locationCells[i] = -1; // 값을 -1로 바꿈
+            	break;
+            }
+    	}
+    	
+    	if (numOfHits == locationCells.length) {
+    		result = "kill";
+    	}
+    	
+    	System.out.println(result);
+    	
+    	return result;
+    }
+}
+
+
+public class SimpleDotCom2TestDrive {
+	public static void main(String[] args) {
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper(); 
+			
+		SimpleDotCom2 theDotCom2 = new SimpleDotCom2();
+		int randomNum = (int)(Math.random()*5);
+			
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		theDotCom2.setLocationCells(locations);
+		boolean isAlive = true;
+			
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom2.checkYourself(guess);
+			numOfGuesses++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");
+			}
+		}
+	}
+}
 
 }}}
 
@@ -686,11 +853,93 @@ public class SimpleDotComTestDrive {
 
 {{{
 
+package DotCom3;
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)
+				return null;
+		}catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+
+import java.util.ArrayList;
+
+public class SimpleDotCom3 {
+	private ArrayList<String> locationCells;
+    
+    public void setLocationCells(ArrayList<String> loc) {
+            locationCells = loc;
+    }
+    
+    public String checkYourself (String userInput) {
+    	String result = "miss";
+    	int index = locationCells.indexOf(userInput);
+    	
+    	if (index >= 0) {
+    		locationCells.remove(index);
+    		if (locationCells.isEmpty()) {
+    			result = "kill";
+    		}else{
+    			result = "hit";
+    		}
+    	} 
+    	
+    	System.out.println(result);
+    	return result;
+    }
+}
+
+
+import java.util.ArrayList;
+
+public class SimpleDotCom3TestDrive {
+	public static void main(String[] args){
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper();
+                
+		SimpleDotCom3 theDotCom3 = new SimpleDotCom3();
+		int randomNum = (int) (Math.random() * 5);
+                
+		ArrayList<String> locations = new ArrayList();
+		locations.add(String.valueOf(randomNum));
+		locations.add(String.valueOf(randomNum+1));
+		locations.add(String.valueOf(randomNum+2));
+        theDotCom3.setLocationCells(locations);
+        boolean isAlive = true;
+                
+        while(isAlive == true) {
+        	String guess = helper.getUserInput("enter a number");
+        	String result = theDotCom3.checkYourself(guess);
+        	numOfGuesses++;
+        	if(result.equals("kill")) {
+        		isAlive = false;
+        		System.out.println(numOfGuesses + " guesses");
+        	}
+        }
+    }
+}
+
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
@@ -1321,12 +1570,144 @@ public class TwoButtons { // ActionListener를 구현하지 않음
 
 {{{
 
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation {
+	int x = 70;
+	int y = 70; // 메인 클래스에 원의 좌표 저장 위한 인스턴스 변수 두 개 생성
+	
+	public static void main(String[] args) {
+		SimpleAnimation gui = new SimpleAnimation();
+		gui.go();
+	}
+
+	public void go(){
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		MyDrawPanel drawPanel = new MyDrawPanel(); 
+		
+		frame.getContentPane().add(drawPanel);
+		frame.setSize(300, 300);
+		frame.setVisible(true);
+		
+		for(int i=0; i<130; i++){ // 130번 반복
+			x++;
+			y++; // x 와 y 좌표 증가
+			
+			drawPanel.repaint(); 
+			
+			try{
+				Thread.sleep(50); // 속도를 약간 줄임
+			}catch(Exception ex){}
+		}
+	} // go() 메소드 끝
+	
+	class MyDrawPanel extends JPanel{
+		public void paintComponent(Graphics g){
+			g.setColor(Color.green);
+			g.fillOval(x, y, 40, 40);
+		}
+	} // 내부 클래스 끝
+} // 외부 클래스 끝
 
 }}}
 
 *420p 뮤직 비디오* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
+
+public class MiniMusicPlayer3 {
+	static JFrame f = new JFrame("My First Music Video");
+	static MyDrawPanel m1;
+	
+	public static void main(String[] args) {
+		MiniMusicPlayer3 mini = new MiniMusicPlayer3();
+		mini.go();
+	} // 메소드 끝
+	
+	public void setUpGui(){
+		m1 = new MyDrawPanel();
+		f.setContentPane(m1);
+		f.setBounds(30, 30, 300, 300);
+		f.setVisible(true);
+	} // 메소드 끝
+	
+	public void go(){
+		setUpGui();
+		
+		try{ // 음악 재생 코드
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			sequencer.addControllerEventListener(m1, new int[] {127});
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			Track track = seq.createTrack();
+			
+			int r = 0;
+			
+			for(int i=0; i<60; i+=4){
+				r = (int)((Math.random()*50)+1);
+				track.add(makeEvent(144, 1, r, 100, i));
+				track.add(makeEvent(176, 1, 127, 0, i));
+				track.add(makeEvent(128, 1, r, 100, i+2));
+			} // 순환문 끝
+			
+			sequencer.setSequence(seq);
+			sequencer.start();
+			sequencer.setTempoInBPM(120);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	} // 메소드 끝
+	
+	public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
+		MidiEvent event = null;
+		
+		try{
+			ShortMessage a = new ShortMessage();
+			a.setMessage(comd, chan, one, two);
+			event = new MidiEvent(a, tick);
+		}catch(Exception e){}
+		
+		return event;
+	} // 메소드 끝
+	
+	class MyDrawPanel extends JPanel implements ControllerEventListener{
+		boolean msg = false;
+		
+		public void controlChange(ShortMessage event){
+			msg = true; // 이벤트 받았으므로
+			repaint();
+		}
+		
+		public void paintComponent(Graphics g){
+			if(msg){ // controlEvent때만 다시 그림
+				Graphics2D g2 = (Graphics2D) g;
+				
+				int r = (int) (Math.random()*250);
+				int gr = (int) (Math.random()*250);
+				int b = (int) (Math.random()*250);
+
+				g.setColor(new Color(r, gr, b));
+				
+				int ht = (int)((Math.random()*120)+10);
+				int width = (int)((Math.random()*120)+10);
+				
+				int x = (int)((Math.random()*40)+10);
+				int y = (int)((Math.random()*40)+10);
+
+				g.fillRect(x, y, ht, width);
+				msg = false;
+			} // if문 끝
+		} // 메소드 끝
+	} // 내부 클래스 끝
+} // 외부 클래스 끝
 
 }}}
 
@@ -1336,6 +1717,7 @@ public class TwoButtons { // ActionListener를 구현하지 않음
 *452p 비트박스 프로그램* _구현후 주석달기_
 
 {{{
+
 
 }}}
 
