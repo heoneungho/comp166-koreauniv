@@ -1181,7 +1181,7 @@ class DotCom
 	} // method 종료.
 } // class 종료.
 
-class DotComBust 
+public class DotComBust 
 {
 	// 사용할 변수를 선언하고 초기화 합니다.
 	private GameHelper helper;
