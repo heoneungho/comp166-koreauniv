@@ -452,4 +452,8 @@ class SellResultHandler implements ActionListener
 http://comp166-koreauniv.googlecode.com/files/bst1.png
 http://comp166-koreauniv.googlecode.com/files/bst2.png
 http://comp166-koreauniv.googlecode.com/files/bst3.png
+
+자바API문서를 참조하였습니다.
+http://docs.oracle.com/javase/7/docs/api/
+
 http://comp166-koreauniv.googlecode.com/files/BookStore.zip
