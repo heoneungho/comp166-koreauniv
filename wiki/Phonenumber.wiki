@@ -78,7 +78,7 @@ http://comp166-koreauniv.googlecode.com/files/4%EB%A9%94%EB%AA%A8%EB%A5%BC%20%EC
 http://comp166-koreauniv.googlecode.com/files/5%EC%B6%94%EA%B0%80.PNG
 
 
-== 3."전화번호 찾기" 버튼을 누루고 허능호를 찾기 했을 때 나타나는 화면입니다. ==
+== 3."전화번호 찾기" 버튼을 누르고 '허능호'를 찾기 했을 때 나타나는 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/6%EC%B0%BE%EA%B8%B0.PNG
 
 
@@ -88,12 +88,12 @@ http://comp166-koreauniv.googlecode.com/files/8%EB%A9%94%EB%AA%A8%EC%9E%A5%20%ED
 
 
 
-== 5."전화번호 삭제" 버튼을 눌러 이제막 저장했던 허능호에 관한 전화번호부를 삭제한 화면입니다. ==
+== 5."전화번호 삭제" 버튼을 눌러 이제막 저장했던 '허능호'에 관한 전화번호부를 삭제한 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/7%EC%82%AD%EC%A0%9C.PNG
 
 
 
-== 6.삭제한 이후 메모장에 허능호에 관한 내용이 삭제 된것을 확인해 본 화면입니다. ==
+== 6.삭제한 이후 메모장에 '허능호'에 관한 내용이 삭제 된것을 확인해 본 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/10%EC%82%AD%EC%A0%9C%ED%9B%84%EC%9D%98%EB%A9%94%EB%AA%A8%EC%9E%A5.PNG
 
 
