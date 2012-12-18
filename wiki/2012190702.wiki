@@ -1072,7 +1072,48 @@ public class MiniMiniMusicApp	{
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;	//미디패키지 불러오기
 
+public class MiniMusicCmdeLine()	{
+	public static void main(String[] args)	{
+		MiniMusicCmdLine mini = new MiniMusicCmdLine();
+		if(args.length < 2)
+			System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+		else	{
+			int instrument = Integer.parseInt(args[0]);
+			int note = Integer.parseInt(args[1]);
+			mini.play(instrument, note);
+		}
+	}
+
+	public void play(int instrument, int note)	{
+		try	{
+			Sequencer player = MidiSystem.getSequencer(); //sequencer를 받아서 연다
+			player.open();
+			Sequence seq = new Sequence(Sequence.PPQ, 4);
+			Track track = seq.createTrack();
+		
+			MidiEvent event = null;
+		
+			ShortMessage first = new ShortMessage(); //악기 바꾸기 이벤트!
+			first.setMessage(192, 1, instrument, 0);
+			MidiEvent changeInstrument = new MidiEvent(first, 1);
+			track.add(changeInstrument);
+
+			ShortMessage a = new ShortMessage(); //켜기 이벤트!!
+			a.setMessage(144, 1, note, 100);
+			MidiEvent noteOn = new MidiEvent(a, 1);
+			track.add(noteOn);
+
+			ShortMessage b = new ShortMessage(); //끄기 이벤트!!
+			b.setMessage(128, 1, note, 100);
+			MidiEvent noteOff = new MidiEvent(b, 16);
+			track.add(noteOff);
+			player.setSequence(seq);
+			player.start();
+		}	catch (Exception ex)	{ex.printStackTrace();}
+	}
+}
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
