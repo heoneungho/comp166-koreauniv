@@ -968,8 +968,6 @@ player.start();
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
-package soundApp2;
-
 import javax.sound.midi.*;
 
 public class MiniMusicCmdLine {
@@ -1020,9 +1018,24 @@ player.start(); // CD의 재생 버튼을 누르는 것과 비슷!
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
 
-*389p~ 첫번째 GUI:버튼* _구현후 주석달기_
-
 {{{
+
+import javax.swing.*;
+
+public class SimpleGui1{
+        public static void main(String []args){
+                JFrame frame = new JFrame(); // JFrame 생성
+                JButton button = new JButton("click me");  //JButton 생성
+
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // X버튼을 누르면 창이 종료된다.
+                frame.getContentPane().add(button); // 버튼을 추가
+
+                frame.setSize(300,300); // 프레임의 크기설정
+
+                frame.setVisible(true); // 프레임이 보이게된다.
+        }
+}
+
 
 }}}
 
@@ -1030,11 +1043,100 @@ player.start(); // CD의 재생 버튼을 누르는 것과 비슷!
 
 {{{
 
+import javax.swing.*;
+import java.awt.event.*; // Actionlistener와 이벤트가 들어있는 패키지를 사용
+
+public class SimpleGui1B implements ActionListener {
+        JButton button; // 버튼을 생성합니다. 
+
+        public static void main(String []args){
+                SimpleGui1B gui=new SimpleGui1B();
+                gui.go();
+
+        }
+
+        public void go(){
+                JFrame frame= new JFrame();//JFrame생성
+                button=new JButton("cliick me"); // JButton생성
+
+                button.addActionListener(this); // 버튼에 ActionListener추가
+
+                frame.getContentPane().add(button);//프레임에 버튼추가
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// x누르면 꺼지게 함
+                frame.setSize(300,300);//프레임크기설정
+                frame.setVisible(true);//프레임이 보이게함
+        }
+        public void actionPerformed(ActionEvent event){ // 버튼에 action이 실행될때 실행되는 메소드
+                button.setText("I've been clicked!");
+        }
+}
+
+
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener {
+        
+        JFrame frame;
+        
+        public static void main(String[] args) {
+                SimpleGui3C gui = new SimpleGui3C();
+                gui.go();//go 메소드 호출
+        }
+
+        public void go() {
+                frame = new JFrame();//JFrame 생성
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//X버튼 누르면 종료
+                
+                JButton button = new JButton("Change colors");//JButton 생성
+                button.addActionListener(this);//버튼에 ActionListener를 추가
+                
+                MyDrawPanel drawPanel = new MyDrawPanel();//JPanel 생성
+                
+                frame.getContentPane().add(BorderLayout.SOUTH,button);//버튼을 추가
+                frame.getContentPane().add(BorderLayout.CENTER,drawPanel);//프레임에 패널을 추가
+                frame.setSize(300,300);//프레임 크기 설정
+                frame.setVisible(true);//프레임이 보이게함
+        }
+        public void actionPerformed(ActionEvent event) {// 액션이 일어나면 실행되는코드
+                frame.repaint();
+        }
+}
+
+class MyDrawPanel extends JPanel
+{
+        public void paintComponent(Graphics g)
+        {
+                Graphics2D g2d = (Graphics2D) g;
+                
+                int red = (int) (Math.random() * 256);
+                int green = (int) (Math.random() * 256);
+                int blue = (int) (Math.random() * 256);
+                //RGB값 설정
+                
+                Color startColor = new Color(red,green,blue);//시작 컬러설정
+                
+                red = (int) (Math.random() * 256);
+                green = (int) (Math.random() * 256);
+                blue = (int) (Math.random() * 256);
+                //RGB값 설정
+                
+                Color endColor = new Color(red,green,blue);//마지막 컬러
+                
+                GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor);
+                g2d.setPaint(gradient);
+                g2d.fillOval(70,70,100,100);
+        }
+}
+
 
 }}}
 
@@ -1042,11 +1144,123 @@ player.start(); // CD의 재생 버튼을 누르는 것과 비슷!
 
 {{{
 
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class TwoButtons {
+
+        JFrame frame; 
+        JLabel label; 
+
+        public static void main(String args[]){
+                TwoButtons gui = new TwoButtons();
+                gui.go();
+        }
+
+        public void go(){
+                frame=new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                JButton labelButton = new JButton ("Change Label");//JButton생성
+         
+                labelButton.addActionListener(new LabelListener());//버튼에 ActionListener추가
+
+                JButton colorButton = new JButton ("Change Circle");//JButton생성
+              
+                colorButton.addActionListener(new ColorListener());//버튼에 ActionListener추가
+
+                label = new JLabel("I'm a lebel");//JLabel생성
+                MyDrawPanel drawPanel = new MyDrawPanel();
+
+                // 프레임에 버튼,패널,레이블을 추가
+                frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+                frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+                frame.getContentPane().add(BorderLayout.EAST, labelButton);
+                frame.getContentPane().add(BorderLayout.WEST, label);
+
+                frame.setSize(300,300);//프레임크기설정
+                frame.setVisible(true);//프레임이 보이게함
+        }
+
+        class LabelListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        label.setText("Ouch!"); 
+                }
+        } 
+
+        class ColorListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        frame.repaint(); 
+                }
+        } 
+}
+
+
 }}}
 
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation 
+{
+
+        int x=70;
+        int y=70;    
+        public static void main(String args[]){
+                SimpleAnimation gui=new SimpleAnimation();
+                gui.go();
+        }
+        
+        public void go()
+        {
+                JFrame frame=new JFrame();//JFrame생성
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//x를 누르면 꺼짐
+
+                MyDrawPanel drawPanel = new MyDrawPanel();
+
+                frame.getContentPane().add(drawPanel);//프레임에 패널추가
+                frame.setSize(300,300);//프레임크기설정
+                frame.setVisible(true);//프레임이보이게함
+
+                for(int i=0;i<300;i++){ // 반복
+
+                        x++;
+                        y++;
+                        
+                        drawPanel.repaint(); 
+
+                        try{
+                                Thread.sleep(50); 
+                        }catch(Exception ex)
+                         {
+
+                          }
+                }
+
+        } 
+
+       
+         class MyDrawPanel extends JPanel
+        {
+                public void paintComponent(Graphics g)
+                {
+                        g.setColor(Color.white);
+                        g.fillRect(0,0,this.getWidth(),this.getHeight());//하얀색으로 색칠함
+
+                        g.setColor(Color.green);
+                        g.fillOval(x, y, 40, 40); //초록색으로 색칠
+
+                }
+        } 
+} 
+
 
 }}}
 
@@ -1054,7 +1268,119 @@ player.start(); // CD의 재생 버튼을 누르는 것과 비슷!
 
 {{{
 
-}}}
+
+import javax.sound.midi.*;
+import javax.swing.*;
+import java.awt.*;
+
+public class MiniMusicPlayer3 
+{
+
+        static JFrame f = new JFrame("My First Music Video");//JFrame 생성
+        static MyDrawPanel m1;
+
+        public static void main(String [] args)
+        {
+                MiniMusicPlayer3 mini = new MiniMusicPlayer3();
+                mini.go();
+        }
+
+        public void setUpGui()
+        {
+                m1 = new MyDrawPanel();//패널 생성
+                f.setContentPane(m1);//프레임에 패널추가
+                f.setBounds(30, 30, 300, 300);//프레임 크기설정
+                f.setVisible(true);//프레임이 보이게한다
+        }
+
+        public void go()
+        {
+                setUpGui();//gui기본설정
+          
+                try{//음악틀기
+
+                        Sequencer sequencer = MidiSystem.getSequencer();
+                        sequencer.open();
+                        sequencer.addControllerEventListener(m1, new int[] {127});
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();
+
+                        int r = 0; 
+                        for(int i = 0; i < 60 ; i+=4)
+                        {
+
+                                r=(int)((Math.random()*50)+1);
+                                track.add(makeEvent(144,1,r,100,i));
+                                track.add(makeEvent(176,1,127,0,i));
+                                track.add(makeEvent(128,1,r,100,i+2));
+                        }
+
+                        sequencer.setSequence(seq);
+                        sequencer.start();
+                        sequencer.setTempoInBPM(120);
+                } 
+                
+                catch(Exception ex) 
+                {
+                        ex.printStackTrace();
+                }
+        }
+
+        public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick)
+        {
+                MidiEvent event = null;
+               
+                try{
+                        ShortMessage a = new ShortMessage();
+                        a. setMessage(comd,chan,one,two);
+                        event = new MidiEvent(a, tick);
+                }
+                catch(Exception e)
+                {
+                        
+                }
+                
+                return event;
+
+        }
+
+    
+        class MyDrawPanel extends JPanel implements ControllerEventListener
+        {
+                boolean msg = false;
+
+                public void controlChange(ShortMessage event)
+                {
+                        msg = true;
+                        repaint();//색 설정
+                }
+
+                public void paintComponent(Graphics g)
+                {
+                        if(msg)
+                        {
+
+                                @SuppressWarnings("unused")
+                                                                Graphics2D g2= (Graphics2D)g;
+
+                                int r = (int) (Math.random()*250);
+                                int gr=(int) (Math.random()*250);
+                                int b= (int ) (Math.random()*250);
+
+                                g.setColor(new Color(r,gr,b));
+
+                                int ht=(int) ((Math.random()*120)+10);
+                                int width=(int) ((Math.random()*120)+10);
+
+                                int x=(int) ((Math.random()*40)+10);
+                                int y=(int) ((Math.random()*40)+10);
+
+                                g.fillRect(x, y, ht, width);
+                                msg = false;
+                        }
+                }
+        }
+}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
 
