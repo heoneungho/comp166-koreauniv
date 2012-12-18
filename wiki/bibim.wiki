@@ -360,7 +360,7 @@ false 기에 선택되어 있지 않다. 이건 고객들이 확실하게 고르
 
                 button.addActionListener(this);
 
-/*setBounds(x좌표,y좌표,가로,세로)/*
+/*setBounds(x좌표,y좌표,가로,세로)*/
                 lab1.setBounds(50, 50, 200, 20); 
 
 //글씨의 위치는 (50,50) 그 모양은 가로=200, 세로=20 (200*20인 직사각형)
