@@ -5,7 +5,7 @@
 전화번호와 메모를 저장하고 찾아볼수 있는 전화번호관리 프로그램입니다.
 
 = Details =
-http://comp166-koreauniv.googlecode.com/files/1%EC%A0%84%EC%B2%B4.PNG
+
 Add your content here.  Format your content with:
 
  어느날 친구와 전화하다가 액정에 생일이 뜬 덕분에 미리 생일 축하한다고 말 했던 경험에서 착안해 전화번호와 상대의 중요한 기념일을 기록할 수 있는 프로그램을 만들 것입니다. 누구나 친한 친구나, 가족들의 생일을 깜빡해서 당황스러웠던 기억들이 있었을 것입니다. 이 프로그램은 그러한 상황을 방지 해주는데 효과적인 프로그램이 될것입니다. 또 이 프로그램은 일반 사람들 뿐만 아니라 서비스업종에 종사하는 분들께 더 유용할 수 있는데 고객의 생일과 같은 기념일을 저장할 수 있기 때문입니다. 고객과의 유대와 친밀성이 생명인 서비스업 종사자들에게는 필수적인 프로그램이 될것입니다. 또 이름 검색을 통해 정보를 찾을 수 있어 정보 접근을 용이하게 하였습니다.
@@ -25,7 +25,31 @@ Add your content here.  Format your content with:
 == 1.우선 전체 화면입니다. ==
 http://comp166-koreauniv.googlecode.com/files/1%EC%A0%84%EC%B2%B4.PNG
 
-2.추가 시키기
+== 2.추가 버튼을 눌렀을 때 나타나는 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/2%EC%9D%B4%EB%A6%84%EC%9D%84%20%EC%9E%85%EB%A0%A5%ED%95%98%EC%84%B8%EC%9A%94.PNG
+
+http://comp166-koreauniv.googlecode.com/files/3%EC%A0%84%ED%99%94%EB%B2%88%ED%98%B8%EB%A5%BC%20%EC%9E%85%EB%A0%A5%ED%95%98%EC%84%B8%EC%9A%94.PNG
+
+http://comp166-koreauniv.googlecode.com/files/4%EB%A9%94%EB%AA%A8%EB%A5%BC%20%EC%9E%85%EB%A0%A5%ED%95%98%EC%84%B8%EC%9A%94.PNG
+
+http://comp166-koreauniv.googlecode.com/files/5%EC%B6%94%EA%B0%80.PNG
+
+== 3.찾기 버튼을 누루고 허능호를 찾기 했을 때 나타나는 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/6%EC%B0%BE%EA%B8%B0.PNG
+
+== 4.현재상황을 저장하기를 누르고 나서 저장된 내용이 메모장에 있나 확인해 본 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/8%EB%A9%94%EB%AA%A8%EC%9E%A5%20%ED%99%94%EB%A9%B4.PNG
+
+== 5.저장한 허능호에 관한 전화번호부를 삭제한 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/7%EC%82%AD%EC%A0%9C.PNG
+
+== 6.삭제한 이후 메모장에 허능호에 관한 내용이 삭제 된것을 확인해 본 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/10%EC%82%AD%EC%A0%9C%ED%9B%84%EC%9D%98%EB%A9%94%EB%AA%A8%EC%9E%A5.PNG
+
+== 7.메뉴창의 X표를 눌렀을 때 '나가기' 버튼을 누루게 하기 위한 JOptionPane.showMessageDialog 창을 확인해 본 화면입니다. ==
+http://comp166-koreauniv.googlecode.com/files/9%20X%ED%91%9C%20%EB%88%8C%EB%A0%80%EC%9D%84%EB%95%8C.PNG
+
+
 
 = Code =
 
