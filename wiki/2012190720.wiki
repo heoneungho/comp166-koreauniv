@@ -727,17 +727,409 @@ public class GameHelper
 
 {{{
 
+import java.io.*;
+
+class GameHelper { 
+
+        public String getUserInput (String prompt){
+                String inputLine = null;
+                System.out.print(prompt + " ");
+
+                try{
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if (inputLine.length() == 0) return null;
+                } catch(IOException e){
+                        System.out.println("IOException: " + e);
+                }
+
+                return inputLine;
+        }
+
+}
+
+public class SimpleDotComTestDrive { 
+
+        public static void main(String[] args){
+
+
+                int numOfGuesses=0;
+
+                GameHelper helper = new GameHelper();
+
+                SimpleDotCom theDotCom = new SimpleDotCom();
+
+                int randomNum = (int) (Math.random() * 5);
+
+                int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+                theDotCom.setLocationCells(locations);
+
+                boolean isAlive = true;
+
+                while(isAlive == true){
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+                        if(result.equals("kill")){
+                                isAlive = false;
+                                System.out.println(numOfGuesses + "guesses");
+                        }
+
+                }
+        }
+
+}
+
+
+class SimpleDotCom { 
+
+        int[] locationCells;
+
+
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs){
+
+                locationCells = locs;
+        }
+
+        public String checkYourself(String stringGuess){
+
+                int guess = Integer.parseInt(stringGuess);
+
+                String result = "miss";
+
+                for(int i = 0; i < locationCells.length; i++){
+
+               
+                        if(guess == locationCells[i] && locationCells[i]!=-1){ 
+                                result = "hit";
+                                numOfHits++;
+                                locationCells[i]=-1; 
+                                break;
+
+                        }
+
+                }
+
+                if (numOfHits == locationCells.length){
+                        result = "kill";
+                }
+
+                System.out.println(result);
+                return result;
+
+        }
+
+} // 클래스 끝
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList; 
 
+public class DotCom
+{
+     private ArrayList<String> locationCells;
+     
+
+     public void setLocationCells(ArrayList<String>loc)
+     
+    {
+         locationCells = loc;
+     }
+ 
+     public String checkYourself(String userInput)
+     
+    {
+          String result = "miss";
+  
+          int index = locationCells.indexOf(userInput);
+          
+  
+          if(index >= 0)
+          {
+                locationCells.remove(userInput);
+                
+   
+              if(locationCells.isEmpty())
+              
+             {
+                   result = "Kill";
+             }
+             else
+             {
+                   result = "hit";
+              }        
+         }        
+         return result;
+    }        // 메소드 끝
+}         // 클래스 끝
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
+import java.io.*;
+import java.util.*;
+
+class GameHelper
+{
+        private static final String alphabet = "abcdefg";
+        private int gridLength = 7;
+        private int gridSize = 49;
+        private int [] grid = new int[gridSize];
+        private int comCount = 0;
+        public String getUserInput(String prompt) 
+                        throws IOException{
+                String inputLine = null;
+                System.out.print(prompt + " ");
+                try{
+                        BufferedReader is = new BufferedReader
+                                        (new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if (inputLine.length()==0)   return null;
+
+                }catch(IOException e) {
+                        System.out.println("OException: " + e);
+                }
+                return inputLine.toLowerCase();
+        }
+
+        public ArrayList<String>placeDotCom(int comSize)
+        {
+                ArrayList<String> alphaCells = new ArrayList<String>(); 
+                
+                String [] alphacoords = new String[comSize];
+                
+                String temp = null;
+                
+                int [] coords = new int[comSize];
+                
+                int attempts = 0;
+                
+                boolean success = false;
+                
+                int location = 0;
+                
+                comCount++;
+                
+                int incr = 1;
+                
+                if ((comCount % 2) == 1) 
+                {
+                        incr = gridLength;
+                }
+                while ( !success & attempts++ < 200) 
+                {
+                        location = (int) (Math.random() * gridSize);
+                   
+                        System.out.print("try" + location);
+                        int x = 0;
+                   
+                        success = true;
+                   
+                        while (success && x < comSize) 
+                        {
+                                if (grid[location] == 0) 
+
+                                {
+                                        coords[x++] = location;
+                   
+                                        location += incr;
+                   
+                                        if (location >= gridSize)
+                                        {
+                                                success = false;
+                                        }
+                                        if (x>0 & (location % gridLength == 0))
+                                        {
+                                                success = false;
+                                        }
+                                } else {
+                                        System.out.print("used "+location);
+                                        success = false;
+                                }
+                        }
+                }  
+                int x = 0;
+
+                int row = 0;  
+                int column = 0;
+                System.out.println(" |n");
+                while (x < comSize) 
+                {
+                        grid[coords[x]] = 1;
+
+                        row = (int) (coords[x] / gridLength);
+
+                        column = coords[x] % gridLength;
+
+                        temp = String.valueOf(alphabet.charAt(column));
+
+                        alphaCells.add(temp.concat
+                                        (Integer.toString(row))); 
+                        x++;
+                        System.out.print(" coord " + x + " = " + 
+                                        alphaCells.get(x-1));
+                }
+                System.out.println(" d2|n?");
+                return alphaCells;
+        }
+}
+
+class DotCom
+{
+        private ArrayList<String> locationCells;
+        private String name;
+        public void setLocationCells(ArrayList<String> loc)
+        {
+                locationCells = loc;
+        }
+
+        public void setname(String n) 
+        {
+                name = n;
+        }
+
+        public String checkYourself(String userInput) 
+        {
+                String status = "miss";
+                int index = locationCells.indexOf(userInput);
+
+                if(index >=0) 
+                {
+                        locationCells.remove(index);
+
+                        if (locationCells.isEmpty())
+                        {  
+                                status = "kill";
+                                System.out.println("Ouch! You sunk" +
+                                                name + " : ( ");
+                 
+                        }else {
+                                status = "hit";
+                        }
+                } // if문 종료.
+                return status;
+                
+        } // method 종료.
+} // class 종료.
+
+public class DotComBust 
+{
+        private GameHelper helper;
+        private ArrayList<DotCom> dotComsList;
+        private int numOfGuesses;
+
+        public DotComBust()
+        {
+                helper = new GameHelper();
+                dotComsList = new ArrayList<DotCom>();
+                numOfGuesses = 0;
+        }
+
+        private void setUpGame()
+        {
+                DotCom one = new DotCom();
+                one.setname("Pets.com");
+                DotCom two = new DotCom();
+                two.setname("eToys.com");
+                DotCom three = new DotCom();
+                three.setname("Go2.com");
+                dotComsList.add(one);
+                dotComsList.add(two);
+                dotComsList.add(three);
+
+                System.out.println("Your goal is to sink three " +
+                                "dot coms.");
+                System.out.println("Pets.com, eToys.com, Go2.com");
+                System.out.println("Try to sink them all in " +
+                                "the fewest number of guesses");
+
+                for (DotCom dotComToset : dotComsList) 
+                {
+                        ArrayList<String> newLocation 
+                        = helper.placeDotCom(3);
+
+                        dotComToset.setLocationCells(newLocation);
+                } 
+        } // setUpgame method 종료.
+
+        private void startPlaying() throws IOException
+        {
+                while (!dotComsList.isEmpty())
+                   {
+                        String userGuess 
+                        = helper.getUserInput("Enter a guess");
+                        
+
+                        checkUserGuess(userGuess);
+                        
+                } 
+                finishGame();
+
+        } // startPlaying method 종료.
+
+        private void checkUserGuess(String userGuess) 
+        {
+                numOfGuesses++;
+
+                String result = "miss";
+
+                for (DotCom dotComToTest : dotComsList)
+
+                {
+                        result = dotComToTest.checkYourself(userGuess);
+                        
+
+                        if (result.equals("hit"))
+                        {
+                                break;
+                                
+                        }
+                        if (result.equals("kill"))
+                        {
+                                dotComsList.remove(dotComToTest);
+                                
+                                break;
+                        }
+                } // for문 종료.
+                System.out.println(result);
+
+        } // 메소드 종료.
+
+        private void finishGame()
+        {
+                System.out.println("All Dots are dead! Your " +
+                                "stock is now worthless");
+                if (numOfGuesses<=18)
+                {
+                        System.out.println("It only took you" + 
+                                        numOfGuesses + "Guesses.");
+                        System.out.println("You got out before your  " +
+                                        "  options sank");
+                }else {
+                        System.out.println("Took you long enough. " +
+                                        numOfGuesses + "guess.");
+                        System.out.println("Fish are dancing with " +
+                                        " your options");
+                }
+                
+        }  // method 종료.
+
+        public static void main(String[] args)throws IOException
+        {
+                DotComBust game = new DotComBust();
+
+                game.setUpGame();
+
+                game.startPlaying();
+
+        }  // method 종료.
+} // 클래스 종료.
 
 }}}
 
@@ -843,31 +1235,127 @@ class Dog extends Canine{
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
 
 *231p~ 심각한 다형성* _요약_
+{{{
+ * 인터페이스: 
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+- 상수와 추상 메소드의 집합체
+- 다른 클래스간의 공통적인 기능을 정의할 때 사용
+- 인터페이스 내부에 공통기능을 선언한 후, 인터페이스를 상속받는 클래스에서 선언된 메소드를
+  구현한다.
+- 클래스를 사용하려는 쪽(User)과 클래스를 제공하려는 쪽(Provider)이 있을 때,
+   User는 Provider의 메서드 선언부만 알면 된다. 
+- Java에서 지원하지 않는 다중상속을 인터페이스를 활용해 비슷하게 구현하는 것이 가능하다.
+- 개발시간을 단축시킬 수 있다.(참조하는 쪽에서 직접 클래스를 작성하게 함으로써 동시 개발 가능)
+- 표준화가 가능하다.(기본 틀을 인터페이스로 작성하고 )
+- 인터페이스의 멤버변수는 상수이다.
+- 인터페이스의 메소드는 추상메소드이다.
+- 객체를 생성할 수 없다.
+- super키워드를 사용할 수 없다.
+- 내부에 구현된 것이 없이, 틀만 존재한다.
+- 서로 관계없는 클래스들에게 관계를 맺어 줄 수 있다.
+- 독립적인 프로그래밍이 가능하다.
+ 
+ * 다형성: 부모의 레퍼런스 변수가 자식을 가리키도록 하는 것입니다.
 
+ * 추상 클래스: 인터페이스를 만들면 안되는 클래스입니다.
+
+ * 추상 메소드: 반드시 확장해야하는 클래스를 의미합니다. 몸통이 없는 메소드입니다. 
+
+ * 다중 상속: 둘 이상의 여러 부모로부터 상속받는 것을 의미합니다.
+}}}
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
 *269p~ 객체의 삶과 죽음* _요약_
+{{{
+ * 힙에서의 변수: 모든 객체가 저장되는 곳입니다.
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
- 
+ * 스택에서의 변수: 메소드 안에서 호출되는 변수들이 저장되는 곳입니다. 호출하면 차례대로 쌓입니다.
+
+ * 생성자: new 키워드를 사용했을 때 실행되는 코드가 들어있습니다.
+
+ * 널 레퍼런스: 아무것도 가리키지 않는 변수를 뜻합니다.
+ }}}
 *298p 집중토론* _요약_
+{{{
+ * 인스턴스 변수: 
+- 객체를 지원합니다.
 
- * 인스턴스 변수:
+- 상태는 인스턴스 변수에 저장된 값입니다.
+
+- 객체와 함게 힙에서 삽니다.
+
+- 객체의 상태를 저장합니다.
+
+- 자신이 속한 객체가 garbage collector에 의해 처리되면 인스턴스 변수도 함께 삭제된다.
+
+
+
  * 지역 변수: 
+- 메소드 안의 알고리즘을 작동시키려면 메소드에 반드시 지역 변수가 있어야합니다.
+
+- 임시 변수로 불립니다.
+
+- 지역, 스택, 자동, 영역 제한
+
+- 다른 여러 지역 변수와 함께 스택 프레임에 들어가 있어야한다.
+
+- 자신의 프레임이 스택 맨 위로 올라갈 때 까지 하는 것이 없다.
+
+- 프레임이 사라지지 않는 이상 자신이 저장하고 있는 값도 유지된다.
+
+- 객체를 참조하는 유일한 레퍼런스가 지역 변수에서만있으면 지역 변수가 사라질 때 그 인스턴스 변수도 같이 사라진다.
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+import java.util.*;
+class V2Radiator {
+        V2Radiator(ArrayList<SimUnit> list)     { 
+                for(int x = 5; x < 5 ; x++){
+                        list.add(new SimUnit("V2Radiator")); 
+                }
+        }
+}
 
+
+class V3Radiator {
+        V3Radiator(ArrayList<SimUnit> lglist){
+
+             for(int g = 0; g < 10 ; g++){
+                        lglist.add(new SimUnit("V3Radiator"));
+                }
+        }
+}
+
+class RetentionBot{
+        RetentionBot(ArrayList<SimUnit> rlist){
+                rlist.add(new SimUnit("Rention"));        }
+}
+
+public class TestLifeSupportSim{
+        public static void main(String[] args){
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>(); 
+                V2Radiator v2 = new V2Radiator(aList);
+                V3Radiator v3 = new V3Radiator(aList);
+                for(int z = 0 ; z < 20 ; z++){
+                        RetentionBot ret = new RetentionBot(aList); //RententionBot객체를 생성합니다.
+                }
+        }
+}
+
+class SimUnit {
+        String botType;
+        SimUnit(String type){
+                botType = type;
+        }
+        int powerUse(){
+                if("Retention".equals(botType)){
+                        return 2;                       
+                }else{
+                        return 4;
+                }
+        }
+}
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
@@ -884,18 +1372,87 @@ class Dog extends Canine{
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
 
+public class DDA {
+        public static void main(String args[]){
+                Calendar c=Calendar.getInstance();
+                c.set(2012, 0, 7, 15, 40); 
+                long day1 = c.getTimeInMillis(); 
+
+                day1 += 1000*60*60;
+
+                c.setTimeInMillis(day1); 
+
+                System.out.println("new hour"+c.get(Calendar.HOUR_OF_DAY));
+                c.add(Calendar.DATE, 35); 
+                System.out.println("add 35 days"+c.getTime());
+                c.roll(Calendar.DATE, 35); 
+                System.out.println("roll 35 days"+c.getTime());
+                c.set(Calendar.DATE,1); 
+                System.out.println("set to 1"+c.getTime());
+        }
+
+}
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
+ * 인스턴스 변수: 
+- 객체를 지원합니다.
+
+- 상태는 인스턴스 변수에 저장된 값입니다.
+
+- 객체와 함게 힙에서 삽니다.
+
+- 객체의 상태를 저장합니다.
+
+- 자신이 속한 객체가 garbage collector에 의해 처리되면 인스턴스 변수도 함께 삭제된다.
+
+
+
  * 지역 변수: 
+- 메소드 안의 알고리즘을 작동시키려면 메소드에 반드시 지역 변수가 있어야합니다.
+
+- 임시 변수로 불립니다.
+
+- 지역, 스택, 자동, 영역 제한
+
+- 다른 여러 지역 변수와 함께 스택 프레임에 들어가 있어야한다.
+
+- 자신의 프레임이 스택 맨 위로 올라갈 때 까지 하는 것이 없다.
+
+- 프레임이 사라지지 않는 이상 자신이 저장하고 있는 값도 유지된다.
+
+- 객체를 참조하는 유일한 레퍼런스가 지역 변수에서만있으면 지역 변수가 사라질 때 그 인스턴스 변수도 같이 사라진다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{ 
+        static{
+                System.out.println("super static block");
+        }
+        StaticSuper(){ 
+                System.out.println("super constructor");
+        }
+}
 
+public class StaticTests extends StaticSuper { 
+
+        static int rand;
+        static{
+                rand=(int)(Math.random()*6);
+                System.out.println("static block"+rand);
+        }
+        StaticTests(){
+                System.out.println("constructor");
+        }
+        public static void main(String[]args){
+                System.out.println("in main");
+        }
+        StaticTests st=new StaticTests(); 
+}
 }}}
 
 = 11. 위험한 행동:예외처리  =
@@ -904,18 +1461,119 @@ class Dog extends Canine{
 
 {{{
 
+import javax.sound.midi.*;
+
+public class Test { 
+        public void play(){ 
+                try{ 
+                        @SuppressWarnings("unused") 
+                        Sequencer sequencer = MidiSystem.getSequencer(); 
+                        System.out.println("Successfully got a sequencer");
+                        
+
+                } catch(MidiUnavailableException ex){ 
+                        System.out.println("Bummer");
+                         
+                }
+        }
+        public static void main(String[] args){
+                Test mu = new Test();  
+                mu.play();
+        }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*; 
+
+public class MiniMiniMusicApp {
+
+        public static void main(String [] args){
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();
+        } // main 메소드 끝
+        public void play(){
+                try{
+                        Sequencer player = MidiSystem.getSequencer(); 
+                        player.open();
+
+                        Sequence seq = new Sequence(Sequence.PPQ, 4); 
+                        Track track = seq.createTrack();
+
+                        
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144,1,44,100);
+                        MidiEvent noteOn = new MidiEvent(a,1);
+                        track.add(noteOn);
+
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128,1,44,100);
+                        MidiEvent noteOff = new MidiEvent(b,16);
+                        track.add(noteOff);
+
+                        
+                        player.setSequence(seq);
+
+                        player.start();
+
+                } catch (Exception ex){
+                        ex.printStackTrace();
+                }
+
+        } // play 메소드 끝
+} // 클래스 끝
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
 
+public class MiniMusicCmdLine { 
+
+        public static void main(String[]args){
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();
+                if(args.length<2){
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                }else{
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument, note);
+                }
+        } 
+
+         
+        public void play (int instrument, int note){
+                try{
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();
+
+                        MidiEvent event = null;
+
+                        ShortMessage first = new ShortMessage();
+                        first.setMessage(192,1,instrument,0);
+                        MidiEvent changeInstrument = new MidiEvent(first, 1);
+                        track.add(changeInstrument);
+
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144,1,note,100);
+                        MidiEvent noteOn = new MidiEvent(a,1);
+                        track.add(noteOn);
+
+                        ShortMessage b = new ShortMessage();
+                        a.setMessage(128,1,note,100);
+                        MidiEvent noteOff = new MidiEvent(b,16);
+                        track.add(noteOff);
+                        player.setSequence(seq);
+                        player.start();
+                }catch(Exception ex){ex.printStackTrace();}
+        } // play 메소드 끝
+} // 클래스 끝
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
@@ -923,19 +1581,111 @@ class Dog extends Canine{
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
 
+public class SimpleGui1B{
+        public static void main(String []args){
+                JFrame frame = new JFrame();
+
+                JButton button = new JButton("click me");  
+
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+
+                frame.getContentPane().add(button); 
+
+                frame.setSize(300,300); 
+
+                frame.setVisible(true); 
+        }
+}
 }}}
 
 *394p~ ActionEvent* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.event.*; 
 
+public class SimpleGui1B implements ActionListener {
+        JButton button; 
+
+        public static void main(String []args){
+                SimpleGui1B gui=new SimpleGui1B();
+                gui.go();
+
+        }
+
+        public void go(){
+                JFrame frame= new JFrame();
+                button=new JButton("cliick me"); 
+
+                button.addActionListener(this); 
+
+                frame.getContentPane().add(button);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(300,300);
+                frame.setVisible(true);
+        }
+        public void actionPerformed(ActionEvent event){ 
+
+                button.setText("I've been clicked!");
+        }
+}
 }}}
 
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
+public class SimpleGui3C implements ActionListener{
+        JFrame frame;
+
+        public static void main(String [] args){
+                SimpleGui3C gui=new SimpleGui3C();
+                gui.go();
+        }
+
+        public void go() {
+                frame=new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                JButton button = new JButton("Change colors"); 
+                button.addActionListener(this); 
+                MyDrawPanel drawPanel = new MyDrawPanel(); 
+
+                frame.getContentPane().add(BorderLayout.SOUTH,button); 
+                frame.getContentPane().add(BorderLayout.CENTER, drawPanel); 
+                frame.setSize(300,300);
+                frame.setVisible(true);
+        }
+        public void actionPerformed(ActionEvent event){
+                frame.repaint(); 
+
+        }
+}
+
+class MyDrawPanel extends JPanel{
+        public void paintComponent(Graphics g){
+                Graphics2D g2d = (Graphics2D) g;
+
+                int red = (int)(Math.random()*256); 
+                int green = (int)(Math.random()*256);
+                int blue = (int)(Math.random()*256);
+                Color startColor = new Color(red,green,blue);
+
+                red = (int)(Math.random()*256);
+                green = (int)(Math.random()*256);
+                blue = (int)(Math.random()*256);
+                Color endColor = new Color(red,green,blue);
+
+                GradientPaint gradient = new GradientPaint(70,70,startColor,150,150,endColor);
+                g2d.setPaint(gradient);
+                g2d.fillOval(70,70,100,100);
+        }
+}
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
