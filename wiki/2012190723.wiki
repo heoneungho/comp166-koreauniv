@@ -909,7 +909,8 @@ class SimpleDotCom { // SimpleDotCom클래스를 생성합니다.
 
 		for(int i = 0; i < locationCells.length; i++){
 
-			if(guess == locationCells[i] && locationCells[i]!=-1){ // 이미 맞춘 배열인지 확인합니다. 이미 맞춘 배열은 -1값을 가집니다.
+			if(guess == locationCells[i] && locationCells[i]!=-1){ // 이미 맞춘 배열인지 확인합니다. 
+// 이미 맞춘 배열은 -1값을 가집니다.
 				result = "hit";
 				numOfHits++;
 				locationCells[i]=-1; // 맞춘 배열은 -1값으로 변경해줍니다.(두번째 옵션)
