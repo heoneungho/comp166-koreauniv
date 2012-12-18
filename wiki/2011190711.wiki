@@ -827,6 +827,42 @@ class Dog
  * 오버로딩: 오버로딩은 이름이 같고 인자목록이 다른 메소드 두 개를 만드는 것이다. 오버로딩은 다형성과 전혀 관련이 없다. 따라서 리턴 유형이 달라도 되고, 접근 단계도 마음대로 바꿀 수 있다. 단, 인자목록은 반드시 바꾸어야 된다.
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
+public class MonsterTestDrive  
+{
+	public static void main(String[] args) 
+	{
+		Monster[] ma = new Monster[3]; // 몬스터 유형의 배열객체 생성
+		ma[0] = new Vampire(); // 배열에 백파이어 객체 생성해서 연결
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for (int x = 0 ; x < 3 ; x++ )
+		{
+			ma[x].frighten(x); // 배열에 속해 있는 객체에 대해서 차례대로 frighten메소드 실행
+		}
+	}
+}
+
+class Monster
+{
+	boolean frighten(int d) {
+		System.out.println("arrrgh");
+		return true;
+	}
+}
+class Vampire extends Monster 
+{
+	boolean frighten (int x) {
+		System.out.println("a bite?"); //오버라이드
+		return false;
+	}
+}
+class Dragon extends Monster 
+{
+	boolean frighten(int degree) {
+		System.out.println("breath fire"); //오버라이드
+		return true;
+	}
+}
 
 
 
