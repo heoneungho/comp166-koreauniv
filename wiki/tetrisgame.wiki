@@ -755,3 +755,5 @@ http://comp166-koreauniv.googlecode.com/files/tetris3.png
 2.(runnable,thread) http://blog.daum.net/_blog/BlogTypeView.do?blogid=0OZ7Y&articleno=138&categoryId=0&regdt=20100310164312#ajax_history_home
 3.(rgb)http://search.naver.com/search.naver?where=nexearch&query=rgb+%EC%83%89%EC%83%81%ED%91%9C&ie=utf8&sm=tab_she&qdt=0
 4.(오류수정) http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=+java.lang.NullPointerException
+5.(paintcomponent)http://cafe.naver.com/javastudy2/2265
+6.(알고리즘 및 블록구성)facebook game tetris
