@@ -737,6 +737,8 @@ public class Tetris extends Applet implements Runnable, ActionListener {
 	
 }
 }}}
+
+소스코드 첨부 http://comp166-koreauniv.googlecode.com/files/java_final.zip 
 = Screenshot =
 1.초기화면
 http://comp166-koreauniv.googlecode.com/files/tetris초기화면.png 
