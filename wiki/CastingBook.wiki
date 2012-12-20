@@ -907,4 +907,4 @@ import javax.swing.border.EmptyBorder;
 
 =ScreenShot=
 
-http://comp166-koreauniv.googlecode.com/files/ScreenShot1.bmp
+http://comp166-koreauniv.googlecode.com/files/Screenshot1.jpg
