@@ -910,17 +910,21 @@ import javax.swing.border.EmptyBorder;
 =Screenshot=
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot1.jpg
+
 : 처음 실행화면에서 아이디와 비번을 잘못 치면 입력했던 내용이 초기화되면서 잘못되었다는 창이 뜬다.
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot2.jpg
+
 : sn500gogo라는 아이디와 비번 1234를 치고 Log-In 버튼을 누르면, 다음의 검색창으로 연결된다.
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot3.jpg
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot4.jpg
+
 : 정보가 저장되어있지 않은 연예인의 이름을 검색하면,
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot5.jpg
+
 : 검색 내용이 초기화 되면서, 관련 정보가 없음을 알리는 창이 뜬다.
 
 
