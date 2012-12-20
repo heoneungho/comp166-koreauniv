@@ -1148,15 +1148,51 @@ public class goldKey {
 }}}
 
 
+= Source code=
+
+http://comp166-koreauniv.googlecode.com/files/bluemarble.zip
+
+
 = Screen shot=
 
 http://comp166-koreauniv.googlecode.com/files/1.jpg
+
+1 : 시작 화면
+
 http://comp166-koreauniv.googlecode.com/files/2.jpg
+
+2 : player1이 주사위를 던진 후, player1의 위치가 검은색으로 표시되고 도착한 마닐라의 소유권자가 없으므로 땅 구입창이 생성
+
 http://comp166-koreauniv.googlecode.com/files/3.jpg
+
+3 : 구입할 땅과 건물을 선택하고 확인을 누르면 땅의 색깔이 소유권자의 색깔로 바뀜
+(player1은 빨강 player2는 파랑)
+
 http://comp166-koreauniv.googlecode.com/files/4.jpg
+
+4 : 황금열쇠
+
 http://comp166-koreauniv.googlecode.com/files/5.jpg
+
+5 : 타인의 땅에 걸렸을 때 위에 2번째 상태표시줄에 벌금을 표시함과 더불어 벌금 지불
+
 http://comp166-koreauniv.googlecode.com/files/6.jpg
+
+6 : 랜덤하게 발생하는 또 다른 황금열쇠
+
 http://comp166-koreauniv.googlecode.com/files/7.jpg
+
+7 : 또 다른 황금열쇠
+
 http://comp166-koreauniv.googlecode.com/files/8.jpg
+
+8 : 땅 구입 메소드 실행시 구입과 더불어 추후에 재 구입하는 쓸데없는 경우를 막기 위해 땅값을 가르키는 인스턴스 변수의 값을 0으로 변경하였기 때문에 위와 같이 땅 값이 0으로 표시 된다.
+
+
 http://comp166-koreauniv.googlecode.com/files/9.jpg
+
+9 : player2의 소지금이 0보다 작아졌기 때문에 게임을 종료, 제한턴 40을 넘겼을 때도 게임은 종료되며 그때의 승자는 소지금이 더 많은 player가 승자로 표시된다.
+
 http://comp166-koreauniv.googlecode.com/files/10.jpg
+
+10 : 메뉴창
