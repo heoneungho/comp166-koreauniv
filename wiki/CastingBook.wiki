@@ -905,7 +905,7 @@ import javax.swing.border.EmptyBorder;
 }
 }}}
 
-소스코드 파일첨부 http://comp166-koreauniv.googlecode.com/files/CastingBook 조현정.zip
+소스코드 파일첨부 http://comp166-koreauniv.googlecode.com/files/CastingBook조현정.zip
 
 =Screenshot=
 
