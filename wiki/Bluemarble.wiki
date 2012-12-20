@@ -1146,3 +1146,17 @@ public class goldKey {
 }
 
 }}}
+
+
+= Screen shot=
+
+http://comp166-koreauniv.googlecode.com/files/1.jpg
+http://comp166-koreauniv.googlecode.com/files/2.jpg
+http://comp166-koreauniv.googlecode.com/files/3.jpg
+http://comp166-koreauniv.googlecode.com/files/4.jpg
+http://comp166-koreauniv.googlecode.com/files/5.jpg
+http://comp166-koreauniv.googlecode.com/files/6.jpg
+http://comp166-koreauniv.googlecode.com/files/7.jpg
+http://comp166-koreauniv.googlecode.com/files/8.jpg
+http://comp166-koreauniv.googlecode.com/files/9.jpg
+http://comp166-koreauniv.googlecode.com/files/10.jpg
