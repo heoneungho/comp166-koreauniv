@@ -1,166 +1,642 @@
-부탁해 정공형
-= Introduction =
+Up Down 게임
 
-간단한 행맨 게임을 해봅시다.
-시간때우기에 전혀 좋지 않습니다.(차라리 공부를 하겠음 ㅡㅡ)
 
-= Details =
+[INTRODUCTION]
 
-자세한 코드 개요
+1부터 50 까지의 숫자중 임의로 한 숫자( 이하 the number )를 컴퓨터가 지정합니다.
+사용자가 그 숫자가 무엇인지 입력해서 맞을경우 맞다, 틀릴경우는
+사용자가 말한 숫자보다 the number 가 큰지, 작은지를 알려주어 범위를 좁혀가며
+숫자를 맞추는 게임입니다. 횟수에는 5번의 제한이 있습니다.
 
-Class
+
 {{{
-public class Hangman{
+package UpAndDownGame;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Scanner;
+public class UpAndDownGameStarter {
+     public static void main(String[] args) {
 
-String input=JOptionPane.showInputDialog("Hangman에 오신걸 환영함!\n문제로 낼 단어를 입력하세요:"); //단어를 입력받음 
-String word=input.toLowerCase();
-int leng=word.length();
-String []c=new String[leng]; //단어의 길이만큼 배열 만듬 
-String []in=new String[25]; //입력받을 수 있는 총 알파벳 수 만큼 배열을 만듬 
-int count=6;
-int z=0; //입력받은 알파벳이 저장된 수 
-int j=0; //입력받은 문자가 문자열과 일치하는 게 있을때 증가
-int k=0; //입력 받은 문자가 문자열과 일치하는게 없을때 
+         UpAndDownGameStarter gui = new UpAndDownGameStarter();
+                     gui.go();
+   
+     }
+                 public void go(){
+  
+      
+        
+          JFrame frame = new JFrame();
+          JPanel panel = new JPanel();
+          panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
+          panel.setBackground(Color.white);
+          Font bigFont = new Font("serif",Font.BOLD,28);
+        
+          JLabel Title = new JLabel("Up & Down Game");
+        
+          JLabel body1 = new JLabel("Welcome to the Up&Down Game");
+          JLabel body2 = new JLabel("Type the Number you guess");
+          JLabel body3 = new JLabel(" ");
+          JLabel body4 = new JLabel(" ");
+          JLabel body5 = new JLabel(" ");
+          JLabel body6 = new JLabel(" ");
+          JLabel body7 = new JLabel(" ");
+          JLabel body8 = new JLabel(" ");
+          JLabel body9 = new JLabel(" ");
+          JLabel body10 = new JLabel(" ");
+        
+        
+        
+              
+          Title.setFont(bigFont);
+ 
+              
+              
+                panel.add(Title);
+                panel.add(body1);
+                panel.add(body2);
+                panel.add(body3);
+                panel.add(body4);
+                panel.add(body5);
+                panel.add(body6);
+                panel.add(body7);
+                panel.add(body8);
+                panel.add(body9);
+                panel.add(body10);
+                JButton Startbutton = new JButton(" Start ");
+                panel.add(Startbutton);
+         
+             frame.getContentPane().add(BorderLayout.WEST,panel);
+              frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+              frame.setSize(300,300);
+              frame.setVisible(true);
 
-String letter=" "; //입력 받은 문자 
-String str1=""; //correct or incorrect
-String str2="\n ___  ";
-String str3="\n | |";
-String str4="\n | ";
-String str5="\n | ";
-String str6="\n | ";
-String str7="\n"; 
-String str8="\n"; //이겼을 때나 졌을 때의 메시지를 출력하는 부분 
-String str=""; 
+         
 
-//단어 문자열 모두 더하는 함수 
-public String strsum()
-{String strs=str1+str2+str3+str4+str5+str6+str7+str8;
-return strs;} 
+                Startbutton.addActionListener(new StartListener());
+                 
+    
+                 }
 
-//문자열 '_' 로 초기화함 
-public void arr()
-{
-for(int i=0;i<leng;i++)
-{c[i]="_ "; 
-str7+=c[i];}
-} 
+           
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+        class StartListener implements ActionListener{
+            public void actionPerformed(ActionEvent event){
 
-//출력하는 함수 
-public void shows()
-{JOptionPane.showMessageDialog(null,strsum()+"\n");}
+                UpAndDownGame udgame = new UpAndDownGame();
+                Scanner scanner = new Scanner(System.in);
+            
+               
+                while (true) {
 
-//letter입력받는 함수
-public void inletter()
-{ 
-letter=JOptionPane.showInputDialog("너는"+(count)+"개의 목숨이 남았다!.\n다시 뽑아라(1개의 알파벳만 입력하시오.)");
-letter=letter.toLowerCase();
-this.errors(letter); //errors를 호출하여 검사 
+                boolean isOverCount = udgame.checkOverCount();
+            
+                 if (isOverCount == true) {
+                  break;
+                 }
+
+                 udgame.startGuessNumber();
+
+                 int guessNumber = scanner.nextInt();
+
+                 boolean isTargetNumber = udgame.checkGuessNumber(guessNumber);
+                 if (isTargetNumber == true) {
+                  break;
+               
+                 }
+           
+               
+                }
+          
+            }
+           
+       
+           
+        }
+
+              
+
+}
+      
+      
+   
+}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{{
+
+package UpAndDownGame;
+import javax.swing.*;
+
+ 
+
+ 
+
+import java.awt.Font;
+import java.util.Random;
+public class UpAndDownGame {
+     int targetNumber;
+     int guessNumber;
+     int minNumber = 1;
+     int maxNumber = 50;
+     private int count = 1;
+     Random random;
+ 
+    
+     UpAndDownGameSound sound = new UpAndDownGameSound();
+    
+    
+    
+     public UpAndDownGame() {
+      sound.playlost(); 
+      System.out.println("Up&Down Game세상에 오신것을 환영합니다");
+      System.out.println("목표 숫자를 5번의 추측만에 맞추는 게임입니다.");
+      this.random = new Random();
+      this.targetNumber = random.nextInt(49) + 1;
+      System.out.println("목표 숫자를 설정하였습니다.");
+
+     }
+
+     public void startGuessNumber() {
+      System.out.println(count + "번째 추측을 시작합니다.");
+      System.out.println(minNumber + "와" + maxNumber + "사이의 숫자를 입력하여 주세요.");
+    
+    
+    
+     }
+
+
+     public boolean checkGuessNumber(int guessNumber) {
+        
+      if (targetNumber == guessNumber) {
+       winMessage();
+       return true;
+      }
+      else if ((minNumber <= guessNumber) && (guessNumber <= targetNumber)) {
+          sound.play();
+  
+       this.count++;
+       System.out.println("---UP---");
+       this.minNumber = guessNumber + 1;
+       return false;
+      }
+  
+      else if ((maxNumber >= guessNumber) && (guessNumber >= targetNumber)) {
+         sound.play();
+       
+          this.count++;
+       System.out.println("--DOWN--");
+       this.maxNumber = guessNumber - 1;
+       return false;
+      }
+  
+      else {
+        sound.play();
+       System.out.println("범위내의 숫자가 아닙니다.  다시 입력하세요.");
+       return false;
+      }
+     }
+
+     public boolean checkOverCount() {
+      if (count>=6) {
+       loseMessage();
+       return true;
+      } else {
+       return false;
+      }
+     }
+
+     public void winMessage(){
+        
+
+      sound.playwin();
+         Font bigFont = new Font("serif",Font.BOLD,28);
+            JFrame frame = new JFrame();
+            JButton button = new    JButton("Correct !!" + "total trial :" + count+ "times" + ",   WIN");
+            button.setFont(bigFont);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          
+            frame.getContentPane().add(button);
+          
+            frame.setSize(3000,3000);
+          
+            frame.setVisible(true);
+      
+        
+        
+        
+         }
+
+
+     private void loseMessage() {
+
+      sound.playlost();
+        System.out.println("5회를 넘겼습니다. GAME OVER.");
+      System.out.println("Answer : " + targetNumber);
+     }
+
 }
 
-//입력받은 문자열이 알파벳인지 검사하는 함수 
+ 
 
-public void errors(String st) 
-{ 
-int alphabet=(int)st.charAt(0); //입력받은 문자를 int형으로 바꿈
-if(alphabet>=97 & alphabet<=122) //알파벳이 아니면 에러 출력하고 다시 입력하게 함 
-{ 
-alread(st); //이미 입력된 것이니 검사하는 함수 호출 
-in[z]=st; //입력받은 모든 알파벳을 저장 
-z++;
-} //저장된 횟수 증가 
-else 
-{ 
-letter=JOptionPane.showInputDialog("오류! 알파벳만사용하시오!");
-this.errors(letter.toLowerCase()); //입력받은 문자를 다시 검사 
-} 
+
+}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{{
+
+
+package UpAndDownGame;
+
+
+
+import javax.sound.midi.*;
+
+public class UpAndDownGameSound {
+
+   
+    public void play(){
+       
+        try {
+           
+            Sequencer player = MidiSystem.getSequencer();
+            player.open();
+           
+            Sequence seq = new Sequence(Sequence.PPQ,4);
+           
+           
+            Track track = seq.createTrack();
+           
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,74,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+           
+          
+            ShortMessage b = new ShortMessage();
+            b.setMessage(128,1,74,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+           
+           
+            player.setSequence(seq);
+           
+            player.start();
+            } catch (Exception ex) {
+                    ex.printStackTrace();
+            }
+    }
+
+
+
+   
+    public void playwin(){
+       
+        try {
+
+                
+                
+            Sequencer player = MidiSystem.getSequencer();
+            player.open();
+
+            Sequence seq = new Sequence(Sequence.PPQ,4);
+            Track track = seq.createTrack();
+            
+      
+         
+            
+            
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,62,100);
+            MidiEvent note1On = new MidiEvent(a,1);
+            track.add(note1On);
+           
+         
+            ShortMessage b = new ShortMessage();
+            b.setMessage(128,1,62,100);
+            MidiEvent note1Off = new MidiEvent(b,10);
+            track.add(note1Off);
+   
+          
+         
+            // 도
+
+            ShortMessage c = new ShortMessage();
+            c.setMessage(144,2,66,100);
+            MidiEvent note2On = new MidiEvent(c,5);
+            track.add(note2On);
+           
+          
+            ShortMessage d = new ShortMessage();
+            d.setMessage(128,2,66,100);
+            MidiEvent note2Off = new MidiEvent(d,15);
+            track.add(note2Off);
+           
+            // 미
+            ShortMessage e = new ShortMessage();
+            e.setMessage(144,3,69,100);
+            MidiEvent note3On = new MidiEvent(e,10);
+            track.add(note3On);
+           
+          
+            ShortMessage f = new ShortMessage();
+            f.setMessage(128,3,69,100);
+            MidiEvent note3Off = new MidiEvent(f,20);
+            track.add(note3Off);
+            
+            // 솔
+            
+            ShortMessage g = new ShortMessage();
+            g.setMessage(144,4,74,100);
+            MidiEvent note4On = new MidiEvent(g,15);
+            track.add(note4On);
+           
+          
+            ShortMessage h = new ShortMessage();
+            h.setMessage(128,4,74,100);
+            MidiEvent note4Off = new MidiEvent(h,25);
+            track.add(note4Off);
+            
+            // ^도
+
+          
+            
+          player.setSequence(seq);
+          player.start();
+  
+
+   
+            } catch (Exception ex) {
+                    ex.printStackTrace();
+            }
+    }
+
+    
+    
+    public void playlost(){
+       
+        try {
+
+                
+                
+            Sequencer player = MidiSystem.getSequencer();
+            player.open();
+
+            Sequence seq = new Sequence(Sequence.PPQ,4);
+            Track track = seq.createTrack();
+            
+      
+         
+            
+            
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,60,100);
+            MidiEvent note1On = new MidiEvent(a,1);
+            track.add(note1On);
+           
+         
+            ShortMessage b = new ShortMessage();
+            b.setMessage(128,1,60,100);
+            MidiEvent note1Off = new MidiEvent(b,47);
+            track.add(note1Off);
+            
+            
+            
+            // 솔
+            
+            
+
+
+            ShortMessage c = new ShortMessage();
+            c.setMessage(144,1,76,100);
+            MidiEvent note2On = new MidiEvent(c,7);
+            track.add(note2On);
+           
+         
+            ShortMessage d = new ShortMessage();
+            d.setMessage(128,1,76,100);
+            MidiEvent note2Off = new MidiEvent(d,17);
+            track.add(note2Off);
+            
+            // 시
+
+            ShortMessage e = new ShortMessage();
+            e.setMessage(144,1,74,100);
+            MidiEvent note3On = new MidiEvent(e,14);
+            track.add(note3On);
+           
+         
+            ShortMessage f = new ShortMessage();
+            f.setMessage(128,1,74,100);
+            MidiEvent note3Off = new MidiEvent(f,24);
+            track.add(note3Off);
+            
+            //라
+            
+            ShortMessage g = new ShortMessage();
+            g.setMessage(144,1,72,100);
+            MidiEvent note4On = new MidiEvent(g,19);
+            track.add(note4On);
+           
+         
+            ShortMessage h = new ShortMessage();
+            h.setMessage(128,1,72,100);
+            MidiEvent note5Off = new MidiEvent(h,24);
+            track.add(note5Off);
+            
+            
+            ShortMessage z = new ShortMessage();
+            z.setMessage(144,1,52,100);
+            MidiEvent notez2On = new MidiEvent(z,19);
+            track.add(notez2On);
+           
+         
+            ShortMessage y = new ShortMessage();
+            y.setMessage(128,1,52,100);
+            MidiEvent notez2Off = new MidiEvent(y,47);
+            track.add(notez2Off);
+            
+//솔 (시)
+            
+
+            ShortMessage i = new ShortMessage();
+            i.setMessage(144,1,70,100);
+            MidiEvent note6On = new MidiEvent(i,22);
+            track.add(note6On);
+           
+         
+            ShortMessage j = new ShortMessage();
+            j.setMessage(128,1,70,100);
+            MidiEvent note7Off = new MidiEvent(j,27);
+            track.add(note7Off);
+           
+
+//파
+            
+            ShortMessage k = new ShortMessage();
+            k.setMessage(144,1,69,100);
+            MidiEvent note8On = new MidiEvent(k,25);
+            track.add(note8On);
+           
+         
+            ShortMessage l = new ShortMessage();
+            l.setMessage(128,1,69,100);
+            MidiEvent note8Off = new MidiEvent(l,30);
+            track.add(note8Off);
+            
+//미
+            
+            ShortMessage m = new ShortMessage();
+            m.setMessage(144,1,70,100);
+            MidiEvent note9On = new MidiEvent(m,28);
+            track.add(note9On);
+           
+         
+            ShortMessage n = new ShortMessage();
+            n.setMessage(128,1,70,100);
+            MidiEvent note10Off = new MidiEvent(n,30);
+            track.add(note10Off);
+            
+//파
+            
+
+            ShortMessage o = new ShortMessage();
+            o.setMessage(144,1,62,100);
+            MidiEvent note11On = new MidiEvent(o,31);
+            track.add(note11On);
+           
+         
+            ShortMessage p = new ShortMessage();
+            p.setMessage(128,1,62,100);
+            MidiEvent note12Off = new MidiEvent(p,36);
+            track.add(note12Off);
+            
+//라
+            
+
+            ShortMessage q = new ShortMessage();
+            q.setMessage(144,1,64,100);
+            MidiEvent note13On = new MidiEvent(q,34);
+            track.add(note13On);
+           
+         
+            ShortMessage r = new ShortMessage();
+            r.setMessage(128,1,64,100);
+            MidiEvent note14Off = new MidiEvent(r,39);
+            track.add(note14Off);
+            
+//시
+            
+
+            ShortMessage s = new ShortMessage();
+            s.setMessage(144,1,65,100);
+            MidiEvent note15On = new MidiEvent(s,37);
+            track.add(note15On);
+           
+         
+            ShortMessage t = new ShortMessage();
+            t.setMessage(128,1,65,100);
+            MidiEvent note16Off = new MidiEvent(t,50);
+            track.add(note16Off);
+            
+
+//도
+            ShortMessage sa = new ShortMessage();
+            sa.setMessage(144,1,60,100);
+            MidiEvent notea15On = new MidiEvent(sa,37);
+            track.add(notea15On);
+           
+         
+            ShortMessage ta = new ShortMessage();
+            ta.setMessage(128,1,60,100);
+            MidiEvent notea16Off = new MidiEvent(ta,50);
+            track.add(notea16Off);
+           
+            
+            ShortMessage ss = new ShortMessage();
+            ss.setMessage(144,1,57,100);
+            MidiEvent notes15On = new MidiEvent(ss,37);
+            track.add(notes15On);
+           
+         
+            ShortMessage ts = new ShortMessage();
+            ts.setMessage(128,1,57,100);
+            MidiEvent notes16Off = new MidiEvent(ts,50);
+            track.add(notes16Off);
+            
+            // c코드
+           
+            
+            
+            
+                      
+            
+          player.setSequence(seq);
+          player.start();
+  
+
+   
+            } catch (Exception ex) {
+                    ex.printStackTrace();
+            }
+    }
+
+
+        
 }
 
-
-//이미 입력된 것인지 구분하는 함수
-public void alread(String s)
-{ 
-for(int i=0; i<z; i++) //저장된 횟수 만큼 검사 
-{ 
-if(in[i].equals(s)) //이미 입력했던 알파벳과 새로 입력한 알파벳이 같으면 다시 입력하게함 
-{ 
-	JOptionPane.showMessageDialog(null,""+s.toUpperCase()+"은(는) 이미 쓴것이니. 다른 알파벳을 적어라!");
-	inletter(); //다시 입력 받음 
-break;
-} 
-}
-}
-
-//문자열에 해당 알파벳이 있는지 확인 하는 함수 
-
-public void compar(){
-
-while(count>0) 
-{ 
-shows();
-inletter();
-
-for(int i=0; i<leng; i++)
-{ 
-if(word.substring(i,i+1).equals(letter.toLowerCase()))
-{ c[i]=letter+" "; j++;}
-else k++;
-}
+        
 
 
-if(j>0) //입력받은 문자가 문자 열과 하나이상 일치함
-{str1="맞았어!!";} 
-else if(k==leng) //입력받은 문자가 문자열과 일치하는게 없음
-{str1="틀렸어 ㅠㅠㅠㅠㅠㅠ";
-this.pic(); 
-} 
-str7="\n"; //문자열 초기화 
-for(int i=0;i<leng;i++)
-{ str7+=c[i];}
-
-str="";
-for(int i=0;i<leng;i++)
-{ str+=c[i].trim();}
-
-if(str.equals(word)) //단어를 6번의 기회안에 맞추었을때 
-{ str8="\n승리 !!!"; 
-break;}
-else
-{ if(count<1) //단어를 6번의 기화안에 못 맞추었을때 
-{str8="\n잘가시게 친구 ........\n당신은 졌습니다.- 정답은  "+'"'+word+'"'+"!";
-break;}
-else 
-k=0; j=0;
-} 
-} 
-this.shows();
-}
 
 
-//행맨 그림 추가함수 
-public int pic()
-{ count--;
-switch(count)
-{
-case 0:str6=str6+"\\"; 
-break;
-case 1:str6=str6+"/"; 
-break;
-case 2:str5=str5+"\\"; 
-break;
-case 3:str5=str5+"|"; 
-break;
-case 4:str5=str5+"/"; 
-break;
-case 5:str4=str4+"0"; 
-break;
-}
-return count; 
-}
-public static void main(String [] args)
-{ Hangman hang=new Hangman();
-hang.arr();
-hang.compar();
-} 
-} 
+
 }}}
