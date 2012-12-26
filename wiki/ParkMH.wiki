@@ -20,9 +20,8 @@
 
 5.소스코드
 
-{{{
 1.DiaryStart
-
+{{{
 import java.util.Scanner;
 public class Year extends Diary{
         
@@ -64,15 +63,14 @@ public class Year extends Diary{
         }
 }
 }}}
-
 2.Diary
-
+{{{
 public abstract class Diary {
         public abstract Diary go(); 
 }
-
+}}}
 3. Day
-
+{{{
 import java.io.*;
 import java.util.Scanner;
 
@@ -132,9 +130,9 @@ public class Day extends Diary implements Schedule {
                 }
         }
 }
-
+}}}
 4. FunctionGui
-
+{{{
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -214,9 +212,9 @@ public class FunctionGui {
              }
         }
     }
-
+}}}
 5. Month
-
+{{{
 public abstract class Month extends Diary {
             
                 Day one = new Day();
@@ -255,9 +253,9 @@ public abstract class Month extends Diary {
                 public abstract Diary go();
                 
 }
-
+}}}
 6. Month1
-
+{{{
 import java.util.Scanner;
 public class Month1 extends Month {	//2월
         
@@ -303,9 +301,9 @@ public class Month1 extends Month {	//2월
         
         
 }
-
+}}}
 7. Month2
-
+{{{
 import java.util.Scanner;
 public class Month2 extends Month {	//30일짜리 월들
         
@@ -349,12 +347,10 @@ public class Month2 extends Month {	//30일짜리 월들
         Day a = Days[b];
         return a;
         }
-        
-        
 }
-
+}}}
 8. Month3
-
+{{{
 import java.util.Scanner;
 public class Month3 extends Month{	//31일짜리 월들
         
@@ -400,16 +396,16 @@ public class Month3 extends Month{	//31일짜리 월들
         return a;
         }
 }
-
+}}}
 9. Schedule
-
+{{{
 public interface Schedule {
         public abstract void GetSchedule();
         public abstract void PrintSchedule();
 }
-
+}}}
 10. Year
-
+{{{
 import java.util.Scanner;
 public class Year extends Diary{
         
@@ -450,3 +446,4 @@ public class Year extends Diary{
         return which;
         }
 }
+}}}
