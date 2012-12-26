@@ -20,6 +20,7 @@
 
 5.소스코드
 
+{{{
 1.DiaryStart
 
 import java.util.Scanner;
@@ -62,6 +63,7 @@ public class Year extends Diary{
         return which;
         }
 }
+}}}
 
 2.Diary
 
@@ -448,5 +450,3 @@ public class Year extends Diary{
         return which;
         }
 }
-
-
