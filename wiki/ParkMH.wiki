@@ -19,7 +19,7 @@
 3. 월별 일정도 입력받은 월에 포함된 모든 스케줄을 보여줍니다.
 4. 종료는 다이어리를 닫습니다.
 
-4. 클래스 목록은 Diary, DiaryStart, Year, Month, Month1, Month2, Month3, Day, FunctionGui 입니다.
+4. 클래스 목록은 Diary, DiaryStart, Year, Month, Month1, Month2, Month3, Day, FunctionGui, Schedule 입니다.
 
 그리고 11학번에 임공빈 학생의 것을 많이 참조했습니다.
 
