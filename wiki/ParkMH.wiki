@@ -1,32 +1,35 @@
 #summary One-sentence summary of this page.
+#labels 2011190711,박명훈
 2011190711 박명훈
-= Introduction =
+== Introduction ==
 
-1. 프로젝트 이름은 TheDiary입니다.
+=1. 프로젝트 이름은 TheDiary입니다.=
 
-2. 동기
+=2. 동기=
 
 제가 시간관리에 관심이 많아서 다이어리를 만들어 볼 생각을 했습니다. 물론 제가 원하던 형태로 만들기에는 많은 어려움이 있습니다만.
 
-3. 간단한 설명
+=3. 간단한 설명=
 일정 입력, 일별 일정, 월별 일정, 종료 4개의 메뉴가 있습니다.
 
 1. 일정 입력은 사용자가 월, 일을 입력한 후 일정을 직접 입력하면 됩니다. 
 만약 해당 날짜에 추가적인 입력을 원할 경우에는 월, 일을 입력하게 되면 
 추가로 입력할 것인지 초기화 후 입력할 것인지 선택한 후에 추가로 입력을 하면 됩니다. 한 날짜에 여러 개의 일정이 입력되어 있을 경우에는 하나씩 따로 지우는 것은 
 불가능하고 한 번에 다 지워지게 되어 있습니다.
+
 2. 일별 일정은 입력받은 날짜에 쓰여진 스케줄을 화면에 보여줍니다.
+
 3. 월별 일정도 입력받은 월에 포함된 모든 스케줄을 보여줍니다.
+
 4. 종료는 다이어리를 닫습니다.
 
-4. 클래스 목록은 Diary, DiaryStart, Year, Month, Month1, Month2, Month3, Day, FunctionGui, Schedule 입니다.
+=4. 클래스 목록은 Diary, DiaryStart, Year, Month, Month1, Month2, Month3, Day, FunctionGui, Schedule 입니다.=
 
 그리고 11학번에 임공빈 학생의 것을 많이 참조했습니다.
 
-5.소스코드
-
-1.DiaryStart
+=5.소스코드=
 {{{
+1.DiaryStart
 import java.util.Scanner;
 public class Year extends Diary{
         
@@ -68,14 +71,16 @@ public class Year extends Diary{
         }
 }
 }}}
-2.Diary
+
 {{{
+2.Diary
 public abstract class Diary {
         public abstract Diary go(); 
 }
 }}}
-3. Day
+
 {{{
+3. Day
 import java.io.*;
 import java.util.Scanner;
 
@@ -136,8 +141,9 @@ public class Day extends Diary implements Schedule {
         }
 }
 }}}
-4. FunctionGui
+
 {{{
+4. FunctionGui
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -218,8 +224,9 @@ public class FunctionGui {
         }
     }
 }}}
-5. Month
+
 {{{
+5. Month
 public abstract class Month extends Diary {
             
                 Day one = new Day();
@@ -259,8 +266,9 @@ public abstract class Month extends Diary {
                 
 }
 }}}
-6. Month1
+
 {{{
+6. Month1
 import java.util.Scanner;
 public class Month1 extends Month {	//2월
         
@@ -307,8 +315,9 @@ public class Month1 extends Month {	//2월
         
 }
 }}}
-7. Month2
+
 {{{
+7. Month2
 import java.util.Scanner;
 public class Month2 extends Month {	//30일짜리 월들
         
@@ -354,8 +363,9 @@ public class Month2 extends Month {	//30일짜리 월들
         }
 }
 }}}
-8. Month3
+
 {{{
+8. Month3
 import java.util.Scanner;
 public class Month3 extends Month{	//31일짜리 월들
         
@@ -402,15 +412,17 @@ public class Month3 extends Month{	//31일짜리 월들
         }
 }
 }}}
-9. Schedule
+
 {{{
+9. Schedule
 public interface Schedule {
         public abstract void GetSchedule();
         public abstract void PrintSchedule();
 }
 }}}
-10. Year
+
 {{{
+10. Year
 import java.util.Scanner;
 public class Year extends Diary{
         
