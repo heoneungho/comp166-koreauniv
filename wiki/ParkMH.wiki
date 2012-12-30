@@ -467,6 +467,7 @@ public class Year extends Diary{
 }
 }}}
 
-
+=6. 스크린샷=
+http://code.google.com/p/comp166-koreauniv/downloads/detail?name=%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC1.png&can=2&q=#makechanges
 
 사진 올리는 방법은 아직 모르겠네요. 다운로드 페이지에 2011190711검색하시면 스크린샷 있습니다. 다시 해보겠습니다.
