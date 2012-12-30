@@ -468,9 +468,13 @@ public class Year extends Diary{
 }}}
 
 =6. 스크린샷=
+1.초기화면입니다.
 [http://comp166-koreauniv.googlecode.com/files/d11.jpg]
+2. 일별 일정을 입력중입니다.
 [http://comp166-koreauniv.googlecode.com/files/d22.jpg]
+3. 월별 일정을 확인하고, 일에 일정을 입력하는데 겹치는 경우 초기화하거나 추가 입력을 할 수 있습니다.
 [http://comp166-koreauniv.googlecode.com/files/d33.jpg]
+4. 초기화 후 입력하고 일정을 확인합니다.
 [http://comp166-koreauniv.googlecode.com/files/d44.jpg]
 
 마지막 수정 완료 했습니다.
