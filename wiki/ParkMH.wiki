@@ -466,6 +466,8 @@ public class Year extends Diary{
         }
 }
 }}}
+소스코드 압축파일입니다.
+[http://comp166-koreauniv.googlecode.com/files/Diary.zip]
 
 =6. 스크린샷=
 1.초기화면입니다.
