@@ -16,7 +16,7 @@
 rm /usr/bin/java
 rm /usr/bin/javac
 }}}
- 1. [http://download.oracle.com/otn-pub/java/jdk/7/jdk-7-linux-x64.rpm]를 다운받는다.
+ 1. [http://www.oracle.com/technetwork/java/javase/downloads/index.html]에서 jdk-7u25-linux-x64.rpm를 다운받는다.
  1. 다운받은 rpm을 설치한다. (마우스 우클릭)
  1. /usr/bin에 java와 javac파일이 생성되었는지 확인한다
 {{{
@@ -29,7 +29,7 @@ ln -s /usr/java/default/bin/javac /usr/bin/javac
 }}}
 
 
-= Install eclipse =
+= Install Android SDK =
 
- 1. [http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/indigo/R/eclipse-java-indigo-linux-gtk-x86_64.tar.gz] 에서 eclipse를 다운받는다.
+ 1. [http://developer.android.com/sdk/index.html]에서 ADT Bundle for linux (64bit)를 다운로드 받는다. 
  1. 바탕화면에 압축을 푼다
