@@ -1,0 +1,83 @@
+= 강의명 =
+컴퓨터프로그래밍 
+ * COMP166 ( 00 ) 2학점 전공필수
+ 
+= 강의개요 =
+객체지향 프로그래밍은 절차적 프로그래밍언어로부터 발전된 컴퓨터 프로그래밍 패러다임이다. 각각의 함수 관점에서는 다른 절차적프로그래밍 언어와 동일하지만 변수와 함수를 객체안에 집어 넣는 형태로 프로그래밍 한다는 점에서 절차적 프로그래밍 언어와는 다르다. 이러한 특징은 객체지향 프로그래밍 언어로 작성된 프로그램을 유연하고 변경이 용이한 구조로 만들기 때문에 대규모 소프트웨어 개발에서 객체지향 프로그래밍 언어를 빈번히 사용해 왔다. 본 수업에서는 여러 객체지향 프로그래밍 언어 중에서 가장 대표적인 Java를 이용하여 객체지향 프로그래밍 언어의 기본적인 특징을 배우고 텀 프로젝트를 통해서 활용할 수 있는 능력을 키운다.
+
+= 추천 선수과목 및 수강요건 = 
+C언어
+ 
+
+= 2012년 가을 =
+
+*강의시간*
+ 1. 화(6-7) 라이시움 408
+ 1. 금(6) 라이시움 408
+
+*수업자료 교재*
+ 1. Head First java - 뇌회로를 자극하는 자바 학습법 (개정2판) 
+  * 저자 : 케이시 시에라 | 역자 : 서환수 | 출판사 : 한빛미디어 
+  * 2007년 11월 09일 출간 
+  * [http://headfirstlabs.com/books/hfjava/] code download
+  * [http://comp166-koreauniv.googlecode.com/files/ppt.zip] ppt
+ 1. The Java Tutorials 
+  * http://download.oracle.com/javase/tutorial 
+
+*주요일정*
+ 1. 2012.09.28 프로젝트 소개페이지 만들기
+  * 소개와 배경작성
+ 1. 2012.10.26 프로젝트 중간점검
+  * 소개와 배경에 대해서 자세히 작성
+  * 클래스목록 생성
+  * 각 클래스별로 공개된 속성과 공개된 메소드 정의 (실제소스코드처럼 작성)
+ 1. 2012.12.04 프로젝트 시연
+  * 5분발표
+  * 프로그램소스제출안함 
+   * 수업 시작 전까지 _.class_ 파일들만 발표 컴퓨터의 c:\comp166\ 에 복사  
+ 1. 2012.12.11 기말고사
+ 1. 2012.12.18 프로젝트 완료
+  * 실습문제 완성 
+  * 위키페이지 완성
+  * 프로그램소스제출 (Download에 파일을 올리고 각자의 텀과제 위키에 다운로드링크걸기)
+
+*주요문서*
+ 1. [SetupJavaDevelopmentEnvironment] 408실습실에 JAVA 개발환경 구축하기
+ 1. [PracticalExercise] 실습문제
+ 1. [2011autumn] 2011년 가을 수업페이지
+
+*수강생*
+|| 이름 || 프로젝트명 || 변경이력 ||
+||최병준||[Bluemarble]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Bluemarble.wiki log]||
+||임세현||[dragonball]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/dragonball.wiki log]||
+||마승영||[FoodMarketManager]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/FoodMarketManager.wiki log]||
+||강성한||[tetrisgame]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/tetrisgame.wiki log]||
+||조현정||[CastingBook]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/CastingBook.wiki log]||
+||김재승||[FindNearClass]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/FindNearClass.wiki log]||
+||박명훈||[ParkMH]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/ParkMH.wiki log]||
+||김근영||[Dalmuti]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Dalmuti.wiki log]||
+||박종하||[ChristMasToT]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/ChristMasToT.wiki log]||
+||김민형||[S]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/S.wiki log]||
+||채유연||[OrderGame]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/OrderGame.wiki log]||
+||정승헌||[intelligence]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/intelligence.wiki log]||
+||허능호||[Phonenumber]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Phonenumber.wiki log]||
+||이영주||[FindPair]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/FindPair.wiki log]||
+||임동혁||[Hangman2]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Hangman2.wiki log]||
+||이규원||[Accountbook]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Accountbook.wiki log]||
+||김정곤||[OneToFifty]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/OneToFifty.wiki log]||
+||이성호||[Timetable]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Timetable.wiki log]||
+||김성미||[NemonemoLogicGame]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/NemonemoLogicGame.wiki log]||
+||김현주||[hjplanner]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/hjplanner.wiki log]||
+||박봉우||[AniPang]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/AniPang.wiki log]||
+||한승원||[Perfume]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/Perfume.wiki log]||
+||김영현||[BlackJack]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/BlackJack.wiki log]||
+||황서연||[airplane]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/airplane.wiki log]||
+||김종한||[marketadminister]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/marketadminister.wiki log]||
+||윤진범||[BookStore]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/BookStore.wiki log]||
+||유영훈||[ReadingRoomManager]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/ReadingRoomManager.wiki log]||
+||백승태||[PhoneBook]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/PhoneBook.wiki log]||
+||김경민||[UpDownGame]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/UpDownGame.wiki log]||
+||한혜원||[hanhaewon]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/hanhaewon.wiki log]||
+||정지현||[profile]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/profile.wiki log]||
+||임채원||[myJongroStory]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/myJongroStory.wiki log]||
+||조혜경||[bibim]||[http://code.google.com/p/comp166-koreauniv/source/browse/wiki/bibim.wiki log]||
