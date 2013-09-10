@@ -64,6 +64,7 @@ ln -s /usr/java/default/bin/javac /usr/bin/javac
  * Ubuntu에서 한글을 쓰려면 
   1. [http://leechwin.tistory.com/38 nabi설정]
  * AVD에서 한글을 쓰려면 
+  1. AVD option에서 hardware keyword 체크제거
   1. [http://ws.withcat.net/gifted/20130831/google_0.82.zip 구글키보드] 다운로드
   1. 압축해제 
   1. adt-bundle-linux-x86-20130729/sdk/platform-tools/adb install google_0.82.apk 
