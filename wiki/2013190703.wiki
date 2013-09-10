@@ -31,7 +31,7 @@ public class BeerSong {
 			beerNum = beerNum - 1 ;//beerNum숫자를 하나 줄임
 
 			if (beerNum > 0 ) {
-				System.out.println(beerNum + " " + word + " of beer on the wall") ;//beerNum에 저장된 값 + word에 저장된 글자 + of 이하를 출력
+				//System.out.println(beerNum + " " + word + " of beer on the wall") ;//문장이 겹치므로 주석처리를 하여 해결한다.
 
 			}else{
 				System.out.println("No more bottles of beer on the wall");
