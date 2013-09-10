@@ -10,10 +10,10 @@
 pubic class Beersong{
 	public static void main (String[] arg){
 		int beerNum = 99;
-		String word = "bottles"; //qhrtngud
+		String word = "bottles"; // 복수형
 		while (beerNum > 0) {
 			if (beerNum ==1){
-				word = "bottles"; // ekstngud
+				word = "bottles"; // 단수형(한 병인 경우)
 			}
 
 			system.out.println(beerNum + " " + word + "of beer on the wall");
@@ -26,10 +26,10 @@ pubic class Beersong{
 				system.out.println(beerNum + " " + word + "of beer on the wall");
 			} else{
 				system.out.println("No more bottles of beer on the wall");
-			}// else ans Rmx
-		}// while tnsghksans
-	}// main zmffotm
-}//zmffotm
+			}// else 문 끝
+		}// while 순환문 끝
+	}// main 클래스 끝
+}//클래스 끝
 
 
 
