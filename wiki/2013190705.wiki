@@ -24,7 +24,7 @@ public class BeerSong
 			
 			if(beerNum > 0)
 			{
-				if(beerNum == 1)
+				if(beerNum == 1) // 이 부분 수정!!!!
 				{
 					word = "bottle";
 				}
