@@ -10,16 +10,16 @@
 public class BeerSong { //public의 BeerSong이라는 class선언
 	public static void main (String[] args) { //main함수를 선언
 		int beerNum = 99; //int형 beerNum을 선언하고 값을 99로 초기화
-		String word = "bottles";
+		String word = "bottles"; //String의 word를 선언하고 bottles로 초기화
 		while(beerNum>0) { //beerNum이 0보다 클때동안
 			if(beerNum==1) { //beernum이 1일때
 			word = "bottle"; //word를 bottle로 초기화
 				       }
 		System.out.println(beerNum + " " + word + " of beer on the wall");//beerNum의값 word의 값 of beer on the wall을 출력하고 newline
-		System.out.println(beerNum + " " + word + " of beer.");
-		System.out.println("Take one down.");
-		System.out.println("Pass it around.");
-		beerNum = beerNum - 1;
+		System.out.println(beerNum + " " + word + " of beer.");//beerNum의값 word의 값 of beer 출력하고 newline
+		System.out.println("Take one down.");//Take one down을 출력하고 newline
+		System.out.println("Pass it around.");//Pass it around를 출력하고 newline
+		beerNum = beerNum - 1; //beerNum의 값을 -1
 		if(beerNum>0) {
 			System.out.println(beerNum + " " +word + " of beer on the wall");
 			      } else {
