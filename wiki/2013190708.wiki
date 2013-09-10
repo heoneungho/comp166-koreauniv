@@ -7,6 +7,25 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
+public class beersong
+{ public static void main (string[] args)
+	{ int beernum =99;
+	string word="bottles";
+	while(beernum>0)
+		{
+		if (beenum ==1)
+		{word="bottle";}
+system.out.println(beernum +""+word+" of beer on the wall");
+system.out.println(beernum+""+word+"of beer.");
+system.out.println("pass it around.");
+beernum-beernum-1;
+
+if(beernum>0)
+{
+system.out.println(beernum+""+word+"of beer on the wall:);}
+else
+{system.out.println("no more bottles of beer on the wall");}
+}}}}
 
 }}}
 
