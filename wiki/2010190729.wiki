@@ -19,6 +19,7 @@ public class Beersong {
 				while(beerNum > 0)//beerNum이 0보다 크면 실행
 				{
 					System.out.println(beerNum + " " + word + " of beer on the wall");
+//beerNum이라는 문자열과 " "(띄어쓰기) 를 붙이는 "+" 를 사용
 					System.out.println(beerNum + " " + word + " of beer");
 					System.out.println("Take one down.");
 					System.out.println("pass it around.");
