@@ -6,11 +6,6 @@
 
 * install java to 32bit ubuntu machine *
 
- 1. /usr/bin/java, /usr/bin/javac를 제거한다.
-{{{
-rm /usr/bin/java
-rm /usr/bin/javac
-}}}
  1. [http://www.oracle.com/technetwork/java/javase/downloads/index.html]에서 jdk-7u25-linux-i586.tar.gz를 다운받는다.
  1. tar -zxvf jdk-7u25-linux-i586.tar.gz
  1. sudo mv jdk1.7.0_25/ /usr/local
@@ -46,3 +41,4 @@ ln -s /usr/java/default/bin/javac /usr/bin/javac
 = Install Android SDK =
 
  1. [http://developer.android.com/sdk/index.html]에서 ADT Bundle for linux (32bit or 64bit)를 다운로드 받는다. 
+ 1. extract with folder explore
