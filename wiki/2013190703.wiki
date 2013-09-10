@@ -6,6 +6,8 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
+
+{{{
 public class BeerSong {
 	public static void main (String[] args) {
 		int beerNum = 99 ;
@@ -34,9 +36,7 @@ public class BeerSong {
 			}//else문 끝
 		}//while문 끝
 	}//main 클래스 끝
-}클래스 끝
-{{{
-
+}//클래스 끝
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
