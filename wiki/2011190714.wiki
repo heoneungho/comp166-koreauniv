@@ -1,4 +1,4 @@
-#summary = 2011190714
+#summary 2011190714
 
 <wiki:toc max_depth="1" />
 
