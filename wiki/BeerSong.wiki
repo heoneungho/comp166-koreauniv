@@ -15,7 +15,8 @@ public class BeerSong
 			System.out.println("Pass it around");
 			beerNum = beerNum -1; 
 
-			if (beerNum ==1) _//change String "word" right after changing "beerNum"_
+			if (beerNum ==1) *_//change String "word" right after changing "beerNum"_*
+
 			{
 				word = "bottle";
 			}
