@@ -37,7 +37,7 @@ public class Beersong {
 					}//else문 끝
 				}//while문 끝
 		}//main클래스 끝
-}클래스 끝
+}//클래스 끝
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
