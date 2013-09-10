@@ -6,7 +6,7 @@ public class BeerSong {
 		
                 while(beerNum>0) {
 			if(beerNum==1) {
-			word = "bottles"; //단수형
+			word = "bottles"; //단수형(한 병인 경우)
 				       }
 		System.out.println(beerNum + " " + word + " of beer on the wall");
 		
