@@ -1,3 +1,4 @@
+
 #summary 손낙원의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -7,6 +8,30 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
+
+public class beer {
+        public static void main (String[] args) {
+                int beerNum=99;
+                String word="bottles"; //복수형
+
+        while (beerNum>0) {
+
+        if(beerNum==1) {
+                word="bottle"; //단수형(한 병인 경우)
+                        }
+
+        System.out.println(beerNum + " " + word + " of beer on the wall");
+        System.out.println(beerNum + " " + word + " of beer.");
+        System.out.println("Take one down.");
+        System.out.println("Pass it around.");
+        beerNum = beerNum - 1;
+
+        if (beerNum<=0) {
+                System.out.println("No more bottles of beer on the wall");
+        } //else문 끝
+        } //while순환문 끝
+} //main클래스 끝
+} //클래스 끝
 
 }}}
 
