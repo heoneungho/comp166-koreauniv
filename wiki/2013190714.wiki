@@ -37,7 +37,7 @@ public class BeerSong { //public의 BeerSong이라는 class선언
 {{{
 public class PhraseOMatic {
 	public static void main (String [] args) {
-	
+	//세 종류의 단어 목록을 만듭니다. 적당히 필요한 단어를 추가해도 됩니다.
 	String [] wordListOne = {"김명준은","임태완은","김석환은","박선우은","이영기는","이미현은","임태휘는","손낙원은","곽도윤은"};
 	
 	String [] wordListTwo = {"수업끝나고","오늘새벽에","곧","한시간후에"};
