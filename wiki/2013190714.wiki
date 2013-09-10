@@ -55,6 +55,7 @@ public class PhraseOMatic {
 	String phrase = wordListOne[rand1] + " " +
 	wordListTwo[rand2] + " " + wordListThree[rand3];
 	
+        //구문을 출력합니다.
 	System.out.println("What we need is a " +phrase);
 	}
 } 
