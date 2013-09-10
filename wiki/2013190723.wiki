@@ -6,9 +6,36 @@
 
 *48p BeerSong* _문제해결하기, 주석달기_
 
-{{{
+public class BeerSong{
+ public static void main (string[] args){
+  int beerNum = 99;
+  String word = "bottles"; // the plural
 
-}}}
+  while (beerNum == 1){
+
+   if (beerNum == 1){
+    word = "bottle"; // the single number
+
+    System.out.println(beerNum + "" + word + "of beer on the wall")
+    System.out.println(beerNum + "" + word + "of beer")
+    System.out.println("Take one down.");
+    System.out.println("Pass it aroung");
+
+   beerNum = beerNum-1;
+
+  if(beerNum > 0) {
+   System.out.println(beerNum + "" + word + "of beer on the wall");
+}else{
+   Systen.out.println("No more bottles of beer on the wall");
+
+}// the end of else
+
+}//the end of while
+
+}// the end of main class
+
+}//the end of class
+
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
