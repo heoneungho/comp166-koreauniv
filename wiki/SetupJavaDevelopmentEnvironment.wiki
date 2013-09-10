@@ -2,7 +2,7 @@
 
 = Install JDK =
 
-Oracle의 JDK또는 openjdk를 설치한다. 다음 3가지 방법 중 하나만을 선택한다.
+Oracle의 JDK또는 openjdk를 설치한다. 다음 3가지 방법 중 하나 만을 선택한다.
 
 * install java to 32bit ubuntu machine (추천) *
 
@@ -35,7 +35,7 @@ ln -s /usr/java/default/bin/java /usr/bin/java
 ln -s /usr/java/default/bin/javac /usr/bin/javac
 }}}
 
-* openjdk 설치하는법 *
+* install openjdk *
 
  1. sudo apt-get install openjdk-6-jdk
 
