@@ -42,7 +42,7 @@ public class PhraseOMatic {
 	
 	String [] wordListTwo = {"수업끝나고","오늘새벽에","곧","한시간후에"};
 	
-	String [] wordListThree = {"롤을합니다,"공부를합니다","잠을잡니다","수업을듣습니다"};
+	String [] wordListThree = {"롤을합니다","공부를합니다","잠을잡니다","수업을듣습니다"};
 	
 	int oneLength = wordListOne.length;
 	int twoLength = wordListTwo.length;
