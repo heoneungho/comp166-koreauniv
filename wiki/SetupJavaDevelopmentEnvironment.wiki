@@ -7,6 +7,7 @@
 * install java to 32bit ubuntu machine *
 
  1. [http://www.oracle.com/technetwork/java/javase/downloads/index.html]에서 jdk-7u25-linux-i586.tar.gz를 다운받는다.
+  * [http://163.152.113.76/jdk-7u25-linux-i586.tar.gz link]
  1. tar -zxvf jdk-7u25-linux-i586.tar.gz
  1. sudo mv jdk1.7.0_25/ /usr/local
  1. symbolic link를 생성한다.
@@ -38,7 +39,22 @@ ln -s /usr/java/default/bin/javac /usr/bin/javac
 
  1. sudo apt-get install openjdk-6-jdk
 
-= Install Android SDK =
+= Install ADT Bundle =
 
  1. [http://developer.android.com/sdk/index.html]에서 ADT Bundle for linux (32bit or 64bit)를 다운로드 받는다. 
- 1. extract with folder explore
+  * [http://163.152.113.76/adt-bundle-linux-x86-20130729.zip link]
+ 1. extract eclipse
+
+= Install Android SDK and create AVD =
+
+ 1. run eclipse
+ 1. download android 
+  1. click Android SDK Manager
+  1. check SDK Platform and ARM EABIv7a System Image of Android 4.1.6 (API16)
+  1. click Install packages
+ 1. restart 
+ 1. create android virtual device
+  1. click Android Virtual Device Manager
+  1. click New and fill blank entry 
+   1. target: Android 4.1.2 - API level 16
+ 1. start avd
