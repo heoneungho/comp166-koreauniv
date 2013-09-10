@@ -24,7 +24,7 @@ public class Beersong {
 					System.out.println("Take one down.");
 					System.out.println("pass it around.");
 					beerNum = beerNum-1;
-					if(beerNum==1)//beerNum이1이면 실행
+					if(beerNum==1)//beerNum이1이면 실행, 단수형(한 병인 경우)
 					{
 						word = "bottle";
 					}
@@ -34,10 +34,10 @@ public class Beersong {
 					}else//beerNum이 0보다 크지않으면 실행
 					{
 						System.out.println("No more bottles of beer on the wall");
-					}
-				}
-		}
-}
+					}//else문 끝
+				}//while문 끝
+		}//main클래스 끝
+}클래스 끝
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
