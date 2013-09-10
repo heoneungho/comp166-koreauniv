@@ -10,7 +10,6 @@
 
 
 
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -20,32 +19,34 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-public class Beersong {
-	public statid void main (String[] args) {
-		int beernum = 99;
-		String word = "bottles";
+public class BeerSong {
+     public static void main (String[] args) {
+          int beerNum = 99;
+          String word = "bottles";
 
-		while (beerNum > 0) {
-			if (beerNum == 1){
-				word = "bottle";
-					}
+     while (beerNum > 0) {
 
-			System.out.println(beerNum + " " + word + " of beer on the wall");
-			System.out.println(beerNum + " " + word + " of beer.");
-			System.out.println("Take one down.");
-			System.out.println("pass it around.");
-			beerNum = beerNum - 1;
+     if (beerNum == 1) {
+          word = "bottle";
+     }
 
-			if (beerNum > 0 ){
-				System.out.println(beerNum + " " + word + " of beer on the wall");
-					}
-				else {
-				
-				System.out.println("No more bottles of beer on the wall");
-				}
-			}
-		}
-	}
+     System.out.println(beerNum + " " + word + " of beer on the wall");
+     System.out.println(beerNum + " " + word + " of beer.");
+     System.out.println("Pass it around");
+     beerNum = beerNum -1;
+
+     if (beerNum > 0) {
+          if(beerNum ==1) {
+               word = "bottle";
+          }
+          System.out.println(beerNum + " " + word + " of beer on the wall");
+          }else {
+          System.out.println("No more bottles of beer on the wall");
+               }
+          }
+     }
+}
+
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
