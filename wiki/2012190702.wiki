@@ -10,7 +10,7 @@ public class BeerSong
 {
     public static void main (String[] args)
     {
-       int beerNum = 99;
+       int beerNum = 99; // 
        String word = "bottles";
     
        while(beerNum > 0 ) //맥주를 차례대로 낮춰가며 노래부름
