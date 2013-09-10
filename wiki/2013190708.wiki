@@ -22,7 +22,7 @@ beernum-beernum-1;
 
 if(beernum>0)
 {
-system.out.println(beernum+""+word+"of beer on the wall:);}
+system.out.println(beernum+""+word+"of beer on the wall");}
 else
 {system.out.println("no more bottles of beer on the wall");}
 }}}}
