@@ -2,9 +2,9 @@
 
 = Install JDK =
 
-Oracle의 JDK또는 openjdk를 설치한다.
+Oracle의 JDK또는 openjdk를 설치한다. 다음 3가지 방법 중 하나만을 선택한다.
 
-* install java to 32bit ubuntu machine(추천) *
+* install java to 32bit ubuntu machine (추천) *
 
  1. [http://www.oracle.com/technetwork/java/javase/downloads/index.html]에서 jdk-7u25-linux-i586.tar.gz를 다운받는다.
   * [http://163.152.113.76/jdk-7u25-linux-i586.tar.gz link]
