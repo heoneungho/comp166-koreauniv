@@ -21,7 +21,8 @@ public class BeerSong { //public의 BeerSong이라는 class선언
 		System.out.println("Pass it around.");//Pass it around를 출력하고 newline
 		beerNum = beerNum - 1; //beerNum의 값을 -1
 		if(beerNum>0) {
-			System.out.println(beerNum + " " +word + " of beer on the wall");
+			//System.out.println(beerNum + " " +word + " of beer on the wall");
+//while문에 있는 출력문과 같은내용이 중복된다.중복된 내용이 출력되므로 주석처리
 			      } else {
 			System.out.println("No more bottles of beer on the wall");
 			      }//else문 끝
