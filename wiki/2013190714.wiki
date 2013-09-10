@@ -24,7 +24,7 @@ public class BeerSong { //public의 BeerSong이라는 class선언
 			//System.out.println(beerNum + " " +word + " of beer on the wall");
 //while문에 있는 출력문과 같은내용이 중복된다.중복된 내용이 출력되므로 주석처리
 			      } else {
-			System.out.println("No more bottles of beer on the wall");
+			System.out.println("No more bottles of beer on the wall");//0보다 크지 않을경우 다음문장을 출력하고 newline
 			      }//else문 끝
   			}//while 순환문 끝
  		}//main 클래스 끝
