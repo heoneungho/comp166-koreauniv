@@ -7,15 +7,15 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-public class BeerSong {
-	public static void main (String[] args) {
-		int beerNum = 99;
+public class BeerSong { //public의 BeerSong이라는 class선언
+	public static void main (String[] args) { //main함수를 선언
+		int beerNum = 99; //int형 beerNum을 선언하고 값을 99로 초기화
 		String word = "bottles";
-		while(beerNum>0) {
-			if(beerNum==1) {
-			word = "bottle";
+		while(beerNum>0) { //beerNum이 0보다 클때동안
+			if(beerNum==1) { //beernum이 1일때
+			word = "bottle"; //word를 bottle로 초기화
 				       }
-		System.out.println(beerNum + " " + word + " of beer on the wall");
+		System.out.println(beerNum + " " + word + " of beer on the wall");//beerNum의값 word의 값 of beer on the wall을 출력하고 newline
 		System.out.println(beerNum + " " + word + " of beer.");
 		System.out.println("Take one down.");
 		System.out.println("Pass it around.");
