@@ -24,10 +24,10 @@ public class BeerSong { //public의 BeerSong이라는 class선언
 			System.out.println(beerNum + " " +word + " of beer on the wall");
 			      } else {
 			System.out.println("No more bottles of beer on the wall");
-			      }
-  			}
- 		}
-	}
+			      }//else문 끝
+  			}//while 순환문 끝
+ 		}//main 클래스 끝
+	}//클래스 끝
 
 }}}
 
