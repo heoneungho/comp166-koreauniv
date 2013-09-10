@@ -5,6 +5,7 @@
 = 01. 껍질을 깨고:간단한 소개 =
 
 *48p BeerSong* _문제해결하기, 주석달기_
+{{{
 
 public class BeerSong{
  public static void main (string[] args){
@@ -37,6 +38,7 @@ public class BeerSong{
 }//the end of class
 
 
+}}}
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
