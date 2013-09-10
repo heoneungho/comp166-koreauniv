@@ -34,7 +34,8 @@ public class BeerSong { //public의 BeerSong이라는 class선언
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{public class PhraseOMatic {
+{{{
+public class PhraseOMatic {
 	public static void main (String [] args) {
 	
 	String [] wordListOne = {"24/7","multi-Tier","30,000 foot","B-to-B",
