@@ -58,3 +58,12 @@ ln -s /usr/java/default/bin/javac /usr/bin/javac
   1. click New and fill blank entry 
    1. target: Android 4.1.2 - API level 16
  1. start avd
+
+= 한글설정 =
+
+ * Ubuntu에서 한글을 쓰려면 
+  1. [http://leechwin.tistory.com/38 nabi설정]
+ * AVD에서 한글을 쓰려면 
+  1. [http://ws.withcat.net/gifted/20130831/google_0.82.zip 구글키보드] 다운로드
+  1. 압축해제 
+  1. adt-bundle-linux-x86-20130729/sdk/platform-tools/adb install google_0.82.apk 
