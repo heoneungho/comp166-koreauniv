@@ -10,12 +10,12 @@
 public class beersong{
 	public static void main (String[] args) {
 		int beerNum = 99;
-		String word = "bottles";
+		String word = "bottles";     //more than one
 
 		while (beerNum > 0) {
 			
 			if(beerNum == 1) {
-				word = "bottle";
+				word = "bottle";     //for one bottle
 			}
 
 			System.out.println(beerNum + " " + word + " of beer on the wall");
@@ -27,7 +27,7 @@ public class beersong{
 			if(beerNum > 0)
 			{
 				if(beerNum == 1)
-					word = "bottle";					
+					word = "bottle";     //for one bottle					
 				System.out.println(beerNum + " " + word + " of beer on the wall");
 			}
 			else
