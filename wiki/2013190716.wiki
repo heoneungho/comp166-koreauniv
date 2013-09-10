@@ -17,7 +17,7 @@ public class beer {
 
         if(beerNum==1) {
                 word="bottle"; //단수형(한 병인 경우)
-                        }
+                        
 
         System.out.println(beerNum + " " + word + " of beer on the wall");
         System.out.println(beerNum + " " + word + " of beer.");
