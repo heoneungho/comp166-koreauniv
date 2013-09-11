@@ -45,6 +45,29 @@ public class BeerSong {
 
 {{{
 
+public class PhraseOMatic {
+	public static void main (String[] args) {
+
+	String[] Animalword = {"Dog", "Cat", "Tiger", "Monkey", "Lion", "Shark", "Whale", "Bird"};
+
+	String[] Stationeryword = {"Pencil", "Pen", "Eraser", "Pencilcase", "Notebook", "Highlightpen", "book"};
+
+	String[] Feelingword = {"Happy", "Sad", "Angry", "Interesting", "jealous", "impressed", "Nice", "tired", "zealous", "excited", "Bad"};
+
+	int AnimalLength = Animalword.length;
+	int StationeryLength = Stationeryword.length;
+	int FeelingLength = Feelingword.length;
+
+	int rand1 = (int) (Math.random() * AnimalLength);
+	int rand2 = (int) (Math.random() * StationeryLength);
+	int rand3 = (int) (Math.random() * FeelingLength);
+
+	String phrase = Animalword[rand1] + " " + Stationeryword[rand2] + " " + Feelingword[rand3];
+
+	System.out.println("What we need is a " + phrase);
+	}
+}
+
 }}}
 
 *52p 집중토론* _요약_
