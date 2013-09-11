@@ -42,7 +42,29 @@ public class BeerSong
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+public class PhraseOMatic
+{
+  public static void main(String[] args)
+  {
+     String[] wordListOne = {"JongHa", "Geun Young" , "Dong Hyeok", "Young Hyun", "Jung Gon"}; // 다 군지했노 ...
 
+     String[] wordListTwo = {"Love", "Hit", "Hate", "Like", "Help"}; // 기본 단어를 적는다.
+
+     String[] wordListThree = {"Gay" , "Billy", "IT Bank", "LOL", "IU"};
+// 왜 이래 적었는지 모름 ... 
+     int oneLength = wordListOne.length; //길이만큼 선언
+     int twoLength = wordListTwo.length; // 마찬가지
+     int threeLength = wordListThree.length; // ㅇㅇ
+
+     int rand1 = (int) (Math.random()*oneLength); // Listone 에 있는 단어들을 list 숫자 배열한거 랜덤 뽑기!!
+     int rand2 = (int) (Math.random()*twoLength); // 마찬가지
+     int rand3 = (int) (Math.random()*threeLength); // ㅇㅇ
+
+     String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3]; // 자 .. 이제 3개를 조합해보자
+
+     System.out.println("What we need is a " + phrase); //phrase에 저장한 문장을 말해보자
+   }
+}
 }}}
 
 *52p 집중토론* _요약_
