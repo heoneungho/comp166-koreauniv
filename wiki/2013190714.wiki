@@ -72,7 +72,7 @@ public class PhraseOMatic {
 
 {{{
 B
-class exercise1b {// class 선언이 없어서 추가
+class exercise2b {// class 선언이 없어서 추가
 	public static void main(String [] args) {
 		int x = 5;
 		while ( x > 1 ) {
@@ -83,6 +83,18 @@ class exercise1b {// class 선언이 없어서 추가
 		}
 	}
 }// }를 하나 추가
+C
+class Exercise3b {
+	public static void main(String [] args) {//main 메소드 추가
+		int x = 5;
+		while ( x > 1) {
+			x=x-1;
+			if(x<3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}//}하나 추가
 }}}
 
 
