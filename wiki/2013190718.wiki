@@ -39,18 +39,74 @@ public class BeerSong {
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+public class PhraseOMatic {
+        public static void main (String[] args) {
+
+        String[] wordListOne = {"Happy", "Sad", "Angry", "nervous", "surprised","tired", "jealous", "scared", "relaxed", "terrified"};
+
+        String[] wordListTwo = {"sweet", "sour", "salty", "spicy", "smoothy", "greesy", "moistful", "soft"};
+
+        String[] wordListThree = {"ugly", "cute", "pretty", "handsome", "eyelid", "big headed", "sharp chin", "round cheek", "pony tail"};
+
+        int oneLength = wordListOne.length;
+        int twoLength = wordListTwo.length;
+        int threeLength = wordListThree.length;
+
+        int rand1 = (int) (Math.random() * oneLength);
+        int rand2 = (int) (Math.random() * twoLength);
+        int rand3 = (int) (Math.random() * threeLength);
+
+        String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
+
+        System.out.println("What we need is a " + phrase);
+        }
+}
+~      
+
+
 
 }}}
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 프로그램을 실행시킨다. 보안 관련 작업도 한다. 바이트코드가 만들어진 다음 바이트코드가 실행되기 전까지 다른 누군가가 그걸 건드렸는지 확인하는 작업도 한다. 
+ * 컴파일러: 일일이 손으로 바이트코드를 작성하는 것은 아주 어렵고 시간이 많이 걸린다. 하지만 컴파일러 덕분에 좀 더 쉽게 코드를 작성하고 컴파일러가 바이트 코드로 해석해 주기 때문에 자바 프로그램 실행 속도도 증가하고 사용자가 사용하기 편해진다. 그리고 데이터 유형이 위반된 것도 바로 잡아주고, 접근 위반을 방지하기도 하고, 사람들이 함부로 건드리면 안되는 코드를 건드리려는 등의 일을 방지하기도 한다. 즉, 발생할 수 있는 문제점의 대부분을 미리 잡아낸다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
 
+A. 
+class Exercise1b {
+        public static void main(String [] args) {
+                int x=1;
+                while (x<10) {
+
+                        x=x+1; // x가 증가되지 않으면 while 문이 반복되도 x의 값이 1로 고정되어서 big x가 출력되지 않는다.
+                if(x>3) {
+                        System.out.println("big x");
+                }
+                }
+        }
+}
+
+B.
+class X {
+        public static void main(String [] args) {
+                int x=5;
+                while (x>1) {
+                        x = x-1;
+                        if (x<3) {
+                                System.out.println("small x");
+                        }
+                }
+       }
+
+} // 클래스가 정해지지 않아 프로그램이 실행되지 않음.
+
+C.
+
+     
 }}}
 
 
