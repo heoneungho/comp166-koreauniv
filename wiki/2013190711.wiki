@@ -54,7 +54,7 @@ public class a {
 
 		String Phrase = animalList[rand1] + " " + foodList[rand2]+ " " + fruitList[rand3];
 
-		System.out.println("What we need is a" + Phrase);
+		System.out.println("What we need is a " + Phrase);
 }
 }		
 
