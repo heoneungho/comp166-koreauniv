@@ -65,13 +65,24 @@ public class PhraseOMatic{
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 1. 프로그램을 실행 2. 자바는 순수 인터프리터 언어가 아님 3. 유형에 엄격함 4. 동적 바인딩 지원
+ * 컴파일러: 1. 문법 검사 2. 실행 시 문제점을 미리 감지 3. 핵심 코드 보안
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-
+A<br><br>class Exercise1b{
+	public static void main(String[] args){
+		int x=1;
+	
+		while(x<10){
+			if(x>3){
+				System.out.println("big x");
+			}//it can be compiled 
+			x += 1;
+		}	
+	}
+}
 }}}
 
 
