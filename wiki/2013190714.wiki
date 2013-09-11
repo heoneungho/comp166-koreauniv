@@ -1,4 +1,4 @@
-#summary 김명준의 실습 페이지입니다.
+#summary 김명준의 실습 페이지입니다.짱짱
 
 <wiki:toc max_depth="1" />
 
