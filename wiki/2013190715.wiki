@@ -46,7 +46,7 @@ public class BeerSong{
 public class PhraseOMatic {
         public static void main (String [] args) {
         //세 종류의 단어 목록을 만듭니다. 적당히 필요한 단어를 추가해도 됩니다.
-        String [] wordListOne = {"럭스로","바이로","케이틀린으로","미스포츈으로","쓰레쉬로","나서스로,"자르반4세로"};
+        String [] wordListOne = {"럭스로","바이로","케이틀린으로","미스포츈으로","쓰레쉬로","나서스로","자르반4세로"};
         
         String [] wordListTwo = {"미드를 가면","정글을 가면","원딜을 가면","서폿을 가면","탑을 가면"};
         
