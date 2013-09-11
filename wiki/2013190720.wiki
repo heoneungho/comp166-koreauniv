@@ -41,6 +41,30 @@ public class BeerSong {
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+public class PhraseOMatic {
+        public static void main (String[] args) {
+
+                String [] wordListOne = {"A is a","B is b","C is c","E is e","F is F"};
+
+                String [] wordListTwo = {"G is g","H is h","I is i","J is j","K is K"};
+
+                String [] wordListThree = {"L is l","M is m","N is n","O is o","P is P"," I love English haha..."};
+
+                int oneLength = wordListOne.length;
+                int twoLength = wordListTwo.length;
+                int threeLength = wordListThree.length;
+
+                int rand1 = (int) (Math.random() * oneLength);
+                int rand2 = (int) (Math.random() * twoLength);
+                int rand3 = (int) (Math.random() * threeLength);
+
+                String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
+
+                System.out.println("Lets Happy English Song " + phrase);
+        }
+}
+
+
 
 }}}
 
