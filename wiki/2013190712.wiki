@@ -85,7 +85,7 @@ public class Exercise1b {
                 {
                         if(x>3)
                                 System.out.println("big x");
-                        x++;     //x를 증가시켜서 루한루프를 방지
+                        x++;     //x를 증가시켜서 무한루프 방지
                 }
         }
 }
