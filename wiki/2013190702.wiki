@@ -54,6 +54,28 @@ public class BeerSong {
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+public class PhraseOMatic {
+	public static void main(String[] args) {
+	
+		String[] Rappers = {"dayglo", "The Quiett", "DOK2", "J kyun", "takeone", "LOCO", "WUTAN", "din din", "NuNu"};
+
+		String[] Fruits = {"apple", "kiwi", "melon", "tomato", "grape", "strawberry", "blueberry", "cherry"};
+		
+		String[] Animals = {"cat", "fish", "dog", "fox", "elephant", "rabbit", "polar bear", "bear"};
+
+		int OneLength = Rappers.length;
+		int TwoLength = Fruits.length;
+		int ThreeLength = Animals.length;
+
+		int rand1 = (int)(Math.random() * OneLength);
+		int rand2 = (int)(Math.random() * TwoLength);
+		int rand3 = (int)(Math.random() * ThreeLength);
+
+		String Phrase = Rappers[rand1] + ", " + Fruits[rand2] + ", "+ Animals[rand3] + ".";
+
+		System.out.println("What we need is a " + Phrase);
+		}
+	}
 
 }}}
 
