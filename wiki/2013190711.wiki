@@ -38,6 +38,25 @@ pubic class Beersong{
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+public class a {
+	public static void main (String[] args){
+		String[] animalList = {"cat","dog","snake","fish","panda"};
+		String[] foodList = {"pizza", "hamburger"," spaghetti"};
+		String[] fruitList = {"apple", "banana", "peach", "orange", "watermelon"};
+
+		int animalListLength = animalList.length;
+		int foodListLength = foodList.length;
+		int fruitListLength = fruitList.length;
+
+		int rand1 = (int) (Math.random() * animalListLength);
+		int rand2 = (int) (Math.random() * foodListLength);
+		int rand3 = (int) (Math.random() * fruitListLength);
+
+		String Phrase = animalList[rand1] + " " + foodList[rand2]+ " " + fruitList[rand3];
+
+		System.out.println("What we need is a" + Phrase);
+}
+}		
 
 }}}
 
