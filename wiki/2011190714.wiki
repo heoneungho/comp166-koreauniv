@@ -1,4 +1,4 @@
-#summary 2011190714
+#summary 김동환의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
 
@@ -42,6 +42,32 @@ public class BeerSong{
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+
+
+public class PhraseOMatic{
+	public static void main(String[] args) {
+
+	String[] wordListOne = { "apple", "banana", "china", "drink", "one-to-one",  "power", "garbage", "computer", "clothes", 				"moon" };
+
+	String[] wordListTwo = { "powerless", "useless", "overwhelming", "sad", "dark","pervasive", "white", "light", "hungry", 
+				"focused", "associative" };
+
+	String[] wordListThree = { "mission" , "completeness", "problem", "speaker", "listener", "people" };
+
+	int oneLength = wordListOne.length;
+	int twoLength = wordListTwo.length;
+	int threeLength = wordListThree.length;
+
+	int rand1 = (int) (Math.random() * oneLength);
+	int rand2 = (int) (Math.random() * twoLength);
+	int rand3 = (int) (Math.random() * threeLength);
+
+	String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
+	System.out.println("What we need is a " + phrase);
+	}
+}
+
+
 
 }}}
 
