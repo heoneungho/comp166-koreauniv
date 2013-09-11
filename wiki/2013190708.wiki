@@ -31,7 +31,27 @@ else
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{
+{{{public class PhraseOMatic{
+        public static void main (String[] args){
+         
+        String[] number = {"1", "2", "3", "4"};
+        String[] animal = {"cat", "dog", "snake", "horse"};
+        String[] beer = {"hite", "cass", "budweiser", "heineken"};
+
+        int oneLength = number.length;
+        int twoLength = animal.length;
+        int threeLength = beer.length;
+
+        int rand1 = (int)(Math.random() * oneLength);
+        int rand2 = (int)(Math.random() * twoLength);
+        int rand3 = (int)(Math.random() * twoLength);
+
+        String phrase = number[ran1] + " " + animal[ran2] + " " + beer[ran3];
+        
+        System.out.println("What we need is a " + phrase);
+        }
+}
+
 
 }}}
 
