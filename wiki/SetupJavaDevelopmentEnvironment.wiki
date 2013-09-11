@@ -68,3 +68,4 @@ ln -s /usr/java/default/bin/javac /usr/bin/javac
   1. [http://ws.withcat.net/gifted/20130831/google_0.82.zip 구글키보드] 다운로드
   1. 압축해제 
   1. adt-bundle-linux-x86-???/sdk/platform-tools/adb install google_0.82.apk 
+  1. AVD에 들아가서 설치된 한글 키보드를 사용하기로 설정 변경
