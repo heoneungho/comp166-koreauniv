@@ -74,13 +74,13 @@ class Exerciselb
 {
   public static void main(String [] args)
   { 
-    int x = 1;
+    int x = 1; // 자 ! x에 1을 넣어보자!
     
     while ( x < 10 ) // x 가 10미만일 때 1씩 더함
     {
-       if( x > 3 )
-       System.out.println("big x");
-       x++;
+       if( x > 3 ) // x가 3초과이면???
+       System.out.println("big x"); // 출 to the 력
+       x++; // 다했으면 1을 더해보자.
     }
   }
 }
@@ -90,15 +90,15 @@ class Exerciselb
 {
   public static void main(String [] args)
   {
-    int x = 5;
+    int x = 5; // 이번엔 x가 5라니..
     while(x>1)  // x가 1초과일 때 계속 1씩 뺌
     {
-       if (x < 3)
-          System.out.println("small x");
-       x--;
+       if (x < 3) // x가 3미만이면??
+          System.out.println("small x"); // 출 to the 력
+       x--; // 다했으면 1을 빼보자
     }
   }
-}
+} //끝
 }}}
 
 
