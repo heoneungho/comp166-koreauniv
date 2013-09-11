@@ -8,7 +8,6 @@
 
 
 
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -54,7 +53,7 @@ public class BeerSong {
  public class PhraseOmatic{
 	public static void main(String[] args){
 		String[] wordListOne = {"apple", "banana", "grape", "orange", "watermelon", "melon"};
-		String[] wordListTwo = {"applejuice", "bananjuice", "orangejuice", watermelonjuice", "melonjuice"};
+		String[] wordListTwo = {"applejuice", "bananjuice", "orangejuice", "watermelonjuice", "melonjuice"};
 		String[] wordListThree = ["applejam", "bananajam", "orangejam", "watermelonjam", "melonjam"};
 		
 		//각 단어 목록에 단어 몇 개씩 들어있는지 확인합니다
