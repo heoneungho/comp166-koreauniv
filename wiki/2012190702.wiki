@@ -10,29 +10,29 @@ public class BeerSong
 {
     public static void main (String[] args)
     {
-       int beerNum = 99; // 
-       String word = "bottles";
+       int beerNum = 99; // 자! 너에게 맥주 99개를 주겠다.
+       String word = "bottles"; // word에 bottles를 넣겠다.
     
        while(beerNum > 0 ) //맥주를 차례대로 낮춰가며 노래부름
        {
            
-       System.out.println(beerNum + " " + word + " of beer on the wall");
-       System.out.println(beerNum + " " + word + " of beer.");
-       System.out.println("Take one down.");
-       System.out.println("Pass it around.");
+       System.out.println(beerNum + " " + word + " of beer on the wall"); // 지금있는 맥주갯수가 on the wall에 있다 ~
+       System.out.println(beerNum + " " + word + " of beer."); // 중복
+       System.out.println("Take one down."); // 테잌다운
+       System.out.println("Pass it around."); //패시라운
        beerNum = beerNum - 1;
 
        if (beerNum > 0) // 술남은거
        {
             if(beerNum ==1)
-            word = "bottle";
+            word = "bottle"; // 한개면 당연히 단수
 
-            System.out.println(beerNum + " " + word + " of beer on the wall");
+            System.out.println(beerNum + " " + word + " of beer on the wall"); // 중간에 " " 는 단어사이에 공간을 만들기 위함이지.
         }
 
-        else
+        else // 병이 없으면 ? 
        {
-            System.out.println("No more bottles of beer on the wall");
+            System.out.println("No more bottles of beer on the wall"); // 요렇게
        }
        }
 }}
@@ -43,23 +43,23 @@ public class PhraseOMatic
 {
   public static void main(String[] args)
   {
-     String[] wordListOne = {"JongHa", "Geun Young" , "Dong Hyeok", "Young Hyun", "Jung Gon"};
+     String[] wordListOne = {"JongHa", "Geun Young" , "Dong Hyeok", "Young Hyun", "Jung Gon"}; // 다 군지했노 ...
 
-     String[] wordListTwo = {"Love", "Hit", "Hate", "Like", "Help"};
+     String[] wordListTwo = {"Love", "Hit", "Hate", "Like", "Help"}; // 기본 단어를 적는다.
 
      String[] wordListThree = {"Gay" , "Billy", "IT Bank", "LOL", "IU"};
+// 왜 이래 적었는지 모름 ... 
+     int oneLength = wordListOne.length; //길이만큼 선언
+     int twoLength = wordListTwo.length; // 마찬가지
+     int threeLength = wordListThree.length; // ㅇㅇ
 
-     int oneLength = wordListOne.length;
-     int twoLength = wordListTwo.length;
-     int threeLength = wordListThree.length;
+     int rand1 = (int) (Math.random()*oneLength); // Listone 에 있는 단어들을 list 숫자 배열한거 랜덤 뽑기!!
+     int rand2 = (int) (Math.random()*twoLength); // 마찬가지
+     int rand3 = (int) (Math.random()*threeLength); // ㅇㅇ
 
-     int rand1 = (int) (Math.random()*oneLength);
-     int rand2 = (int) (Math.random()*twoLength);
-     int rand3 = (int) (Math.random()*threeLength);
+     String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3]; // 자 .. 이제 3개를 조합해보자
 
-     String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
-
-     System.out.println("What we need is a " + phrase);
+     System.out.println("What we need is a " + phrase); //phrase에 저장한 문장을 말해보자
    }
 }
 }}}
