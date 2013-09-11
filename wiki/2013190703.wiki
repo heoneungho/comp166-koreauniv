@@ -77,6 +77,51 @@ public class PhraseOMatic {
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+/* A */
+
+class Exercise1b{
+	public static void main(String [] args) {
+		int x = 1 ;
+		while (x < 10 ) {
+			x = x+1 ; // 이 코드가 빠지면 while문이 끝나지 않아서 무한루프
+
+			if ( x > 3 ) {
+				System.out.println("big x") ;
+			}
+		}
+	}
+}
+
+
+/* B */
+
+class Exercise2b{ //클래스명을 선언해 주지 않았으므로 선언해 준다.
+	public static void main(String [] args) {
+		int x = 5 ;
+		
+		while(x>1){
+			x = x - 1 ;
+			
+			if(x <3 ) {
+				System.out.println("small x") ;
+			}
+		}
+	}
+}
+ 
+/* C */
+
+class Exercise3b{
+	public static void main (String [] args) { //main을 추가
+		int x = 5 ;
+		while( x > 1) {
+			x = x - 1 ;	
+			if (x < 3 ) {
+				System.out.println("small x") ;
+			}
+		}
+	}
+}
 
 }}}
 
