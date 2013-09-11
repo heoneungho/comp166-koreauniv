@@ -55,6 +55,7 @@ public class PhraseOMatic {
                 String[] wordListThree = {"with family", "with friends", "with girl friend",
                                         "with boy friend", "with sister", "with brother", "alone" };
 
+//
                 int oneLength = wordListOne.length;
                 int twoLength = wordListTwo.length;
                 int threeLength = wordListThree.length;
