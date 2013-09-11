@@ -14,6 +14,37 @@
 
 {{{
 
+public class PhraseOMatic 
+{
+	public static void main(String[] args)
+	{
+		String[] wordListOne = {"desperately", "very", "really", "truely", "just", "so", "seriously", "badly", "undoubtly"};
+		String[] wordListTwo = {"want", "hope", "desire", "wish"};
+		String[] wordListThree = {"home", "house", "bed"};
+		
+		int oneLength=wordListOne.length;
+		int twoLength=wordListTwo.length;
+		int threeLength=wordListThree.length;
+
+		int rand1=(int)(Math.random()*oneLength);
+		int rand2=(int)(Math.random()*twoLength);
+		int rand3=(int)(Math.random()*threeLength);
+
+		String phrase;
+		if(rand3==0)
+		{
+			phrase = "I" + " " + wordListOne[rand1] + " " + wordListTwo[rand2] + " " + "to" + " " + "go" + " " +  wordListThree[rand3];
+		}
+		else
+		{
+			phrase = "I" + " " + wordListOne[rand1] + " " + wordListTwo[rand2] + " " + "to" + " " + "go" + " " + "to" + " " + "my" + " " + wordListThree[rand3];
+		}
+		
+		System.out.println(phrase);
+	}
+
+}
+
 }}}
 
 *52p 집중토론* _요약_
