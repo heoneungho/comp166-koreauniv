@@ -38,6 +38,33 @@ public class beer {
 
 {{{
 
+public class PhraseOMatic {
+
+        public static void main(String[] args) {
+
+                String[] Footballplayer = {"Bale", "Ronaldo", "Gerrard", "Suarez", "Agger", "Messi", "Ribery", "Rooney"};
+
+                String[] Team = {"Liverpool", "ManchesterUnited", "RealMadrid", "Barcelona", "Chelsea", "BayernMunchen", "Juventus"};
+
+                String[] Sponsor = {"Nike", "Adidas", "Samsung", "Carlsberg", "Unicef", "LG"};
+
+
+        int oneLength = Footballplayer.length;
+        int twoLength = Team.length;
+        int threeLength = Sponsor.length;
+
+        int rand1 = (int) (Math.random() * oneLength);
+        int rand2 = (int) (Math.random() * twoLength);
+        int rand3 = (int) (Math.random() * threeLength);
+
+        String phrase = Footballplayer[rand1] + " " + Team[rand2] + " " + Sponsor[rand3];
+
+        System.out.println("What we need is a " + phrase);
+}
+}
+
+
+
 }}}
 
 *52p 집중토론* _요약_
