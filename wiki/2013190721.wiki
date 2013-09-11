@@ -9,7 +9,6 @@
 
 
 
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -52,6 +51,29 @@ public class BeerSong {
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+ public class PhraseOmatic{
+	public static void main(String[] args){
+		String[] wordListOne = {"apple", "banana", "grape", "orange", "watermelon", "melon"};
+		String[] wordListTwo = {"applejuice", "bananjuice", "orangejuice", watermelonjuice", "melonjuice"};
+		String[] wordListThree = ["applejam", "bananajam", "orangejam", "watermelonjam", "melonjam"};
+		
+		//각 단어 목록에 단어 몇 개씩 들어있는지 확인합니다
+		int oneLength = wordListOne.Length ;
+		int twoLength = wordListTwo.Length ;
+		int threeLength = wordListThree.Length ;
+
+		//난수 세개를 발생시킵니다.
+		int rand1 = (int) (Math.random() * oneLength);	 
+		int rand2 = (int) (Math.random() * twoLength);
+		int rand3 = (int) (Math.random() * threeLength);
+
+		//이제 구문을 만듭니다
+		String phrase = wordListOne[rand1] + "" + wordListTwo[rand2] + "" + wordListThree[rand3];
+
+		//구문을 출력합니다
+		System.out.println("What we need is a " + phrase);
+		}
+	}
 
 }}}
 
