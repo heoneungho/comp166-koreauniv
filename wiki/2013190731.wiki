@@ -46,23 +46,27 @@ public class PhraseOMatic
 {
   public static void main(String[] args)
   {
-     String[] wordListOne = {"JongHa", "Geun Young" , "Dong Hyeok", "Young Hyun", "Jung Gon"}; // 다 군지했노 ...
+     String[] wordListOne = {"김석환은", "김명준은","임태완은","이미현은","박석우는"}; 
 
-     String[] wordListTwo = {"Love", "Hit", "Hate", "Like", "Help"}; // 기본 단어를 적는다.
+     String[] wordListTwo = {"렙1의","브론즈의","실버의","골드의","플래티넘의","다이아의"};
 
-     String[] wordListThree = {"Gay" , "Billy", "IT Bank", "LOL", "IU"};
-// 왜 이래 적었는지 모름 ... 
-     int oneLength = wordListOne.length; //길이만큼 선언
-     int twoLength = wordListTwo.length; // 마찬가지
-     int threeLength = wordListThree.length; // ㅇㅇ
+     String[] wordListThree = {"실력입니다","실력이 안됩니다","실력을 넘습니다"};
 
-     int rand1 = (int) (Math.random()*oneLength); // Listone 에 있는 단어들을 list 숫자 배열한거 랜덤 뽑기!!
-     int rand2 = (int) (Math.random()*twoLength); // 마찬가지
-     int rand3 = (int) (Math.random()*threeLength); // ㅇㅇ
+		//각 단어 목록에 단어가 몇 개씩 들어있는지 확인!!
+     int oneLength = wordListOne.length;
+     int twoLength = wordListTwo.length;
+     int threeLength = wordListThree.length;
 
-     String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3]; // 자 .. 이제 3개를 조합해보자
+		//난수 세 개 발생!!
+     int rand1 = (int) (Math.random()*oneLength);
+     int rand2 = (int) (Math.random()*twoLength);
+     int rand3 = (int) (Math.random()*threeLength);
 
-     System.out.println("What we need is a " + phrase); //phrase에 저장한 문장을 말해보자
+		//랜덤으로 구문 만들기!!
+     String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
+
+		//구문 출력!!
+     System.out.println("What we need is a " + phrase);
    }
 }
 }}}
