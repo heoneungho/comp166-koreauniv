@@ -24,9 +24,9 @@ public class BeerSong
 			
 			if(beerNum > 0)
 			{
-				if(beerNum == 1) // 이 부분 수정!!!!
+				if(beerNum == 1) // 이 부분 수정!!!! 끝에서 6번째 줄이 1 bottles로 나오므로 그 부분을 수정하기 위한 작업이다.
 				{
-					word = "bottle";
+					word = "bottle"; // 단수형으로 변경
 				}
 				System.out.println(beerNum + " " + word + " of beer on the wall");
 			}
