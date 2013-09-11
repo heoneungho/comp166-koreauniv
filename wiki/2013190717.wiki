@@ -60,7 +60,6 @@ public class PhraseOMatic{
     }
 }
 
-
 }}}
 
 *52p 집중토론* _요약_
