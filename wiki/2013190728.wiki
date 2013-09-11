@@ -52,7 +52,7 @@ public class PhraseOMatic {
 
 	String[] Stationeryword = {"Pencil", "Pen", "Eraser", "Pencilcase", "Notebook", "Highlightpen", "book"};
 
-	String[] Feelingword = {"Happy", "Sad", "Angry", "Interesting", "jealous", "impressed", "Nice", "tired", "zealous", "excited", "Bad"};
+	String[] Feelingword = {"Happy", "Sad", "Angry", "Interesting", "jealous", "impressed", "Nice", "Tired", "zealous", "excited", "Bad"};
 
 	int AnimalLength = Animalword.length;
 	int StationeryLength = Stationeryword.length;
