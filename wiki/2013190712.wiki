@@ -39,7 +39,8 @@
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
-{{{ public class PhraseOMatic {
+{{{ 
+ public class PhraseOMatic {
       public static void main (String[] args) {
          String[] wordListOne = {"dog","cat","elephant","pig","bird","tiger","lion","bear","eagle","cow","fish","goat"};
 
@@ -63,6 +64,7 @@
 
        }
      }
+
 
 }}}
 
