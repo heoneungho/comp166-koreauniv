@@ -71,7 +71,18 @@ public class PhraseOMatic {
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-
+B
+class exercise1b {// class 선언이 없어서 추가
+	public static void main(String [] args) {
+		int x = 5;
+		while ( x > 1 ) {
+		x=x-1;
+		if ( x < 3 ) {
+			System.out.println("small x");
+			}
+		}
+	}
+}// }를 하나 추가
 }}}
 
 
