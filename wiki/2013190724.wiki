@@ -90,8 +90,51 @@ public class PhraseOMatic
  * 컴파일러:
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
-
+*A*
 {{{
+public class Exercise1b {
+	public static void main(String[] args) {
+		int x = 1;
+		while (x < 10) {
+			if (x > 3) {
+				System.out.println("big x");
+			}
+			x++; //add x so that end the loop
+		}
+	}
+}
+}}}
+
+*B*
+{{{
+public class Exercise1b { //need class
+	public static void main(String[] args) {
+		int x = 5;
+		while (x > 1) {
+			x = x - 1;
+			if (x < 3) {
+				System.out.println("small x");
+			}
+			x++;
+		}
+	}
+}
+}}}
+
+*C*
+{{{
+public class Exercise1b {
+	public static void main(String[] args) {//need main method
+		int x = 5;
+		while (x > 1) {
+			x = x - 1;
+			if (x < 3) {
+				System.out.println("small x");
+			}
+			x++;
+		}
+	}
+}
 
 }}}
 
