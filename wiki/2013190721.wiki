@@ -7,7 +7,6 @@
 
 
 
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -57,9 +56,9 @@ public class BeerSong {
 		String[] wordListThree = ["applejam", "bananajam", "orangejam", "watermelonjam", "melonjam"};
 		
 		//각 단어 목록에 단어 몇 개씩 들어있는지 확인합니다
-		int oneLength = wordListOne.Length ;
-		int twoLength = wordListTwo.Length ;
-		int threeLength = wordListThree.Length ;
+		int oneLength = wordListOne.length ;
+		int twoLength = wordListTwo.length ;
+		int threeLength = wordListThree.length ;
 
 		//난수 세개를 발생시킵니다.
 		int rand1 = (int) (Math.random() * oneLength);	 
