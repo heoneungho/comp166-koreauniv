@@ -71,18 +71,57 @@ public class PhraseOMatic{
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-A<br><br>class Exercise1b{
+A
+
+class Exercise1b{
 	public static void main(String[] args){
 		int x=1;
 	
 		while(x<10){
 			if(x>3){
 				System.out.println("big x");
-			}//it can be compiled 
-			x += 1;
+			}//컴파일은 가능하지만 결과가 출력되지 않음
+			x += 1;//x를 증가시켜서 결과가 출력되게 함
 		}	
 	}
 }
+
+B
+
+//class이름이 없어서 컴파일 불가 -> 추가함
+public class smallx {
+	public static void main(String[] args){
+		int x=5;
+		
+		while(x>1){
+			x = x-1;
+			
+			if(x<3){
+				System.out.println("small x");
+			}
+		}
+	}
+
+}
+
+C
+
+public class Exercise1b {
+	//main 메소드가 없어서 컴파일 안됨
+	public static void main(String[] args){
+		int x=5;
+		
+		while(x>1){
+			x = x-1;
+			
+			if(x<3){
+				System.out.println("small x");
+			}
+		}
+	}
+
+}
+
 }}}
 
 
