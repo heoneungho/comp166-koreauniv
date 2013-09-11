@@ -12,38 +12,44 @@
 
 public class BeerSong {
 
-    public static void main(String args) {
+	public static void main(String args) {
 
-        int beerNum = 99; String word = "bottles"; 
+		int beerNum = 99;
+		String word = "bottles";
 
-    while (beerNum>0) { 
+		while (beerNum > 0) {
 
-    System.out.println(beerNum + " " + word + " of beer on the wall"); System.out.println(beerNum + " " + word + " of beer."); System.out.println("Take one down."); System.out.println("Pass it around"); beerNum -= beerNum; 
+			System.out.println(beerNum + " " + word + " of beer on the wall");
+			System.out.println(beerNum + " " + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around");
+			beerNum -= beerNum;
 
-    if (beerNum ==1) //change String "word" right after changing "beerNum" 
+			if (beerNum == 1) // change String "word" right after changing
+								// "beerNum"
 
-    {
+			{
 
-        word = "bottle"; 
+				word = "bottle";
 
-    } 
+			}
 
-    if(beerNum >0) {
+			if (beerNum > 0) {
 
-        System.out.println(beerNum + " " + word + " of beer on the wall\n"); 
+				System.out.println(beerNum + " " + word
+						+ " of beer on the wall\n");
 
-    } else {
+			} else {
 
-        System.out.println("No more bottles of beer on the wall\n"); 
+				System.out.println("No more bottles of beer on the wall\n");
 
-    } 
+			}
 
-    } 
+		}
 
-    } 
+	}
 
 }
-
 
 }}}
 
@@ -51,32 +57,31 @@ public class BeerSong {
 
 {{{
 
-public class PhraseOMatic 
-{
-	public static void main(String[] args)
-	{
-		String[] wordListOne = {"desperately", "very", "really", "truely", "just", "so", "seriously", "badly", "undoubtly"};
-		String[] wordListTwo = {"want", "hope", "desire", "wish"};
-		String[] wordListThree = {"home", "house", "bed"};
-		
-		int oneLength=wordListOne.length;
-		int twoLength=wordListTwo.length;
-		int threeLength=wordListThree.length;
+public class PhraseOMatic {
+	public static void main(String[] args) {
+		String[] wordListOne = { "desperately", "very", "really", "truely",
+				"just", "so", "seriously", "badly", "undoubtly" };
+		String[] wordListTwo = { "want", "hope", "desire", "wish" };
+		String[] wordListThree = { "home", "house", "bed" };
 
-		int rand1=(int)(Math.random()*oneLength);
-		int rand2=(int)(Math.random()*twoLength);
-		int rand3=(int)(Math.random()*threeLength);
+		int oneLength = wordListOne.length;
+		int twoLength = wordListTwo.length;
+		int threeLength = wordListThree.length;
+
+		int rand1 = (int) (Math.random() * oneLength);
+		int rand2 = (int) (Math.random() * twoLength);
+		int rand3 = (int) (Math.random() * threeLength);
 
 		String phrase;
-		if(rand3==0)
-		{
-			phrase = "I" + " " + wordListOne[rand1] + " " + wordListTwo[rand2] + " " + "to" + " " + "go" + " " +  wordListThree[rand3];
+		if (rand3 == 0) {
+			phrase = "I" + " " + wordListOne[rand1] + " " + wordListTwo[rand2]
+					+ " " + "to" + " " + "go" + " " + wordListThree[rand3];
+		} else {
+			phrase = "I" + " " + wordListOne[rand1] + " " + wordListTwo[rand2]
+					+ " " + "to" + " " + "go" + " " + "to" + " " + "my" + " "
+					+ wordListThree[rand3];
 		}
-		else
-		{
-			phrase = "I" + " " + wordListOne[rand1] + " " + wordListTwo[rand2] + " " + "to" + " " + "go" + " " + "to" + " " + "my" + " " + wordListThree[rand3];
-		}
-		
+
 		System.out.println(phrase);
 	}
 
