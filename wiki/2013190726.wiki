@@ -55,7 +55,9 @@ public class beersong{
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
 A
+
 public class Exercise1b {
 	public static void main (String[] args) {
 		int x;
@@ -67,6 +69,26 @@ public class Exercise1b {
 		}
 	}
 }
+
+B
+
+public class Exercise1b {     /*클래스 선언이 필요하다*/ 
+	public static void main (String[] args) {
+		int x = 5;
+		while(x>1)
+		{
+			x = x-1;
+			if(x<3)
+			{
+				System.out.println("small x");
+			}	
+		}
+	}
+}
+			
+C
+
+
 			
 
 }}}
