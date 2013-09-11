@@ -55,6 +55,19 @@ public class beersong{
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+public class Exercise1b {
+	public static void main (String[] args) {
+		int x;
+		while(x<10)
+		{
+			if(x>3)
+				System.out.println("big x");
+			x++;     //x를 증가시켜서 루한루프를 방지
+		}
+	}
+}
+			
 
 }}}
 
