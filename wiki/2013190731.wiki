@@ -46,7 +46,7 @@ public class PhraseOMatic
 {
   public static void main(String[] args)
   {
-     String[] wordListOne = {"김석환은", "김명준은","임태완은","이미현은","박석우는"}; 
+     String[] wordListOne = {"김석환은", "김명준은","임태완은","이미현은","박선우는"}; 
 
      String[] wordListTwo = {"렙1의","브론즈의","실버의","골드의","플래티넘의","다이아의"};
 
