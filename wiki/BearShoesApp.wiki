@@ -1,13 +1,17 @@
-# summary 곰신들을 위한 애플리케이션
+#summary 곰신들을 위한 애플리케이션
+#labels 2013190727이현정
 
 = Introduction =
 
-군대 간 남친들을 기다리는 여친들을 위한 
+군대 간 남친들을 기다리는 여친들을 위한 애플리케이션입니다. 주변에 군화를 기다리는 곰신들이 많아서 조금이나마 도움이 되었으면 하는 마음에서 만들게 되었습니다.
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+1. 메인 : 전역일로부터 D-Day, 커플 사진
+
+2. 전역일 계산기 : 전역일로부터 얼마나 복무했는지를 퍼센트로 계산
+
+3. 일정 : 입대일, 전화온 날, 면회, 외출, 외박, 휴가, 전역일
+
+4. 사진첩 : 메모 기능도 더함
