@@ -1,8 +1,8 @@
-곰신들을 위한 애플리케이션입니다
+# summary 곰신들을 위한 애플리케이션
 
 = Introduction =
 
-Add your content here.
+군대 간 남친들을 기다리는 여친들을 위한 
 
 
 = Details =
