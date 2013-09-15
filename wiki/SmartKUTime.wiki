@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#강의 시간 및 과제 관리 프로그램
 
 = Introduction =
 
