@@ -355,8 +355,6 @@ class Books {
 	String author ;
 }
 
-B
-
 class BooksTestDrive {
 	public static void main(String [] args) {
 	
