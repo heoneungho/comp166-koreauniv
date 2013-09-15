@@ -1,3 +1,4 @@
+#summary 기숙사 식당 개인관리 어플
 #labels 2013190720김건희
 
 = Introduction =
