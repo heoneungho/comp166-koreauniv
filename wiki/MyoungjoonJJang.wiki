@@ -1,0 +1,13 @@
+#summary One-sentence summary of this page.
+#labels d,d,d
+
+= Introduction =
+
+대학생이라면 누구나 가지고 있는 시간표, 하지만 새로운 일정이 생길때마다 기존의 시간표 사진과 대조하면서 시간표를 짜는것은 불편하기만 합니다. 이러한 점을 개선하기 위하여 시간표와 달력을 한개의 어플로 만들 계획입니다.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
