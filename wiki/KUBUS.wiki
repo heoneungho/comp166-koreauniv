@@ -1,0 +1,14 @@
+#summary One-sentence summary of this page.
+#labels 셔틀버스시간표
+
+= Introduction =
+
+학교 셔틀이 언제 올지 알려주는 아주 혁신적인 어플입니다. 
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
