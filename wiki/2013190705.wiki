@@ -74,7 +74,44 @@ public class PhraseOMatic
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A.
+class Exercise1b {
+	public static void main(String [] args) {
+		int x=1;
+		while(x<10) {
+			if(x>3) {
+				System.out.println("big x");
+			}
+			x++; // x값을 증가시켜주지 않으면 무한루프가 발생된다.
+		}
+	}
+}
 
+B.
+class Exercise1b { // 클래스 선언을 해 주어야 한다.
+	public static void main(String [] args) {
+		int x=5;
+		while(x>1) {
+			x=x-1;
+			if(x<3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
+
+C.
+class Exercise1b {
+	public static void main(String [] args) { // 함수 선언을 해주어야 한다.
+		int x=5;
+		while(x>1) {
+			x=x-1;
+			if(x<3) {
+				System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
