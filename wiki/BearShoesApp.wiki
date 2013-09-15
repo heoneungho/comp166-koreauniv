@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+# 곰신들을 위한 애플리케이션입니다
 
 = Introduction =
 
