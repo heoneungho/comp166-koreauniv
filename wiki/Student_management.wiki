@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-학원학생/선생님관리프로그램
+#학원에서의학생/선생님관리프로그램
 
 = Introduction =
 
