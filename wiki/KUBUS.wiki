@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
 #labels 셔틀버스시간표
+#버스 언제오는지 알려줌 ㅋ
 
 = Introduction =
 
