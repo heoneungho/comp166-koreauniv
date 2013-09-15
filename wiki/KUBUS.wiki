@@ -8,7 +8,8 @@
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+  * 정류장을 선택하면 잠시 후에 도착하는 버스를 알려줌
+  * 전체 버스 시간표 제공
+  * 버스 노선도 제공
+  
