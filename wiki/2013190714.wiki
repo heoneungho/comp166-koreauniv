@@ -379,6 +379,33 @@ class BooksTestDrive {
 	}
 }
 
+B
+class Hobbits {
+	
+	String name ;
+	
+	public static void main(String [] args) {
+	
+		Hobbits [] h = new Hobbits[3];
+		int z = 0 ;
+
+		while(z<3) {//이름의 갯수는 3개이므로 3으로 조절
+	
+			h[z] = new Hobbits();
+			h[z].name = "bilbo";
+			if(z==1) {
+				h[z].name = "frodo";
+			}
+			if(z==2) {
+				h[z].name = "sam";
+			}
+			System.out.print(h[z].name + " is a " );
+			System.out.println("good Hobbit name");
+			z=z+1;//맨앞에 있으면 0번째가 의미가 없으므로 맨 밑으로 내림
+		}
+	}
+}
+
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
