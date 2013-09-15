@@ -57,12 +57,40 @@ else
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 보안관련작업, 다른 누군가 건드렸는지 확인
+ * 컴파일러: 동적바인딩지원, 일어나면 안되는일 방지, 접근위반 방지
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Exerciselb
+{
+  public static void main(String [] args)
+  { 
+    int x = 1; // 변수 x에 1을 넣는다.
+    
+    while ( x < 10 ) // x 가 10미만일 때(동안)
+    {
+       if( x > 3 ) // x가 3초과이면
+       System.out.println("big x"); // 출 력
+       x++; // x에 1을 더한다.
+    }
+  }
+}
+
+class Exerciselb
+{
+  public static void main(String [] args)
+  {
+    int x = 5; // 변수 x에 5를 넣는다.
+    while(x>1)  // x가 1초과일 때(동안)
+    {
+       if (x < 3) // x가 3미만이면
+          System.out.println("small x"); // 출 력
+       x--; // x에 1을 뺀다.
+    }
+  }
+}
 
 }}}
 
