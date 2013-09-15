@@ -10,8 +10,3 @@
 *기능 1* 캘린더의 기본화면을 시간표처럼 구성,kutime에서의 디자인을 채택
 
 *기능 2* 일정을 짤때 [9월 첫째주 부터 12월 말까지의 월요일]같이 일정을 만들 수 있어 시간표 같은 캘린더를 만듬
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
