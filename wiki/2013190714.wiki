@@ -253,6 +253,32 @@ class TapeDeckTestDrive {
 			}
 		}
 	}
+
+B
+class DVDPlayer {
+	
+	boolean canRecord = false ;
+	
+	void recordDVD() {//리코드디브이디메소드
+		System.out.println("DVD recording");
+	}
+	void playDVD() {
+		System.out.println("DVD playing");//플레이디브이디 메소드를 추가
+
+	}
+}
+class DVDPlayerTestDrive {
+	public static void main(String [] args) {
+	
+	DVDPlayer d = new DVDPlayer ();//d라는 디브이디플레이어 객체 생성
+	d.canRecord = true;
+	d.playDVD ();//플레이디브이디 메소드 호출
+	
+	if(d.canRecord == true) {
+		d.recordDVD();//리코드디브이디 메소드 호출
+		}
+	}
+}
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
