@@ -226,6 +226,33 @@ public class GameLauncher { //게임 런처 부분은 바뀔게 없음
 
 {{{
 
+A
+class TapeDeck {
+	
+	boolean canRecord = false;
+	
+	void playTape() {//테이프플레이메소드
+		System.out.println("tape playing");
+	}
+	
+	void recordTape() {//리코드테이프메소드
+		System.out.println("tape recording");
+	}
+}
+
+class TapeDeckTestDrive {
+	public static void main(String [] args) {
+	
+		TapeDeck t = new TapeDeck(); //t라는 TapeDeck 객체 선언
+
+		t.canRecord = true;
+		t.playTape();//플레이테이프메소트호출
+		
+		if(t.canRecord == true ) {
+			t.recordTape();//리코드테이프메소드호출
+			}
+		}
+	}
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
