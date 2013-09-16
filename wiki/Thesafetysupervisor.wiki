@@ -1,4 +1,4 @@
-#summary 자녀들의 안전한 귀가를 위한 앱!.
+#summary 자녀들의 안전한 귀가를 위한 앱!
 
 = Introduction =
 
