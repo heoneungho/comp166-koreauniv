@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary 학교내에서 돌아다니는 루트
 
 = Introduction =
 
