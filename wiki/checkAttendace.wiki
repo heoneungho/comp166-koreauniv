@@ -1,6 +1,5 @@
-#summary One-sentence summary of this page.
 #labels 2013190713
-출석관리 어플리케이션
+#출석관리 어플리케이션
 = Introduction =
 
 출석체크를 핸드폰에 하여 휴대성을 용이하게 함
