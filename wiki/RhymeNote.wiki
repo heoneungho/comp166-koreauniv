@@ -1,0 +1,14 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+라임은 모음이나 음절이 비슷한 단어를 의미하는데, 이것은 생각해내기가 쉽지는 않다. 생각해 내더라도 종이 쪼가리(?) 한 쪽에 적어놓고 그것을 잊어버리곤 한다.하지만 이것을 어플로 만들면 잊어 버리지도 않고 보기도 쉽게 되어 있기 때문에 실용적이다. 
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
