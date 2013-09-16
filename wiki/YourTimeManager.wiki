@@ -1,4 +1,4 @@
-#summary 시간관리앺(YTM)
+#summary 시간관리앱(YTM)
 
 = Introduction =
 
