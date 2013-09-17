@@ -1,6 +1,5 @@
-#summary One-sentence summary of this page.
 #labels 2013190708이창권
-
+#술집 현황 어플
 = Introduction =
 
 술집현황을 알려주는 앱입니다.
