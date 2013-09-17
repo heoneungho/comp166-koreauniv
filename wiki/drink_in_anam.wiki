@@ -1,5 +1,5 @@
+#summary 술집 현황 어플
 #labels 2013190708이창권
-술집 현황 어플
 
 = Introduction =
 
