@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+수업이 끝나고 한시간이 지나면 과제를 기억하지 못하는 물고기 뇌구조를 가진 이들을 위한 어플.
+
+
+= Details =
+
+  * 사용자가 직접 과제 등록
+  * 이틀 전 알람 작동
+  * 하루 전 알람 작동
