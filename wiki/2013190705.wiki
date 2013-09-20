@@ -102,7 +102,7 @@ class Exercise1b { // 클래스 선언을 해 주어야 한다.
 
 C.
 class Exercise1b {
-	public static void main(String [] args) { // 함수 선언을 해주어야 한다.
+	public static void main(String [] args) { // main 함수 선언을 해주어야 한다.
 		int x=5;
 		while(x>1) {
 			x=x-1;
