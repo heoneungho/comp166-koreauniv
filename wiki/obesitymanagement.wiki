@@ -1,4 +1,6 @@
 #labels 2013190729신우리
+#sumaary 비만관리프로그램
+
 =INTRODRUCTION=
 [http://cfile27.uf.tistory.com/image/161A434350F636C007517A] 
 비만도, 체지방율, 복부비만율 등을 계산하여, 본인의 상태를 측정한 후, 그에 따른 운동, 식단 등을 알려주는 비만 관리 프로그램입니다.
