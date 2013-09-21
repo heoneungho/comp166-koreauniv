@@ -1,5 +1,5 @@
+#summary 비만관리프로그램
 #labels 2013190729신우리
-#sumaary 비만관리프로그램
 
 =INTRODRUCTION=
 [http://cfile27.uf.tistory.com/image/161A434350F636C007517A] 
