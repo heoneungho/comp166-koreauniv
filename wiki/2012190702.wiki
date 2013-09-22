@@ -253,12 +253,12 @@ class TapeDeck
 
 	void playTape() // 테이프 플레이 
 	{
-		System.out.println("tape playing");
+		System.out.println("tape playing"); // tape playing 출력
 	}
 
 	void recoredTape() // 테이프 녹음
 	{
-		System.out.println("tape recording");
+		System.out.println("tape recording"); // tape recording 출력
 	{
 }
 
@@ -267,8 +267,8 @@ class TapeDeckTestDrive
 	public static void main(String [] args)
 	{
 		TapeDeck t = new TapeDeck(); //테이프 객체 생성
-		t.canrecord = true;
-		t.playTape();
+		t.canrecord = true; // record가 참
+		t.playTape(); // 그래서 재생
 
 		if(t.canRecord == true) // 플레이 없음 녹음
 			t.recordTape();
