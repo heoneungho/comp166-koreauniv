@@ -1,8 +1,9 @@
 #summary 각종 운동경기의 심판을 위한 호루라기앱
+#labels 2013190712이영기
 
 = Introduction =
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=untitled.bmp&can=2&q=#makechanges
+http://comp166-koreauniv.googlecode.com/files/referee.bmp
 
 *운동 경기를 할 때 있어서 심판 마음대로 경기를 끝내는 경우를 방지합니다.
 
