@@ -4,6 +4,7 @@
 = Introduction =
 
   행사가 많은 고대생들을 위한 행사 일정 다이어리 어플입니다.
+http://comp166-koreauniv.googlecode.com/files/korea.jpg
 
 = Details =
 
