@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-행사가 많은 고대생들을 위해서 행사 정보를 알려주는 어플을 만든다.
+#행사가 많은 고대생들을 위해서 행사 정보를 알려주는 어플을 만든다.
 
 = Introduction =
 
