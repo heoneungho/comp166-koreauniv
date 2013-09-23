@@ -19,6 +19,9 @@ http://comp166-koreauniv.googlecode.com/files/whistle.jpg/
 
 * 시간이 다 되면 경기 종료 소리가 울리게 됩니다.
 
+* 기본적인 호루라기 기능 외에도 각종 경기에 필요한 도구들을 제공합니다.
+  (옐로우 카드, 레드 카드)
+
 http://comp166-koreauniv.googlecode.com/files/하워드웹.jpg/
 
 http://comp166-koreauniv.googlecode.com/files/referee.jpg/
@@ -33,4 +36,3 @@ http://comp166-koreauniv.googlecode.com/files/referee.jpg/
 
 
 http://comp166-koreauniv.googlecode.com/files/지성박.jpg/
-
