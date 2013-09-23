@@ -17,3 +17,5 @@
 * 시간이 다 되면 경기 종료 소리가 울리게 됩니다.
 
 http://comp166-koreauniv.googlecode.com/files/하워드웹.jpg/
+
+http://comp166-koreauniv.googlecode.com/files/referee.jpg/
