@@ -14,6 +14,9 @@
 *기능 3* 힘들겠지만 가능하다면 kutime과의 연동하여 자동으로 시간표를 받음
 
 *기능 4* 시간표 마다 색을 지정할 수 있게 하여 중요한일과 덜중요한일 등등을 구분 할 수 있게 함
-
+고대생이 사용하는 시간표
+http://comp166-koreauniv.googlecode.com/files/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C.png
+이 시간표를 깔끔하게 하여 기본 ui를 만들고
 http://comp166-koreauniv.googlecode.com/files/%EA%B8%B0%EB%B3%B8%20%ED%8F%AC%EB%A7%B7.png
+이런식으로 시간표 말고도 일정을 만들수도 있음
 http://comp166-koreauniv.googlecode.com/files/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C.png
