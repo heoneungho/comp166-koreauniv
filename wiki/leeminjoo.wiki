@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#숫자 야구게임!
 = Introduction =
 숫자 야구게임!!
 
