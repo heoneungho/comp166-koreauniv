@@ -20,8 +20,3 @@ playstore에 나온 기존의 야구게임앱은 '대결 숫자야구', '숫자�
 
 -추가할점-
 기존의 앱은 3자리만 가능한 게임입니다. 제가 만드는 앱은 사용자가 게임을 하면서 레벨이 올라가면 4자리, 5자리 숫자도 할 수 있도록 레벨업 기능을 만들것 입니다. 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
