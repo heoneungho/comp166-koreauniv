@@ -3,7 +3,7 @@
 
 
 = Introduction =
-http://comp166-koreauniv.googlecode.com/files/
+http://comp166-koreauniv.googlecode.com/files/숫자야구게임.PNG
 
 숫자 야구게임!!
 
