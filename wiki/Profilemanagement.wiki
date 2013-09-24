@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary 프로필관리어플리케이션.
 #labels 201190714김동환
 
 = Introduction =
