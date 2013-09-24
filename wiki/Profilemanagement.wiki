@@ -1,4 +1,4 @@
-#summary 프로필관리어플리케이션.
+#summary 프로필관리 어플
 #labels 201190714김동환
 
 = Introduction =
