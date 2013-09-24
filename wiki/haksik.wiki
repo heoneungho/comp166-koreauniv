@@ -8,4 +8,4 @@
 = Details =
 날마다의 학생식당 메뉴를 종류별로 나누어서 선호하는 개개인에게 알림을 줍니다.
 예를들어 비빔밥, 생선, 채소류 등으로 나눕니다.
-http://comp166-koreauniv.googlecode.com/files/haksik.jpg/
+http://comp166-koreauniv.googlecode.com/files/2010-11-19_16_43_46.jpg/
