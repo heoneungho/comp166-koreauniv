@@ -1,0 +1,21 @@
+#summary One-sentence summary of this page.
+
+용돈기입장 어플
+
+= Introduction =
+
+Add your content here.
+
+대부분의 학생들이 용돈을 계획적으로 쓰지 않는다. 이로 인해 가난한 우리들의 용돈은 어느새 공중분해 되고마는 상황이 자주 발생한다. 이를 방지하기 위한 계획적인 소비를 위해 용돈기입장 어플을 만들것이다.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+1.수입과 지출을 사용자가 직접 입력 할 수 있게 한다.
+2.지출에서 각각의 부분의 지출 비율을 알려주는 그래프(막대,원형)를 볼 수 있게 한다.
+3.매달 말일에 사용자가 월초에 정한 예상 지출보다 초과하였는지 그렇지 않은지 알려준다.
+4.어플에 반복되는 고정지출과 대략적인 소비금액을 저장하면 그 당일의 예상지출을 알려준다.
