@@ -1,4 +1,5 @@
 #summary 관광객들의 필수 어플. 서울 정보.
+#labels 2013011036좌희정
 
 = Introduction =
 
