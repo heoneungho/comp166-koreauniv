@@ -1,4 +1,4 @@
-#summary 관광객들의 필수 어플. 서울 소개.
+#summary 관광객들의 필수 어플. 서울 정보.
 
 = Introduction =
 
