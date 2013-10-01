@@ -256,6 +256,41 @@ public class GuessGame {
 
 {{{
 
+TapeDeckTestDrive 클래스에서 
+인스턴수 변수 선언이 되어있지 않다.
+
+그러므로 
+
+class TapeDeckTestDrive {
+	public static void main(String [] args) {
+
+        TapeDeck t = new TapeDeck();
+
+	t.canRecord = true;
+	t.playTape();
+
+	if(t.canRecord == true){
+		t.recordTape();
+		}
+	}
+}
+
+DVD 클래스에서 playDVD 메소드가 선언되어있지 않다.
+
+그러므로 추가해준다.
+
+class DVDPlayer{
+
+	boolean canRecord = false;
+	void playDVD(){
+		System.out.println("DVD playing");
+	}
+
+	void recordDVD(){
+		System.out.println("DVD recording");
+	}
+}
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
