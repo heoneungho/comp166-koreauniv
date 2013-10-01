@@ -86,7 +86,7 @@ class Exercise1b {
 
 
 B
-class Exercise1b {
+class Exercise1b { //need class
         public static void main(String []args) {
         int x = 5;
         while(x>1){
@@ -100,7 +100,7 @@ class Exercise1b {
 
 C
 class Exercise1b {
-        public static void main(String [] args) {
+        public static void main(String [] args) { //need main method
         int x=5;
         while(x>1) {
                 x=x-1;
