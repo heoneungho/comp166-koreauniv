@@ -228,6 +228,24 @@ public class GuessGame {
 		     }
 		}
 
+pubilc class Player{
+	int number = 0;
+
+	public void guess() {
+		number = (int) (Math.random() *10);
+		System.out.println("Selected number: "+number);
+	}
+      }
+
+public class GameLauncher {
+	public static void main (String[] args) {
+		GuessGame game = new GuessGame();
+		game.startGame();
+	}
+      }			
+
+
+
 			
 
 }}}
