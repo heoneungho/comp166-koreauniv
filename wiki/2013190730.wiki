@@ -110,7 +110,6 @@ class Exercise1b {
                 }
         }
 }
-
 }}}
 
 
