@@ -143,7 +143,8 @@ public class Exercise1b {
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
-<b>GuessGame.java</b>
+GuessGame.java
+
 public class GuessGame{
 	Player p1;
 	Player p2;
@@ -224,7 +225,7 @@ public class GuessGame{
 }}}
 
 {{{
-<b>Player.java</b>
+Player.java
 public class Player{
 	int number=0;
 
@@ -236,7 +237,7 @@ public class Player{
 }}}
 
 {{{
-<b>GameLauncher.java</b>
+GameLauncher.java
 public class GameLauncher{
 	public static void main(String[] args){
 		GuessGame game = new GuessGame();
