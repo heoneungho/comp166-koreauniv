@@ -253,7 +253,7 @@ A.
 
 public class TapeDeck {
 
-	boolean canRecord = false ;
+	boolean canRecord = false ; //boolean은 False 나 True를 저장하는 타입
 	
 	void playTape(){
 		System.out.println("tape playing");
@@ -268,7 +268,7 @@ public class TapeDeckTestDrive {
 
 	public static void main(String [] args){
 		
-		TapeDeck t=new TapeDeck(); //추가!
+		TapeDeck t=new TapeDeck(); //추가! t라는 TapeDeck이 생김
 
 		t.canRecord = true;
 		t.playTape();
@@ -321,6 +321,7 @@ public class DVDPlayerTestDrive {
 *83p~ 변수* _요약_
 
  * 원시변수 vs 레퍼런스변수:
+
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
