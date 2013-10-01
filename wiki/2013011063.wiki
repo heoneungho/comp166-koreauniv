@@ -136,7 +136,7 @@ number = (int) (Math.random() * 10);
 System.out.println("찍은 숫자: " + number);
 }
 }
- 
+
 
 
 public class GameLauncher {
