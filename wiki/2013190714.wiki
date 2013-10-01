@@ -478,7 +478,7 @@ class XCopy {
 	
 		XCopy x = new XCopy(); // XCopy유형의 객체 x선언
 
-		int y = x.go(orig);객체x에서 go를 호출 이때 orig값을 보낸후 메소드를 실행해 y에 그값을 리턴
+		int y = x.go(orig);//객체x에서 go를 호출 이때 orig값을 보낸후 메소드를 실행해 y에 그값을 리턴
 	
 		System.out.println(orig + " " + y );
 	}
