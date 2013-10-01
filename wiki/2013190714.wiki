@@ -491,6 +491,31 @@ class XCopy {
 	}
 } //결과는 42 84
 
+B
+
+class Clock {
+	String time;
+	
+	void setTime(String t) {//String의 t를받아 이를 time으로 보내주는 세터
+		time = t;
+	}
+	
+	String getTime() { //time을 리턴받는 게터이고 받을 time은 String이므로 String으로 선언
+		return time;
+	}
+}
+
+class ClockTestDrive {
+	public static void main(String [] args) {
+	
+		Clock c = new Clock();
+		
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("time :  "  + tod);
+	}
+} // 출력값은 time : 1245
+
 }}}
 
 
