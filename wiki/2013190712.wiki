@@ -254,63 +254,71 @@ public class GameLauncher {
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{class TapeDeck
-{
-        boolean canRecord = false;
+{{{
+class TapeDeck {
 
-        void playTape() // tape play 
-        {
-                System.out.println("tape playing"); // tape playing 출력
-        }
+    boolean canRecord = false; 
 
-        void recoredTape() // tape record
-        {
-                System.out.println("tape recording"); // tape recording 출력
-        {
+    void playTape() // tape play {
+
+        System.out.println("tape playing"); // tape playing 출력 
+
+    } 
+
+    void recoredTape() // tape record {
+
+        System.out.println("tape recording"); // tape recording 출력 
+
+    { 
+
 }
 
-class TapeDeckTestDrive
-{
-        public static void main(String [] args)
-        {
-                TapeDeck t = new TapeDeck(); //making tape class 
-                t.canrecord = true; // record
-                t.playTape(); // play
+class TapeDeckTestDrive {
 
-                if(t.canRecord == true) // don't play-> record
-                        t.recordTape();
-        }
+    public static void main(String args) {
+
+        TapeDeck t = new TapeDeck?(); //making tape class t.canrecord = true; // record t.playTape(); // play 
+
+    if(t.canRecord == true) // don't play-> record
+
+        t.recordTape(); 
+
+    } 
+
 }
 
+class DVDPlayer {
 
+    boolean canRecord = false; 
 
-class DVDPlayer 
-{
-        boolean canRecord = false;
-        
-        void playDVD()
-        {
-                System.out.println("DVD playing");
-        }
-        
-        void recordDVD()
-        {
-                System.out.println("DVD recording");
-        }
+    void playDVD() {
+
+        System.out.println("DVD playing"); 
+
+    } 
+
+    void recordDVD() {
+
+        System.out.println("DVD recording"); 
+
+    } 
+
 }
 
-class DVDPlayerTestDrive
-{
-        public static void main(String [] args)
-        {
-                DVDPlayer d = new DVDPlayer(); // Making DVD class생성
-                d.canRecord = true;
-                d.playDVD();
-        
-                if(d.canRecord == true)
-                        d.recordDVD(); // Don't play->record
-        }
-}
+class DVDPlayerTestDrive {
+
+    public static void main(String args) {
+
+        DVDPlayer d = new DVDPlayer(); // Making DVD class
+ d.canRecord = true; d.playDVD(); 
+
+    if(d.canRecord == true)
+
+        d.recordDVD(); // Don't play->record 
+
+    } 
+
+} 
 
 }}}
 
