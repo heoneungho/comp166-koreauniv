@@ -143,9 +143,107 @@ public class Exercise1b {
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+<b>GuessGame.java</b>
+public class GuessGame{
+	Player p1;
+	Player p2;
+	Player p3;
+	Player p4;	
+
+	public void startGame(){
+		p1=new Player();
+		p2=new Player();
+		p3=new Player();
+		p4=new Player();
+
+		int guess1=0;
+		int guess2=0;
+		int guess3=0;
+		int guess4=0;
+		
+		boolean correct1=false;
+		boolean correct2=false;
+		boolean correct3=false;
+		boolean correct4=false;
+
+		int answer=(int)(Math.random() * 10);
+		System.out.println("Guess the number(0~9)");
+		
+		while(true){
+			
+			p1.guess();
+			p2.guess();
+			p3.guess();
+			p4.guess();
+
+			guess1 = p1.number;
+			System.out.println("P1 : " + guess1);
+
+			guess2 = p2.number;
+			System.out.println("P2 : " + guess2);
+
+			guess3 = p3.number;
+			System.out.println("P3 : " + guess3);
+
+			guess4 = p4.number;
+			System.out.println("P4 : " + guess4);
+
+
+			if(guess1 == answer)
+				correct1 = true;
+
+			if(guess2 == answer)
+				correct2 = true;
+
+			if(guess3 == answer)
+				correct3 = true;
+
+			if(guess4 == answer)
+				correct4 = true;
+
+
+			if(correct1 || correct2 || correct3 || correct4) {
+				System.out.println("Congratulation!");
+				System.out.println("P1 : " + correct1);
+				System.out.println("P2 : " + correct2);
+				System.out.println("P3 : " + correct3);
+				System.out.println("P4 : " + correct4);
+				System.out.println("The answer is " + answer);
+				System.out.println("The end of the game");
+				break;		
+			}
+			
+			else 
+				System.out.println("Try again");
+
+			
+		}
+	}
+}
 
 }}}
 
+{{{
+<b>Player.java</b>
+public class Player{
+	int number=0;
+
+	public void guess(){
+		number=(int)(Math.random() * 10);
+		//System.out.println("The Guessed number : " + number);
+	}
+}
+}}}
+
+{{{
+<b>GameLauncher.java</b>
+public class GameLauncher{
+	public static void main(String[] args){
+		GuessGame game = new GuessGame();
+		game.startGame();
+	}
+}	
+}}}
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
