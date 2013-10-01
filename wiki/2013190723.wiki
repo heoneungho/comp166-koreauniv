@@ -77,6 +77,46 @@ public class PhraseOMatic {
 
 {{{
 
+A
+class Exercise1b {
+        public static void main(String [] args) {
+        int x=1;
+        while (x<10){
+                x=x+1; //add x so that end the loop
+                if(x>3) {
+                        System.out.println("big x");
+                        }
+                }
+        }
+}
+
+
+B
+class Exercise1b { //need class
+        public static void main(String []args) {
+        int x = 5;
+        while(x>1){
+                x=x-1;
+                if (x<3){
+                        System.out.println("small x");
+                        }
+                }
+        }
+}
+
+C
+class Exercise1b {
+        public static void main(String [] args) { //need main method
+        int x=5;
+        while(x>1) {
+                x=x-1;
+                if(x>3) {
+                        System.out.println("small x");
+                        }
+                }
+        }
+}
+
 }}}
 
 
