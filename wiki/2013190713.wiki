@@ -27,7 +27,7 @@ public static void main(String[] args)
 		System.out.println("Pass it around.");
 		beerNum = beerNum -1;
 		
-		if(beerNum ==1)
+		if(beerNum ==1) //추가!
 		{
 			word = "bottle";
 		}
@@ -140,7 +140,7 @@ public static void main(String [] args){ // class가 있으면 뭐해 main이 �
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수: 아는 것. 클래스의 이스턴스 변수용으로 쓰기 위한 변수를 가질 수 있음. 객체.
+ * 인스턴스 변수: 아는 것. 클래스의 인스턴스 변수용으로 쓰기 위한 변수를 가질 수 있음. 객체.
  * 메소드: 하는 것.
  * 클래스: 객체를 만들기 위한 틀. 가상머신에 그 유형의 객체를 만드는 방법을 알려줌. 
  * 테스트용 클래스:
@@ -148,13 +148,101 @@ public static void main(String [] args){ // class가 있으면 뭐해 main이 �
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수: Power, Channel
- * 메소드: Poweron(), Poweroff(), ChangeChannel() 
+ * 인스턴스 변수: Light, Volume, Channel, Power, Size
+
+ * 메소드: Light(), Volumeup(), Volumedown(), Poweron(), Poweroff()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
+public class game {
+
+	Player p1;
+	Player p2;
+	Player p3;
+	Player p4;
+	
+	
+	public void startGame(){
+		p1 = new Player();
+		p2 = new Player();
+		p3 = new Player();
+		p4 = new Player();
+		
+		int guessp1 = 0;
+		int guessp2 = 0;
+		int guessp3 = 0;
+		int guessp4 = 0;
+		
+		boolean p1isRight = false;
+		boolean p2isRight = false;
+		boolean p3isRight = false;
+		boolean p4isRight = false;
+
+		int targetNumber = (int) (Math.random()*10);
+		System.out.println("0이상 9이하의 숫자를 맞춰보세요.");
+		
+		while(true)
+		{
+			System.out.println("맞춰야할 숫자는 "+ targetNumber +"입니다.");
+			
+			p1.guess();
+			p2.guess();
+			p3.guess();
+			p4.guess();
+			
+			guessp1 = p1.number;
+			System.out.println("1번 선수가 찍은 숫자: "+ guessp1);
+			
+			guessp2 = p2.number;
+			System.out.println("2번 선수가 찍은 숫자: "+ guessp2);
+			
+			guessp3 = p3.number;
+			System.out.println("3번 선수가 찍은 숫자: "+ guessp3);
+
+			guessp4 = p4.number;
+			System.out.println("4번 선수가 찍은 숫자: "+ guessp4);
+
+			if(guessp1 == targetNumber){
+				p1isRight = true;
+			}
+			
+			if(guessp2 == targetNumber){
+				p2isRight = true;
+			}
+			
+			if(guessp3 == targetNumber){
+				p3isRight = true;
+			}
+	
+			
+			if(guessp4 == targetNumber){
+				p4isRight = true;
+			}
+	
+			if(p1isRight || p2isRight || p3isRight|| p4isRight){
+				
+				System.out.println("맞춘 선수가 있습니다.");
+				System.out.println("1번 선수: "+ p1isRight);
+				System.out.println("2번 선수: "+ p2isRight);
+				System.out.println("3번 선수: "+ p3isRight);
+				System.out.println("4번 선수: "+ p4isRight);
+				System.out.println("게임 끝.");
+				break; //게임이 끝났으므로 while 빠져나감
+				
+			} else{
+				//맞춘 사람이 없으므로 계속함
+				System.out.println("다시 시도해야 합니다.");
+			}
+			
+		}
+	}
+}
+
+
+
 
 }}}
 
