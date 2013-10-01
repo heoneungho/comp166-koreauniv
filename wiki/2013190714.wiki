@@ -468,6 +468,29 @@ class DogTestDrive {
 
 {{{
 
+A
+
+class XCopy {
+	
+	public static void main(String []args) {
+	
+		int orig = 42;
+	
+		XCopy x = new XCopy(); // XCopy유형의 객체 x선언
+
+		int y = x.go(orig);객체x에서 go를 호출 이때 orig값을 보낸후 메소드를 실행해 y에 그값을 리턴
+	
+		System.out.println(orig + " " + y );
+	}
+	
+	int go(int arg) { //함수를 int값으로 리턴을 받게됨
+	
+		arg=arg*2;
+		
+		return arg;//arg를 리턴
+	}
+}
+
 }}}
 
 
