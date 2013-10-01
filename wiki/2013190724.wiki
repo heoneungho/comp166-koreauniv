@@ -240,17 +240,17 @@ public class Player {
 }}}
 
 {{{
-
-}}}
-*76p 컴파일러가 되어봅시다* _구현후 주석달기_
-
-{{{
 public class GameLauncher {
 	public static void main (String[] args) {
 		GuessGame game = new GuessGame();
 		game.startGame();
 	}
 }
+}}}
+*76p 컴파일러가 되어봅시다* _구현후 주석달기_
+
+{{{
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
