@@ -133,7 +133,7 @@ class Exercise1b {
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
-
+1. GuessGame.java
 public class GuessGame {
 	Player p1;
 	Player p2;
@@ -217,7 +217,7 @@ public class GuessGame {
 
 
 
-
+2. Player.java
 public class Player {
 	int number = 0; //찍은 숫자를 저장할 변수
 
@@ -231,7 +231,7 @@ public void guess() {
 
 
 
-
+3. GameLauncher.java
 public class GameLauncher {
 	public static void main (String[] args) {
 	GuessGame game = new GuessGame();
