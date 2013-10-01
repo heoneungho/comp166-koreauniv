@@ -261,13 +261,13 @@ class TapeDeck {
 
     void playTape() // tape play {
 
-        System.out.println("tape playing"); // tape playing 출력 
+        System.out.println("tape playing"); // Printing tape playing 
 
     } 
 
     void recoredTape() // tape record {
 
-        System.out.println("tape recording"); // tape recording 출력 
+        System.out.println("tape recording"); //Printing tape recording  
 
     { 
 
