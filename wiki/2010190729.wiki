@@ -111,6 +111,11 @@ public class PhraseOMatic {
 
 {{{
 
+public class GuessGame{
+
+
+
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
