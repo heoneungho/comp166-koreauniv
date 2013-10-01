@@ -262,7 +262,7 @@ public class DVDPlayerTestDrive {
 		
 		DVDPlayer d = new DVDPlayer();
 		d.canRecord = true;
-		d.recordDVD();
+		d.recordDVD();//play 대신 record로!!
 		
 		if(d.canRecord == true) {
 			d.recordDVD();
