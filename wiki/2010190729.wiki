@@ -104,6 +104,7 @@ public class PhraseOMatic {
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
 public class GuessGame{
         Player p1;
         Player p2;
@@ -183,6 +184,20 @@ public class GuessGame{
 }
 
 
+public class Player{
+        int number = 0;
+
+        public void guess() {
+                number = (int) (Math.random() * 10);
+        }
+}
+          
+public class GameLauncher {
+        public static void main (String[] args) {
+                GuessGame game = new GuessGame();
+                game.startGame();
+        }
+}
 
 
 
