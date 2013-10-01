@@ -105,6 +105,19 @@ class X {
 } // 클래스가 정해지지 않아 프로그램이 실행되지 않음.
 
 C.
+public class Exercise1b {
+        public static void main (String[] args) {     //메인 메소드 선언이 필요하다.
+                int x = 5;
+                while(x>1)
+                {
+                        x = x-1;
+                        if(x<3)
+                        {
+                                System.out.println("small x");
+                        }       
+                }
+        }
+}
 
      
 }}}
