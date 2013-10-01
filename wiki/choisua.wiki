@@ -1,4 +1,4 @@
-#summary baskinrobbins31
+#summary 베스킨라빈스31
 
 = Introduction =
 
