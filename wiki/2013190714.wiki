@@ -489,7 +489,7 @@ class XCopy {
 		
 		return arg;//arg를 리턴
 	}
-} 결과는 42 84
+} //결과는 42 84
 
 }}}
 
