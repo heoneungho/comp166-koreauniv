@@ -129,10 +129,10 @@ public class Exercise1b {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수:객체에서 자신에 대해 아는것
+ * 메소드:객체에서 자신이 하는 것
+ * 클래스:객체를 만들기 위한 용도, 청사진
+ * 테스트용 클래스:새로운 클래스를 테스트하기 위한 클래스
  
 
 *68p Television* _채워넣기_
@@ -144,6 +144,91 @@ public class Exercise1b {
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+
+public class GuessGame {
+		Player p1;
+		Player p2;
+		Player p3;
+		Player p4;
+	
+		public void startGame(){
+			p1 = new Player();
+			p2 = new Player();
+			p3 = new Player();
+			p4 = new Player();
+
+			int guessp1 = 0;
+			int guessp2 = 0;
+			int guessp3 = 0;
+			int guessp4 = 0;
+
+			boolean p1isRight = false;
+			boolean p2isRight = false;
+			boolean p3isRight = false;
+			boolean p4isRight = false;
+
+			int targetNumber = (int) (Math.random() *10);
+			System.out.println("0 over 9 under");
+			
+			while(true){
+				System.out.println("right number " + targetNumber + ".");
+
+			p1.guess();
+			p2.guess();
+			p3.guess();
+			p4.guess();
+
+			guessp1 = p1.number;
+			System.out.println("player 1 picked: "+guessp1);
+			
+			
+			guessp2 = p2.number;
+			System.out.println("player 2 picked: "+guessp2);
+
+			guessp3 = p3.number;
+			System.out.println("player 3 picked: "+guessp3);
+
+
+			guessp4 = p4.number;
+			System.out.println("player 4 picked: "+guessp4);
+
+
+			if (guessp1 == targetNumber){
+				p1isRight = true;
+			}
+
+			if (guessp2 == targetNumber){
+				p2isRight = true;
+			}
+
+			if (guessp3 == targetNumber){
+				p3isRight = true;
+			}
+
+			if (guessp4 == targetNumber){
+				p4isRight = true;
+			}
+
+			if (p1isRight || p2isRight || p3isRight || p4isRight) {
+
+				System.out.println("Right number!");
+				System.out.println("player 1 : "+ p1isRight);
+				System.out.println("player 2 : "+ p2isRight);
+				System.out.println("player 3 : "+ p3isRight);
+				System.out.println("player 4 : "+ p4isRight);
+				System.out.println("Game set.");
+
+				break;
+
+			} else {
+		
+				System.out.println(" Try again ");
+			 }
+			}
+		     }
+		}
+
+			
 
 }}}
 
