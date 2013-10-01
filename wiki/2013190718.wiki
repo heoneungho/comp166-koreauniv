@@ -123,7 +123,7 @@ C.
 *68p Television* _채워넣기_
 
  * 인스턴스 변수: 전원, 채널, Sound 
- * 메소드: 
+ * 메소드: Poweron(), setchannel()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
