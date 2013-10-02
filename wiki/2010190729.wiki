@@ -183,6 +183,9 @@ public class GuessGame{
         }
 }
 
+}}}
+
+{{{
 
 public class Player{
         int number = 0;
@@ -191,7 +194,10 @@ public class Player{
                 number = (int) (Math.random() * 10);
         }
 }
-          
+
+}}}
+
+{{{          
 public class GameLauncher {
         public static void main (String[] args) {
                 GuessGame game = new GuessGame();
