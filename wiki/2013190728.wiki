@@ -251,6 +251,34 @@ public class GameLauncher {
 
 {{{
 
+<A>
+
+class TapeDeck {
+
+	boolean canRecord = false;
+	
+	void playTape() {
+	  System.out.println("tape playing");
+	}
+
+	void recordTape() {
+	  System.out.println("tape recording");
+	}
+  }
+
+class TapeDeckTestDrive {
+	public static void main(String [] args) {
+
+	TapeDeck 1 = new TapeDeck();
+	t.canRecord = true;
+	t.playTape();
+
+	if (t.canRecord == true) {
+	  t.recordTape();
+	  }
+	}
+}
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
