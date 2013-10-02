@@ -245,7 +245,7 @@ class TapeDeckTestDrive
 		t.playTape(); // 그래서 재생
 
 		if(t.canRecord == true) // 플레이 없음 녹음
-			t.recordTape();
+			t.recordTape(); // 녹 to the 음
 	}
 }
 
@@ -272,7 +272,7 @@ class DVDPlayerTestDrive
 	{
 		DVDPlayer d = new DVDPlayer(); // DVD 객체 생성
 		d.canRecord = true;
-		d.playDVD();
+		d.playDVD(); // 재 to the 생
 	
 		if(d.canRecord == true)
 			d.recordDVD(); // 실행할 것이 없음 녹음
