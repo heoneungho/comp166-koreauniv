@@ -69,9 +69,9 @@ public class PhraseOMatic{
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
-A
 
+A
+{{{
 class Exercise1b{
 	public static void main(String[] args){
 		int x=1;
@@ -84,9 +84,9 @@ class Exercise1b{
 		}	
 	}
 }
-
+}}}
 B
-
+{{{
 //class이름이 없어서 컴파일 불가 -> 추가함
 public class smallx {
 	public static void main(String[] args){
@@ -102,9 +102,9 @@ public class smallx {
 	}
 
 }
-
+}}}
 C
-
+{{{
 public class Exercise1b {
 	//main 메소드가 없어서 컴파일 안됨
 	public static void main(String[] args){
@@ -128,16 +128,16 @@ public class Exercise1b {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것. 객체의 상태(데이터)를 나타내며 그 유형에 속하는 각 객체마다 값이 다르다.
+ * 메소드: 객체가 할 수 있는 일. 
+ * 클래스: 객체를 만들기 위한 청사진. 클래스로부터 만들어진 각 객체는 클래스의 인스턴스 변수용으로 쓰기 위한 변수를 가질 수 있다.
+ * 테스트용 클래스: 중요하거나 복잡한 클래스 혹은 메소드를 테스트하기 위한 클래스
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: 
+ * 메소드: 
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
@@ -247,9 +247,38 @@ public class GameLauncher{
 }}}
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
+A
+{{{
+class TapeDeck{
+	boolean canRecord=false;
+
+	void playTape(){
+		System.out.println("Tape Playing");
+	}
+
+	void recordTape(){
+		System.out.println("Tape Recording");
+	}
+}
+
+class TapeDeckTest{
+	public static void main(String[] args){
+		
+		TapeDeck t = new TapeDeck();//새로운 TapeDeck을 만들어주어야 한다.
+		
+		t.canRecord=true;
+		t.playTape();
+
+		if(t.canRecord==true) 
+			t.recordTape();
+		
+	}
+}
+}}}
+
+B
 {{{
 
-}}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
