@@ -275,7 +275,30 @@ class TapeDeckTest{
 
 B
 {{{
+class DVDPlayer{
+	boolean canRecord=false;
 
+	void recordDVD{
+		System.out.println("DVD Recording");
+	}
+
+	void playDVD{
+		System.out.println("DVD Playing");
+	}//Test에서 playDVD 메소드를 호출했으므로 만들어준다.
+}
+
+class DVDPlayerTest{
+	public static void main(String[] args){
+		DVDplayer d = new DVDplayer();
+
+		d.canRecord=true;
+		d.playDVD();
+
+		if(d.canRecord=true)
+			d.recordDVD();
+	}
+}
+}}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
