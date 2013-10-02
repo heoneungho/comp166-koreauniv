@@ -244,6 +244,18 @@ class TapeDeckTestDrive {
 
 }}}
 
+{{{
+class DVDPlayer {
+
+        boolean canRecord = false;
+
+        void recordDVD() {
+                System.out.println("DVD recording");
+        }
+}
+}}}
+
+
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
 *83p~ 변수* _요약_
