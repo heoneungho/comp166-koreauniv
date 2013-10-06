@@ -136,8 +136,8 @@ public class Exercise1b {
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수: 
- * 메소드: 
+ * 인스턴스 변수: 해상도, 화면크기, 가격, 제조사, 소비전력, 스마트TV 여부
+ * 메소드: Poweron(),Poweroff(), VolumeUP(), VolumeDown(), ChannelUp(), ChannelDown()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
@@ -299,6 +299,7 @@ class DVDPlayerTest{
 	}
 }
 }}}
+
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
