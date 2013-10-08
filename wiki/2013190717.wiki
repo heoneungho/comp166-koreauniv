@@ -312,16 +312,16 @@ class DVDPlayerTest{
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
-class Dog{
+class Dog96{
 	String name;
 	public static void main(String[] args){
-		Dog dog1 = new Dog();
+		Dog96 dog1 = new Dog96();
 		dog1.bark();
 		dog1.name = "Bart";
 
-		Dog[] myDogs = new Dog[3];
-		myDogs[0] = new Dog();
-		myDogs[1] = new Dog();
+		Dog96[] myDogs = new Dog96[3];
+		myDogs[0] = new Dog96();
+		myDogs[1] = new Dog96();
 		myDogs[2] = dog1;
 
 		myDogs[0].name = "Fred";
@@ -333,6 +333,8 @@ class Dog{
 		int x = 0;
 		while(x<myDogs.length){
 			myDogs[x].bark();
+			myDogs[x].eat();
+			myDogs[x].chaseCat();
 			x = x+1;
 		}
 
@@ -340,6 +342,13 @@ class Dog{
 
 	public void bark(){
 		System.out.println(name + " barks.");
+	}
+	public void eat(){
+		System.out.println(name + " eats meat.");
+	}
+	public void chaseCat(){
+		System.out.println(name + " chases a cat.");
+
 	}
 }
 
