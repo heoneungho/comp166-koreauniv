@@ -322,10 +322,49 @@ public class DVDPlayerTestDrive {
 
  * 원시변수 vs 레퍼런스변수:
 
+원시 변수(primitive variable) : 정수, 부울, 부동소수점 수와 같은 기초적인 값이 들어감
+객체 레퍼런스(object reference) : 객체에 대한 레퍼런스
+
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog{ //개 객체 생성시 name을 갖고 bark, eat함수가 있다.
+String name;
+public void bark(){
+ System.out.println(name + "이(가) 왈!하고 짖습니다.");
+}
+public void eat(){
+ System.out.println(name + "이(가) 밥달라고 합니다.");
+}
+}
+
+class CUTEDogs{
+public static void main(String[] args){
+
+ Dog[] myDogs = new Dog[100];
+
+ for(int i=0;i<100;i++)
+ {
+  myDogs[i]=new Dog();
+  myDogs[i].name="Dog"+i; //i번째 Dog
+ }
+
+println("아빠왔다!!!!"); //주인이 돌아왔군요ㅋㅋ
+
+int rand_behave=0; //행동을 무작위로 해주기 위한 변수선언
+
+ for(i=0;i<100;i++)
+ {
+  rand_behave = (int) (Math.random() * 2);
+  if(rand_behave==0)
+   myDogs[i].bark();
+  else if
+   myDogs[i].eat();
+ }
+}
+
+}
 
 }}}
 
