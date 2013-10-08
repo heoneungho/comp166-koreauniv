@@ -380,11 +380,93 @@ public class Dog {
 }
 
 
+cf.------------------------------------------class 두 개 선언으로도 가능
+
+
+class CUTEDog {
+		public static void main(String[] args){
+
+		 Dog[] myDogs = new Dog[10];
+
+		 for(int i=0;i<10;i++)
+		 {
+		  myDogs[i]=new Dog();
+		  myDogs[i].name="Dog"+(i+1); //i번째 Dog
+		 }
+
+		System.out.println("아빠왔다!!!!"); //주인이 돌아왔군요ㅋㅋ
+
+		int rand_behave=0; //행동을 무작위로 해주기 위한 변수선언
+
+		 for(int i=0;i<10;i++)
+		 {
+		  rand_behave = (int) (Math.random() * 2);
+		  if(rand_behave==0)
+		   myDogs[i].bark();
+		  else{
+		   myDogs[i].eat();
+		  }
+		 }
+		}
+
+}
+
+class Dog {//Dog 객체 생성시 name을 갖고 bark, eat함수가 있다.
+		String name;
+		
+		public void bark(){
+		 System.out.println(name + "이(가) 왈!하고 짖습니다.");
+		}
+		public void eat(){
+		 System.out.println(name + "이(가) 밥달라고 합니다.");
+		}
+}
+
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+public class Books {
+
+	String title;
+	String author;
+}
+
+
+public class BooksTestDrive {
+
+	public static void main(String [] args){
+
+		Books [] myBooks = new Books[3];//myBooks라는 이름의 Book 배열을 세개 선언
+
+		for(int i=0;i<3;i++)//아직 Book함수를 선언해주지 않았다. 각각의 Book마다!
+		{
+			myBooks[i]=new Books();
+		}
+		
+
+		myBooks[0].title="The Grapes of Java";
+		myBooks[1].title="The Java Gatsby";
+		myBooks[2].title="The Java Cookbook";//각각의 책의 이
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian";//각각의 책의 작가
+
+		int x=0;
+		while(x<3)
+		{
+			System.out.print(myBooks[x].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[x].author);//말하고 줄바꿈
+			x++;
+		}
+		
+	}
+}
+
+
 
 }}}
 
