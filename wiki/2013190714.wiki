@@ -543,7 +543,7 @@ class ClockTestDrive {
 {{{
 
 import java.io.*;
-
+//뭔지는 모르겟지만 뭔가를 가져오는듯
 public class GameHelper {
 	
 	public String getUserInput(String prompt) {
@@ -576,7 +576,7 @@ public class SimpleDotCom {
 	
 	int[] locationCells;
 	int numOfHits = 0 ;
-
+//초기 히트수를 0으로 초기화
 	public void setLocationCells(int[] locs) {
 		locationCells = locs;
 	}
@@ -593,7 +593,7 @@ public class SimpleDotCom {
 		}
 		
 		if(numOfHits == locationCells.length) {
-			result = "kill";
+			result = "kill";//맞춤
 		}
 		System.out.println(result);
 		return result;
@@ -620,7 +620,7 @@ public class SimpleDotComTestDrive {
                         String result = theDotCom.checkYourself(guess);
                         numOfGuesses++;
 
-                        if (result.equals("kill")) {
+                        if (result.equals("kill")) {//맞추면
                                 isAlive = false;
                                 System.out.println(numOfGuesses + " guesses");
                         }
