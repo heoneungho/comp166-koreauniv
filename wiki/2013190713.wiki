@@ -329,42 +329,56 @@ public class DVDPlayerTestDrive {
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
-class Dog{ //개 객체 생성시 name을 갖고 bark, eat함수가 있다.
-String name;
-public void bark(){
- System.out.println(name + "이(가) 왈!하고 짖습니다.");
+
+public class Dog {
+
+	String name;
+	public static void main(String[] args){// Dog객체 만든다
+		
+		
+	Dog[] myDogs = new Dog[10];
+	
+	for(int i=0;i<myDogs.length;i++)
+	{
+		myDogs[i]= new Dog();
+		myDogs[i].name="Dog"+(i+1);
+	}
+	
+	System.out.println("아빠왔다!!!");//주인이 왔음
+	
+
+	int x=0;
+	while(x<myDogs.length){ //랜덤으로 Dog들이 행동함
+		int rand=(int)(Math.random()*3);
+		if(rand==0){
+			myDogs[x].bark();
+		}
+		else if(rand==1)
+		{
+			myDogs[x].eat();
+		}
+		else
+		{
+			myDogs[x].chaseCat();
+		}
+		x++;
+	}
+	}
+	
+	public void bark(){
+		System.out.println(name + "이(가) 왈!하고 짖습니다.");
+	}
+	public void eat(){
+		System.out.println(name + "이(가) 밥을 달라고 합니다..");
+	}
+	public void chaseCat(){
+		System.out.println(name + "이(가) 고양이를 쫒습니다.");
+	}
+	
+	System.out.println("이런, 난장판이군!");
+	
 }
-public void eat(){
- System.out.println(name + "이(가) 밥달라고 합니다.");
-}
-}
 
-class CUTEDogs{
-public static void main(String[] args){
-
- Dog[] myDogs = new Dog[100];
-
- for(int i=0;i<100;i++)
- {
-  myDogs[i]=new Dog();
-  myDogs[i].name="Dog"+i; //i번째 Dog
- }
-
-println("아빠왔다!!!!"); //주인이 돌아왔군요ㅋㅋ
-
-int rand_behave=0; //행동을 무작위로 해주기 위한 변수선언
-
- for(i=0;i<100;i++)
- {
-  rand_behave = (int) (Math.random() * 2);
-  if(rand_behave==0)
-   myDogs[i].bark();
-  else if
-   myDogs[i].eat();
- }
-}
-
-}
 
 }}}
 
