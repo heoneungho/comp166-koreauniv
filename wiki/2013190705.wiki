@@ -308,7 +308,65 @@ class DVDPlayerTestDrive {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A.
 
+class Books {
+        String title;
+        String author;
+}
+
+class BooksTestDrive {
+        public static void main(String [] args) {
+        
+                Books [] myBooks = new Books[3];
+                myBooks[0] = new Books();
+                myBooks[1] = new Books();
+                myBooks[2] = new Books(); //Books라는 객체를 생성
+                int x = 0;
+                myBooks[0].title = "The Grapes of Java";
+                myBooks[1].title = "The Java Gatsby";
+                myBooks[2].title = "The Java Cookbook";
+                myBooks[0].author = "bob";
+                myBooks[1].author = "sue";
+                myBooks[2].author = "ian";
+        
+                while(x<3) {
+                        System.out.print(myBooks[x].title);
+                        System.out.print(" by ");
+                        System.out.println(myBooks[x].author);
+                        x = x + 1;
+                }
+        }
+}
+
+B.
+
+class Hobbits {
+        
+        String name;
+        
+        public static void main(String [] args) {
+        
+                Hobbits [] h = new Hobbits[3];
+                int z = -1; //while 처음부분에 z값을 1 증가시키는 명령이 있으므로 0부터 시작하도록 하기 위해 -1로 설정한다.
+
+                while(z<2) {//bilbo, frodo, sam 세 명이므로
+
+                        z=z+1;
+                        h[z] = new Hobbits();
+                        h[z].name = "bilbo";
+                        if(z==1) {
+                                h[z].name = "frodo";
+                        }
+                        if(z==2) {
+                                h[z].name = "sam";
+                        }
+                        System.out.print(h[z].name + " is a " );
+                        System.out.println("good Hobbit name");
+                        
+                }
+        }
+}
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
