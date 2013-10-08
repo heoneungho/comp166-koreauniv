@@ -484,6 +484,34 @@ class XCopy {
 
 }}}
 
+B
+{{{
+class Clock {
+        String time;
+
+        void setTime(String t) {
+          time = t;
+        }
+
+        String getTime() { // return 의 유형은 String 이여야 합니다.
+          return time;
+        }
+}
+
+class ClockTestDrive {
+  public static void main(String [] args) {
+
+        Clock c = new Clock();
+
+        c.setTime("1245");
+        String tod = c.getTime();
+        System.out.println("time: " + tod);
+
+  }
+}
+
+}}}
+
 
 = 05. 메소드를 더 강력하게:흐름 제어, 연산 등  =
 
