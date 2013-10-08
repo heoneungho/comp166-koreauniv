@@ -469,6 +469,28 @@ Class DogTestDrive{
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+/* A */
+public class XCopy {
+	public static void main(String [] args){
+
+		int orig = 42;
+		
+		XCopy x = new XCopy();
+		
+		int y = x.go(orig); //x에서 go 호출 go에 orig값을 보낸 후 y에 그 값을 리턴
+		
+		System.out.println(orig + " " + y);
+	}
+	int go(int arg) {
+		
+		arg = arg * 2 ;
+		
+		return arg;
+		
+	}//출력값은 42 84
+
+}
+
 
 }}}
 
