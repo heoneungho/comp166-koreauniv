@@ -244,12 +244,12 @@ class TapeDeck
 {
         boolean canRecord = false;
 
-        void playTape() // 테이프 플레이 
+        void playTape() // 테이프 실행 메소드 생성
         {
                 System.out.println("tape playing"); // tape playing 출력
         }
 
-        void recoredTape() // 테이프 녹음
+        void recoredTape() // 테이프 녹음 메소드 생성
         {
                 System.out.println("tape recording"); // tape recording 출력
         {
@@ -259,12 +259,12 @@ class TapeDeckTestDrive
 {
         public static void main(String [] args)
         {
-                TapeDeck t = new TapeDeck(); //테이프 객체 생성
-                t.canrecord = true; // record가 참
-                t.playTape(); // 그래서 재생
+                TapeDeck t = new TapeDeck(); //t라는 테이프 객체 생성
+                t.canrecord = true;
+                t.playTape(); //테이프 실행 메소드 호출
 
-                if(t.canRecord == true) // 플레이 없음 녹음
-                        t.recordTape(); // 녹음
+                if(t.canRecord == true)
+                        t.recordTape(); //테이프 녹음 메소드 호출
         }
 }
 
@@ -273,14 +273,14 @@ class DVDPlayer
 {
         boolean canRecord = false;
         
-        void playDVD()
+        void playDVD() //디비디 실행 메소드 생성
         {
-                System.out.println("DVD playing");
+                System.out.println("DVD playing"); //DVD playing 출력
         }
         
-        void recordDVD()
+        void recordDVD() //디비디 녹음 메소드 생성
         {
-                System.out.println("DVD recording");
+                System.out.println("DVD recording"); //DVD recording 출력
         }
 }
 
@@ -288,12 +288,12 @@ class DVDPlayerTestDrive
 {
         public static void main(String [] args)
         {
-                DVDPlayer d = new DVDPlayer(); // DVD 객체 생성
+                DVDPlayer d = new DVDPlayer(); // d라는 디비디 플레이 객체 생성
                 d.canRecord = true;
-                d.playDVD(); // 재 to the 생
+                d.playDVD(); // 디비디 플레이 메소드 호출
         
                 if(d.canRecord == true)
-                        d.recordDVD(); // 실행할 것이 없음 녹음
+                        d.recordDVD(); // 디비디 녹음 메소드 호출
         }
 }
 
