@@ -502,6 +502,57 @@ class DogTestDrive {
 
 {{{
 
+class XCopy // XCopy class 는 별탈 없이 실행됨을 알 수 있습니다. 
+{
+	public static void main(String [] args){
+		
+		int orig = 42;
+
+		XCopy x = new XCopy();
+		
+		int y = x.go(orig);
+
+		System.out.println(orig + " " + y);
+}
+
+		int go(int arg) 
+	{
+		arg = arg*2;
+	
+		return arg;
+	}
+}		
+
+-------------------------------------------------------------------------------------------------
+
+class Clock
+{
+	String time;
+
+	void setTime(String t)
+	{
+		time = t;
+	}
+
+	String getTime() // getTime method는 void로 표시하면 안됩니다. 리턴유형이 있어야만 합니다.
+	{
+		return time;
+	}
+}
+
+class ClockTestDrive 
+{
+	public static void main(String[] args)
+	{
+		Clock c = new Clock();
+		
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("time : " + tod);
+	}
+}
+
+
 }}}
 
 
