@@ -304,6 +304,35 @@ public class DVDPlayerTestDrive {
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog {
+	String name;
+	public static void main (String[] args) {
+
+	// 이번에는 Dog 배열을 만듭니다.
+	Dog[] myDogs = new Dog[4];
+	// 그리고 개를 몇 마리 집어넣습니다.
+	myDogs[0] = new Dog();
+	myDogs[1] = new Dog();
+	myDogs[2] = new Dog();
+	myDogs[3] = new Dog();
+
+	myDogs[0].name = "Fred";
+	myDogs[1].name = "Marge";
+	myDogs[2].name = "Arin";
+	myDogs[3].name = "Haru";
+
+	// 순환문을 써서 배열에 들어있는 모든 개가 짖도록 합니다.
+	int x = 0;
+	while(x < myDogs.length) {
+	  myDogs[x].bark();
+	  x = x + 1;
+	  }
+	}
+
+	public void bark() {
+	  System.out.println(name + "이(가) 왈!하고 짖습니다.");
+	}
+}
 
 }}}
 
