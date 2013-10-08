@@ -69,9 +69,10 @@ public class vbvb{
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{
 
 <A>
+{{{
+
 
 public class Exercise1b {
 		public static void main(String[] args) {
@@ -85,8 +86,11 @@ public class Exercise1b {
 		}
 }
 
-<B>
+}}}
 
+
+<B>
+{{{
 public class woori {
 	public static void main(String[] args) {
 		int x=5;
@@ -100,8 +104,10 @@ public class woori {
 	}
 }
 
-<c>
+}}}
 
+<c>
+{{{
 public class Exercise1b {
 	public static void main(String[] args) {
 		int x=5;
@@ -247,6 +253,7 @@ class Dog {
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
+<A>
 {{{
 
 class Books {
@@ -278,6 +285,39 @@ class BooksTestDrive {
 			x = x + 1;
 	}
 }
+}
+
+}}}
+
+<B>
+{{{
+class foods {
+	String name;
+
+	public static void main(String [] args)
+	{
+		Foods [] h = new Foods[3];
+		int z = -1;
+
+		while( z < 2)
+		{
+
+			z = z + 1;
+			h[z] = new Foods();
+			h[z].name = "apple";
+			if(z==1)
+			{
+				h[z].name = "banana";
+			}
+			if(z==2)
+			{
+				h[z].name = "peach";
+			}
+
+		System.out.print(h[z].name + "is a");
+		System.out.println("good Hobbit name");
+		}
+	}
 }
 
 
