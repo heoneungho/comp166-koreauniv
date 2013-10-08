@@ -361,7 +361,55 @@ Student MyS = new Student(); => 한 줄로 표현 가능하다.
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog { 
+	String name;   //Dog에 대해 아는 것에 해당(인스턴트 변수)
+	
+	public void bark() {
+		System.out.println(name + "이(가) 왈!하고 짖습니다.");
+	}
+	public void eat();
+	public void chaseCat();   //Dog가 하는 것에 해당(메소드)
+	//책과는 달리 편의상 인스턴트 변수와 메소드를 모아놓았다.
 
+	public static void main(String[] args) {
+		// Dog 객체를 만들고 접근
+		Dog dog1 = new Dog();
+		dog1.bark();
+		dog1.name = "Bart";
+
+		//Dog 배열을 만듬.
+		Dog[] myDogs = new Dog[3];
+		//개를 3마리 집어넣기
+		myDogs[0] = new Dog();
+		myDogs[1] = new Dog();
+		myDogs[2] = dog1;
+
+		//배열 레퍼런스로 Dog 객체에 접근하기
+		myDogs[0].name = "Fred";
+		myDogs[1].name = "Marge";
+
+		//myDogs[2]의 이름 출력해보기
+		System.out.print("마지막 개의 이름 : ");
+		System.out.println(myDogs[2].name);
+
+		//순환문을 사용하여 모든 개들이 짖도록 하기
+		int x = 0;
+		while(x < myDogs.length) {
+			myDogs[x].bark();
+			x = x + 1;
+		}   //while 순환문 종료
+	}   //메인 메소드 종료
+}   //Dog 클래스 종료   
+}}}
+{{{
+* 알게 된 사항 *
+클래스 안의 인스턴트변수와 메소드의 위치는 메인 함수의 위치에 전혀 영향을 받지 않는다.
+메인함수보다 아래쪽에 위치하여도 메인함수에서 호출 및 사용에 문제가 없다.
+
+* 참고사항 *
+클래스 내에 메소드에서는 클래스가 아는 것과 하는 것에 해당하는 인스턴트 변수와 메소드를 그대로 사용할 수 있으며, 인스턴트 변수와 메소드의 
+변경이 필요하다면 해당 메소드 내에 같은 변수명으로 인스턴트변수나 메소드를 선언해주면 해당 메소드 내에서만 변경 및 사용이 가능하다.  
+ 
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
