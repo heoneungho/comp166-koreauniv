@@ -491,6 +491,37 @@ public class XCopy {
 
 }
 
+/* B */
+
+
+public class Clock {
+	
+	String time;
+	
+	void setTime(String t){
+		time = t ;
+		
+	}
+	
+	String getTime(){//getTime은 게터이고 리턴 받을 time이 string 이므로 getTime을 void가 아닌 String으로 설정 해 주어야 한다.
+		return time;
+	}
+}
+
+
+public class ClockTestDrive {
+	public static void main(String [] args){
+		
+		Clock c = new Clock();
+		
+		c.setTime("12345");
+		String tod = c.getTime();
+		System.out.println("time: " + tod);
+	}
+}//출력 time: 12345
+
+
+
 
 }}}
 
