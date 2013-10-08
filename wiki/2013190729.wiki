@@ -249,6 +249,38 @@ class Dog {
 
 {{{
 
+class Books {
+	String title;
+	String author;
+	}
+
+class BooksTestDrive {
+	public static void main(String [] args)
+	{
+		Books [] myBooks = new Books[3];
+		int x=0;
+	
+		myBooks[0] = new Books();
+		myBooks[1] = new Books();
+		myBooks[2] = new Books();
+
+		myBooks[0].title = "이기적유전자";
+		myBooks[1].title = "천추태후";
+		myBooks[2].title = "칭찬은 고래도 춤추게 한다.";
+		myBooks[0].author = "리처드도킨스";
+		myBooks[1].author = "김정미";
+		myBooks[2].author = "켄 블랜차드";
+
+		while(x < 3)
+			System.out.print(myBook[x].title);
+			System.out.print("by");
+			System.out.println(myBooks[x].author);
+			x = x + 1;
+	}
+}
+}
+
+
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
