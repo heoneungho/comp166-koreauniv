@@ -240,6 +240,63 @@ public class GameLauncher{
 
 {{{
 
+class TapeDeck
+{
+        boolean canRecord = false;
+
+        void playTape() // 테이프 플레이 
+        {
+                System.out.println("tape playing"); // tape playing 출력
+        }
+
+        void recoredTape() // 테이프 녹음
+        {
+                System.out.println("tape recording"); // tape recording 출력
+        {
+}
+
+class TapeDeckTestDrive
+{
+        public static void main(String [] args)
+        {
+                TapeDeck t = new TapeDeck(); //테이프 객체 생성
+                t.canrecord = true; // record가 참
+                t.playTape(); // 그래서 재생
+
+                if(t.canRecord == true) // 플레이 없음 녹음
+                        t.recordTape(); // 녹음
+        }
+}
+
+
+class DVDPlayer 
+{
+        boolean canRecord = false;
+        
+        void playDVD()
+        {
+                System.out.println("DVD playing");
+        }
+        
+        void recordDVD()
+        {
+                System.out.println("DVD recording");
+        }
+}
+
+class DVDPlayerTestDrive
+{
+        public static void main(String [] args)
+        {
+                DVDPlayer d = new DVDPlayer(); // DVD 객체 생성
+                d.canRecord = true;
+                d.playDVD(); // 재 to the 생
+        
+                if(d.canRecord == true)
+                        d.recordDVD(); // 실행할 것이 없음 녹음
+        }
+}
+
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
