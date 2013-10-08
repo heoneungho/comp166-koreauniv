@@ -404,6 +404,8 @@ class BooksTestDrive {
 			myBooks[0] = new Books(); 
 			myBooks[1] = new Books(); 
 			myBooks[2] = new Books(); 
+ 
+                                                   //수정한 부분
 			
 			myBooks[0].title = "역사란 무엇인가";
 			myBooks[1].title = "나의 라임오렌지 나무";
