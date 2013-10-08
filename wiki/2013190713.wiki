@@ -422,6 +422,7 @@ class Dog {//Dog 객체 생성시 name을 갖고 bark, eat함수가 있다.
 }
 
 ==실행*결과(1)==
+
 아빠왔다!!!
 Dog1이(가) 고양이를 쫒습니다.
 Dog2이(가) 고양이를 쫒습니다.
@@ -479,6 +480,11 @@ public class BooksTestDrive {
 	}
 }
 
+==실행*결과==
+
+The Grapes of Java by bob
+The Java Gatsby by sue
+The Java Cookbook by ian
 
 
 }}}
@@ -581,7 +587,8 @@ public class XCopy {
 
 }
 
-==출력*결과==
+==실행*결과==
+
 42 84
 
 
