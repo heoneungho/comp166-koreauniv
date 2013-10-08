@@ -357,7 +357,9 @@ class DVDPlayerTestDrive {
 	System.out.println("myDogs[3].name);
 	
 	//이제 순환문을 써서 배열에 들어있는 모든 개가 짖도록 합시다.
-	int x =0;
+	
+         int x =0;
+
 	while(x <myDogs.length){
 		myDogs[x].bark();
 		x = x+1;
