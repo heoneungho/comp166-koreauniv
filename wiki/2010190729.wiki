@@ -334,34 +334,40 @@ int y =  x + 456; y라는 int변수를 선언하고 x의 현재 값에 456을 �
 
 class Dog{
         String name;
-        public static void main(String[] args){
+        public static void main(String [] args){
                 Dog dog1 = new Dog();
                 dog1.bark();
                 dog1.name = "Bart";
-                Dog[] myDogs = new Dog[3];
+
+                Dog[] myDogs = new Dog[5];
                 myDogs[0] = new Dog();
                 myDogs[1] = new Dog();
-                myDogs[2] = dog1;
+                myDogs[2] = new Dog();
+                myDogs[3] = new Dog();
+                myDogs[4] = dog1;
 
                 myDogs[0].name = "Fred";
                 myDogs[1].name = "Marge";
+                myDogs[2].name = "Tom";
+                myDogs[3].name = "Kate";
+                myDogs[4].name = "Suri";
 
                 System.out.print("마지막 개의 이름: ");
-                System.out.println(myDogs[2].name);
+                System.out.println(myDogs[4].name);
 
                 int x = 0;
                 while(x<myDogs.length){
                         myDogs[x].bark();
                         x=x+1;
-                }
+                        }
         }
-        public void bark(){
-                System.out.println(name+ "이(가) 왈!하고 짖습니다.");
-        }
-        public void eat(){  }
-        public void chaseCat() {  }
-}
 
+        public void bark() {
+                System.out.println(name + " 이(가) 왈!하고 짖습니다.");
+        }
+        public void eat(){}
+        public void chaseCat() {}
+}
 
 }}}
 
