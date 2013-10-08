@@ -152,10 +152,95 @@ public class Exercise1b {
 *83p~ 변수* _요약_
 
  * 원시변수 vs 레퍼런스변수:
+ - 원시변수 : 정수, 부울, 부동소수와 같은 기초적인 값(단순한 비트 패턴으로 나타낼 수 있는 값)
+long, int, short, byte와 같이 유형을 지정해주어야 한다.
+컵에 비유할 수 있다.
+
+ - 레퍼런스 변수 : 객체에 대한 레퍼런스가 들어간다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
-{{{
+{{{class Dog {
+	String name;
+	public static void main(String[] args)
+	{
+		Dog dog1 = new Dog();
+		dog1.bark();
+		dog1.name = "신우리";
+
+		Dog[] myDogs = new Dog[24];
+		myDogs[0] = new Dog();
+		myDogs[1] = new Dog();
+		myDogs[2] = new Dog();
+		myDogs[3] = new Dog();
+		myDogs[4] = new Dog();
+		myDogs[5] = new Dog();
+		myDogs[6] = new Dog();
+		myDogs[7] = new Dog();
+		myDogs[8] = new Dog();
+		myDogs[9] = new Dog();
+		myDogs[10] = new Dog();
+		myDogs[11] = new Dog();
+		myDogs[12] = new Dog();
+		myDogs[13] = new Dog();
+		myDogs[14] = new Dog();
+		myDogs[15] = new Dog();
+		myDogs[16] = new Dog();
+		myDogs[17] = new Dog();
+		myDogs[18] = new Dog();
+		myDogs[19] = new Dog();
+		myDogs[20] = new Dog();
+		myDogs[21] = new Dog();
+		myDogs[22] = new Dog();
+		myDogs[23] = new Dog();
+		myDogs[24] = dog1;
+
+		myDogs[0].name = "이미현";
+		myDogs[1].name = "이찬주";
+		myDogs[2].name = "이정우";
+		myDogs[3].name = "김시윤";
+		myDogs[4].name = "손낙원";
+		myDogs[5].name = "김명준";
+		myDogs[6].name = "이창권";
+		myDogs[7].name = "임태휘";
+		myDogs[8].name = "이상미";
+		myDogs[9].name = "장유리";
+		myDogs[10].name = "김건희";
+		myDogs[11].name = "이민주";
+		myDogs[12].name = "이민경";
+		myDogs[13].name = "이지현";
+		myDogs[14].name = "최문숙";
+		myDogs[15].name = "김석환";
+		myDogs[16].name = "곽도윤";
+		myDogs[17].name = "최수아";
+		myDogs[18].name = "신아영";
+		myDogs[19].name = "박선우";
+		myDogs[20].name = "류기태";
+		myDogs[21].name = "이영기";
+		myDogs[22].name = "임태완";
+		myDogs[23].name = "박종하";
+
+		System.out.print("마지막 개의 이름: ");
+		System.out.println(myDog[24].name);
+
+		int x=0;
+		while(x<myDogs.length)
+		{
+			myDog[x].bark();
+			x=x+1;
+		}
+	}
+
+	public void bark()
+	{
+		System.out.println(name + "이(가) 왈!하고 짖습니다.");
+	}
+
+	public void eat() { }
+	public void chaseCat() { }
+}
+
+
 
 }}}
 
