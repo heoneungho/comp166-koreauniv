@@ -386,14 +386,14 @@ public class BooksTestDrive {
 
         public static void main(String [] args){
 
-                Books [] myBooks = new Books[3];
+                Books [] myBooks = new Books[3]; 
 
                 for(int i=0;i<3;i++)
                 {
                         myBooks[i]=new Books();
-                }
+                } // 배열을 선언함
                 
-					 int x = 0;
+		int x = 0;
                 myBooks[0].title="The Grapes of Java";
                 myBooks[1].title="The Java Gatsby";
                 myBooks[2].title="The Java Cookbook";
@@ -422,7 +422,7 @@ class Hobbits {
 	Hobbits [] h = new Hobbits[3];
 	int z = 1;
 
-	while (z<2) 
+	while (z<2)  // 배열은 0부터 시작하게함
 {
 	z = z+1;
 	h[z] = new Hobbits();
