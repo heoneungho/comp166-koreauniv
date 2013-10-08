@@ -160,7 +160,8 @@ long, int, short, byte와 같이 유형을 지정해주어야 한다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
-{{{class Dog {
+{{{
+class Dog {
 	String name;
 	public static void main(String[] args)
 	{
