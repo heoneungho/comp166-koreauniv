@@ -348,15 +348,15 @@ public class Dog {
 	//배열 레퍼런스를 써서 Dog 객체에 접근합니다.
 	
 	myDogs[0].name = "한잔 받으시개";
-    myDogs[1].name = "게임좀 같이하시개";
-    myDogs[2].name = "잠좀 깨시개";
-    myDogs[3].name = "밥좀 드시개";
-    myDogs[4].name = "시간이 없으시개";
-    myDogs[5].name = "코딩이 정말 재밌개";
-    myDogs[6].name = "특히 자바가 재밌개";
-    myDogs[7].name = "근데 사실거짓말이개";
-    myDogs[8].name = "하지만 열심히할개";
-    myDogs[9].name = "지켜봐주개";
+        myDogs[1].name = "게임좀 같이하시개";
+        myDogs[2].name = "잠좀 깨시개";
+        myDogs[3].name = "밥좀 드시개";
+        myDogs[4].name = "시간이 없으시개";
+        myDogs[5].name = "코딩이 정말 재밌개";
+        myDogs[6].name = "특히 자바가 재밌개";
+        myDogs[7].name = "근데 사실거짓말이개";
+        myDogs[8].name = "하지만 열심히할개";
+        myDogs[9].name = "지켜봐주개";
     
     //myDog[9]의 이름이 뭐였지?
     System.out.print("마지막 개의 이름: ");
