@@ -87,24 +87,24 @@ A
 class Exercise1b{
         public static void main(String[] args) {
                 int x = 1;
-                while( x < 10 ) {
-                        if ( x > 3 ) {
+                while( x < 10 ) { //x가 10보다 작기 때문에 while문 안으로 들어감
+                        if ( x > 3 ) { //x가 3보다는 작기 때문에 실행되지 않음
                                 System.out.println("big x");
                         }
-                }
+                } // while 문에서 갇혀버리게 된다. x가 증가하지 않고 그대로 x=1에 머물러 있기 때문에 컴파일은 되고 실행도 되지만 아무일도 일어나지 않고 프로그램이 계속 돌아가게 된다.
         }
 }
 }}}
 {{{
 
 B
-
+// 맨 첫줄에 class가 정의되어 있지 않기 때문에 컴파일이 되지 않는다.
 public static void main(String[] args){
         int x= 5;
-        while (x>1) {
-                x = x - 1;
-                if ( x < 3 ) {
-                        System.out.println("small x");
+        while (x>1) { // x가 1보다 크기 때문에 while문으로 들어온다
+                x = x - 1; // while문이 한번 돌때마다 1씩 줄어든다.
+                if ( x < 3 ) { // 맨 처음에 4, 그리고 다음번째에는 3이 된다. 
+                        System.out.println("small x"); // x가 4일때에만 한번 if문이 실행되므로 small x 라는 문장이 1회 출력된다.
                 }
         }
 }
@@ -113,13 +113,13 @@ public static void main(String[] args){
 {{{
 
 C
-
+// class는 존재하지만 main함수가 없기 때문에 컴파일이 되지 않는다.
 class Exercise1b{
-        int x = 5; 
-        while ( x >1 ) {
-                x = x - 1;
-                if ( x < 3 ) {
-                        System.out.println("small x");
+        int x = 5;  
+        while ( x >1 ) { // x가 5이기 때문에 처음에 while문이 실행된다.
+                x = x - 1; // x가 1씩 줄어든다.
+                if ( x < 3 ) { // 위와 같이 맨처음엔 4, 다음엔 3
+                        System.out.println("small x"); // x가 4일때만 한번 if문이 실행
                 }
         }
 }   
