@@ -380,7 +380,7 @@ class Books{
         String authour;
         }
 
-class BooksTestDrive{
+class BooksTestDrive{ // public class로 지정을 해주어야 한다. 파일명도 BooksTestDrive.java
         public static void main(String [] args) {
                 Books[] myBooks = new Books[3];
                 int x = 0;
@@ -404,6 +404,10 @@ class BooksTestDrive{
 
 }}}
 
+{{{
+
+
+}}}
 *101p 레퍼런스 도용사건* _요약_
 
  * 누가 이겼나요?:
