@@ -389,6 +389,72 @@ public class Dog {
 
 {{{
 
+public class Books {
+	String title;
+	String author;
+	
+}
+
+class BooksTestDrive {
+		public static void main(String[] args){
+			
+			int x = 0;	
+			Books [] myBooks = new Books[3];
+			
+			myBooks[0] = new Books(); 
+			myBooks[1] = new Books(); 
+			myBooks[2] = new Books(); 
+			
+			myBooks[0].title = "역사란 무엇인가";
+			myBooks[1].title = "나의 라임오렌지 나무";
+			myBooks[2].title = "어린 왕자";
+			
+			myBooks[0].author = "E.H Carr";
+			myBooks[1].author = "J. M. 데 바스콘셀로스";
+			myBooks[2].author = "Antoine de Saint Exupery";
+			
+			
+			while(x<3) {
+				System.out.print(myBooks[x].title);
+				System.out.print(" by ");
+				System.out.println(myBooks[x].author);
+				x = x+1;
+			}
+		}
+}
+
+--------------------------------------------------------------------------------
+
+public class Hobbits {
+		
+		String name;
+		
+		public static void main(String[] args) {
+			
+			Hobbits [] h = new Hobbits[3];
+			int z = -1;//수정한 부분
+			
+			while(z<2) {// 수정한 부분
+				z = z+1;
+				h[z] = new Hobbits();
+				h[z].name ="bilbo";
+				
+				if(z==1) {
+					h[z].name = "frodo";
+				}
+			if(z==2) {
+				h[z].name = "sam";
+			}
+			System.out.print(h[z].name + " is a ");
+			System.out.println("good Hobbit name");
+			
+			}
+			
+		}
+
+}
+
+
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
