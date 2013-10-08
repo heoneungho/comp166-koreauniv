@@ -375,6 +375,37 @@ class BooksTestDrive {
 
 }}}
 
+B
+{{{
+class Hobbits {
+
+        String name;
+
+        public static void main(String [] args) {
+
+                Hobbits [] h = new Hobbits[3];
+                int z = 0;
+
+                while (z < 3) { // z=3일 때 while문을 빠져나옵니다.
+
+                h[z] = new Hobbits();
+                h[z].name = "bilbo";
+                if (z == 1) {
+                  h[z].name = "frodo";
+                }
+                if (z == 2) {
+                  h[z].name = "sam";
+                }
+                System.out.print(h[z].name + " is a ");
+                System.out.println("good Hobbit name");
+
+                z = z+1; // while문 끝에서 z의 값이 1씩 증가해야합니다.
+                }
+        }
+}
+
+}}}
+
 *101p 레퍼런스 도용사건* _요약_
 
  * 누가 이겼나요?:
