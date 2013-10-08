@@ -321,6 +321,68 @@ long, int, short, byte와 같이 유형을 지정해주어야 한다.
 
 {{{
 
+
+public class Dog {
+	String name;
+	
+	public static void main(String[] args) {
+	//Dog 객체를 만들고 접근합니다
+	Dog dog1 = new Dog();
+	dog1.bark();
+	dog1.name = "Bart";
+	
+	//이번에는 Dog 배열을 만듭니다.
+	Dog[] myDogs = new Dog[10];
+	//그리고 개를 몇마리 집어넣습니다.
+	myDogs[0] = new Dog();
+	myDogs[1] = new Dog();
+	myDogs[2] = new Dog();
+	myDogs[3] = new Dog();
+	myDogs[4] = new Dog();
+	myDogs[5] = new Dog();
+	myDogs[6] = new Dog();
+	myDogs[7] = new Dog();
+	myDogs[8] = new Dog();
+	myDogs[9] = new Dog();
+	
+	//배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+	
+	myDogs[0].name = "한잔 받으시개";
+    myDogs[1].name = "게임좀 같이하시개";
+    myDogs[2].name = "잠좀 깨시개";
+    myDogs[3].name = "밥좀 드시개";
+    myDogs[4].name = "시간이 없으시개";
+    myDogs[5].name = "코딩이 정말 재밌개";
+    myDogs[6].name = "특히 자바가 재밌개";
+    myDogs[7].name = "근데 사실거짓말이개";
+    myDogs[8].name = "하지만 열심히할개";
+    myDogs[9].name = "지켜봐주개";
+    
+    //myDog[9]의 이름이 뭐였지?
+    System.out.print("마지막 개의 이름: ");
+    System.out.println(myDogs[9].name);
+    
+    //이제 순환 문을 써서 배열에 들어있는 모든 개가 짖도록 합시다.
+    
+    int x = 0;
+    
+    while(x <myDogs.length) {
+    	myDogs[x].bark();
+    	x = x+1;
+    }
+	}
+	
+	public void bark() {
+		System.out.println(name + "가 왈!왈!뀌뤼루리뤼ㅏ기ㅏㅓ뤽!!하고 짖습니다!!");
+    }
+	
+  public void eat() {}
+  public void chaseCat() {}
+	
+
+    
+	}
+
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
