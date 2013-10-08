@@ -236,6 +236,8 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A.
+
 public class TapeDeck{
         boolean canRecord = false;
         
@@ -260,6 +262,34 @@ public class TapeDeckTestDrive {
                 }
         }
 }
+
+B
+
+public class DVDPlayer {
+        boolean canRecord = false;
+        
+        void recordDVD(){
+                System.out.println("DVD recording");
+        }
+        
+        void playDVD(){
+                System.out.println("DVD playing");
+        } 
+}
+
+public class DVDPlayerTestDrive {
+        public static void main(String[] args) {
+                
+                DVDPlayer d = new DVDPlayer();
+                d.canRecord = true;
+                d.playDVD();
+                
+                if(d.canRecord == true){
+                        d.recordDVD();
+                }
+        }
+}
+
 
 }}}
 
