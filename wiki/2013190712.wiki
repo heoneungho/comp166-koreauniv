@@ -354,7 +354,7 @@ class DVDPlayerTestDrive {
 
 	//myDogs[3]의 이름이 뭐였지?
 	System.out.print("마지막 개의 이름:");
-	System.out.println("myDogs[3].name);
+	System.out.println("myDogs[3].name");
 	
 	int x =0;
 	while(x <myDogs.length){
