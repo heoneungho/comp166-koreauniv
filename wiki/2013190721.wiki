@@ -1,6 +1,5 @@
 
 
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -138,6 +137,7 @@ class Exercise1b{
 
 {{{
 
+
 public class GuessGame{
 	Player p1;
 	Player p2;
@@ -174,6 +174,59 @@ public class GuessGame{
 			guessp1 = p1.number;
 			System.out.println("the number that player1 has picked: "+ guessp1);
 
+			guessp1 = p2.number;
+			System.out.println("the number that player2 has picked: "+ guessp1);
+			guessp1 = p3.number;
+			System.out.println("the number that player3 has picked: "+ guessp1);
+			guessp1 = p4.number;
+			System.out.println("the number that player4 has picked: "+ guessp1);
+			
+			if(guessp1==targetNumber){
+				p1isRight = true;
+			}
+			
+			if(guessp2==targetNumber){
+				p1isRight = true;
+			}
+
+			if(guessp3==targetNumber){
+				p1isRight = true;
+			}
+
+			if(guessp4==targetNumber){
+				p1isRight = true;
+			}
+
+			if(p1isRight||p2isRight||p3isRight||p4isRight){
+
+				System.out.println("there is a player who got right");
+				System.out.println("player1:" + p1isRight);
+				System.out.println("player2:" + p2isRight);
+				System.out.println("player3:" + p3isRight);
+				System.out.println("player4:" + p4isRight);
+				break;
+			}else{
+				System.out.println("try again");
+			}
+		}
+	}
+}
+
+public class Player{
+	int number = 0;
+	
+	public void guess(){
+		number=(int)(Math.random()*10);
+		System.out.println("the picked number:" + number);
+	}
+}
+
+public class GameLauncher{
+	public static void main(String[] args){
+		GuessGame game = new GuessGame();
+		game.startGame();
+	}
+}
 
 }}}
 
