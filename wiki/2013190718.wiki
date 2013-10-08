@@ -469,6 +469,54 @@ class DogTestDrive
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+class XCopy
+{
+	public static void main(String [] args)
+	{
+		int orig = 42;
+		XCopy x= new XCopy();
+		int y=x.go(orig);
+		System.out.println(orig + " " + y);
+	}
+
+	int go(int arg)
+	{
+		arg = arg*2;
+		return arg;
+	}
+} // 별 문제 없다. 결과는 42 84
+
+B
+class Clock
+{
+	String time;
+	
+	void setTime(String t)
+	{
+		time=t;
+	}
+	
+	String getTime() // 게터 메소드에는 반드시 return 필요
+	{
+		return time;
+	}
+}
+
+class ClockTestDrive
+{
+	public static void main(String [] args)
+	{
+		Clock c= new Clock();
+
+		c.setTime("12345");
+		String tod= c.getTime();
+		System.out.println("time : " + tod);
+	}
+}
+
+
 
 }}}
 
