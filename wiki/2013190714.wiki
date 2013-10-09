@@ -742,6 +742,94 @@ public class SimpleDotComTestDrive {
 
 {{{
 
+import java.io.*;
+
+public class GameHelper {
+	
+	public String getUserInput(String prompt) {
+		
+		String inputLine = null;
+		
+		System.out.print(prompt + " " );
+		
+		try{
+		
+			BufferedReader is = new BufferedReader (
+			
+			new InputStreamReader(System.in));
+			
+		inputLine = is.readLine();
+	
+		if(inputLine.length()==0) return null;
+			
+		} catch (IOException e) {
+			
+			System.out.println("IOExceoption:  " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+public class SimpleDotCom {
+	
+	int[] locationCells;
+	int numOfHits = 0 ;
+
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i=0;i<locationCells.length;i++) {
+			if(guess==locationCells[i]&&locationCells[i]!=-1) {//-1이면 맞춘자리 이므로 이에대한 확인
+				result = "hit";
+				numOfHits++;
+				locationCells[i]=-1;//맞췃다는 표시로 -1을 넣어줌
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length) {
+			result = "kill";
+		}
+		System.out.println(result);
+		return result;
+	}
+}
+
+public class SimpleDotComTestDrive { 
+
+        public static void main(String[] args) {
+
+                int numOfGuesses = 0;
+                GameHelper helper = new GameHelper();
+
+                SimpleDotCom theDotCom = new SimpleDotCom();
+
+                int randomNum = (int) (Math.random() * 5); // 난수를 발생합니다.
+
+                int[] locations = { randomNum, randomNum + 1, randomNum + 2 };
+                theDotCom.setLocationCells(locations);
+                boolean isAlive = true;
+
+                while (isAlive == true) {
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+
+                        if (result.equals("kill")) {
+                                isAlive = false;
+                                System.out.println(numOfGuesses + " guesses");
+                        }
+
+                } 
+
+        } 
+}
+
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
