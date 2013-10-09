@@ -126,7 +126,7 @@ class Exercise1b {
 
 ---------------------------------------------------------------------
 
-class Small {
+class Small { //수정한 부분입니다.
   public static void main(String[] args) {
      int x = 5;
      while(x>1) {
@@ -140,7 +140,7 @@ class Small {
 ----------------------------------------------------------------------
 
 class Exercise1b
-  public static void main(String [] args) {
+  public static void main(String [] args) { //수정한 부분입니다.
     int x = 5;
     while(x>1) {
       x = x-1;
