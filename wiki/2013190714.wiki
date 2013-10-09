@@ -638,6 +638,104 @@ public class SimpleDotComTestDrive {
 
 {{{
 
+import java.io.*;
+
+public class GameHelper {
+	
+	public String getUserInput(String prompt) {
+		
+		String inputLine = null;
+		
+		System.out.print(prompt + " " );
+		
+		try{
+		
+			BufferedReader is = new BufferedReader (
+			
+			new InputStreamReader(System.in));
+			
+		inputLine = is.readLine();
+	
+		if(inputLine.length()==0) return null;
+			
+		} catch (IOException e) {
+			
+			System.out.println("IOExceoption:  " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
+
+
+public class SimpleDotCom {
+	
+	int[] locationCells;
+	boolean[] hitCells = new boolean[3];//hitCells이라는 boolean형 배열을 생성
+	int numOfHits = 0 ;
+
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
+	
+	public void sethitCells(boolean[] hit) {//위의 setLocationCells처럼 sethitCells메소드를 추가
+		hitCells = hit;
+	}
+	public String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i=0;i<locationCells.length;i++) {
+			if(guess==locationCells[i]&&hitCells[i]==false) {//이미 맞췃는지에대한 확인추가
+				result = "hit";
+				numOfHits++;
+				hitCells[i]=true;//맞췃다는 표시를함
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length) {
+			result = "kill";
+		}
+		System.out.println(result);
+		return result;
+	}
+}
+
+
+public class SimpleDotComTestDrive { 
+
+        public static void main(String[] args) {
+
+                int numOfGuesses = 0;
+                GameHelper helper = new GameHelper();
+
+                SimpleDotCom theDotCom = new SimpleDotCom();
+
+                int randomNum = (int) (Math.random() * 5); // 난수를 발생합니다.
+
+                int[] locations = { randomNum, randomNum + 1, randomNum + 2 };
+	
+		boolean[] hitCells = new boolean[3];//첫번째 옵션에 필요한 boolean배열을 생성
+	 	theDotCom.sethitCells(hitCells);//boolean배열을 닷컴클래스로 보내줌
+                theDotCom.setLocationCells(locations);
+                boolean isAlive = true;
+
+                while (isAlive == true) {
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+
+                        if (result.equals("kill")) {
+                                isAlive = false;
+                                System.out.println(numOfGuesses + " guesses");
+                        }
+
+                } 
+
+        } 
+}
+
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
