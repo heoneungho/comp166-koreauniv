@@ -293,8 +293,30 @@ class DVDPlayer {
         void recordDVD() {
                 System.out.println("DVD recording");
         }
+        // 테스트드라이브에서 playDVD라는 메소드를 불러오고 있지만 존재하지 않기 때문에 넣어주어야 한다
+        /* void playDVD() {
+                  System.out.println("DVD playing");
+           }
+        */
 }
 }}}
+
+{{{
+class DVDPlayerTestDrive {
+        public static void main( String [] args) {
+
+                DVDPlayer d = new DVDPlayer();
+                d.canRecord = true;
+                d.playDVD(); //DVDPlayer라는 객체에는 playDVD라는 메소드가 존재하지 않는다.
+
+                if ( d.canRecord == true ) {
+                        d.recordDVD();
+                }
+        }
+}
+
+}}}
+
 
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
