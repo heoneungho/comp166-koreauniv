@@ -273,7 +273,8 @@ class TapeDeck{
 class TapeDeckTestDrive {
         public static void main(String [] args) {
 
-                t.canRecord = true;
+                t.canRecord = true; //객체의 이름은 canRecord가 아닌 TapeDeck이다 따라서 TapeDeck t = new TapeDeck(); 으로 새로운 t를 생성해준다.
+                                    // 그 후에 t.canRecord = true;
                 t.playTape();
 
                 if (t.canRecord == true) {
