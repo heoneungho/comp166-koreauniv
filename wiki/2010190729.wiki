@@ -490,8 +490,38 @@ while( x < 10 ) { // 연락처 객체 10개를 만듭니다.
  * 인스턴스 변수 vs 지역 변수:
  
 *107p Dog* _실행_
-
 {{{
+class Dog2 { //전의 실습에서 Dog이라는 class가 있기때문에 Dog2라는 class를 생성
+        int size;
+        String name;
+
+        void bark() {
+                if ( size > 60 ) {
+                        System.out.println("Wooof! Wooof!");
+                } else if ( size > 14 ) {
+                        System.out.println("Ruff! Ruff!" );
+                } else {
+                        System.out.println("Yip! Yip!");
+                }
+        }
+}
+}}}
+{{{
+class Dog2TestDrive{
+
+        public static void main( String[] args) {
+                Dog2 one = new Dog2();
+                one.size = 70;
+                Dog2 two = new Dog2();
+                two.size = 8;
+                Dog2 three = new Dog2();
+                three.size = 35;
+
+                one.bark();
+                two.bark();
+                three.bark();
+        }
+}
 
 }}}
 
