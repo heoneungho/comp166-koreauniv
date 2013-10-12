@@ -549,92 +549,12 @@ class Dog2TestDrive{
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란? 
- 최근의 소프트웨어 개발 방법론 분야로 
-조금씩/자주 발표,사이클을 반복해서 돌리면서 개발,스펙에 없는 것은 집어넣지않기,테스트 코드를 먼저 만들기 등과 같은 규칙이 있다.
 
 
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
-
-
-public class SimpleDotCom{
-  
-  int[] locationCells;
-  int numOfHits = 0;
-
-  public void setLocationCells(int[] locs){
-    locationCells = locs;
-  }
-
-  public String checkYourself(String stringGuess){
-    int guess = Integer.parseInt(stringGuess);
-    String result = "miss";
-    for(int i = 0; i < locationCells.length; i++){
-      if(guess == locationCells[i]){
-        result = "hit";
-        numOfHits++;
-        break;
-      }
-    }
-
-    if (numOfHits == locationCells.length){
-      result = "kill";
-    }
-    System.out.println(result);
-      return result;
-  }
-}
-
-
-
-public class SimpleDotCom{
-  
-  int[] locationCells;
-  int numOfHits = 0;
-
-  public void setLocationCells(int[] locs){
-    locationCells = locs;
-  }
-
-  public String checkYourself(String stringGuess){
-    int guess = Integer.parseInt(stringGuess);
-    String result = "miss";
-    for(int i = 0; i < locationCells.length; i++){
-      if(guess == locationCells[i]){
-        result = "hit";
-        numOfHits++;
-        break;
-      }
-    }
-
-    if (numOfHits == locationCells.length){
-      result = "kill";
-    }
-    System.out.println(result);
-      return result;
-  }
-}
-
-
-
-import java.io.*;
-public class GameHelper{
-  public String getUserInput(String prompt){
-    String inputLine = null;
-    System.out.print(prompt + " ");
-    try{
-      BufferedReader is = new BufferedReader(
-      new InputStreamReader(System.in));
-    inputLine = is.readLine();
-    if(inputLine.length() == 0) return null;
-    }catch(IOException e){
-      System.out.println("IOException: "+ e);
-    }
-    return inputLine;
-  }
-}
 
 
 }}}
