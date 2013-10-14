@@ -1,5 +1,4 @@
 
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -245,12 +244,100 @@ public class GameLauncher{
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog{
+	String name;
+	public static void main (String[] args){
+	Dog dog1 = new Dog();
+	dog1.bark();
+	dog1.name = "Bart";
+
+	Dog[] myDogs = new Dog[3];
+	myDogs[0] = new dog();
+	myDogs[1] = new dog();
+	myDogs[2] = dog1;
+
+	myDogs[0].name = "Fred";
+	myDogs[1].name = "Marge";
+	
+	System.out.print("마지막 개의 이름: ");
+	System.out.println(myDogs[2].name);
+
+	int x =0;
+	while(x< myDogs.length){
+		myDogs[x].bark();
+		x=x+1;
+	}
+}
+
+public void bark(){
+	System.out.println(name + "이(가) 왈!하고 짖습니다.“);
+}
+
+public void eat(){}
+
+public void chaseCat(){}
+}
+
 
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+class Books{
+	String title;
+	String author;
+}
+
+class bookTestDrive{
+	public static void main(String[] args){
+		Book[] myBooks = new Books[3];
+		int x = 0;
+		myBooks[0] = newBooks;
+		myBooks[1] = newBooks;
+		myBooks[2] = newBooks; //배열을 선언한 후 각각의 myBooks에 대한 객체를 만든다.
+		myBooks[0].title = "The grapes of Java"
+		myBooks[1].title = "The Java Gatsby";
+		myBooks[2].title = "The Java Cookbook";
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian";
+
+		while(x<3){
+			System.out.print(myBooks[x].title);
+			System.out.print("by");
+			System.out.print(myBooks[x].author);
+			x=x+1;
+		}
+	}
+}
+
+B
+class Hobbits {
+	String name;
+	public static void(String[] args){
+	Hobbits[] h = new Hobbits[3];
+		int z=-1;
+		while(z<2) //배열은 시작이 0이다
+		{
+		z=z+1;
+		h[z] = new Hobbits();
+		h[z].name = "bilbo";
+	if(z==1)
+	{
+		h[z].name = "frodo");
+	}
+	if(z==2)
+	{
+		h[z].name = "sam";
+	}
+	System.out.print(h[z].name + "is a");
+	System.out.println(good Hobbit name");
+	}
+}
+}
 
 }}}
 
