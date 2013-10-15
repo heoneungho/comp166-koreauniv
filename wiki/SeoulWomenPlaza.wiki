@@ -6,7 +6,9 @@
 
 API샘플
 
-* http://openapi.seoul.go.kr:8088/sample/xml/SeoulWomenPlazaEvent/1/5/
+ * http://openapi.seoul.go.kr:8088/sample/xml/SeoulWomenPlazaEvent/1/5/
+ * http://openapi.seoul.go.kr:8088/sample/json/SeoulWomenPlazaEvent/1/5/
+ * http://openapi.seoul.go.kr:8088/sample/xml/SeoulWomenPlazaEvent/1/5/
 
 
 == 어플1 ==
