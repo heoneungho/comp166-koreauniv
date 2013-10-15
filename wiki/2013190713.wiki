@@ -589,11 +589,40 @@ public class XCopy {
 
 }
 
-==실행*결과==
+==실행 결과==
 
 42 84
+}}}
+{{{
+[B]
 
 
+public class Clock {
+	String time;
+	
+	void setTime(String t){
+		time = t;
+	}
+	
+	String getTime(){ // return하는 time이 문자열이므로 void가 아닌 String
+		return time;
+	}
+}
+
+
+public class ClockTestDrive {
+
+	public static void main(String [] args){
+		Clock c = new Clock();
+		
+		c.setTime("1245");
+		String tod = c.getTime(); // c의 time을 리턴하여 tod에 넣는다.
+		System.out.println("time: "+tod);//그냥 바로 c.getTime();써도 됐을텐데
+	}
+}
+
+==실행 결과==
+time: 1245
 }}}
 
 
@@ -602,7 +631,8 @@ public class XCopy {
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
- 
+메소드 코딩을 시작하기 전에 그 메소드를 테스트하기 위한 보조 코드를 미리 만드는 것. 
+
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
