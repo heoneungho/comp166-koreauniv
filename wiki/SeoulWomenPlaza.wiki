@@ -4,6 +4,17 @@
 
 아래 예제 프로그램이 정상적으로 작동하기 위해서는 SeoulWomenPlazaList.java 파일의 key 값을 [http://data.seoul.go.kr/openinf/develop/developer.jsp OpenAPI키]에서 구해서 넣어야 합니다. 어플1에 대한 [https://code.google.com/p/comp166-koreauniv/downloads/detail?name=01.%20%EB%82%98%EB%A7%8C%EC%9D%98%20%EC%96%B4%ED%94%8C%20%EB%A7%8C%EB%93%A4%EA%B8%B0.pdf PDF]파일도 같이 참조하시길 바랍니다.
 
+인터넷이 되기 위해서는 
+{{{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy); 
+}}}
+와 
+{{{
+    <uses-permission android:name="android.permission.INTERNET" />
+}}}
+를 설정해야 합니다
+
 API샘플
 
  * http://openapi.seoul.go.kr:8088/sample/xml/SeoulWomenPlazaEvent/1/5/
