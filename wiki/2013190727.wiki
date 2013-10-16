@@ -22,26 +22,26 @@ public class BeerSong
 			}
 			
 			System.out.println(beerNum + "" + word + " of beer on the wall");
-      System.out.println(beerNum + "" + word + " of beer.");
-      System.out.println("Take one down.");
-      System.out.println("Pass it around.");
-      beerNum = beerNum - 1;
-      
-      if (beerNum > 1) 
-      		{
-    	  System.out.println(beerNum + "" + word + " of beer on the wall");
-      		} 
-      
-      else if (beerNum == 1)
-      		{
-    	  word = "bottle";
-        System.out.println(beerNum + "" + word + " of beer on the wall");
-      		}	// 수정
-      
-      else
-      		{
-    	  System.out.println("No more bottles of beer on the wall");
-  		}	// else 문 끝
+			System.out.println(beerNum + "" + word + " of beer.");
+			System.out.println("Take one down.");
+			System.out.println("Pass it around.");
+			beerNum = beerNum - 1;
+			
+			if (beerNum > 1)
+			{
+				System.out.println(beerNum + "" + word + " of beer on the wall");
+			}
+			
+			else if (beerNum == 1)
+			{
+				word = "bottle";
+				System.out.println(beerNum + "" + word + " of beer on the wall");
+			}	// 수정
+			
+			else
+			{
+				System.out.println("No more bottles of beer on the wall");	
+			}	// else 문 끝
 		}	// while 순환문 끝
 	}	// main 클래스 끝
 }	// 클래스 끝
