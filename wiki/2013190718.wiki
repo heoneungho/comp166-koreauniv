@@ -598,7 +598,7 @@ public static void main(String[] args)
 } // main 문 끝
 }
 
-import java.io.*
+import java.io.*;
 public class GameHelper
 {
 	public String getUserInput(String prompt)
