@@ -482,6 +482,79 @@ XP의 가장 큰 장점은 막판에 스펙이 변경되는 일이 있어도 고
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
+
+	int[] locationCells;
+	int numOfHits = 0;
+	
+	public void setLocationCells(int[] locs) {
+			locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i = 0; i < locationCells.length; i++) {
+			if(guess == locationCells[i]) {
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		}//순환문 끝
+		
+		if(numOfHits == locationCells.length) {
+			result = "kill";
+		}
+		System.out.println(result);
+		return result;
+	}//메소드 끝
+}// 클래스 끝
+
+public class SimpleDotComGame {
+	public static void main(String[] args) {
+
+		int numOfGuesses = 0;
+		GameHelper helper = new GameHelper();
+		
+		SimpleDotCom theDotCom = new SimpleDotCom();
+		int randomNum = (int) (Math.random()*5);
+		
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		theDotCom.setLocationCells(locations);
+		boolean isAlive = true;
+		
+		while(isAlive == true) {
+			
+			String guess = helper.getUserInput("enter a number");
+			String result = theDotCom.checkYourself(guess);
+			numOfGuesses++;
+			
+			if(result.equals("kill")) {
+				isAlive = false;
+				
+				System.out.println(numOfGuesses + "guesses");
+				
+			}//if문 끝
+		}//while문 끝
+	}
+}//main문 끝
+
+import java.io.*;
+public class GameHelper {
+	public String getUserInput(String prompt) {
+		String InputLine = null;
+		System.out.print(prompt + " ");
+		try {
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			InputLine = is.readLine();
+			if (InputLine.length() == 0) return null;
+		} catch(IOException e) {
+			System.out.println("IOException: "+ e);
+		}
+		return InputLine;
+	}
+
+}
 
 }}}
 
