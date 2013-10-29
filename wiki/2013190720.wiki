@@ -557,14 +557,14 @@ public class SimpleDotComGame {          //SimpleDotComGame 클래스입니다
 
 public static void main(String[] args) {
 
-        int numOfGuesses  = 0;
+        int numOfGuesses  = 0;        // 추측한 횟수를 추적하기 위한 변수
         GameHelper helper = new GameHelper();
 
         SimpleDotCom theDotCom = new SimpleDotCom();
 
         int randomNum = (int) (Math.random() * 5);
-
         int[] locations = {randomNum, randomNum+1, randomNum+2};
+                              // 난수를 만들어 셀 위치 배열을 만든다
 
         theDotCom.setLocationCells(locations);
 
