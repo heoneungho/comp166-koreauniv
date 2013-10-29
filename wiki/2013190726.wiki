@@ -718,10 +718,11 @@ public class SimpleDotComTestDrive {
 클래스 SimpleDotCom
 
 
+
 public class SimpleDotCom {
 	
 	int[] locationCells;
-	int numOfHits = 0;
+	int numOfHits = 0; //닷컴에 해당하는 지역을 모두 눌러주었는지 검사하기 위한 장치
 	
 	public void setLocationCells (int[] locs) {
 		
@@ -730,23 +731,24 @@ public class SimpleDotCom {
 
 	public String checkYourself (String stringGuess) {
 		
-		int guess = Integer.parseInt(stringGuess);
+		int guess = Integer.parseInt(stringGuess); //User에게 입력받은 Character형 -> int형
 		String result = "miss";
 		for(int i = 0 ;i < locationCells.length ; i++) {
 			if(guess == locationCells[i]) {
-				result = "hit";
+				result = "hit";  // for문을 돌려서 User의 input의 해당하는 수가 있는지 검사
 				numOfHits++;
 				break;
 				
 			}
 		}// 순환문 끝
 		
-		if(numOfHits == locationCells.length) {
+		if(numOfHits == locationCells.length) { //닷컴을 모두 누를 시 kill을 return하며 종료
 			result = "kill";
 		}
-		System.out.println(result);
-			return result;
+		System.out.println(result); //맞으면 hit, 틀리면 miss를 return 출력
+		return result; //result를 메인 메소드의 result에 대입해주는 역할
 	}// 메소드 끝
+	
 }// 클래스  끝
 
 }}}
