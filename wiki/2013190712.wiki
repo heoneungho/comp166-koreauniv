@@ -564,8 +564,9 @@ class ClockTestDrive
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
-{{{public class SimpleDotComTestDrive{
-	public static void main(String[] args){
+{{{
+           public class SimpleDotComTestDrive{
+	   public static void main(String[] args){
 		SimpleDotCom dot = new SimpleDotCom();
 
 
