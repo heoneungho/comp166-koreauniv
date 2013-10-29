@@ -557,33 +557,36 @@ public class SimpleDotCom{
 			}
 		}
 		
-		if(hits==locationCells.length){
+		if(hits==locationCells.length)
 			result = "kill";
-			return result;
-		}
-		else
-			return Integer.toString(hits);
-
+		
+		return result;
 			
 	}
 }
 
-
+import java.util.Scanner;
 
 public class SimpleDotComTest{
+	
+
 	public static void main(String[] args){
 		SimpleDotCom dot = new SimpleDotCom();
+		Scanner scan = new Scanner(System.in);
 
 		int[] locations = {2,3,4};
 		dot.setLocationCell(locations);
-
-		String guess = "2";
-		String result = dot.checkYourself(guess);
-		String testResult = "failed";
-		System.out.println(result);
+		
+		for(int i=0;i<locations.length+3;i++){
+			String guess = scan.next();
+			String result = dot.checkYourself(guess);
+			System.out.println(result);
+			if(dot.hits==locations.length)
+				break;
+		}
+		
 	}
 }
-
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
