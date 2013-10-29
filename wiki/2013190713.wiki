@@ -631,11 +631,98 @@ time: 1245
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
-메소드 코딩을 시작하기 전에 그 메소드를 테스트하기 위한 보조 코드를 미리 만드는 것. 
+** 메소드 코딩을 시작하기 전에 그 메소드를 테스트하기 위한 보조 코드를 미리 만드는 것. 
+** 조금씩 자주 발표한다.
+** 사이클을 반복해서 돌리면서 개발한다.
+** 스펙에 없는 것은 절대 집어넣지 않는다.
+** 모든 일을 단순하게 처리한다.
 
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotComTestDrive {
+
+	public static void main(String[] args){
+		int numOfGuesses = 0;
+		
+		GameHelper helper = new GameHelper (); //public class GameHelper를 helper로 선언
+		
+		SimpleDotCom theDotCom = new SimpleDotCom();//위와같이 theDotCom 선언
+		int randomNum = (int) (Math.random()*5); //Math는 0~1사이에서 랜덤으로 수를 발생하므로 *5한 것에 int를 하면 0~4 사이가 나온다.
+		
+		int[] locations = {randomNum, randomNum+1, randomNum+2};// 정답의 위치를 세 개 설정하는데 위에서 나온 randomNum과 그보다 1, 2 더 큰 수를 위치로 한다. 즉 0~6 사이의 범위에서 나올 것이다.
+		
+		theDotCom.setLocationCells(locations);//위에서 선언한 SimpleDotCom의 setLocationCells함수에 locations 배열들을 넣는다.
+ 
+		boolean isAlive = true; //boolean이므로 true는 1이다.
+		
+		while(isAlive == true){//일단 처음에는 무조건 들어감
+			String guess = helper.getUserInput("enter a number");//숫자를 입력받아서 guess에 넣음
+			String result = theDotCom.checkYourself(guess);// 입력받은 숫자가 맞느냐 아니냐에 따라 string이 다르다.
+			numOfGuesses++;//추측한 횟수 증가
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");//마지막에 총 몇번 추리했는지 출력해준다.
+			}//if문 끝
+		}//while문 끝
+	}//main문 
+}}}
+
+{{{
+public class SimpleDotCom {
+    
+    int [] locationCells;
+    int numOfHits = 0;
+    
+    public void setLocationCells (int[] locs) {
+            
+            locationCells = locs; //랜덤으로 발생시킨 위치정보가 
+    }
+
+    public String checkYourself (String stringGuess) {
+            
+            int guess = Integer.parseInt(stringGuess);
+            String result = "miss"; //초기설정은 miss로하고 맞추면 hit 또는 kill
+            for(int i=0 ; i<locationCells.length ; i++) {
+                    if(guess == locationCells[i]) {
+                            result = "hit"; //맞추면 일단 hit이다.
+                            numOfHits++; //총 맞춘회수의 증가
+                            break;
+                            
+                    }
+            }
+            
+            if(numOfHits == locationCells.length) {
+                    result = "kill"; //총 맞춘 개수가 정답의 개수와 같다면 kill을 리턴한다.
+            }
+            System.out.println(result);//result 출력
+                    return result;
+    }
+}
+
+}}}
+
+{{{
+//BufferedReader을 아직 잘모르겠어서 주석은 잠시 보류하겠습니다.
+
+import java.io.*;
+
+
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.print(prompt + " ");
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0) return null;
+		} catch (IOException e){
+			System.out.println("IOException: "+ e);
+		}
+		return inputLine;
+	}
+
+}
 
 }}}
 
