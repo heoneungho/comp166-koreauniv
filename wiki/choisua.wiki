@@ -3,7 +3,7 @@
 = Introduction =
 
 베스킨라빈스31(업그레이드)
-
+http://comp166-koreauniv.googlecode.com/files/베스킨라빈스31.png
 = Details =
 
 1부터31까지 숫자를 순서대로 말하고 마지막에 31을 말하는사람이 지는것
