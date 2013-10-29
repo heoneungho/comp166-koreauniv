@@ -683,32 +683,34 @@ class ClockTestDrive {
 {{{
 클래스 SimpleDotComTestDrive
 
+
 public class SimpleDotComTestDrive {
 	
 	public static void main (String args[]) {
 		
-		int numOfGuesses = 0;
-		GameHelper helper = new GameHelper();
+		int numOfGuesses = 0; //닷컴 지우기까지 몇 번을 입력하였는 지 검사해주는 integer 
+		GameHelper helper = new GameHelper();  
 		
-		SimpleDotCom theDotCom = new SimpleDotCom();
-		int randomNum = (int) (Math.random()*5);
+		SimpleDotCom theDotCom = new SimpleDotCom(); 
+		int randomNum = (int) (Math.random()*5); //Math.random에 의해 0이상 1미만의 수 생성
 		
 		int[] locations = {randomNum, randomNum+1, randomNum+2};
-		theDotCom.setLocationCells(locations);
+		theDotCom.setLocationCells(locations); //locations배열을 객체 theDotCom의 locationCells배열로 대입
 		boolean isAlive = true;
 		
 		while(isAlive == true) {
-			String guess = helper.getUserInput("enter a number");
-			String result = theDotCom.checkYourself(guess);
+			String guess = helper.getUserInput("enter a number"); //guess에 User의 input을 대입
+			String result = theDotCom.checkYourself(guess); //guess로 객체 닷컴의 checkYourself 메소드를 이용해서 검사
 			numOfGuesses++;
 			
 			if(result.equals("kill")) {
-				isAlive = false;
+				isAlive = false; //모든 닷컴 수를 찾을 경우 isAlive을 이용하여 반복문을 나온다.
 				System.out.println(numOfGuesses + "guesses");
 			}// if문 끝
 		}// while문 끝
-	}// main문 끝 
-}// 클래스문 끝
+	}// main문 
+}
+
 
 }}}
 
