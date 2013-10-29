@@ -641,6 +641,59 @@ class ClockTestDrive {
 
 {{{
 
+public class SimpleDotCom {
+	
+	int[] locationCells;
+	int numOfHits = 0;
+	
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
+
+public  String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		
+		for(int i = 0; i<locationCells.length; i++) {
+			
+			if(guess == locationCells[i]) {
+				result = "hit" ;
+				numOfHits++;
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length) {
+			
+			result = "kill";
+		}
+		
+		System.out.println(result);
+		
+		return result;
+
+
+	}
+}
+
+
+public class SimpleDotComTestDrive {
+	
+	public static void main (String[] args) {
+		
+		SimpleDotCom dot = new SimpleDotCom();// SimpleDotCom 을 참조하는 변수를 만든다.
+		int[] locations = {2,3,4};// location{2,3,4}의 배열을 선언한다.
+		dot.setLocationCells(locations);//setLocationCells을 참조한다.
+		
+		String userGuess = "2";
+		String result = dot.checkYourself(userGuess);//checkYourSelf를 보내서 결과를 출력한다.
+		
+		
+		
+	}
+
+}
+
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
