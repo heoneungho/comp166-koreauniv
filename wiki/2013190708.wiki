@@ -549,7 +549,7 @@ public class SimpleDotComTestDrive
 public class SimpleDotCom       
 {        
         int[] locationCells;
-        int numOfHits = 0; 
+        int numOfHits = 0; // 초기화
 
         public void setLocationCells (int[] locs)      
         {
@@ -575,7 +575,7 @@ public class SimpleDotCom
         
                 if (numOfHits == locationCells.length)  
                 {
-                        result = "kill";
+                        result = "kill"; // 맞춤
                 }
         
                 System.out.println(result);
