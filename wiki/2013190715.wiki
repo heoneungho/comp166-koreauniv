@@ -297,9 +297,51 @@ class DVDPlayer {
  * 원시변수 vs 레퍼런스변수:
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
-
 {{{
-
+class Dog {
+        String name;
+        public static void main (String[] args) {
+                Dog dog1 = new Dog();
+                dog1.bark() ;
+                dog1.name = "Bill" ;
+                
+                Dog[] myDogs = new Dog[8];
+                myDogs[0] = new Dog() ;
+                myDogs[1] = new Dog() ;
+                myDogs[2] = new Dog() ;
+                myDogs[3] = new Dog() ;
+                myDogs[4] = new Dog() ;
+                myDogs[5] = new Dog() ;
+                myDogs[6] = new Dog() ;
+                myDogs[7] = dog1;
+        
+               
+                myDogs[0].name = "lux";
+                myDogs[1].name = "ari";
+                myDogs[2].name = "vain";
+                myDogs[3].name = "fotune";
+                myDogs[4].name = "mundo";
+                myDogs[5].name = "elice" ;
+                myDogs[6].name = "kay";
+                
+                System.out.print("마지막 개의 이름: ");
+                System.out.println(myDogs[7].name);
+                
+        
+                
+                   //모든 개가 짖도록 합니다.
+                int x = 0;
+                while(x < myDogs.length) {
+                        myDogs[x].bark();
+                        x = x + 1;
+                }
+        }
+        public void bark() {
+                System.out.println(name + "이(가) 왈! 하고 짖습니다.");
+        }
+        public void eat() { }
+        public void chaseCat() { }
+}
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
