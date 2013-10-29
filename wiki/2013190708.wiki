@@ -526,10 +526,64 @@ class ClockTestDrive {
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
+최근 소프트웨어개발방법분야로서 '프로그래머들이 정말 원하는 방법'이라고 한다. 막판에 스펙이 변경되는 일이 있어도 고객이 원하는 것을 고객이 원하는 기한에 맞춰서 제공할 수 있다는 점이 큰 장점이다.
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotComTestDrive      
+{
+        public static void main(String[] args)  
+        {
+               SimpleDotCom dot = new SimpleDotCom();
+// SimpleDotCom을 참조하는 변수
+                int[] locations = {2,3,4}; // location 선언
+                dot.setLocationCells(locations); // setLocationCells 참조
+                
+                String userGuess = "2";
+                String result = dot.checkYourself(userGuess); //checkYourSelf 보내서 결과 출력
+                
+        }
+}
+
+public class SimpleDotCom       
+{        
+        int[] locationCells;
+        int numOfHits = 0; 
+
+        public void setLocationCells (int[] locs)      
+        {
+                locationCells = locs;
+        }
+
+        public String checkYourself (String stringGuess)        
+        {
+                int guess = Integer.parseInt(stringGuess); 
+// string변수를 int형으로 변환
+                String result = "miss";
+
+                for(int i=0; i < locationCells.length; i++)     
+                {
+                        if(guess == locationCells[i])   
+                        {
+                                result = "hit";
+                                numOfHits++;
+
+                                break;
+                        }
+                } // 순환문 끝
+        
+                if (numOfHits == locationCells.length)  
+                {
+                        result = "kill";
+                }
+        
+                System.out.println(result);
+                
+                return result;
+        } // 메소드 끝
+} //클래스 끝
+
 
 }}}
 
