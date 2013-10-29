@@ -530,6 +530,7 @@ public class SimpleDotComTestDrive	{
 		SimpleDotCom dot= new SimpleDotCom();
 		int[] locations = {2,3,4}; //set the location
 		dot.setLocationCells(locations);
+
 		String userGuess = "2";
 		String result = dot.checkYourself(userGuess);
 	}
@@ -547,10 +548,12 @@ public class SimpleDotCom	{
 	public String checkYourself (String stringGuess)	{
 		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
 		String result = "miss";
+
 		for(int i=0; i < locationCells.length; i++)	{
 			if(guess == locationCells[i])	{
 				result = "hit";
 				numOfHits++;
+
 				break;
 			}
 		}
@@ -590,24 +593,29 @@ public class SimpleDotCom       {
 	public void setLocationCells (int[] locs)       {
 		locationCells = locs;
 		}  
+
 	public String checkYourself (String stringGuess)        {
 		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로 
 		String result = "miss";
+
 		for(int i=0; i < locationCells.length; i++)		{
 			if(locationCheck[i] == locationCells[i])	{ //check를 이용 전에  썼던 답이면 for 문을 나옴 ㅋ
 				break;
 			}
+
 			if(guess == locationCells[i])   {
 				result = "hit";
 				locationCells[i] = locationCheck[i]; // 맞추면 Check에 이 값을 대입 중복방지
 				numOfHits++;
+
 				break;
 				}
 			}
-		if (numOfHits == locationCells.length)  {
+		if (numOfHits == locationCells.length)  
 			result = "kill";
-			}
+			
 		System.out.println(result);
+
 		return result;
 	}
 	       
