@@ -683,7 +683,6 @@ class ClockTestDrive {
 {{{
 클래스 SimpleDotComTestDrive
 
-
 public class SimpleDotComTestDrive {
 	
 	public static void main (String args[]) {
@@ -716,8 +715,6 @@ public class SimpleDotComTestDrive {
 
 {{{
 클래스 SimpleDotCom
-
-
 
 public class SimpleDotCom {
 	
@@ -757,10 +754,10 @@ public class SimpleDotCom {
 클래스 GameHelper
 
 import java.io.*;
-public class GameHelper {
+public class GameHelper { //키보드로 입력을 받기 위한 선언들이 담고있는 클래스
 	public String getUserInput(String prompt) {
-		String inputLine = null;
-		System.out.print(prompt + " ");
+		String inputLine = null; 
+		System.out.print(prompt + " "); //User가 입력한 input을 화면으로 바로 띄워줌.
 		
 		try {
 			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
@@ -771,10 +768,11 @@ public class GameHelper {
 			System.out.println("IOException: "+ e);
 		}
 		
-		return inputLine;
+		return inputLine; //User's input을 main메소드의 guess에 대입해주는 역할
 	}
 	
 }
+
 
 }}}
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
