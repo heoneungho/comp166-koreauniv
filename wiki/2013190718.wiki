@@ -531,6 +531,39 @@ class ClockTestDrive
 
 {{{
 
+
+public class SimpleDotComGame {
+
+public static void main(String[] args)
+{
+	int numOfGuesses = 0; // 사용자가 추측한 횟수 추측하는 변수
+	GameHelper helper = new GameHelper();  /* 사용자로부터 입력을 받기 위한 메소드가 들어있는 클래스 만든다. */
+
+	SimpleDotCom theDotCom = new SimpleDotCom(); /* 닷컴 객체를 만든다.*/
+
+	int randomNum = (int) (Math.random() * 5); 
+	int[] locations = {randomNum, randomNum+1, randomNum+2}; 
+	/* 첫번째 셀 위치를 정하기 위한 난수를 만들고 그 값을 써서 셀 위치 배열을 만든다 */
+
+	theDotCom.setLocationCells(locations); // 닷컴의 위치 지정
+	boolean isAlive = true;
+
+	while(isAlive == true)
+	{
+		String guess = helper.getUserInput("enter a number");
+		/* 사용자가 입력한 String을 받아온다*/
+		String result = theDotCom.checkYourself(guess);
+		/* 닷컴 객체를 통해 추측한 값이 맞는지 확인 */
+		numOfGuesses++;
+		if (result.equals("kill"))
+		{
+			isAlive = false;
+			System.out.println(numOfGuesses + " guesses");
+		} // if 문 끝
+	} // while 문 끝
+} // main 문 끝
+}
+
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
