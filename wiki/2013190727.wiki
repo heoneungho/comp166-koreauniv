@@ -55,7 +55,7 @@ public class BeerSong
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-class Exervise1b
+class Exercise1b
 {
 	public static void main (String[] args)
 	{
@@ -63,37 +63,54 @@ class Exervise1b
 		
 		while (x < 10)
 		{
-			x = x+1; // 
-			
-			if (x > 3);
+			if (x > 3)
 			{
 				System.out.println("big x");
 			}
+		x = x+1 ; // 수정
 		}
 	}
-}
+} 
 
-------------------------------------------------------------------
+---------------------------------------------------------------------
 
-class Foo
-{
-	public static void main(String [] args)
+class Small
+{	// 수정
+	public static void main (String[] args)
 	{
 		int x = 5;
+		
 		while (x > 1)
 		{
 			x = x-1;
 			
 			if (x < 3)
 			{
-				System.out.println("small x")
-				
+				System.out.pringln("small x");
 			}
-		
-		
+		}
 	}
 }
 
+---------------------------------------------------------------------
+
+class Exercise1b
+{
+	public static void main (String[] args)
+	{	// 수정
+		int x = 5;
+		
+		while (x > 1)
+		{
+			x = x-1;
+			
+			if (x<3)
+			{
+				System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
