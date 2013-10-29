@@ -456,41 +456,65 @@ public class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-클래스 Dog
+A 
 
-public class Dog {
-        int size;
-        String name;
-        
-        void bark() {
-                if(size > 60) {
-                        System.out.println("Wooof! Wooof!");
-                } else if(size > 14) {
-                        System.out.println("Ruff! Ruff!");
-                } else {
-                        System.out.println("Yip! Yip!");
-                } //if-else문 종료
-        }  //메소드 bark종료
-}  //클래스 Dog종료
-클래스 DogTestDrive
 
-public class DogTestDrive {
-        
+class XCopy {
         public static void main(String[] args) {
-                Dog one = new Dog();
-                one.size = 70;
-                Dog two = new Dog();
-                two.size = 8;
-                Dog three = new Dog();
-                three.size = 35;
                 
-                one.bark();
-                two.bark();
-                three.bark();
-        }  //메인 메소드 종료
+                int orig = 42;
+                
+                XCopy x = new XCopy();
+                
+                int y = x.go(orig);
+                
+                System.out.println(orig + " " + y);
+        }  // 메인 메소드 종료
+        
+        int go(int arg) {
+                
+                arg = arg * 2;
+                
+                return arg;
+        }  //메소드 go 종료
+}  //클래스 XCopy 종료
+* A의 연산 결과
+  
+    42 84 
 
-}  //클래스 DogTestDrive 종료
+* 자바는 call by value 만을 지원하기 때문에 orig의 초기 값은 go라는 함수에서 호출되어 사용되지만 함수 go 내에서의
+ 연산과정은 main 메소드 내의 orig에 영향을 주지 못한다. 
+B
 
+클래스 Clock
+
+
+class Clock {
+        String time;
+        
+        void setTime(String t) {
+                time = t;
+        }
+        
+        String getTime() {   /*리턴형을 String으로 수정 */ 
+                return time;
+        }
+}
+
+클래스 ClockTestDrive
+
+
+class ClockTestDrive {
+        public static void main(String[] args) {
+                
+                Clock c = new Clock();
+                
+                c.setTime("1245");
+                String tod = c.getTime();
+                System.out.println("time : " + tod);
+        }
+
+}
 }}}
 
 
