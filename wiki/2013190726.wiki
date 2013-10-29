@@ -772,6 +772,15 @@ public class GameHelper { //키보드로 입력을 받기 위한 선언들이 �
 	}
 	
 }
+}}}
+{{{
+ * 알게 된 점 *
+
+BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+
+1. System.in => 키보드로부터 입력을 받은 것
+2. 그것을 InputStreamReader로 읽는다.
+3. 2번에서 읽은 것으로 BufferedReader형 객체인 is를 만든다.
 
 
 }}}
