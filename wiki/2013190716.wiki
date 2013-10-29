@@ -446,10 +446,53 @@ class Hobbits {
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
+Before starting method code, make assistance code to test method. Making a test code is one of a ground rule as making the code easier. The pros of this XP is that you can easily change the spec if the client wants to change the code. 
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+
+public class SimpleDotComTestDrive      {
+
+        public static void main(String[] args)  {
+                SimpleDotCom dot= new SimpleDotCom();
+                int[] locations = {2,3,4}; //set the location
+                dot.setLocationCells(locations);
+                String userGuess = "2";
+                String result = dot.checkYourself(userGuess);
+        }
+}
+
+public class SimpleDotCom       {
+        
+        int[] locationCells;
+        int numOfHits = 0; // number of answer that you correct the target.
+
+        public void setLocationCells (int[] locs)       {
+                locationCells = locs;
+        }
+
+        public String checkYourself (String stringGuess)        {
+                int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
+                String result = "miss";
+                for(int i=0; i < locationCells.length; i++)     {
+                        if(guess == locationCells[i])   {
+                                result = "hit";
+                                numOfHits++;
+                                break;
+                        }
+                }
+        
+                if (numOfHits == locationCells.length)  {
+                        result = "kill";
+                }
+        
+                System.out.println(result);
+                
+                return result;
+        }
+}
+
 
 }}}
 
