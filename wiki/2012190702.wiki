@@ -524,17 +524,35 @@ class ClockTestDrive
 
 {{{
 
-public class SimpleDotComTestDrive	{
 
-	public static void main(String[] args)	{
-		SimpleDotCom dot= new SimpleDotCom();
-		int[] locations = {2,3,4}; //set the location
-		dot.setLocationCells(locations);
-
-		String userGuess = "2";
-		String result = dot.checkYourself(userGuess);
-	}
+public class simpledotcomtestdrive {
+	
+    public static void main(String[] args)  {
+        int numofGuesses = 0;
+        GameHelper helper = new GameHelper();
+        
+        simpledotcom thedotcom = new simpledotcom();
+        
+        int randomNum = (int)(Math.random()*5);
+        
+        int[] locations = {randomNum, randomNum+1, randomNum+2};
+        thedotcom.setLocationCells(locations);
+        boolean isAlive = true;
+        
+        while(isAlive == true)	{
+        	String guess = helper.getUserInput("enter a number");
+        	String result = thedotcom.checkYourself(guess);
+        	numofGuesses++;
+        	
+        	if(result.equals("kill"))	{
+        		isAlive = false;
+        		
+        		System.out.println(numofGuesses + " guesses");
+           	}
+        }
+    }
 }
+
 
 public class SimpleDotCom	{
 	
@@ -567,6 +585,30 @@ public class SimpleDotCom	{
 		return result;
 	}
 }
+
+
+import java.io.*;
+
+public class GameHelper {
+	public String getUserInput(String prompt)	{
+		String inputLine = null;
+		
+		System.out.print(prompt + " ");
+		
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			
+			if(inputLine.length() == 0 )
+				return null;
+		}	catch (IOException e)	{
+			System.out.println("IOException: " + e);
+		}
+		
+		return inputLine;
+	}
+}
+
                                            
 }}}
 
