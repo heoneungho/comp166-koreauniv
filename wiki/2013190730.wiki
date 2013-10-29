@@ -482,8 +482,6 @@ class XCopy {
   
     42 84 
 
-* 자바는 call by value 만을 지원하기 때문에 orig의 초기 값은 go라는 함수에서 호출되어 사용되지만 함수 go 내에서의
- 연산과정은 main 메소드 내의 orig에 영향을 주지 못한다. 
 B
 
 클래스 Clock
