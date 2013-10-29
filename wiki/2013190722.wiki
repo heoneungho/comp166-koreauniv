@@ -561,47 +561,87 @@ class ClockTestDrive
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
-public class SimpleDotComTestDrive      {
-
-        public static void main(String[] args)  {
-                SimpleDotCom dot= new SimpleDotCom();
-                int[] locations = {2,3,4}; //set the location
-                dot.setLocationCells(locations);
-
-                String userGuess = "2";
-                String result = dot.checkYourself(userGuess);
+public class simpledotcomtestdrive {
+        
+    public static void main(String[] args)  {
+        int numofGuesses = 0;
+        GameHelper helper = new GameHelper();
+        
+        simpledotcom thedotcom = new simpledotcom();
+        
+        int randomNum = (int)(Math.random()*5);
+        
+        int[] locations = {randomNum, randomNum+1, randomNum+2};
+        thedotcom.setLocationCells(locations);
+        boolean isAlive = true;
+        
+        while(isAlive == true)  {
+                String guess = helper.getUserInput("enter a number");
+                String result = thedotcom.checkYourself(guess);
+                numofGuesses++;
+                
+                if(result.equals("kill"))       {
+                        isAlive = false;
+                        
+                        System.out.println(numofGuesses + " guesses");
+                }
         }
+    }
 }
 
-public class SimpleDotCom       {
-        
+
+
+public class simpledotcom {
+
         int[] locationCells;
         int numOfHits = 0; // number of answer that you correct the target.
 
-        public void setLocationCells (int[] locs)       {
-                locationCells = locs;
+public void setLocationCells (int[] locs)       {
+        locationCells = locs;
+}
+
+public String checkYourself (String stringGuess)        {
+        int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
+        String result = "miss";
+        for(int i=0; i < locationCells.length; i++)     {
+                if(guess == locationCells[i])   {
+                        result = "hit";
+                        numOfHits++;
+                        break;
+                }
         }
 
-        public String checkYourself (String stringGuess)        {
-                int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
-                String result = "miss";
+        if (numOfHits == locationCells.length)  {
+                result = "kill";
+        }
 
-                for(int i=0; i < locationCells.length; i++)     {
-                        if(guess == locationCells[i])   {
-                                result = "hit";
-                                numOfHits++;
+        System.out.println(result);
+        
+        return result;
+        }       
+}
+             
 
-                                break;
-                        }
-                }
-        
-                if (numOfHits == locationCells.length)  {
-                        result = "kill";
-                }
-        
-                System.out.println(result);
+
+import java.io.*;
+
+public class GameHelper {
+        public String getUserInput(String prompt)       {
+                String inputLine = null;
                 
-                return result;
+                System.out.print(prompt + " ");
+                
+                try{
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        
+                        if(inputLine.length() == 0 )
+                                return null;
+                }       catch (IOException e)   {
+                        System.out.println("IOException: " + e);
+                }
+                
+                return inputLine;
         }
 }
 
