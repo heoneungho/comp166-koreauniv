@@ -574,9 +574,10 @@ public class SimpleDotComTest{
 		SimpleDotCom dot = new SimpleDotCom();
 		Scanner scan = new Scanner(System.in);
 
-		int[] locations = {2,3,4};
+		int[] locations = {2,3,4,5};
 		dot.setLocationCell(locations);
 		
+		System.out.println("The chances : " + (locations.length+3));
 		for(int i=0;i<locations.length+3;i++){
 			String guess = scan.next();
 			String result = dot.checkYourself(guess);
