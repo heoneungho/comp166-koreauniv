@@ -524,6 +524,87 @@ XP의 규칙에는 다음이 있다. -조금씩, 자주 발표한다 -사이클�
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {                //SimpleDotCom 클래스 입니다.
+
+        int[] locationCells;
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs) {
+                locationCells = locs;
+        }
+
+        public String checkYourself(String stringGuess) {
+                int guess = Integer.parseInt(stringGuess);
+                String result = "miss";
+                for (int i=0 ; i<locationCells.length; i++) {
+                        if(guess == locationCells[i]) {
+                                result = "hit";
+                                numOfHits++;
+                                break;
+                        }
+                }
+
+                if (numOfHits == locationCells.length) {
+                        result = "kill";
+                }
+                System.out.println(result);
+                        return result;
+        }
+}                                             //클래스 끝
+
+
+public class SimpleDotComGame {          //SimpleDotComGame 클래스입니다
+
+public static void main(String[] args) {
+
+        int numOfGuesses  = 0;
+        GameHelper helper = new GameHelper();
+
+        SimpleDotCom theDotCom = new SimpleDotCom();
+
+        int randomNum = (int) (Math.random() * 5);
+
+        int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+        theDotCom.setLocationCells(locations);
+
+        boolean isAlive = true;
+
+        while(isAlive == true) {
+                String guess = helper.getUserInput("enter a number");
+                String result = theDotCom.checkYourself(guess);
+
+                numOfGuesses++;
+
+                if(result.equals("kill")) {
+                        isAlive = false;
+                        System.out.println(numOfGuesses + "guesses");
+                }
+        }
+}
+}                                                    // 클래스 끝
+
+
+import java.io.*;                           //GameHelper 클래스입니다
+
+
+public class GameHelper {
+        public String getUserInput(String prompt) {
+                String inputLine = null;
+                System.out.print(prompt + " ");
+                try {
+                        BufferedReader is = new BufferedReader(
+                        new InputStreamReader(System.in));
+
+                inputLine = is.readLine();
+
+                if(inputLine.length() == 0 )  return null;
+                } catch (IOException e) {
+                        System.out.println("IOException: "+ e);
+                }
+                return inputLine;
+        }
+}                                                     //클래스 끝
 
 }}}
 
