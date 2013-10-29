@@ -536,6 +536,53 @@ class ClockTest{
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom{
+	int[] locationCells;
+	int hits = 0;
+
+	void setLocationCell(int[] cellLocations){
+		locationCells = cellLocations;
+
+	}
+
+	public String checkYourself(String userGuess){
+		int guess = Integer.parseInt(userGuess);
+		String result = "miss";
+
+		for(int cell : locationCells){
+			if(guess == cell){
+				result = "hit";
+				hits++;
+				break;
+			}
+		}
+		
+		if(hits==locationCells.length){
+			result = "kill";
+			return result;
+		}
+		else
+			return Integer.toString(hits);
+
+			
+	}
+}
+
+
+
+public class SimpleDotComTest{
+	public static void main(String[] args){
+		SimpleDotCom dot = new SimpleDotCom();
+
+		int[] locations = {2,3,4};
+		dot.setLocationCell(locations);
+
+		String guess = "2";
+		String result = dot.checkYourself(guess);
+		String testResult = "failed";
+		System.out.println(result);
+	}
+}
 
 }}}
 
