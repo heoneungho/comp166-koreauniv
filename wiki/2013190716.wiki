@@ -452,44 +452,81 @@ Before starting method code, make assistance code to test method. Making a test 
 
 {{{
 
-public class SimpleDotComTestDrive      {
+public class SimpleDotCom {
 
-        public static void main(String[] args)  {
-                SimpleDotCom dot= new SimpleDotCom();
-                int[] locations = {2,3,4}; //set the location
-                dot.setLocationCells(locations);
-                String userGuess = "2";
-                String result = dot.checkYourself(userGuess);
-        }
-}
-
-public class SimpleDotCom       {
-        
         int[] locationCells;
-        int numOfHits = 0; // number of answer that you correct the target.
-
-        public void setLocationCells (int[] locs)       {
+        int numOfHits = 0 ;
+        
+        public void setLocationCells (int[] locs){
                 locationCells = locs;
         }
-
-        public String checkYourself (String stringGuess)        {
-                int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
+        
+        public String checkYourself(String stringGuess){
+                int guess = Integer.parseInt(stringGuess);
                 String result = "miss";
-                for(int i=0; i < locationCells.length; i++)     {
-                        if(guess == locationCells[i])   {
+                for(int i = 0 ; i < locationCells.length; i++){
+                        if (guess == locationCells[i]) {
                                 result = "hit";
                                 numOfHits++;
                                 break;
                         }
                 }
-        
-                if (numOfHits == locationCells.length)  {
+                
+                if (numOfHits == locationCells.length){
                         result = "kill";
                 }
-        
-                System.out.println(result);
+                System.out.println(result) ;
+                        return result ;
+        }
+}
+
+
+public class SimpleDotComGame {
+
+        public static void main(String[] args) {
+                int numOfGuesses = 0 ; //
+                GameHelper helper = new GameHelper();//Making object GameHelper 
                 
-                return result;
+                SimpleDotCom theDotCom = new SimpleDotCom(); //making DotCom object
+                
+                int randomNum = (int)(Math.random()*5);
+                
+                int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+                theDotCom.setLocationCells(locations);//using array
+                boolean isAlive = true ;
+                
+                while (isAlive == true){//if it is live, start repetition
+                        String guess = helper.getUserInput("enter a number");//taking string that users insert
+                        
+                        String result = theDotCom.checkYourself(guess);
+                        
+                        numOfGuesses++;
+                        //guess number increase
+                        if (result.equals("kill")){
+                                isAlive = false ;
+                                
+                                System.out.println(numOfGuesses + "guesses");
+                        }//Ending if 
+                }//Ending while
+        }//Ending main method
+}//Ending class 
+
+
+
+import java.io.*;
+public class GameHelper {
+        public String getUserInput(String prompt){
+                String inputLine = null ;
+                System.out.print(prompt + " ") ;
+                try {
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if (inputLine.length()== 0) return null;
+                } catch(IOException e){
+                        System.out.println("IOException: " + e);
+                }
+                return inputLine;
         }
 }
 
