@@ -567,51 +567,95 @@ class ClockTestDrive
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
-           public class SimpleDotComTestDrive{
-	   public static void main(String[] args){
-		SimpleDotCom dot = new SimpleDotCom();
+      public class SimpleDotCom {
+
+        int[] locationCells;
+        int numOfHits = 0 ;
+        
+        public void setLocationCells (int[] locs){
+                locationCells = locs;
+        }
+        
+        public String checkYourself(String stringGuess){//checking right array
+                int guess = Integer.parseInt(stringGuess);
+                String result = "miss";
+                for(int i = 0 ; i < locationCells.length; i++){
+                        if (guess == locationCells[i]) {
+                                result = "hit";
+                                numOfHits++;
+                                break;
+                        }
+                }//ending cycling
+                
+                if (numOfHits == locationCells.length){
+                        result = "kill";//print kill
+                }
+                System.out.println(result) ;
+                        return result ;
+        }//ending method
+}//ending class
 
 
-		int[] locations = {2,3,4};
-		dot.setLocationCells(locations);
+public class SimpleDotComGame {
 
-		String userGuess = "2";
-		String result = dot.checkYourself(userGuess);
-		}
-	}
+        public static void main(String[] args) {
+                int numOfGuesses = 0 ; //
+                GameHelper helper = new GameHelper();//Making object GameHelper 
+                
+                SimpleDotCom theDotCom = new SimpleDotCom(); //making DotCom object
+                
+                int randomNum = (int)(Math.random()*5);
+                
+                int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+                theDotCom.setLocationCells(locations);//using array
+                boolean isAlive = true ;
+                
+                while (isAlive == true){//if it is live, start repetition
+                        String guess = helper.getUserInput("enter a number");//taking string that users insert
+                        
+                        String result = theDotCom.checkYourself(guess);
+                        
+                        numOfGuesses++;
+                        //guess number increase
+                        if (result.equals("kill")){
+                                isAlive = false ;
+                                
+                                System.out.println(numOfGuesses + "guesses");
+                        }//Ending if 
+                }//Ending while
+        }//Ending main method
+}//Ending class 
+
+import java.io.*;
+public class GameHelper {
+        public String getUserInput(String prompt){
+                String inputLine = null ;
+                System.out.print(prompt + " ") ;
+                try {
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if (inputLine.length()== 0) return null;
+                } catch(IOException e){
+                        System.out.println("IOException: " + e);
+                }
+                return inputLine;
+        }
+}
 
 
-
-public class SimpleDotCom{
-
-	int[] locationCells;
-	int numOfHits = 0;
-
-	public void setLocationCells(int[] locs){
-		locationCells = locs;
-	}
-
-	public String checkYourself(String stringGuess){
-		int guess = Integer.parseInt(stringGuess);
-		String result = "miss";
-		for(int i =0; i<locationCells.length; i++){
-			if(guess == locationCells[i]){
-				result = "hit";
-				numOfHits++;
-				break;
-			}
-		}
-
-
-	if(numOfHits == locationCells.length){
-		result = "kill";
-		}
-		System.out.println(result);
-			return result;
-		}
-	}
-
-
+//result
+enter a number 2
+hit
+enter a number 3
+miss
+enter a number 4
+miss
+enter a number 1
+hit
+enter a number 0
+kill
+5guesses
 
 
 }}}
