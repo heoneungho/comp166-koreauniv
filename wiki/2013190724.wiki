@@ -387,11 +387,55 @@ class Dog{
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란?
+조금씩 자주 발표한다.
+사이클을 반복해서 돌리면서 개발한다.
+스펙에 없는 것은 절대 집어넣지 않는다.
+테스트 코드를 먼저 만든다.
+야근은 하지 않는다. 항상 정규 일과 시간에만 작업한다.
+기회가 생기는 족족 언제 어디서든 코드를 개선한다.
+모든 테스트를 통과하기 전에는 어떤 것도 발표하지 않는다.
+조금씩 발표하는 것을 기반으로 하여 현실적인 작업 계획을 만든다.
+모든 일을 단순하게 처리한다.
+두 명씩 팀을 편성하고 모든 사람이 대부분의 코드를 알 수 있도록 돌아가면서 작업한다.
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+Public class SimpleDotComTestDrive{
 
+	public static void main (String[] args){
+		SimpleDotCom dot = new SimpleDotCom();
+
+		int[] locations = {2,3,4};
+		dot.setLocationCells(locations);
+
+		String userGuess = "2";
+		String result = dot.checkYourself(userGuess);
+
+	}
+}
+}}}
+
+{{{
+public class SimpleDot{
+	int[] locationCells;
+	int numOfHits=0;
+
+	public void setLocatioCell(int[] locs){
+		locationCells = locs;
+	}
+	public String checkYourself(String stringGuess){
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for (guess == locationCells[i]){
+			result = "hit";
+			numOfHits++;
+			break;
+		}
+	}
+	if (numOfHitts == locationCells.length){
+		result = "kill";
+	}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
