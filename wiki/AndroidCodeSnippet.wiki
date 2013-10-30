@@ -144,7 +144,7 @@ itemList.add(new SampleItem("name3", "val3"));
 // 두번째 아이템 가져오기
 SampleItem item2 = itemList.get(1);
 
-// 모든 아이템에서 name만 모으기
+// 모든 아이템에서 val만 모으기
 ArrayList<String> valList = new ArrayList<String>();
 for (SampleItem item : itemList) {
     valList.add(item.val);
