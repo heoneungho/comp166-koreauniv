@@ -559,11 +559,11 @@ class Dog2TestDrive{
 public class SimpleDotComTestDrive{
 
         public static void main (String[] args){
-                SimpleDotCom dot = new SimpleDotCom();
-                int[] locations = {2,3,4};
-                dot.setLocationCells(locations);
-                String userGuess = "2";
-                String result = dot.checkYourself(userGuess);
+                SimpleDotCom dot = new SimpleDotCom();          
+                int[] locations = {2,3,4};                      //위치 2,3,4
+                dot.setLocationCells(locations);                //dot의 locationCells를 locations로 지정
+                String userGuess = "2";                         
+                String result = dot.checkYourself(userGuess);   
         }
 }
 
@@ -572,13 +572,13 @@ class SimpleDotCom{
         int numOfHits=0;
 
         public void setLocationCells(int[] locs){
-                locationCells = locs;
+                locationCells = locs;                           //locationsCells에 2,3,4 입력
         }
 
         public String checkYourself(String stringGuess){
                 int guess = Integer.parseInt(stringGuess);
                 String result = "miss";
-                for(int i = 0; i<locationCells.length; i++){
+                for(int i = 0; i<locationCells.length; i++){    //locationCells에 guess가 있는지 확인
                         if (guess == locationCells[i]){
                                 result = "hit";
                                 numOfHits++;
