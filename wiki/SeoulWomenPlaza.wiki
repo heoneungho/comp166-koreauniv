@@ -528,7 +528,7 @@ public class SeoulWomenPlazaList {
         itemMap.clear();
 
         try {
-            String key = "6f6e61636c6f756432313237";
+            String key = "";
             String type = "xls";
             String service = "SeoulWomenPlazaEvent";
             String startIndex = "1";
