@@ -675,9 +675,9 @@ public class DotcomFirstOption
                         int randomNum = (int) (Math.random() * 5);
                         int[] locations = {randomNum, randomNum + 1,randomNum + 2};
                         theDotCom.setLocationCells(locations);
-                        boolean isAlive = true;
+                        boolean Alivedotcom = true;
                         
-                        while(isAlive == true)
+                        while(Alivedotcom == true)
                         {
                                 String guess = helper.getUserInput("enter a number");
                                 String result = theDotCom.checkYourself(guess);
@@ -685,7 +685,7 @@ public class DotcomFirstOption
                                 
                                 if(result.equals("kill"))
                                 {
-                                        isAlive = false;
+                                        Alivedotcom = false;
                                         System.out.println(Guessnumber + " guesses");
                                 }
                         }
