@@ -485,9 +485,9 @@ public class SimpleDotComGame {
 
         public static void main(String[] args) {
                 int numOfGuesses = 0 ; //
-                GameHelper helper = new GameHelper();//Making object GameHelper 
+                GameHelper helper = new GameHelper(); 
                 
-                SimpleDotCom theDotCom = new SimpleDotCom(); //making DotCom object
+                SimpleDotCom theDotCom = new SimpleDotCom(); 
                 
                 int randomNum = (int)(Math.random()*5);
                 
@@ -497,7 +497,7 @@ public class SimpleDotComGame {
                 boolean isAlive = true ;
                 
                 while (isAlive == true){//if it is live, start repetition
-                        String guess = helper.getUserInput("enter a number");//taking string that users insert
+                        String guess = helper.getUserInput("enter a number");
                         
                         String result = theDotCom.checkYourself(guess);
                         
@@ -507,10 +507,10 @@ public class SimpleDotComGame {
                                 isAlive = false ;
                                 
                                 System.out.println(numOfGuesses + "guesses");
-                        }//Ending if 
-                }//Ending while
-        }//Ending main method
-}//Ending class 
+                        }
+                }
+        }/
+}
 
 
 
@@ -538,6 +538,8 @@ public class GameHelper {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
