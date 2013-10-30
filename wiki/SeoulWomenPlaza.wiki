@@ -59,18 +59,23 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Main thread에서 internet 사용하기
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy); 
 		
+		// Actionbar에 home button 활성화시키기
 		getActionBar().setHomeButtonEnabled(true);
 
+		// 서울시 데이터 로드하기
 		SeoulWomenPlazaList.Load();
 
+		// 화면에 보여줄 List만들기
 		ArrayList<String> showList = new ArrayList<String>();
 		for (SeoulWomenPlazaItem item : SeoulWomenPlazaList.itemList) {
 			showList.add(item.TITLE);
 		}
 
+		// list를 화면에 보여주기
 		ArrayAdapter<String> Adapter;
 		Adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, showList);
@@ -78,6 +83,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		listView = (ListView) findViewById(R.id.listView1);
 		listView.setAdapter(Adapter);
 
+		// list가 눌렸을때 이벤트 처리기 지정
 		listView.setOnItemClickListener(this);
 	}
 
@@ -90,6 +96,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 		
+		// List가 눌렸을때 ItemActivity 띄우기 & 데이터 넘기기
 		Intent intent = new Intent(getBaseContext(), ItemActivity.class);
 		intent.putExtra("idx", position);
 		startActivity(intent);
@@ -118,15 +125,17 @@ public class ItemActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_item);
 		
+		// Actionbar에 home button 활성화시키고 제목설정하기
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setTitle("행사 정보");
 		
+		// 앞화면에서 넘어온 데이터받기 
 		Intent intent = getIntent();
 		int idx = intent.getIntExtra("idx", 0);
-
 		SeoulWomenPlazaItem item = SeoulWomenPlazaList.itemList.get(idx);
-		
+
+		// 가져온 데이터 보여주기		
 		((TextView)findViewById(R.id.textView1)).setText(item.TITLE);
 		((TextView)findViewById(R.id.textView2)).setText(item.EVT_REG_NO);
 		((TextView)findViewById(R.id.textView3)).setText(item.EVT_REG_START_DATE);
@@ -205,6 +214,7 @@ public class SeoulWomenPlazaList {
 			String startIndex = "1";
 			String endIndex = "999";
 
+			// 서울시 데이터를 가져올 주소 만들기
 			String url = String.format(
 					"http://openapi.seoul.go.kr:8088/%s/%s/%s/%s/%s/", key,
 					type, service, startIndex, endIndex);
@@ -212,6 +222,7 @@ public class SeoulWomenPlazaList {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					myUrl.openStream(), "euc-kr"));
 
+			// 서울시 데이터를 저장하기
 			String readLine;
 			readLine = reader.readLine();
 			while ((readLine = reader.readLine()) != null) {
