@@ -629,7 +629,7 @@ class SimpleDotComTestDrive      {
 
 public class SimpleDotCom       {
 	int[] locationCells; 
-	int numOfHits = 0;
+	int numOfHits = 0; // reset the number of Hits
 	int[] locationCheck; //다른 배열 선언
 	
 	public void setLocationCells (int[] locs)       {
@@ -638,7 +638,7 @@ public class SimpleDotCom       {
 
 	public String checkYourself (String stringGuess)        {
 		int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로 
-		String result = "miss";
+		String result = "miss"; //reset the result that is "miss".
 
 		for(int i=0; i < locationCells.length; i++)		{
 			if(locationCheck[i] == locationCells[i])	{ //check를 이용 전에  썼던 답이면 for 문을 나옴 ㅋ
@@ -654,7 +654,7 @@ public class SimpleDotCom       {
 				}
 			}
 		if (numOfHits == locationCells.length)  
-			result = "kill";
+			result = "kill"; // if player answer all of the dots then print out "kill".
 			
 		System.out.println(result);
 
