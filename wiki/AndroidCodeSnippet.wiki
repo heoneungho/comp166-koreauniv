@@ -118,7 +118,7 @@ int pos = intent.getIntExtra("pos", 0);
 String str = intent.getStringExtra("str");
 }}}
 
-= ArrayList와 Hashtable 사용하기 =
+= Arraylist와 Hashtable 사용하기 =
 
 2가지 인스턴스 변수를 가지는 SampleItem 클래스가 있습니다.
 
