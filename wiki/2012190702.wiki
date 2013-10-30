@@ -654,7 +654,7 @@ public class SimpleDotCom       {
 				}
 			}
 		if (numOfHits == locationCells.length)  
-			result = "kill"; // if player answer all of the dots then print out "kill".
+			result = "kill"; // if player answers all of the dots then print out "kill".
 			
 		System.out.println(result);
 
