@@ -664,7 +664,8 @@ kill
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
-{{{ppublic class DotcomFirstOption
+{{{
+public class DotcomFirstOption
 {
                 public static void main(String[] args) 
                 {
