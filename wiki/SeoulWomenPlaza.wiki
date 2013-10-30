@@ -52,55 +52,55 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity implements OnItemClickListener {
 
-	ListView listView;
+    ListView listView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		// Main thread에서 internet 사용하기
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-		StrictMode.setThreadPolicy(policy); 
-		
-		// Actionbar에 home button 활성화시키기
-		getActionBar().setHomeButtonEnabled(true);
+        // Main thread에서 internet 사용하기
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy); 
+        
+        // Actionbar에 home button 활성화시키기
+        getActionBar().setHomeButtonEnabled(true);
 
-		// 서울시 데이터 로드하기
-		SeoulWomenPlazaList.Load();
+        // 서울시 데이터 로드하기
+        SeoulWomenPlazaList.Load();
 
-		// 화면에 보여줄 List만들기
-		ArrayList<String> showList = new ArrayList<String>();
-		for (SeoulWomenPlazaItem item : SeoulWomenPlazaList.itemList) {
-			showList.add(item.TITLE);
-		}
+        // 화면에 보여줄 List만들기
+        ArrayList<String> showList = new ArrayList<String>();
+        for (SeoulWomenPlazaItem item : SeoulWomenPlazaList.itemList) {
+            showList.add(item.TITLE);
+        }
 
-		// list를 화면에 보여주기
-		ArrayAdapter<String> Adapter;
-		Adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, showList);
+        // list를 화면에 보여주기
+        ArrayAdapter<String> Adapter;
+        Adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, showList);
 
-		listView = (ListView) findViewById(R.id.listView1);
-		listView.setAdapter(Adapter);
+        listView = (ListView) findViewById(R.id.listView1);
+        listView.setAdapter(Adapter);
 
-		// list가 눌렸을때 이벤트 처리기 지정
-		listView.setOnItemClickListener(this);
-	}
+        // list가 눌렸을때 이벤트 처리기 지정
+        listView.setOnItemClickListener(this);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		
-		// List가 눌렸을때 ItemActivity 띄우기 & 데이터 넘기기
-		Intent intent = new Intent(getBaseContext(), ItemActivity.class);
-		intent.putExtra("idx", position);
-		startActivity(intent);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        
+        // List가 눌렸을때 ItemActivity 띄우기 & 데이터 넘기기
+        Intent intent = new Intent(getBaseContext(), ItemActivity.class);
+        intent.putExtra("idx", position);
+        startActivity(intent);
+    }
 
 }
 
@@ -120,52 +120,52 @@ import android.widget.TextView;
 
 public class ItemActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_item);
-		
-		// Actionbar에 home button 활성화시키고 제목설정하기
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle("행사 정보");
-		
-		// 앞화면에서 넘어온 데이터받기 
-		Intent intent = getIntent();
-		int idx = intent.getIntExtra("idx", 0);
-		SeoulWomenPlazaItem item = SeoulWomenPlazaList.itemList.get(idx);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item);
+        
+        // Actionbar에 home button 활성화시키고 제목설정하기
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle("행사 정보");
+        
+        // 앞화면에서 넘어온 데이터받기 
+        Intent intent = getIntent();
+        int idx = intent.getIntExtra("idx", 0);
+        SeoulWomenPlazaItem item = SeoulWomenPlazaList.itemList.get(idx);
 
-		// 가져온 데이터 보여주기		
-		((TextView)findViewById(R.id.textView1)).setText(item.TITLE);
-		((TextView)findViewById(R.id.textView2)).setText(item.EVT_REG_NO);
-		((TextView)findViewById(R.id.textView3)).setText(item.EVT_REG_START_DATE);
-		((TextView)findViewById(R.id.textView4)).setText(item.EVT_REG_END_DATE);
-		((TextView)findViewById(R.id.textView5)).setText(item.EVT_TYPE);
-		((TextView)findViewById(R.id.textView6)).setText(item.EVT_DATE);
-		((TextView)findViewById(R.id.textView7)).setText(item.EVT_PLACE);
-		((TextView)findViewById(R.id.textView8)).setText(item.EVT_TARGET);
-		((TextView)findViewById(R.id.textView9)).setText(item.EVT_REG_METHOD);
-		((TextView)findViewById(R.id.textView10)).setText(item.EVT_SPONSOR);
-		((TextView)findViewById(R.id.textView11)).setText(item.EVT_CONTACT);
-		((TextView)findViewById(R.id.textView12)).setText(item.URL);
-	}
+        // 가져온 데이터 보여주기       
+        ((TextView)findViewById(R.id.textView1)).setText(item.TITLE);
+        ((TextView)findViewById(R.id.textView2)).setText(item.EVT_REG_NO);
+        ((TextView)findViewById(R.id.textView3)).setText(item.EVT_REG_START_DATE);
+        ((TextView)findViewById(R.id.textView4)).setText(item.EVT_REG_END_DATE);
+        ((TextView)findViewById(R.id.textView5)).setText(item.EVT_TYPE);
+        ((TextView)findViewById(R.id.textView6)).setText(item.EVT_DATE);
+        ((TextView)findViewById(R.id.textView7)).setText(item.EVT_PLACE);
+        ((TextView)findViewById(R.id.textView8)).setText(item.EVT_TARGET);
+        ((TextView)findViewById(R.id.textView9)).setText(item.EVT_REG_METHOD);
+        ((TextView)findViewById(R.id.textView10)).setText(item.EVT_SPONSOR);
+        ((TextView)findViewById(R.id.textView11)).setText(item.EVT_CONTACT);
+        ((TextView)findViewById(R.id.textView12)).setText(item.URL);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.item, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			finish();
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.item, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
 
@@ -183,73 +183,73 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 class SeoulWomenPlazaItem {
-	public String EVT_REG_NO;
-	public String TITLE;
-	public String EVT_REG_START_DATE;
-	public String EVT_REG_END_DATE;
-	public String EVT_TYPE;
-	public String EVT_DATE;
-	public String EVT_PLACE;
-	public String EVT_TARGET;
-	public String EVT_REG_METHOD;
-	public String EVT_SPONSOR;
-	public String EVT_CONTACT;
-	public String URL;
+    public String EVT_REG_NO;
+    public String TITLE;
+    public String EVT_REG_START_DATE;
+    public String EVT_REG_END_DATE;
+    public String EVT_TYPE;
+    public String EVT_DATE;
+    public String EVT_PLACE;
+    public String EVT_TARGET;
+    public String EVT_REG_METHOD;
+    public String EVT_SPONSOR;
+    public String EVT_CONTACT;
+    public String URL;
 
 }
 
 public class SeoulWomenPlazaList {
 
-	public static ArrayList<SeoulWomenPlazaItem> itemList = new ArrayList<SeoulWomenPlazaItem>();
-	public static Hashtable<String, SeoulWomenPlazaItem> itemMap = new Hashtable<String, SeoulWomenPlazaItem>();
+    public static ArrayList<SeoulWomenPlazaItem> itemList = new ArrayList<SeoulWomenPlazaItem>();
+    public static Hashtable<String, SeoulWomenPlazaItem> itemMap = new Hashtable<String, SeoulWomenPlazaItem>();
 
-	public static void Load() {
+    public static void Load() {
 
-		itemMap.clear();
+        itemMap.clear();
 
-		try {
-			String key = "";
-			String type = "xls";
-			String service = "SeoulWomenPlazaEvent";
-			String startIndex = "1";
-			String endIndex = "999";
+        try {
+            String key = "";
+            String type = "xls";
+            String service = "SeoulWomenPlazaEvent";
+            String startIndex = "1";
+            String endIndex = "999";
 
-			// 서울시 데이터를 가져올 주소 만들기
-			String url = String.format(
-					"http://openapi.seoul.go.kr:8088/%s/%s/%s/%s/%s/", key,
-					type, service, startIndex, endIndex);
-			URL myUrl = new URL(url);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					myUrl.openStream(), "euc-kr"));
+            // 서울시 데이터를 가져올 주소 만들기
+            String url = String.format(
+                    "http://openapi.seoul.go.kr:8088/%s/%s/%s/%s/%s/", key,
+                    type, service, startIndex, endIndex);
+            URL myUrl = new URL(url);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    myUrl.openStream(), "euc-kr"));
 
-			// 서울시 데이터를 저장하기
-			String readLine;
-			readLine = reader.readLine();
-			while ((readLine = reader.readLine()) != null) {
-				String[] items = readLine.split("\t");
+            // 서울시 데이터를 저장하기
+            String readLine;
+            readLine = reader.readLine();
+            while ((readLine = reader.readLine()) != null) {
+                String[] items = readLine.split("\t");
 
-				SeoulWomenPlazaItem item = new SeoulWomenPlazaItem();
-				item.EVT_REG_NO = items[0];
-				item.TITLE = items[1];
-				item.EVT_REG_START_DATE = items[2];
-				item.EVT_REG_END_DATE = items[3];
-				item.EVT_TYPE = items[4];
-				item.EVT_DATE = items[5];
-				item.EVT_PLACE = items[6];
-				item.EVT_TARGET = items[7];
-				item.EVT_REG_METHOD = items[8];
-				item.EVT_SPONSOR = items[9];
-				item.EVT_CONTACT = items[10];
-				item.URL = items[11];
+                SeoulWomenPlazaItem item = new SeoulWomenPlazaItem();
+                item.EVT_REG_NO = items[0];
+                item.TITLE = items[1];
+                item.EVT_REG_START_DATE = items[2];
+                item.EVT_REG_END_DATE = items[3];
+                item.EVT_TYPE = items[4];
+                item.EVT_DATE = items[5];
+                item.EVT_PLACE = items[6];
+                item.EVT_TARGET = items[7];
+                item.EVT_REG_METHOD = items[8];
+                item.EVT_SPONSOR = items[9];
+                item.EVT_CONTACT = items[10];
+                item.URL = items[11];
 
-				itemList.add(item);
-				itemMap.put(item.EVT_REG_NO, item);
-			}
-			reader.close();
-		} catch (Exception ex) {
-	        System.out.println(ex.toString());
-		}
-	}
+                itemList.add(item);
+                itemMap.put(item.EVT_REG_NO, item);
+            }
+            reader.close();
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+    }
 }
 }}}
 
@@ -312,46 +312,42 @@ import android.widget.SimpleAdapter;
 
 public class MainActivity extends Activity implements OnItemClickListener {
 
-	ListView listView;
+    ListView listView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-		StrictMode.setThreadPolicy(policy); 
-		
-		getActionBar().setHomeButtonEnabled(true);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy); 
+        
+        getActionBar().setHomeButtonEnabled(true);
 
-		SeoulWomenPlazaList.Load();
+        SeoulWomenPlazaList.Load();
 
-		ArrayList<String> showList = new ArrayList<String>();
-		for (SeoulWomenPlazaItem item : SeoulWomenPlazaList.itemList) {
-			showList.add(item.TITLE);
-		}
+        // 저장된 Type을 화면에 보여주기
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, SeoulWomenPlazaList.typeArray);
 
-		ArrayAdapter<String> adapter;
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, SeoulWomenPlazaList.typeArray);
+        listView = (ListView) findViewById(R.id.listView1);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+    }
 
-		listView = (ListView) findViewById(R.id.listView1);
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(this);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		Intent intent = new Intent(getBaseContext(), ListByTypeActivity.class);
-		intent.putExtra("EVT_TYPE", SeoulWomenPlazaList.typeArray.get(position));
-		startActivity(intent);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        Intent intent = new Intent(getBaseContext(), ListByTypeActivity.class);
+        intent.putExtra("EVT_TYPE", SeoulWomenPlazaList.typeArray.get(position));
+        startActivity(intent);
+    }
 
 }
 }}}
@@ -375,65 +371,68 @@ import android.widget.ListView;
 
 public class ListByTypeActivity extends Activity implements OnItemClickListener{
 
-	String EVT_TYPE;
-	ArrayList<String> showList = new ArrayList<String>();
-	ArrayList<String> regList = new ArrayList<String>();
+    String EVT_TYPE;
+    ArrayList<String> showList = new ArrayList<String>();
+    ArrayList<String> regList = new ArrayList<String>();
 
-	ListView listView;
+    ListView listView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_list_by_type);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_by_type);
 
-		Intent intent = getIntent();
-		EVT_TYPE = intent.getStringExtra("EVT_TYPE");
+        Intent intent = getIntent();
+        EVT_TYPE = intent.getStringExtra("EVT_TYPE");
 
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle(EVT_TYPE);
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle(EVT_TYPE);
 
-		showList.clear();
-		regList.clear();
-		for (SeoulWomenPlazaItem item : SeoulWomenPlazaList.itemList) {
-			if ( !EVT_TYPE.equals(item.EVT_TYPE) ) continue;
-			showList.add(item.TITLE);
-			regList.add(item.EVT_REG_NO);
-		}
+        // Type에 해당되는 Item만 보여주기
+        showList.clear();
+        regList.clear();
+        for (SeoulWomenPlazaItem item : SeoulWomenPlazaList.itemList) {
+            if ( !EVT_TYPE.equals(item.EVT_TYPE) ) continue;
+            showList.add(item.TITLE);
+            regList.add(item.EVT_REG_NO);
+        }
 
-		ArrayAdapter<String> adapter;
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, showList);
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, showList);
 
-		listView = (ListView) findViewById(R.id.listView1);
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(this);
-	}
+        listView = (ListView) findViewById(R.id.listView1);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.list_by_type, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			finish();
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.list_by_type, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
 
-	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		Intent intent = new Intent(getBaseContext(), ItemActivity.class);
-		intent.putExtra("EVT_REG_NO", regList.get(position));
-		startActivity(intent);
-	}
-	
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+        // List가 눌렸을때 ItemActivity 띄우기 & EVT_REG_NO 넘기기
+        Intent intent = new Intent(getBaseContext(), ItemActivity.class);
+        intent.putExtra("EVT_REG_NO", regList.get(position));
+        startActivity(intent);
+    }
+    
 }
 }}}
 
@@ -450,52 +449,54 @@ import android.widget.TextView;
 
 public class ItemActivity extends Activity {
 
-	String EVT_REG_NO;
-	SeoulWomenPlazaItem item;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_item);
-		
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle("행사 정보");
+    String EVT_REG_NO;
+    SeoulWomenPlazaItem item;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item);
+        
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle("행사 정보");
 
-		Intent intent = getIntent();
-		EVT_REG_NO = intent.getStringExtra("EVT_REG_NO");
-		item = SeoulWomenPlazaList.itemMap.get(EVT_REG_NO);
-		
-		((TextView)findViewById(R.id.textView1)).setText(item.TITLE);
-		((TextView)findViewById(R.id.textView2)).setText(item.EVT_REG_NO);
-		((TextView)findViewById(R.id.textView3)).setText(item.EVT_REG_START_DATE);
-		((TextView)findViewById(R.id.textView4)).setText(item.EVT_REG_END_DATE);
-		((TextView)findViewById(R.id.textView5)).setText(item.EVT_TYPE);
-		((TextView)findViewById(R.id.textView6)).setText(item.EVT_DATE);
-		((TextView)findViewById(R.id.textView7)).setText(item.EVT_PLACE);
-		((TextView)findViewById(R.id.textView8)).setText(item.EVT_TARGET);
-		((TextView)findViewById(R.id.textView9)).setText(item.EVT_REG_METHOD);
-		((TextView)findViewById(R.id.textView10)).setText(item.EVT_SPONSOR);
-		((TextView)findViewById(R.id.textView11)).setText(item.EVT_CONTACT);
-		((TextView)findViewById(R.id.textView12)).setText(item.URL);
-	}
+        // 앞화면에서 넘어온 EVT_REG_NO받기 & Item가져오기
+        Intent intent = getIntent();
+        EVT_REG_NO = intent.getStringExtra("EVT_REG_NO");
+        item = SeoulWomenPlazaList.itemMap.get(EVT_REG_NO);
+        
+        // 화면에 Item보여주기
+        ((TextView)findViewById(R.id.textView1)).setText(item.TITLE);
+        ((TextView)findViewById(R.id.textView2)).setText(item.EVT_REG_NO);
+        ((TextView)findViewById(R.id.textView3)).setText(item.EVT_REG_START_DATE);
+        ((TextView)findViewById(R.id.textView4)).setText(item.EVT_REG_END_DATE);
+        ((TextView)findViewById(R.id.textView5)).setText(item.EVT_TYPE);
+        ((TextView)findViewById(R.id.textView6)).setText(item.EVT_DATE);
+        ((TextView)findViewById(R.id.textView7)).setText(item.EVT_PLACE);
+        ((TextView)findViewById(R.id.textView8)).setText(item.EVT_TARGET);
+        ((TextView)findViewById(R.id.textView9)).setText(item.EVT_REG_METHOD);
+        ((TextView)findViewById(R.id.textView10)).setText(item.EVT_SPONSOR);
+        ((TextView)findViewById(R.id.textView11)).setText(item.EVT_CONTACT);
+        ((TextView)findViewById(R.id.textView12)).setText(item.URL);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.item, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			finish();
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.item, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
 }}}
@@ -511,74 +512,76 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 class SeoulWomenPlazaItem {
-	public String EVT_REG_NO;
-	public String TITLE;
-	public String EVT_REG_START_DATE;
-	public String EVT_REG_END_DATE;
-	public String EVT_TYPE;
-	public String EVT_DATE;
-	public String EVT_PLACE;
-	public String EVT_TARGET;
-	public String EVT_REG_METHOD;
-	public String EVT_SPONSOR;
-	public String EVT_CONTACT;
-	public String URL;
+    public String EVT_REG_NO;
+    public String TITLE;
+    public String EVT_REG_START_DATE;
+    public String EVT_REG_END_DATE;
+    public String EVT_TYPE;
+    public String EVT_DATE;
+    public String EVT_PLACE;
+    public String EVT_TARGET;
+    public String EVT_REG_METHOD;
+    public String EVT_SPONSOR;
+    public String EVT_CONTACT;
+    public String URL;
 
 }
 
 public class SeoulWomenPlazaList {
 
-	public static ArrayList<SeoulWomenPlazaItem> itemList = new ArrayList<SeoulWomenPlazaItem>();
-	public static Hashtable<String, SeoulWomenPlazaItem> itemMap = new Hashtable<String, SeoulWomenPlazaItem>();
-	public static ArrayList<String> typeArray = new ArrayList<String>();
+    public static ArrayList<SeoulWomenPlazaItem> itemList = new ArrayList<SeoulWomenPlazaItem>();
+    public static Hashtable<String, SeoulWomenPlazaItem> itemMap = new Hashtable<String, SeoulWomenPlazaItem>();
+    public static ArrayList<String> typeArray = new ArrayList<String>();
 
-	public static void Load() {
+    public static void Load() {
 
-		itemMap.clear();
+        itemMap.clear();
 
-		try {
-			String key = "6f6e61636c6f756432313237";
-			String type = "xls";
-			String service = "SeoulWomenPlazaEvent";
-			String startIndex = "1";
-			String endIndex = "999";
+        try {
+            String key = "6f6e61636c6f756432313237";
+            String type = "xls";
+            String service = "SeoulWomenPlazaEvent";
+            String startIndex = "1";
+            String endIndex = "999";
 
-			String url = String.format(
-					"http://openapi.seoul.go.kr:8088/%s/%s/%s/%s/%s/", key,
-					type, service, startIndex, endIndex);
-			URL myUrl = new URL(url);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					myUrl.openStream(), "euc-kr"));
+            String url = String.format(
+                    "http://openapi.seoul.go.kr:8088/%s/%s/%s/%s/%s/", key,
+                    type, service, startIndex, endIndex);
+            URL myUrl = new URL(url);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    myUrl.openStream(), "euc-kr"));
 
-			String readLine;
-			readLine = reader.readLine();
-			while ((readLine = reader.readLine()) != null) {
-				String[] items = readLine.split("\t");
+            String readLine;
+            readLine = reader.readLine();
+            while ((readLine = reader.readLine()) != null) {
+                String[] items = readLine.split("\t");
 
-				SeoulWomenPlazaItem item = new SeoulWomenPlazaItem();
-				item.EVT_REG_NO = items[0];
-				item.TITLE = items[1];
-				item.EVT_REG_START_DATE = items[2];
-				item.EVT_REG_END_DATE = items[3];
-				item.EVT_TYPE = items[4];
-				item.EVT_DATE = items[5];
-				item.EVT_PLACE = items[6];
-				item.EVT_TARGET = items[7];
-				item.EVT_REG_METHOD = items[8];
-				item.EVT_SPONSOR = items[9];
-				item.EVT_CONTACT = items[10];
-				item.URL = items[11];
+                SeoulWomenPlazaItem item = new SeoulWomenPlazaItem();
+                item.EVT_REG_NO = items[0];
+                item.TITLE = items[1];
+                item.EVT_REG_START_DATE = items[2];
+                item.EVT_REG_END_DATE = items[3];
+                item.EVT_TYPE = items[4];
+                item.EVT_DATE = items[5];
+                item.EVT_PLACE = items[6];
+                item.EVT_TARGET = items[7];
+                item.EVT_REG_METHOD = items[8];
+                item.EVT_SPONSOR = items[9];
+                item.EVT_CONTACT = items[10];
+                item.URL = items[11];
 
-				itemList.add(item);
-				itemMap.put(item.EVT_REG_NO, item);
-				if (!typeArray.contains(item.EVT_TYPE))
-					typeArray.add(item.EVT_TYPE);
-			}
-			reader.close();
-		} catch (Exception ex) {
-			System.out.println(ex.toString());
-		}
-	}
+                itemList.add(item);
+                itemMap.put(item.EVT_REG_NO, item);
+                
+                // Type만 들어간 ArrayList만들기
+                if (!typeArray.contains(item.EVT_TYPE))
+                    typeArray.add(item.EVT_TYPE);
+            }
+            reader.close();
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+    }
 }
 }}}
 
