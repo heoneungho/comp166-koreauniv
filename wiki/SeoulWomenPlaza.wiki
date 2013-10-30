@@ -1,6 +1,6 @@
 #summary 서울시 여성가족재단 행사 안내 어플
 
-<wiki:toc max_depth="2" />
+<wiki:toc max_depth="1" />
 
 = 소개 =
 
@@ -14,181 +14,10 @@ API샘플
  * http://openapi.seoul.go.kr:8088/sample/json/SeoulWomenPlazaEvent/1/5/
  * http://openapi.seoul.go.kr:8088/sample/xml/SeoulWomenPlazaEvent/1/5/
 
-= 조각설명 =
-
-== Main Thread에서 인터넷을 사용하기 ==
-
-안드로이드앱은 Main Thread 에서는 인터넷을 사용할 수 없게 되어 있습니다. 아래 코드는 Main Thread에서 인터넷을 사용할 수 있게 해주는 코드입니다. 
-
-{{{
-StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-StrictMode.setThreadPolicy(policy); 
-}}}
-
-또한 AndroidManifest.xml에 인터넷 사용허가가 필요하다고 남겨야 합니다. 
-{{{
-<uses-permission android:name="android.permission.INTERNET" />
-}}}
-
-== Activity Layout을 편집하기 ==
-
-Activity Layout을 Vertical Layout으로 변경하는 순서 입니다.
-
- 1. Activity의 모든 control을 지운다
- 1. 마우스 오른쪽버튼 -> Change Layout을 선택
- 1. Linear Layout (Vertical) 을 선택
-
-== Actionbar에 home button 활성화시키고 제목설정하기 ==
-
-메인화면에서는 Home으로 가는 Button없이 제목만 보이면 됩니다
-
-{{{
-getActionBar().setTitle("기본 화면");
-}}}
-
-세부화면에서는 Home으로 가는 Button과 제목이 보여야 합니다
-
-{{{
-getActionBar().setHomeButtonEnabled(true);			
-getActionBar().setDisplayHomeAsUpEnabled(true);
-getActionBar().setTitle("행사 정보");
-}}}
-
-== List를 화면에 보여주기 ==
-
-listView1에 showList를 보여주는 방법입니다.
-
-{{{
-ArrayList<String> showList = new ArrayList<String>();
-showList.add("1");
-showList.add("2");
-showList.add("3");
-
-ArrayAdapter<String> Adapter;
-Adapter = new ArrayAdapter<String>(this,
-        android.R.layout.simple_list_item_1, showList);
-
-ListView listView = (ListView) findViewById(R.id.listView1);
-listView.setAdapter(Adapter);
-}}}
-
-== 자동완성에 데이터 채우기 ==
-
-자동완성TextView에 보여줄 데이터를 채워넣는 방법입니다.
-
-{{{
-ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-	android.R.layout.simple_list_item_1, StationList.fullNameList);
-
-AutoCompleteTextView textView1 = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
-textView1.setAdapter(adapter);
-}}}
-
-== 다음 화면으로 이동하기 ==
-
-버튼이 눌렸을때 다음 화면으로 이동하는 방법입니다
-
-{{{
-Button button = (Button) findViewById(R.id.button1);
-button.setOnClickListener(new View.OnClickListener() {
-	public void onClick(View v) {
-		Intent intent = new Intent(getBaseContext(), PathActivity.class);
-		startActivity(intent);
-	}
-});		
-}}}
-
-다음 화면에 데이터도 같이 넘기고 싶으면 Intent 부분을 다음과 같이 고치시면 됩니다.
-
-{{{
-Intent intent = new Intent(getBaseContext(),PathActivity.class);
-String arg1 = "a";
-int arg2 = 1;
-intent.putExtra("arg1", arg1);
-intent.putExtra("arg2", arg2);
-startActivity(intent);
-}}}
-
-리스트의 Item이 클릭되었을때 다음 화면으로 이동하는 방법입니다.
-
-{{{
-listView.setOnItemClickListener(new OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, final int pos, long id) {
-		Intent intent = new Intent(getBaseContext(), PathActivity.class);
-		intent.putExtra("pos", pos);
-		startActivity(intent);
-    }
-});
-}}}
-
-== 이전 화면에서 넘져준 데이터 받기 ==
-
-이전화면에서 pos와 str이 넘어왔을때 이를 받는 방법입니다.
-
-{{{
-Intent intent = getIntent();
-int pos = intent.getIntExtra("pos", 0);
-String str = intent.getStringExtra("str");
-}}}
-
-== ArrayList와 Hashtable 사용하기 ==
-
-2가지 인스턴스 변수를 가지는 SampleItem 클래스가 있습니다.
-
-{{{
-class SampleItem {
-    public String name;
-    public String val;
-    public SampleItem(String n, String v) {
-    	name = n;
-    	val = v;
-    }
-}
-}}}
-
-ArrayList 사용하기
-
-{{{
-ArrayList<SampleItem> itemList = new ArrayList<SampleItem>();
-itemList.add(new SampleItem("name1", "val1"));
-itemList.add(new SampleItem("name2", "val2"));
-itemList.add(new SampleItem("name3", "val3"));
-
-// 두번째 아이템 가져오기
-SampleItem item2 = itemList.get(1);
-
-// 모든 아이템에서 name만 모으기
-ArrayList<String> valList = new ArrayList<String>();
-for (SampleItem item : itemList) {
-    valList.add(item.val);
-}
-}}}
-
-Hashtable 사용하기
-
-{{{
-Hashtable<String, SampleItem> itemMap = new Hashtable<String, SampleItem>();
-itemMap.put("name1", new SampleItem("name1", "val1"));
-itemMap.put("name2", new SampleItem("name2", "val2"));
-itemMap.put("name3", new SampleItem("name3", "val3"));
-
-// name2를 가지는 item가져오기
-SampleItem item2 = itemMap.get("name2");
-
-// 모든 아이템에서 val만 모으기
-ArrayList<String> valList = new ArrayList<String>();
-for(Entry<String, SampleItem> e : itemMap.entrySet()) {
-    String key = e.getKey();
-    SampleItem item = e.getValue();
-    valList.add(item.val);
-}
-}}}
-
 
 = 샘플어플1 =
 
-== MainActivity.java ==
+*MainActivity.java*
 
 {{{
 package com.example.t01;
@@ -262,7 +91,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
 }}}
 
-== ItemActivity.java ==
+*ItemActivity.java*
 
 {{{
 package com.example.t01;
@@ -327,7 +156,7 @@ public class ItemActivity extends Activity {
 
 }}}
 
-== SeoulWomenPlazaList.java ==
+*SeoulWomenPlazaList.java*
 
 {{{
 package com.example.t01;
@@ -409,7 +238,8 @@ public class SeoulWomenPlazaList {
 }
 }}}
 
-== AndroidManifest.xml ==
+*AndroidManifest.xml*
+
 {{{
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -448,7 +278,8 @@ public class SeoulWomenPlazaList {
 
 = 샘플어플2 =
 
-== MainActivity.java ==
+*MainActivity.java*
+
 {{{
 package com.example.seoulwomen;
 
@@ -508,7 +339,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 }
 }}}
 
-== ListByTypeActivity.java ==
+*ListByTypeActivity.java*
+
 {{{
 package com.example.seoulwomen;
 
@@ -592,7 +424,8 @@ public class ListByTypeActivity extends Activity implements OnItemClickListener{
 }
 }}}
 
-== ItemActivity.java ==
+*ItemActivity.java*
+
 {{{
 package com.example.seoulwomen;
 
@@ -657,7 +490,8 @@ public class ItemActivity extends Activity {
 }
 }}}
 
-== SeoulWomenPlazaList.java ==
+*SeoulWomenPlazaList.java*
+
 {{{
 package com.example.seoulwomen;
 
@@ -741,7 +575,8 @@ public class SeoulWomenPlazaList {
 }
 }}}
 
-== AndroidManifest.xml ==
+*AndroidManifest.xml*
+
 {{{
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
