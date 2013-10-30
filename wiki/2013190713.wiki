@@ -730,19 +730,112 @@ public class GameHelper {
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
-{{{
+{{{ //수정중입니다. 나중에 이어서 하겠습니다.
+
+public class SimpleDotCom {
+
+	int [] locationCells;
+	int numOfHits = 0;
+	int [] hitCells = {0,0,0}; // 원소가 1이고 원소의 개수가 3개인 hitCells 배열 선언
+	
+	public void setLocationCells(int[] locs){
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess){
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		
+		for(int i=0 ; i<locationCells.length; i++){
+			if(guess == locationCells[i]){
+				result = "hit";
+				hitCells[]= 1;
+				numOfHits ++;
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length){
+			result = "kill";
+		}
+		System.out.println(result);
+			return result;
+	}
+}
+
 
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
+
+	int [] locationCells;
+	int numOfHits = 0;
+	
+	public void setLocationCells(int[] locs){
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess){
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		
+		for(int i=0 ; i<locationCells.length; i++){
+			if(guess == locationCells[i]){
+				result = "hit";
+				numOfHits ++;
+				locationCells[i]=-1; //맞추고 -1 대입
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length){
+			result = "kill";
+		}
+		System.out.println(result);
+			return result;
+	}
+}
 
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+
+//수정중입니다. 나중에 이어서 하겠습니다.
+
+public class SimpleDotCom {
+
+	ArrayList [] locationList;
+	int numOfHits = 0;
+	
+	public void setLocationCells(int[] locs){
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess){
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		
+		for(int i=0 ; i< locationList.length; i++){
+			if(guess == locationList[i]){
+				result = "hit";
+				numOfHits ++;
+				locationList.remove[i];
+				break;
+			}
+		}
+		
+		if(numOfHits == 3){
+			result = "kill";
+		}
+		System.out.println(result);
+			return result;
+	}
+}
 
 }}}
 
