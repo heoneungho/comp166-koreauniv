@@ -50,9 +50,11 @@ public class BeerSong
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
-public class PhraseOMatic{
-    public static void main(String[] args){
-        String[] wordListOne = {"HatNim", "DalNim", "ByeolNim", "MoonSun"};
+public class PhraseOMatic
+{
+	public static void main(String[] args)
+	{
+		String[] wordListOne = {"HatNim", "DalNim", "ByeolNim", "MoonSun"};
         String[] wordListTwo = {"I", "Love", "You"};
         String[] wordListThree = {"We", "live", "happily", "ever", "after"};
 
@@ -67,9 +69,8 @@ public class PhraseOMatic{
         String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3];
 
         System.out.println("What we need is a " + phrase);
-    }
+	}
 }
-
 }}}
 
 *52p 집중토론* _요약_
