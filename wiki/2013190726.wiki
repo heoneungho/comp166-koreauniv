@@ -995,11 +995,99 @@ public class GameHelper2 {
 }
 }}}
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
-
 {{{
+클래스 SimpleDotComTestDrive3
 
+import java.util.ArrayList; // 자바 내의 API(?)중 ArratList를 사용하도록 선언
+
+public class SimpleDotComTestDrive3 {
+	
+	public static void main (String args[]) {
+		
+		int numOfGuesses = 0;  
+		GameHelper helper = new GameHelper();  
+		
+		SimpleDotCom theDotCom = new SimpleDotCom(); 
+		int randomNum = (int) (Math.random()*5); 
+		
+		ArrayList<String> locations = new ArrayList(); // ArrayList로 기존의 배열을 바꿔준다.
+		location.add(String.valueOf(randomNum)); // add하게되면 ArrayList의 공간 하나가 추가되면서 값이 들어간다.
+		location.add(String.valueOf(randomNum+1));
+		location.add(String.valueOf(randomNum+2));					
+
+		theDotCom.setLocationCells(locations); 
+		boolean isAlive = true;
+		
+		while(isAlive == true) {
+			String guess = helper.getUserInput("enter a number"); 
+			String result = theDotCom.checkYourself(guess); 
+			numOfGuesses++;
+			
+			if(result.equals("kill")) {
+				isAlive = false; 
+				System.out.println(numOfGuesses + "guesses");
+			}
+		}
+	} 
+}
 }}}
 
+{{{
+클래스 SimpleDotCom3
+
+import java.util.ArrayList;
+
+public class SimpleDotCom3 {
+		private ArrayList<String> locationCells; // locationCells에 대한 정보를 숨기기 위해 private로 선언함.
+		
+	public void setLocationCells (ArrayList<String> locs) {
+		
+		locationCells = locs;
+	}
+
+	public String checkYourself (String stringGuess) {
+		
+		int index = locationCells.indexof(stringGuess); // indexOf(Object)하게되면 Object가 들어있는 index의 수를 return 해준다.
+		String result = "miss";
+	
+		if(index >= 0)
+		{
+			locationCells.remove(index);
+			if(locationCells.isEmpty())
+				result = "kill";
+			else
+				result = "hit";
+		}
+
+		System.out.println(result); 
+		return result; 
+	}
+}
+}}}
+
+{{{
+클래스 GameHelper3
+
+import java.io.*;
+public class GameHelper3 { 
+	public String getUserInput(String prompt) {
+		String inputLine = null; 
+		System.out.print(prompt + " "); 
+		
+		try {
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0) 
+				return null;
+		} catch (IOException e) {
+			System.out.println("IOException: "+ e);
+		}
+		
+		return inputLine; 
+	}
+	
+}
+}}}
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
