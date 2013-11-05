@@ -853,23 +853,71 @@ public class SimpleDotCom {
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속: 하위 클래스가 상위 클래스의 인자를 물려받는 것. 
+ * 다형성: 상위 클래스 형식이 들어갈 수 있는 모든 자리에 해당 상위 클래스와 임의의 하위 클래스에 속하는 객체를 마음대로 사용가능함
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
 
+Feline - Lion, Tiger, Cat
+Hippo
+Canine - Wolf, Dog
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 하위클래스에서 메소드의 역할을 변경하거나 확장할 필요가 있을 때 상속받은 메소드를 새로 정의하는 것
+ * 오버로딩: 이름이 같고 인자목록이 다른 메소드 두개를 만드는 것
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+public class MonsterTestDrive {
+
+	public static void main(String [] args){
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		
+		for(int x=0; x<3 ; x++)
+		{
+			ma[2].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+	boolean frighten(int d){
+		System.out.println("aaragh");
+		return true;
+	}
+}
+
+class Vampire extends Monster{
+	{
+
+		boolean frighten(int x){
+			System.out.println("a bite?");
+			return false;
+		}
+	}
+
+}
+
+
+
+
+class Dragon extends Monster{
+	boolean frighten(int degree){
+		System.out.println("breath fire");
+		return true;
+	}
+}
 
 }}}
 
