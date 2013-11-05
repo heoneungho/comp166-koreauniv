@@ -147,65 +147,66 @@ public class GuessGame
 		p3 = new Player();
 		p4 = new Player();
 		
-		int guess1 = 0;
-		int guess2 = 0;
-		int guess3 = 0;
-		int guess4 = 0;
+		int guessp1 = 0;
+		int guessp2 = 0;
+		int guessp3 = 0;
+		int guessp4 = 0;
 		
-		Boolean correct1 = false;
-		Boolean correct2 = false;
-		Boolean correct3 = false;
-		Boolean correct4 = false;
+		Boolean p1isRight = false;
+		Boolean p2isRight = false;
+		Boolean p3isRight = false;
+		Boolean p4isRight = false;
 		
-		int answer = (int)(Math.randm()*10);
+		int targetNumber = (int)(Math.randm()*10);
 		
-		System.out.println("Guess the number(0-9)");
+		System.out.println("0 이상 9 이하의 숫자를 맞춰보세요.");
 		
 		while (true)
 		{
+			System.out.println("맞춰야 할 숫자는 "+ target Number + "입니다.");
 			p1.guess();
 			p2.guess();
 			p3.guess();
 			p4.guess();
 			
 			guess1 = p1.number;
-			System.out.pringln("P1 : " + guess1);
+			System.out.pringln("1번 선수가 찍은 숫자 : " + guess1);
 			
 			guess2 = p2.number;
-			System.out.pringln("P2 : " + guess1);
+			System.out.pringln("2번 선수가 찍은 숫자 : " + guess1);
 			
 			guess3 = p3.number;
-			System.out.pringln("P3 : " + guess1);
+			System.out.pringln("3번 선수가 찍은 숫자 : " + guess1);
 			
 			guess4 = p4.number;
-			System.out.pringln("P4 : " + guess1);
+			System.out.pringln("4번 선수가 찍은 숫자 : " + guess1);
 			
-			if (guess1 == answer)
-				correct1 = true;
+			if (guessp1 == targetNumber)
+				p1isRight = true;
 			
-			if (guess2 == answer)
-				correct2 = true;
+			if (guessp2 == targetNumber)
+				p2isRight = true;
 			
-			if (guess3 == answer)
-				correct3 = true;
+			if (guessp3 == targetNumber)
+				p3isRight = true;
 			
-			if (guess4 == answer)
-				correct4 = true;
+			if (guessp4 == targetNumber)
+				p4isRight = true;
 			
-			if (correct1 || correct2 || correct3 || correct4)
-				System.out.println("Congratulation");
-				System.out.println("P1 : " + correct1);
-				System.out.println("P2 : " + correct2);
-				System.out.println("P3 : " + correct3);
-				System.out.println("P4 : " + correct4);
-				System.out.println("The answer is " + answer);
-				System.out.println("The end of the game");
+			if (p1isRight || p2isRight || p3isRight || p4isRight)
+				System.out.println("맞춘 선수가 있습니다.");
+				System.out.println("1번 선수 : " + correct1);
+				System.out.println("2번 선수 : " + correct2);
+				System.out.println("3번 선수 : " + correct3);
+				System.out.println("4번 선수 : " + correct4);
+				System.out.println("게임 끝.");
 				
 				break;
 		}
 		
-		else
-			System.out.println("Try again");
+			else
+					System.out.println("다시 시도해야 합니다.");
+		}
 	}
 }
 }}}
