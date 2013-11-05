@@ -1006,7 +1006,7 @@ public class GameHelper2 {
 {{{
 클래스 SimpleDotComTestDrive3
 
-import java.util.ArrayList; // 자바 내의 API(?)중 ArratList를 사용하도록 선언
+import java.util.ArrayList; // 자바 내의 util중 ArratList를 사용하도록 선언
 
 public class SimpleDotComTestDrive3 {
 	
