@@ -594,9 +594,223 @@ public class SimpleDotComTest{
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
+Test_First.java
 {{{
+import java.util.ArrayList;
+
+public class Test_First {
+	int[] locationCells;
+	boolean[] checkCells;
+	
+	int hits = 0;
+
+	void setLocationCell(int[] cellLocations){
+		locationCells = cellLocations;
+	}
+	
+	void setCheckedCell(boolean[] checked){
+		checkCells = checked;
+		
+	}
+
+	public String checkYourself(String userGuess){
+		int guess = Integer.parseInt(userGuess);
+		String result = "miss";
+
+		for(int i=0; i<locationCells.length;i++){
+			if(guess == locationCells[i]){
+				if(checkCells[i]==false){
+					result = "hit";
+					hits++;
+					checkCells[i] = true;
+					break;	
+				}
+				else
+					break;
+
+			}
+		}
+		
+		if(hits==locationCells.length)
+			result = "kill";
+		
+		return result;
+			
+	}
+
+	
+}
+
 
 }}}
+
+TEST1.java
+{{{
+public class TEST1{
+	public static void main(String[] args){
+		int numOfGuess = 0;
+		GameHelper helper = new GameHelper();
+
+		Test_First dot = new Test_First();
+		int randomNum = (int)(Math.random()*5);
+
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		dot.setLocationCell(locations);
+		boolean isAlive = true;
+		
+		boolean[] checked = {false,false,false};
+		dot.setCheckedCell(checked);
+
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = dot.checkYourself(guess);
+			numOfGuess++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuess + " guesses");
+			}
+
+		}
+		
+		}
+
+	}
+}}}
+
+Test_Second.java
+{{{
+public class Test_Second{
+	int[] locationCells;
+	int hits = 0;
+
+	void setLocationCell(int[] cellLocations){
+		locationCells = cellLocations;
+
+	}
+
+	public String checkYourself(String userGuess){
+		int guess = Integer.parseInt(userGuess);
+		String result = "miss";
+
+		for(int i=0; i<locationCells.length;i++){
+			if(guess == locationCells[i]){
+				result = "hit";
+				hits++;
+				locationCells[i]=-1;
+				break;
+			}
+		}
+		
+		if(hits==locationCells.length)
+			result = "kill";
+		
+		System.out.println(result);
+			return result;
+			
+	}
+}
+}}}
+TEST2.java
+{{{
+public class TEST2{
+	public static void main(String[] args){
+		int numOfGuess = 0;
+		GameHelper helper = new GameHelper();
+
+		Test_Second dot = new Test_Second();
+		int randomNum = (int)(Math.random()*5);
+
+		int[] locations = {randomNum, randomNum+1, randomNum+2};
+		dot.setLocationCell(locations);
+		boolean isAlive = true;
+
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = dot.checkYourself(guess);
+			numOfGuess++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuess + " guesses");
+			}
+
+		}
+		
+		}
+
+	}
+}}}
+Test_Third.java
+{{{
+import java.util.ArrayList;
+
+public class Test_Third{
+	private ArrayList<String> locationCells;
+	private int hits = 0;
+
+	void setLocationCell(ArrayList<String> cellLocations){
+		locationCells = cellLocations;
+
+	}
+
+	public String checkYourself(String userGuess){
+		int guess = Integer.parseInt(userGuess);
+		String result = "miss";
+		
+		int index = locationCells.indexOf(userGuess);
+		
+		if(index>=0){
+			locationCells.remove(index);
+			
+			if(locationCells.isEmpty())
+				result = "kill";
+			else
+				result = "hit";
+		}
+			System.out.println(result);
+			return result;
+			
+	}
+}
+}}}
+TEST3
+{{{
+import java.util.ArrayList;
+
+
+public class TEST3{
+	public static void main(String[] args){
+		int numOfGuess = 0;
+		GameHelper helper = new GameHelper();
+
+		Test_Third dot = new Test_Third();
+		int randomNum = (int)(Math.random()*5);
+
+		ArrayList<String> locations = new ArrayList();
+		locations.add(Integer.toString(randomNum));
+		locations.add(Integer.toString(randomNum+1));
+		locations.add(Integer.toString(randomNum+2));
+		dot.setLocationCell(locations);
+		boolean isAlive = true;
+
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number");
+			String result = dot.checkYourself(guess);
+			numOfGuess++;
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuess + " guesses");
+			}
+
+		}
+		
+		}
+
+	}
+}}}
+
+
+
+
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
