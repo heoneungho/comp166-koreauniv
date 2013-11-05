@@ -576,25 +576,45 @@ public class SimpleDotComTestDrive
 	public static void main (String [] args)
 	{
 		SimpleDotCom dot = new SimpleDotCom(); // SimpleDotCom 클래스의 인스턴스를 만듬
-
 		int[] locations = {2, 3, 4}; // 닷컴의 위치를 나타내기 위한 int 배열을 만든다.(0에서 6까지의 숫자 가운데 연속된 정수 세 개)
-
 		dot.setLocationCells(locations); // 닷컴에 대해 세터 메소드를 호출
-
 		String userGuess = "2"; // 사용자가 추측한 위치 역할을 할 가짜 값을 만듬
-
 		String result = dot.checkYourself(userGuess); // 닷컴 객체에 대해 Checkyourself() 메소드를 호출하고 그 메소드에 가짜 값을 전달
-
-		String testResult = "failed";
-
-		if (result.equals("hit")
-		{
-			testResult = "passed"; // 가짜 값(2)이 맞으면 제대로 작동한다는 것을 알 수 있음
-		}
-
-			System.out.println(testResult);
 	}
 }
+
+public class SimpleDotCom
+{
+	int[] locationCells;
+	int numOfHits = 0;
+
+	public void setLocationsCells(int[] locs)
+	{
+		locationCells = locs;
+	}
+
+	public Sring checkYourself(String stringGuess)
+	{
+		int guess = Integer.parseint(StringGuess); // String을 int로 변환
+		String result = "miss" // 리턴할 결과를 저장할 변수를 만듬
+		for(int i = 0; i < locationCells.length; i++) // 배열에 들어있는 각 원소에 대해 반복
+		{
+			if (guess == locationCells[i]) // 사용자가 추측한 값을 배열에 들어있는 원소와 비교
+			{
+				result = "hit"
+				numOfHits++;
+				break; // 순환문을 빠져나옴
+			}
+		}
+
+		if (numOfHits == locationCells.length)
+		{
+			result = "kill"; // 순환문 밖으로 나와서 그 객체가 죽었는지확인해보고 그 경우에는 result라는 String을 "kill"로 바꿈
+		}
+		System.out.println(result); // 사용자에게 결과를 보여줌
+			return result; // 이 메소드를 호출한 메소드로 결과를 리턴함
+		}
+	}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
