@@ -74,8 +74,8 @@ class Exercise1b
 
 ---------------------------------------------------------------------
 
-class Small
-{	// 수정
+class Small // 수정
+{
 	public static void main (String[] args)
 	{
 		int x = 5;
@@ -96,8 +96,8 @@ class Small
 
 class Exercise1b
 {
-	public static void main (String[] args)
-	{	// 수정
+	public static void main (String[] args) // 수정
+	{	
 		int x = 5;
 		
 		while (x > 1)
