@@ -954,7 +954,7 @@ public class SimpleDotCom2 {
 			if(guess == locationCells[i]) {
 				result = "hit";  
 				
-				locationCells[i] = -1; // locationCells[i]의 값을 음수로 넣어주면서 맞춘 칸을 표시
+				locationCells[i] = -1; // locationCells[i]의 값을 음수로 넣어주면서 맞춘 칸을 표시겸 재검사 방지
     						       
 				numOfHits++;
 				break;
