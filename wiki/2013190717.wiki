@@ -594,8 +594,8 @@ public class SimpleDotComTest{
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
-Test_First.java
 {{{
+<Test_First.java>
 import java.util.ArrayList;
 
 public class Test_First {
@@ -642,10 +642,9 @@ public class Test_First {
 }
 
 
-}}}
 
-TEST1.java
-{{{
+
+<TEST1.java>
 public class TEST1{
 	public static void main(String[] args){
 		int numOfGuess = 0;
@@ -677,8 +676,17 @@ public class TEST1{
 	}
 }}}
 
-Test_Second.java
+
+
+
+
+
+
+*163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
+
 {{{
+
+<Test_Second.java>
 public class Test_Second{
 	int[] locationCells;
 	int hits = 0;
@@ -709,9 +717,9 @@ public class Test_Second{
 			
 	}
 }
-}}}
-TEST2.java
-{{{
+
+<TEST2.java>
+
 public class TEST2{
 	public static void main(String[] args){
 		int numOfGuess = 0;
@@ -738,9 +746,14 @@ public class TEST2{
 		}
 
 	}
+
 }}}
-Test_Third.java
+
+*173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
+
 {{{
+<Test_Third.java>
+
 import java.util.ArrayList;
 
 public class Test_Third{
@@ -771,9 +784,9 @@ public class Test_Third{
 			
 	}
 }
-}}}
-TEST3
-{{{
+
+<TEST3.java>
+
 import java.util.ArrayList;
 
 
@@ -809,20 +822,6 @@ public class TEST3{
 }}}
 
 
-
-
-
-*163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
-
-{{{
-
-}}}
-
-*173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
-
-{{{
-
-}}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
