@@ -2,6 +2,15 @@
 
 <wiki:toc max_depth="1" />
 
+= 유용한 단축키 =
+
+ * F3 : 함수와 변수 정의로 가기
+ * Ctrl+Shift+O : 필요한 import 자동으로 수행하기
+ * Ctrl+F : 찾기 (Ctrl+K: 다음찾기)
+ * Ctrl+Shift+B : Break point만들기
+ * Ctrl+PgUp : 이전문서
+ * Ctrl+PgDn : 다음문서
+
 = Main Thread에서 인터넷을 사용하기 =
 
 안드로이드앱은 Main Thread 에서는 인터넷을 사용할 수 없게 되어 있습니다. 아래 코드는 Main Thread에서 인터넷을 사용할 수 있게 해주는 코드입니다. 
