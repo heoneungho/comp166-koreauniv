@@ -5,6 +5,7 @@
 = 유용한 단축키 =
 
  * F3 : 함수와 변수 정의로 가기
+ * Ctrl+Shift+F : 자동 포맷팅
  * Ctrl+Shift+O : 필요한 import 자동으로 수행하기
  * Ctrl+F : 찾기 (Ctrl+K: 다음찾기)
  * Ctrl+Shift+B : Break point만들기
