@@ -1,4 +1,4 @@
-#summary 원하는 상품을 최저가로 가져가세요! Shooting Price!
+#summary Shooting Price!
 #labels 2013190717이민경
 
 = Introduction =
