@@ -11,7 +11,7 @@
 식사 메뉴 셔플 
 주사위
 
-[[https://drive.google.com/file/d/0BzNZQlQUTmZAQ0haVlV1elZmXzQ/edit?usp=sharing레이아웃]]
+https://drive.google.com/file/d/0BzNZQlQUTmZAQ0haVlV1elZmXzQ/edit?usp=sharing레이아웃
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
