@@ -28,9 +28,8 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
 2. GameActivity 내의 Restart, Resume, Stop 버튼에 따라 타이머와 게임이 동작한다. 
 
 3. 7위내의 기록 경신 시 랭킹 닉네임 작성화면으로 이동한다.
-
-              
-    
+<br>            
+<br>    
 
  * Option 버튼 :
 
