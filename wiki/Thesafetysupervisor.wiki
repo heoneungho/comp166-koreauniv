@@ -30,6 +30,7 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
                   
 
  * Option 버튼 : 옵션 페이지로 이동한다.
+               
                 BGM on&off 기능, 카드 Image 변경 기능, 랭킹 초기화 기능 제공한다.
 
  * Ranking 버튼 : 1위부터 7위까지의 랭커들의 닉네임을 순서대로 제공한다.  
