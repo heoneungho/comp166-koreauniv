@@ -29,13 +29,17 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
 
 3. 7위내의 기록 경신 시 랭킹 닉네임 작성화면으로 이동한다.
 
-                  
+              
+    
 
  * Option 버튼 :
 
 1. 옵션 페이지로 이동한다.
                
 2. BGM on&off 기능, 카드 Image 변경 기능, 랭킹 초기화 기능 제공한다.
+
+
+
 
  * Ranking 버튼 : 
 
