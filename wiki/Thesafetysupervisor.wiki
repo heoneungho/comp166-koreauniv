@@ -24,7 +24,7 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
  * StartGame버튼 : 4x4의 게임이 만들어짐과 동시에 타이머가 작동한다.
 
                   GameActivity내의 Restart, Resume, Stop 버튼에 따라 타이머와 게임이 동작한다. 
-                  1위~ 7위내의 기록 경신 시 랭킹 닉네임 작성화면으로 이동한다.
+                  7위내의 기록 경신 시 랭킹 닉네임 작성화면으로 이동한다.
 
                   
 
