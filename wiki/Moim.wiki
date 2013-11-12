@@ -14,6 +14,8 @@
 = Details =
 
 Add your content here.  Format your content with:
+
+
 * 1. 첫 번째 화면
 
 동시에 여러 가지 조별 모임을 진행 할 수있다. 여러 과목을 등록해 놓고 각 과목의 조별 모임을 수행할 수 있도록 과목명을 제목으로 한 그룹들을 구성한다.
