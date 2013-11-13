@@ -652,19 +652,184 @@ kill
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+public class SimpleDotComTestDrive { // SimpleDotComTestDrive클래스를 생성합니다.
+
+        public static void main(String[] args){
+
+
+                int numOfGuesses=0;
+
+                GameHelper helper = new GameHelper();
+
+                SimpleDotCom theDotCom = new SimpleDotCom();
+
+                int randomNum = (int) (Math.random() * 5);
+
+                int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+                boolean[] hitCells = new boolean[3]; //입력 값을 판단하기 위한  boolean 배열을 생성
+
+                //닷컴 클래스로 boolean 배열을 넘김
+                theDotCom.sethitCells(hitCells);
+
+                theDotCom.setLocationCells(locations);
+
+                boolean isAlive = true;
+
+                while(isAlive == true){
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+                        if(result.equals("kill")){
+                                isAlive = false;
+                                System.out.println(numOfGuesses + "guesses");
+                        }
+
+                }
+        }
+
+}
+
+
+class SimpleDotCom { 
+
+        int[] locationCells;
+        boolean[] hitCells = new boolean[3];
+
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs){
+
+                locationCells = locs;
+        }
+
+        public void sethitCells(boolean[] check){ 
+                hitCells = check;
+        }
+
+
+        public String checkYourself(String stringGuess){
+
+                int guess = Integer.parseInt(stringGuess);
+
+                String result = "miss";
+
+                for(int i = 0; i < locationCells.length; i++){
+
+                        if(guess == locationCells[i] && hitCells[i]!=true){ // 이미 맞춘 배열인지 확인
+                                result = "hit";
+                                numOfHits++;
+                                hitCells[i] = true; // 맞춘 배열은 true로
+                                break;
+
+                        }
+
+                }
+
+                if (numOfHits == locationCells.length){
+                        result = "kill";
+                }
+
+                System.out.println(result);
+                return result;
+
+        }
+
+}
 
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+class SimpleDotCom { 
+
+        int[] locationCells;
+
+
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs){
+
+                locationCells = locs;
+        }
+
+        public String checkYourself(String stringGuess){
+
+                int guess = Integer.parseInt(stringGuess);
+
+                String result = "miss";
+
+                for(int i = 0; i < locationCells.length; i++){
+
+               // 이미 맞춘 배열인지 확인
+                        if(guess == locationCells[i] && locationCells[i]!=-1){ 
+                                result = "hit";
+                                numOfHits++;
+                                locationCells[i]=-1; // 맞춘 배열은 -1값으로 교체
+                                break;
+
+                        }
+
+                }
+
+                if (numOfHits == locationCells.length){
+                        result = "kill";
+                }
+
+                System.out.println(result);
+                return result;
+
+        }
+
+}
 
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList; // ArrayList를 import
 
+public class DotCom
+{
+     private ArrayList<String> locationCells;
+     // ArrayList를 사용
+     // private int numOfHits;
+      // 없어도 상관 ㄴㄴ
+
+     public void setLocationCells(ArrayList<String>loc)
+   
+    {
+         locationCells = loc;
+     }
+ 
+     public String checkYourself(String userInput)
+     // 새로 바뀐 인자 이름을 넣어 줍니다.
+    {
+          String result = "miss";
+  
+          int index = locationCells.indexOf(userInput);
+          // 사용자가 추측한 위치가 ArrayList에 들어있는지 확인, 들어있으면 인덱스 번호가, 그렇지 않으면 리턴
+  
+          if(index >= 0)
+          {
+                locationCells.remove(userInput);
+                // 인덱스가 0 이상이면 사용자가 추측한 위치가 목록에 들어있는 것이므로 제거
+   
+              if(locationCells.isEmpty())
+              // 목록이 비어짔다면 그 닷컴이 죽었다는 것을 알수 있습니다.
+             {
+                   result = "Kill";
+             }
+             else
+             {
+                   result = "hit";
+              }        
+         }        
+         return result;
+    }
+}
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
