@@ -848,6 +848,73 @@ public class DotCom
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+        void sleep(){
+        }
+        void roam(){
+        }
+}
+
+class Feline extends Animal{
+        }
+}
+
+class Lion extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Tiger extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Cat extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Hippo extends Animal{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Canine extends Animal{
+        void roam(){
+        }
+}
+
+class Wolf extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Dog extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
 
 }}}
  
