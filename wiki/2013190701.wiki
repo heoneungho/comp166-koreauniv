@@ -681,8 +681,8 @@ class Dragon extends Monster {
 }
 
 1번코드는 제대로 작동.
-
-
+}}}
+{{{
 2.
 public class MonsterTestDrive {
 	public static void main(String []args) {
@@ -716,8 +716,8 @@ class Dragon extends Monster {
 		return true;
 	}
 }
-
-
+}}}
+{{{
 3.
 public class MonsterTestDrive {
 	public static void main(String []args) {
@@ -751,8 +751,8 @@ class Dragon extends Monster {
 		return true;
 	}
 }
-
-
+}}}
+{{{
 4.
 public class MonsterTestDrive {
 	public static void main(String []args) {
