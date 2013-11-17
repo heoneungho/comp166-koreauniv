@@ -787,7 +787,7 @@ class Dragon extends Monster {
 	}
 }
 
-//3번,4번은 vampire클래스에서 monster 클래스의 frighten() 메소드를 오ㅓ라이드를 하지않아서
+//3번,4번은 vampire클래스에서 monster 클래스의 frighten() 메소드를 오버라이드를 하지않아서
 arrrgh
 breath fire
 arrrgh
