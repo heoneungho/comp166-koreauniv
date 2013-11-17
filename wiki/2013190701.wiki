@@ -682,6 +682,7 @@ class Dragon extends Monster {
 
 1번코드는 제대로 작동.
 
+
 2.
 public class MonsterTestDrive {
 	public static void main(String []args) {
@@ -716,6 +717,7 @@ class Dragon extends Monster {
 	}
 }
 
+
 3.
 public class MonsterTestDrive {
 	public static void main(String []args) {
@@ -749,6 +751,47 @@ class Dragon extends Monster {
 		return true;
 	}
 }
+
+
+4.
+public class MonsterTestDrive {
+	public static void main(String []args) {
+		Monster [] ma= new Monster[3];
+		ma[0]=new Vampire();
+		ma[1]=new Dragon();
+		ma[2]=new Monstere();
+		for(int x=0;,x<3;x++) {
+			ma[x].fighten(x);
+		}
+	}
+}
+
+class Monster {
+	boolean frighten(int z) {
+		System.out.println("arrrgh");
+		return true;
+	}
+}
+
+class Vampire extends Monster {
+	boolean frighten (byte b) //int가 아닌 byte로 인자를 받아서 {
+		System.out.println("a bite?");
+		return true;
+	}
+}
+
+class Dragon extends Monster {
+	boolean frighten (int degree) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+//3번,4번은 vampire클래스에서 monster 클래스의 frighten() 메소드를 오ㅓ라이드를 하지않아서
+arrrgh
+breath fire
+arrrgh
+라는 결과가 나온다.
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
