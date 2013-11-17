@@ -37,7 +37,7 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
  * Option 버튼 :
 
 1. Option Activity로 이동한다.<br>
-               
+<br>               
 2. BGM on&off 기능, 카드 Image 변경 기능, 랭킹 초기화 기능 제공한다.
 <br>
 <br>
