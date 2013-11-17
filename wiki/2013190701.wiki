@@ -682,6 +682,7 @@ class Dragon extends Monster {
 
 1번코드는 제대로 작동.
 }}}
+
 {{{
 2.
 public class MonsterTestDrive {
@@ -716,7 +717,9 @@ class Dragon extends Monster {
 		return true;
 	}
 }
+//컴파일이 안됨!
 }}}
+
 {{{
 3.
 public class MonsterTestDrive {
@@ -750,8 +753,13 @@ class Dragon extends Monster {
 		System.out.println("breath fire");
 		return true;
 	}
-}
+} //vampire클래스에서 monster 클래스의 frighten() 메소드를 오버라이드를 하지않아서
+arrrgh
+breath fire
+arrrgh
+라는 결과가 나온다.
 }}}
+
 {{{
 4.
 public class MonsterTestDrive {
@@ -787,7 +795,7 @@ class Dragon extends Monster {
 	}
 }
 
-//3번,4번은 vampire클래스에서 monster 클래스의 frighten() 메소드를 오버라이드를 하지않아서
+//vampire클래스에서 monster 클래스의 frighten() 메소드를 오버라이드를 하지않아서
 arrrgh
 breath fire
 arrrgh
