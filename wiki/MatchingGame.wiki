@@ -22,13 +22,13 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
 
 = Requirment = 
  
- * StartGame 버튼 : 
+ * Start Game 버튼 : 
 
 1. Game Activity로 이동한다.
 
 2. 4x4의 게임이 만들어짐과 동시에 타이머가 작동한다.
 
-3. GameActivity 내의 Resume, Stop 버튼으로 게임을 멈추기, 재개하기가 가능하다. 
+3. Game Activity 내의 Resume, Stop 버튼으로 게임을 멈추기, 재개하기가 가능하다. 
 
 4. 7위내의 기록 경신 시 랭킹 닉네임 작성화면이 나타난다.
 <br>            
