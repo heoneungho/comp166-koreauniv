@@ -687,8 +687,48 @@ class Hippo extends Animal{
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
+ * 오버라이드: 
+
+오버라이드는 메소드의 인자와 리턴 형식이 상위클래스에 있는 오버라이드를 당하는 메소드와 완벽하게 일치해야 한다는 특징이 있다.
+
+예를들면
+
+{{{
+public class Appliance(){
+      boolean turnOn(){}
+}
+public class Toaster extends(){
+      boolean turnOn(){}
+}
+}}}
+와 같이 메소드의 인자 void값, 그리고 리턴 형식 boolean이 일치하게끔 해야한다.
  * 오버로딩:
+
+오버로딩은 이름은 같고 인자 목록이 다른 메소드 두개를 만드는 것을 오버로드라고 한다. 오버로드 된 메소드는 다형성과는 전혀 관계가 없다고 할 수 있다.
+
+예를들면
+{{{
+public class Overloads{
+      String uniqueID;
+      public int addNums(int a, int b){
+            return a+b;
+      }
+      public double addNumbs(double a, double b){
+            return a+b;
+      }
+      public void setUniqueID(String theID){
+            uniqueID = theID;
+      }
+      public void setUniqueID(int ssNumber){
+            String numString = " " + ssNumber;
+            setUniqueID(numString);
+      }
+}
+}}}
+메소드 오버로딩 정리
+1.리턴 유형이 달라도 된다;메소드를 오버로드할 때는 인자 목록만 다르면 리턴 유형을 마음대로 바꿔도 된다.
+2.리턴 유형만 바꿀 수는 없다;메소드를 오버로딩할 때는 리턴 유형하고는 무관하게 인자 목록을 반드시 변경해야 한다.
+3.접근 단계를 마음대로 바꿀 수 있다;메소드를 오버로드해서 더 제한이 심한 메소드를 만들어도 된다. 새로운 메소드가 오버로드된 메소드의 계약 조건을 이행해야 하는 것은 아니기 때문.
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
