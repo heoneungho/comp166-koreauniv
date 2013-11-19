@@ -557,44 +557,82 @@ class Dog2TestDrive{
 
 {{{
 public class SimpleDotComTestDrive{
+        public static void main(String[] args){
+                int numOfGuesses = 0; // 사용자의 추측 횟수 저장을 위한 int 변수 선언
+                GameHelper helper = new GameHelper(); //GameHelper인스턴스 생성
 
-        public static void main (String[] args){
-                SimpleDotCom dot = new SimpleDotCom();          
-                int[] locations = {2,3,4};                      //위치 2,3,4
-                dot.setLocationCells(locations);                //dot의 locationCells를 locations로 지정
-                String userGuess = "2";                         
-                String result = dot.checkYourself(userGuess);   
+                SimpleDotCom theDotCom = new SimpleDotCom(); //SimpleDotCom인스턴스 생성
+                int randomNum = (int) (Math.random()*5); // 첫 번째 셀 위치를 정하기 위한 난수를 만든다. 0이상 4이하의 정수가 리턴된다 (int) cast
+
+                int[] locations = {randomNum, randomNum+1, randomNum+2}; //첫 번째 셀위치에 1씩 더해 셀위치배열을 만든다.
+                theDotCom.setLocationCells(locations); //닷컴의 위치를 저장하는 메소드
+                boolean isAlive = true; // 닷컴이 살아있는지 추적하기 위한 부울 값
+
+                while(isAlive == true) { // 닷컴이 살아있으면 실행
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+
+                        if(result.equals("kill")){
+                                isAlive = false;
+                                System.out.println(numOfGuesses + " guesses");
+                        }
+                }
         }
 }
+}}}
 
-class SimpleDotCom{
+{{{
+public class SimpleDotCom{
+
         int[] locationCells;
-        int numOfHits=0;
+        int numOfHits = 0;
 
         public void setLocationCells(int[] locs){
-                locationCells = locs;                           //locationsCells에 2,3,4 입력
-        }
+                locationCells = locs;
+        } // int 배열값을 받아서 셀의 위치로 저장하는 메소드
 
         public String checkYourself(String stringGuess){
-                int guess = Integer.parseInt(stringGuess);
+                int guess = Integer.parseInt(stringGuess); //String을 int로 변환
                 String result = "miss";
-                for(int i = 0; i<locationCells.length; i++){    //locationCells에 guess가 있는지 확인
-                        if (guess == locationCells[i]){
+                for (int i = 0 ;i <locationCells.length; i++) {
+                        if(guess == locationCells[i]){ // 사용자가 추측한 값과 배열에 들어있는 셀과 비교
                                 result = "hit";
                                 numOfHits++;
                                 break;
                         }
                 }
-                if (numOfHits == locationCells.length){
-                result = "kill";
+                if(numOfHits == locationCells.length){ // 맞은 횟수가 셀배열의 길이와 같아지면. 즉, 모든 셀갯수만큼의 hit를 하면
+                        result = "kill";
                 }
                 System.out.println(result);
-                return result;
+                        return result;
         }
 }
 
-
 }}}
+
+{{{
+import java.io.*;
+public class GameHelper{
+        public String getUserInput(String prompt){
+                String inputLine = null;
+                System.out.print(prompt + " ");
+                try{
+                        BufferedReader is = new BufferedReader(
+                        new InputStreamReader(System.in));
+
+                        inputLine = is.readLine();
+                        if(inputLine.length() == 0 ) return null;
+                }catch(IOException e){
+                        System.out.println("IOException: " + e);
+                }
+                return inputLine;
+        }
+}
+}}}
+
+
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
 
