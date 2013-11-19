@@ -297,43 +297,216 @@ public class DVDPlayerTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 원시 변수에는 정수,부울,부동소수점 수와 같은 기초적인 값(단순한 비트 패턴으로 나타낼 수 있는 값)이 들어갑니다. 레퍼런스변수는 힙에 들어있는 객체를 건드릴 수 있는 방법을 나타내는 비트입니다. 
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog {
+        String name;
+        public static void main (String[] args) {
+                Dog dog1 = new Dog();
+                dog1.bark() ;
+                dog1.name = "Bill" ;
+                
+                Dog[] myDogs = new Dog[8];
+                myDogs[0] = new Dog() ;
+                myDogs[1] = new Dog() ;
+                myDogs[2] = new Dog() ;
+                myDogs[3] = new Dog() ;
+                myDogs[4] = new Dog() ;
+                myDogs[5] = new Dog() ;
+                myDogs[6] = new Dog() ;
+                myDogs[7] = dog1;
+        
+                //배열 레퍼런스를 써서 Dog객체에 접근합니다.
+                myDogs[0].name = "Amy";
+                myDogs[1].name = "Teemo";
+                myDogs[2].name = "Penta";
+                myDogs[3].name = "Roy";
+                myDogs[4].name = "Fido";
+                myDogs[5].name = "Goerge" ;
+                myDogs[6].name = "Bella";
+                //myDogs[7] 개의 이름이 뭐였지?
+                System.out.print("마지막 개의 이름: ");
+                System.out.println(myDogs[7].name);
+                
+        
+                //이제 순환문을 써서 배열에 들어있는
+                   //모든 개가 짖도록 합시다.
+                int x = 0;
+                while(x < myDogs.length) {
+                        myDogs[x].bark();
+                        x = x + 1;
+                }
+        }
+        public void bark() {
+                System.out.println(name + "이(가) 왈! 하고 짖습니다.");
+        }
+        public void eat() { }
+        public void chaseCat() { }
+}
 
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+class Books {
+        String title ;
+        String author ;
+}
 
+class BooksTestDrive {
+        public static void main(String [] args) {
+        
+                Books [] myBooks = new Books[3] ;
+                myBooks[0] = new Books();
+                myBooks[1] = new Books();
+                myBooks[2] = new Books(); //Books라는 객체 생성
+                int x = 0;
+                myBooks[0].title = "The Grapes of Java";
+                myBooks[1].title = "The Java Gatsby";
+                myBooks[2].title = "The Java Cookbook";
+                myBooks[0].author = "bob";
+                myBooks[1].author = "sue";
+                myBooks[2].author = "ian";
+        
+                while(x<3) {
+                        System.out.print(myBooks[x].title);
+                        System.out.print(" by ");
+                        System.out.println(myBooks[x].author);
+                        x = x + 1;
+                }
+        }
+}
+
+B
+class Hobbits {
+        
+        String name ;
+        
+        public static void main(String [] args) {
+        
+                Hobbits [] h = new Hobbits[3];
+                int z = 0 ;
+
+                while(z<3) {//이름의 수가 3이므로 3으로 바꿈
+        
+                        h[z] = new Hobbits();
+                        h[z].name = "bilbo";
+                        if(z==1) {
+                                h[z].name = "frodo";
+                        }
+                        if(z==2) {
+                                h[z].name = "sam";
+                        }
+                        System.out.print(h[z].name + " is a " );
+                        System.out.println("good Hobbit name");
+                        z=z+1;//맨앞에 있으면 0번째가 의미가 없으므로                }
+        }
+}
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트의 방법은 메모리를 약간 절약할 수는 있었지만, 매번 순환문을 돌 때마다 새로운 값으로 초기화되서 밥의 방법보다 효용성이 없다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+ * 캡슐화: 외부에 노출되어있는 변수를 보호하기 위하여 인스턴스 변수를 private로 지정하고 접근 제어를 위해 public으로 지정된 게터와 세터를 만든다. 
+ * 게터와 세터: 게터는 게터가 가져오기로 한 값을 리턴값 형태로 받아오기 위한 용도 / 세터는 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도 
+ * 인스턴스 변수 vs 지역 변수: 인스턴스 변수는 클래스 내에서 선언됨 / 지역변수는 메소드 내에서 선언되며, 사용하기 전에 반드시 초기화 해야함.
  
 *107p Dog* _실행_
 
 {{{
+class Dog {
+        int size ;
+        String name;
 
+        void bark() {
+                if(size > 60) {
+                        System.out.println("Wooof! Wooof!");
+                } else if (size > 14) {
+                        System.out.println("Ruff! Ruff!");
+                } else {
+                        System.out.println("Yip! Yip!");
+                }
+        }
+}
+
+class DogTestDrive {
+        
+        public static void main(String [] args) {
+                Dog one = new Dog();
+                one.size = 70;
+                Dog two = new Dog();
+                two.size = 8;
+                Dog three = new Dog();
+                three.size = 35;
+        
+                one.bark();
+                two.bark();
+                three.bark();
+        }
+}
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
 
+class XCopy {
+        
+        public static void main(String []args) {
+        
+                int orig = 42;
+        
+                XCopy x = new XCopy(); // XCopy유형의 객체 x선언
+
+                int y = x.go(orig);//객체x에서 go를 호출하고 이때 orig값을 보낸후 메소드를 실행해 y에 그값을 리턴
+        
+                System.out.println(orig + " " + y );
+        }
+        
+        int go(int arg) { //함수를 int값으로 리턴을 받게됨
+        
+                arg=arg*2;
+                
+                return arg;//arg를 리턴
+        }
+} //결과 : 42 84 즉 고칠 부분 없음.
+
+B
+
+class Clock {
+        String time;
+        
+        void setTime(String t) {
+                time = t;
+        }
+        
+        String getTime() { //time을 리턴받는 게터이고 받을 time은 String이므로 String으로 선언
+                return time;
+        }
+}
+
+class ClockTestDrive {
+        public static void main(String [] args) {
+        
+                Clock c = new Clock();
+                
+                c.setTime("1245");
+                String tod = c.getTime();
+                System.out.println("time :  "  + tod);
+        }
+} // 결과 time : 1245
 }}}
 
 
@@ -341,12 +514,95 @@ public class DVDPlayerTestDrive {
 
 *135p XP* _요약_
 
- * 익스트림 프로그래밍이란?
+ * 익스트림 프로그래밍이란? 프로그래머들이 코딩을 할때에 테스트 코드를 작성하도록함과 동시에 테스트를 기반으로 프로젝트를 완성시켜 나가도록 하는 프로그래밍 방법. 다음과 같은 방법을 따른다. 
+
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class simpledotcomtestdrive {
+        
+    public static void main(String[] args)  {
+        int numofGuesses = 0;
+        GameHelper helper = new GameHelper();
+        
+        simpledotcom thedotcom = new simpledotcom();
+        
+        int randomNum = (int)(Math.random()*5);
+        
+        int[] locations = {randomNum, randomNum+1, randomNum+2};
+        thedotcom.setLocationCells(locations);
+        boolean isAlive = true;
+        
+        while(isAlive == true)  {
+                String guess = helper.getUserInput("enter a number");
+                String result = thedotcom.checkYourself(guess);
+                numofGuesses++;
+                
+                if(result.equals("kill"))       {
+                        isAlive = false;
+                        
+                        System.out.println(numofGuesses + " guesses");
+                }
+        }
+    }
+}
 
+
+
+public class simpledotcom {
+
+        int[] locationCells;
+        int numOfHits = 0; // number of answer that you correct the target.
+
+public void setLocationCells (int[] locs)       {
+        locationCells = locs;
+}
+
+public String checkYourself (String stringGuess)        {
+        int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
+        String result = "miss";
+        for(int i=0; i < locationCells.length; i++)     {
+                if(guess == locationCells[i])   {
+                        result = "hit";
+                        numOfHits++;
+                        break;
+                }
+        }
+
+        if (numOfHits == locationCells.length)  {
+                result = "kill";
+        }
+
+        System.out.println(result);
+        
+        return result;
+        }       
+}
+             
+
+
+import java.io.*;
+
+public class GameHelper {
+        public String getUserInput(String prompt)       {
+                String inputLine = null;
+                
+                System.out.print(prompt + " ");
+                
+                try{
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        
+                        if(inputLine.length() == 0 )
+                                return null;
+                }       catch (IOException e)   {
+                        System.out.println("IOException: " + e);
+                }
+                
+                return inputLine;
+        }
+}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
