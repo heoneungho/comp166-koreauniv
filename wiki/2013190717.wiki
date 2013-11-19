@@ -1047,12 +1047,106 @@ public class DotCom {
 
 {{{
 
+public class Animal {
+	String picture;
+	String food;
+	int hunger;
+	float[] boundaries = new float[2];// height & width
+	float[] location = new float[2];//x & y
+	
+	public void makeNoise(){
+		
+	}
+	
+	public void eat(){
+		
+	}
+	
+	public void sleep(){
+		
+	}
+	
+	public void roam(){
+		
+	}
+	
+	public class Feline extends Animal{
+		public void roam(){
+			
+		}
+		
+		public class Lion extends Feline{
+			public void makeNoise(){
+				
+			}
+			public void eat(){
+				
+			}
+		}
+		
+		public class Tiger extends Feline{
+			public void makeNoise(){
+				
+			}
+			public void eat(){
+				
+			}
+		}
+		
+		public class Cat extends Feline{
+			public void makeNoise(){
+				
+			}
+			public void eat(){
+				
+			}
+		}
+	}
+	
+	public class Canine extends Animal{
+		public void roam(){
+			
+		}
+		
+		public class Wolf extends Canine{
+			public void makeNoise(){
+				
+			}
+			public void eat(){
+				
+			}
+		}
+		
+		public class Dog extends Canine{
+			public void makeNoise(){
+				
+			}
+			public void eat(){
+				
+			}
+		}
+	}
+	
+	public class Hippo extends Animal{
+		public void makeNoise(){
+			
+		}
+		public void eat(){
+			
+		}
+	}
+}
+
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 상위 클래스와 메소드 이름, 인자, 리턴 유형이 같은 메소드를 하위 클래스에 만드는 것.
+ * 오버로딩: 이름이 같고 인자 목록이 다른 두 개 이상의 메소드를 만드는 것.
+           리턴 유형이 달라도 된다.<br>
+           리턴 유형만 바꿀 수는 없다.(=인자 목록을 반드시 변경해야 한다)<Br>
+           접근 단계를 마음대로 바꿀 수 있다(private, public 등)<br>
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
