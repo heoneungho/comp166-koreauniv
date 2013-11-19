@@ -905,7 +905,9 @@ public class DotComBust {
 }}}
 
 GameHelper
-{{{import java.io.*;
+
+{{{
+import java.io.*;
 import java.util.ArrayList;
 
 public class GameHelper {
@@ -989,9 +991,11 @@ public class GameHelper {
 	}
 
 }
+
 }}}
 
 DotCom
+
 {{{
 import java.util.*;
 
@@ -1025,6 +1029,7 @@ public class DotCom {
 		return status;
 	}
 }
+
 }}}
 
 = 07. 객체마을에서의 더 나은 삶:미래를 준비합시다  =
