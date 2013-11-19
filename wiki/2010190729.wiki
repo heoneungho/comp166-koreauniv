@@ -798,7 +798,8 @@ class Dragon extends Monster{    /* Monster의 하위클래스인 Dragon */
  자바의 인터페이스는 추상 클래스와 비슷하다. 따라서 인터페이스에 들어있는 모든 메소드는 추상 메소드이고 모든 클래스는 인터페이스의 메소드를 오버라이드해야한다.
  인터페이스를 정의하려면 public interface Pet { ... }
  인터페이스를 구현하려면 public class Dog extends Canine implments Pet{ ... }
- 예시
+
+예시
 {{{
 public interface Pet{
       public abstract void beFriendly();
@@ -814,6 +815,7 @@ public class Dog extends Canine implments Pet{
  /* 일반적으로 오버라이드 하는 메소드들 */
  
 }
+}}}
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
