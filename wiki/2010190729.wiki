@@ -799,7 +799,7 @@ class Dragon extends Monster{    /* Monster의 하위클래스인 Dragon */
  인터페이스를 정의하려면 public interface Pet { ... }
  인터페이스를 구현하려면 public class Dog extends Canine implments Pet{ ... }
 
-예시
+인터페이스의 예시
 {{{
 public interface Pet{
       public abstract void beFriendly();
