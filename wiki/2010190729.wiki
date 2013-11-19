@@ -634,6 +634,54 @@ class SimpleDotCom{
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+public class Animal{
+
+        boolean picture, food, hunger;
+        int boundaries, location;
+
+        void makeNoise(){}
+        void eat(){}
+        void sleep(){}
+        void roam(){}
+
+}
+
+class Feline extends Animal{
+        void roam(){}
+}
+
+class Lion extends Feline{
+        void makeNoise(){}
+        void eat(){}
+}
+
+class Tiger extends Feline{
+        void makeNoise(){}
+        void eat(){}
+}
+
+class Cat extends Feline{
+        void makeNoise(){}
+        void eat(){}
+}
+
+class Canine extends Animal{
+        void roam(){}
+}
+
+class Wolf extends Canine{
+        void makeNoise(){}
+
+class Dog extends Canine{
+        void makeNoise(){}
+        void eat(){}
+}
+
+class Hippo extends Animal{
+        void makeNoise(){}
+        void eat(){}
+}
+
 
 }}}
  
