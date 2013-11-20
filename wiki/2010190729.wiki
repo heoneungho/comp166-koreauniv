@@ -640,6 +640,40 @@ public class GameHelper{
 
 {{{
 
+public class SimpleDotCom{
+
+        int[] locationCells;
+        int numOfHits = 0;
+        boolean[] hitCells={false,false,false}; // 각 셀의 상태(맞추었는지/안맞추었는지)를 나타내는 hitCells배열. 부울 배열 인스턴스 변수 
+
+        public void setLocationCells(int[] locs){
+                locationCells = locs;
+        }
+
+        public String checkYourself(String stringGuess){
+                int guess = Integer.parseInt(stringGuess);
+                String result = "miss";
+                for (int i = 0 ;i <locationCells.length; i++) {
+                        if(guess == locationCells[i]){
+                                if(hitCells[i] == false ){ // hit한 적이 없을 때 실행
+
+                                        result = "hit";
+                                        numOfHits++;
+                                        hitCells[i] = true;
+                                        break;
+                                }
+                                else                       // hit한 적이 있으면 이미 hit된 숫자임을 알려준다.
+                                        result = "already hit number";
+                                        break;
+                        }
+                }
+                if(numOfHits == locationCells.length){
+                        result = "kill";
+                }
+                System.out.println(result);
+                        return result;
+        }
+}
 
 
 }}}
