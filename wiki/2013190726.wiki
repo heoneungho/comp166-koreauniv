@@ -1540,6 +1540,7 @@ class RetentionBot{
 }}}
 {{{
 메인 메소드가 들어있는 클래스 TestLifeSupportSim
+
 public class TestLifeSupportSim{
         public static void main(String[] args){
                 ArrayList<SimUnit> aList = new ArrayList<SimUnit>();// ArrayList를 생성
