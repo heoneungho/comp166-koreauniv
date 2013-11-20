@@ -681,6 +681,33 @@ public class SimpleDotCom{
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom{
+
+        int[] locationCells;
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs){
+                locationCells = locs;
+        }
+
+        public String checkYourself(String stringGuess){
+                int guess = Integer.parseInt(stringGuess);
+                String result = "miss";
+                for (int i = 0 ;i <locationCells.length; i++) {
+                        if(guess == locationCells[i]){
+                                        result = "hit";
+                                        locationCells[i] = -1; //locationCells에 들은 값을 -1로 바꿔준다.
+                                        numOfHits++;
+                                        break;
+                        }
+                }
+                if(numOfHits == locationCells.length){
+                        result = "kill";
+                }
+                System.out.println(result);
+                        return result;
+        }
+}
 
 }}}
 
