@@ -1496,13 +1496,76 @@ public Duck() {
  * 인스턴스 변수:
  객체를 지원하는 역할(객체가 아는 것에 해당)을 하고, 객체 내에서 살기 때문에 힙 영역에 저장된다.<br> 인스턴스 변수는 객체의 상태를 저장하며, 해당 객체가 가비지 컬렉터에 의해 제거되면 함께 삭제된다.  
 
- * 지역 변수: 
-
+ * 지역 변수:
+ 메소드 내의 알고리즘을 작동시키기 위해서는 반드시 지역 변수가 있어야 한다. 스택 영역에 저장되며, 메소드의 생명주기와 삶과 죽음을 함께 한다.<br> 즉, 메소드가 스택 영역에 올라가면 지역 변수가 생성되고, 메소드의 실행이 완료되어 스택 영역에서 제거되면 지역 변수도 함께 소멸된다.<br> 객체를 참조하는 레퍼런스가 지역 변수인 경우, 지역 변수가 사라질 때까지 그 객체 내의 인스턴스 변수는 소멸되지 않는다.  
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+모듈의 온도 유지를 위한 시뮬레이션 코드
+}}}
+{{{
+클래스 V2Radiator
 
+import java.util.*;
+
+class V2Radiator {
+        V2Radiator(ArrayList<SimUnit> list)     { // ArrayList<SimUnit>을 넘김.
+                for(int x = 5; x < 5 ; x++){
+                        list.add(new SimUnit("V2Radiator")); // V2Radiator객체를 추가
+                }
+        }
+}// V3 호출 시에 V2의 생성자가 호출되     ArrayList의 불필요한 전달을 막기 위해 상속은 하지 않는다.
+}}}
+/ 불필요하게 V3를 호출할 때마다 V2생성자를 호출할 때 ArrayList를 전달하는 것을 막기위해 상속을 안합니다.
+{{{
+클래스 V3Radiator
+
+class V3Radiator {
+        V3Radiator(ArrayList<SimUnit> lglist){
+                // super(lglist);를 제거
+                for(int g = 0; g < 10 ; g++){
+                        lglist.add(new SimUnit("V3Radiator"));// V3Radiator객체를 추가
+                }
+        }
+}
+}}}
+{{{
+클래스 RetentionBot
+
+class RetentionBot{
+        RetentionBot(ArrayList<SimUnit> rlist){
+                rlist.add(new SimUnit("Rention")); // Rention객체를 추가
+        }
+}
+
+public class TestLifeSupportSim{
+        public static void main(String[] args){
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();// ArrayList를 생성
+                V2Radiator v2 = new V2Radiator(aList);// V2Radiator 객체 생성
+                V3Radiator v3 = new V3Radiator(aList);// V3Radiator 객체 생성
+                for(int z = 0 ; z < 20 ; z++){
+                        RetentionBot ret = new RetentionBot(aList); //RententionBot객체를 생성
+                }
+        }
+}
+}}}
+{{{
+클래스 SimUnit
+
+class SimUnit {
+        String botType;
+        SimUnit(String type){
+                botType = type;
+        }
+        int powerUse(){
+                if("Retention".equals(botType)){
+                        return 2;                       
+                }else{
+                        return 4;
+                }
+        }
+}
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
