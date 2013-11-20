@@ -718,7 +718,7 @@ import java.util.*;
 
 public class DotCom{
 
-        ArrayList<String> locationCells;
+        ArrayList<String> locationCells; // ArrayList locationCells를 생성
         int numOfHits = 0;
 
         public void setLocationCells(ArrayList<String> locs){
@@ -729,11 +729,11 @@ public class DotCom{
                 String result = "miss";
                 int index = locationCells.indexOf(userInput);
                 if(index>=0){
-                        locationCells.remove(index);
+                        locationCells.remove(index);//hit한 ArrayList의 index를 삭제
 
-                        if(locationCells.isEmpty()){
+                        if(locationCells.isEmpty()){ //ArrayList가 비어있으면(모두다 hit시켰으면)
                                 result="kill";
-                        }else{
+                        }else{                       //하나라도 남아있다면 hit.
                                 result="hit";
                         }
                 }
@@ -754,10 +754,11 @@ public class DotComTestDrive{
                 DotCom theDotCom = new DotCom();
                 int randomNum = (int) (Math.random()*5);
 
-                ArrayList<String> locations = new ArrayList<String>();
-                locations.add(String.valueOf(randomNum));
+                ArrayList<String> locations = new ArrayList<String>();//ArrayList locations 객체생성
+                locations.add(String.valueOf(randomNum)); 
                 locations.add(String.valueOf(randomNum+1));
                 locations.add(String.valueOf(randomNum+2));
+/* randomNum은 integer이고 locations은 string을 받는다. 그렇기때문에 add에 String.valueOf(randomNum)을 사용하여 추가 */
 
                 theDotCom.setLocationCells(locations);
 
