@@ -1232,6 +1232,53 @@ class Dragon extends Monster{
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList;
+
+
+public class Test {
+	public static void main(String[] args){
+		ArrayList aList = new ArrayList();
+		V2Radiator v2 = new V2Radiator(aList);
+		V3Radiator v3 = new V3Radiator(aList);
+		
+		for(int z=0; z<20; z++)
+			RetentionBot ret = new RetentionBot(aList);
+	}
+}
+
+class V2Radiator{
+	V2Radiator(ArrayList list){
+		for(int x=0; x<5; x++)
+			list.add(new SimUnit("V2Radiator"));
+	}
+}
+
+class V3Radiator extends V2Radiator{
+	V3Radiator(ArrayList lglist){
+		for(int y=0; y<10; y++)
+			lglist.add(new SimUnit("V2Radiator"));
+	}
+}
+
+class RetentionBot{
+	RetentionBot(ArrayList rlist){
+		rlist.add(new SimUnit("Retention"));
+	}
+}
+
+class SimUnit{
+	String botType;
+	SimUnit(String type){
+		botType = type;
+	}
+	
+	int powerUse(){
+		if("Retention".equals(botType))
+			return 2;
+		else
+			return 4;
+	}
+}
 
 }}}
 
