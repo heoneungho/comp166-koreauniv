@@ -1537,7 +1537,8 @@ class RetentionBot{
                 rlist.add(new SimUnit("Rention")); // Rention객체를 추가
         }
 }
-
+}}}
+{{{
 public class TestLifeSupportSim{
         public static void main(String[] args){
                 ArrayList<SimUnit> aList = new ArrayList<SimUnit>();// ArrayList를 생성
