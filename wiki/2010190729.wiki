@@ -714,9 +714,87 @@ public class SimpleDotCom{
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.*;
+
+public class DotCom{
+
+        ArrayList<String> locationCells;
+        int numOfHits = 0;
+
+        public void setLocationCells(ArrayList<String> locs){
+                locationCells = locs;
+        }
+
+        public String checkYourself(String userInput){
+                String result = "miss";
+                int index = locationCells.indexOf(userInput);
+                if(index>=0){
+                        locationCells.remove(index);
+
+                        if(locationCells.isEmpty()){
+                                result="kill";
+                        }else{
+                                result="hit";
+                        }
+                }
+                System.out.println(result);
+                return result;
+        }
+}
+
 
 }}}
+{{{
+import java.util.ArrayList;
+public class DotComTestDrive{
+        public static void main(String[] args){
+                int numOfGuesses = 0;
+                GameHelper helper = new GameHelper();
 
+                DotCom theDotCom = new DotCom();
+                int randomNum = (int) (Math.random()*5);
+
+                ArrayList<String> locations = new ArrayList<String>();
+                locations.add(String.valueOf(randomNum));
+                locations.add(String.valueOf(randomNum+1));
+                locations.add(String.valueOf(randomNum+2));
+
+                theDotCom.setLocationCells(locations);
+
+                boolean isAlive = true;
+
+                while(isAlive == true) {
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+
+                        if(result.equals("kill")){
+                                isAlive = false;
+                                System.out.println(numOfGuesses + " guesses");
+                        }
+                }
+        }
+}
+}}}
+{{{
+import java.io.*;
+public class GameHelper{
+        public String getUserInput(String prompt){
+                String inputLine = null;
+                System.out.print(prompt + " ");
+                try{
+                        BufferedReader is = new BufferedReader(
+                        new InputStreamReader(System.in));
+
+                        inputLine = is.readLine();
+                        if(inputLine.length() == 0 ) return null;
+                }catch(IOException e){
+                        System.out.println("IOException: " + e);
+                }
+                return inputLine;
+        }
+}
+}}}
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
