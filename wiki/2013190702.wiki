@@ -89,6 +89,8 @@ public class PhraseOMatic {
 
 보안 문제 예방. 
 
+원래 들어가야 할 것이 아닌 다른 유형의 값이 들어갈 때는 ClassCast Exception을 발생시킴.
+
 바이트 코드가 만들어지고 실행되기 전까지 외부인의 접근을 확인하는 작업을 함.
 
 *컴파일러: 
