@@ -180,3 +180,100 @@ for(Entry<String, SampleItem> e : itemMap.entrySet()) {
     valList.add(item.val);
 }
 }}}
+
+= 파일에서 데이터 읽어오기 =
+
+프로그램이 작동하기 위해 필요한 데이터를 파일로부터 읽어들이는 예제입니다. 4개의 지하철역에 대한 정보를 읽어들이는 예을 보여드리도록 하겠습니다.
+
+*station.txt*
+
+읽어들인 데이터파일입니다. 파일 내용은 utf8로 저장되어 있어야 합니다. 아래 내용을 텍스트 파일에 붙여넣고 utf8 형식으로 저장한 다음, eclipse project의 assets폴더에 추가하세요. 
+
+{{{
+0329|고속터미널|Express Bus Terminal|3|02-6110-3391|서울특별시 서초구 신반포로 지하188|서울과 지방 주요도시를 고속버스로 연결하는 경부선, 호남선, 영동선등 고속버스터미널이 지상에 위치한 데서 역명 유래
+0423|충무로|Chungmuro|4|02-6110-4231|서울특별시 중구 퇴계로 지하199|충무로는 임진왜란때 명장 충무공 이순신의 시호를 붙인 것이다. 이순신 장군이 태어난 곳은 건천동 즉 현재의 인현동1가 였으므로 이를 기념하기 위해 충무로로 지었다. 이곳은 남촌 또는 아랫대로 불리우던 지역으로 사육신의 힌사람인 박팽년 외에 많은 명사들이 살았다.
+0424|명동|Myeong-dong|4|02-6110-4241|서울특별시 중구 퇴계로 지하126|명동은 갑오개혁(1894년)때 처음 붙여진 이름으로 이는 조선초부터 이곳을 명례방이라 한데서 유래된 것이다. 유행의 1번지로 일컫는 이곳은 한때 다방을 중심으로 ‘예술의 거리’로 알려져 있다.
+0425|회현|Hoehyeon|4|02-6110-4251|서울특별시 중구 퇴계로 지하54|회현동은 조선말 고종때 처음 붙여진 이름으로 이는 전일의 호현동(好賢洞)이 반음되어 유래된 것으로 이곳에는 조선왕조때 정광필,김상헌 형제 등의 어진 사람들이 모여 살았기 때문에 회현동(會賢洞)이라 불리어진 이름이다.
+}}}
+
+*StationList.java*
+
+4개의 Station(지하철역)을 저장할 클래스입니다.
+
+{{{
+
+class Station {
+    public String code;
+    public String name;
+    public String enName;
+    public String line;
+    public String tel;
+    public String address;
+    public String history;
+
+    public Station() {
+    }
+
+    public Station(String c, String n, String e, String l, String t, String a,
+            String h) {
+        code = c;
+        name = n;
+        enName = e;
+        line = l;
+        tel = t;
+        address = a;
+        history = h;
+    }
+
+    public String toString() {
+        return String.format("%s (%s호선)", name, line);
+    }
+}
+
+public class StationList {
+
+    public static ArrayList<Station> dataList = new ArrayList<Station>();
+
+    public static void LoadStation(BufferedReader brStation)
+            throws Exception {
+
+        dataList.clear();
+
+        String readLine = "";
+        while ((readLine = brStation.readLine()) != null) {
+            String[] items = readLine.split("|");
+            if (items.length < 5)
+                continue;
+
+            String code = items[0];
+            String name = items[1];
+            String enName = items[2];
+            String line = items[3];
+            String tel = items[4];
+            String address = (items.length > 5) ? items[5] : "";
+            String history = (items.length > 6) ? items[6] : "";
+
+            Station station = new Station(code, name, enName, line, tel,
+                    address, history);
+
+            dataList.add(station);
+        }
+    }
+}
+}}}
+
+*MainActivity.java*
+
+onCreate 함수 내부에 아래 코드를 삽입합니다.
+
+{{{
+
+try {
+    InputStream isStation = getAssets().open("station.txt");
+    BufferedReader brStation = new BufferedReader(new InputStreamReader(isStation));
+    StationList.LoadStation(brStation);
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+}}}
