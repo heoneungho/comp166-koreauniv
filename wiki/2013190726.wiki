@@ -1580,7 +1580,7 @@ class SimUnit {
  * 정적 메소드를 선언하는 방법:
  메소드 선언 시 앞부분에 static을 넣어준다.
 
- ex) public static setNum() {
+ ex) public static void setNum(int a) {
      ........     
      }
  
