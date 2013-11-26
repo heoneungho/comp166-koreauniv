@@ -4,7 +4,7 @@
 
 = Introduction =
 
-http://comp166-koreauniv.googlecode.com/files/wikiimg.png
+http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 렉 걸리고 어려운 게임은 그만! Simple is the best에 입각하여 말그대로 심플한 게임을 소개합니다. 
 
