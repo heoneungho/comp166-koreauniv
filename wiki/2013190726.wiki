@@ -1687,7 +1687,7 @@ public class StaticTests extends StaticSuper { // StaticTests는 StaticSuper를 
                 System.out.println("in main");
         }
 
-        StaticSuper ss = new StaticSuper(); // ss를 읽기위해 메인 메소드 밖으로 빠져 나오기 때문에 결과 출력 순서에 영향을 준다.
+        StaticSuper ss = new StaticSuper(); // 객체 ss를 생성해주면서 잠시 메인 메소드 밖으로 빠져 나와야 책의 출력 결과와 같은 결과를 얻을 수 있다.
 }
 
 }}}
