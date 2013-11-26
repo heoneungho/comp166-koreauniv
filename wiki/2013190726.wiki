@@ -1604,6 +1604,28 @@ class SimUnit {
 
 {{{
 
+예외처리 구현을 위한 클래스 Exception
+
+public class Exception {
+        public static void main(String[] args) {
+                
+                public void takeRisk() throws BadException{ // 외부로 BadException을 던질 수 있다는 뜻
+                        if(abandonAllHope){
+                                throw new BadException(); // 새로운 Exception객체을 던진다.
+                        }
+                }
+                
+                public void crossFigners(){
+                        try{
+                                anObject.takeRisk();
+                        }catch(BadException ex){
+                                System.out.println("Aaargh!");
+                                ex.printStackTrace(); // 예외 상황을 스택 트레이스 출력을 통해 처리한다.
+                        }
+                }
+        }
+}
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
