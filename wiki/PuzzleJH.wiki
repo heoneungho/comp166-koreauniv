@@ -1,5 +1,5 @@
 #summary 정사각형 퍼즐맞추기 게임
-#labels 2013190728
+#labels 2013190728_이지현
 
 = Introduction =
 
