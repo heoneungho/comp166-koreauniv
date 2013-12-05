@@ -8,12 +8,20 @@
 
 = Details =
 
-  * 사용자가 직접 과제 등록
-  * 이틀 전 알람 작동
-  * 하루 전 알람 작동
+[[파일:]]
 
-  * 달력을 삽입하고 그 안에 간략한 과제 내용을 적어 사용자가 보기 쉽도록 편성
-  * 달력은 2~3주 간격으로 삽입
-  * 해당 날짜를 클릭하면 과제 내용을 상세히 볼 수 있도록 설정
+[[파일:]]
 
-  * 기간이 1주일 이내로 남은 과제들은 개별적으로 맨 윗부분에 표시
+= 출처 =
+
+http://seungngil.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Calendar-%EC%98%88%EC%A0%9C-%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0
+
+대부분의 소스 코드는 위 사이트에서 참조했으며
+
+http://147.46.109.56:9090/town/projects.jsp?sort=1&dir=%5Cbook04%5CSampleCalendarMonthView
+
+책에 나온 소스코드를 조금 참고하기 위해 위 사이트를 이용했다.
+
+http://www.androidside.com/bbs/board.php?bo_table=B49&wr_id=102778
+
+위 사이트는 오류 해결에 큰 도움을 준 사이트이다.
