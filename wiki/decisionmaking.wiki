@@ -3,17 +3,7 @@
 
 = Introduction =
 
-살아가면서 결정하기 힘든 것들을 난수로 결정해드립니다.
+식사메뉴를 추천해줍니다.
 
 
 = Details =
-주요 기능 :
-식사 메뉴 셔플 
-주사위
-
-https://drive.google.com/file/d/0BzNZQlQUTmZAQ0haVlV1elZmXzQ/edit?usp=sharing
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
