@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 	private TextView CalendarTitle;
 	private GridView GridViewCalendar;
 
-	private ArrayList<Day> mDayList;
+	private ArrayList<Day> DayList;
 	private CalendarAdapter CalendarAdapter;
 	Calendar ThisMonth;
 /*onCreate메소드는 이 클래스가 실행되었을때 바로 실행되는 메소드를 말합니다. 초기
@@ -149,7 +149,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		bLastMonth.setOnClickListener(this);
 		bNextMonth.setOnClickListener(this);
 		GridViewCalendar.setOnItemClickListener(this);
-		mDayList = new ArrayList<Day>();
+		DayList = new ArrayList<Day>();
 	}
 /*onResume메소드는 onCreate메소드와 유사합니다. 앞의 메소드는 새롭게 실행할때 사용
 되는 메소드라면 뒤의 메소드는 이 메소드를 만들어주면 onCreate가 실행된후 다시 해당
@@ -173,7 +173,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 		int dayOfMonth;
 		int thisMonthLastDay;
 
-		mDayList.clear();
+		DayList.clear();
 
 		dayOfMonth = calendar.get(Calendar.DAY_OF_WEEK);
 		thisMonthLastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -205,20 +205,20 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 			day.setDay(Integer.toString(date));
 			day.setInMonth(false);
 
-			mDayList.add(day);
+			DayList.add(day);
 		}
 		for (int i = 1; i <= thisMonthLastDay; i++) {
 			day = new Day();
 			day.setDay(Integer.toString(i));
 			day.setInMonth(true);
 
-			mDayList.add(day);
+			DayList.add(day);
 		}
 		for (int i = 1; i < 42 - (thisMonthLastDay + dayOfMonth - 1) + 1; i++) {
 			day = new Day();
 			day.setDay(Integer.toString(i));
 			day.setInMonth(false);
-			mDayList.add(day);
+			DayList.add(day);
 		}
 
 		initCalendarAdapter();
@@ -270,7 +270,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 이 메소드에서는 새로운 캘린더 객체를 만들때에 day라는 레이아웃에 새로운 객체들을 
 집어넣는 기능을 합니다.*/
 	private void initCalendarAdapter() {
-		CalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
+		CalendarAdapter = new CalendarAdapter(this, R.layout.day, DayList);
 		GridViewCalendar.setAdapter(CalendarAdapter);
 	}
 /*onItemClick메소드는 그리드뷰나 리스트뷰를 사용하는 클래스에서 사용되는 메소드입니다. 
@@ -279,7 +279,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 	public void onItemClick(AdapterView<?> parent, View v, int position,
 			long arg3) {
 /*게터 메소드를 통해서 해당 정보를 받아옵니다.*/
-		Day day = mDayList.get(position);
+		Day day = DayList.get(position);
 		String j = day.getDay();
 /*토스트를 사용한 이유는 해당날짜가 올바르게 클릭되었는지 확인해주기 위해서입니다.*/
 		Toast.makeText(
