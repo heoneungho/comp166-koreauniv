@@ -643,6 +643,10 @@ for문을 사용하여 해당날짜의 모든 데이터를 표시합니다.*/
 
 https://comp166-koreauniv.googlecode.com/files/xxx.png
 
+그리드뷰와 마찬가지로 리스트뷰에서도 어댑터를 사용합니다.
+
+어댑터를 사용하여 뷰의 각 아이템의 속성을 부여해줍니다.
+
 {{{
 
 package com.example.hi;
