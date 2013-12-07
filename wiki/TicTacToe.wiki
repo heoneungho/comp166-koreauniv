@@ -30,6 +30,7 @@ http://comp166-koreauniv.googlecode.com/files/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%
 
 drawable 폴더에는 O모양 X모양 그림과 scoreboard모양, 아이콘모양, 틱택토간판모양, 도움말그림의 파일이 있다.
 
+http://comp166-koreauniv.googlecode.com/files/scoreboard_bg.png
 
 
 
