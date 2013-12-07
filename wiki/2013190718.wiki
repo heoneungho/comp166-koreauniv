@@ -1381,19 +1381,147 @@ public class StaticTests extends StaticSuper{
 *357p try/catch* _구현후 주석달기_
 
 {{{
-
+public class Test
+{
+        public static void main()
+        {         
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();    //오류가 발생할 수 있는 행동
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");//오류를 잡으면 메세지를 출력한다.
+                        ex.printStackTrace();
+                }
+        }
+        }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
+
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();//mini 객체를 만든다.
+                mini.play();//mini객체에 대하여 play 메소드를 실행한다.
+        }
+        
+        public void play()
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//Sequencer를 받아서 연다.
+                        player.open();
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        //Sequence를 생성하면서 Sequence를 생성자로 넘겨준다.
+                        
+                        Track track = seq.createTrack();//Sequence에 track을 생성할 것을 요청한다..
+                        
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn); // track에 MidiEvent를 넣는다. 
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff); // track에 MidiEvent를 넣는다. 일종의 인스턴스변수이다.
+                        
+     
+                        
+                        
+                        player.setSequence(seq);//Sequencer에 Sequence를 보낸다.
+                        
+                        player.start();//Sequencer의 start()메소드를 부른다.
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }
+}
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
 
+
+public class MiniMusicCmdLine //첫번째
+{
+        public static void main(String[] args)
+        {
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();
+                
+                if(args.length < 2 )
+                        System.out.println("악기와 음 높이르 ㄹ지정하는 인자를 입력하세요.");
+                else
+                {
+                        int instrument = Integer.parseInt(args[0]);//악기를 설정한다.
+                        int note = Integer.parseInt(args[1]);//노트를 설정한다.
+                        mini.play(instrument,note);//play 메소드 실행하면서 인자로 넘겨줍니다.
+                        
+                }
+        }
+        
+        public void play(int instrument, int note)
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//sequencer를 생성한다.
+                        player.open();//생성한 sequencer(player)를 연다.
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();//track을 생성한다.
+                        
+                        MidiEvent event = null;//event 생성하고 그 값을 null로 설정한다.
+                        
+                        ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+                }
+                
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                }
+        }
+}
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
