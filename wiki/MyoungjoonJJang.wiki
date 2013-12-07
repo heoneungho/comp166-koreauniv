@@ -723,6 +723,15 @@ public class IconTextListAdapter extends BaseAdapter {
 
 }}}
 
+*IconTextView*
+
+https://comp166-koreauniv.googlecode.com/files/%E3%85%94%E3%85%94%E3%85%94.png
+
+{{{
+
+
+
+}}}
 *4.Make 클래스*
 
 https://comp166-koreauniv.googlecode.com/files/make.png
