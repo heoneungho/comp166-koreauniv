@@ -6,7 +6,7 @@
 
 = Details =
 
-버튼은 New Game. 
+[[파일|메인화면.jpg]]
 
 = 소스코드 =
 
