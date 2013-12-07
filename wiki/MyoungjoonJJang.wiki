@@ -561,7 +561,8 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-
+/*2011년 몇월이라고 적혀있는 텍스트뷰 저렇게 적혀있다고 해서 진짜로 저렇게 나오는
+것이 아니라 메소드를 통하여 텍스트의 내용이 바뀐다.*/
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="143dp"
@@ -572,6 +573,8 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
         android:textColor="#000"
         android:textSize="20sp"
         android:textStyle="bold" />
+/*대망의 그리드뷰가 생성되는 공간 사진에는 이상하게 나와있지만 클래스를 통해서 객
+체가 할당되면 저렇게 나오지 않는다.*/
 
     <GridView
         android:id="@+id/gv_calendar"
@@ -586,12 +589,14 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
         android:layout_height="fill_parent"
         android:orientation="horizontal"
         android:gravity="center">
+/*지난달로 가게하는 버튼*/
         <Button
             android:id="@+id/b_last"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="지난달"  />
+/*다음달로 가게하는 버튼*/
         <Button
             android:id="@+id/b_next"
             android:layout_width="fill_parent"
