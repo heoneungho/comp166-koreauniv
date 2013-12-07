@@ -1083,6 +1083,8 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
 }}}
 *listitem.xml*
 
+이 레이아웃은 리스트뷰의 한 아이템을 위해 만들어진 XML 레이아웃입니다.
+
 {{{
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -1090,19 +1092,21 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-   <ImageView
+/*이부분은 책에 있길래 일단 적어본 이미지뷰 부분이지만 사용하지 않으므로 주석처리 하겠습니다.*/
+/*   <ImageView
  		android:id="@+id/iconItem"  
   		android:layout_width="wrap_content" 
   		android:layout_height="wrap_content"
   		android:padding="8dp"
   		android:layout_gravity="center_vertical"
   		/>
- 	
+*/ 	
   	<LinearLayout
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"  
  		android:orientation="vertical"
  		>
+/*이 부분은 첫번째 줄에있는 텍스트뷰를 나타냅니다.*/
 	 	<TextView  
 	 		android:id="@+id/dataItem01"  
 		    android:layout_width="wrap_content" 
@@ -1111,16 +1115,19 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
 		    android:textSize="16dp"
 		    android:padding="4dp"
 		    />
+/*RelativeLayout을 통하여 레이아웃을 위와 아래로 구분을 짓습니다.*/
 		<RelativeLayout
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
 			android:padding="4dp"
  			>
+/*이 부분은 리스트뷰의 왼쪽 밑에있는 텍스트 뷰를 나타냅니다.*/
  			<TextView  
 		 		android:id="@+id/dataItem02"  
 			    android:layout_width="wrap_content" 
 			    android:layout_height="wrap_content"
 			    />
+/*이 부분은 리스트뷰의 오른쪽 밑에있는 텍스트 뷰를 나타냅니다.*/
 			<TextView  
 		 		android:id="@+id/dataItem03"  
 			    android:layout_width="wrap_content" 
