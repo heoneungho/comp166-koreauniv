@@ -402,6 +402,9 @@ public class Make extends Activity {
 			public void onClick(View v) {
 
 				Intent intent = new Intent(getBaseContext(), MainActivity.class);
+
+/*Toast를 import한 메소드를 사용하지 않고 새로 메소드를 지정해주어 한 이유는 
+onCreate메소드에서는 toast를 사용할수 없다는 에러가 뜨기 때문입니다.*/
 				Toast();
 				m = datePicker.getMonth();
 				y = datePicker.getYear();
