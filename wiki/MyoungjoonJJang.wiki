@@ -193,7 +193,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 		}
 
 		lastMonthStartDay -= (dayOfMonth - 1) - 1;
-
+/*캘린더의 타이틀을 바꾸는 메소드를 호출*/
 		CalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 
@@ -234,6 +234,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				1);
 		calendar.add(Calendar.MONTH, -1);
+/*캘린더의 타이틀을 바꾸는 메소드를 호출*/
 		CalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 		return calendar;
@@ -247,6 +248,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				1);
 		calendar.add(Calendar.MONTH, +1);
+/*캘린더의 타이틀을 바꾸는 메소드를 호출*/
 		CalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 		return calendar;
