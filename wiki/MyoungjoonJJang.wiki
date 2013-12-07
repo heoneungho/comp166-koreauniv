@@ -214,6 +214,10 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		initCalendarAdapter();
 	}
 
+/*getLastMonth메소드는 새로운 이전 달 캘린더 객체를 만드는 메소드입니다.
+현재의 캘린더 객체를 받아와서 그를 바탕으로 이전 달의 캘린더 객체를 가져옵니다.
+그 후 그 객체를 리턴합니다.*/
+
 	private Calendar getLastMonth(Calendar calendar) {
 		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				1);
@@ -222,6 +226,10 @@ public class MainActivity extends Activity implements OnItemClickListener,
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 		return calendar;
 	}
+
+/*getNextMonth메소드는 새로운 다음달 캘린더 객체를 만드는 메소드입니다.
+현재의 캘린더 객체를 받아와서 그를 바탕으로 다음달의 캘린더 객체를 가져옵니다.
+그 후 그 객체를 리턴합니다.*/
 
 	private Calendar getNextMonth(Calendar calendar) {
 		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
