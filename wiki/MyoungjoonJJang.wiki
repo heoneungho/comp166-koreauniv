@@ -786,6 +786,25 @@ xml 레이아웃을 레이아웃 인플레이터를 이용하여 객체화를 �
 }
 
 }}}
+
+*onDataSelectionListener*
+
+https://comp166-koreauniv.googlecode.com/files/onDataSelectionListener.png
+
+{{{
+
+package com.example.hi;
+
+import android.view.View;
+import android.widget.AdapterView;
+
+public interface OnDataSelectionListener {
+
+	public void onDataSelected(AdapterView parent, View v, int position, long id);
+
+}
+
+}}}
 *4.Make 클래스*
 
 https://comp166-koreauniv.googlecode.com/files/make.png
