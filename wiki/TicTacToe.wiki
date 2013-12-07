@@ -30,10 +30,403 @@ https://comp166-koreauniv.googlecode.com/files/%EA%B2%8C%EC%9E%84%ED%99%94%EB%A9
 
 = 클래스 =
 
+http://comp166-koreauniv.googlecode.com/files/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83.PNG
+
+그래서 TicTacToe.java와 연동되는 레이아웃은 main.xml이며 나머지 help, name_dialog_2, three xml파일은 따로 추가를 한 것이다. 그래서 클래스 안에서 레이아웃으로 넘어가도록 만들었다. 
+
+drawable 폴더에는 O모양 X모양 그림과 scoreboard모양, 아이콘모양, 틱택토간판모양, 도움말그림의 파일이 있다.
+
+
 http://comp166-koreauniv.googlecode.com/files/%ED%81%B4%EB%9E%98%EC%8A%A4%EC%86%8C%EA%B0%9C.png
 
 액티비티는 처음 메인화면만 만들고 나머지는 xml layout file을 추가하는 형식으로 해서 클래스 파일이 하나밖에 없다. 
 
-http://comp166-koreauniv.googlecode.com/files/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83.PNG
 
-그래서 TicTacToe.java와 연동되는 레이아웃은 main.xml이며 나머지 help, name_dialog_2, three xml파일은 따로 추가를 한 것이다. 그래서 클래스 안에서 레이아웃으로 넘어가도록 만들었다. 
+http://comp166-koreauniv.googlecode.com/files/%EB%A9%94%EC%9D%B8%ED%81%B4%EB%9E%98%EC%8A%A4.png
+
+메인클래스 안에서 모든 일을 처리하기 때문에 함수도 많고 무엇보다 전역변수를 많이 선언하였다. 
+
+OnClickListener 를 이용한 함수가 2개가 있다. Welcome_listener 와 Button_listener가 있다.
+
+그리고 다른 함수로는 arr_isFull, new_game, after_move, set_score, show_result, result_check 가 있다.
+
+
+이제 코드를 보자.
+
+{{{
+
+package com.example.linematch;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+public class Linematch extends Activity {
+
+	public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+        getActionBar().setTitle("TicTacToe"); //위에 액션바 이름을  TicTacToe로 통일하였다.
+        final Button iv_new_game = (Button) findViewById(R.id.new_game);
+        final Button iv_help = (Button) findViewById(R.id.help);
+        final Button iv_quit = (Button) findViewById(R.id.quit);
+        
+        iv_new_game.setOnClickListener(welcome_listener);
+        iv_help.setOnClickListener(welcome_listener);
+        iv_quit.setOnClickListener(welcome_listener);
+    }
+    
+    /** 
+     * 메인 화면 버튼들 설정
+     **/
+    OnClickListener welcome_listener = new View.OnClickListener() {
+    	public void onClick(View v) {
+    		final Button iv = (Button) v;
+    		if (iv.getId() == R.id.new_game) {
+    			showDialog(NAME_DIALOG_ID);
+    		}
+    		else if (iv.getId() == R.id.help) {
+    			showDialog(HELP_DIALOG_ID);
+    		}
+    		else if (iv.getId() == R.id.quit) {
+    			finish();
+    		}
+    	}
+    };
+    
+    /**
+     * Dialog 인터페이스 설정.
+     */
+    protected Dialog onCreateDialog(int id) {
+        Dialog mdialog = new Dialog(this);
+        switch(id) {
+        case NAME_DIALOG_ID:
+        	mdialog.setContentView(R.layout.name_dialog_2);
+    		mdialog.setTitle("Player Names");
+    		mdialog.setCancelable(true);
+    		
+    		final EditText namep1 = (EditText) mdialog.findViewById(R.id.namep1);
+    		final EditText namep2 = (EditText) mdialog.findViewById(R.id.namep2);
+        
+    		Button ok_b = (Button) mdialog.findViewById(R.id.ok);
+    		ok_b.setOnClickListener(new OnClickListener() {
+    			public void onClick(View v) {
+    				player_name_1 = namep1.getText();
+    				player_name_2 = namep2.getText();
+    				score_player_1 = 0;
+    				score_player_2 = 0;
+    				new_game(namep1.getText());
+    				dismissDialog(1);
+    			}
+    		});
+            break;
+            
+        case HELP_DIALOG_ID :
+        	mdialog.setContentView(R.layout.help);
+            mdialog.setTitle("Help");
+            mdialog.setCancelable(true);
+        	break;
+        default:
+            mdialog = null;
+        }
+        return mdialog;
+    }   
+    
+    
+    // **************************** 전역변수 선언 시작********************************************
+    int count = 0;				//얼마나 움직였는지 세는 변수 count
+    int arr[][] = 
+    {{0,0,0},{0,0,0},{0,0,0}};	// 3X3 배열
+    int player = 1;				// player 번호 1로 지정..
+	int game_mode = 0;
+	
+	int user_symbol = 0;			// O모양은 player1, X모양은 player2.
+	
+	int skin_cross = R.drawable.system_cross;	
+	int skin_dot = R.drawable.system_dot;		
+	int skin_layout = R.layout.three;			
+	int game_bg = 2;
+	
+	// 플레이어 이름 초기화.
+	CharSequence player_name_1 = "Player 1";
+	CharSequence player_name_2 = "Player 2";
+	
+	// 스코어 0으로 초기화.
+	int score_player_1 = 0;
+	int score_player_2 = 0;
+	
+    
+    // dialog IDs
+    final int NAME_DIALOG_ID = 1;
+    final int HELP_DIALOG_ID = 2;
+	
+	//************************ 전역변수 선언 끝 ********************************** 
+	
+	/**
+	 * 게임 안의 모든 imagebutton에 onclicklistener 설정. 
+	 * */
+    OnClickListener button_listener = new View.OnClickListener() {
+        public void onClick(View v) {
+            ImageButton ibutton = (ImageButton) v;
+        	
+        	// 버튼이 결과를 얻기 전 까지는 비활성화.
+        	ibutton.setClickable(false);
+        	
+        	// 버튼 클릭할 때 마다 count 증가.
+        	count++;
+        	
+            if ((count % 2 != 0) && (game_mode == 0)) { //player1 은 홀수번째 이므로  2로 나누면 나머지가 0이 아니다.
+            	player = 1; //여기서  player number 전환. 1로.
+                ibutton.setImageResource(skin_cross);
+            }
+            else if ((count % 2 == 0) &&(game_mode==0)) { //player2 은 짝수번째 이므로  2로 나누면 나머지가 0이다.
+            	player = 2;			// 여기서  player number 전환. 2로.
+            		ibutton.setImageResource(skin_dot);
+            }
+            
+            // 결과를 확인하기 위해서 after_move 함수 사용.
+        	after_move(ibutton);
+        }
+    };
+    
+	/**
+	 * 배열이 꽉 찼나 확인.
+	 **/
+    public boolean arr_isFull () {
+    	for (int i = 0; i < 3; i++)
+    		for (int j = 0; j < 3; j++)
+    			if (arr[i][j] == 0)
+    				return false;				
+    	return true;
+    }
+    
+    /**
+     * 게임 시작하는 부분. player_name에 player1, player2 이름 입력.
+     */
+    public void new_game(CharSequence player_name) {
+    	
+    	// 게임 뷰 리셋. 반드시 처음에 있어야 함.
+		setContentView (skin_layout);
+		
+    	final ImageButton b3 = (ImageButton) findViewById(R.id.b3);
+        final ImageButton b2 = (ImageButton) findViewById(R.id.b2);
+        final ImageButton b1 = (ImageButton) findViewById(R.id.b1);
+
+        final ImageButton b6 = (ImageButton) findViewById(R.id.b6);
+        final ImageButton b5 = (ImageButton) findViewById(R.id.b5);
+        final ImageButton b4 = (ImageButton) findViewById(R.id.b4);
+        
+        final ImageButton b9 = (ImageButton) findViewById(R.id.b9);
+        final ImageButton b8 = (ImageButton) findViewById(R.id.b8);
+        final ImageButton b7 = (ImageButton) findViewById(R.id.b7);
+        
+        // OnClickListenter 설정.
+        b1.setOnClickListener(button_listener);
+        b2.setOnClickListener(button_listener);
+        b3.setOnClickListener(button_listener);
+        b4.setOnClickListener(button_listener);
+        b5.setOnClickListener(button_listener);
+        b6.setOnClickListener(button_listener);
+        b7.setOnClickListener(button_listener);
+        b8.setOnClickListener(button_listener);
+        b9.setOnClickListener(button_listener);
+        
+        // 버튼 클릭 가능하게 함.
+        b1.setClickable(true);
+        b2.setClickable(true);
+        b3.setClickable(true);
+        b4.setClickable(true);
+        b5.setClickable(true);
+        b6.setClickable(true);
+        b7.setClickable(true);
+        b8.setClickable(true);
+        b9.setClickable(true);
+        
+        
+        // 이 줄은 플레이어 이름이 설정된 후 와야함.
+		set_score(3);	
+
+    	 // 배열 리셋.
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				arr[i][j] = 0; 
+    }
+    
+    /**
+     * 결과 확인하고 다음 플레이어를 선택함.
+     * @param ib : 유저에 의해 선택된 이미지버튼.
+     */
+    public void after_move (ImageButton ib) {
+    	CharSequence pos_str = "";				// 스트링으로서 위치를 잡음.
+    	int pos = 0;
+    	boolean result = false;
+  
+    	pos_str = (CharSequence) ib.getTag();	// 태그를 통해 위치를 인식.
+    	pos = (int) pos_str.charAt(0) - 48;		// char를 정수로 전환함.
+	
+    	// 플레이어 넘버에 따라 값을 배열 안에 저장시킴. (1 또는 2)
+    	if (player == 1) {
+    		if (pos < 4)				
+    			arr[0][pos - 1] = 1;
+    		else if (pos < 7) 
+    			arr[1][(pos - 1) % 3] = 1;
+    		else if (pos < 10)
+    			arr[2][(pos - 1) % 3] = 1;
+    	}
+    	else {
+    		if (pos < 4)				
+    			arr[0][pos - 1] = 2;
+    		else if (pos < 7) 
+    			arr[1][(pos - 1) % 3] = 2;
+    		else if (pos < 10)
+    			arr[2][(pos - 1) % 3] = 2;
+    	}
+    	
+    	// 게임 결과 확인.
+    	result = result_check(player);
+    		
+    	// 결과 확인 부분.
+    	if (result == true) {
+    		// 	플레이어 넘버 체크.
+    		if (player == 1) {
+    			set_score(1);
+    			if (game_mode == 0) {
+    				show_result("Congrats. " + player_name_1 + " wins !!");
+    			}
+    		}
+    		else {
+    			set_score(2);
+    			if (game_mode == 0) {	
+    				show_result("Congrats. " + player_name_2 + " wins !!");
+    			}
+    		}
+    		return;
+    	
+    	}
+    	else if ((result == false) && arr_isFull()) {
+    		show_result("    Game Draw !    ");				
+    		return;
+    	}
+    	
+    }
+    
+    /**
+     * 스코어판 설정.
+     * @param 플레이어 넘버를 확인해서 스코어판에 일치하는 플레이어 점수를 증가시킨다.
+     */
+    public void set_score(int player_number) {
+    	TextView tv = (TextView) findViewById(R.id.scoreboard); // 스코어판  TextView 설정.
+    	
+    	if (player_number == 1)
+    		score_player_1 += 1;
+    	else if (player_number == 2)
+    		score_player_2 += 1;
+    	else ;							
+    	
+    		
+    	CharSequence score_txt = 
+    		player_name_1 + " : " + score_player_1 + "                   " + player_name_2 + " : " + score_player_2;
+    	
+    	tv.setText(score_txt); //텍스트 보냄.
+    }
+    
+    /** 
+     * 게임 결과를 나타내고 continue하는 창 띄움.
+     * */
+    public boolean show_result(CharSequence message)	
+    {   
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+        			.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+        				public void onClick(DialogInterface dialog, int id) {
+        		    		// 게임환경 리셋.
+        						new_game(player_name_1);
+        				}
+        			});
+        AlertDialog alert = builder.create();
+        alert.show();
+        return true;
+    }
+    
+    
+    /**
+     * 각각 이동후에 결과확인.
+     * @param player_local : 플레이어 넘버. 즉 그 버튼을 누른 플레이어의 고유 숫자.
+     * @return True로 반환되면 누구든지 이기긴 이김. False일 때 비기는 것.
+     */
+    public boolean result_check(int player_local) {
+    	boolean win = true;
+    	int k = 0;
+    	
+    	// 수평 조건만 확인. /* [0][0].[0][1].[0][2]/...[2][2]순으로 확인 */
+    	for (int i = 0; i < 3; i++) {
+    		for (int j = 0; j < 3; j++) {
+    			if (arr[i][j] != player_local) {		// 플레이어 넘버 확인.
+    				win = false;
+    				break;
+    			}
+    		} // 열 순환시켜 확인.
+    		if (win == true) {
+				return true;
+    		}
+    		win = true;
+    	} // 행 순환시켜 확인.
+    	
+    	win = true;			// true로 리턴.
+    	
+    	// 수직 조건만 확인. /[0][0].[1][0].[2][0]/[1][0]...[2][2]순으로 확인.
+    	for (int i = 0; i < 3; i++) {
+    		for (int j = 0; j < 3; j++) {
+    			if (arr[j][i] != player_local) {
+    				win = false;
+    				break;
+    			}
+    		} // 열 순환시켜서 확인.
+    		if (win == true) {
+				return true;
+    		}
+    		win = true;
+    	} // 행 순환시켜 확인.
+    	
+    	win = true;			// true로 리셋.
+    	
+    	// 대각선의 첫번째 조건 검사. 왼쪽위에서 오른쪽 아래 방향.
+    	for (int i = 0; i < 3; i++)
+    		if (arr[i][k++] != player_local) {
+    			win = false;
+    			break;
+    		}
+
+    	if (win == true) {
+    		return true;
+    	}
+    	
+    	k = 2;
+    	win = true;			// true 로 리셋하기.
+    	
+    	// 대각선의 두번째 조건 검사. 오른쪽 위에서 왼쪽 아래 방향.
+    	for (int i = 0; i < 3; i++)
+    		if (arr[i][k--] != player_local) {
+    			win = false;
+    			break;
+    		}
+    	
+    	if (win == true) {
+    		return true; 
+    	} // 결국 마지막에  win이 true이면 result_check를 true로 반환.
+    	
+       	return false; // win이 true가 아니므로 마지막에 결국 false로 반환.
+    }
+    
+   }
+
+}}}
