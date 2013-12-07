@@ -1328,7 +1328,7 @@ public class DayTimeAccount {
                 System.out.println("new hour"+c.get(Calendar.HOUR_OF_DAY));
                 c.add(Calendar.DATE, 35); // 35일을 더함.
                 System.out.println("add 35 days"+c.getTime());
-                c.roll(Calendar.DATE, 35); // 35일 뒤로 넘긴다.
+                c.roll(Calendar.DATE, 35); // 35일 뒤로 넘긴다. 그치만 달은 바뀌지 않는다.
                 System.out.println("roll 35 days"+c.getTime());
                 c.set(Calendar.DATE,1); // 날짜를 1로 설정
                 System.out.println("set to 1"+c.getTime());
