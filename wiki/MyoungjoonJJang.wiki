@@ -1507,8 +1507,16 @@ Item이라고 적힌 부분에 리스트뷰 객체가 하나씩 부여된다.
 
 https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%20%EC%82%AC%EC%A7%84.png
 
+기본 캘린더 입니다. 실행시 뜨는 화면으로 각 칸을 누르면 정보를 intent하게 됩니다.
+
 https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%20%EC%82%AC%EC%A7%84%202.png
+
+2일을 눌러서 해당 날짜의 리스트뷰를 클릭한것인데요 아직 만든 스케줄이 없어서 아무것도 안뜹니다.
 
 https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%20%EC%82%AC%EC%A7%84%203.png
 
+make를 통해서 새로운 일정을 만드는 사진입니다.
+
 https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%EC%82%AC%EC%A7%84%204.png
+
+해당 날짜의 2시의 스케줄을 만든후 다시 해당 날짜에 들어가서 확인한 사진입니다.
