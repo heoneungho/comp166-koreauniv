@@ -165,6 +165,11 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		getCalendar(mThisMonthCalendar);
 	}
 
+
+/*가장 긴 메소드인 getCalendar입니다.
+getCalendar의 중요한 목적은 그리드뷰에 Calendar객체를 보여주기 위함입니다.
+return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 생성하는것이 아니라  
+받은 Calendar객체를 그리드뷰에 생성하기 위함이기 때문입니다.*/
 	private void getCalendar(Calendar calendar) {
 		int lastMonthStartDay;
 		int dayOfMonth;
