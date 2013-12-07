@@ -490,7 +490,7 @@ public final class R {
         public static final int three=0x7f030003;
     }
     public static final class menu {
-        public static final int four=0x7f070000;
+        public static final int four=0x7f070000; //4X4 하려다가 실패한 흔적ㅠ..
         public static final int linematch=0x7f070001;
     }
     public static final class string {
@@ -821,6 +821,10 @@ public final class R {
                 <category android:name="android.intent.category.LAUNCHER" /> //첫 구동화면.
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.linematch.Four"
+            android:label="@string/title_activity_four" >
+        </activity> //여기도 4X4 하려다가 실패한 흔적ㅠㅠ
      </application>
 
 </manifest>
