@@ -448,12 +448,14 @@ public class CalendarAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+
+
 	public class DayViewHolde {
 		public LinearLayout llBackground;
 		public TextView tvDay;
 
 	}
-
+/*이 밑의 3개의 메소드는 그리드뷰에 표시되는 아이템의 크기를 결정해준다.*/
 	private int getCellWidthDP() {
 
 		int cellWidth = 480 / 7;
