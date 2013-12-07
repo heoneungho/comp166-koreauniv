@@ -343,6 +343,8 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 
 *CalendarAdapter.java*
 
+https://comp166-koreauniv.googlecode.com/files/CalendarAdapter.png
+
 {{{
 
 package com.example.hi;
