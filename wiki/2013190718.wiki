@@ -1313,7 +1313,28 @@ class SimUnit {
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
 
+public class DayTimeAccount {
+        public static void main(String args[]){
+
+                Calendar c=Calendar.getInstance();
+                c.set(2012, 0, 7, 15, 40); // 시작을 2012년 1월 7일 15:40으로 설정한다.
+
+                long day1 = c.getTimeInMillis(); // 1970년 1월 1일부터 경과한 시간을 단위로 표현된 값으로 리턴한다.
+                day1 += 1000*60*60;
+
+                c.setTimeInMillis(day1); // 한시간에 해당하는 만큼의 시간을 더하고 시각을 설정
+                System.out.println("new hour"+c.get(Calendar.HOUR_OF_DAY));
+                c.add(Calendar.DATE, 35); // 35일을 더함.
+                System.out.println("add 35 days"+c.getTime());
+                c.roll(Calendar.DATE, 35); // 35일 뒤로 넘긴다.
+                System.out.println("roll 35 days"+c.getTime());
+                c.set(Calendar.DATE,1); // 날짜를 1로 설정
+                System.out.println("set to 1"+c.getTime());
+        }
+
+}
 }}}
 
 *342p 집중토론* _요약_
