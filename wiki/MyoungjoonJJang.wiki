@@ -254,7 +254,9 @@ public class MainActivity extends Activity implements OnItemClickListener,
 			break;
 		}
 	}
-
+/*initCalendarAdapter메소드입니다.
+이 메소드에서는 새로운 캘린더 객체를 만들때에 day라는 레이아웃에 새로운 객체들을 
+집어넣는 기능을 합니다.*/
 	private void initCalendarAdapter() {
 		mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
 		mGvCalendar.setAdapter(mCalendarAdapter);
