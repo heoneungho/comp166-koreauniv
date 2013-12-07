@@ -480,6 +480,44 @@ public class CalendarAdapter extends BaseAdapter {
 
 }}}
 
+*Day.java*
+
+https://comp166-koreauniv.googlecode.com/files/Day.png
+
+{{{
+
+package com.example.hi;
+
+public class Day
+{
+	private String day;
+	private boolean inMonth;
+
+	public String getDay()
+	{
+		return day;
+	}
+
+	public void setDay(String day)
+	{
+		this.day = day;
+	}
+
+	public boolean isInMonth()
+	{
+		return inMonth;
+	}
+
+	public void setInMonth(boolean inMonth)
+	{
+		this.inMonth = inMonth;
+	}
+
+}
+
+
+}}}
+
 *3.리스트뷰 클래스*
 
 *4.Make 클래스*
