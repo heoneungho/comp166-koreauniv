@@ -40,6 +40,14 @@ Do it안드로이드 프로그래밍이라는 책과
 
 https://comp166-koreauniv.googlecode.com/files/%E3%85%87%E3%85%87.png
 
+제 캘린더에 사용되는 클래스는 그리드뷰와 리스트뷰를 사용합니다.
+
+그리드뷰와 리스트뷰에대한 설명은 밑에서 하기로 하겠습니다.
+
+이 두가지 뷰의 특성상 많은 클래스를 사용하게 됩니다.
+
+그리고 캘린더의 정보를 저장할 전역 객체로 사용되는 Schedule클래스가 존재합니다.
+
 *1.메인클래스*
 
 https://comp166-koreauniv.googlecode.com/files/%EB%A9%94%EC%9D%B8.png
