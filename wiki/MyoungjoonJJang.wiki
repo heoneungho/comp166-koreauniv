@@ -1502,3 +1502,13 @@ Item이라고 적힌 부분에 리스트뷰 객체가 하나씩 부여된다.
 </LinearLayout>
 
 }}}
+
+*구동 사진*
+
+https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%20%EC%82%AC%EC%A7%84.png
+
+https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%20%EC%82%AC%EC%A7%84%202.png
+
+https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%20%EC%82%AC%EC%A7%84%203.png
+
+https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%EC%82%AC%EC%A7%84%204.png
