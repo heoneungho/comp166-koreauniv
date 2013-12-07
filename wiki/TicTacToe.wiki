@@ -590,3 +590,242 @@ public final class R {
 
 </RelativeLayout>
 }}}
+
+== name_dialog_2.xml ==
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#A5E7D0"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <EditText
+        android:id="@+id/namep2"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/namep1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:text="player2" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/namep2"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="26dp"
+        android:text="OK" />
+
+    <EditText
+        android:id="@+id/namep1"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/namep2"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:ems="10"
+        android:text="player1" />
+
+</RelativeLayout>
+}}}
+
+
+== help.xml ==
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#A5E7D0" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/help" />
+
+</RelativeLayout>
+}}}
+
+
+== three.xml ==
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A5E7D0" >
+       
+      <TextView
+        android:id="@+id/scoreboard"
+        android:layout_width="300dip"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/b9"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/scoreboard_bg"
+        android:padding="15dip" />
+
+    <ImageButton
+        android:id="@+id/b7"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_alignTop="@+id/b8"
+        android:layout_toLeftOf="@+id/b8"
+        android:tag="7" />
+
+    <ImageButton
+        android:id="@+id/b6"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/b9"
+        android:layout_alignLeft="@+id/b9"
+        android:tag="6" />
+
+    <ImageButton
+        android:id="@+id/b5"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_below="@+id/b1"
+        android:layout_toRightOf="@+id/b7"
+        android:tag="5" />
+
+    <ImageButton
+        android:id="@+id/b4"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/b8"
+        android:layout_toLeftOf="@+id/b8"
+        android:tag="4" />
+
+    <ImageButton
+        android:id="@+id/b3"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/b6"
+        android:layout_toRightOf="@+id/b2"
+        android:tag="3" />
+
+    <ImageButton
+        android:id="@+id/b1"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/b4"
+        android:layout_toLeftOf="@+id/b2"
+        android:tag="1" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/b3"
+        android:layout_alignLeft="@+id/b1"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/b3"
+        android:scaleType="fitXY"
+        android:src="@drawable/g" />
+
+    <ImageButton
+        android:id="@+id/b2"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/b6"
+        android:layout_centerHorizontal="true"
+        android:tag="2" />
+
+    <ImageButton
+        android:id="@+id/b8"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/scoreboard"
+        android:layout_alignLeft="@+id/b2"
+        android:tag="8" />
+
+    <ImageButton
+        android:id="@+id/b9"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/scoreboard"
+        android:layout_toRightOf="@+id/b8"
+        android:tag="9" />
+
+</RelativeLayout>
+}}}
+
+이 4개의 레이아웃이 어플에 구동되는 레이아웃들이다.
+
+다음으로는 string.xml 파일을 보자. 딱히 버튼위에 글을 많이 쓰지 않아도되서 메인화면의 글만 선언을 해주면 되었다.
+
+
+== string.xml ==
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TicTacToe</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="new_game">New Game</string>
+    <string name="option">Options</string>
+    <string name="help">Help</string>
+    <string name="quit">Quit</string>
+    <string name="title_activity_four">Four</string>
+    <string name="created">Created</string>
+    <string name="by">by</string>
+    <string name="name">Lee Mi Hyeon</string>
+
+</resources>
+}}}
+
+여기서 수정한 것은 원래 나의 안드로이드 프로젝트 이름이 Linematch 이였는데 기본의 원래 게임의 이름은 tictactoe여서 여기서 수정을 하였다. (AndroidManifest.xml에서 쓰임)
+
+
+그러면 AndroidManifest.xml 파일을 봐보자.
+
+== AndroidManifest.xml ==
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.linematch"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" /> //16버전
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon" //아이콘 직접 수정.
+        android:label="@string/app_name" //어플 이름도 수정.
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.linematch.Linematch"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" /> //첫 구동화면.
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.linematch.Four"
+            android:label="@string/title_activity_four" >
+        </activity>
+    </application>
+
+</manifest>
+}}}
