@@ -100,7 +100,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 	public static int SATURDAY = 7;
 
 	private TextView CalendarTitle;
-	private GridView mGvCalendar;
+	private GridView GridViewCalendar;
 
 	private ArrayList<DayInfo> mDayList;
 	private CalendarAdapter mCalendarAdapter;
@@ -146,11 +146,11 @@ public class MainActivity extends Activity implements OnItemClickListener,
 			}
 
 		});
-		mGvCalendar = (GridView) findViewById(R.id.gv_calendar);
+		GridViewCalendar = (GridView) findViewById(R.id.gv_calendar);
 
 		bLastMonth.setOnClickListener(this);
 		bNextMonth.setOnClickListener(this);
-		mGvCalendar.setOnItemClickListener(this);
+		GridViewCalendar.setOnItemClickListener(this);
 		mDayList = new ArrayList<DayInfo>();
 	}
 /*onResume메소드는 onCreate메소드와 유사합니다. 앞의 메소드는 새롭게 실행할때 사용
@@ -273,7 +273,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 집어넣는 기능을 합니다.*/
 	private void initCalendarAdapter() {
 		mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
-		mGvCalendar.setAdapter(mCalendarAdapter);
+		GridViewCalendar.setAdapter(mCalendarAdapter);
 	}
 /*onItemClick메소드는 그리드뷰나 리스트뷰를 사용하는 클래스에서 사용되는 메소드입니다. 
 해당 뷰를 통해서 만든 객체가 클릭되었을때 발생하는 이벤트를 정의해주는 메소드로
