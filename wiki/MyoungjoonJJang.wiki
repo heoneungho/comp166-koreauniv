@@ -1149,6 +1149,8 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
 
 *Make*
 
+https://comp166-koreauniv.googlecode.com/files/fff.png
+
 {{{
 
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
