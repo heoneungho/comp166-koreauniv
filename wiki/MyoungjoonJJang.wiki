@@ -1147,9 +1147,11 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
 
 }}}
 
-*Make*
+*activity_make.xml*
 
 https://comp166-koreauniv.googlecode.com/files/fff.png
+
+/*Make부분*/
 
 {{{
 
@@ -1199,12 +1201,13 @@ https://comp166-koreauniv.googlecode.com/files/fff.png
         android:layout_x="7dp"
         android:layout_y="100dp"
         android:text="시작" />
-
+/*DatePicker부분은 XML 레이아웃에서는 글자로만 표현되지만 실제 앱 안에서는 실제 달
+력처럼 표시된다.*/
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
+/*TimePicker는 시간을 맞추는 위젯으로 초기값은 현재 시간으로 주어진다.*/
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
@@ -1227,7 +1230,7 @@ https://comp166-koreauniv.googlecode.com/files/fff.png
         android:layout_y="308dp"
         android:ems="10"
         android:text="일정 설명" />
-
+/*완료 버튼을 누르면 모든 정보를 ScheduleList에 set한다.*/
     <Button
         android:id="@+id/finish"
         android:layout_width="90dp"
