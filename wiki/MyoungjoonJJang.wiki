@@ -528,6 +528,10 @@ public class Day
 
 https://comp166-koreauniv.googlecode.com/files/sss.png
 
+이 클래스에서는 전역 객체 ScheduleList의 정보를 받아와 그 정보들을 리스트뷰의 형식
+으로 표시해줍니다.
+
+
 {{{
 
 package com.example.hi;
@@ -598,7 +602,8 @@ public class List extends Activity {
 			}
 		});
 
-		// 화면을 리스트뷰 객체로 채움
+/*화면을 리스트뷰로 채우는 곳입니다.
+for문을 사용하여 해당날짜의 모든 데이터를 표시합니다.*/
 		setContentView(list, params);
 		for (ttt = 0; ttt < 24; ttt++) {
 			adapter.addItem(new IconTextItem(ScheduleList.Sch[y - 2013][m][pos]
@@ -607,10 +612,10 @@ public class List extends Activity {
 		}
 
 	}
-
+/*밑의 두 메소드는 메인 클래스에서도 설명을 하였습니다.*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		
 		getMenuInflater().inflate(R.menu.list, menu);
 		menu.add(0, 1, 2, "일");
 		menu.add(0, 2, 2, "새로만들기");
