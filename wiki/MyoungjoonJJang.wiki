@@ -117,7 +117,9 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		d1 = intent3.getStringExtra("d");
 		y1 = intent3.getIntExtra("y", 0);
 		m1 = intent3.getIntExtra("m", 0);
-
+/*p1=-1이라는 뜻은 p1이 초기화되고 한번도 사용되지 않은상태를 말하는것으로 맨처음
+클래스가 실행될때를 뜻합니다. 그때에 전역 객체 클래스인 ScheduleList의 Load를 실행
+하여 객체를 생성합니다.*/
 		if (p1 == -1) {
 			ScheduleList.Load();
 		}
