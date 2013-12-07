@@ -429,7 +429,7 @@ java파일 안에 많은 함수들이 있어서 복잡하지만 이것도 일종
 
 우선 처음에 new_game이라는 함수를 구현시켜 게임환경을 다 리셋시킨다. 
 
-[ button_listener > after_move]는 한 버튼 당 계속 순환된다. ( show_result 와 rsult_check는 after_move 함수 안에서 돌아감 )
+( button_listener > after_move )는 한 버튼 당 계속 순환된다. ( show_result 와 rsult_check는 after_move 함수 안에서 돌아감 )
 
 그리고 마지막 show_resulst에서 게임결과를 보여주며 다시 new_game이 선언된다.
 
