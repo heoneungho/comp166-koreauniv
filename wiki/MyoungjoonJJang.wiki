@@ -302,6 +302,14 @@ public class MainActivity extends Activity implements OnItemClickListener,
 
 }}}
 
+*2.그리드뷰 클래스*
+
+*3.리스트뷰 클래스*
+
+*4.Make 클래스*
+
+*5.전역 객체 클래스 Schedule*
+
 =레이아웃 소개=
 
 https://comp166-koreauniv.googlecode.com/files/%E3%84%B4%E3%84%B4.png
