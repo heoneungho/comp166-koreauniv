@@ -325,6 +325,14 @@ public class MainActivity extends Activity implements OnItemClickListener,
 
 https://comp166-koreauniv.googlecode.com/files/make.png
 
+Make 클래스입니다.
+
+Make 클래스는 이름과 같이 캘린더에서의 일정을 만드는 클래스입니다.
+
+따라서 이 클래스에서는 메인 클래스에서의 정보를 받아와서 이 정보를 가지고 
+
+새로운 일정을 만들고 그 정보를 Schedule객체에 저장합니다. 
+
 {{{
 
 package com.example.hi;
