@@ -289,13 +289,15 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		return true;
 	}
 
+
+onCreateOptionMenu 메소드는 클래스가 실행될때 메뉴를 생기게하는 메소드입니다.
+클래스를 생성하면 기본적으로 생기는 디폴드값인 메소드입니다.
+제 앱에서는 2개의 메뉴를 사용하는데 기본적으로 한 화면에 최대 6가지의 메뉴화면을
+보일수 있고 그 메뉴마다 또 다른 메뉴를 내포하여 2차원 배열처럼 메뉴를 만들수 있습니다. 
+메뉴의 내용은 onOptionsItemSelected라는 메소드를 통해서 실행시킬수 있습니다.
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
-//onCreateOptionMenu 메소드는 클래스가 실행될때 메뉴를 생기게하는 메소드입니다.
-//클래스를 생성하면 기본적으로 생기는 디폴드값인 메소드입니다.
-//제 앱에서는 2개의 메뉴를 사용하는데 기본적으로 한 화면에 최대 6가지의 메뉴화면을
-보일수 있고 그 메뉴마다 또 다른 메뉴를 내포하여 2차원 배열처럼 메뉴를 만들수 있습니다. 
-//메뉴의 내용은 onOptionsItemSelected라는 메소드를 통해서 실행시킬수 있습니다.
+
 		menu.add(0, 1, 2, "일");
 		menu.add(0, 2, 2, "새로만들기");
 
