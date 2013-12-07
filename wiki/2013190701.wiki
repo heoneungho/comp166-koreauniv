@@ -1042,11 +1042,136 @@ public class GameHelper
 
 {{{
 
+class Animal
+{
+        String picture;
+        Boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise()
+        {
+                //소리를 낼 때의 행동
+        }
+
+        void eat()
+        {
+                //그 동물이 음식을 접했을 때의 행동
+        }
+
+        void sleep()
+        {
+                //그 동물이 잠들어 있을 때의 행동
+        }
+
+        void roam()
+        {
+                //그 동물이 먹거나 자고 있지 않을 때의 행동
+        }
+
+}
+class Feline extends Animal//Feline은 Animal을 상속받습니다.
+{
+        void roam()
+        {
+                //roam을 오버라이드합니다.
+        }
+}
+
+class Canine extends Animal//Canine은 Animal을 상속받습니다.
+{
+        void roam()
+        {
+                //roam을 오버라이드합니다.
+        }
+}
+
+class Lion extends Feline//Lion은 Feline을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Tiger extends Feline//Tiger은 Feline을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+
+
+class Cat extends Feline//Cat은 Feline을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Hiippo extends Animal//Hippo는 Animal을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Wolf extends Canine//Wolf는 Canine를 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Dog extends Canine//Dog는 Canine를 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드: 이나를 받지 않으며 부울 값을 리턴하는 것. 즉 오버라이드하는 메소드의 인자와 리턴 형식은 외부에서 보기에 상위클래스에 있는 오버라이드를 당하는 메소드와 완벽하게 일치해야함.
+ * 오버라이드: 인자를 받지 않으며 부울 값을 리턴하는 것. 즉 오버라이드하는 메소드의 인자와 리턴 형식은 외부에서 보기에 상위클래스에 있는 오버라이드를 당하는 메소드와 완벽하게 일치해야함.
  * 오버로딩: 이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것. 오버로드된 메소드는 다형성과는 전혀 관계가 없다. 
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
@@ -1222,10 +1347,10 @@ arrrgh
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수: 힙은 모든 객체가 사는 곳이다. 인스턴스 변수는 객체 안에 사므로 인스턴스 변수가 힙 안에 살고 있는 것이다.
+ * 스택에서의 변수: 스택은 메소드 호출과 지역 변수가 사는 곳이다. 지역 벼누가 객체에 대한 레퍼런스인 경우에는 변수(레퍼런스, 즉 리모컨)만 스택에 들어간다. 객체 자체는 힙 안에 있습니다. (메소드 매개변수도 지역 변수에 포함)
+ * 생성자: 객체를 생설할 때 실행되는 코드가 들어있다. 즉 어떤 클래스 유형에 대해 new 키워드를 사용했을 때 실행되는 코드가 들어있다. 우리가 직접 만들지 않아도 된다.
+ * 널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 긴응르 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException이 생긴다.
  
 *298p 집중토론* _요약_
 
