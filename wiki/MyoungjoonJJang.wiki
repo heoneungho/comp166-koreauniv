@@ -526,6 +526,8 @@ public class Day
 
 *List.java*
 
+https://comp166-koreauniv.googlecode.com/files/sss.png
+
 {{{
 
 package com.example.hi;
