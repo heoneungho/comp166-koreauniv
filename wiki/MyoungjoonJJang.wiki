@@ -421,9 +421,9 @@ public class CalendarAdapter extends BaseAdapter {
 			ViewHolder = new DayViewHolde();
 
 			ViewHolder.llBackground = (LinearLayout) convertView
-					.findViewById(R.id.day_cell_ll_background);
+					.findViewById(R.id.day_cell_background);
 			ViewHolder.tvDay = (TextView) convertView
-					.findViewById(R.id.day_cell_tv_day);
+					.findViewById(R.id.day_cell);
 
 			convertView.setTag(ViewHolder);
 		} else {
