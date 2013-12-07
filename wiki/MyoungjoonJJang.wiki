@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 	public static int FRIDAY = 6;
 	public static int SATURDAY = 7;
 
-	private TextView mTvCalendarTitle;
+	private TextView CalendarTitle;
 	private GridView mGvCalendar;
 
 	private ArrayList<DayInfo> mDayList;
@@ -134,8 +134,8 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		Button bLastMonth = (Button) findViewById(R.id.b_last);
 		Button bNextMonth = (Button) findViewById(R.id.b_next);
 
-		mTvCalendarTitle = (TextView) findViewById(R.id.tv_title);
-		mTvCalendarTitle.setOnClickListener(new View.OnClickListener() {
+		CalendarTitle = (TextView) findViewById(R.id.tv_title);
+		CalendarTitle.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(getBaseContext(), List.class);
 				intent.putExtra("pos", pos);
@@ -194,7 +194,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 
 		lastMonthStartDay -= (dayOfMonth - 1) - 1;
 
-		mTvCalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
+		CalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 
 		DayInfo day;
@@ -234,7 +234,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				1);
 		calendar.add(Calendar.MONTH, -1);
-		mTvCalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
+		CalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 		return calendar;
 	}
@@ -247,7 +247,7 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				1);
 		calendar.add(Calendar.MONTH, +1);
-		mTvCalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
+		CalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
 				+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
 		return calendar;
 	}
