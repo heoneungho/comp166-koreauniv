@@ -23,4 +23,6 @@ http://comp166-koreauniv.googlecode.com/files/%EA%B8%B0%EB%B3%B8%20%ED%8F%AC%EB%
 이런식으로 시간표 말고도 일정을 만들수도 있음
 http://comp166-koreauniv.googlecode.com/files/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C.png
 
+=소스코드=
+
 https://comp166-koreauniv.googlecode.com/files/%E3%85%87%E3%85%87.png
