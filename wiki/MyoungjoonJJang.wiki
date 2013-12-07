@@ -906,7 +906,7 @@ public class IconTextItem {
 
 https://comp166-koreauniv.googlecode.com/files/DataListView.png
 
-DataListView클래스는 ListView클래스를 상속바습니다.
+DataListView클래스는 ListView클래스를 상속받습니다.
 
 {{{
 
@@ -936,7 +936,8 @@ public class DataListView extends ListView {
 
 		init();
 	}
-
+/*아이템을 클릭했을 때의 리스너로 하단에서 새로 정의한 클래스의 객체를 설정합니
+다.*/
 	private void init() {
 		setOnItemClickListener(new OnItemClickAdapter());
 	}
@@ -949,7 +950,7 @@ public class DataListView extends ListView {
 	public BaseAdapter getAdapter() {
 		return (BaseAdapter) super.getAdapter();
 	}
-
+/*새로 정의한 리스너 클래스 객체를 설정합니다.*/
 	public void setOnDataSelectionListener(OnDataSelectionListener listener) {
 		this.selectionListener = listener;
 	}
