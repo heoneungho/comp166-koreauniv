@@ -27,8 +27,12 @@ http://comp166-koreauniv.googlecode.com/files/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%
 
 저는 이번 텀과제를 하면서 만든 모든 소스는 제가 직접 코드하나하나 써가면서 공부하고 모르는것은 질문하면서 하였는데요.
 공부한 책은 교수님이 추천해주신
+
 Do it안드로이드 프로그래밍이라는 책과
+
 안드로이드 프로그래밍 정복 1,2입니다.
+
+출처랄것까지는 없겠지만 책을보면서 공부했기때문에 출처는 책이 되겠네요.
 
 
 https://comp166-koreauniv.googlecode.com/files/%E3%85%87%E3%85%87.png
