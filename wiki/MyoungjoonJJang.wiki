@@ -727,6 +727,9 @@ public class IconTextListAdapter extends BaseAdapter {
 
 https://comp166-koreauniv.googlecode.com/files/%E3%85%94%E3%85%94%E3%85%94.png
 
+이곳에서는 레이아웃을 사용하여 한 아이템으로 보여줄 뷰를 정의하는 역할을 합니다.
+XML 레이아웃을 이용하여 뷰의 모양을 결정합니다.
+
 {{{
 
 package com.example.hi;
@@ -738,6 +741,8 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/*이 클래스는 리니어 레이아웃을 상속합니다. 따라서 다른 뷰들을 포함할수 있습니다.*/
+
 public class IconTextView extends LinearLayout {
 
 	private TextView mText01;
@@ -748,11 +753,12 @@ public class IconTextView extends LinearLayout {
 
 	public IconTextView(Context context, IconTextItem aItem) {
 		super(context);
-
+/*이곳에서는 메모리를 객체화 시킵니다.
+xml 레이아웃을 레이아웃 인플레이터를 이용하여 객체화를 시킵니다.*/
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.listitem, this, true);
-
+/*이 부분에서는 레이아웃에 정의된 텍스트 뷰르 객체를 참조합니다.*/
 		mText01 = (TextView) findViewById(R.id.dataItem01);
 		mText01.setText(aItem.getData(0));
 
@@ -763,7 +769,7 @@ public class IconTextView extends LinearLayout {
 		mText03.setText(aItem.getData(2));
 
 	}
-
+/*전달받은 데이터를 각 테스트뷰에 설정하는 부분입니다.*/
 	public void setText(int index, String data) {
 		if (index == 0) {
 			mText01.setText(data);
@@ -772,6 +778,7 @@ public class IconTextView extends LinearLayout {
 		} else if (index == 2) {
 			mText03.setText(data);
 		} else {
+/*이 경우에는 그 어떤 부분도 속하지 않은 부분으로 에러를 표시합니다.*/
 			throw new IllegalArgumentException();
 		}
 	}
