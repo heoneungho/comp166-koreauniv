@@ -791,6 +791,9 @@ xml 레이아웃을 레이아웃 인플레이터를 이용하여 객체화를 �
 
 https://comp166-koreauniv.googlecode.com/files/onDataSelectionListener.png
 
+onDataSelectionListener클래스는 리스트뷰의 객체를 클릭할때 나타날 이벤트를 만들기
+위한 클래스입니다.
+
 {{{
 
 package com.example.hi;
@@ -799,6 +802,8 @@ import android.view.View;
 import android.widget.AdapterView;
 
 public interface OnDataSelectionListener {
+
+/*본 앱에서는 사용할만한 이벤트가 없어서 그냥 빈 메소드로 두었습니다.*/
 
 	public void onDataSelected(AdapterView parent, View v, int position, long id);
 
