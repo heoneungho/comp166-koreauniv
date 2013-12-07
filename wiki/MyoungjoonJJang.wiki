@@ -53,6 +53,7 @@ https://comp166-koreauniv.googlecode.com/files/%E3%85%87%E3%85%87.png
 https://comp166-koreauniv.googlecode.com/files/%EB%A9%94%EC%9D%B8.png
 
 https://comp166-koreauniv.googlecode.com/files/%E3%85%81%E3%85%81.png
+
 그림을 보면 메인클래스에서 많은 전역 변수들을 사용하고 있는데요.
 
 캘린더를 사용하는 메인클래스의 특성상 많은 정보들이 오가고 그리드뷰를 사용하는 캘린더 객체를 만들어야하는 특성상 많은 전역 변수들을 사용하게 되었습니다.
