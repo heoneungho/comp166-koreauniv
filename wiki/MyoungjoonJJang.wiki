@@ -251,17 +251,22 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
 		mGvCalendar.setAdapter(mCalendarAdapter);
 	}
-
+/*onItemClick메소드는 그리드뷰나 리스트뷰를 사용하는 클래스에서 사용되는 메소드입니다. 
+해당 뷰를 통해서 만든 객체가 클릭되었을때 발생하는 이벤트를 정의해주는 메소드로
+만들지 않았다면 해당 객체를 클릭하여도 아무런 반응을 주지 않습니다.*/
 	public void onItemClick(AdapterView<?> parent, View v, int position,
 			long arg3) {
+/*게터 메소드를 통해서 해당 정보를 받아옵니다.*/
 		DayInfo day = mDayList.get(position);
 		String j = day.getDay();
-
+/*토스트를 사용한 이유는 해당날짜가 올바르게 클릭되었는지 확인해주기 위해서입니다.*/
 		Toast.makeText(
 				this,
 				mThisMonthCalendar.get(Calendar.YEAR) + "년"
 						+ (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월"
 						+ j + "일" + position, Toast.LENGTH_LONG).show();
+/*클릭을 한후 그 클릭정보를 저장하는 부분입니다.
+이 정보는 이 메소드에서만 사용하는것이 아니므로 전역 변수를 사용합니다.*/
 		pos = position;
 		d = day.getDay();
 		y = mThisMonthCalendar.get(Calendar.YEAR);
