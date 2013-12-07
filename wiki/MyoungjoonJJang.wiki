@@ -484,6 +484,10 @@ public class CalendarAdapter extends BaseAdapter {
 
 https://comp166-koreauniv.googlecode.com/files/Day.png
 
+Day클래스에서는 어댑터에 사용되는 정보드를 지니고 있습니다.
+
+따라서 그리드뷰에 있는 모든 아이템 하나하나가 Day라는 객체를 가지게 됩니다.
+
 {{{
 
 package com.example.hi;
@@ -492,22 +496,22 @@ public class Day
 {
 	private String day;
 	private boolean inMonth;
-
+/*날짜를 리턴해주는 게터 메소드*/
 	public String getDay()
 	{
 		return day;
 	}
-
+/*날짜를 세팅해주는 세터 메소드*/
 	public void setDay(String day)
 	{
 		this.day = day;
 	}
-
+/*맞는 달인지 답을 리턴해주는 메소드*/
 	public boolean isInMonth()
 	{
 		return inMonth;
 	}
-
+/*달을 세팅해주는 세터 메소드*/
 	public void setInMonth(boolean inMonth)
 	{
 		this.inMonth = inMonth;
