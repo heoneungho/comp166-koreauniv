@@ -701,7 +701,8 @@ public class IconTextListAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
- 
+/*뷰의 아이템 하나하나의 옵션을 주는 메소드입니다. 이 리스트 뷰에서는 총 3개의 텍
+스트뷰를 사용하므로 3개의 텍스트를 주는 옵션을 사용합니다.*/
     public View getView(int position, View convertView, ViewGroup parent) {
         IconTextView itemView;
         if (convertView == null) {
