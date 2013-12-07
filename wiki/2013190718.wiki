@@ -1253,7 +1253,7 @@ import java.util.*;
 class V2Radiator {
      V2Radiator(ArrayLIst list) {
           for(int  x = 0; x < 5; x++) {
-               list.add(new SimUnit("V2Radiator")); //list에 SimUnit을 더한다.
+               list.add(new SimUnit("V2Radiator")); //list에 SimUnit객체를 더한다.
           }
      }
 }
@@ -1262,14 +1262,14 @@ class V3Radiator extends V2Radiator{
      V3Radiator (ArrayLIst lglist) {
           super(lglist);
           for(int g = 0; g < 10; g++) {
-               lglist.add(new SimUnit("V3Radiator")); // lglist에 SimUnit을 더한다.
+               lglist.add(new SimUnit("V3Radiator")); // lglist에 SimUnit객체를 더한다.
           }
      }
 } 
 
 class RetentionBot {
      RetentionBot(ArrayList rlist) {
-          rlist.add(new SimUnit("Retention")); // rlist에 SimUnit을 더한다.
+          rlist.add(new SimUnit("Retention")); // rlist에 SimUnit객체를 더한다.
      }
 }
 
