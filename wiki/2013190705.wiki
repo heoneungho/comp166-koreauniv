@@ -540,12 +540,13 @@ public class SimpleDotCom {
 	
 	public String checkYourself(String stringGuess) {
 		int guess = Integer.parseInt(stringGuess);
-		String result = "miss";
+		String result = "miss"; // 기본값을 miss로 설정
+
 		for(int i = 0; i<locationCells.length; i++) {
 			if(guess == locationCells[i]) {
 				result = "hit";
 				numOfHits++;
-				break;
+				break; // 맞췄을 경우 순환문 빠져나옴
 			}
 		}
 		
@@ -559,6 +560,8 @@ public class SimpleDotCom {
 }
 
 __________________________________________________________________________________
+
+/* 인스턴트 코드 */
 
 import java.io.*;
 
