@@ -813,6 +813,12 @@ public interface OnDataSelectionListener {
 
 *IconTextItem*
 
+https://comp166-koreauniv.googlecode.com/files/IconTextItem.png
+
+/*이 클래스에서는 리스트의 각 개체가 가지고 있을 데이터등을 정합니다.
+이미지를 사용하지는 않기 때문에 Drawable 변수는 필요가 없습니다.
+세개의 텍스트가 지정되어있지만 필요에 따라 그 수를 늘릴수 있습니다. */
+
 {{{
 
 package com.example.hi;
@@ -821,16 +827,13 @@ import android.graphics.drawable.Drawable;
 
 public class IconTextItem {
  
-
+/*각 타입의 변수를 선언합니다.*/
     private Drawable mIcon;
      
-    /**
-     * Data array
-     */
     private String[] mData;
 
     private boolean mSelectable = true;
-
+/*각 변수들을 전달받는 생성자입니다.*/
     public IconTextItem(Drawable icon, String[] obj) {
         mIcon = icon;
         mData = obj;
@@ -865,7 +868,7 @@ public class IconTextItem {
          
         return mData[index];
     }
-
+/*데이터를 설정하는 메소드입니다.*/
     public void setData(String[] obj) {
         mData = obj;
     }
