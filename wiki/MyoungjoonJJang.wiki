@@ -134,7 +134,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		Button bLastMonth = (Button) findViewById(R.id.b_last);
 		Button bNextMonth = (Button) findViewById(R.id.b_next);
 
-		mTvCalendarTitle = (TextView) findViewById(R.id.gv_calendar_activity_tv_title);
+		mTvCalendarTitle = (TextView) findViewById(R.id.tv_title);
 		mTvCalendarTitle.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(getBaseContext(), List.class);
@@ -561,7 +561,7 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
     >
 
     <TextView
-        android:id="@+id/gv_calendar_activity_tv_title"
+        android:id="@+id/tv_title"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
