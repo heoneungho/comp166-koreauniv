@@ -1520,3 +1520,8 @@ make를 통해서 새로운 일정을 만드는 사진입니다.
 https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%EC%82%AC%EC%A7%84%204.png
 
 해당 날짜의 2시의 스케줄을 만든후 다시 해당 날짜에 들어가서 확인한 사진입니다.
+
+
+*소스코드 제출*
+
+https://comp166-koreauniv.googlecode.com/files/Hi.zip
