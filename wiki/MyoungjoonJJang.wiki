@@ -553,6 +553,9 @@ https://comp166-koreauniv.googlecode.com/files/%E3%84%B4%E3%84%B4.png
 
 https://comp166-koreauniv.googlecode.com/files/mainactivity.png
 
+/*그림에는 포맷만 존재할뿐 캘린더처럼은 생기지 않았다.
+이러한 부분은 메인 클래스의 메소드를 통해서 진짜 클래스처럼 바뀌게 된다.*/
+
 {{{
 
 <?xml version="1.0" encoding="utf-8"?>
