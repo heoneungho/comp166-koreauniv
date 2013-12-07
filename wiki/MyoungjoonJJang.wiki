@@ -559,11 +559,6 @@ https://comp166-koreauniv.googlecode.com/files/mainactivity.png
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-     
-    <!-- Activity Layout XML -->
-    <!-- @author croute -->
-    <!-- @since 2011.03.08 -->
-
 
     <TextView
         android:id="@+id/gv_calendar_activity_tv_title"
