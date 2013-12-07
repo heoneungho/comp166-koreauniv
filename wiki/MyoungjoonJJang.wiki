@@ -343,6 +343,10 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 
 *CalendarAdapter.java*
 
+그리드 뷰에는 어댑터 클래스가 필요합니다.
+
+이 어댑터 클래스에서는 그리드뷰의 아이템 각각의 속성을 부여해주는 역할을 합니다.
+
 https://comp166-koreauniv.googlecode.com/files/CalendarAdapter.png
 
 {{{
@@ -374,13 +378,15 @@ public class CalendarAdapter extends BaseAdapter {
 		this.LiInflater = (LayoutInflater) Cont
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
-
+/*꼭 있어야하는 getCount메소드
+이 메소드에서는 크기를 측정합니다.*/
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		return DayList.size();
 	}
-
+/*꼭 있어야하는 getItem메소드
+이 메소드에서는 아이템의 갯수를 측정합니다.*/
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
@@ -391,7 +397,9 @@ public class CalendarAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		return 0;
 	}
-
+/*getView 메소드에서는 아이템 하나하나를 만드는 역할을 합니다.
+본 메소드에서는 Day라는 클래스를 이용하여 정보를 저장하고 날짜에 따른 색을 부여해
+주고 각 아이템의 크기를 부여해줍니다.*/
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Day day = DayList.get(position);
