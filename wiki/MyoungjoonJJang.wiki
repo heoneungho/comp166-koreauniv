@@ -323,6 +323,8 @@ public class MainActivity extends Activity implements OnItemClickListener,
 
 *4.Make 클래스*
 
+https://comp166-koreauniv.googlecode.com/files/make.png
+
 {{{
 
 package com.example.hi;
