@@ -266,10 +266,10 @@ public class MainActivity extends Activity implements OnItemClickListener,
 		m = mThisMonthCalendar.get(Calendar.MONTH);
 
 	}
-
+/*onOptionsItemSelected메소드는 onCreateOptionMenu를 통해서 만든 메뉴를 클릭했을때 실행되는 메소드입니다.이 메소드를 만들지 않으면 메뉴를 클릭하여도 아무런 반응이 뜨질 않습니다.*/
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case 1:
+		case 1:/*case1은 일이라는 메뉴를 클릭한 결과로 List라는 클래스로 정보를 가지고 intent를 합니다.*/
 			Intent intent = new Intent(this, List.class);
 			intent.putExtra("pos", pos);
 			intent.putExtra("d", d);
@@ -277,7 +277,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 			intent.putExtra("m", m);
 			startActivity(intent);
 			break;
-		case 2:
+		case 2:/*case2는 새로만들기라는 메뉴를 클릭한 결과로 Make라는 클래스로 정보를 가지고 intent를 합니다.*/
 			Intent intent1 = new Intent(this, Make.class);
 			intent1.putExtra("pos", pos);
 			intent1.putExtra("d", d);
