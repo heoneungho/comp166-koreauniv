@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 	private GridView GridViewCalendar;
 
 	private ArrayList<DayInfo> mDayList;
-	private CalendarAdapter mCalendarAdapter;
+	private CalendarAdapter CalendarAdapter;
 	Calendar ThisMonth;
 /*onCreate메소드는 이 클래스가 실행되었을때 바로 실행되는 메소드를 말합니다. 초기
 에 필요한 값들을 초기화시켜주고 레이아웃을 설정해줍니다. 이때 잘못설정하면 앱이 실
@@ -270,8 +270,8 @@ return값이 Calendar가 아닌 이유는 이 메소드로 새로운 객체를 �
 이 메소드에서는 새로운 캘린더 객체를 만들때에 day라는 레이아웃에 새로운 객체들을 
 집어넣는 기능을 합니다.*/
 	private void initCalendarAdapter() {
-		mCalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
-		GridViewCalendar.setAdapter(mCalendarAdapter);
+		CalendarAdapter = new CalendarAdapter(this, R.layout.day, mDayList);
+		GridViewCalendar.setAdapter(CalendarAdapter);
 	}
 /*onItemClick메소드는 그리드뷰나 리스트뷰를 사용하는 클래스에서 사용되는 메소드입니다. 
 해당 뷰를 통해서 만든 객체가 클릭되었을때 발생하는 이벤트를 정의해주는 메소드로
