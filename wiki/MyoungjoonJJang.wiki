@@ -38,7 +38,7 @@ Do it안드로이드 프로그래밍이라는 책과
 
 =클래스 소개=
 
-https://comp166-koreauniv.googlecode.com/files/%E3%85%87%E3%85%87.png
+https://comp166-koreauniv.googlecode.com/files/%E3%85%8B%E3%85%8B%E3%85%8B%E3%85%8B.png
 
 제 캘린더에 사용되는 클래스는 그리드뷰와 리스트뷰를 사용합니다.
 
