@@ -50,9 +50,7 @@ https://comp166-koreauniv.googlecode.com/files/%E3%85%87%E3%85%87.png
 
 *1.메인클래스*
 
-https://comp166-koreauniv.googlecode.com/files/%E3%85%81%E3%84%B7.png
-
-https://comp166-koreauniv.googlecode.com/files/%E3%85%81%E3%85%81.png
+https://comp166-koreauniv.googlecode.com/files/%E3%85%81%E3%85%81%E3%85%81%E3%85%81%E3%85%81.png
 
 그림을 보면 메인클래스에서 많은 전역 변수들을 사용하고 있는데요.
 
