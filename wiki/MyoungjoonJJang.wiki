@@ -502,21 +502,21 @@ public class Schedule implements Serializable {
 	/**
 	 * 
 	 */
-
+/*스케쥴은 24시간이 있고 그에대한 타이틀과 내용이 있으므로 이렇게 만듬*/
 	public String time;
 	private String[] tt = new String[24];
 	private String[] me = new String[24];
-
+/*이 객체의 변수를 세팅해주는 세터 메소드의 역할*/
 	public void Sch(String title, int time, String message) {
 		this.me[time] = message;
 		this.tt[time] = title;
 
 	}
-
+/*String의 tt[time]을 return해주는 게터 메소드*/
 	public String gettitle(int time) {
 		return tt[time];
 	}
-
+/*String의 me[time]을 return해주는 게터 메소드*/
 	public String getmessage(int time) {
 		return me[time];
 	}
