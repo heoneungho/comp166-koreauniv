@@ -453,6 +453,8 @@ onCreate메소드에서는 toast를 사용할수 없다는 에러가 뜨기 때�
 
 *5.전역 객체 클래스 Schedule*
 
+https://comp166-koreauniv.googlecode.com/files/Schedule.png
+
 {{{
 
 package com.example.hi;
