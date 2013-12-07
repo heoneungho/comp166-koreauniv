@@ -1339,13 +1339,41 @@ public class DayTimeAccount {
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 인스턴스마다 하나씩 가지고 있는 변수이다.
+ * 지역 변수: 클래스마다 하나씩 있는 변수이다. 이 변수를 사용하면 다른 변수에 비해 메모리가 많이 절약되는 장점이 있다.. 한 클래스에 속하는 모든 인스턴스에 의해서 공유된다. 
+
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper
+{
+        static// 딱 한번만 실행되는 static 메소드이다. 
+       {
+                System.out.println("super static blokc");
+        }
+        
+        StaticSuper()// 생성자이다.
+        {
+                System.out.println("super constructor");
+        }
+}
 
+public class StaticTests extends StaticSuper{
+        static int rand;
+        
+        static
+        {
+                rand = (int) (Math.random() * 6);
+                System.out.println("static block " + rand);
+        }
+        
+        StaticTests()//생성자이다.
+        {
+                System.out.println("in main");
+                StaticTests st = new StaticTests();//StaticTests 객체를 생성한다.
+        }
+}
 }}}
 
 = 11. 위험한 행동:예외처리  =
