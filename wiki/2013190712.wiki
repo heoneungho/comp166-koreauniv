@@ -748,6 +748,43 @@ import java.io.*;
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+//위에 두 개는 408컴퓨터로 하는 바람에 주석을 영어로 달았지만, 아래 두 개는 제 컴터로 하기 때문에 한글로 주석을 달겠습니다.
+//다른 클래스는 모두 같습니다.
+
+import java.util.ArrayList;
+
+public class DotCom 
+{
+        private ArrayList<String> locationCells;
+        
+        
+        
+        //배열 대신 string이 들어가는 ArrayList를 사용합니다.
+        
+        public void setLocationCells(ArrayList<String> loc)
+        {
+                locationCells = loc;
+        }
+        
+        public String checkYourself(String userInput)//새로 바뀐 인자명입니다.
+        {
+                String result = "miss";
+                
+                int index = locationCells.indexOf(userInput);
+                //사용자가 추측한 위치가 ArrayList에 들어있는지 확인합니다. 들어있으면 인덱스 번호가, 그렇지 않으면 -1이 리턴됩니다.
+                if(index >= 0)//인덱스가 0 이상이면
+                {
+                        locationCells.remove(index);//제거
+                
+                        if(locationCells.isEmpty())//목록이 비어있다면 닷컴이 죽었다는 것을 알 수 있다.
+                                retult = "kill";        
+                        else
+                                result = "hit";
+                }
+                
+                return result;
+        }
+}
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
