@@ -1244,6 +1244,72 @@ arrrgh
 
 {{{
 
+import java.util.*;
+class V2Radiator
+{
+        V2Radiator(ArrayList<SimUnit> list) //ㅣist를 받아옵니다.
+        {
+                for(int x = 5; x < 5 ; x++) 
+                {
+                        list.add(new SimUnit("V2Radiator"));//받아온 List에 5번 SimUnit을 추가하고 V2Radiator를 줍니다.
+                }
+        }
+}
+
+class V3Radiator //extends V2Radiator 불필요한 부분입니다.
+{
+        V3Radiator(ArrayList<SimUnit> lglist)//lglist를 받아옵니다.
+        {
+                //super(lglist); 불필요한 부분입니다. 이부분에서 불필요하게 5개의 SimUnit이 생성됩니다.
+                for(int g = 0; g < 10 ; g++)
+                {
+                        lglist.add(new SimUnit("V3Radiator"));//lglist에 10번 SimUnit을 추가하고 V3Radiator를 줍니다.
+                }
+        }
+}
+
+class RetentionBot
+{
+        RetentionBot(ArrayList<SimUnit> rlist)
+        {
+                rlist.add(new SimUnit("Rention"));
+        }
+}
+
+public class TestLifeSupportSim 
+{
+        public static void main(String[] args)
+        {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();//aList의 ArrayList생성
+                V2Radiator v2 = new V2Radiator(aList);//v2객체 생성
+                V3Radiator v3 = new V3Radiator(aList);//v3객체 생성
+                for(int z = 0 ; z < 20 ; z++)
+                {
+                        RetentionBot ret = new RetentionBot(aList); //20번 ret객체를 생성합니다.
+                }
+        }
+}
+
+class SimUnit
+{
+        String botType;
+        SimUnit(String type)
+        {
+                botType = type;
+        }
+        int powerUse()
+        {
+                if("Retention".equals(botType))
+                {
+                        return 2;                       
+                }
+                else
+                {
+                        return 4;
+                }
+        }
+}
+
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
