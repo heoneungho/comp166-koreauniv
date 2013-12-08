@@ -1468,7 +1468,8 @@ public class Calender{
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
-{{{class StaticSuper{ // 클래스 선언
+{{{
+class StaticSuper{ // 클래스 선언
 
   static{
     System.out.println("super static block");
