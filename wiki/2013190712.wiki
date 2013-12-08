@@ -1347,7 +1347,7 @@ class Dragon extends Monster {
 arrrgh
 breath fire
 arrrgh
-
+}}}
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
 
 *231p~ 심각한 다형성* _요약_
