@@ -1371,6 +1371,36 @@ public class CalendarII/*클래스 이름을 Calendar라고하면 객체생성�
 
 {{{
 
+class StaticSuper{
+
+        static { 
+        System.out.println("super static block");
+        }
+
+        StaticSuper() { //생성자이므로 ()를 붙입니다.
+        System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper {//StaticSuper를 상속
+
+        static int rand; 
+
+        static { 
+        rand=(int_ (Math.random()*6);
+        System.out.println("static block " + rand);
+        }
+
+        StaticTests(){ 
+        System.out.println("constructor");
+        {
+
+        public static void main(String [] args) {
+        System.out.println("in main");
+        StaticTests st = new StaticTests ();//객체 생성
+        }
+}
+
 }}}
 
 = 11. 위험한 행동:예외처리  =
