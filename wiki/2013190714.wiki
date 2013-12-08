@@ -1332,6 +1332,28 @@ class SimUnit
 
 {{{
 
+import java.util.*;
+public class CalendarII//클래스 이름을 Calendar라고하면 객체생성에 에러가 떠서 II
+를 붙였습니다.
+{
+        public static void main(String[] args)
+        {
+                Calendar c = Calendar.getInstance();
+                c.set(2004,0,7,15,40);//시각을 2004년 1월 7일 15:40 으로 설정
+                long day1 = c.getTimeInMillis();//1970년 1월1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴합니다.
+                day1 += 1000 * 60 * 60;
+                c.setTimeInMillis(day1);//한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);//35일을 더합니다.
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);//35일 뒤로 넘깁니다. 하지만 달은 바뀌지 않습니다.
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);//날짜를 1로 설정합니다.
+                System.out.println("set to 1 " + c.getTime());
+                
+        
+        }
+}
 }}}
 
 *342p 집중토론* _요약_
