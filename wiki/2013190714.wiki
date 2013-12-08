@@ -1333,8 +1333,8 @@ class SimUnit
 {{{
 
 import java.util.*;
-public class CalendarII//클래스 이름을 Calendar라고하면 객체생성에 에러가 떠서 II
-를 붙였습니다.
+public class CalendarII/*클래스 이름을 Calendar라고하면 객체생성에 에러가 떠서 II
+를 붙였습니다.*/
 {
         public static void main(String[] args)
         {
