@@ -1347,10 +1347,10 @@ arrrgh
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수: 힙은 모든 객체가 사는 곳이다. 인스턴스 변수는 객체 안에 사므로 인스턴스 변수가 힙 안에 살고 있는 것이다.
- * 스택에서의 변수: 스택은 메소드 호출과 지역 변수가 사는 곳이다. 지역 벼누가 객체에 대한 레퍼런스인 경우에는 변수(레퍼런스, 즉 리모컨)만 스택에 들어간다. 객체 자체는 힙 안에 있습니다. (메소드 매개변수도 지역 변수에 포함)
- * 생성자: 객체를 생설할 때 실행되는 코드가 들어있다. 즉 어떤 클래스 유형에 대해 new 키워드를 사용했을 때 실행되는 코드가 들어있다. 우리가 직접 만들지 않아도 된다.
- * 널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 긴응르 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException이 생긴다.
+ * 힙에서의 변수: 힙은 모든 객체가 사는 곳이다. 인스턴스 변수는 객체 안에 살기 때문에 즉 인스턴스 변수가 힙 안에 살고 있는 것이다.
+ * 스택에서의 변수: 스택은 메소드 호출과 지역 변수가 사는 곳이다. 지역 변수가 객체에 대한 레퍼런스인 경우에는 변수(레퍼런스, 즉 리모컨)만 스택에 들어간다. 객체 자체는 힙 안에 있습니다. (메소드 매개변수도 지역 변수에 포함)
+ * 생성자: 객체를 생성할 때 실행되는 코드가 들어있다. 즉 어떤 클래스 유형에 대해 new 키워드를 사용했을 때 실행되는 코드가 들어있다. 우리가 직접 만들지 않아도 된다.
+ * 널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException 이 생긴다.
  
 *298p 집중토론* _요약_
 
@@ -1437,27 +1437,77 @@ class SimUnit
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 인스턴스 변수에 따라 행동이 달라지지 않기 때문에 인스턴스나 객체가 필요하지 않은 메소드. 클래스만 있어도 가능. 정적메소드를 호출할 때는 클래스명을 사용.
+ * 정적 메소드를 선언하는 방법: static 이라는 키워드를 사용하면 클래스의 인스턴스 없이 메소드를 실행할 수 있다.
+ * static final: final로 지정한 변수는 일단 초기화되고나면 절대 그 값을 바꿀 수 없다. 즉 static final 로 선언한 변수는 클래스가 로딩되어있는 동안 계속 똑같은 값을 유지한다. 상수의 변수명은 모두 대문자로 쓴다.
+ * 널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException 이 생긴다. (9장 참조)
+ * 오토 박싱: 원시값과 래퍼 객체 사이의 변환을 자동으로 처리해주는 기능.
+ * 정적 임포트: 정적 클래스, 정적 변수, enum 값 등을 사용할 때 정적 임포트를 활용하여 타이핑을 적게 해보자는 개념. 잘못 사용하면 코드의 가독성이 크게 떨어질 수 있음.
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
+public class Calendercheck
+{
+        public static void main(String[] args)
+        {
+                Calender c = Calender.getInstance();
+                c.set(2004,0,7,15,40);//시각을 2004년 1월 7일 15:40 으로 설정
+                long day1 = c.getTimeInMillis();//1970년 1월1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴
+                day1 += 1000 * 60 * 60;
+                c.setTimeInMillis(day1);//한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);//35일을 더합니다.
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);//35일 뒤로 넘깁니다. 하지만 달은 바뀌지 않습니다.
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);//날짜를 1로 설정합니다.
+                System.out.println("set to 1 " + c.getTime());
+                
+        
+        }
+}
 
 }}}
 
-*342p 집중토론* _요약_
+*342p 집중토론* _요약_ //지역변수라고 되있길래 정적변수로 수정하고 했어요~
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 인스턴스마다 하나씩 있다.
+ * 정적 변수: 상수. 인스턴스마다 하나씩 있는 게 아니고 클래스마다 하나씩 있다.(메모리 절약). 한 클래스에 속하는 모든 인스턴스에 의해서 공유된다. 
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{
+
+	static { //ststic 메소드. 딱 한번 실행됨.
+	System.out.println("super static block");
+	}
+
+	StaticSuper() { //StaticSuper는 생성자이므로 반드시 ()가 있어야함.
+	System.out.println("super constructor");
+	}
+}
+
+public class StaticTests extends StaticSuper { //StaticTests 는 StaticSuper을 확장함.
+
+	static int rand; //static 변수.
+
+	static { //static 메소드.
+	rand=(int_ (Math.random()*6);
+	System.out.println("static block " + rand);
+	}
+
+	StaticTests(){ //생성자.
+	System.out.println("constructor");
+	{
+
+	public static void main(String [] args) {
+	System.out.println("in main");
+	StaticTests st = new StaticTests (); //StaticTests 객체 생성.
+	}
+}
 
 }}}
 
