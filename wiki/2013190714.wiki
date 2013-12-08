@@ -891,6 +891,131 @@ public class DotCom {
 
 {{{
 
+class Animal
+{
+        String picture; //그 동물의 모습을 보여주는 JPEG파일명
+        Boolean food;//그 동물이 먹는 음식의 형식,초식과 육식
+        int hunger;//동물이 배고픈 정도
+        float boundaries;//동물이 돌아다니는 공간
+        float location;//동물의 위치를 나타내는 좌표
+
+        void makeNoise()
+        {
+//동물이 소리를 낼 떄의 행동
+        }
+
+        void eat()
+        {
+//동물이 음식을 접했을 때의 행동
+        }
+
+        void sleep()
+        {
+//동물이 잠들어 있을 때의 행동
+        }
+
+        void roam()
+        {
+//동물이 배회할때의 행동
+        }
+
+}
+//Animal을 상속받습니다.
+class Feline extends Animal
+{
+        void roam()
+        {
+            // roam를 오버라이드합니다.
+        }
+}
+//Animal을 상속받습니다.
+class Canine extends Animal
+{
+        void roam()
+        {
+             // roam을 오버라이드합니다.
+        }
+}
+//Feline을 상속받습니다.
+class Lion extends Feline
+{
+        void makeNoise()
+        {
+              // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+              //eat를 오버라이드합니다.
+        }
+}
+//Feline을 상속받습니다.
+class Tiger extends Feline
+{
+        void makeNoise()
+        {
+           // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+           // eat를 오버라이드합니다.
+        }
+}
+
+
+//Feline을 상속받습니다.
+class Cat extends Feline
+{
+        void makeNoise()
+        {
+              
+        }
+
+        void eat()
+        {
+             //eat를 오버라이드합니다.
+        }
+}
+//Animal을 상속받습니다.
+class Hiippo extends Animal
+{
+        void makeNoise()
+        {
+             // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+              //eat를 오버라이드합니다.
+        }
+}
+//Canine을 상속받습니다.
+class Wolf extends Canine
+{
+        void makeNoise()
+        {
+           // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+           //eat를 오버라이드합니다.
+        }
+}
+//Canine을 상속받습니다.
+class Dog extends Canine
+{
+        void makeNoise()
+        {
+           // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+            //eat를 오버라이드합니다.
+        }
+}
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
