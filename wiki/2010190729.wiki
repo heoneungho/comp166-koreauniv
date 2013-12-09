@@ -540,9 +540,46 @@ class Dog2TestDrive{
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class XCopy{
+        public static void main(String[] args){
+                int orig = 42;
 
+                XCopy x = new XCopy();
+
+                int y = x.go(orig);
+
+                System.out.println(orig + " " + y);
+        }//main메소드
+
+        int go(int arg){
+                arg = arg * 2;
+
+                return arg;
+        }//go메소드
+}
 }}}
+{{{
+class Clock{
+        String time;
 
+        void setTime(String t){
+                time = t;
+        }
+
+        String getTime(){
+                return time;//리턴유형이 있어야함. string
+        }
+}
+class ClockTest{
+        public static void main(String[] args){
+                Clock c = new Clock();
+
+                c.setTime("1245");
+                String tod = c.getTime();
+                System.out.println("time : " + tod);
+        }
+}
+}}}
 
 = 05. 메소드를 더 강력하게:흐름 제어, 연산 등  =
 
@@ -1324,7 +1361,53 @@ z = null;
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList;
 
+
+public class Test {
+        public static void main(String[] args){
+                ArrayList aList = new ArrayList();
+                V2Radiator v2 = new V2Radiator(aList);//v2인스턴스
+                V3Radiator v3 = new V3Radiator(aList);//v3인스턴스
+                
+                for(int z=0; z<20; z++)
+                        RetentionBot ret = new RetentionBot(aList);
+        }
+}
+
+class V2Radiator{
+        V2Radiator(ArrayList list){
+                for(int x=0; x<5; x++)
+                        list.add(new SimUnit("V2Radiator"));//SimUnit을 5번 추가
+        }
+}
+
+class V3Radiator extends V2Radiator{
+        V3Radiator(ArrayList lglist){
+                for(int y=0; y<10; y++)
+                        lglist.add(new SimUnit("V2Radiator"));//SimUnit을 10번 추가
+        }
+}
+
+class RetentionBot{
+        RetentionBot(ArrayList rlist){
+                rlist.add(new SimUnit("Retention"));
+        }
+}
+
+class SimUnit{
+        String botType;
+        SimUnit(String type){
+                botType = type;
+        }
+        
+        int powerUse(){
+                if("Retention".equals(botType))
+                        return 2;
+                else
+                        return 4;
+        }
+}
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
