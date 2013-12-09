@@ -301,43 +301,238 @@ public class DVDPlayerTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 원시 변수에는 정수, 부울, 부동소수점 수와 같은 기초적인 값(단순한 비트 패턴으로 나타낼 수 있는 값)이 들어간다. 레퍼런스 변수는 객체 레퍼런스로써 객체에 대한 레퍼런스가 들어간다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
-
+public class Dog
+{
+	String name;
+	public static void main (String[] args)
+	{
+		Dog dog1 = new Dog();
+		dog1.bark();
+		dog1.name = "Bart";
+	
+		
+		Dog[] myDogs = new Dog[5];
+		myDogs[0] = new Dog();
+		myDogs[1] = new Dog();
+		myDogs[2] = new Dog();
+		myDogs[3] = new Dog();
+		myDogs[4] = dog1;
+	
+		
+		myDogs[0].name = 'Fred';
+		myDogs[1].name = 'Merge';
+		myDogs[2].name = 'Orlando';
+		myDogs[3].name = 'Miranda';
+		myDogs[4].name = 'Fline';
+		
+		System.out.print("마지막 개의 이름:	");
+		System.out.println(myDogs[2].name);
+		
+		int x = 0;
+		while(x < myDogs.length)
+		{
+			myDogs[x].bark();
+			x = x+1
+		}
+	}
+	
+	public void bark()
+	{
+		System.out.println(name+ "이(가) 왈!하고 짖습니다.");
+	}
+	public void eat() {}
+	public void chaseCat() {}
+}
+	}
+}
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Books
+{
+	String title;
+	String author;
+}
 
+class BooksTestDrive
+{
+	public static void main(String [] args)
+	{
+		Books [] myBooks = new Books[3];
+
+		myBooks[0] = new Books()
+		myBooks[1] = new Books()
+		myBooks[2] = new Books() // 수정
+
+		int x = 0;
+		myBooks[0].title = "The Grapes of Java";
+		myBooks[1].title = "The Java Gatsby";
+		myBooks[2].title = "The Java Cookbook";
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian";
+
+		while(x < 3)
+		{
+			System.out.print(myBooks[x].title);
+			System.out.print(" by ");
+			System.out.println(myBooks[x].author);
+			x = x+1;
+		}
+	}
+]
+
+----------------------------------------------------------------------
+
+class Hobbits
+{
+	String name		
+
+	public static void main(String [] args)
+	{
+		Hobbits [] h = new Hobbits[3];
+		int z = 0;
+
+		while(z < 4)
+		{
+			z = z+1;
+			h[z] = new Hobbits();
+			h[z].name = "bilbo";
+			if (z == 1)
+			{
+				h[z].name = "frodo";
+			}
+			if(z == 2)
+			{
+				h[z].name = "sam";
+			}
+		}
+		System.out.println(h[z].name + " is a ");
+		Sysetm.out.println("good Hobbit name");
+
+		z = z+1; // 수정
+		}
+	}
+}
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트의 메소드에서 심각한 결점은 사용한 레퍼런스 변수 개수는 밥의 메소드에 비해 작았지만 그의 메소드에서 만든 Contact 객체 중에서 마지막 것을 제외한 나머지는 접근할 수가 없다는 문제가 있었다. 순환문을 한 바퀴 돌 때마다 그는 새로운 객체를 레퍼런스 변수 하나에 대입했기 때문에 전에 참조하고 있던 객체는 버림받게 되었다.
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+ * 캡슐화: 인스턴스 변수를 부적적한 값으로 설정하지 못하게 인스턴스 변수 주변에 방어막 같은 것을 만드는 것. 모든 인스턴스 변수에 대해 세터 메소드를 만들고 다른 코드에서는 그 데이터를 절대 직접 접근할 수 없도록 반드시 세터 메소드를 사용하는 것.
+ * 게터와 세터: 정식 명칭은 액세서(accessor)와 뮤테이터(mutator)이다. 게터는 단지 그 게터가 가져오기로 되어있는 값을 리턴값 형태로 가져오고(get) 세터는 그 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하는(set) 역할을 한다.
+ * 인스턴스 변수 vs 지역 변수: 인스턴스 변수는 클래스 내에서 선언된다. 메소드 내에서 선언되는 것이 아니다. 지역 변수는 메소드 내에서 선언된다. 사용하기 전에 반드시 초기화해야 한다.
  
 *107p Dog* _실행_
 
 {{{
+class Dog
+{
+	int size;
+	String name;
 
+	void bark()
+	{
+		if(size > 60)
+		{
+			System.out.println("Wooof! Wooof!");
+		}
+		else if (size>14)
+		{
+			System.out.println("Ruff! Ruff!");
+		}
+		else
+		{
+			System.out.println("Yip! Yip!");
+		}
+	}
+}
+
+---------------------------------------------------------------------
+
+class DogTestDrive
+{
+	public static void main (String [] args)
+	{
+		Dog one = new Dog();
+		one.size = 70;
+		Dog two = new Dog();
+		two.size = 8;
+		Dog three = new Dog();
+		three.size = 35;
+
+		one.bark();
+		two.bark();
+		three.bark();
+	}
+}
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class XCopy
+{
+	public stati void main(String [] args)
+	{
+		int orig = 42;
 
+		XCopy x = new XCopy();
+
+		int y = x.go(orig);
+
+		System.out.println(orig + "" + y);
+	}
+
+	int go(int arg)
+	{
+		arg = arg*2
+
+		return arg;
+	}
+}
+
+---------------------------------------------------------------------
+
+class Clock
+{
+	String time;
+
+	void setTime(String t)
+	{
+		time = t;
+	}
+	
+	String getTime() // 수정
+	{
+		return time;
+	}
+}
+
+class ClockTestDrive
+{
+	public static void main(String [] args)
+	{
+		Clock c = new Clock();
+
+		c.setTime("1245");
+		String tod = c.getTime();
+		System.out.println("time: " + tod);
+	}
+}
 }}}
 
 
@@ -345,11 +540,120 @@ public class DVDPlayerTestDrive {
 
 *135p XP* _요약_
 
- * 익스트림 프로그래밍이란?
+ * 익스트림 프로그래밍이란? 
+    최근의 소프트웨어 개발 방법론 분야에 새로 등장.
+
+    최근에는 높은 사람들을 위한 방법론이다.
+ 
+    테스트를 많이 만드는 것은 xp패러다임에 따른 것이다.
+
+    많은 사람들이 "프로그래머들이 정말 원하는 방법"이라고 함. 
+
+
+    90년대 말에 등장
+
+
+     가장 큰 장점은 막판에 스펙이 변경되는 일이 있어도 고객이 원하는 것을 고객이 원하는 기한에 맞춰서 제공 할 수 있다는 점임.
+
+
+    규칙 중에 야근은 하지 마라는 아주 좋은 규칙이 있음.
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+
+public class SimpleDotCom {
+
+	int[] locationCells;
+	int numOfHits = 0 ;
+	
+	public void setLocationCells (int[] locs){
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess){//배열이 맞았나 체크
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i = 0 ; i < locationCells.length; i++){
+			if (guess == locationCells[i]) {
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		}//순환문 끝
+		
+		if (numOfHits == locationCells.length){
+			result = "kill";//다 맞추면 kill이라고 나타나게 함
+	 	}
+		System.out.println(result) ;
+			return result ;
+	}//메소드 끝
+}//클래스 끝
+
+
+public class SimpleDotComGame {
+
+	public static void main(String[] args) {
+		int numOfGuesses = 0 ; //사용자가 추측한 횟수를 추적하기 위한 변수
+		GameHelper helper = new GameHelper();//일단 사용자로부터 입력을 받기 위한 메소드가 들어있는 특별한 클래스가 있다고 생각
+		
+		SimpleDotCom theDotCom = new SimpleDotCom(); //닷컴 객체 생성
+		
+		int randomNum = (int)(Math.random()*5);//첫번째 셀 위치를 정하기 위한 난수를 생성하고 그 값을 써서 셀 위치 배열을 만듦
+		
+		int[] locations = {randomNum, randomNum+1, randomNum+2};//첫번째 셀 위치를 정하기 위한 난수를 생성하고 그 값을 써서 셀 위치 배열을 만듦
+		theDotCom.setLocationCells(locations);//닷컴의 위치를 지정(배열사용)
+		boolean isAlive = true ;//닷컴이 살아있는지 추적하기 위한 부울 변수를 만듦
+		
+		while (isAlive == true){//살아 있으면 반복
+			String guess = helper.getUserInput("enter a number");//사용자가 입력한 string을 받아옴
+			
+			String result = theDotCom.checkYourself(guess);
+			//닷컴 객체를 통해 추측한 값이 맞는지 확인. 리턴된 결과는 string에 저장
+			numOfGuesses++;
+			//추측횟수 증가
+			if (result.equals("kill")){//kill이면 isAlive를 false로 설정 ->순환문 탈출
+				isAlive = false ;
+				
+				System.out.println(numOfGuesses + "guesses");
+			}//if 문 끝
+		}//while문 끝
+	}//main 끝
+}//클래스 끝
+
+import java.io.*;
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null ;
+		System.out.print(prompt + " ") ;
+		try {
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if (inputLine.length()== 0) return null;
+		} catch(IOException e){
+			System.out.println("IOException: " + e);
+		}
+		return inputLine;
+	}
+}
+//마지막 클래스인 gamehelper는 책에서 그냥 그대로 입력하라고 나옴. 
+
+//결과
+enter a number 3
+miss
+enter a number 5
+hit
+enter a number 1
+miss
+enter a number 2
+miss
+enter a number 3
+miss
+enter a number 4
+hit
+enter a number 5
+kill
+7guesses
 
 }}}
 
@@ -358,19 +662,184 @@ public class DVDPlayerTestDrive {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+public class SimpleDotComTestDrive { // SimpleDotComTestDrive클래스를 생성합니다.
+
+        public static void main(String[] args){
+
+
+                int numOfGuesses=0;
+
+                GameHelper helper = new GameHelper();
+
+                SimpleDotCom theDotCom = new SimpleDotCom();
+
+                int randomNum = (int) (Math.random() * 5);
+
+                int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+                boolean[] hitCells = new boolean[3]; //입력 값을 판단하기 위한  boolean 배열을 생성
+
+                //닷컴 클래스로 boolean 배열을 넘김
+                theDotCom.sethitCells(hitCells);
+
+                theDotCom.setLocationCells(locations);
+
+                boolean isAlive = true;
+
+                while(isAlive == true){
+                        String guess = helper.getUserInput("enter a number");
+                        String result = theDotCom.checkYourself(guess);
+                        numOfGuesses++;
+                        if(result.equals("kill")){
+                                isAlive = false;
+                                System.out.println(numOfGuesses + "guesses");
+                        }
+
+                }
+        }
+
+}
+
+
+class SimpleDotCom { 
+
+        int[] locationCells;
+        boolean[] hitCells = new boolean[3];
+
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs){
+
+                locationCells = locs;
+        }
+
+        public void sethitCells(boolean[] check){ 
+                hitCells = check;
+        }
+
+
+        public String checkYourself(String stringGuess){
+
+                int guess = Integer.parseInt(stringGuess);
+
+                String result = "miss";
+
+                for(int i = 0; i < locationCells.length; i++){
+
+                        if(guess == locationCells[i] && hitCells[i]!=true){ // 이미 맞춘 배열인지 확인
+                                result = "hit";
+                                numOfHits++;
+                                hitCells[i] = true; // 맞춘 배열은 true로
+                                break;
+
+                        }
+
+                }
+
+                if (numOfHits == locationCells.length){
+                        result = "kill";
+                }
+
+                System.out.println(result);
+                return result;
+
+        }
+
+}
 
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+class SimpleDotCom { 
+
+        int[] locationCells;
+
+
+        int numOfHits = 0;
+
+        public void setLocationCells(int[] locs){
+
+                locationCells = locs;
+        }
+
+        public String checkYourself(String stringGuess){
+
+                int guess = Integer.parseInt(stringGuess);
+
+                String result = "miss";
+
+                for(int i = 0; i < locationCells.length; i++){
+
+               // 이미 맞춘 배열인지 확인
+                        if(guess == locationCells[i] && locationCells[i]!=-1){ 
+                                result = "hit";
+                                numOfHits++;
+                                locationCells[i]=-1; // 맞춘 배열은 -1값으로 교체
+                                break;
+
+                        }
+
+                }
+
+                if (numOfHits == locationCells.length){
+                        result = "kill";
+                }
+
+                System.out.println(result);
+                return result;
+
+        }
+
+}
 
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList; // ArrayList를 import
 
+public class DotCom
+{
+     private ArrayList<String> locationCells;
+     // ArrayList를 사용
+     // private int numOfHits;
+      // 없어도 상관 ㄴㄴ
+
+     public void setLocationCells(ArrayList<String>loc)
+   
+    {
+         locationCells = loc;
+     }
+ 
+     public String checkYourself(String userInput)
+     // 새로 바뀐 인자 이름을 넣어 줍니다.
+    {
+          String result = "miss";
+  
+          int index = locationCells.indexOf(userInput);
+          // 사용자가 추측한 위치가 ArrayList에 들어있는지 확인, 들어있으면 인덱스 번호가, 그렇지 않으면 리턴
+  
+          if(index >= 0)
+          {
+                locationCells.remove(userInput);
+                // 인덱스가 0 이상이면 사용자가 추측한 위치가 목록에 들어있는 것이므로 제거
+   
+              if(locationCells.isEmpty())
+              // 목록이 비어짔다면 그 닷컴이 죽었다는 것을 알수 있습니다.
+             {
+                   result = "Kill";
+             }
+             else
+             {
+                   result = "hit";
+              }        
+         }        
+         return result;
+    }
+}
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
@@ -383,19 +852,86 @@ public class DVDPlayerTestDrive {
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속: 상위클래스로부터 인스턴스 변수와 메소드를 넘겨주는 것
+ * 다형성: 하나의 형태를 각각 다르게 사용할 수 있다.
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+class Animal {
+        String picture;
+        boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+        void sleep(){
+        }
+        void roam(){
+        }
+}
+
+class Feline extends Animal{
+        }
+}
+
+class Lion extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Tiger extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Cat extends Feline{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Hippo extends Animal{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Canine extends Animal{
+        void roam(){
+        }
+}
+
+class Wolf extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
+
+class Dog extends Canine{
+        void makeNoise(){
+        }
+        void eat(boolean food){
+        }
+}
 
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 부모의 메소드를 자식의 메소드에서 다시 정의 하는 것
+ * 오버로딩: 하나의 클래스 내에 인수의 개수나 형식이 다른 동일한 이름의 메소드를 여러개 정의하는 것, 즉 이름이 같은 메소드라도 안에 있는 인수만 다르다면 얼마든지 만들 수 있다는 것
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
@@ -408,24 +944,69 @@ public class DVDPlayerTestDrive {
 *231p~ 심각한 다형성* _요약_
 
  * 인터페이스:
- * 다형성:
+
+ 모든 메소드가 추상 메소드입니다.
+
+ 하위 클래스에서 반드시 구현(상속)해야만 하므로 상속받은 것 중에 어떤 것을 호출해야 할지 결정할 수 없게 되는 문제가 생기지 않습니다.
+ 
+ 여러개가 되어도 상관 없다.
+
+ 중복문제를 해결하지 못함
+ 
+ 다른 클래스들한테 내가 이런 메소드를 갖고있다 라는 것을 알려주기위해 사용.
+
+ 인터페이스는 실제로 아무것도 제공해 주지 못한다.
+
+ 서로다른 상속트리에서 인터페이스를 구현할 수 있다.
+
+ * 다형성: 하나의 형태를 다르게 사용 할 수 있다.
  * 추상 클래스:
+
+ 인스턴스를 만들 수 없는 클래스
+
+ 반드시 확장해야 함
+
+ 추상 유형을 레퍼런스로 사용할 수는 있음
+
+ 다형적인 인자, 리턴 유형, 배열 등에 활용
+
  * 추상 메소드:
+
+ 몸통이 없는 메소드
+
+ 반드시 오버라이드해야 합니다.
+
+ 추상 메소드를 만들 때는 클래스도 반드시 추상 클래스로 만들어야 합니다.
+
+
+ 추상 클래스가 아닌 클래스에는 추상 메소드를 집어 넣을 수 없습니다.
+
+ 아무일도 일어나지 않는 메소드에요.
+
+ 얘로부터 상속받은 클래스에서는 이 메소드 이름으로 다른 행동을 하게 만들 수 있다.
+
+ 상속받은 클래스에서 무조건 상속받은 메소드를 구현해 놓아야 한다.
+
+ 반복을 시킬 수 있다.
  * 다중 상속:
+상위클래스가 두개 이상.
+자바는 할 수 없다
+
+
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수: 없어지지 않는다.
+ * 스택에서의 변수: 끝나면 없어진다.
+ * 생성자: 객체를 생성할 때 실행되는 코드가 들어있습니다. 모든 클래스에 생성자가 있습니다. 직접 만들지 않아도 컴파일러에서 자동으로 생성자를 만들어줍니다.
+ * 널 레퍼런스: 가비지 컬렉션 대상이된다.
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 클래스 내에서 선언한 변수
+ * 지역 변수: 메소드내에서 선언한 변수, 매개변수도 지역 변수에 포함
 
 *302p 5분 미스터리* _구현후 주석달기_
 
@@ -437,12 +1018,12 @@ public class DVDPlayerTestDrive {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 인스턴스 변수를 쓸 수 없음. 정적 변수만 써야함  
+ * 정적 메소드를 선언하는 방법: static
+ * static final: 상수. 바꿀수 없다. 대문자로. 메소드를 final로 지정하면 오버라이드 할 수 없다. 클래스를 final로 지정하면 확장할 수 없다. 
+ * 널 레퍼런스:  
+ * 오토 박싱: 
+ * 정적 임포트: 
 
 *339p Calendar* _구현후 주석달기_
 
