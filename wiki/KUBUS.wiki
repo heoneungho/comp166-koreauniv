@@ -146,7 +146,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+/* 각 역마다 번호를 부여하고 activity 전환할 때 그 값들이 넘어가게끔 설정 했음 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
