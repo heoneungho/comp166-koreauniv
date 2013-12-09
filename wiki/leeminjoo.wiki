@@ -1,5 +1,4 @@
 #summary 숫자 야구 게임!
-#labels 2013190711이민주
 
 
 = Introduction =
@@ -2237,7 +2236,7 @@ public class HELP extends Activity {
         android:layout_height="wrap_content"
         android:layout_x="21dp"
         android:layout_y="28dp"
-        android:src="@drawable/helpppp" />
+        android:src="@drawable/helpppp" /> //help 제목나타내는 사진
 
     <ImageView
         android:id="@+id/imageView2"
@@ -2245,7 +2244,7 @@ public class HELP extends Activity {
         android:layout_height="wrap_content"
         android:layout_x="2dp"
         android:layout_y="126dp"
-        android:src="@drawable/stupid" />
+        android:src="@drawable/stupid" /> //게임 방법 설명하는 사진
 
 </AbsoluteLayout>
 
