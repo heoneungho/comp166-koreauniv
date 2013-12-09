@@ -1,0 +1,7 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+뒷면인 카드들을 두장씩 뒤집어서 앞면을보고 맞추는 게임.
+
+= Details =
