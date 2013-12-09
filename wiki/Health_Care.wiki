@@ -97,18 +97,15 @@ public class MainActivity extends Activity {
 		
 /*메인 화면에서는 총 6개의 화면 이동이 필요하기 때문에 새로운 이미지 버튼 객체 6개를 보기 좋게 생성합니다.*/ 		
 		
-		bt1.setOnClickListener(new OnClickListener()
-		{
+bt1.setOnClickListener(new OnClickListener()
+{
 			
-			@Override
-			public void onClick(View v){
+	@Override
+	public void onClick(View v){
 		    	
 		    	
-					
-					
-				    
-					Intent intetn1 = new Intent(MainActivity.this, breast.class);
-					startActivity(intetn1);
+	Intent intetn1 = new Intent(MainActivity.this, breast.class);
+	startActivity(intetn1);
 
 					
 			}
@@ -121,90 +118,87 @@ public class MainActivity extends Activity {
 Intent를 이용해서 메인화면에서 breast라는 클래스로 화면이 이동하게 합니다. 
 밑에 나와있는 다른 5개의 코드도 같은 원리입니다.*/ 		
 			
-			bt2.setOnClickListener(new OnClickListener(){
+bt2.setOnClickListener(new OnClickListener()
+{
 				
-				@Override
-				public void onClick(View v){
+        @Override
+	public void onClick(View v){
 			    	
 			    	
 						
-					
-						Intent intetn2 = new Intent(MainActivity.this, heap.class);
-						startActivity(intetn2);
+	Intent intetn2 = new Intent(MainActivity.this, heap.class);
+	startActivity(intetn2);
 
 					
 
-				}
+	}
 				
-			});
+});
 		
 				
-				bt3.setOnClickListener(new OnClickListener(){
+bt3.setOnClickListener(new OnClickListener()
+{
 					
-					@Override
-					public void onClick(View v){
+	@Override
+	public void onClick(View v){
 				    	
 				    	
 							
-							
-							Intent intetn3 = new Intent(MainActivity.this, below.class);
-							startActivity(intetn3);
+	Intent intetn3 = new Intent(MainActivity.this, below.class);
+	startActivity(intetn3);
 
 							
 
-					}
-				});
+	}
+});
 		
 					
-					bt4.setOnClickListener(new OnClickListener(){
+bt4.setOnClickListener(new OnClickListener()
+{
 						
-						@Override
-						public void onClick(View v){
+	@Override
+	public void onClick(View v)
+        {
 					    	
 					    	
 								
-								
-								Intent intetn4 = new Intent(MainActivity.this, arm.class);
-								startActivity(intetn4);
+	Intent intetn4 = new Intent(MainActivity.this, arm.class);
+	startActivity(intetn4);
 
-								
-
-
-						}
-					});
+							
+        }
+});
 					
-						bt5.setOnClickListener(new OnClickListener(){
+bt5.setOnClickListener(new OnClickListener()
+{
 							
-							@Override
-							public void onClick(View v){
+	@Override
+	public void onClick(View v)
+        {
 						    	
 						    	
-									
-									
-									Intent intetn5 = new Intent(MainActivity.this, back.class);
-									startActivity(intetn5);
+	Intent intetn5 = new Intent(MainActivity.this, back.class);
+	startActivity(intetn5);
 
-								
-
-							}
+	}
 							
-						});
+});
 						
-							bt6.setOnClickListener(new OnClickListener()
-							{
+bt6.setOnClickListener(new OnClickListener()
+{
 								
 								@Override
-								public void onClick(View v)
-								{
+	public void onClick(View v)
+	{
 					                    
 										Intent intetn6 = new Intent(MainActivity.this, run.class);
-										startActivity(intetn6);
+        startActivity(intetn6);
 										
-										
-								
-							  }
-							});
 	}
+});
+	
+
+}
 	
 	
 	
