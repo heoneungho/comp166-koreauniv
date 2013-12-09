@@ -176,7 +176,7 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
  * 마지막으로 raw 폴더에는 BGM으로 재생되는 음악 파일이 담겨 있다.
 
 
-= 각 클래스에 대한 설명(구성과 출처) =
+= 각 클래스에 대한 설명 =
 
 
 == 게임 클래스 ==
