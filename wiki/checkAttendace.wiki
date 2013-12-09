@@ -65,6 +65,7 @@ http://comp166-koreauniv.googlecode.com/files/상미학생추가.png
 
 http://comp166-koreauniv.googlecode.com/files/상미과제.png
 
+
 과제란에 과제를 입력시 과제가 추가된다.
 추가된 과제는 sdcard0/Attendancebook/assignment.txt 에 추가되며 과목별로 분류된다.
 
