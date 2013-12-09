@@ -85,6 +85,72 @@ public class MainActivity extends Activity {
 }
 }}}
 
+=== acitivity_main.xml ===
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="랜덤 레이싱 게임"
+        android:textColor="#ffffffff"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#aaffffff"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/selBtn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="일반 자동차"
+            android:textColor="#ff222222"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/selBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="큰 자동차"
+            android:textColor="#ff222222"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/selBtn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="작은 자동차"
+            android:textColor="#ff222222"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/selBtn4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="지프"
+            android:textColor="#ff222222"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+</RelativeLayout>
+}}}
 === CarActivity.java ===
 {{{
 package com.example.racingapp;
@@ -708,3 +774,44 @@ public class CarActivity extends Activity {
 
 </RelativeLayout>
 }}}
+=== AndroidManifest.xml ===
+
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.racingapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.racingapp.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CarActivity" >
+        </activity>
+        <activity android:name=".BigCarActivity" >
+        </activity>
+        <activity android:name=".SmallCarActivity" >
+        </activity>
+        <activity android:name=".JeepActivity" >
+        </activity>
+    </application>
+
+</manifest>
+}}}
+
+=== 
