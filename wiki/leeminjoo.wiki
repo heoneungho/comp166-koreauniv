@@ -140,6 +140,7 @@ public class START extends Activity {
 
 =Stage1.java=
 
+{{{
 package com.example.minsbaseballgame;
 
 import java.util.Arrays;
@@ -443,8 +444,11 @@ public class STAGE1 extends Activity {
 
 }
 
+}}}
+
 =stage2.java=
 
+{{{
 package com.example.minsbaseballgame;
 
 import java.util.Arrays;
@@ -738,8 +742,11 @@ public class STAGE2 extends Activity {
 
 }
 
+}}}
+
 =STAGE3.java=
 
+{{{
 package com.example.minsbaseballgame;
 
 import java.util.Arrays;
@@ -1037,9 +1044,11 @@ public class STAGE3 extends Activity {
 
 }
 
+}}}
 
 =HELP.java=
 
+{{{
 package com.example.minsbaseballgame;
 
 import android.os.Bundle;
@@ -1062,3 +1071,5 @@ public class HELP extends Activity {
 	}
 
 }//help는 그냥 화면에 그림만 있습니다.
+
+}}}
