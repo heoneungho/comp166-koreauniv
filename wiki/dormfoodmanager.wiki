@@ -456,6 +456,8 @@ public class Talk extends Activity {
      //email.putExtra(Intent.EXTRA_BCC, new String[]{to});
      email.putExtra(Intent.EXTRA_SUBJECT, subject);
      email.putExtra(Intent.EXTRA_TEXT, message);
+      
+     // 이메일 전송하는 기능을 위해, 이미 존재하는 이메일 클라이언트를 호출하는 Intent.ACTION_SEND 를 사용하였습니다.
  
      //need this to prompts email client only
      email.setType("message/rfc822");
