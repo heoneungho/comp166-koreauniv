@@ -1,20 +1,22 @@
 #summary 셔틀 언제오는지 알려줌 ㅋ
 #labels 2013190703이정우
 
-= Introduction =
+<wiki:toc max_depth="1" />
+
+= 01. Introduction =
 
 학교 셔틀이 언제 올지 알려주는 아주 혁신적인 어플입니다. 
 
 http://comp166-koreauniv.googlecode.com/files/KUBUSicon.png
 
-= Details =
+= 02. Details =
 
 
   * 정류장을 선택하면 잠시 후에 도착하는 버스를 알려줌
   * 도착하고 싶은 때에 도착하려면 몇 시에 차를 타야 되는지 알려줌
   * 셔틀 버스 노선도를 활용하여 직관적인 사용 가능
   
-= 출발역 설정 =
+= 03. 출발역 설정 =
 http://comp166-koreauniv.googlecode.com/files/Main.jpg
 
  * xml 
@@ -244,7 +246,7 @@ public class MainActivity extends Activity {
 }
 }}}
 
-== 도착역 설정 ==
+== 04. 도착역 설정 ==
 http://comp166-koreauniv.googlecode.com/files/Stop.jpg
 
  * xml
