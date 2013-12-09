@@ -1,15 +1,12 @@
 #summary 출석관리 어플리케이션
 #labels 2013190713
+<font size='7'><b>Attendance book</b></font>
+
+매번 명단을 들고 다녀야 해서 불편한 출석체크를 위해!
 
 = Introduction =
 
 출석체크를 핸드폰에 하여 휴대성을 용이하게 함
-
-
-매번 명단을 들고 다녀야 해서 불편한 출석체크를 위해!
-
-* 학생명단 추가 기능
-* 날짜 
 
 
 - 맨처음 어느 그룹의 출석체크를 할 것인지 선택하는 항목을 넣음
@@ -29,42 +26,39 @@
 
 = Details =
 
-==<font size='5'><b>Attendance book</b></font>==
+==Screenshot==
 
 === 메인화면 ===
 
 http://comp166-koreauniv.googlecode.com/files/sangmimain.jpg
 
-앱을 실행하자마자 뜨는 메인화면이다.
-과목을 선택해서 들어갈 수 있으며 원하는 과목을 새로 추가할 수도 있다.
-추가된 과목은 sdcard0/AttendanceBook/lecture.txt 에 저장된다
+앱을 실행하자마자 뜨는 메인화면이다.<br>
+과목을 선택해서 들어갈 수 있으며 원하는 과목을 새로 추가할 수도 있다.<br>
+추가된 과목은 sdcard0/AttendanceBook/lecture.txt 에 저장된다.<br>
 
 
-* 출결관리
+=== 출결관리 ===
 
-http://comp166-koreauniv.googlecode.com/files/sangmiattendance.jpg
+http://comp166-koreauniv.googlecode.com/files/sangmiattendance.jpg  http://comp166-koreauniv.googlecode.com/files/sangmidate.jpg  http://comp166-koreauniv.googlecode.com/files/sangmistdadd.jpg
 
-http://comp166-koreauniv.googlecode.com/files/sangmidate.jpg
+과목 선택후 맨 첫번째 탭이 선택된 상태에서 들어온다.<br>
+순서대로 [출석 - 결과 - 과제]이다.<br>
+<br>
+첫번째 버튼을 누르면 날짜를 바꿀 수 있다.<br>
+원하는 날짜에 출결을 한 후 Save버튼을 누르면 저장된다.<br>
+출결 목록은 Attendance.txt에 저장된다.<br>
+<br>
+오른쪽 상단에 보면 학생추가버튼이 있다.<br>
+이 버튼을 누르면 학생추가 화면이 뜨며 과목추가와 동일한 방법으로 학생을 추가할 수 있다.<br>
 
-과목 선택후 맨 첫번째 탭이 선택된 상태에서 들어온다.
-순서대로 [출석 - 결과 - 과제]이다.
-첫번째 버튼을 누르면 날짜를 바꿀 수 있다.
-원하는 날짜에 출결을 한 후 Save버튼을 누르면 저장된다.
-출결 목록은 Attendance.txt에 저장된다.
 
-
-http://comp166-koreauniv.googlecode.com/files/sangmistdadd.jpg
-
-오른쪽 상단에 보면 학생추가버튼이 있다.
-이 버튼을 누르면 학생추가 화면이 뜨며 과목추가와 동일한 방법으로 학생을 추가할 수 있다.
-
-* 과제
+=== 과제 ===
 
 http://comp166-koreauniv.googlecode.com/files/sangmiassignment.jpg
 
 
-과제란에 과제를 입력시 과제가 추가된다.
-추가된 과제는 sdcard0/Attendancebook/assignment.txt 에 추가되며 과목별로 분류된다.
+과제란에 과제를 입력시 과제가 추가된다.<br>
+추가된 과제는 sdcard0/Attendancebook/assignment.txt 에 추가되며 과목별로 분류된다.<br>
 
 
 
@@ -72,7 +66,7 @@ http://comp166-koreauniv.googlecode.com/files/sangmiassignment.jpg
 
 http://comp166-koreauniv.googlecode.com/files/상미클래스.png
 
-* LectureList.java
+=== LectureList.java ===
 
 {{{
 
@@ -342,7 +336,7 @@ class DailyAssignmentStudent {
 
 }}}
 
-* MainActiviy.java
+=== MainActiviy.java ===
 
 {{{
 
@@ -451,7 +445,7 @@ public class MainActivity extends Activity {
 }
 }}}
 
-* Wth.java
+=== Wth.java ===
 
 {{{
 
@@ -639,7 +633,7 @@ public class Wth extends FragmentActivity implements ActionBar.TabListener {
 
 }}}
 
-* Student.java (출결관리)
+=== Student.java (출결관리) ===
 
 {{{
 
@@ -812,7 +806,7 @@ public class Student extends Fragment {
 
 }}}
 
-*MyAdapter.java
+=== MyAdapter.java ===
 
 {{{
 
@@ -885,7 +879,7 @@ public class MyAdapter extends ArrayAdapter<DailyAttendanceStudent> {
 
 }}}
 
-* Result.java
+=== Result.java ===
 
 {{{
 
@@ -980,7 +974,7 @@ public class Result extends Fragment {
 
 }}}
 
-* Assignemnt.java
+=== Assignemnt.java ===
 
 {{{
 
@@ -1068,7 +1062,7 @@ public class Assignment extends Fragment {
 
 http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
-* activity_main.xml
+=== activity_main.xml ===
 
 {{{
 
@@ -1118,7 +1112,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* activity_wth.xml
+=== activity_wth.xml ===
 
 {{{
 
@@ -1135,7 +1129,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* fragment_wth_dummy.xml
+=== fragment_wth_dummy.xml ===
 
 {{{
 
@@ -1158,7 +1152,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* activity_student.xml
+=== activity_student.xml ===
 
 {{{
 
@@ -1214,7 +1208,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* activity_student_add.xml
+=== activity_student_add.xml ===
 
 {{{
 
@@ -1264,7 +1258,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* activity_result.xml
+=== activity_result.xml ===
 
 {{{
 
@@ -1297,7 +1291,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* activity_assignment.xml
+=== activity_assignment.xml ===
 
 {{{
 
@@ -1347,7 +1341,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* activity_add_student.xml
+=== activity_add_student.xml ===
 
 {{{
 
@@ -1397,7 +1391,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 }}}
 
-* row.xml
+=== row.xml ===
 
 {{{
 
