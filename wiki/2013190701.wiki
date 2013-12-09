@@ -1523,7 +1523,36 @@ constructor
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class Test
+{
 
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();    //오류가 발생할 수 있는 행동.
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");//오류를 잡으면 출력.
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
