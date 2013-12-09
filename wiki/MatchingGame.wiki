@@ -180,6 +180,7 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
 
 
 == 게임 클래스 ==
+
 {{{
 
 package com.example.matchinggame;
@@ -397,7 +398,7 @@ public class GameActivity extends Activity implements OnClickListener{
 		case R.id.restart_btn:
 			Intent intent=new Intent(GameActivity.this,GameActivity.class);
 			startActivity(intent);
-			overridePendingTransition(0, 0);
+			overridePendingTransition(0, 0); // 바로 딜레이없이 새 게임
 			finish();
 			break;
 		case R.id.resume_btn:
@@ -447,12 +448,725 @@ public class GameActivity extends Activity implements OnClickListener{
 
  * 일단 각 카드는 버튼으로 구성하여 터치를 인식할 수 있게 구성 하였고, 변수를 만들어 mod 계산을 통해 카드 자체를 난수 배열할 수 있는 구조로 짰다. 카드에 대한 정보는 난수 배열을 통해 얻은 수에 따라서 정보를 넘겨주게 하였다.
 
- *  
+
+== 메인 클래스 ==
+
+{{{
+package com.example.matchinggame;
+
+import com.example.matchinggame.utils.ManagerPreference;
+import com.example.matchinggame.utils.ManagerSound;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+
+
+public class MainActivity extends Activity implements OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ManagerPreference.make(this);
+        Button startbtn = (Button)findViewById(R.id.Startbtn);
+        startbtn.setOnClickListener(this); 
+        
+        Button optbtn = (Button)findViewById(R.id.Optbtn);
+        optbtn.setOnClickListener(this); 
+        
+        Button rankbtn = (Button)findViewById(R.id.Rankbtn);
+        rankbtn.setOnClickListener(this); 
+        ManagerSound.load(this);
+        
+        Animation anim_logo=AnimationUtils.loadAnimation(this, R.anim.anim_logo);
+        findViewById(R.id.main_logo).startAnimation(anim_logo);
+    }
+    @Override
+    public void onResume(){
+    	super.onResume();
+    	if(ManagerPreference.getSound()){
+            ManagerSound.playSound(this);
+        }
+    }
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	ManagerSound.pauseSound();
+    }
+
+	@Override
+	public void onClick(View v) { 
+		// TODO Auto-generated method stub
+		switch(v.getId()){
+		
+			case R.id.Startbtn : 
+				Intent intent1 = new Intent(this,GameActivity.class);
+				startActivity(intent1);
+				break;
+				
+			case R.id.Optbtn :
+				Intent intent2 = new Intent(this,OptionActivity.class);
+				startActivity(intent2);
+				break;
+				
+			case R.id.Rankbtn :
+				Intent intent3 = new Intent(this,RankingActivity.class);
+				startActivity(intent3);
+				break;
+		}
+	}
+}
+}}} 
+
+
+== 옵션 클래스 ==
+
+{{{
+package com.example.matchinggame;
+
+import com.example.matchinggame.utils.ManagerPreference;
+import com.example.matchinggame.utils.ManagerSound;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
+import android.widget.ToggleButton;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
+public class OptionActivity extends Activity implements OnCheckedChangeListener,android.widget.CompoundButton.OnCheckedChangeListener {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_option);
+		
+		findViewById(R.id.Rankreset_btn).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				ManagerPreference.setRankingReset();
+			}
+		});
+		
+		RadioGroup rg=(RadioGroup)findViewById(R.id.radio);
+		
+		switch (ManagerPreference.getCard()) {
+		case 0:
+			rg.check(R.id.radio_btn1);
+			break;
+		case 1:
+			rg.check(R.id.radio_btn2);
+			break;
+		case 2:
+			rg.check(R.id.radio_btn3);
+			break;
+		}
+		rg.setOnCheckedChangeListener(this);
+		
+		ToggleButton Sonoff_btn=(ToggleButton)findViewById(R.id.Sonoff_btn);
+		Sonoff_btn.setChecked(ManagerPreference.getSound());
+		Sonoff_btn.setOnCheckedChangeListener(this);
+	}
+
+	@Override
+	public void onCheckedChanged(RadioGroup arg0, int clickBtn) {
+		// TODO Auto-generated method stub
+		switch (clickBtn) {
+		case R.id.radio_btn1:
+			ManagerPreference.setCard(0);
+			break;
+		case R.id.radio_btn2:
+			ManagerPreference.setCard(1);
+			break;
+		case R.id.radio_btn3:
+			ManagerPreference.setCard(2);
+			break;
+		}
+	}
+	@Override
+    public void onResume(){
+    	super.onResume();
+    	if(ManagerPreference.getSound()){
+            ManagerSound.playSound(this);
+        }
+    }
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	ManagerSound.pauseSound();
+    }
+	@Override
+	public void onCheckedChanged(CompoundButton arg0, boolean isClicked) {
+		// TODO Auto-generated method stub
+		ManagerPreference.setSound(isClicked); // 사용자의 정보를 저장해주는 것
+		if(isClicked){
+			ManagerSound.playSound(this); // 저장한 정보를 실행시킬지말지를 결정해주는 것
+		}else{
+			ManagerSound.pauseSound();
+		}
+	}
+
+}
+}}}
+
+
+== 랭킹 클래스 ==
+
+{{{
+package com.example.matchinggame;
+
+import android.app.Activity;
+import android.app.IntentService;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+
+import com.example.matchinggame.utils.ManagerPreference;
+import com.example.matchinggame.utils.ManagerSound;
+
+public class RankingActivity extends Activity implements OnClickListener {
+	public static final String mPackage="com.example.matchinggame";
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_ranking);
+		for(int i=0;i<7;i++){
+			//TextView test=(TextView)findViewById(R.id.name_+i);   ->X
+			//TextView test=(TextView)findViewById(R.id.name_0);
+			// com.example.matchinggame.R.id.name_0 
+			TextView tv=(TextView)findViewById(getResources().getIdentifier("name_"+i,"id",mPackage));
+			tv.setText(ManagerPreference.getName(i));
+			TextView tv2=(TextView)findViewById(getResources().getIdentifier("time_"+i,"id",mPackage));
+			tv2.setText(ManagerPreference.getTime(i));
+			
+		findViewById(R.id.btn_close2).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent5 = new Intent(RankingActivity.this,MainActivity.class);
+				startActivity(intent5);
+				
+			}
+		});
+		}
+	}
+
+	@Override
+    public void onResume(){
+    	super.onResume();
+    	if(ManagerPreference.getSound()){
+            ManagerSound.playSound(this);
+        }
+    }
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	ManagerSound.pauseSound();
+    }
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}
+}}}
+
+== 카드 매니저 클래스 ==
+
+{{{
+package com.example.matchinggame.game;
+
+import com.example.matchinggame.R;
+
+import android.widget.ImageView;
+
+public class CardManager {
+	private int value;
+	private ImageView iv;
+	private int ImageSource;
+	private boolean canTouch; // 현재 터치한 위치를 다시 터치할 수 없게 하기 위한 변수
+
+	/**
+	 * i 는 GameActivity 내에서의 카드 위치에 해당하는 값
+	 * v 카드의 value (양, 소 , 토끼것의 값)
+	 * imageView (layout xml의 이미지 뷰의 위치 값)
+	 * ImageSource (양, 소 , 토끼 등의 값의 이미지 drawable 내의 카드 그림에 해당하는 값);
+	 */
+	public CardManager(int i,int v,ImageView imageView,int is){ //카드 매니저의 생성자
+		
+		value=v;
+		iv=imageView;
+		iv.setTag(i);
+		ImageSource=is;
+		canTouch=true;
+	}
+	
+	public ImageView getImageView(){
+		return iv;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	/**
+	 * 게임 진행 중 동작과 관련된 이미지 설정 메소드
+	 * isBack 이 true 면 카드의 뒷면(내용)을 보여주고, false 면 카드의 앞면(가리개 카드)을 보여줌.
+	 */
+	public void setImage(boolean isBack){
+
+			if(isBack){
+				iv.setBackgroundResource(ImageSource);
+
+			}else{
+				iv.setBackgroundResource(R.drawable.card_back);
+				canTouch=true;
+			}
+	}
+	
+	/**
+	 * 게임 진행 중 터치 시 카드의 동작과 관련된 메소드
+	 * isBack 이 true 인 경우 뒷면을 보여주면서 해당 위치의 카드는 터치 불가능하게 설정
+	 * isBack 이 false 인 경우 그대로 앞면을 보여주면서 해당 위치의 카드를 터치가 가능한 상태로 설정 
+	 * */
+	public boolean turnCard(boolean isBack){
+		if(canTouch){
+			if(isBack){
+				iv.setBackgroundResource(ImageSource);
+				canTouch=false;
+			}else{ 
+				iv.setBackgroundResource(R.drawable.card_back);
+				canTouch=true;
+			}
+			return true;
+		}
+		return false;
+	}
+}
+}}}
+
+
+== 게임 매니저 클래스 ==
+
+{{{
+package com.example.matchinggame.game;
+
+public class GameManager {
+	public static final int CORRECT_ALL=8;
+	public int nowCorrect=0; // 현재 맞춘 카드 쌍의 개수
+	public static final int MAX_TURN_CARD=2;
+	private int nowTurnCount=0; // 현재 몇 장의 카드를 넘겼나에 해당하는 변수
+	
+	private int firstCardValue=-1; //첫 번째 누른 카드와 두 번째 누른 카드의 비교를 위한 변수들
+	private int secondCardValue=-1;
+	private int firstCardNum=-1;
+	private int secondCardNum=-1;
+	
+	/**
+	 * 카드를 넘길 수 있는지에 여부를 알려주는 메소드
+	 * 2장 이상을 넘길 수 없다. 
+	 * */
+	public boolean canTurnCard(){
+		if(nowTurnCount==MAX_TURN_CARD){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 *게임 중 카드를 누르게되면 
+	 *누른 카드의 정보를 저장해주는 메소드 
+	 * */
+	public void turnCard(int nowTouchCardNum,int nowTouchedCardImageValue){
+		if(nowTurnCount==0){
+			firstCardNum=nowTouchCardNum;
+			firstCardValue=nowTouchedCardImageValue;
+		}
+		if(nowTurnCount==1){
+			secondCardNum=nowTouchCardNum;
+			secondCardValue=nowTouchedCardImageValue;
+		}
+		nowTurnCount++;
+	}
+	
+	/**
+	 * 모든 카드가 맞춰진 경우를 알려주는 메소드
+	 * */
+	public boolean isAllCorrect(){
+		if(nowCorrect==CORRECT_ALL){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 뒤집은 2장의 카드에 대한 동작을 위한 메소드
+	 * 맞춘 경우 : 그대로 놔둠, 틀린 경우 : 카드의 뒷면으로 뒤집기 
+	 * */
+	public boolean needToReturnCard(){
+		if(nowTurnCount==2){
+			if(firstCardValue==secondCardValue){
+				nowTurnCount=0;
+				nowCorrect++;
+			}else{
+				
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 현재 뒤집은 카드의 위치가 뭔지 알려주는 함수
+	 * @return
+	 */
+	public int[] getTurnCardNum(){
+		int[] temp={firstCardNum,secondCardNum};
+		return temp;
+	}
+	
+	/**
+	 * 터치했을 때 카드의 동작 가능 상태로 변경해주는 메소드
+	 * */
+	public void canTouchCard() {
+		nowTurnCount=0;
+		
+	}
+
+}
+}}}
+
+
+== 난수 생성 클래스 ==
+
+{{{
+package com.example.matchinggame.game;
+
+import java.util.Random;
+
+public class GenerateRandom {
+	
+	public static int[] getRandom(int SIZE){
+		
+		int[] randList=new int[SIZE];
+		Random r=new Random();
+		
+		for(int i=0;i<randList.length;i++){
+			
+			while(true){
+				
+				int value=r.nextInt(SIZE); //size 내의 수를 랜덤하게  생성
+				boolean inFlag=true; // 랜덤하게 생성시킨  값이 이전의 생성값과 같은 경우 false
+				
+				for(int j=0;j<i;j++){ // 기존의 randList[i]에 value 를 넣고  randList[j]를 통해  
+					if(randList[j]==value){ //앞에서부터 비교하여 현재 randList[i]의 위치에 동일한 값이 들어가지 않도록 해줌. 
+						inFlag=false;
+					}
+				}
+				if(inFlag){ // 동일한지 여부가 판별되어 이전의 숫자들과 다른 값인 경우 randList[i]에 대입
+					randList[i]=value;
+					break;
+				}
+			}
+		}
+		return randList;
+	}
+}
+}}}
+
+
+== 타임 매니저 클래스 ==
+
+{{{
+package com.example.matchinggame.game;
+
+public class TimeManager {
+	
+	long startTime = 0;
+	long pauseTime =0;
+	
+	/**
+	 * 시작 시간을 저장
+	 */
+	public void startGame() {
+		startTime = System.currentTimeMillis(); // 게임이 시작되면 시작시간에 현재시간을 대입
+	}
+	/**
+	 * 현재시간을 가져오는 함수
+	 * @return
+	 */
+	public String getNowTime() {
+		return String.format("%.3f",(float)(System.currentTimeMillis() - startTime)/1000); 
+	} // 현재시간에서 이전에 저장해놓은 시간을 빼서 걸린 시간을 return
+	/**
+	 * 일시정지 함수
+	 */
+	public void pauseTime(){
+		pauseTime = System.currentTimeMillis(); // pause시 현재 시간을 대입
+	}
+	/**
+	 * 재시작 하는 함수
+	 */
+	public void resumeTime(){
+		startTime+=System.currentTimeMillis()-pauseTime; 
+	} // pause시 시간과 현재시간의 관계를 이용하여 startTime을 새로 설정
+
+}
+}}}
+
+
+== 매니저 프리퍼런스 클래스 ==
+
+{{{
+package com.example.matchinggame.utils;
+
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+public class ManagerPreference {
+	private static ManagerPreference singleton = null; // Preference 관리자는 하나만
+														// 있다는 뜻, 객체가 해당 정보를 가지고
+														// 있어야하므로 생성한 뒤 계속 살아있게
+														// 한 것이다.
+	private static SharedPreferences prefs = null; // 실제 관리하는 sharedPreference
+	private static final String TEMP_NAME = "나잡아봐라";
+
+	private ManagerPreference(Activity act) {
+		prefs = PreferenceManager.getDefaultSharedPreferences(act); // pref의
+																	// 생성자이며,
+																	// 기본적으로
+																	// 선언되는 부분
+	}
+
+	/**
+	 * ManagerPreference를 생성하는 함수 맨 처음 어플 실행 시 한번 호출 생성자
+	 */
+	public static ManagerPreference make(Activity act) {
+		singleton = new ManagerPreference(act);
+		return singleton;
+	}
+
+	/**
+	 * 결과값이 랭킹에 진입하였는지 여부 확인하는 함수
+	 */
+	public static boolean isInRanking(float nowTime) { // 게임 기록이 랭킹 안에 드는지 알려주는
+														// 메소드
+		if (nowTime < prefs.getFloat("rankTime" + 6, 1000f)) {
+			return true;
+		}
+		return false;
+
+	}
+
+	/**
+	 * 랭킹을 등록하는 함수
+	 */
+	public static void setRank(String name, float nowTime) {
+		int nowRank = 0;
+
+		for (int i = 0; i < 7; i++) { // 현재 기록이 랭킹 내에서 몇 번째인지 검사
+			if (nowTime >= prefs.getFloat("rankTime" + i, 1000f)) {
+				nowRank = i + 1;
+			}
+		}
+		for (int i = 5; i >= nowRank; i--) { // 현재 기록이 들어갈 랭킹 번째 수까지 뒤로 복사해서 붙여
+												// 넣어주는 역할
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putString("rankName" + (i + 1),
+					prefs.getString("rankName" + i, TEMP_NAME));
+			editor.putFloat("rankTime" + (i + 1),
+					prefs.getFloat("rankTime" + i, 1000f));
+			editor.commit();
+		}
+
+		SharedPreferences.Editor editor = prefs.edit(); // 현재 기록의 랭킹 란에 이름과 기록을
+														// 넣어줌.
+		editor.putString("rankName" + nowRank, name);
+		editor.putFloat("rankTime" + nowRank, nowTime);
+		editor.commit();
+
+	}
+
+	/**
+	 * num에 해당하는 랭킹의 이름을 갖고오는 함수
+	 * 
+	 * @param num
+	 * @return
+	 */
+	public static String getName(int num) {
+		return prefs.getString("rankName" + num, TEMP_NAME);
+	}
+
+	/**
+	 * num에 해당하는 랭킹의 시간을 갖고오는 함수
+	 * 
+	 * @param rank
+	 * @return
+	 */
+	public static String getTime(int num) {
+		return Float.toString(prefs.getFloat("rankTime" + num, 1000f));
+	}
+
+	/**
+	 * 랭킹을 초기화하는 함수
+	 */
+	public static void setRankingReset() {
+		for (int i = 0; i < 7; i++) {
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putString("rankName" + i, TEMP_NAME);
+			editor.putFloat("rankTime" + i, 1000f);
+			editor.commit();
+		}
+	}
+
+	/**
+	 * 사용자가 쓸 카드를 지정
+	 * 
+	 * @param i
+	 */
+	public static void setCard(int i) {
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putInt("card", i);
+		editor.commit();
+	}
+
+	/**
+	 * 사용자가 쓸 카드 정보를 가져옴
+	 * 
+	 * @return 교수님//카드//동물
+	 */
+	public static int getCard() {
+		return prefs.getInt("card", 0);
+	}
+
+	/**
+	 * 사용자가 사운드를 사용할지를 결정
+	 * 
+	 * @param b
+	 */
+	public static void setSound(boolean b) {
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean("sound", b);
+		editor.commit();
+	}
+
+	/**
+	 * 사용자가 사운드를 사용하는지 여부를 판단
+	 * 
+	 * @return
+	 */
+	public static boolean getSound() {
+		return prefs.getBoolean("sound", true);
+	}
+}
+}}}
+
+
+== 매니저 사운드 클래스 ==
+
+{{{
+package com.example.matchinggame.utils;
+
+import com.example.matchinggame.R;
+
+import android.content.Context;
+import android.media.MediaPlayer;
+
+public class ManagerSound {
+	private static ManagerSound singleton = null; // 노래 관리자는 어플단에서 하나만 써야하기 때문에
+													// 싱글톤으로 구현하였음.
+	private static MediaPlayer mPlayer = null; // 실제 음악을 재생하는 Media Player
+
+	/**
+	 * 맨 처음 노래를 로드하는 함수 버퍼링
+	 * 
+	 * @param context
+	 */
+	public synchronized static void load(Context context) {
+		if (singleton == null) {
+			singleton = new ManagerSound(context);
+		}
+	}
+
+	private ManagerSound(Context context) { // mPlayer의 생성자
+		super();
+		mPlayer = MediaPlayer.create(context, R.raw.sound);
+	}
+
+	/**
+	 * 노래를 재생하는 함수
+	 * 
+	 * @param context
+	 */
+	public synchronized static void playSound(Context context) {
+		if (mPlayer == null) {
+			mPlayer = MediaPlayer.create(context, R.raw.sound); // mPlayer가 혹시
+																// 안만들어졌을 경우
+																// 만들어주는 함수,
+																// 일반적으로는 안들어간다.
+		}
+		mPlayer.start();
+	}
+
+	/**
+	 * 노래를 멈추는 함수
+	 */
+	public synchronized static void pauseSound() {
+		mPlayer.pause();
+	}
+
+}
+}}}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+= 참고 문헌 및 사이트 =
+
+ * 카드 게임 논리 참고 : http://manong.tistory.com/199
+ 
+ * Do it! 안드로이드 앱 프로그래밍(이지스퍼블리싱) - 교수님 추천 도서
+  
+  - 오디오 재생, 레이아웃 구성, 핸들러 사용, 애니메이션 구현 참조 
+
+ * 핸들러를 이용한 타이머 참조 : http://androidmetro.blogspot.kr/2011/06/blog-post_23.html
+
+ * 
  
 
  
