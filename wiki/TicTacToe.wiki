@@ -26,6 +26,8 @@ http://comp166-koreauniv.googlecode.com/files/Player1win.png Player1이 이길�
 
 4X4도 만들어볼까 시도해보았지만 4X4모드는 자체가 게임진행이 되지않아서 없애버렸다.
 
+전체파일 : http://comp166-koreauniv.googlecode.com/files/Linematch.zip 
+
 = 클래스 =
 
 http://comp166-koreauniv.googlecode.com/files/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83.PNG
