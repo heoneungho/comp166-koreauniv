@@ -67,11 +67,12 @@ http://comp166-koreauniv.googlecode.com/files/obesity2.jpg
 ②보통 여성 : 0.7 ~ 0.85
 
 = PROJECT =
-*[비만 관리 프로그램]*
-
 http://comp166-koreauniv.googlecode.com/files/mainscreen.jpg
 
 {{{
+/*비만을 관리해주는 비만 관리 프로그램(Diet Partner)입니다.*/
+
+//mainActivity입니다.
 
 package org.androidtown.dietpartner;
 
@@ -111,6 +112,7 @@ public class MainActivity extends Activity {
 }
 
 ------------------------------------------------------------------------
+//성별과 이름을 입력하는 nameActivity입니다.
 
 package org.androidtown.dietpartner;
 
@@ -221,6 +223,7 @@ public class NameActivity extends Activity {
 }
 
 ------------------------------------------------------------------------
+//체중, 음식, 운동을 선택하는 menuActivity입니다.
 
 package org.androidtown.dietpartner;
 
@@ -311,9 +314,11 @@ public class MenuActivity extends Activity {
 }
 
 ------------------------------------------------------------------------
-
+// menuActivity에서 체중을 선택했을 때, weightActivity입니다.
 
 
 
 
 }}}
+
+=RESULT=
