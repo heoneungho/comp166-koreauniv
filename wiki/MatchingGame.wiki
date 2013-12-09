@@ -1147,11 +1147,11 @@ public class ManagerSound {
  
  * Do it! 안드로이드 앱 프로그래밍(이지스퍼블리싱) - 교수님 추천 도서
   
-  - 오디오 재생, 레이아웃 구성, 핸들러 사용, 애니메이션 구현, 카드 눌렀을 때 이미지 변환, 텍스트 상자 띄우기 등을 구성하는데 참조함. 
+  - 오디오 재생, 레이아웃 구성, 핸들러 사용, 애니메이션 구현, 카드 눌렀을 때 이미지 변환, 텍스트 상자 띄우기 등을 구성하는데 참조함.(대부분 여기서 참조하였다.) 
 
  * 핸들러를 이용한 타이머 참조 : http://androidmetro.blogspot.kr/2011/06/blog-post_23.html
 
- * 랭킹 저장을 위한 PreferenceManager 구성 참조 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://theeye.pe.kr/archives/1281
+ * 랭킹 사항 저장, 카드 변경 사항 저장, 사운드 세팅 및 변경 사항 등을 DB를 사용하지 않고 영속적으로 저장하기 위한 Shared Preferences 구성 참조 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://theeye.pe.kr/archives/1281
 
  
 
