@@ -590,7 +590,39 @@ public class GameHelper {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+/* Option 1 */
+public class SimpleDotCom {
+	int[] locationCells;
+	int[] hitCells = {0,0,0}; // hitCells 배열 추가
+	int numOfHits = 0;
 
+	
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
+	
+	public String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i = 0; i<locationCells.length; i++) {
+			if(guess == locationCells[i]) {
+				if(hitCells[i] == 0) { // 조건 추가
+					result = "hit";
+					hitCells[i] = 1; // 맞출 때 마다 1 대입
+					numOfHits++;
+                                        /* break 제거 */
+				}
+			}
+		}
+		
+		if(numOfHits == locationCells.length) {
+			result = "kill";
+		}
+		
+		System.out.println(result);
+		return result;
+	}
+}
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
