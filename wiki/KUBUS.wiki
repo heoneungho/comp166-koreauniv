@@ -490,7 +490,7 @@ public class StopActivity extends Activity {
 }
 }}}
 
-= SetTime! =
+= SetTime =
 http://comp166-koreauniv.googlecode.com/files/SetTime.jpg
 
  * xml
@@ -611,3 +611,131 @@ public class SetTimeActivity extends Activity {
 
 }
 }}}
+
+= 결과 1 (출발시각이 궁금한 경우) =
+
+http://comp166-koreauniv.googlecode.com/files/StartTime.jpg
+{{{
+ * xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prebg2"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".StartTimeActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
+}}}
+
+ * java
+{{{
+package com.example.kubus;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.TextView;
+
+@SuppressLint({ "CutPasteId", "ShowToast" })
+public class StartTimeActivity extends Activity {
+/* 안암학사 기준으로 버스가 출발하기 때문에 안암학사를 거칠 경우도 계산해 줘야함 */
+/* 즉 5 -> 3 로 가고 싶으면 1에서 다시 버스를 타야하는 시간을 계산 해 줘야함 */ 
+	public int expt_time(int time, int now, int dest) {
+		int i, j;
+		
+		int[] interval = { 2, 3, 4, 5, 5, 1, 1, 1 };
+                //직접 버스타고 스탑워치로 시간 재서 간격 구했음 적당히 정확함
+
+		for (i = now - 2; i >= 0; i--)
+                /* 지금 역에서 1번역(안암학사)로 돌아감 */
+			time -= interval[i]; 
+
+		for (i = 570, j = 10; i < 1070; i += j) {
+                /* 그 시각에 1번역에서 탈 수 있는 버스를 찾음 */
+			if (time <= i)
+				break;
+			if (i == 730)
+				j = 20; //점심시간 배차
+			if (i == 810)
+				j = 10; //다시 원래 배차
+		} 		time = i;
+		if (now == 1){
+		
+		/* 버스타는 시간 */	
+		TextView Text1 = (TextView)findViewById(R.id.textView1);
+		Text1.setText("출발" + time / 60 + "시 " + time % 60 + "분") ;
+
+		}
+		for (i = 0; i < dest - 1; i++) {
+                /* 버스를 타고 목적지로 출발 */
+			time += interval[i];
+			if (i + 2 == now){
+                
+
+			TextView Text2 = (TextView)findViewById(R.id.textView1);
+			Text2.setText("출발" + time / 60 + "시 " + time % 60 + "분") ;
+
+			}
+		}
+		return time;
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_start_time);
+		Intent intent = getIntent();
+		final int start = intent.getIntExtra("start", -1);
+		final int end = intent.getIntExtra("end", -1);
+		final int h = intent.getIntExtra("h", -1);
+		final int m = intent.getIntExtra("m", -1);
+
+		int time;
+
+		time = 60 * h + m;
+		if (start <= end)
+			time = expt_time(time, start, end); // 위의 함수를 이용함
+		else
+			time = expt_time(expt_time(time, start, 9), 1, end); //8에서 1로 가게 되면 처음 출발역에서 1까지오고 다시 1에서 도착역까지가게 계산
+	
+		TextView Text3 = (TextView)findViewById(R.id.textView2);
+		Text3.setText("도착" + time / 60 + "시 " + time % 60 + "분") ;
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.start_time, menu);
+		return true;
+	}
+
+}
+}}}}
