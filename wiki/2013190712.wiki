@@ -1506,18 +1506,142 @@ public class StaticTests extends StaticSuper{ // 클래스 확장
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class Test
+{
+
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();//오류가 발생할 수 있는 부분입니다.
+                }
+                catch(BadException ex)//오류가 뜨면 밑에 부분이 실행되도록 합니다.
+                {
+                        System.out.println("Aaargh!");
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
+}
 
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;//먼저 import하고 시작합니다.
 
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();
+        }
+        
+        public void play()
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();//Sequencer를 엽니다.
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        
+                        //Sequence에 Track을 요청합니다.
+                        Track track = seq.createTrack();
+                        //MidiEvent를 집어넣습니다.
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn);
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff);
+                        
+                 
+                      
+              
+                        
+                        player.setSequence(seq);//Sequencer에 Sequence를 보냅니다.~!
+                        
+                        player.start();
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }
+}
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine { 
+
+        public static void main(String[]args){
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();//MiniMusicCmdLine의 새로운 객체를 생성합니다.
+                if(args.length<2){
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                }else{
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument, note);//인자 전달과 동시에  play 메소드를 호출합니다.
+                }
+        } 
+
+         
+        public void play (int instrument, int note){
+                try{
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();//Track을 생성합니다.
+
+                        MidiEvent event = null; //null값을 집어 넣습니다.
+
+                        ShortMessage first = new ShortMessage();
+                        first.setMessage(192,1,instrument,0);
+                        MidiEvent changeInstrument = new MidiEvent(first, 1);
+                        track.add(changeInstrument);
+
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144,1,note,100);
+                        MidiEvent noteOn = new MidiEvent(a,1);
+                        track.add(noteOn);
+
+                        ShortMessage b = new ShortMessage();
+                        a.setMessage(128,1,note,100);
+                        MidiEvent noteOff = new MidiEvent(b,16);
+                        track.add(noteOff);
+                        player.setSequence(seq);
+                        player.start();
+                }catch(Exception ex){ex.printStackTrace();}
+        } 
+}
+
 
 }}}
 
