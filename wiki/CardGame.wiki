@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary 같은 그림 맞추는 카드게임.
 
 = Introduction =
 
