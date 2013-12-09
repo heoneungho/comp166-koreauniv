@@ -24,12 +24,19 @@
 
 후에 유고결석인 학생을 추가로 수정할 수 있음.
 
-http://comp166-koreauniv.googlecode.com/files/상미클래스.png
-
-
-http://comp166-koreauniv.googlecode.com/files/상미클래스.PNG/
-
 - 마지막에 통계 기능도 추가. 지각, 결석 등의 현황을 그래프로도 보여주고 
   score = 100 + 결석횟수*(-3) * (int)지각횟수/3*(-3) ;
   이런식으로 출석점수도 환산 가능.
   정보가 전산화되어 있기 때문에 바로 인터넷에 공유하기도 쉽다!
+
+
+
+
+
+
+
+= '''Attendance book''' =
+
+* class
+
+http://comp166-koreauniv.googlecode.com/files/상미클래스.png
