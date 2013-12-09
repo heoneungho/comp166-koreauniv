@@ -258,6 +258,8 @@ public class LectureList {
 */
 }
 
+}
+
 class LectureStatus {
 	public String title;
 	public ArrayList<String> studentList = new ArrayList<String>();
@@ -604,14 +606,429 @@ public class Wth extends FragmentActivity implements ActionBar.TabListener {
 
 }}}
 
-* Student.java(Attendance)
-**MyAdapter.java
+* Student.java (출결관리)
 
+{{{
+
+package com.example.attendancebook;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ListView;
+import android.widget.TextView;
+
+@SuppressLint("ValidFragment")
+public class Student extends Fragment {
+
+	private TextView mDateDisplay;
+	private Button mPickDate;
+	public String curDate;
+	private int mYear;
+	private int mMonth;
+	private int mDay;
+	static final int DATE_DIALOG_ID = 0;
+
+	ArrayList<String> list;
+	ArrayAdapter<String> adapter;
+	ListView lv;
+	InputMethodManager imm;
+
+	Context mContext;
+	View mView;
+
+	public Student(Context context) {
+		mContext = context;
+
+	}
+
+	public Student() {
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		//DatePicker 함수이다.
+
+		mView = inflater.inflate(R.layout.activity_student, null);
+
+		mDateDisplay = (TextView) mView.findViewById(R.id.dateDisplay);
+		mPickDate = (Button) mView.findViewById(R.id.pickDate);
+		mPickDate.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				new DatePickerDialog(getActivity(), mDateSetListener, mYear,
+						mMonth, mDay).show();
+			}
+		});
+
+		final Calendar c = Calendar.getInstance();
+
+		mYear = c.get(Calendar.YEAR);
+		mMonth = c.get(Calendar.MONTH);
+		mDay = c.get(Calendar.DAY_OF_MONTH);
+		curDate = String.format("%04d-%02d-%02d", mYear, mMonth, mDay);//연,월,일을 슬래시(-)를 붙여서 curDate에 저장
+
+		updateDisplay(); // 보여줌
+
+		MakeStudent(curDate);//현재의 날짜를 넣어 기존에 명단에 있으면 불러오고 없으면 새로 쓴다
+
+
+		Button button = (Button)mView.findViewById(R.id.button1);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				PutStudent(curDate);
+			}
+		});
+
+		// arrayadapter에 설정하기
+
+		MyAdapter adapter = new MyAdapter(mContext, studentList);
+		//MyAdapter는 기존의 어댑터가 아니다. 나는 이름 + 라디오버튼 세개(지각,출석,결석)이 필요했다. 라디오버튼은 원칙적으로 한개만 붙일 수 있기 때문에 새로운 어댑터(MyAdapter.class와 row.xml)를 만들어 항목을 추가할 때 마다 지정된 양식으로 추가되도록 하였다.
+
+		lv = (ListView) mView.findViewById(R.id.lv);
+		lv.setAdapter(adapter);//리스트에 어댑터를 지정해준다
+
+		return mView;//Tab이라 mView로 바꿔줌
+
+	}
+
+	private void updateDisplay() {
+		mDateDisplay.setText(new StringBuilder().append(mMonth + 1).append("-")
+				.append(mDay).append("-").append(mYear).append(" "));
+	}
+
+	private ArrayList<DailyAttendanceStudent> studentList;
+
+	private void MakeStudent(String date) {
+		if (LectureList.curLectureStatus.dailyAttendanceList.containsKey(date)) {
+			studentList = LectureList.curLectureStatus.dailyAttendanceList
+					.get(date).studentList;
+		} else {
+			studentList = new ArrayList<DailyAttendanceStudent>();
+
+			for (String stdName : LectureList.curLectureStatus.studentList) {
+				//현재 강의를 수강하는 학생들의 출석부를 만들어준다.
+				DailyAttendanceStudent std = new DailyAttendanceStudent();
+
+				std.name = stdName;
+				std.status = "출석"; //처음에는 "출석"으로 디폴트되어있다.
+
+				studentList.add(std);//추가
+			}
+		}
+	}
+
+	private void PutStudent(String date) {
+		//dailyAttendanceList에 해당 날짜와 출결 상태를 넣어준다.(임시)
+		//후에 이것들은 파일로 저장할 것
+		DailyAttendance da = new DailyAttendance();
+		da.studentList = studentList;
+		LectureList.curLectureStatus.dailyAttendanceList.put(date, da);
+
+		//DailyAttendanceStudent(이름, 상태)
+		//LectureList.SaveAttendance();
+		
+	}
+
+	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			// TODO Auto-generated method stub
+			mYear = year;
+			mMonth = monthOfYear;
+			mDay = dayOfMonth;
+
+			curDate = String.format("%04d-%02d-%02d", mYear, mMonth, mDay);
+			//년,월,일을 슬래쉬로 끊어서 curDate에 저장
+
+			updateDisplay();
+			
+
+		}
+	};
+		
+
+	/*
+	 * private void writeToFile(String data) { try { OutputStreamWriter
+	 * outputStreamWriter = new OutputStreamWriter(openFileOutput(FILENAME,
+	 * Context.MODE_PRIVATE)); outputStreamWriter.write(data);
+	 * outputStreamWriter.close(); } catch (IOException e) { Log.e(TAG,
+	 * "File write failed: " + e.toString()); }
+	 * 
+	 * }
+	 */
+}
+
+
+}}}
+
+*MyAdapter.java
+
+{{{
+
+package com.example.attendancebook;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+public class MyAdapter extends ArrayAdapter<DailyAttendanceStudent> {
+
+	private final Context context;
+	private final ArrayList<DailyAttendanceStudent> itemsArrayList;
+
+	public MyAdapter(Context context,
+			ArrayList<DailyAttendanceStudent> itemsArrayList) {
+
+		super(context, R.layout.row, itemsArrayList); //layout으로는 row.xml
+
+		this.context = context;
+		this.itemsArrayList = itemsArrayList;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+
+		DailyAttendanceStudent item = itemsArrayList.get(position);
+		// 1. Create inflater
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		// 2. Get rowView from inflater
+		View rowView = inflater.inflate(R.layout.row, parent, false);//row.xml을 보여준다
+
+		// 3. Get the two text view from the rowView
+		TextView textView = (TextView) rowView.findViewById(R.id.textView1);
+
+		// 4. Set the text for textView
+		textView.setText(item.name);//학생이름
+		
+		//라디오 버튼 세 개
+		//각각의 버튼은 해당 문자열과 연결됨
+		//첫번째 버튼은 "지각", 두번째는 "출석", 세번째는 "결석"
+		if (item.status.compareTo("지각") == 0) {
+			RadioButton radioButton = (RadioButton) rowView
+					.findViewById(R.id.radio0);
+			radioButton.setChecked(true);
+		}
+		if (item.status.compareTo("출석") == 0) {
+			RadioButton radioButton = (RadioButton) rowView
+					.findViewById(R.id.radio1);
+			radioButton.setChecked(true);
+		}
+		if (item.status.compareTo("결석") == 0) {
+			RadioButton radioButton = (RadioButton) rowView
+					.findViewById(R.id.radio2);
+			radioButton.setChecked(true);
+		}
+
+		// 5. return rowView
+		return rowView;
+	}
+}
+
+}}}
 
 * Result.java
 
+{{{
+
+package com.example.attendancebook;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map.Entry;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+@SuppressLint("ValidFragment")
+public class Result extends Fragment {
+
+	ArrayList<String> list;
+	ArrayAdapter<String> adapter;
+	ListView lv;
+	InputMethodManager imm;
+
+	Context mContext;
+	View mView;
+
+	public Result(Context context) {
+		mContext = context;
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		mView = inflater.inflate(R.layout.activity_result, null);
+
+		Hashtable<String, Integer> lateList = new Hashtable<String, Integer>();
+		Hashtable<String, Integer> normalList = new Hashtable<String, Integer>();
+		Hashtable<String, Integer> absentList = new Hashtable<String, Integer>();
+
+		for (Entry<String, DailyAttendance> entry : LectureList.curLectureStatus.dailyAttendanceList
+				.entrySet()) {
+
+			String date = entry.getKey();
+			DailyAttendance attendance = entry.getValue();
+
+			for (DailyAttendanceStudent std : attendance.studentList) {
+				if (std.status.compareTo("지각") == 0) {
+					if (lateList.containsKey(std.name)) {
+						lateList.put(std.name, lateList.get(std.name) + 1);//기존에 데이터가 있으면 +1
+					} else {
+						lateList.put(std.name, 1);//기존에 데이터가 없으면 1
+					}
+				} else if (std.status.compareTo("출석") == 0) {
+					if (normalList.containsKey(std.name)) {
+						normalList.put(std.name, normalList.get(std.name) + 1);
+					} else {
+						normalList.put(std.name, 1);
+					}
+				} else if (std.status.compareTo("결석") == 0) {
+					if (absentList.containsKey(std.name)) {
+						absentList.put(std.name, absentList.get(std.name) + 1);
+					} else {
+						absentList.put(std.name, 1);
+					}
+				}
+			}
+		}
+
+		adapter = new ArrayAdapter<String>(this.getActivity(),
+				android.R.layout.simple_list_item_1, list);
+
+		ListView listView = (ListView) mView.findViewById(R.id.lv);
+		listView.setAdapter(adapter);
+		
+		for (String std : LectureList.curLectureStatus.studentList) {
+
+			list.add(std +"\t"+ lateList.get(std) +"\t"+ normalList.get(std) +"\t" + absentList.get(std));
+
+			//학생이름	지각횟수	출석횟수	결석횟수 를 하나의 배열로 받아 보여준다
+		}
+
+
+		return mView;
+
+	}
+}
+
+}}}
 
 * Assignemnt.java
+
+{{{
+
+package com.example.attendancebook;
+
+import java.util.ArrayList;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+
+
+
+@SuppressLint("ValidFragment")//Tab이라 붙음
+public class Assignment extends Fragment {
+	ArrayList<String> list;
+	ArrayAdapter<String> adapter;
+	ListView lv;
+	InputMethodManager imm;
+
+	Context mContext;
+	View mView;
+
+	public Assignment(Context context) {
+		mContext = context;
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		mView = inflater.inflate(R.layout.activity_assignment, null);
+
+
+		list = new ArrayList <String>();
+/*		
+		for (Entry<String, LectureStatus> entry : LectureList.list.entrySet()) {
+			
+			list.add(entry.getKey());
+		}
+*/
+		adapter = new ArrayAdapter<String>(this.getActivity(),
+				android.R.layout.simple_list_item_1, list);
+
+		ListView listView = (ListView) mView.findViewById(R.id.lv);
+		listView.setAdapter(adapter);
+
+
+		
+		Button button = (Button) mView.findViewById(R.id.btn1);
+
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				EditText et = (EditText) mView.findViewById(R.id.et);
+				if (v.getId() == R.id.btn1) {
+					// 추가 버튼
+					if (et.getText().length() != 0) {
+						list.add(et.getText().toString());//리스트에 텍스트를 추가한다
+						et.setText("");
+
+						adapter.notifyDataSetChanged();
+					}
+				}
+			}
+		});
+
+		return mView;
+	}
+
+}
+
+
+}}}
 
 
 == xml ==
