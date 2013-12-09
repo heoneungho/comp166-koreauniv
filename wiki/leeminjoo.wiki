@@ -3,7 +3,6 @@
 
 
 = Introduction =
-http://comp166-koreauniv.googlecode.com/files/숫자야구게임.PNG
 
 숫자 야구게임을 하는 앱입니다. 
 위드캣 엠티때 이 게임을 처음 배웠는데 시간이 없어서 코드는 짜보지를 못했습니다. 이번에 자바로 숫자 야구게임을 하는 앱을 만들어보려고 합니다.
@@ -14,4 +13,11 @@ playstore에 나온 기존의 야구게임앱은 '대결 숫자야구', '숫자�
 
 
 = 어플 내용 =
+1. 처음 시작화면입니다.
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-47.png 
+
+2. start를 누르면 stage가 3개가 나타납니다. 
+stage1는 3자리 숫자, stage2는 4자리 숫자, stage3는 5자리 숫자를 맞추는 게임입니다. 
+http://comp166-koreauniv.googlecode.com/files/ Screenshot_2013-12-09-18-14-56.png
+
+3.stage1 입니다. 빈칸 3개에 숫자를 입력하면 됩니다.
