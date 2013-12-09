@@ -449,10 +449,11 @@ public class Number extends Activity {
 	                try {
 	 
 	                    FileOutputStream fos = openFileOutput(FILE_NAME,
-	                            Context.MODE_PRIVATE); // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
+	                            Context.MODE_PRIVATE); 
+                // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
 
 	                    String str = edit1.getText().toString();
-	                    fos.write(str.getBytes()); // String을 byte배열로 변환후 저장
+	                    fos.write(str.getBytes()); // //입력받은 내용(text)을 바이트 단위로 파일에 씁니다.
 	                    fos.close();
 	 
 	                } catch (Exception e) {
@@ -467,6 +468,7 @@ public class Number extends Activity {
 	            public void onClick(View v) {
 	                try {
 	 
+                            // 위에서 설정하였던 파일이름을 인수로 openFileInput()을 호출합니다. 이 메소드는 FileInputStream객체를 반환합니다.
 	                    FileInputStream fis = openFileInput(FILE_NAME);
 	                    byte[] buffer = new byte[fis.available()];
 	                    fis.read(buffer);
