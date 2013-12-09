@@ -420,7 +420,7 @@ public class GameActivity extends Activity implements OnClickListener{
 					int nowTouchCardNum=Integer.parseInt(v.getTag().toString());
 					int nowTouchCardImageValue=Card[nowTouchCardNum].getValue();
 					
-					if(Card[nowTouchCardNum].turnCard(true)){ //한번 누르고 나서 또 누를수 있다고 똑같은 놈을  or 이미 맞춘놈을 누른경우 
+					if(Card[nowTouchCardNum].turnCard(true)){ //똑같은 카드 혹은 이미 맞춘 카드를 누른경우 누르지 못하게 하기 위함 
 						
 						GM.turnCard(nowTouchCardNum,nowTouchCardImageValue);
 						
