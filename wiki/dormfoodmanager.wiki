@@ -43,7 +43,7 @@ http://comp166-koreauniv.googlecode.com/files/클래스.png
  # 개인식수 - Number
  # 건의사항 - Talk
 
-== 메인화면 ==
+== 1. 메인화면 ==
 
 http://comp166-koreauniv.googlecode.com/files/main.jpg
 
@@ -110,8 +110,65 @@ activity_main.xml
 }}}
 
 
-== 메뉴 ==
+== 2. 메뉴화면 ==
+
+http://comp166-koreauniv.googlecode.com/files/두번째메인.jpg
 
 메인페이지 전체를 클릭하면 메뉴화면으로 이동합니다.
 
-http://comp166-koreauniv.googlecode.com/files/두번째메인.jpg
+Information.java
+{{{
+package com.example.anamdorm_food;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ImageButton;
+
+public class Information extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_information);
+		
+		ImageButton button1 = (ImageButton) findViewById(R.id.imageButton1);
+		button1.setOnClickListener(new View.OnClickListener() {
+	        public void onClick(View v) {
+	                Intent intent = new Intent(getBaseContext(), Inform.class);
+	                startActivity(intent);
+	        }}); //button1을 클릭하면 Inform 클래스(공지사항)로 넘어갑니다.
+		
+		ImageButton button2 = (ImageButton) findViewById(R.id.imageButton2);
+		button2.setOnClickListener(new View.OnClickListener() { 
+	        public void onClick(View v) {
+	                Intent intent = new Intent(getBaseContext(), Food.class);
+	                startActivity(intent);
+	        }}); //button2를 클릭하면 Food 클래스(오늘의메뉴)로 넘어갑니다.
+		
+		ImageButton button3 = (ImageButton) findViewById(R.id.imageButton3);
+		button3.setOnClickListener(new View.OnClickListener() {
+	        public void onClick(View v) {
+	                Intent intent = new Intent(getBaseContext(), Number.class);
+	                startActivity(intent);
+	        }}); //button3을 클릭하면 Number 클래스(개인식수)로 넘어갑니다.
+		
+		ImageButton button4 = (ImageButton) findViewById(R.id.imageButton4);
+		button4.setOnClickListener(new View.OnClickListener() {
+	        public void onClick(View v) {
+	                Intent intent = new Intent(getBaseContext(), Talk.class);
+	                startActivity(intent);
+	        }}); //button4를 클릭하면 Talk 클래스(건의사항)로 넘어갑니다.
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.information, menu);
+		return true;
+	}
+
+}
+}}}
