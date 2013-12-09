@@ -58,7 +58,7 @@ http://comp166-koreauniv.googlecode.com/files/Main.jpg
         android:layout_marginBottom="32dp"
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/button1"
-        android:background="#00000000"
+        android:background="#00000000" //그냥 냅두면 버튼이 회색이여서 투명하게 만들었음 
         android:text="		" />
 
     <Button
