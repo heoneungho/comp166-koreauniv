@@ -119,6 +119,14 @@ http://comp166-koreauniv.googlecode.com/files/랭초화.png
 
 == 게임 화면(Game Activity) ==
 
+ 
+http://comp166-koreauniv.googlecode.com/files/동물카드.png
 
+
+ * 게임 화면은 타이머, 카드, 버튼들로 구성되어 있다.
+
+ * 타이머는 게임 시작과 동시에 작동하고, 모든 8쌍의 카드를 맞추면 바로 정지하도록 설정되어 있다. 
+
+ * 
 
  
