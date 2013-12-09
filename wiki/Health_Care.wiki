@@ -190,7 +190,7 @@ bt6.setOnClickListener(new OnClickListener()
 	public void onClick(View v)
 	{
 					                    
-  Intent intetn6 = new Intent(MainActivity.this, run.class);
+        Intent intetn6 = new Intent(MainActivity.this, run.class);
         startActivity(intetn6);
 										
 	}
@@ -198,37 +198,36 @@ bt6.setOnClickListener(new OnClickListener()
 	
 
 }
-	
+/*지금까지는 메인 화면에서 다른 화면 6개로 넘어가기 위한 코드 설명이었습니다.
+다음 볼 살펴볼 내용은 옵션 메뉴를 위한 코드입니다.*/	
 	
 	
 	@Override 
 	public boolean onCreateOptionsMenu(Menu menu1){
-		menu1.clear();
+	        menu1.clear();
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu1, menu1);
 		return true;
 	}
-	
-	
-		@Override
-		public boolean onOptionsItemSelected(MenuItem item){
+	/*먼저 OnCreateOptionsMenu를 통해 메뉴를 생성함을 알려줍니다. 이 메소드에는 메뉴 생성에 가장 기본적인 inflater를 사용합니다. MenuInflater란 레이아수인프레이터와 같이 XML기반의 즉 (\res\menu\menu1\)에 저장되어있는 메뉴를 기술하고, 프로그램에서 XML파일을 Inflate하여 메뉴를 구성하는 방법입니다.여기서 inflate란 XML 에 씌여져 있는 view 의 정의를 실제 view 객체로 만드는 것으로 '부풀리다' 라는 뜻입니다.
+*/	
+       @Override
+       public boolean onOptionsItemSelected(MenuItem item){
 			
-			switch (item.getItemId()){
-			
-			case R.id.item1:
-				
-				Intent intetn1 = new Intent(this, information.class);
-				startActivity(intetn1);
+		switch (item.getItemId())
+                {
+	        case R.id.item1:
+		Intent intetn1 = new Intent(this, information.class);
+		startActivity(intetn1);
 
-				break;
+		break;
 			
-			case R.id.item2:
+		case R.id.item2:
+		Intent intetn2 = new Intent(this, word.class);
+		startActivity(intetn2);
 				
-				Intent intetn2 = new Intent(this, word.class);
-				startActivity(intetn2);
-				
-				break;
-			}
+		break;
+                }
 			
 		
 	
