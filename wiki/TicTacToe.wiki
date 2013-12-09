@@ -7,9 +7,11 @@
 
 = Details =
 
-http://comp166-koreauniv.googlecode.com/files/%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.png 메인화면입니다. https://comp166-koreauniv.googlecode.com/files/%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4%EC%84%A4%EC%A0%95.png 플레이어설정화면입니다. http://comp166-koreauniv.googlecode.com/files/%EB%8F%84%EC%9B%80%EB%A7%90.png 도움말화면입니다. https://comp166-koreauniv.googlecode.com/files/%EA%B2%8C%EC%9E%84%ED%99%94%EB%A9%B4.png 게임화면입니다.
+http://comp166-koreauniv.googlecode.com/files/%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.png 메인화면입니다. https://comp166-koreauniv.googlecode.com/files/%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4%EC%84%A4%EC%A0%95.png 플레이어설정화면입니다. http://comp166-koreauniv.googlecode.com/files/%EB%8F%84%EC%9B%80%EB%A7%90.png 도움말화면입니다. https://comp166-koreauniv.googlecode.com/files/%EA%B2%8C%EC%9E%84%ED%99%94%EB%A9%B4.png 게임화면입니다. 
 
+Player1을 미현. Player2를 수현(동생ㅎ)이라고 하고 게임을 해보았습니다. 
 
+http://comp166-koreauniv.googlecode.com/files/Player1win.png Player1이 이길경우. http://comp166-koreauniv.googlecode.com/files/Player2win.png Player2가 이길경우. http://comp166-koreauniv.googlecode.com/files/Gamedraw.png 게임이 비길경우.
 
 
 = 소스코드 =
