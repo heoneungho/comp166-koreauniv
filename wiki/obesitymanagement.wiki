@@ -68,3 +68,5 @@ http://comp166-koreauniv.googlecode.com/files/obesity2.jpg
 
 = PROJECT =
 *[비만 관리 프로그램]*
+
+http://comp166-koreauniv.googlecode.com/files/mainscreen.jpg
