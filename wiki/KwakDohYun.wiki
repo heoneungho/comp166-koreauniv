@@ -50,6 +50,8 @@
 
 [*http://suein1209.tistory.com/546 가로화면 구현]
 
+bookpic.png 헬로 안드로이드 책 사용
+
 =main.xml=
 
 {{{
@@ -987,6 +989,4 @@ public class Sudoku extends Activity implements OnClickListener {
    }
 }
 }}}
-
-
 
