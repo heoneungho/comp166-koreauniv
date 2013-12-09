@@ -41,6 +41,271 @@ http://comp166-koreauniv.googlecode.com/files/상미클래스.png
 
 * LectureList.java
 
+{{{
+
+package com.example.attendancebook;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map.Entry;
+
+import android.os.Environment;
+
+public class LectureList {
+	public static LectureStatus curLectureStatus = null;
+	// public static DailyAttendance curDailyAttendance = null;
+
+	public static Hashtable<String, LectureStatus> list = new Hashtable<String, LectureStatus>();
+
+	public static String dataDir; //디렉토리의 경로를 써준다
+
+	public static void InitDirectory() {
+		File path = Environment.getExternalStorageDirectory(); //
+		dataDir = path.getAbsolutePath() + "/AttendanceBook/"; 
+		File file = new File(dataDir);
+		if (!file.exists()) // 원하는 경로에 폴더가 있는지 확인
+			file.mkdirs(); //없으면 새로 생성
+	}
+
+	public static void LoadLecture() throws IOException {
+		list.clear();
+
+		BufferedReader br = new BufferedReader(new FileReader(dataDir
+				+ "lecture.txt"));// 지정해준 디렉토리에 lecture.txt 파일을 만든다
+
+		String readLine = "";
+		while ((readLine = br.readLine()) != null) {
+			String[] items = readLine.split("\t"); //\t을 경계로 아이템들을 읽어낸다
+
+			curLectureStatus = new LectureStatus();
+			curLectureStatus.title = items[0];
+			list.put(items[0], curLectureStatus);
+		}
+
+		br.close();
+
+	}
+
+	public static void LoadStudent() throws Exception {
+
+		BufferedReader br = new BufferedReader(new FileReader(dataDir
+				+ "student.txt")); // 해당 경로에 있는 디렉토리에 student.txt를 만듦
+
+		String lec = "";
+		String std = "";
+
+		String readLine = "";
+
+		while ((readLine = br.readLine()) != null) {
+			String[] items = readLine.split("\t");
+
+			lec = items[0];
+			std = items[1];
+
+			if (list.containsKey(lec)) {
+				curLectureStatus = list.get(lec); //과목 받고 \t 뛴 후
+			} else {
+				continue;
+			}
+			curLectureStatus.studentList.add(std); //학생이름 받는다
+		}
+
+		br.close();
+
+	}
+
+	public static void LoadAttendance() throws Exception {
+		// 파일로 부터 읽기
+
+		BufferedReader br = new BufferedReader(new FileReader(dataDir
+				+ "attendance.txt")); // 해당 경로에 attendance.txt 만듦. 학생들의 출결을 관리
+
+		DailyAttendance curDailyAttendance = null;
+
+		String lec = "";
+		String date = "";
+		String std = "";
+		String status = "";
+
+		String readLine = "";
+		while ((readLine = br.readLine()) != null) {
+			String[] items = readLine.split("\t");
+			if (items.length < 3)
+				continue;
+
+			lec = items[0];
+			date = items[1];
+			std = items[2];
+			status = items[3];
+
+			if (list.containsKey(lec)) {
+				curLectureStatus = list.get(lec);
+			} else {
+				continue;
+			}
+
+			if (curLectureStatus.dailyAttendanceList.containsKey(date)) {
+				//현재 과목에서 해당 date의 출석부가 있으면 그 출석부를 가죠온다.
+				curDailyAttendance = curLectureStatus.dailyAttendanceList
+						.get(date);
+			} else {
+				// 없다면 새로 생성한다.
+				curDailyAttendance = new DailyAttendance();
+				curLectureStatus.dailyAttendanceList.put(date,
+						curDailyAttendance);
+			}
+
+			curDailyAttendance.studentList.add(new DailyAttendanceStudent(std,
+					status));//학생 리스트에 학생이름과 상태를 추가한다
+		}
+	}
+
+	public static void LoadAssignment() throws IOException {
+
+		BufferedReader br = new BufferedReader(new FileReader(dataDir
+				+ "assignment.txt")); // 해당 경로에 assignment.txt 를 생성
+		String lec = "";
+		String ass = "";
+
+		String readLine = "";
+		while ((readLine = br.readLine()) != null) {
+			String[] items = readLine.split("\t");
+
+			lec = items[0];
+			ass = items[1];
+
+			if (list.containsKey(lec)) {
+				curLectureStatus = list.get(lec); 
+			} else {
+				continue;
+			}
+
+			curLectureStatus.dailyAssignmentList.put(ass, new DailyAssignment(
+					ass));
+		}
+	}
+
+	public static void SaveStudent() throws IOException {
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(dataDir
+				+ "student.txt")); // studenet.txt에 쓸 것
+
+		for (Entry<String, LectureStatus> entry : LectureList.list.entrySet()) {
+// 
+			String lec = entry.getKey();
+			for (String std : entry.getValue().studentList) {
+				// 인자를 받아서 "과목명 	학생이름\n" 이런식으로 입력함
+				// for문을 돌면서 모든 학생들의 list를 받아옴
+				writer.write(lec+"\t"+std+ "\n"); 
+			}
+		}
+		writer.close();
+
+	}
+
+	public static void SaveLecture() throws IOException {
+
+		BufferedWriter writer = new BufferedWriter(new FileWriter(dataDir
+				+ "lecture.txt"));
+		//lecture.txt에 씀
+
+		for (Entry<String, LectureStatus> entry : LectureList.list.entrySet()) {
+			writer.write(entry.getKey() + "\n");
+			//list의 항목들을 \n으로 끊으면서 받는다
+		}
+		writer.close();
+	}
+
+	public static void SaveAttendance() {
+/*		BufferedWriter writer = new BufferedWriter(new FileWriter(dataDir
+				+ "attendance.txt"));
+
+
+			for (Entry<String, LectureStatus> entry : LectureList.list.entrySet()) {
+				
+			String lec = entry.getKey();
+			for (String std : entry.getValue().studentList) {
+				writer.write(lec+"\t"+Student.curDate+"\t"+std++ "\n");
+			}
+		}
+			writer.close();	
+*/
+
+	}
+
+	public static void SaveAssignment(BufferedReader bufferReader) {
+/*
+		BufferedWriter writer = new BufferedWriter(new FileWriter(dataDir
+				+ "assignment.txt")); // 해당 경로에 assignment.txt 를 생성
+
+		for (Entry<String, LectureStatus> entry : LectureList.list.entrySet()) {
+			
+		String lec = entry.getKey();
+		for(Entry<String, DailyAssignment > : LectureList.curLectureStatus.dailyAssignmentList.entrySet()){
+			writer.write(lec+"\t"+entry.getKey() + "\n");
+			//list의 항목들을 \n으로 끊으면서 받는다
+			
+		}
+		}		
+	
+	writer.close();
+*/
+}
+
+class LectureStatus {
+	public String title;
+	public ArrayList<String> studentList = new ArrayList<String>();
+	public Hashtable<String, DailyAttendance> dailyAttendanceList = new Hashtable<String, DailyAttendance>();
+	public Hashtable<String, DailyAssignment> dailyAssignmentList = new Hashtable<String, DailyAssignment>();
+	
+	//Load나 Save등을 할 때 기존의 리스트에서 Hashtable로 과목별로 분류할 때 쓰인다.
+}
+
+class DailyAttendance {
+	public ArrayList<DailyAttendanceStudent> studentList = new ArrayList<DailyAttendanceStudent>();
+}
+
+class DailyAttendanceStudent {
+	public String name;
+	public String status;
+
+	public DailyAttendanceStudent() {
+	}
+
+	public DailyAttendanceStudent(String n, String s) {
+		this.name = n;
+		this.status = s;
+	}
+}
+
+class DailyAssignment {
+	public String assignmentTitle;
+
+	// public ArrayList<DailyAssignmentStudent> studentList = new
+	// ArrayList<DailyAssignmentStudent>();
+
+	public DailyAssignment() {
+	}
+
+	public DailyAssignment(String n) {
+		this.assignmentTitle = n;
+	}
+}
+/*
+class DailyAssignmentStudent {
+	public String name;
+	public String status;
+}
+*/
+
+
+}}}
 
 * MainActiviy.java
 
