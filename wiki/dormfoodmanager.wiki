@@ -400,7 +400,11 @@ _출처 : 채정님 교수님 도움_
 ----
 == 5. 개인식수 ==
 
-이 어플에서 가장 중요하고 필요하다고 생각하는 기능으로, 자신이 한달동안 먹었던 식사 횟수를 기록할 수 있습니다. 식사를 하고 횟수를 입력하면 내부 저장 공간에 저장이 되고, 개인식수확인 버튼을 클릭하면 가장 최근에 입력하였던 숫자가 출력됩니다. 즉, 메모장과 비슷하게 사용하시면 됩니다.
+이 어플에서 가장 중요하고 필요하다고 생각하는 기능으로, 자신이 한달동안 먹었던 식사 횟수를 기록할 수 있습니다. 
+
+식사를 하고 횟수를 입력하면 내부 저장 공간에 저장이 되고, 개인식수확인 버튼을 클릭하면 가장 최근에 입력하였던 숫자가 출력됩니다. 
+
+즉, 메모장과 비슷하게 사용하시면 됩니다.
 
 http://comp166-koreauniv.googlecode.com/files/개인식수.jpg
 http://comp166-koreauniv.googlecode.com/files/개인식수2.jpg
@@ -480,6 +484,54 @@ public class Number extends Activity {
 }
 
 }}}
+
+activity_number.xml
+
+{{{
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#980000"
+    android:orientation="vertical" >
+   
+     <TextView
+        android:textSize="50sp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="개인식수"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+ 
+    <EditText
+       android:id="@+id/text1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="이번달 먹은 횟수를 입력하세요" />
+ 
+    <Button
+       android:id="@+id/btn1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="입력하기" />
+ 
+    <Button
+       android:id="@+id/btn2"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="개인 식수 확인" />
+    
+    <EditText
+       android:id="@+id/text2"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        />
+
+</LinearLayout>
+}}}
+
+_출처 : [http://blog.naver.com/PostView.nhn?blogId=javaking75&logNo=140179563086&categoryNo=67&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage= 내부저장공간에 파일읽기쓰기 블로그 참조]_
 ----
 == 6. 건의사항 ==
 
