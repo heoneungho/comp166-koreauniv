@@ -87,6 +87,29 @@ public class MainActivity extends Activity {
 }
 }}}
 
+activity_main.xml
+{{{
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.32"
+        android:scaleType="fitXY"
+        android:src="@drawable/main" />
+
+</LinearLayout>
+}}}
+
+
 == 메뉴 ==
 
 메인페이지 전체를 클릭하면 메뉴화면으로 이동합니다.
