@@ -277,7 +277,7 @@ public class Inform extends Activity {
 activity_inform.xml
 {{{
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#980000" // 배경화면의 색깔을 자랑스러운 고려대학교의 상징 크림슨 색으로 바꿔줍니다.
+    android:background="#980000"         // 배경화면의 색깔을 자랑스러운 고려대학교의 상징 크림슨 색으로 바꿔줍니다.
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
@@ -290,7 +290,7 @@ activity_inform.xml
     tools:context=".Inform" >
 
     <TextView
-        android:textSize="50sp" //제목에 걸맞게 글씨의 크기를 아주 크게 바꾸어줍니다.
+        android:textSize="50sp"      //제목에 걸맞게 글씨의 크기를 아주 크게 바꾸어줍니다.
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
