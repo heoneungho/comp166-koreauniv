@@ -9,6 +9,424 @@ http://comp166-koreauniv.googlecode.com/files/GiveItToMe.png
 
 = Details =
 
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png/
+
+'''빌려주기''' : 돈을 빌려준 사람의 연락처를 주소록에서 불러오거나 새로 입력하여 빌려준 시간과 가격을 기록
+
+'''빌리기''' : 돈을 빌린 사람의 연락처를 주소록에서 불러오거나 새로 입력하여 빌린 시간과 가격을 기록
+
+'''목록보기''' : 돈을 빌려준 사람과 빌린 사람의 이름, 전화번호, 시간, 가격을 목록으로 보여주고 터치를 하면 '전화하기', '문자하기', '취소'를 할 수 있음
+
+'''종료하기''' : 앱 종료
+
+'''도움말''' : 앱에 대한 간단한 설명
+
+
+
 == 클래스 소개 ==
 
-http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png/
+
+=== 메인 클래스 ===
+
+
+=== List class ===
+
+{{{
+
+package com.apk.GiveItToMe;
+
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Bundle;
+import android.telephony.gsm.SmsManager;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class List extends Activity implements AdapterView.OnItemSelectedListener, OnItemClickListener {
+	static Spinner spinner_list;
+	LinearLayout linear;
+	TextView select_mode, nocontent;
+	private ArrayAdapter spinner_adapter;
+	ArrayList<Value> list;
+	Typeface font;
+	SQLiteDatabase db;
+	Database con = null;
+	Cursor c;
+	Value value;
+	ListView lv;
+	ValueAdapter va;
+	AlertDialog.Builder ad;
+	public static int posion = 0;
+	boolean deleteMode = false;	// false : 일반모드             true : 삭제모드
+	String giveorget = "";			// 빌렸거나 or 빌려주었거나
+	String giveorget_ = "";			// 값겠다 or 갚아라
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.giveittomelist);
+
+		// DataBase를 쓰기 위해서
+		con = new Database(getApplicationContext());
+
+		try{
+			db = con.getWritableDatabase();
+		}catch (Exception e) {
+			// TODO: handle exception
+			db = con.getReadableDatabase();
+		}
+		
+		init();
+		
+		lv.setOnItemClickListener(this);
+		spinner_list.setOnItemSelectedListener(this);
+	}
+
+	private void rootin(){
+		getValue();
+		va = new ValueAdapter(this, R.layout.giveittomelist_list, list);
+		lv.setAdapter(va);
+	}
+	private void init() {
+		// TODO Auto-generated method stub
+		linear = (LinearLayout)findViewById(R.id.linear);
+		select_mode = (TextView)findViewById(R.id.select_mode);
+		nocontent = (TextView)findViewById(R.id.nocontent);
+		spinner_list = (Spinner)findViewById(R.id.spinner);
+		spinner_list.setPrompt("항목 선택");
+		spinner_adapter = ArrayAdapter.createFromResource(this, 
+				R.array.spinner_list, 
+				android.R.layout.simple_spinner_item);
+		spinner_adapter.setDropDownViewResource(
+				android.R.layout.simple_spinner_dropdown_item);
+		spinner_list.setAdapter(spinner_adapter);
+		lv = (ListView)findViewById(R.id.listview);
+		font = Typeface.createFromAsset(getAssets(), "MOM.otf");
+		select_mode.setTypeface(font);
+		rootin();
+	}
+
+	private void getValue() {
+		// TODO Auto-generated method stub 
+		linear.setVisibility(View.VISIBLE);
+		nocontent.setVisibility(View.GONE);
+
+		list = new ArrayList<Value>();
+		boolean content = true;
+		String mode = "";
+
+		c = con.fetchAll(db);	// DB쿼리 수행
+		startManagingCursor(c); 
+
+		c.moveToFirst();
+		while(!c.isAfterLast()){
+			value = new Value();
+
+			if(c.getString(1).equals("get"))
+				mode = "빌린 돈";
+			else if(c.getString(1).equals("give"))
+				mode = "빌려준 돈";
+
+			if(spinner_list.getSelectedItem().toString().equals("모두") ||
+					spinner_list.getSelectedItem().toString().equals(mode))
+			{
+				content = false;
+				value.setId(c.getInt(0));
+				value.setGiveOrGet(c.getString(1));
+				value.setName(c.getString(2));
+				value.setPhoneNum(c.getString(3));
+				value.setTime(c.getString(4));
+				value.setMoney(c.getString(5));
+				list.add(value);
+				c.moveToNext();
+			}
+			else
+				c.moveToNext();
+		}
+
+		if(content){
+			linear.setVisibility(View.GONE);
+			nocontent.setTypeface(font);
+			nocontent.setVisibility(View.VISIBLE);
+		}
+	}
+
+	private class ValueAdapter extends ArrayAdapter<Value> {
+		private ArrayList<Value> lists;
+
+		public ValueAdapter(Context cxt, int resourceID, ArrayList<Value> lists){
+			super(cxt,resourceID, lists);
+			this.lists=lists;
+		}
+
+		public View getView(int position, View v, ViewGroup parent){
+			//View를 넘기기 위해서 layout 파일을 초기화 시켜야 한다.
+			LayoutInflater li=
+				(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			v=li.inflate(R.layout.giveittomelist_list, null);
+			// 초기화된 View에 적절한 데이터를 셋팅
+			Value value=lists.get(position);
+			if(value != null){
+				// 위에서 inflate 시켰다면 layout xml 파일에 있는 객체가 
+				// 생성되어 계층구조로 연결되어 있을것이다.
+				// 계층 최상위에게 내가 필요한 View 객체를 달라고 함
+				TextView tv1 = (TextView)v.findViewById(R.id.list_giveorget);
+				TextView tv2 = (TextView)v.findViewById(R.id.list_name);
+				TextView tv3 = (TextView)v.findViewById(R.id.list_phoneNum);
+				TextView tv4 = (TextView)v.findViewById(R.id.list_time);
+				TextView tv5 = (TextView)v.findViewById(R.id.list_money);
+
+				tv1.setTypeface(font);
+				tv2.setTypeface(font);
+				tv3.setTypeface(font);
+				tv4.setTypeface(font);
+				tv5.setTypeface(font);
+
+				if(tv1 != null){
+					tv1.setText("종류 : "+value.getGiveOrGet());
+				}
+				if(tv2 != null){
+					tv2.setText("누구 : "+value.getName());
+				}    	
+				if(tv3 != null){
+					tv3.setText("전화번호 : "+value.getPhoneNum());
+				}
+				if(tv4 != null){
+					tv4.setText("시간 : "+value.getTime());
+				}
+				if(tv5 != null){
+					tv5.setText("금액 : "+value.getMoney());
+				}
+			}    		
+			return v;
+		}
+	}
+
+	private void sendMessage(String a, String b) throws Exception{
+		// TODO Auto-generated method stub
+		SmsManager sms = SmsManager.getDefault();
+		sms.sendTextMessage(a, null, b, null, null);
+	}
+
+	//	옵션 메뉴
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {	// 메뉴옵션은 두개를 만듦
+		menu.add(1, 1, 1, "삭제하기");
+		menu.add(2, 2, 2, "모두삭제");
+		menu.add(3, 3, 3, "삭제취소");
+		return true;
+	}
+
+	//	옵션 메뉴 호출
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		if(item.getItemId() == 1){
+			Toast.makeText(this, "touch touch.", 1000).show();
+			deleteMode = true;
+		}
+		else if(item.getItemId() == 2){
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("삭제하기");
+			ad.setIcon(R.drawable.giveittomeicon);
+			ad.setMessage("모두 삭제하시겠습니까?");
+			ad.setPositiveButton("삭제하기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					con.DBDel(db);
+					Toast.makeText(ScroogeList.this, "삭제완료", 100).show();
+					getValue();
+					va = new ValueAdapter(ScroogeList.this, R.layout.scroogelist_list, list);
+					lv.setAdapter(va);
+				}
+			});
+			ad.setNegativeButton("취소하기", null);
+			ad.show();
+		}
+		else if(item.getItemId() == 3){
+			Toast.makeText(this, "삭제 취소", 1000).show();
+			deleteMode = false;
+		}
+		rootin();
+		return true;
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int posion, long posion_) {
+		// TODO Auto-generated method stub
+		rootin();
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int posion, long posion_) {
+		// TODO Auto-generated method stub
+		ScroogeList.posion = posion;
+		
+		if(list.get(ScroogeList.posion).getGiveOrGet().equals("빌려준 돈")){
+			giveorget = "저에게 빌리셨으니, ";
+			giveorget_ = "갚아주세요";
+		}
+		else{
+			giveorget = "제가 빌렸으니, ";
+			giveorget_ = "갚을게요";
+		}
+		if(!deleteMode){			// 일반모드일 때
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("연락하기");
+			ad.setIcon(R.drawable.scroogeicon);
+			ad.setMessage(list.get(posion).getName()+"에게 연락을 취하시겠습니까?");
+			ad.setPositiveButton("전화하기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + list.get(ScroogeList.posion).getPhoneNum()));
+					startActivity(intent);
+				}
+			});
+			ad.setNeutralButton("문자하기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					try{
+						sendMessage(list.get(ScroogeList.posion).getPhoneNum(), 
+								list.get(ScroogeList.posion).getName()+"님, " +
+								list.get(ScroogeList.posion).getTime()+"에 " +
+								list.get(ScroogeList.posion).getMoney()+"을 " + 
+								giveorget + giveorget_);
+						Toast.makeText(ScroogeList.this, "전송 성공", 100).show();
+					}catch(Exception e){
+						Toast.makeText(ScroogeList.this, "전송 실패", 100).show();
+					}
+				}
+			});
+			ad.setNegativeButton("취소", null);
+			ad.show();
+		}
+		else{						// 삭제모드일 때
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("삭제하기");
+			ad.setIcon(R.drawable.scroogeicon);
+			ad.setMessage("해당 항목을 삭제하시겠습니까?");
+			ad.setPositiveButton("삭제하기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					con.DBDel(db, list.get(ScroogeList.posion).getId());
+					Toast.makeText(ScroogeList.this, "삭제완료", 100).show();
+					rootin();
+				}
+			});
+			ad.setNegativeButton("취소하기", null);
+			ad.show();
+		}
+	}
+}
+
+class Value{
+	private int id;
+	private String giveorget;
+	private String name;
+	private String phoneNum;
+	private String time;
+	private String money;
+
+	public int getId(){
+		return id;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public String getGiveOrGet(){
+		return giveorget;
+	}
+	public void setGiveOrGet(String giveorget){
+		if(giveorget.equals("give"))
+			giveorget = "빌려준 돈";
+		else if(giveorget.equals("get"))
+			giveorget = "빌린 돈";
+		this.giveorget = giveorget;
+	}
+
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getPhoneNum(){
+		return phoneNum;
+	}
+	public void setPhoneNum(String phoneNum){
+		this.phoneNum = phoneNum;
+	}
+
+	public String getTime(){
+		return time;
+	}
+	public void setTime(String time){
+		StringTokenizer st = new StringTokenizer(time, ".");
+		String AMPM = "";
+		time = "";
+		int year = Integer.parseInt(st.nextToken());
+		int month = Integer.parseInt(st.nextToken());
+		int day = Integer.parseInt(st.nextToken());
+		int hour = Integer.parseInt(st.nextToken());
+		int minute = Integer.parseInt(st.nextToken());
+
+		time = year+"년 "+month+"월 "+day+"일　";
+
+		if(hour < 12){
+			AMPM = "오전"; 
+			if(hour == 0)
+				hour = 12;
+		}
+		else if(hour >= 12){
+			AMPM = "오후";
+			if(hour > 12)
+				hour -= 12;
+		}
+		time += AMPM + " " + hour + "시 ";
+		if(minute < 10)
+			time += "0"+minute+"분";
+		else
+			time += ""+minute+"분";
+		this.time = time;
+	}
+
+	public String getMoney(){
+		return money;
+	}
+	public void setMoney(String money){
+		this.money = money + "원";
+	}
+}
+
+}}}
