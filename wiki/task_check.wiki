@@ -8,7 +8,6 @@
 
 = Details =
 
-http://comp166-koreauniv.googlecode.com/files/1.png
 
 어플을 실행시키면 위와 같은 화면이 초기화면으로 뜬다.
 
