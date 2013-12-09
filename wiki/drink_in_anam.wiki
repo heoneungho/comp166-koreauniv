@@ -16,6 +16,14 @@
 
 
 
+
+=실제 구성 및 완성품=
+*완성품
+http://comp166-koreauniv.googlecode.com/files/Drinkapp.zip
+*실제구성
+http://www.eckdrnjs.zz.mu/mwiki/컴퓨터프로그래밍/앱만들기
+
+
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
