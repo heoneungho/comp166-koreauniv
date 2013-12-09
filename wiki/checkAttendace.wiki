@@ -35,15 +35,18 @@
 <font size='5'><b>Attendance book</b></font>
 
 * 메인화면
+
 http://comp166-koreauniv.googlecode.com/files/상미메인.png
 
 앱을 실행하자마자 뜨는 메인화면이다.
 과목을 선택해서 들어갈 수 있으며 원하는 과목을 새로 추가할 수도 있다.
 추가된 과목은 sdcard0/AttendanceBook/lecture.txt 에 저장된다
 
+
 * 출결관리
 
-http://comp166-koreauniv.googlecode.com/files/상미출석.png 
+http://comp166-koreauniv.googlecode.com/files/상미출석.png
+
 http://comp166-koreauniv.googlecode.com/files/상미출석날짜.png
 
 과목 선택후 맨 첫번째 탭이 선택된 상태에서 들어온다.
