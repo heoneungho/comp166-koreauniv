@@ -112,9 +112,9 @@ activity_main.xml
 
 == 2. 메뉴화면 ==
 
-http://comp166-koreauniv.googlecode.com/files/두번째메인.jpg
-
 메인페이지 전체를 클릭하면 메뉴화면으로 이동합니다.
+
+http://comp166-koreauniv.googlecode.com/files/두번째메인.jpg
 
 Information.java
 {{{
@@ -171,4 +171,58 @@ public class Information extends Activity {
 	}
 
 }
+}}}
+
+activity_information.xml
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    tools:context=".Information" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/information" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton1"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/imageButton1"
+        android:src="@drawable/menu" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="51dp"
+        android:src="@drawable/infor" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageButton1"
+        android:layout_below="@+id/imageButton1"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/number" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton3"
+        android:layout_alignLeft="@+id/imageButton2"
+        android:src="@drawable/talk" />
+
+</RelativeLayout>
 }}}
