@@ -32,9 +32,32 @@
 
 = Details =
 
-<font size='6'>Attendance book</font>
+<font size='5'><b>Attendance book</b></font>
 
 
-* class
+== class ==
 
 http://comp166-koreauniv.googlecode.com/files/상미클래스.png
+
+*LectureList.java
+
+
+* MainActiviy.java
+
+
+* Wth.java
+
+
+* Student.java(Attendance)
+**MyAdapter.java
+
+
+* Result.java
+
+
+* Assignemnt.java
+
+
+== xml ==
+
+http://comp166-koreauniv.googlecode.com/files/상미xml.png
