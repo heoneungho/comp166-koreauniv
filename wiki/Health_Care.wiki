@@ -1031,7 +1031,8 @@ http://comp166-koreauniv.googlecode.com/files/ygyg.PNG/
 http://comp166-koreauniv.googlecode.com/files/asdf.PNG/
 
 {{{
-<RelativeLayout //확실한 줄맞춤을 위해 Relative 레이아웃을 사용합니다. xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+//확실한 줄맞춤을 위해 Relative 레이아웃을 사용합니다. xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
@@ -1136,3 +1137,62 @@ http://comp166-koreauniv.googlecode.com/files/asdf.PNG/
 
 }}}
 
+*2.breast,arm,below,heap,back.xml*
+
+
+http://comp166-koreauniv.googlecode.com/files/asss.PNG/
+
+이 화면을 통해서 사용자는 자신의 몸 상태에 따라 운동단계를 선택할 수 있습니다.
+동일한 소스 코드라 한 가지만 코드로 적겠습니다.
+
+{{{
+
+<?xml version="1.0" encoding="utf-8"?>
+
+//역시 줄맞춤을 위해 Relative 레이아웃을 사용합니다.
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/black" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/level" />
+//직접 디자인한 제목을 이미지 뷰를 통해 집어 넣습니다.
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="274dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imageButton2"
+        android:layout_below="@+id/imageButton2"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/high" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="274dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imageButton1"
+        android:layout_below="@+id/imageButton1"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/middle" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="274dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/begin" />
+
+//초보자,중급자,숙련자 단계를 이미지 버튼을 통해 구현합니다.
+</RelativeLayout>
+
+}}}
