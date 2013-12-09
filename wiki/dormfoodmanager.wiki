@@ -315,7 +315,7 @@ activity_inform.xml
 
 http://comp166-koreauniv.googlecode.com/files/오늘의메뉴.jpg
 
-Menu.java
+Food.java
 
 {{{
 package com.example.anamdorm_food;
