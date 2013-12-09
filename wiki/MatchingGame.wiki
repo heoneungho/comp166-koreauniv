@@ -130,5 +130,14 @@ http://comp166-koreauniv.googlecode.com/files/동물카드.png
  * 각 버튼들에 의해 급한 일이 생긴 경우 정지할 수 있고, 일이 마무리되고 나면 다시 재개가 가능하며, 패가 좋지 않다고 생각되면 새 게임을 진행할 수 있다.
 
 
+== 게임 화면 내에서 랭킹 진입 성공과 실패 시 결과 화면 ==
+
+
+ * 랭킹 진입 성공 화면
+
+
+http://comp166-koreauniv.googlecode.com/files/성공화면.png
+
+
 
  
