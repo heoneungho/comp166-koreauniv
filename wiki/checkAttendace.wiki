@@ -27,14 +27,11 @@
   정보가 전산화되어 있기 때문에 바로 인터넷에 공유하기도 쉽다!
 
 
-
-
-
 = Details =
 
 <font size='5'><b>Attendance book</b></font>
 
-* 메인화면
+* <font size='3'>메인화면<font>
 
 http://comp166-koreauniv.googlecode.com/files/sangmimain.jpg
 
@@ -56,7 +53,7 @@ http://comp166-koreauniv.googlecode.com/files/sangmidate.jpg
 출결 목록은 Attendance.txt에 저장된다.
 
 
-http://comp166-koreauniv.googlecode.com/files/sangmiaddstd.jpg
+http://comp166-koreauniv.googlecode.com/files/sangmistdadd.jpg
 
 오른쪽 상단에 보면 학생추가버튼이 있다.
 이 버튼을 누르면 학생추가 화면이 뜨며 과목추가와 동일한 방법으로 학생을 추가할 수 있다.
