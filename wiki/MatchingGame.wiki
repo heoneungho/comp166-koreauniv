@@ -176,6 +176,273 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
  * 마지막으로 raw 폴더에는 BGM으로 재생되는 음악 파일이 담겨 있다.
 
 
+= 각 클래스에 대한 설명(구성과 출처) =
+
+
+== 게임 클래스 ==
+{{{
+
+package com.example.matchinggame;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.matchinggame.game.CardManager;
+import com.example.matchinggame.game.GameManager;
+import com.example.matchinggame.game.GenerateRandom;
+import com.example.matchinggame.game.TimeManager;
+import com.example.matchinggame.utils.ManagerPreference;
+import com.example.matchinggame.utils.ManagerSound;
+
+public class GameActivity extends Activity implements OnClickListener{
+	public static final String mPackage="com.example.matchinggame";
+	public static final int CARD_SIZE=16;
+	
+	public CardManager[] Card; 
+	
+	public static final int IN_GAME=1; // 현재 게임의 진행 상태를 나타내는 변수들
+	public static final int PAUSE_GAME=2;
+	public static final int FINISH_GAME=3;
+	public static final int TIME_INTERVEL=90; // 시간 정보 호출 간격
+	public int NowGameStatus;
+	
+	
+	TimeManager tm;
+	TextView tv_time;
+
+	public static final int MSG_FIRST_CARD_TURN=0; // 맨 처음 게임 시작 시 카드들을 전체적으로 보여주기 위한 변수
+	public static final int FIRST_CARD_TURN_TIME=1500; // 카드 넘어가는데 걸리는 시간으로 보여주는 시간을 설정 : 1.5초
+	public static final int MSG_TURN_CARD=1; // 게임 진행 과정에서의 2장의 카드가 서로 다른 경우 뒤집기 위한 변수
+	public static final int TURN_CARD_TIME=1500;
+	
+	GameManager GM;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_game);
+		
+		mInitLayout(); 
+		
+		tm=new TimeManager();
+		GM=new GameManager();
+		
+		NowGameStatus=IN_GAME;
+		tm.startGame();
+		
+		mTimeHandler.sendEmptyMessageDelayed(NowGameStatus, TIME_INTERVEL);
+		mGameHandler.sendEmptyMessageDelayed(MSG_FIRST_CARD_TURN, FIRST_CARD_TURN_TIME);
+		
+		findViewById(R.id.restart_btn).setOnClickListener(this);
+		findViewById(R.id.pause_btn).setOnClickListener(this);
+		findViewById(R.id.resume_btn).setOnClickListener(this);
+		findViewById(R.id.resume_btn).setClickable(false);
+	}
+	
+	/**
+	 * xml에서 만든 값들을 소스랑 연결시켜주는 부분
+	 * onCreate에 들어가면서 바로 실행되는 부분
+	 */
+	private void mInitLayout(){
+		tv_time=(TextView)findViewById(R.id.tv_time);
+		
+		Card=new CardManager[CARD_SIZE]; 
+		int[] randList=GenerateRandom.getRandom(CARD_SIZE); // 카드에 0~7까지의 값을 랜덤하게 생성 
+		
+		for(int i=0;i<CARD_SIZE;i++){
+			
+			int resource=0; //카드의 종류에 해당하는 변수
+			
+			switch (ManagerPreference.getCard()) { //옵션에서 카드를 변경하면 그것을 반영해주는 switch문
+			case 0:
+				resource=getResources().getIdentifier("card"+randList[i]%(CARD_SIZE/2)+randList[i]%(CARD_SIZE/2)+randList[i]%(CARD_SIZE/2),"drawable",mPackage);
+				break; 
+			case 1:
+				resource=getResources().getIdentifier("card"+randList[i]%(CARD_SIZE/2)+randList[i]%(CARD_SIZE/2),"drawable",mPackage);
+				break;
+			case 2:
+				resource=getResources().getIdentifier("card"+randList[i]%(CARD_SIZE/2),"drawable",mPackage);
+				break;
+			}
+			
+			Card[i]=new CardManager(
+					i,
+					randList[i]%(CARD_SIZE/2), 
+					(ImageView)findViewById(getResources().getIdentifier("btn"+i,"id",mPackage)),
+					resource);
+			
+			Card[i].getImageView().setOnClickListener(this);
+			
+			Card[i].setImage(true); // 처음에는 모든 카드가 앞면(가리개 카드)으로 나온다.
+		}
+		
+	}
+	@Override
+	public void onResume(){
+		super.onResume();
+		NowGameStatus=IN_GAME;
+		if(ManagerPreference.getSound()){
+            ManagerSound.playSound(this);
+        }
+	}
+	@Override
+	public void onPause(){
+		super.onPause();
+		NowGameStatus=PAUSE_GAME;
+		ManagerSound.pauseSound();
+	}
+	
+	/**
+	 * 게임에서 필요한 핸들러로
+	 * 카드를 뒤집는 동작을 제어한다.
+	 */
+	Handler mGameHandler=new Handler(){
+		@Override
+		public void handleMessage(Message msg){
+			switch (msg.what) {
+			case MSG_FIRST_CARD_TURN:
+				for(int i=0;i<CARD_SIZE;i++){
+					Card[i].setImage(false); // 모두 뒤집어서 뒷면을 전부 보여줌.
+				}
+				break;
+			case MSG_TURN_CARD:
+				Card[GM.getTurnCardNum()[0]].setImage(false); // 터치시 카드가 넘어가는 효과
+				Card[GM.getTurnCardNum()[1]].setImage(false);
+				GM.canTouchCard();
+				break;
+			
+			}
+		}
+	};
+	/**
+	 * 시간관련 부분을 제어하는 함수
+	 * handleMessage에서 
+	 * IN_GAME일 때,
+	 * 재귀되는 내용을 받는다.
+	 */
+	Handler mTimeHandler=new Handler(){
+		
+		@Override
+		public void handleMessage(Message msg){
+			switch (msg.what) {
+			case IN_GAME:
+				tv_time.setText(tm.getNowTime());
+				mTimeHandler.sendEmptyMessageDelayed(NowGameStatus, TIME_INTERVEL);
+				
+				break;
+			case PAUSE_GAME:
+				
+				break;
+			case FINISH_GAME:
+				setResult();
+				break;
+			default:
+			}
+		}
+	};
+
+	/**
+	 * 게임이 끝나면 출력되는 결과 메소드
+	 * 기록이 랭킹 안에 들면 랭킹 작성 화면 출력
+	 * 그렇지 않으면 게임 종료 화면 출력
+	 * */
+	public void setResult(){
+		
+		final float nowTime=Float.parseFloat(tv_time.getText().toString()); //게임의 시간 기록에 해당하는 변수
+		
+		if(ManagerPreference.isInRanking(nowTime)){ 
+			
+			findViewById(R.id.rl_result).setVisibility(View.VISIBLE); //게임 끝남과 동시에 결과 화면을 보여줌.
+			
+			findViewById(R.id.btn_save).setOnClickListener(new OnClickListener() {
+				// save 버튼과 관련된 동작
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					EditText et=(EditText)findViewById(R.id.et_name);
+					ManagerPreference.setRank(et.getText().toString(), nowTime);
+					Intent intent4 = new Intent(GameActivity.this,RankingActivity.class);
+					startActivity(intent4);
+				}
+			});
+			
+		}else{
+			findViewById(R.id.rl_result_no).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_close).setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					finish();
+				}
+			});
+		}
+	}
+	
+	/**
+	 * 게임 화면의 버튼들을 눌렀을 경우 
+	 * 해당 동작들을 설정해놓은 메소드
+	 * */
+		@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.restart_btn:
+			Intent intent=new Intent(GameActivity.this,GameActivity.class);
+			startActivity(intent);
+			overridePendingTransition(0, 0);
+			finish();
+			break;
+		case R.id.resume_btn:
+			tm.resumeTime();
+			NowGameStatus=IN_GAME;
+			mTimeHandler.sendEmptyMessageDelayed(NowGameStatus, 0);
+			findViewById(R.id.resume_btn).setClickable(false); //resume 혹은 pause 를 두 번 누르지 못하게 설정
+			findViewById(R.id.pause_btn).setClickable(true);
+			break;
+		case R.id.pause_btn:
+			tm.pauseTime();
+			NowGameStatus=PAUSE_GAME;
+			findViewById(R.id.resume_btn).setClickable(true);
+			findViewById(R.id.pause_btn).setClickable(false);
+			break;
+
+		default: //이 부분에서 게임 중 카드 2개씩만 뒤집기, 2개의 카드가 같은 경우와 다른 경우의 동작, 모두 맞춘 경우의 동작 등을 설정   
+			if(NowGameStatus==IN_GAME){
+				
+				if(GM.canTurnCard()){ //카드를 뒤집을 수 있는 경우 터치한 카드의 정보를 저장
+					int nowTouchCardNum=Integer.parseInt(v.getTag().toString());
+					int nowTouchCardImageValue=Card[nowTouchCardNum].getValue();
+					
+					if(Card[nowTouchCardNum].turnCard(true)){ //한번 누르고 나서 또 누를수 있다고 똑같은 놈을  or 이미 맞춘놈을 누른경우 
+						
+						GM.turnCard(nowTouchCardNum,nowTouchCardImageValue);
+						
+						if(GM.needToReturnCard()){
+							mGameHandler.sendEmptyMessageDelayed(MSG_TURN_CARD,TURN_CARD_TIME );
+
+						}
+						
+						if(GM.isAllCorrect())NowGameStatus=FINISH_GAME;
+					}
+					
+				}
+			}
+		}
+	}
+	
+	
+
+}
+}}}
+
+
 
 
 
