@@ -1437,7 +1437,30 @@ List.java와 관련
 }}}
 
 
-=== 
+=== giveittome_help.xml ===
+
+{{{
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    >
+	<TextView
+		android:id="@+id/help_help_text"
+		android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:gravity="center"
+    	android:textSize="20px"
+		android:textColor="#000000"
+		android:layout_weight="10"/>
+</LinearLayout>
+
+}}}
+
+
 
 == 구동 Screen Shots ==
 
