@@ -7,6 +7,8 @@ http://comp166-koreauniv.googlecode.com/files/GiveItToMe.png
 
 _돈을 빌리거나 빌려줬을 때 이름, 전화번호, 시간, 가격을 기록한 뒤 안내 문자나 전화를 보내는 어플리케이션_
 
+어플리케이션의 이름은 '돈 내놔!'의 느낌으로 'Give it to me'를 생각했고, 마침 씨스타의 노래 중 똑같은 제목의 노래가 있어 아이콘을 앨범 자켓에서 차용해옴
+
 = Details =
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
@@ -86,9 +88,9 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 	public static int posion = 0;
 	boolean deleteMode = false;	// false : 일반모드             true : 삭제모드
 	String giveorget = "";			// 빌렸거나 or 빌려주었거나
-	String giveorget_ = "";			// 값겠다 or 갚아라
+	String giveorget_ = "";			// 값을게요 or 갚아주세요
 
-	@Override
+	@Override 		//Android ActionProvider를 이용한 액션바 아이템 액션에 대한 커스텀뷰 생성
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -188,16 +190,14 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		}
 
 		public View getView(int position, View v, ViewGroup parent){
-			//View를 넘기기 위해서 layout 파일을 초기화 시켜야 한다.
+			//View를 넘기기 위해서 layout 파일을 초기화 시켜야 함
 			LayoutInflater li=
 				(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v=li.inflate(R.layout.giveittomelist_list, null);
-			// 초기화된 View에 적절한 데이터를 셋팅
+			// 초기화 된 View에 적절한 데이터를 설정
 			Value value=lists.get(position);
 			if(value != null){
-				// 위에서 inflate 시켰다면 layout xml 파일에 있는 객체가 
-				// 생성되어 계층구조로 연결되어 있을것이다.
-				// 계층 최상위에게 내가 필요한 View 객체를 달라고 함
+				// 위에서 inflate 시켰다면 layout xml 파일에 있는 객체가 생성되어 계층구조로 연결되어 있을 것이기 때문에 계층 최상위에게 필요한 View 객체를 달라고 함
 				TextView tv1 = (TextView)v.findViewById(R.id.list_giveorget);
 				TextView tv2 = (TextView)v.findViewById(R.id.list_name);
 				TextView tv3 = (TextView)v.findViewById(R.id.list_phoneNum);
@@ -238,7 +238,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 
 	//	옵션 메뉴
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {	// 메뉴옵션은 두개를 만듦
+	public boolean onCreateOptionsMenu(Menu menu) {	// 메뉴 옵션은 두 개를 만듦
 		menu.add(1, 1, 1, "삭제하기");
 		menu.add(2, 2, 2, "모두삭제");
 		menu.add(3, 3, 3, "삭제취소");
