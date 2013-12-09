@@ -179,10 +179,10 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
 = 각 클래스에 대한 설명 =
 
 
-== 게임 클래스 ==
+== 게임 클래스와 xml ==
 
 {{{
-
+<게임 클래스>
 package com.example.matchinggame;
 
 import android.app.Activity;
@@ -448,10 +448,276 @@ public class GameActivity extends Activity implements OnClickListener{
 
  * 일단 각 카드는 버튼으로 구성하여 터치를 인식할 수 있게 구성 하였고, 변수를 만들어 mod 계산을 통해 카드 자체를 난수 배열할 수 있는 구조로 짰다. 카드에 대한 정보는 난수 배열을 통해 얻은 수에 따라서 정보를 넘겨주게 하였다.
 
+{{{
+<게임클래스 xml>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".GameActivity" >
+    
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#333" >
+         
+    	<TextView
+    	    android:id="@+id/tv_time"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentTop="true"
+    	    android:layout_centerHorizontal="true"
+    	    android:text="TIMER 00:00:00"
+    	    android:textColor="#FFFFFF" 
+    	    />
+    </RelativeLayout>
+    
+	<RelativeLayout
+	    android:id="@+id/card_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="280dp"
+	    android:layout_below="@id/top_layout" 
+	    android:background="#808080"
+	    >
+    	<RelativeLayout 
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_centerInParent="true">
+	    <ImageView
+		    android:id="@+id/btn0"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:background="@drawable/ic_launcher"/>
+		    
+	    
+		<ImageView
+		    android:id="@+id/btn1"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn0"
+		    android:layout_toRightOf="@id/btn0" 
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn2"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn0"
+		    android:layout_toRightOf="@id/btn1"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn3"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn0"
+		    android:layout_toRightOf="@id/btn2"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn4"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_below="@id/btn0"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn5"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn4"
+		    android:layout_toRightOf="@id/btn4"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn6"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn4"
+		    android:layout_toRightOf="@id/btn5"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn7"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn4"
+		    android:layout_toRightOf="@id/btn6"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn8"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_below="@id/btn4"
+            android:background="@drawable/ic_launcher"/>
+
+		
+		<ImageView
+		    android:id="@+id/btn9"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn8"
+		    android:layout_toRightOf="@id/btn8"
+            android:background="@drawable/ic_launcher"/>
+		
+		<ImageView
+		    android:id="@+id/btn10"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn8"
+		    android:layout_toRightOf="@id/btn9"
+            android:background="@drawable/ic_launcher"/>
+		
+		<ImageView
+		    android:id="@+id/btn11"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn8"
+		    android:layout_toRightOf="@id/btn10"
+            android:background="@drawable/ic_launcher"/>
+		
+		<ImageView
+		    android:id="@+id/btn12"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_below="@id/btn8"
+            android:background="@drawable/ic_launcher"/>
+		
+		<ImageView
+		    android:id="@+id/btn13"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn12"
+		    android:layout_toRightOf="@id/btn12"
+            android:background="@drawable/ic_launcher"/>
+		
+		<ImageView
+		    android:id="@+id/btn14"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn12"
+		    android:layout_toRightOf="@id/btn13"
+            android:background="@drawable/ic_launcher"/>
+		
+		<ImageView
+		    android:id="@+id/btn15"
+		    android:layout_width="55dip"
+		    android:layout_height="55dip"
+		    android:layout_alignTop="@id/btn12"
+		    android:layout_toRightOf="@id/btn14"
+            android:background="@drawable/ic_launcher"/>
+				</RelativeLayout>
+	</RelativeLayout>
+		
+	<RelativeLayout
+	    android:id="@+id/btn_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/card_layout"
+	    android:background="#333" 
+	     >
+		
+	    <Button 
+	        android:id="@+id/restart_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Restart"
+	        android:layout_marginLeft="20dp"
+	        
+	        />
+		<Button 
+	        android:id="@+id/resume_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/restart_btn"
+	        android:text="Resume"
+	        android:layout_marginLeft="10dp"
+	        
+	        />
+	    <Button
+	        android:id="@+id/pause_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginRight="20dp"
+	        android:text=" pause " 
+	        
+	        />
+	    
+	</RelativeLayout>
+	
+	<!-- 랭킹에 들었을때 화면 -->
+	<RelativeLayout
+	    android:id="@+id/rl_result"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="@drawable/congrats"
+	    android:visibility="gone"
+	    >
+	    
+	    <EditText 
+	        android:id="@+id/et_name"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="15dp"
+	        android:layout_marginLeft="15dp"
+	        android:layout_marginRight="60dp"
+	        android:layout_marginTop="15dp"
+	        android:ems="10"
+	        android:maxLength="5"
+	        android:background="@drawable/round"
+	        android:inputType="textMultiLine"
+	        />
+	    
+	    <Button 
+	        android:id="@+id/btn_save"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/et_name"
+	        android:layout_marginRight="5dip"
+	        android:layout_alignParentRight="true"
+	        android:background="@drawable/save_btn"
+	        />
+	    
+	</RelativeLayout>
+	
+	<!-- 랭킹에 못들었을때 화면 -->
+	<RelativeLayout
+	    android:id="@+id/rl_result_no"
+	    android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+	    android:background="@drawable/tryag"
+	    android:visibility="gone">
+	    
+	    <Button 
+	        android:id="@+id/btn_close"
+	        android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    />
+	    
+	</RelativeLayout>
+</RelativeLayout>
+}}}
 
 == 메인 클래스 ==
 
 {{{
+<메인클래스>
 package com.example.matchinggame;
 
 import com.example.matchinggame.utils.ManagerPreference;
@@ -525,10 +791,71 @@ public class MainActivity extends Activity implements OnClickListener {
 }
 }}} 
 
+{{{
+<메인 클래스 xml>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    >
+    
+    <ImageView 
+        android:alpha="0.8"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+   		android:background="@drawable/main"
+    />
+    
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mainlogo" 
+        />
+        
+    <Button
+        android:id="@+id/Startbtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="StartGame"
+        android:layout_marginTop="200dp"
+        />
+    
+    <Button
+        android:id="@+id/Rankbtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="Ranking" 
+        android:layout_below="@id/Startbtn"
+         />
+
+    <Button
+        android:id="@+id/Optbtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="Option"
+        android:layout_below="@id/Rankbtn"
+        />
+
+</RelativeLayout>
+}}}
 
 == 옵션 클래스 ==
 
 {{{
+<옵션클래스>
 package com.example.matchinggame;
 
 import com.example.matchinggame.utils.ManagerPreference;
@@ -621,6 +948,109 @@ public class OptionActivity extends Activity implements OnCheckedChangeListener,
 }
 }}}
 
+{{{
+<옵션 클래스 xml>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".OptionActivity" 
+    
+    >
+    <ImageView 
+        android:alpha="0.7"
+        android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/option"/>
+
+    <TextView
+        android:id="@+id/Sound_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:text="사운드"
+        android:textStyle="bold"
+        />
+   
+    <TextView
+        android:id="@+id/Image_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Sound_btn"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:text="이미지" 
+        android:textStyle="bold"
+        />
+
+    <ToggleButton
+        android:id="@+id/Sonoff_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Sound_btn"
+        android:layout_alignBottom="@+id/Sound_btn"
+        android:layout_marginLeft="55dp"
+        android:layout_toRightOf="@+id/Sound_btn"
+        android:textOff="OFF"
+        android:textOn="ON"
+        />
+    <RadioGroup 
+        android:id="@+id/radio"
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/Image_btn"
+        android:layout_alignBottom="@+id/Image_btn"
+        android:layout_marginLeft="55dp"
+        android:layout_toRightOf="@+id/Sound_btn">
+    <RadioButton
+        android:id="@+id/radio_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:text="Professor" 
+        />
+
+    <RadioButton
+        android:id="@+id/radio_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_btn1"
+        android:layout_alignLeft="@id/radio_btn1"
+        android:layout_marginTop="10dp"
+        android:text="Card" 
+        />
+
+    <RadioButton
+        android:id="@+id/radio_btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_btn2"
+        android:layout_alignLeft="@id/radio_btn2"
+        android:layout_marginTop="10dp"
+        android:text="Animal" 
+        />
+    </RadioGroup>
+    <Button 
+        android:id="@+id/Rankreset_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/radio"
+        android:layout_marginTop="150dp"
+        android:text="Ranking Reset"
+        />
+    
+   
+    
+ </RelativeLayout>
+}}}
+
 
 == 랭킹 클래스 ==
 
@@ -688,6 +1118,278 @@ public class RankingActivity extends Activity implements OnClickListener {
 
 	
 }
+}}}
+
+{{{
+<랭킹 클래스 xml>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".RankingActivity" >
+
+    <Button
+        android:id="@+id/btn_close2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.8"
+        android:background="@drawable/rank" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/fir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="1 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fir"
+            android:layout_alignTop="@+id/name_1"
+            android:layout_marginRight="15dp"
+            android:text="2 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/thi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fir"
+            android:layout_alignTop="@+id/name_2"
+            android:layout_marginRight="15dp"
+            android:text="3 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fir"
+            android:layout_alignTop="@+id/name_3"
+            android:layout_marginRight="15dp"
+            android:text="4 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fir"
+            android:layout_alignTop="@+id/name_4"
+            android:layout_marginRight="15dp"
+            android:text="5 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fir"
+            android:layout_alignTop="@+id/name_5"
+            android:layout_marginRight="15dp"
+            android:text="6 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fir"
+            android:layout_alignTop="@+id/name_6"
+            android:layout_marginRight="15dp"
+            android:text="7 ."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fir"
+            android:text="임태휘천재"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name_0"
+            android:layout_below="@id/name_0"
+            android:layout_marginTop="15dp"
+            android:text="Ilovejava"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name_1"
+            android:layout_below="@id/name_1"
+            android:layout_marginTop="15dp"
+            android:text="자바자바자바"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name_2"
+            android:layout_below="@id/name_2"
+            android:layout_marginTop="15dp"
+            android:text="잡자자바"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name_3"
+            android:layout_below="@id/name_3"
+            android:layout_marginTop="15dp"
+            android:text="룰루랄라뛰뛰빵빵"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name_4"
+            android:layout_below="@id/name_4"
+            android:layout_marginTop="15dp"
+            android:text="정예컴교"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name_5"
+            android:layout_below="@id/name_5"
+            android:layout_marginTop="15dp"
+            android:text="청년사대"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/name_1"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/name_2"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/name_3"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/name_4"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/name_5"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/time_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/name_6"
+            android:layout_marginRight="15dip"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>
 }}}
 
 == 카드 매니저 클래스 ==
@@ -1083,14 +1785,12 @@ import android.content.Context;
 import android.media.MediaPlayer;
 
 public class ManagerSound {
-	private static ManagerSound singleton = null; // 노래 관리자는 어플단에서 하나만 써야하기 때문에싱글톤으로 구현하였음.
-
-													 	private static MediaPlayer mPlayer = null; // 실제 음악을 재생하는 Media Player
+	private static ManagerSound singleton = null; 
+	// 노래 관리자는 어플에서 단 하나만 써야하기 때문에 싱글톤으로 구현하였음.
+	private static MediaPlayer mPlayer = null; // 실제 음악을 재생하는 Media Player
 
 	/**
 	 * 맨 처음 노래를 로드하는 함수 버퍼링
-	 * 
-	 * @param context
 	 */
 	public synchronized static void load(Context context) {
 		if (singleton == null) {
@@ -1105,14 +1805,12 @@ public class ManagerSound {
 
 	/**
 	 * 노래를 재생하는 함수
-	 * 
-	 * @param context
 	 */
 	public synchronized static void playSound(Context context) {
 		if (mPlayer == null) {
-			mPlayer = MediaPlayer.create(context, R.raw.sound); // mPlayer가 혹시
-																// 안만들어졌을 경우
-																// 만들어주는 함수,
+			mPlayer = MediaPlayer.create(context, R.raw.sound); 
+			
+			// mPlayer가 혹시  안 만들어졌을 경우 만들어주는 함수
 		}
 		mPlayer.start();
 	}
