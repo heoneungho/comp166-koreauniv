@@ -74,7 +74,7 @@ http://comp166-koreauniv.googlecode.com/files/메인화면2.png
 == 옵션 화면(Option Activity) ==
 
 
-http://comp166-koreauniv.googlecode.com/files/옵션화면.png
+http://comp166-koreauniv.googlecode.com/files/옵화.png
 
 
  * 옵션 화면은 사운드 on&off toggle 버튼, 카드 교체 radio 버튼, 랭킹 리셋 버튼으로 구성되어 있다. 
@@ -114,6 +114,11 @@ http://comp166-koreauniv.googlecode.com/files/랭킹화면.png
  * 랭킹 초기화화면
 
 
-http://comp166-koreauniv.googlecode.com/files/랭킹초기화화면.png
+http://comp166-koreauniv.googlecode.com/files/랭초화.png
+
+
+== 게임 화면(Game Activity) ==
+
+
 
  
