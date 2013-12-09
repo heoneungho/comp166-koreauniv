@@ -646,9 +646,9 @@ public class RankingActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ranking);
 		for(int i=0;i<7;i++){
-			//TextView test=(TextView)findViewById(R.id.name_+i);   ->X
+			//TextView test=(TextView)findViewById(R.id.name_0+i); 자바에선 이런식의 표현 X
 			//TextView test=(TextView)findViewById(R.id.name_0);
-			// com.example.matchinggame.R.id.name_0 
+			// com.example.matchinggame.R.id.name_0  이렇게 일일이 써주지 않기 위해 다음과 같이 표현
 			TextView tv=(TextView)findViewById(getResources().getIdentifier("name_"+i,"id",mPackage));
 			tv.setText(ManagerPreference.getName(i));
 			TextView tv2=(TextView)findViewById(getResources().getIdentifier("time_"+i,"id",mPackage));
@@ -1147,12 +1147,11 @@ public class ManagerSound {
  
  * Do it! 안드로이드 앱 프로그래밍(이지스퍼블리싱) - 교수님 추천 도서
   
-  - 오디오 재생, 레이아웃 구성, 핸들러 사용, 애니메이션 구현, 카드 눌렀을 때 이미지 변환, 텍스트 상자 띄우기 등을 구성하는데 참조함.(대부분 여기서 참조하였다.) 
+  - 오디오 재생, 레이아웃 구성, 핸들러 사용, 애니메이션 구현, 카드 눌렀을 때 이미지 변환, 텍스트 상자 띄우기 등을 구성하는데 참고함.(대부분 여기서 내용과 검색 내용을 참조하였다.) 
 
- * 핸들러를 이용한 타이머 참조 : http://androidmetro.blogspot.kr/2011/06/blog-post_23.html
+ * 핸들러를 이용한 타이머 참고 : http://androidmetro.blogspot.kr/2011/06/blog-post_23.html
 
- * 랭킹 사항 저장, 카드 변경 사항 저장, 사운드 세팅 및 변경 사항 등을 DB를 사용하지 않고 영속적으로 저장하기 위한 Shared Preferences 구성 참조 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://theeye.pe.kr/archives/1281
-
+ * 랭킹 사항 저장, 카드 변경 사항 저장, 사운드 세팅 및 변경 사항 등을 DB를 사용하지 않고 영속적으로 저장하기 위한 Shared Preferences 구성 참고 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://muzesong.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-SharedPreferences-%EA%B9%94%EB%81%94%ED%95%98%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
  
 
  
