@@ -9,7 +9,7 @@ http://comp166-koreauniv.googlecode.com/files/GiveItToMe.png
 
 = Details =
 
-http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png/
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
 
 '''빌려주기''' : 돈을 빌려준 사람의 연락처를 주소록에서 불러오거나 새로 입력하여 빌려준 시간과 가격을 기록
 
