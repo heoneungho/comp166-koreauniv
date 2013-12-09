@@ -5,7 +5,8 @@
 
 = Details =
 
-http://comp166-koreauniv.googlecode.com/files/메인메뉴.png 메인메뉴 모습입니다.
-http://comp166-koreauniv.googlecode.com/files/게임방법.png  메인메뉴에서 
+[http://comp166-koreauniv.googlecode.com/files/메인메뉴.png] 메인메뉴 모습입니다.
+
+[http://comp166-koreauniv.googlecode.com/files/게임방법.png]  메인메뉴에서 
 
 HowToStart 버튼을 누를 경우 나오게 되는 화면입니다.
