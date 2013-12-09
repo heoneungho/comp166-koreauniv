@@ -27,7 +27,7 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
 
 
 
-== 클래스 소개 ==
+== Class 소개 ==
 
 
 === 메인 클래스 ===
@@ -435,10 +435,10 @@ class Value{
 
 
 
-== 레이아웃 소개 ==
+== Layout 소개 ==
 
 
-== 구동 스크린 샷 ==
+== 구동 Screen Shots ==
 
 *빌려주기* & *빌리기*
 
@@ -495,15 +495,73 @@ _새로 입력_ '가격' 입력
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-31-02.png
 
 _새로 입력_ '저장 완료'
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
-http://comp166-koreauniv.googlecode.com/files/.png
+
+
+*목록보기* true : 일반모드
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-32-19.png
+
+_모두_
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-32-32.png
+
+_빌린 돈_
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-32-38.png
+
+_빌려준 돈_
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-32-55.png
+
+빌려준 & 빌린 사람에게 전화하기 & 문자하기 & 취소하기를 선택
+ 
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-33-48.png
+
+_전화하기_
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-34-39.png
+
+_문자하기_ '전송성공'
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-34-50.png
+
+_문자하기_ '제가 빌렸으니, 갚을게요 & 저에게 빌리셨으니, 갚아주세요'
+
+
+*목록보기* false : 삭제모드
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-35-18.png
+
+_삭제하기_ 삭제하기 & 모두삭제 & 취소하기 중 선택
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-35-25.png
+
+_삭제하기_ 삭제할 항목을 'touch touch'
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-35-29.png
+
+_삭제하기_ '해당 항목을 삭제하시겠습니까?'
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-35-37.png
+
+_모두삭제_ '모두 삭제하시겠습니까?'
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-35-54.png
+
+_삭제하기_ '삭제완료
+
+
+*종료하기*
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-22-28-16.png
+
+'종료하시겠습니까?'
+
+
+*도움말*
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-22-28-19.png
+
+Give It To Me
+돈을 빌리거나 빌려줬을 때 이름, 전화번호, 시간, 가격을 기록한 뒤 안내 문자나 전화를 보내는 어플리케이션
+Show Me The Money
