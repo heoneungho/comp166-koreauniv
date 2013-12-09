@@ -387,7 +387,7 @@ public class StopActivity extends Activity {
 		setContentView(R.layout.activity_stop);
 		
 		Intent intent = getIntent();
-		final int start = intent.getIntExtra("start", 0);
+		final int start = intent.getIntExtra("start", 0); // 출발역에 대한 정보를 받음
 		
 		
 		Button button1 = (Button)findViewById(R.id.button1);
@@ -484,6 +484,126 @@ public class StopActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.stop, menu);
+		return true;
+	}
+
+}
+}}}
+
+= SetTime! =
+http://comp166-koreauniv.googlecode.com/files/SetTime.jpg
+
+ * xml
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prebg2"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SetTimeActivity" >
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="113dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timePicker1"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/button1"
+        android:text="도착" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timePicker1"
+        android:layout_below="@+id/timePicker1"
+        android:text="출발" />
+
+</RelativeLayout>
+}}}
+
+ * java
+{{{
+package com.example.kubus;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TimePicker;
+
+public class SetTimeActivity extends Activity {
+	
+	@Override
+	
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_set_time);
+		Intent intent = getIntent();
+		final int start = intent.getIntExtra("start", -1);
+		final int end = intent.getIntExtra("end", -1);
+		//출발역과 도착역에 대한 정보를 받음
+		final TimePicker tp = (TimePicker)findViewById(R.id.timePicker1); //이클립스 옆에 느낌표? 그거 누르니까 final 붙이라고 떠서 final 써줌 
+		
+
+		/* 출발시각 지정 했을 때 */
+		Button button1 = (Button)findViewById(R.id.button1);
+		button1.setOnClickListener(new View.OnClickListener() {
+		        @SuppressLint("ShowToast")
+				public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),StartTimeActivity.class);
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end",end) ;
+		        	
+		        	int h = tp.getCurrentHour();
+		        	int m = tp.getCurrentMinute(); //http://www.androidside.com/plugin/mobile/board.php?bo_table=B49&wr_id=66095 여기서 가져옴 
+		        	intent.putExtra("h",h);
+		        	intent.putExtra("m",m);
+		        	
+		        	startActivity(intent);
+		    		// 출발역, 도착역, 출발 시각을 넘겨줌
+		        }
+		});
+		
+
+                /* 도착시각 지정 했을 때 */
+		Button button2 = (Button)findViewById(R.id.button2);
+		button2.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),EndTimeActivity.class);
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end",end);
+		       
+		        	int h = tp.getCurrentHour();
+		        	int m = tp.getCurrentMinute(); 
+		        	intent.putExtra("h",h);
+		        	intent.putExtra("m",m);
+		       
+		        	startActivity(intent);
+                                //출발역, 도착역, 도착시간을 넘겨줌
+		        }
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.set_time, menu);
 		return true;
 	}
 
