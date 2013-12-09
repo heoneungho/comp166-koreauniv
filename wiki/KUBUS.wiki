@@ -14,7 +14,7 @@ http://comp166-koreauniv.googlecode.com/files/KUBUSicon.png
   * 도착하고 싶은 때에 도착하려면 몇 시에 차를 타야 되는지 알려줌
   * 셔틀 버스 노선도를 활용하여 직관적인 사용 가능
   
-= 출발역 =
+= 출발역 설정 =
 http://comp166-koreauniv.googlecode.com/files/Main.jpg
 
  * xml 
@@ -238,6 +238,250 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
+}}}
+
+== 도착역 설정 ==
+http://comp166-koreauniv.googlecode.com/files/Stop.jpg
+
+ * xml
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prebg2"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".StopActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:src="@drawable/circle1" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp"
+        android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/button1"
+        android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button3"
+        android:layout_alignRight="@+id/button2"
+        android:layout_marginBottom="30dp"
+        android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button4"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_marginLeft="23dp"
+        android:layout_toRightOf="@+id/button5"
+        android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignRight="@+id/imageView1"
+		android:background="#00000000"
+        android:text="		" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/button6"
+        android:background="#00000000"
+        android:text="		" />
+    
+        <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button7"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_centerHorizontal="true"
+        android:ems="4"
+        android:text="도착역" />
+
+</RelativeLayout>
+}}}
+
+ * java
+{{{
+package com.example.kubus;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+
+public class StopActivity extends Activity {
+
+/* 출발역에서는 출발역에 대한 정보를 넘겨 줬다면 이번엔 출발역뿐만 아니라 도착역에 대한 정보도 같이 넘겨줌 */
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_stop);
+		
+		Intent intent = getIntent();
+		final int start = intent.getIntExtra("start", 0);
+		
+		
+		Button button1 = (Button)findViewById(R.id.button1);
+		button1.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=1;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+		Button button2 = (Button)findViewById(R.id.button2);
+		button2.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=2;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+
+		Button button3 = (Button)findViewById(R.id.button3);
+		button3.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=3;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+
+
+		Button button4 = (Button)findViewById(R.id.button4);
+		button4.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=4;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+		
+		Button button5 = (Button)findViewById(R.id.button5);
+		button5.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=5;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+
+		Button button6 = (Button)findViewById(R.id.button6);
+		button6.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=6;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+
+		Button button7 = (Button)findViewById(R.id.button7);
+		button7.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=7;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+
+		Button button8 = (Button)findViewById(R.id.button8);
+		button8.setOnClickListener(new View.OnClickListener() {
+		        public void onClick(View v) {
+		        	Intent intent = new Intent(getBaseContext(),SetTimeActivity.class);
+		        	int end=8;
+		        	intent.putExtra("start", start);
+		        	intent.putExtra("end", end);
+		        	startActivity(intent);
+		        }
+		});
+		        	
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.stop, menu);
 		return true;
 	}
 
