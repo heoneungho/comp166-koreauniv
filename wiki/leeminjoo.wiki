@@ -36,7 +36,9 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-56.png
 
 =MainActivity.java=
 
-{{{package com.example.minsbaseballgame;
+{{{
+
+package com.example.minsbaseballgame;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -76,8 +78,11 @@ public class MainActivity extends Activity {
 	}
 
 }
+
 }}}
 =START.java=
+
+{{{
 
 package com.example.minsbaseballgame;
 
@@ -131,6 +136,7 @@ public class START extends Activity {
 
 }
 
+}}}
 
 =Stage1.java=
 
