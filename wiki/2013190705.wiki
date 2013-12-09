@@ -663,7 +663,31 @@ public class SimpleDotCom {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
-
+/* Option 3 */
+import java.util.ArrayList; // ArrayList 사용
+public class SimpleDotCom {
+        private ArrayList<String> locationCells;
+        
+        public void setLocationCells(ArrayList<String> locs) { // SimpleDotComTestDrive에서도 변경 요망
+                locationCells = locs;
+        }
+        
+        public String checkYourself(String stringGuess) {
+                String result = "miss";
+                int index = locationCells.indexOf(stringGuess);
+                if(index >= 0) {
+                	locationCells.remove(index); // 배열에서 제거
+                	
+                	if(locationCells.isEmpty()) { // 배열이 비어있으면 kill 리턴
+                		result = "kill";
+                	} else { // 그렇지 않으면 hit 리턴
+                		result = "hit";
+                	}
+                }
+                
+                return result;
+        }
+}
 }}}
 
 *174p 진짜 닷컴 게임* _구현후 주석달기_
