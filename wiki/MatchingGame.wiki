@@ -73,6 +73,7 @@ http://comp166-koreauniv.googlecode.com/files/메인화면2.png
 
 == 옵션 화면(Option Activity) ==
 
+
 http://comp166-koreauniv.googlecode.com/files/설정화면.png
 
 
