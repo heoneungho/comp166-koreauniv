@@ -558,7 +558,8 @@ public class SetTimeActivity extends Activity {
 		final int start = intent.getIntExtra("start", -1);
 		final int end = intent.getIntExtra("end", -1);
 		//출발역과 도착역에 대한 정보를 받음
-		final TimePicker tp = (TimePicker)findViewById(R.id.timePicker1); //이클립스 옆에 느낌표? 그거 누르니까 final 붙이라고 떠서 final 써줌 
+		final TimePicker tp = (TimePicker)findViewById(R.id.timePicker1); 
+/* 이클립스 옆에 느낌표? 그거 누르니까 final 쓰라고 떠서 final 써줌 */
 		
 
 		/* 출발시각 지정 했을 때 */
@@ -571,7 +572,8 @@ public class SetTimeActivity extends Activity {
 		        	intent.putExtra("end",end) ;
 		        	
 		        	int h = tp.getCurrentHour();
-		        	int m = tp.getCurrentMinute(); //http://www.androidside.com/plugin/mobile/board.php?bo_table=B49&wr_id=66095 여기서 가져옴 
+		        	int m = tp.getCurrentMinute(); 
+/* http://www.androidside.com/plugin/mobile/board.php?bo_table=B49&wr_id=66095 여기서 가져옴 */
 		        	intent.putExtra("h",h);
 		        	intent.putExtra("m",m);
 		        	
@@ -595,7 +597,7 @@ public class SetTimeActivity extends Activity {
 		        	intent.putExtra("m",m);
 		       
 		        	startActivity(intent);
-                                //출발역, 도착역, 도착시간을 넘겨줌
+                                //출발역, 도착역, 도착 시각을 넘겨줌
 		        }
 		});
 	}
