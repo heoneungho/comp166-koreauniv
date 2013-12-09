@@ -6,6 +6,7 @@ http://comp166-koreauniv.googlecode.com/files/unnamed.png
 
 
 ----
+----
 
 = Introduction & Background =
 *고려대학교 기숙사 생활에 있어서, 기숙사 식당을 많이 이용하고 있습니다.
@@ -17,6 +18,7 @@ _불편했던 점, 개선하고 싶은 점._
   # 학생들의 건의사항에 귀기울이고 개선하려는 노력은 만족하고 있으나, 만약 스마트폰으로 건의사항을 보낼 수 있는 기능이 생긴다면 보다 원활한 소통이 이루어 질 것이라 기대한다.
 
 
+----
 ----
 
 
@@ -38,7 +40,7 @@ _불편했던 점, 개선하고 싶은 점._
 
 
 ----
-
+----
 
 = UI & Code =
 
@@ -55,6 +57,7 @@ http://comp166-koreauniv.googlecode.com/files/클래스.png
  # 개인식수 - Number
  # 건의사항 - Talk
 
+----
 == 1. 메인화면 ==
 
 http://comp166-koreauniv.googlecode.com/files/main.jpg
@@ -122,6 +125,7 @@ activity_main.xml
 }}}
 
 
+----
 == 2. 메뉴화면 ==
 
 메인페이지 전체를 클릭하면 메뉴화면으로 이동합니다.
@@ -239,6 +243,7 @@ activity_information.xml
 </RelativeLayout>
 }}}
 
+----
 == 3. 공지사항 ==
 
 기숙사 식당을 이용하는데 필요한 기본 공지사항들이 담긴 이미지를 제공합니다.
