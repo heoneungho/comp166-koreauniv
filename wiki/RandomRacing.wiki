@@ -839,10 +839,10 @@ activity_jeep.xml, activity_smallcar.xml, activity_bigcar.xml
 }}}
 === 출처 ===
 
-* Do it! 안드로이드 앱프로그래밍 90페이지 intent의 활용
-* Do it! 안드로이드 앱프로그래밍 423~426페이지 Runnable 객체 실행하기
-* 그림으로 쉽게 설명하는 안드로이드 프로그래밍 266~268페이지 SurfaceView
-* display의 크기 - http://cafe.naver.com/llprogrammerll/988
-* http://android-town.org/
-* 프로세스와 쓰레드 - http://blog.naver.com/PostView.nhn?blogId=ghostlast2&logNo=125619058
-* 자동차 image - http://www.canstockphoto.co.kr/illustration/truck-car.html
+ * Do it! 안드로이드 앱프로그래밍 90페이지 intent의 활용
+ * Do it! 안드로이드 앱프로그래밍 423~426페이지 Runnable 객체 실행하기
+ * 그림으로 쉽게 설명하는 안드로이드 프로그래밍 266~268페이지 SurfaceView
+ * display의 크기 - http://cafe.naver.com/llprogrammerll/988
+ * http://android-town.org/
+ * 프로세스와 쓰레드 - http://blog.naver.com/PostView.nhn? blogId=ghostlast2&logNo=125619058
+ * 자동차 image - http://www.canstockphoto.co.kr/illustration/truck-car.html
