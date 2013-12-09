@@ -610,7 +610,7 @@ public class SimpleDotCom {
 					result = "hit";
 					hitCells[i] = 1; // 맞출 때 마다 1 대입
 					numOfHits++;
-                                        /* break 제거 */
+                                        break;
 				}
 			}
 		}
