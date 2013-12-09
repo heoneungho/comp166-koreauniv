@@ -1410,7 +1410,7 @@ public class StaticTests extends StaticSuper {//StaticSuper를 상속
 {{{
 
 
-        public void takeRisk() throws BadException
+public void takeRisk() throws BadException
         {
                 if(abandonAllHope)//만약 모든 희망을 버리면으로 오류가 생기는 부분입니다.
                 {
@@ -1418,16 +1418,19 @@ public class StaticTests extends StaticSuper {//StaticSuper를 상속
                 }
         }
         
-        public void crossFingers()
+ public void crossFingers()
         {
                 try
                 {
                         anObject.takeRisk();//오류가 발생할수 있는 부분입니다.
                 }
-                catch(BadException ex)//BadException을 잡습니다. 오류가 뜨면 밑의 부분이 실행됩니다.
+                catch(BadException ex)//BadException을 잡습니다. 오류가 뜨면 밑의 
+부분이 실행됩니다.
                 {
                         System.out.println("Aaargh!");
-                        ex.printStackTrace();//예외 상황을 해결할수 없을때 모든 예외 객체에서 물려받는 printStackTrace()메소드를 써서 스택 트레이스를 출력합니다.
+                        ex.printStackTrace();
+/*예외 상황을 해결할수 없을때 모든 예외 객체에서 물려받는 printStackTrace()메소드
+를 써서 스택 트레이스를 출력합니다.*/
                 }
         
         
