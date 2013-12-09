@@ -473,8 +473,8 @@ public class Number extends Activity {
 	                    byte[] buffer = new byte[fis.available()];
 	                    fis.read(buffer);
 	                    String str = new String(buffer);
-	                    edit2.setText(str);
-	                    fis.close();
+	                    edit2.setText(str);   // edit2 뷰에 읽어온 값을 출력합니다.
+	                    fis.close();   //파일 입력 스트림을 닫습니다.
 	                   
 	                } catch (Exception e) {
 	                    Log.e("File", "에러=" + e);
