@@ -68,6 +68,8 @@ row 1 을 클릭하면
 
 So Simple.
 
+http://code.google.com/p/comp166-koreauniv/downloads/detail?name=mainfinish.gif&can=2&q=
+
 -------코드--------------------
 
 1. MainActivity :: 시작 화면
