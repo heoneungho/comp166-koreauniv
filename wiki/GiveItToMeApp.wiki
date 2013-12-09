@@ -91,7 +91,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 	String giveorget_ = "";			// 값을게요 or 갚아주세요
 
 	@Override 
-	protected void onCreate(Bundle savedInstanceState) { //http://unikys.tistory.com/276 참고
+	protected void onCreate(Bundle savedInstanceState) { 		//http://unikys.tistory.com/276 참고
 		//TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.giveittomelist);
@@ -117,7 +117,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		va = new ValueAdapter(this, R.layout.giveittomelist_list, list);
 		lv.setAdapter(va);
 	}
-	private void init() {
+	private void init() { // 		*목록 보기*에서 빌려준 돈, 빌린 돈, 모두를 선택해서 볼 수 있음
 		// TODO Auto-generated method stub
 		linear = (LinearLayout)findViewById(R.id.linear);
 		select_mode = (TextView)findViewById(R.id.select_mode);
@@ -136,7 +136,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		rootin();
 	}
 
-	private void getValue() {
+	private void getValue() { // 		*목록 보기*에서 빌려준 돈, 빌린 돈, 모두를 선택해서 볼 수 있음
 		// TODO Auto-generated method stub 
 		linear.setVisibility(View.VISIBLE);
 		nocontent.setVisibility(View.GONE);
@@ -230,7 +230,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		}
 	}
 
-	private void sendMessage(String a, String b) throws Exception{
+	private void sendMessage(String a, String b) throws Exception{ // 		문자 보내기 기능
 		// TODO Auto-generated method stub
 		SmsManager sms = SmsManager.getDefault();
 		sms.sendTextMessage(a, null, b, null, null);
@@ -247,7 +247,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 
 	//	옵션 메뉴 호출
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item){
+	public boolean onOptionsItemSelected(MenuItem item){ // 		목록 삭제 기능
 		if(item.getItemId() == 1){
 			Toast.makeText(this, "touch touch.", 1000).show();
 			deleteMode = true;
@@ -290,7 +290,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int posion, long posion_) {
+	public void onItemClick(AdapterView<?> parent, View view, int posion, long posion_) { // 		문자 내용 설정
 		// TODO Auto-generated method stub
 		ScroogeList.posion = posion;
 		
