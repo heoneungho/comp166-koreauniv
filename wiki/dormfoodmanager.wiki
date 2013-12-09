@@ -450,7 +450,7 @@ public class Number extends Activity {
 	 
 	                    FileOutputStream fos = openFileOutput(FILE_NAME,
 	                            Context.MODE_PRIVATE); 
- // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
+         // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
 
 	                    String str = edit1.getText().toString();
 	                    fos.write(str.getBytes()); // //입력받은 내용(text)을 바이트 단위로 파일에 씁니다.
@@ -467,8 +467,7 @@ public class Number extends Activity {
 	            @Override
 	            public void onClick(View v) {
 	                try {
-	 
-                            // 위에서 설정하였던 파일이름을 인수로 openFileInput()을 호출합니다. 이 메소드는 FileInputStream객체를 반환합니다.
+  // 위에서 설정하였던 파일이름을 인수로 openFileInput()을 호출합니다. 이 메소드는 FileInputStream객체를 반환합니다.
 	                    FileInputStream fis = openFileInput(FILE_NAME);
 	                    byte[] buffer = new byte[fis.available()];
 	                    fis.read(buffer);
@@ -580,7 +579,7 @@ public class Talk extends Activity {
   textTo = (EditText) findViewById(R.id.editTextTo);
   textSubject = (EditText) findViewById(R.id.editTextSubject);
   textMessage = (EditText) findViewById(R.id.editTextMessage);
-  
+  // 각각 받는이, 제목, 내용을 입력하는 EditText 뷰입니다.
   
   //send button
   ButtonSend = (Button) findViewById(R.id.buttonSend);
