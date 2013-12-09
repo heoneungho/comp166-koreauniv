@@ -67,27 +67,36 @@ row 1 을 클릭하면
 
 
 So Simple.
-1.
+1. 실행을 해봅시다.
 
 http://comp166-koreauniv.googlecode.com/files/mainfinish.jpg
 
-2.
+이렇게 나옵니다. 스타트를 누르면!?
+
+2. 짠 ~
 
 http://comp166-koreauniv.googlecode.com/files/before.jpg
 
-3.
+랜덤으로 색칠된 별과 색칠이 되지 않은 별들이 나옵니다. 우리의 목표는?!
+그렇죠 모든 별을 색칠해봅시다.
+
+3. 이해를 돕기 위해 왼쪽 상단의 버튼을 눌러봅시다.
 
 http://comp166-koreauniv.googlecode.com/files/after.jpg
 
-4.
+짜잔! 그랬더니 그 쪽 row가 전부 반전이 되었군요 !! 아하 ! 버튼은 그런 의미구나 ...good!
+
+4. 이거저거 누르다 완성이 되면 ? ( 종료 창 넘어가기 전의 순간을 찍은 사진 ! 놀라운 순발력 )
 
 http://comp166-koreauniv.googlecode.com/files/complete.jpg
 
-5.
+5. 님 이김 ㅋ
 
 http://comp166-koreauniv.googlecode.com/files/end.jpg
 
-6.
+버튼을 누르면 다시 메인으로 넘어갑니다.
+
+6. 요로케
 
 http://comp166-koreauniv.googlecode.com/files/mainfinish.jpg
 
