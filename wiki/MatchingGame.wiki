@@ -945,15 +945,16 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class ManagerPreference {
-	private static ManagerPreference singleton = null; // Preference 관리자는 하나만 있다는 뜻, 객체가 해당 정보를 가지고 있어야하므로 생성한 뒤 계속 살아있게 한 것이다.
+	private static ManagerPreference singleton = null; 
+	// Preference 관리자는 하나만  있다는 뜻, 객체가 해당 정보를 가지고
+	//있어야 하므로 생성한 뒤 계속 살아있게  한  것이다.
+	
 	private static SharedPreferences prefs = null; // 실제 관리하는 sharedPreference
 	private static final String TEMP_NAME = "나잡아봐라";
 
 	private ManagerPreference(Activity act) {
-		prefs = PreferenceManager.getDefaultSharedPreferences(act); // pref의
-																	// 생성자이며,
-																	// 기본적으로
-																	// 선언되는 부분
+		prefs = PreferenceManager.getDefaultSharedPreferences(act); 
+		// pref의 생성자이며, 기본적으로  선언되는 부분 
 	}
 
 	/**
@@ -967,8 +968,9 @@ public class ManagerPreference {
 	/**
 	 * 결과값이 랭킹에 진입하였는지 여부 확인하는 함수
 	 */
-	public static boolean isInRanking(float nowTime) { // 게임 기록이 랭킹 안에 드는지 알려주는
-														// 메소드
+	public static boolean isInRanking(float nowTime) { 
+		// 게임 기록이 랭킹 안에 드는지 알려주는 메소드
+		
 		if (nowTime < prefs.getFloat("rankTime" + 6, 1000f)) {
 			return true;
 		}
@@ -987,8 +989,9 @@ public class ManagerPreference {
 				nowRank = i + 1;
 			}
 		}
-		for (int i = 5; i >= nowRank; i--) { // 현재 기록이 들어갈 랭킹 번째 수까지 뒤로 복사해서 붙여
-												// 넣어주는 역할
+		for (int i = 5; i >= nowRank; i--) { 
+			// 현재 기록이 들어갈 랭킹 번째 수까지 뒤로 복사해서 붙여 넣어주는 역할
+			
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putString("rankName" + (i + 1),
 					prefs.getString("rankName" + i, TEMP_NAME));
@@ -997,8 +1000,9 @@ public class ManagerPreference {
 			editor.commit();
 		}
 
-		SharedPreferences.Editor editor = prefs.edit(); // 현재 기록의 랭킹 란에 이름과 기록을
-														// 넣어줌.
+		SharedPreferences.Editor editor = prefs.edit(); 
+		// 현재 기록의 랭킹 란에 이름과 기록을  넣어줌.
+		
 		editor.putString("rankName" + nowRank, name);
 		editor.putFloat("rankTime" + nowRank, nowTime);
 		editor.commit();
@@ -1007,9 +1011,6 @@ public class ManagerPreference {
 
 	/**
 	 * num에 해당하는 랭킹의 이름을 갖고오는 함수
-	 * 
-	 * @param num
-	 * @return
 	 */
 	public static String getName(int num) {
 		return prefs.getString("rankName" + num, TEMP_NAME);
@@ -1017,9 +1018,6 @@ public class ManagerPreference {
 
 	/**
 	 * num에 해당하는 랭킹의 시간을 갖고오는 함수
-	 * 
-	 * @param rank
-	 * @return
 	 */
 	public static String getTime(int num) {
 		return Float.toString(prefs.getFloat("rankTime" + num, 1000f));
@@ -1039,8 +1037,6 @@ public class ManagerPreference {
 
 	/**
 	 * 사용자가 쓸 카드를 지정
-	 * 
-	 * @param i
 	 */
 	public static void setCard(int i) {
 		SharedPreferences.Editor editor = prefs.edit();
@@ -1059,8 +1055,6 @@ public class ManagerPreference {
 
 	/**
 	 * 사용자가 사운드를 사용할지를 결정
-	 * 
-	 * @param b
 	 */
 	public static void setSound(boolean b) {
 		SharedPreferences.Editor editor = prefs.edit();
@@ -1070,8 +1064,6 @@ public class ManagerPreference {
 
 	/**
 	 * 사용자가 사운드를 사용하는지 여부를 판단
-	 * 
-	 * @return
 	 */
 	public static boolean getSound() {
 		return prefs.getBoolean("sound", true);
