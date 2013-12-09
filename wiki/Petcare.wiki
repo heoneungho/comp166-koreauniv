@@ -10,7 +10,7 @@ http://comp166-koreauniv.googlecode.com/files/cat.jpg
 
 = Details =
 
-1. 애완동물에는 여러가지의 종류가 있다. 고양이, 개, 토끼, 금붕어, 햄스터, 기니피그, 고슴도치, 이구아나, 거북이 등이 대표적이다. 이 중에 기르는 애완동물을 적는다.
+1. 애완동물에는 여러가지의 종류가 있다. 고양이, 개, 토끼, 금붕어, 햄스터, 기니피그, 고슴도치, 이구아나, 거북이 등이 대표적이다. 이 중에 대표적인 6가지 애완동물 즉, 고양이, 개, 햄스터, 물고기, 거북이, 새 중에 1마리를 선택을 하여 사진을 누른다.
 
 2. 적은 애완동물의 필요한 정보들이나 유익한 정보들을 알려준다. 예를 들어 개들에게는 어떠한 사료가 좋은지, 기니피그들은 어떠한 우리을 만드는 것이 좋은지 등이다.
 
@@ -18,6 +18,103 @@ http://comp166-koreauniv.googlecode.com/files/cat.jpg
 
 = Project =
 
+
+= Main =
+
+http://comp166-koreauniv.googlecode.com/files/nakmain.png
+
+
+● xml
+
+
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:text="@string/txt"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="111dp"
+        android:text="@string/main" />
+
+</RelativeLayout>
+}}}
+
+
+● java
+
+{{{
+package com.example.petworld;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        Button button1 = (Button)findViewById(R.id.main);
+        button1.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+        		startActivity(intent);        	
+        	}
+        });
+        		
+    
+    
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    
+}
+}}}
 
 
 http://comp166-koreauniv.googlecode.com/files/naklist.png
