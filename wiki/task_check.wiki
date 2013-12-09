@@ -14,6 +14,10 @@ http://comp166-koreauniv.googlecode.com/files/슌1.png
 
 어플을 실행시키면 위와 같은 화면이 초기화면으로 뜬다.
 
+맨 위쪽에 날짜 설정란을 만들어 두었고
+
+가운데 부분에 달력을 집어넣었다.
+
 
 
 http://comp166-koreauniv.googlecode.com/files/슌2.png
