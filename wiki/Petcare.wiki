@@ -3,6 +3,8 @@
 
 = Introduction =
 
+http://comp166-koreauniv.googlecode.com/files/cat.jpg
+
 애완동물을 키우는 사람들을 위한 앱이다. 보통 사람들은 애완동물을 키우다 보면 자신의 할 일 때문에 자신의 애완동물에 소홀해질 때가 있다. 이것을 대비한 아주 간단하지만 매우 간편하고 편리한 어플이다.
 
 
@@ -16,6 +18,6 @@
 
 = Project =
 
-http://comp166-koreauniv.googlecode.com/files/cat.jpg
+
 
 http://comp166-koreauniv.googlecode.com/files/naklist.png
