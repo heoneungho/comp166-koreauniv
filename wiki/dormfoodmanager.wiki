@@ -500,7 +500,7 @@ activity_talk.xml
         android:id="@+id/editTextTo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="k01074467721@gmail.com"
+        android:hint="k01074467721@gmail.com"    // 관리자의 이메일 주소를 기본으로 설정해 주었습니다.
         android:inputType="textEmailAddress" >
  
         <requestFocus />
