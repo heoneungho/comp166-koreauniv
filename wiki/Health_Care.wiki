@@ -1143,7 +1143,7 @@ http://comp166-koreauniv.googlecode.com/files/asdf.PNG/
 http://comp166-koreauniv.googlecode.com/files/asss.PNG/
 
 이 화면을 통해서 사용자는 자신의 몸 상태에 따라 운동단계를 선택할 수 있습니다.
-동일한 소스 코드라 한 가지만 코드로 적겠습니다.
+동일한 소스 코드라 한 가지만 코드(breast.xml)로 적겠습니다.
 
 {{{
 
@@ -1194,5 +1194,52 @@ http://comp166-koreauniv.googlecode.com/files/asss.PNG/
 
 //초보자,중급자,숙련자 단계를 이미지 버튼을 통해 구현합니다.
 </RelativeLayout>
+
+}}}
+
+*3.videoview가 있는 레이아웃들*
+
+http://comp166-koreauniv.googlecode.com/files/aaa.PNG/
+
+위에 그림처럼 videoview는 위치만 확인하고 재생상태는 run을 하지 않고는
+알 수 없습니다. 그러나 class파일을 통해 받은 정보를 핸드폰 혹은 에뮬레이터에서 
+구동 되는 것을 확인할 수 있습니다.
+대표적인 레이아웃 하나의 코드만을(below3.xml) 적겠습니다.
+
+{{{
+
+<?xml version="1.0" encoding="utf-8"?>
+
+//위치 조정이 중요하므로 Absolute 레이아웃을 사용합니다.
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AbsoluteLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/black" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heaphig" />
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_x="2dp"
+        android:layout_y="67dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="4dp"
+        android:layout_y="240dp"
+        android:src="@drawable/belowhigex" />
+
+</AbsoluteLayout>
+
 
 }}}
