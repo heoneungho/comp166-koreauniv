@@ -18,6 +18,7 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-47.png
 
 2. start를 누르면 stage가 3개가 나타납니다. 
 stage1는 3자리 숫자, stage2는 4자리 숫자, stage3는 5자리 숫자를 맞추는 게임입니다. 
-http://comp166-koreauniv.googlecode.com/files/ Screenshot_2013-12-09-18-14-56.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-56.png
 
 3.stage1 입니다. 빈칸 3개에 숫자를 입력하면 됩니다.
