@@ -533,7 +533,8 @@ activity_number.xml
 </LinearLayout>
 }}}
 
-_출처 : [http://blog.naver.com/PostView.nhn?blogId=javaking75&logNo=140179563086&categoryNo=67&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage= 내부저장공간에 파일읽기쓰기 블로그 참조]_
+_출처 : [http://blog.naver.com/PostView.nhn?blogId=javaking75&logNo=140179563086&categoryNo=67&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage= 내부저장공간에 파일읽기쓰기 블로그 코드 참조]_
+_/ [http://javaking75.blog.me/140179562089 파일 스토리지에 대한 이해]_
 _/ 교수님이 제공하신 안드로이드 코드조각_
 ----
 == 6. 건의사항 ==
@@ -591,6 +592,7 @@ public class Talk extends Activity {
      String to = textTo.getText().toString();
      String subject = textSubject.getText().toString();
      String message = textMessage.getText().toString();
+     // 각각 입력값을 받습니다.
  
      Intent email = new Intent(Intent.ACTION_SEND);
      email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
@@ -694,5 +696,5 @@ activity_talk.xml
 </LinearLayout>
 }}}
 
-_출처 : [http://blog.naver.com/PostView.nhn?blogId=junhwen&logNo=130151732452&categoryNo=86&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=&userTopListOpen=true&userTopListCount=5&userTopListManageOpen=false&userTopListCurrentPage=1 안드로이드 이메일보내기 블로그 참조]_
+_출처 : [http://blog.naver.com/PostView.nhn?blogId=junhwen&logNo=130151732452&categoryNo=86&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=&userTopListOpen=true&userTopListCount=5&userTopListManageOpen=false&userTopListCurrentPage=1 안드로이드 이메일보내기 블로그 코드 참조]_
 _/ [http://mainia.tistory.com/506 구글에서 gmail이용한 메일보내기 블로그 참조]_
