@@ -9,4 +9,700 @@
 
 = Details =
 
- https://drive.google.com/file/d/0B7m76Sl3EQYYNjZ1RWdHYzVqc3M/edit?usp=sharing
+=== 소스 코드 ===
+
+package com.example.racingapp;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		Button selBtn1 = (Button) findViewById(R.id.selBtn1);
+		selBtn1.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "일반 자동차가 선택되었습니다.",
+						Toast.LENGTH_SHORT).show();
+
+				Intent myIntent = new Intent(getApplicationContext(),
+						CarActivity.class);
+				startActivity(myIntent);
+			}
+		});
+		Button selBtn2 = (Button) findViewById(R.id.selBtn2);
+		selBtn2.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "큰 자동차가 선택되었습니다.",
+						Toast.LENGTH_SHORT).show();
+
+				Intent myIntent = new Intent(getApplicationContext(),
+						BigCarActivity.class);
+				startActivity(myIntent);
+			}
+		});
+		Button selBtn3 = (Button) findViewById(R.id.selBtn3);
+		selBtn3.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "작은 자동차가 선택되었습니다.",
+						Toast.LENGTH_SHORT).show();
+
+				Intent myIntent = new Intent(getApplicationContext(),
+						SmallCarActivity.class);
+				startActivity(myIntent);
+			}
+		});
+		Button selBtn4 = (Button) findViewById(R.id.selBtn4);
+		selBtn4.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "지프가 선택되었습니다.",
+						Toast.LENGTH_SHORT).show();
+
+				Intent myIntent = new Intent(getApplicationContext(),
+						JeepActivity.class);
+				startActivity(myIntent);
+			}
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
+
+
+=== CarActivity.java ===
+
+package com.example.racingapp;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+
+public class CarActivity extends Activity {
+
+	// 자동차를 나타내는 ImageView
+	private ImageView carImage1;
+	private ImageView carImage2;
+	private ImageView carImage3;
+	private ImageView carImage4;
+	private ImageView carImage5;
+	private ImageView carImage6;
+	private ImageView carImage7;
+	private ImageView carImage8;
+
+	// 차 번호를 나타내는 TextView
+	private TextView txt1;
+	private TextView txt2;
+	private TextView txt3;
+	private TextView txt4;
+	private TextView txt5;
+	private TextView txt6;
+	private TextView txt7;
+	private TextView txt8;
+
+	// 다시하기 버튼
+	private Button btn1;
+	// 시작 버튼
+	private Button btn2;
+
+	// 각 자동차의 정보를 저장할 객체
+	CarInfo car1;
+	CarInfo car2;
+	CarInfo car3;
+	CarInfo car4;
+	CarInfo car5;
+	CarInfo car6;
+	CarInfo car7;
+	CarInfo car8;
+
+	// 경주 시작시 사용할 쓰레드
+	Thread th;
+	Runnable r;
+
+	TextView[] tvArr;
+
+	// 등 수
+	private int rank = 0;
+
+	// 레이싱이 진행중인지
+	private boolean running = false;
+
+	// 화면의 넓이와 높이
+	int width;
+	int height;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_car);
+
+		carImage1 = (ImageView) findViewById(R.id.imgCar1);
+		carImage2 = (ImageView) findViewById(R.id.imgCar2);
+		carImage3 = (ImageView) findViewById(R.id.imgCar3);
+		carImage4 = (ImageView) findViewById(R.id.imgCar4);
+		carImage5 = (ImageView) findViewById(R.id.imgCar5);
+		carImage6 = (ImageView) findViewById(R.id.imgCar6);
+		carImage7 = (ImageView) findViewById(R.id.imgCar7);
+		carImage8 = (ImageView) findViewById(R.id.imgCar8);
+
+		txt1 = (TextView) findViewById(R.id.txt1);
+		txt2 = (TextView) findViewById(R.id.txt2);
+		txt3 = (TextView) findViewById(R.id.txt3);
+		txt4 = (TextView) findViewById(R.id.txt4);
+		txt5 = (TextView) findViewById(R.id.txt5);
+		txt6 = (TextView) findViewById(R.id.txt6);
+		txt7 = (TextView) findViewById(R.id.txt7);
+		txt8 = (TextView) findViewById(R.id.txt8);
+
+		btn1 = (Button) findViewById(R.id.btn1);
+		btn2 = (Button) findViewById(R.id.btn2);
+
+		tvArr = new TextView[8];
+		tvArr[0] = txt1;
+		tvArr[1] = txt2;
+		tvArr[2] = txt3;
+		tvArr[3] = txt4;
+		tvArr[4] = txt5;
+		tvArr[5] = txt6;
+		tvArr[6] = txt7;
+		tvArr[7] = txt8;
+
+		car1 = new CarInfo(1, carImage1);
+		car2 = new CarInfo(2, carImage2);
+		car3 = new CarInfo(3, carImage3);
+		car4 = new CarInfo(4, carImage4);
+		car5 = new CarInfo(5, carImage5);
+		car6 = new CarInfo(6, carImage6);
+		car7 = new CarInfo(7, carImage7);
+		car8 = new CarInfo(8, carImage8);
+
+		// 사이즈 얻어오기
+		Display display = ((WindowManager) getBaseContext().getSystemService(
+				Context.WINDOW_SERVICE)).getDefaultDisplay();
+
+		width = display.getWidth();
+		height = display.getHeight();
+
+		Log.d("width = ", width + "");
+		Log.d("height = ", height + "");
+		Log.d("rank = ", rank + "");
+
+		// 버튼의 클릭리스너
+		btn1.setOnClickListener(mOnClickListener);
+		btn2.setOnClickListener(mOnClickListener);
+
+		r = new Runnable() {
+
+			@Override
+			public void run() {
+
+				while (running) {
+					runOnUiThread(new Runnable() {
+						public void run() {
+
+							moveCar(car1);
+							moveCar(car2);
+							moveCar(car3);
+							moveCar(car4);
+							moveCar(car5);
+							moveCar(car6);
+							moveCar(car7);
+							moveCar(car8);
+
+							// 8대의 자동차가 모두 완주시 쓰레드 종료
+							if (rank == 8)
+								running = false;
+
+						}
+
+					});
+					try {
+						Thread.sleep(100); // 0.1초 정지
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+
+	// 랜덤값 얻기 0부터 9까지
+	public int getRandomValue() {
+
+		int randomValue;
+
+		randomValue = ((int) (Math.random() * 10));
+
+		return randomValue;
+	}
+
+	// 자동차 이동을 위한 메소드
+	public void moveCar(CarInfo cInfo) {
+
+		ImageView iv = cInfo.imageView;
+
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+		int randomValue = getRandomValue();
+		int i = 0;
+
+		// 자동차의 위치
+		i = cInfo.location;
+
+		// 랜덤값이 0이 아니고 위치+randomValue를 해도 끝에 도달 못할 때
+		if (randomValue != 0 && i + randomValue < width - 200) {
+
+			cInfo.setLocation(i + randomValue);
+			lp.setMargins(i + randomValue, 0, 0, 0);
+			iv.setLayoutParams(lp);
+			Log.d("test", iv.getLeft() + "");
+		}
+
+		// 자동차가 결승전에 도착하지 않았고, 차의 위치에 랜덤값을 더한 값이 끝을 넘기면
+		else if (!cInfo.isFinish
+				&& cInfo.getLocation() + randomValue >= width - 200) {
+			++rank; // 순위
+			cInfo.isFinish = true; // 완주여부
+
+			tvArr[rank - 1].setText(cInfo.carNum + "번"); // TextView에 현재 자동차의
+															// 번호를
+															// 출력한다.
+		}
+	}
+
+	// 자동차의 정보를 저장하기 위한 클래스
+	public class CarInfo {
+
+		private int carNum; // 자동차 번호
+		private int location; // 자동차의 현재 위치
+		private boolean isFinish; // 완주 여부
+
+		private ImageView imageView;
+
+		public void setImage(ImageView iv) {
+			imageView = iv;
+		}
+
+		public void setLocation(int location) {
+			this.location = location;
+		}
+
+		public int getLocation() {
+			return location;
+		}
+
+		public CarInfo(int carNum, ImageView iv) {
+			this.carNum = carNum;
+			this.imageView = iv;
+			init();
+		}
+
+		// 초기화
+		public void init() {
+			this.location = 0;
+			this.isFinish = false;
+		}
+
+	}
+
+	// 초기화를 위한 메소드
+	public void init() {
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+		lp.setMargins(0, 0, 0, 0);
+
+		carImage1.setLayoutParams(lp);
+		carImage2.setLayoutParams(lp);
+		carImage3.setLayoutParams(lp);
+		carImage4.setLayoutParams(lp);
+		carImage5.setLayoutParams(lp);
+		carImage6.setLayoutParams(lp);
+		carImage7.setLayoutParams(lp);
+		carImage8.setLayoutParams(lp);
+
+		car1.init();
+		car2.init();
+		car3.init();
+		car4.init();
+		car5.init();
+		car6.init();
+		car7.init();
+		car8.init();
+
+		txt1.setText("");
+		txt2.setText("");
+		txt3.setText("");
+		txt4.setText("");
+		txt5.setText("");
+		txt6.setText("");
+		txt7.setText("");
+		txt8.setText("");
+
+		rank = 0;
+		running = false;
+	}
+
+	// 버튼 클릭 리스너
+	public View.OnClickListener mOnClickListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()) {
+
+			// RESET
+			case R.id.btn1:
+
+				// 초기화
+				init();
+				btn2.setEnabled(true);
+				break;
+
+			// START
+			case R.id.btn2:
+
+				// 버튼 비활성화
+				btn2.setEnabled(false);
+
+				// 쓰레드 시작
+				running = true;
+				th = new Thread(r);
+				th.start();
+				break;
+
+			default:
+				break;
+			}
+		}
+	};
+}
+
+
+
+=== activity_car.xml ===
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="일반 자동차 랜덤 레이싱"
+        android:textColor="#ff000000"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleLabel"
+        android:orientation="vertical"
+        android:padding="30dp" >
+
+        <ImageView
+            android:id="@+id/imgCar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <ImageView
+            android:id="@+id/imgCar8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1st"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="2nd"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="3rd"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="4th"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txt4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="5th"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="6th"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="7th"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="8th"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/txt5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txt6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txt7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txt8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="다시하기" >
+        </Button>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="레이싱시작" >
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>
