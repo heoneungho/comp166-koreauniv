@@ -36,7 +36,7 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-56.png
 
 =MainActivity.java=
 
-package com.example.minsbaseballgame;
+{{{package com.example.minsbaseballgame;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
 	}
 
 }
-
+}}}
 =START.java=
 
 package com.example.minsbaseballgame;
@@ -1032,4 +1032,27 @@ public class STAGE3 extends Activity {
 }
 
 
-=
+=HELP.java=
+
+package com.example.minsbaseballgame;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class HELP extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_help);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.hel, menu);
+		return true;
+	}
+
+}//help는 그냥 화면에 그림만 있습니다.
