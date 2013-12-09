@@ -429,7 +429,7 @@ import android.widget.EditText;
 
 public class Number extends Activity {
  
-	 static final String FILE_NAME = "exam.txt";
+	 static final String FILE_NAME = "exam.txt";     // 사용자가 입력을 하면 내부 저장 공간에 exam.txt라는 파일이 생성됩니다.
 	    EditText edit1, edit2;
 	    Button btnWrite, btnRead;
 	 
@@ -449,7 +449,8 @@ public class Number extends Activity {
 	                try {
 	 
 	                    FileOutputStream fos = openFileOutput(FILE_NAME,
-	                            Context.MODE_PRIVATE);
+	                            Context.MODE_PRIVATE); // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
+
 	                    String str = edit1.getText().toString();
 	                    fos.write(str.getBytes()); // String을 byte배열로 변환후 저장
 	                    fos.close();
