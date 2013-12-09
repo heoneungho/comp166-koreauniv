@@ -835,8 +835,12 @@ public class CarActivity extends Activity {
 JeepActivity.java, SmallCarActivity.java, BigCarActivity.java
 activity_jeep.xml, activity_smallcar.xml, activity_bigcar.xml
 
-으로 구성되어 있고, 위의 세가 activity와 layout은 CarActivity.java와 activity_car.xml코드와 이미지(차량의 이미지)만 다르기 때문에 생략
+으로 구성되어 있고, 위의 세개의 activity와 layout은 
+
+
+CarActivity.java와 activity_car.xml코드와 이미지(차량의 이미지)만 다르기 때문에 생략
 }}}
+
 === 출처 ===
 
  * Do it! 안드로이드 앱프로그래밍 90페이지 intent의 활용
