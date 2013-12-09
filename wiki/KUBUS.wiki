@@ -11,6 +11,8 @@ http://comp166-koreauniv.googlecode.com/files/KUBUSicon.png
 
 
   * 정류장을 선택하면 잠시 후에 도착하는 버스를 알려줌
-  * 전체 버스 시간표 제공
-  * 버스 노선도 제공
+  * 도착하고 싶은 때에 도착하려면 몇 시에 차를 타야 되는지 알려줌
+  * 셔틀 버스 노선도를 활용하여 직관적인 사용 가능
   
+= 출발역 =
+http://comp166-koreauniv.googlecode.com/files/Main.jpg
