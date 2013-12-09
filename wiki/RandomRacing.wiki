@@ -7,6 +7,20 @@
 
  첫 화면에서 사용자는 어떠한 자동차로 랜덤 레이싱 게임을 시작할 것인지를 선택한다. 선택하게되면 일반 자동차 / 큰 자동차 / 작은 자동차 / 지프 를 선택 할 수 있으며, 선택을 하게 되면 8대의 차가 레이싱을 준비하고있다. 시작하기를 누르면 레이싱이 시작되고 그 밑에 1~8등까지의 순서가 정해진다.
 
+=== 각각의 화면 구성 ===
+
+http://comp166-koreauniv.googlecode.com/files/시작화면.png
+
+http://comp166-koreauniv.googlecode.com/files/실행화면.png
+http://comp166-koreauniv.googlecode.com/files/결과화면.png
+
+http://comp166-koreauniv.googlecode.com/files/일반자동차.png
+
+http://comp166-koreauniv.googlecode.com/files/큰자동차.png
+
+http://comp166-koreauniv.googlecode.com/files/작은자동차.png
+
+http://comp166-koreauniv.googlecode.com/files/지프.png
 = Details =
 
 === MainActivity.java ===
