@@ -16,4 +16,4 @@
 
 = Project =
 
-http://comp166-koreauniv.googlecode.com/files/main.png
+http://comp166-koreauniv.googlecode.com/files/nakmain.png
