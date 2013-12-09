@@ -69,28 +69,27 @@ row 1 을 클릭하면
 So Simple.
 1.
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=mainfinish.jpg&can=2&q=
+http://comp166-koreauniv.googlecode.com/files/mainfinish.jpg
 
 2.
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=before.jpg&can=2&q=
+http://comp166-koreauniv.googlecode.com/files/before.jpg
 
 3.
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=after.jpg&can=2&q=
+http://comp166-koreauniv.googlecode.com/files/after.jpg
 
 4.
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=complete.jpg&can=2&q=
+http://comp166-koreauniv.googlecode.com/files/complete.jpg
 
 5.
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=end.jpg&can=2&q=
+http://comp166-koreauniv.googlecode.com/files/end.jpg
 
 6.
 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=mainfinish.jpg&can=2&q=
-
+http://comp166-koreauniv.googlecode.com/files/mainfinish.jpg
 
 
 -------코드--------------------
