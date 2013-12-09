@@ -340,6 +340,7 @@ public class Food extends Activity {
 		webSettings.setUseWideViewPort(true);
 		webSettings.setSupportZoom(true);
 		webSettings.setBuiltInZoomControls(true);
+                // 줌 기능이 가능하게 됩니다.
 		webSettings.setJavaScriptEnabled(true);
 		
 
@@ -396,9 +397,157 @@ _출처 : 채정님 교수님 도움_
 == 6. 건의사항 ==
 
 기숙사 식당을 이용하면서 불편한 점이나 개선하고 싶은 점을 이메일을 통하여 바로 관리자에게 의견을 보낼 수 있습니다.
+
 (일단은 제이메일을 기본으로 설정하였습니다.)
+
 관리자의 이메일은 기본으로 설정되어 있고, 제목과 내용을 입력하여 보내기를 클릭하면 gmail을 이용하여 보내실 수 있습니다. 
 
 http://comp166-koreauniv.googlecode.com/files/건의사항.jpg
 http://comp166-koreauniv.googlecode.com/files/건의사항2.jpg
 http://comp166-koreauniv.googlecode.com/files/건의사항3.jpg
+
+Talk.java
+{{{
+package com.example.anamdorm_food;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.Button;
+
+public class Talk extends Activity {
+ 
+ Button ButtonSend;
+ EditText textTo;
+ EditText textSubject;
+ EditText textMessage;
+ 
+ @Override
+ public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_talk);
+  
+  StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+  StrictMode.setThreadPolicy(policy); 
+ 
+  textTo = (EditText) findViewById(R.id.editTextTo);
+  textSubject = (EditText) findViewById(R.id.editTextSubject);
+  textMessage = (EditText) findViewById(R.id.editTextMessage);
+  
+  
+  //send button
+  ButtonSend = (Button) findViewById(R.id.buttonSend);
+  ButtonSend.setOnClickListener(new OnClickListener() {
+ 
+   @Override
+   public void onClick(View v) {
+ 
+     String to = textTo.getText().toString();
+     String subject = textSubject.getText().toString();
+     String message = textMessage.getText().toString();
+ 
+     Intent email = new Intent(Intent.ACTION_SEND);
+     email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
+     //email.putExtra(Intent.EXTRA_CC, new String[]{ to});
+     //email.putExtra(Intent.EXTRA_BCC, new String[]{to});
+     email.putExtra(Intent.EXTRA_SUBJECT, subject);
+     email.putExtra(Intent.EXTRA_TEXT, message);
+ 
+     //need this to prompts email client only
+     email.setType("message/rfc822");
+ 
+     startActivity(Intent.createChooser(email, "Choose an Email client :"));
+ 
+   }
+  });
+ }
+}
+}}}
+
+activity_talk.xml
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:background="#980000"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+     <TextView
+        android:textSize="50sp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="건의사항"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+ 
+    <TextView
+        android:id="@+id/textViewPhoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="받는이 : "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+    <EditText
+        android:id="@+id/editTextTo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="k01074467721@gmail.com"
+        android:inputType="textEmailAddress" >
+ 
+        <requestFocus />
+ 
+    </EditText>
+ 
+    <TextView
+        android:id="@+id/textViewSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="제목 : "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+    <EditText
+        android:id="@+id/editTextSubject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         >
+    </EditText>
+ 
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내용 : "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+    <EditText
+        android:id="@+id/editTextMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:lines="5" />
+    
+   <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="보내기" />
+
+   <TextView
+       android:id="@+id/textView2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="*여러분의 소리에 귀기울입니다."
+       android:textAppearance="?android:attr/textAppearanceLarge" />
+   
+</LinearLayout>
+}}}
+
+_출처 : [http://blog.naver.com/PostView.nhn?blogId=junhwen&logNo=130151732452&categoryNo=86&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=&userTopListOpen=true&userTopListCount=5&userTopListManageOpen=false&userTopListCurrentPage=1 안드로이드 이메일보내기 블로그 참조]
