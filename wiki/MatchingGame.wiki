@@ -89,12 +89,31 @@ http://comp166-koreauniv.googlecode.com/files/설정화면.png
 
 == 카드의 종류별 게임 화면 ==
 
+ * 교수님카드
 
 http://comp166-koreauniv.googlecode.com/files/교수님카드.png
 
+ * 동물카드
+
 http://comp166-koreauniv.googlecode.com/files/동물카드.png
+
+ * 숫자카드
 
 http://comp166-koreauniv.googlecode.com/files/숫자카드.png
   
+
+== 랭킹화면과 랭킹 리셋 버튼의 동작 확인 ==
+
+
+ * 랭킹화면
+
+
+http://comp166-koreauniv.googlecode.com/files/랭킹화면.png
+
+
+ * 랭킹 초기화화면
+
+
+http://comp166-koreauniv.googlecode.com/files/랭킹초기화화면.png
 
  
