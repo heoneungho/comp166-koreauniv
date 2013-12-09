@@ -29,6 +29,8 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
 
 == Class 소개 ==
 
+http://comp166-koreauniv.googlecode.com/files/class.png
+
 
 === Database.java ===
 
@@ -1018,16 +1020,14 @@ public class MoneyContacts extends Activity implements OnItemClickListener {
 		}
 
 		public View getView(int position, View v, ViewGroup parent){
-			//View를 넘기기 위해서 layout 파일을 초기화 시켜야 한다.
+			//View를 넘기기 위해서 layout 파일을 초기화 시켜야 함
 			LayoutInflater li=
 				(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v=li.inflate(R.layout.giveittomelist_list, null);
 			// 초기화된 View에 적절한 데이터를 셋팅..
 			Values value=lists.get(position);
 			if(value != null){
-				// 위에서 inflate 시켰다면 layout xml 파일에 있는 객체가 
-				// 생성되어 계층구조로 연결되어 있을것이다.
-				// 계층 최상위에게 내가 필요한 View 객체를 달라고 한다.
+				// 위에서 inflate 시켰다면 layout xml 파일에 있는 객체가 생성되어 계층구조로 연결되어 있을것임. 계층 최상위에게 내가 필요한 View 객체를 달라고 함.
 				TextView tv1 = (TextView)v.findViewById(R.id.list_name);
 				TextView tv2 = (TextView)v.findViewById(R.id.list_phoneNum);
 
@@ -1133,6 +1133,311 @@ public class Help extends Activity{
 
 == Layout 소개 ==
 
+http://comp166-koreauniv.googlecode.com/files/layout.png
+
+
+=== giveittome_main.xml ===
+
+Main.java와 관련
+
+{{{
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    >
+    <LinearLayout
+    	android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center"
+    	android:layout_marginTop="20px"
+    	android:layout_weight="1">
+	    <ImageView
+			android:src="@drawable/main_give"
+			android:id="@+id/main_give"
+			android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"/>
+	    <ImageView
+			android:src="@drawable/main_get"
+			android:id="@+id/main_get"
+			android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content" />
+	</LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5px"
+        android:layout_weight="7"
+        android:src="@drawable/giveittome" />
+
+	<LinearLayout
+    	android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center"
+    	android:layout_weight="1">
+    	<ImageView
+    		android:src="@drawable/main_list"
+			android:id="@+id/main_list"
+			android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"/>
+    	<ImageView
+    	    android:id="@+id/main_exit"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:src="@drawable/main_exit" />
+	</LinearLayout>
+	<LinearLayout
+    	android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center"
+    	android:layout_weight="1">
+		<ImageView
+		    android:id="@+id/main_help"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="10px"
+		    android:src="@drawable/main_help" />
+</LinearLayout>
+</LinearLayout>
+
+}}}
+
+
+=== giveittome_moneyactivity.xml ===
+
+MoneyActivity.java와 관련
+
+{{{
+
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#ffffff"
+	android:gravity="center">
+	<LinearLayout
+		android:orientation="horizontal" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_weight="1">
+		<TextView
+			android:id="@+id/text_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="이름　"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<EditText
+			android:id="@+id/edit_name"
+			android:layout_width="150px"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="35px"/>
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_weight="1">
+		<TextView
+			android:id="@+id/text_phoneNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="전화번호　"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<EditText
+			android:id="@+id/edit_phoneNum"
+			android:layout_width="150px"
+			android:layout_height="wrap_content"
+			android:numeric="integer"/>
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_weight="1">
+		<TextView
+			android:id="@+id/text_time"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="시간　"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<EditText
+			android:id="@+id/edit_time"
+			android:layout_width="150px"
+			android:layout_height="wrap_content"
+			android:editable="false"
+			android:focusable="false"
+			android:layout_marginLeft="32px"/>
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_weight="1">
+		<TextView
+			android:id="@+id/text_money"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="가격　"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<EditText
+			android:id="@+id/edit_money"
+			android:layout_width="150px"
+			android:layout_height="wrap_content"
+			android:numeric="integer"
+			android:layout_marginLeft="34px"/>
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_marginTop="50px"
+		android:layout_weight="5">
+		<ImageView
+			android:id="@+id/submit"
+			android:src="@drawable/submit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<ImageView
+			android:id="@+id/nosubmit"
+			android:src="@drawable/nosubmit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="50px"/>
+	</LinearLayout>
+</LinearLayout>
+
+}}}
+
+
+=== giveittomelist.xml ===
+
+List.java와 관련
+
+{{{
+
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#ffffff">
+		<TextView 
+			android:id="@+id/list_giveorget"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<TextView 
+			android:id="@+id/list_name"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<TextView 
+			android:id="@+id/list_phoneNum"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<TextView 
+			android:id="@+id/list_time"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+		<TextView 
+			android:id="@+id/list_money"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="18px"
+			android:textColor="#000000"/>
+</LinearLayout>
+
+}}}
+
+
+=== giveittomelist_list.xml ===
+
+List.java와 관련
+
+{{{
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" android:orientation="vertical">
+    <LinearLayout
+    	android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:background="#ffffff" 
+    	android:layout_weight="0">
+    	<TextView
+    		android:id="@+id/select_mode"
+    		android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="선택하세요   "
+			android:textSize="20px"
+    		android:textColor="#000000"/>
+	    <Spinner
+			android:id="@+id/spinner"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"/>
+	</LinearLayout>
+	<LinearLayout
+    	android:orientation="horizontal"
+    	android:id="@+id/linear"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:background="#ffffff" 
+    	android:layout_weight="100">
+		<ListView 
+			android:id="@+id/listview" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"/>
+	</LinearLayout>
+	<TextView
+	    android:id="@+id/nocontent"
+	    android:visibility="gone"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:gravity="center"
+	    android:text="저장된 내용이 없습니다."
+	    android:textSize="20px"
+	    android:textColor="#000000" 
+	    android:layout_weight="100"/>
+	<Button
+	    android:id="@+id/delete"
+	    android:visibility="gone"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:fitsSystemWindows="true"
+	    android:text="삭제" 
+	    android:layout_weight="0"/>
+</LinearLayout>
+
+}}}
+
+
+=== 
 
 == 구동 Screen Shots ==
 
