@@ -532,6 +532,7 @@ activity_number.xml
 }}}
 
 _출처 : [http://blog.naver.com/PostView.nhn?blogId=javaking75&logNo=140179563086&categoryNo=67&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage= 내부저장공간에 파일읽기쓰기 블로그 참조]_
+_교수님이 제공하신 안드로이드 코드조각_
 ----
 == 6. 건의사항 ==
 
