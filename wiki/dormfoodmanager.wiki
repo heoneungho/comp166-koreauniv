@@ -30,6 +30,18 @@ _불편했던 점, 개선하고 싶은 점._
 
 = UI & Code =
 
+== class ==
+
+http://comp166-koreauniv.googlecode.com/files/class.png
+
+클래스는 총 6개입니다. 
+1. 메인화면 - MainActivity
+2. 메뉴화면 - Information
+3. 공지사항 - Inform
+4. 오늘의메뉴 - Menu
+5. 개인식수 - Number
+6. 건의사항 - Talk
+
 == 메인화면 ==
 
 http://comp166-koreauniv.googlecode.com/files/main.jpg
