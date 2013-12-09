@@ -50,7 +50,7 @@ http://comp166-koreauniv.googlecode.com/files/클래스.png
  # 메인화면 - MainActivity
  # 메뉴화면 - Information
  # 공지사항 - Inform
- # 오늘의메뉴 - Menu
+ # 오늘의메뉴 - Food
  # 개인식수 - Number
  # 건의사항 - Talk
 
@@ -305,4 +305,52 @@ activity_inform.xml
         android:src="@drawable/ourhome_co_kr_20131202_223707" />
 
 </LinearLayout>
+}}}
+
+----
+== 4. 오늘의 메뉴 ==
+
+웹뷰를 이용하여 일주일의 기숙사 식단 메뉴를 보여주는 사이트를 바로 보여줍니다.
+또한 확대와 축소가 가능하여 자세히 볼 수 있습니다.
+
+Menu.java
+{{{
+package com.example.anamdorm_food;
+
+import android.os.Bundle;
+import android.webkit.*;
+import android.app.Activity;
+import android.view.Menu;
+
+public class Food extends Activity {
+
+	private WebView webView;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_food);
+	
+		webView = (WebView)findViewById(R.id.webView1);
+		
+		WebSettings webSettings = webView.getSettings();
+		webSettings.setUseWideViewPort(true);
+		webSettings.setSupportZoom(true);
+		webSettings.setBuiltInZoomControls(true);
+		webSettings.setJavaScriptEnabled(true);
+		
+
+		String url = "http://koreadorm.ourhome.co.kr/sub/menu.htm?ptype=view&idx=6497&page=1&code=menu";
+		webView.loadUrl(url);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.food, menu);
+		return true;
+	}
+
+}
+
 }}}
