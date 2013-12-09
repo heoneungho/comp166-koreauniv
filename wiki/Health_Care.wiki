@@ -1246,6 +1246,9 @@ http://comp166-koreauniv.googlecode.com/files/aaa.PNG/
 
 *4.videoview 없는 단순한 xml들*
 
+http://comp166-koreauniv.googlecode.com/files/aaaa.PNG/
+
+
 이미지 뷰를 통해 운동정보를 제공하는 xml들입니다.
 소스코드는 다 동일하므로 이 역시 대표적인 xml(breast_1.xml)의 코드만 적었습니다.
 
