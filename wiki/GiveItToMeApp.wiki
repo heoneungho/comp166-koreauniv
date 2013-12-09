@@ -431,12 +431,12 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		else{						// 삭제모드일 때
 			ad = new AlertDialog.Builder(this);
 			ad.setTitle("삭제하기");
-			ad.setIcon(R.drawable.scroogeicon);
+			ad.setIcon(R.drawable.giveittomeicon);
 			ad.setMessage("해당 항목을 삭제하시겠습니까?");
 			ad.setPositiveButton("삭제하기", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					con.DBDel(db, list.get(ScroogeList.posion).getId());
-					Toast.makeText(ScroogeList.this, "삭제완료", 100).show();
+					con.DBDel(db, list.get(List.posion).getId());
+					Toast.makeText(List.this, "삭제완료", 100).show();
 					rootin();
 				}
 			});
