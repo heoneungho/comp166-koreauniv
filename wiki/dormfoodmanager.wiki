@@ -437,8 +437,8 @@ public class Number extends Activity {
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_number);
-	        edit1 = (EditText) findViewById(R.id.text1); // 쓰기용
-	        edit2 = (EditText) findViewById(R.id.text2); // 읽기용
+	        edit1 = (EditText) findViewById(R.id.text1); // 쓰기용의 EditText 뷰 입니다.
+	        edit2 = (EditText) findViewById(R.id.text2); // 읽기용의 EditText 뷰 입니다.
 	        btnWrite = (Button) findViewById(R.id.btn1);
 	        btnRead = (Button) findViewById(R.id.btn2);
 	 
@@ -450,7 +450,7 @@ public class Number extends Activity {
 	 
 	                    FileOutputStream fos = openFileOutput(FILE_NAME,
 	                            Context.MODE_PRIVATE); 
-                // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
+ // 혼자만 사용하는 배타적모드의 파일을 생성하는 것으로, 기본으로 설정되있는 파일생성모드입니다.
 
 	                    String str = edit1.getText().toString();
 	                    fos.write(str.getBytes()); // //입력받은 내용(text)을 바이트 단위로 파일에 씁니다.
