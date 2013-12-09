@@ -1313,7 +1313,8 @@ class Monster {
 }
 
 class Vampire extends Monster {
-	boolean frighten (byte b) //int가 아닌 byte로 인자를 받아서 {
+	boolean frighten (byte b) //int가 아닌 byte로 인자를 받아서 
+         {
 		System.out.println("a bite?");
 		return true;
 	}
