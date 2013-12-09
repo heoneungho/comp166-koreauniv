@@ -1073,3 +1073,74 @@ public class HELP extends Activity {
 }//help는 그냥 화면에 그림만 있습니다.
 
 }}}
+
+
+=Layout=
+
+=activity_main.xml=
+
+{{{
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/AbsoluteLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/black" // black 바탕으로 했습니다.
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:layout_x="-39dp"
+        android:layout_y="58dp"
+        android:src="@drawable/titlerrrrrrr" /> // 숫자야구게임이라는 제목을 나타내는 그림
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="-75dp"
+        android:layout_y="-9dp"
+        android:src="@drawable/one" /> // 1을 나타내는 그림
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="14dp"
+        android:layout_y="0dp"
+        android:src="@drawable/three" /> // 3을 나타내는 그림
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="-24dp"
+        android:layout_y="-28dp"
+        android:src="@drawable/two" /> // 2를 나타내는 그림
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="7dp"
+        android:layout_y="214dp"
+        android:src="@drawable/start1" /> // start 버튼모양을 나타내는그림
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="7dp"
+        android:layout_y="329dp"
+        android:src="@drawable/help1" /> // help 버튼 모양을 나타내는 그림
+   
+</AbsoluteLayout>
+
+}}}
