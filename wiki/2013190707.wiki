@@ -704,19 +704,93 @@ class Dragon extends Monster {
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수: 모든 객체가 사는 곳으로, 인스턴스 변수는 객체 안에 들어있다.
+
+ * 스택에서의 변수: 메소드 호출과 지역 변수가 사는 곳으로, 지역 변수는 스택 변수라고도 부른다.
+
+ * 생성자: Constructor. 객체를 생성할 때 실행되는 코드가 들어있다. 모든 클래스에 생성자가 들어있다. 직접 만들지 않아도 컴파일러에서 자동으로 생성자를 만들어준다. 객체의 상태를 초기화하는 작업은 대부분 생성자에서 처리한다.
+
+ * 널 레퍼런스: 객체 레퍼런스 제거 방법. 레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것과 같다. 즉 리모컨은 있는데 그 리모컨으로 조종할 TV가 없는 셈이다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다.
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 객체가 살아있는 동안 살 수 있음.마지막 레퍼런스가 사라지면 그 객체는 가비지 컬렉션 대상이 된다.
+
+ * 지역 변수: 그 변수를 선언한 메소드 안에서만 살 수 있음. 삶(life)-지역 변수는 스택 프레임이 스택에 들어있는 한 계속 살아있다. 영역(scope)-지역 변수의 영역은 그 변수를 선언한 메소드 내로 제한됩니다.
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+import java.util.*;
+class V2Radiator
+{
+        V2Radiator(ArrayList<SimUnit> list)
+        {
+                for(int x = 5; x < 5 ; x++)
+                {
+                        list.add(new SimUnit("V2Radiator"));//list에 SimUnit 객체를 더합니다.
+                }
+        }
+}
+
+class V3Radiator //extends V2Radiator
+{
+        V3Radiator(ArrayList<SimUnit> lglist)
+        {
+                //super(lglist);
+                for(int g = 0; g < 10 ; g++)
+                {
+                        lglist.add(new SimUnit("V3Radiator"));//lglist에 SimUnit객체를 더합니다.
+                }
+        }
+}
+
+class RetentionBot
+{
+        RetentionBot(ArrayList<SimUnit> rlist)
+        {
+                rlist.add(new SimUnit("Rention"));//rlist에 SimUnit객체를 더합니다.
+        }
+}
+
+public class TestLifeSupportSim 
+{
+        public static void main(String[] args)
+        {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();//ArrayList를 만듭니다.
+                V2Radiator v2 = new V2Radiator(aList);//V2Radiator객체 생성.
+                V3Radiator v3 = new V3Radiator(aList);//V3Radiator객체 생성.
+                for(int z = 0 ; z < 20 ; z++)
+                {
+                        RetentionBot ret = new RetentionBot(aList);//RententionBot객체 생성.
+                }
+        }
+}
+
+class SimUnit
+{
+        String botType;//문자열 선언
+        SimUnit(String type)
+        {
+                botType = type;//대입
+        }
+        int powerUse()
+        {
+                if("Retention".equals(botType))
+                {
+                        return 2;                       
+                }
+                else
+                {
+                        return 4;
+                }
+        }
+}
+
+/* 톰은 V2Radiator 클래스의 생성자에서 ArraylList를 받아들인다는 점에 주목하였다. V3Radiator를 호출할 때마다 super()을 통해 V2Radiator 생성자를 호출할 때 ArrayList를 전달하게 됩니다.
+따라서 불필요하게 V2Radiator의 SimUnit다섯 개가 추가로 만들어집니다. 톰이 맞았다면 총 전력 소모량이 사라가 예상한 비율대로 100이 아니라 120이 된다고 예상했을 것입니다. 
+모든 Bot 클래스에서 SimUnit을 만들기 때문에 SimUnit 클래스에 SimUnit이 생성될 때마다 메시지를 출력하는 생성자를 만들면 문제를 더 빨리 찾을 수 있습니다.*/
 
 }}}
 
@@ -724,27 +798,86 @@ class Dragon extends Monster {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+  * 정적 메소드: 인스턴스 변수에 따라 행동이 달라지지 않기 때문에 인스턴스나 객체가 필요하지 않은 메소드. 클래스만 있어도 가능. 정적메소드를 호출할 때는 클래스명을 사용.
+ * 정적 메소드를 선언하는 방법: static 이라는 키워드를 사용하면 클래스의 인스턴스 없이 메소드를 실행할 수 있다.
+ * static final: final로 지정한 변수는 일단 초기화되고나면 절대 그 값을 바꿀 수 없다. 즉 static final 로 선언한 변수는 클래스가 로딩되어있는 동안 계속 똑같은 값을 유지한다. 상수의 변수명은 모두 대문자로 쓴다.
+ * 널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException 이 생긴다. (9장 참조)
+ * 오토 박싱: 원시값과 래퍼 객체 사이의 변환을 자동으로 처리해주는 기능.
+ * 정적 임포트: 정적 클래스, 정적 변수, enum 값 등을 사용할 때 정적 임포트를 활용하여 타이핑을 적게 해보자는 개념. 잘못 사용하면 코드의 가독성이 크게 떨어질 수 있음.
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
-
+import java.util.*;
+public class Calendercheck
+{
+        public static void main(String[] args)
+        {
+                Calender c = Calender.getInstance();
+                c.set(2004,0,7,15,40);//시각을 2004년 1월 7일 15:40 으로 설정
+                long day1 = c.getTimeInMillis();//1970년 1월1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴
+                day1 += 1000 * 60 * 60;
+                c.setTimeInMillis(day1);//한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);//35일을 더합니다.
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);//35일 뒤로 넘깁니다. 하지만 달은 바뀌지 않습니다.
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);//날짜를 1로 설정합니다.
+                System.out.println("set to 1 " + c.getTime());
+                
+        
+        }
+}
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 인스턴스마다 하나씩 있다.
+ * 정적 변수: 상수. 인스턴스마다 하나씩 있는 게 아니고 클래스마다 하나씩 있다.(메모리 절약). 한 클래스에 속하는 모든 인스턴스에 의해서 공유된다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+{{{
+class StaticSuper{
+
+	static { //ststic 메소드. 딱 한번 실행됨.
+	System.out.println("super static block");
+	}
+
+	StaticSuper() { //StaticSuper는 생성자이므로 반드시 ()가 있어야함.
+	System.out.println("super constructor");
+	}
+}
+
+public class StaticTests extends StaticSuper { //StaticTests 는 StaticSuper을 확장함.
+
+	static int rand; //static 변수.
+
+	static { //static 메소드.
+	rand=(int_ (Math.random()*6);
+	System.out.println("static block " + rand);
+	}
+
+	StaticTests(){ //생성자.
+	System.out.println("constructor");
+	{
+
+	public static void main(String [] args) {
+	System.out.println("in main");
+	StaticTests st = new StaticTests (); //StaticTests 객체 생성.
+	}
+}
+}}}
+컴파일 결과
+{{{
+%java StaticTests
+super static block
+static block 3
+in main
+super constructor
+constructor
 
 }}}
 
@@ -753,18 +886,141 @@ class Dragon extends Monster {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class Test
+{
+
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();    //오류가 발생할 수 있는 행동.
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");//오류를 잡으면 출력.
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
+}
 
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
+
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();//play 메소드 호출
+        }
+        
+        public void play()//play 메소드
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//Sequencer를 얻음
+                        player.open();//Sequencer를 연다
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        
+                        
+                        Track track = seq.createTrack();//Track를 생성
+                        
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn);
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff);
+                        
+                 
+                      
+              
+                        
+                        player.setSequence(seq);//Sequencer에 Sequence를 보냅니다.
+                        
+                        player.start();//Sequencer의 start()메소드를 호출.
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }//play 메소드 끝
+}// 클래스 끝
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine { 
+
+        public static void main(String[]args){
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();//MiniMusicCmdLine 생성
+                if(args.length<2){
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                }else{
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument, note);//인자를 전달하면서 play메소드호출
+                }
+        } //main 끝
+
+         
+        public void play (int instrument, int note){//play메소드
+                try{
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();
+
+                        MidiEvent event = null;
+
+                        ShortMessage first = new ShortMessage();
+                        first.setMessage(192,1,instrument,0);
+                        MidiEvent changeInstrument = new MidiEvent(first, 1);
+                        track.add(changeInstrument);
+
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144,1,note,100);
+                        MidiEvent noteOn = new MidiEvent(a,1);
+                        track.add(noteOn);
+
+                        ShortMessage b = new ShortMessage();
+                        a.setMessage(128,1,note,100);
+                        MidiEvent noteOff = new MidiEvent(b,16);
+                        track.add(noteOff);
+                        player.setSequence(seq);
+                        player.start();
+                }catch(Exception ex){ex.printStackTrace();}
+        } // play 메소드 끝
+} // 클래스 끝
 
 }}}
 
