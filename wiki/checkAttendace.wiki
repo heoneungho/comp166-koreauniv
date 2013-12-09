@@ -1447,3 +1447,17 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 </LinearLayout>
 
 }}}
+
+
+
+= Reference =
+
+안드로이드 코드조각 https://code.google.com/p/comp166-koreauniv/wiki/AndroidCodeSnippet
+
+교수님
+
+구글링(ex. DatePicker)
+
+프로그램 전체를 따온 것이 아니라 각각의 함수들을 구글링했기때문에 모든 출처를 밝히기는 어렵습니다. 
+
+stackoverflow사이트를 가장 많이 참조했으며 tab형식이라 어차피 그대로 못쓰고 변형했습니다.
