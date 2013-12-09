@@ -313,7 +313,10 @@ activity_inform.xml
 웹뷰를 이용하여 일주일의 기숙사 식단 메뉴를 보여주는 사이트를 바로 보여줍니다.
 또한 확대와 축소가 가능하여 자세히 볼 수 있습니다.
 
+http://comp166-koreauniv.googlecode.com/files/오늘의메뉴.jpg
+
 Menu.java
+
 {{{
 package com.example.anamdorm_food;
 
@@ -342,7 +345,7 @@ public class Food extends Activity {
 
 		String url = "http://koreadorm.ourhome.co.kr/sub/menu.htm?ptype=view&idx=6497&page=1&code=menu";
 		webView.loadUrl(url);
-	}
+	} // 지정한 사이트의 화면을 보여줍니다.
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -354,3 +357,37 @@ public class Food extends Activity {
 }
 
 }}}
+
+activity_food.xml
+
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#980000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Food" >
+
+     <TextView
+        android:textSize="50sp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 메뉴"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <WebView
+         android:id="@+id/webView1"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/textView1" />
+    
+</RelativeLayout>
+}}}
+
+_출처 : 채정님 교수님 도움_
