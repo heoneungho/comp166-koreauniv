@@ -68,8 +68,8 @@ row 1 을 클릭하면
 So Simple.
 -------코드--------------------
 
-MainActivity
-1.Java
+1. MainActivity :: 시작 화면
+
 package com.example.pjh3390;
 
 import android.app.Activity;
@@ -109,47 +109,14 @@ public class MainActivity extends Activity {
 
 }
 
-2. xml
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
-    
+2. GameActivity :: 게임 설정 // 각각의 칸에 랜덤으로 배치해서 row column diagonal 버튼을 만들어서 문제 해결할 수 있게 설정
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.15"
-        android:scaleType="fitXY"
-        android:src="@drawable/background" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="119dp"
-        android:text="Start" />
-
-</RelativeLayout>
-
-- GameActivity
-1. Java
 package com.example.pjh3390;
 
-import android.os.Bundle;
-import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -157,249 +124,331 @@ import android.widget.ToggleButton;
 
 public class GameActivity extends Activity {
 
+	Button button1; 
+	Button button2;
+	Button button3; 
+	Button button4; 
+	Button button5; 
+	Button button6; 
+	Button button7; 
+	Button button8; 
+	Button button9; 
+	
+	ToggleButton tbutton1;
+	ToggleButton tbutton2;
+	ToggleButton tbutton3;
+	ToggleButton tbutton4;
+	ToggleButton tbutton5;
+	ToggleButton tbutton6;
+	ToggleButton tbutton7;
+	ToggleButton tbutton8; 
+	ToggleButton tbutton9; 
+	ToggleButton tbutton10;
+	ToggleButton tbutton11;
+	ToggleButton tbutton12; 
+	ToggleButton tbutton13; 
+	ToggleButton tbutton14; 
+	ToggleButton tbutton15; 
+	ToggleButton tbutton16; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 		
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		 button1 = (Button) findViewById(R.id.button1);
+		 button2 = (Button) findViewById(R.id.button2);
+		 button3 = (Button) findViewById(R.id.button3);
+		 button4 = (Button) findViewById(R.id.button4);
+		 button5 = (Button) findViewById(R.id.button5);
+		 button6 = (Button) findViewById(R.id.button6);
+		 button7 = (Button) findViewById(R.id.button7);
+		 button8 = (Button) findViewById(R.id.button8);
+		 button9 = (Button) findViewById(R.id.button9);
+
+		 tbutton1 = (ToggleButton) findViewById(R.id.toggleButton1);
+		 tbutton2 = (ToggleButton) findViewById(R.id.toggleButton2);
+		 tbutton3 = (ToggleButton) findViewById(R.id.toggleButton3);
+		 tbutton4 = (ToggleButton) findViewById(R.id.toggleButton4);
+		 tbutton5 = (ToggleButton) findViewById(R.id.toggleButton5);
+		 tbutton6 = (ToggleButton) findViewById(R.id.toggleButton6);
+		 tbutton7 = (ToggleButton) findViewById(R.id.toggleButton7);
+		 tbutton8 = (ToggleButton) findViewById(R.id.toggleButton8);
+		 tbutton9 = (ToggleButton) findViewById(R.id.toggleButton9);
+		 tbutton10 = (ToggleButton) findViewById(R.id.toggleButton10);
+		 tbutton11 = (ToggleButton) findViewById(R.id.toggleButton11);
+		 tbutton12 = (ToggleButton) findViewById(R.id.toggleButton12);
+		 tbutton13 = (ToggleButton) findViewById(R.id.toggleButton13);
+		 tbutton14 = (ToggleButton) findViewById(R.id.toggleButton14);
+		 tbutton15 = (ToggleButton) findViewById(R.id.toggleButton15);
+		 tbutton16 = (ToggleButton) findViewById(R.id.toggleButton16);
+
+		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
+
 		
-		
-		Button button1 = (Button) findViewById(R.id.button1);
-		Button button2 = (Button) findViewById(R.id.button2);
-		Button button3 = (Button) findViewById(R.id.button3);
-		Button button4 = (Button) findViewById(R.id.button4);
-		Button button5 = (Button) findViewById(R.id.button5);
-		Button button6 = (Button) findViewById(R.id.button6);
-		Button button7 = (Button) findViewById(R.id.button7);
-		Button button8 = (Button) findViewById(R.id.button8);
-		Button button9 = (Button) findViewById(R.id.button9);
-		
-		final ToggleButton tbutton1 = (ToggleButton) findViewById(R.id.toggleButton1);
-		final ToggleButton tbutton2 = (ToggleButton) findViewById(R.id.toggleButton2);
-		final ToggleButton tbutton3 = (ToggleButton) findViewById(R.id.toggleButton3);
-		final ToggleButton tbutton4 = (ToggleButton) findViewById(R.id.toggleButton4);
-		final ToggleButton tbutton5 = (ToggleButton) findViewById(R.id.toggleButton5);
-		final ToggleButton tbutton6 = (ToggleButton) findViewById(R.id.toggleButton6);
-		final ToggleButton tbutton7 = (ToggleButton) findViewById(R.id.toggleButton7);
-		final ToggleButton tbutton8 = (ToggleButton) findViewById(R.id.toggleButton8);
-		final ToggleButton tbutton9 = (ToggleButton) findViewById(R.id.toggleButton9);
-		final ToggleButton tbutton10 = (ToggleButton) findViewById(R.id.toggleButton10);
-		final ToggleButton tbutton11 = (ToggleButton) findViewById(R.id.toggleButton11);
-		final ToggleButton tbutton12 = (ToggleButton) findViewById(R.id.toggleButton12);
-		final ToggleButton tbutton13 = (ToggleButton) findViewById(R.id.toggleButton13);
-		final ToggleButton tbutton14 = (ToggleButton) findViewById(R.id.toggleButton14);
-		final ToggleButton tbutton15 = (ToggleButton) findViewById(R.id.toggleButton15);
-		final ToggleButton tbutton16 = (ToggleButton) findViewById(R.id.toggleButton16);
-		
-	
-		boolean f; // 게임의 종료를 위한 조건 f선언
-		f = tbutton1.isChecked()&tbutton2.isChecked()&tbutton3.isChecked()&tbutton4.isChecked()&
-				tbutton5.isChecked()&tbutton6.isChecked()&tbutton7.isChecked()&tbutton8.isChecked()&
-				tbutton9.isChecked()&tbutton10.isChecked()&tbutton11.isChecked()&tbutton12.isChecked()&
-				tbutton13.isChecked()&tbutton14.isChecked()&tbutton15.isChecked()&tbutton16.isChecked();
-		// f는 토글버튼의 황성화 여부의 값을 저장 (1부터 16까지의 모든 토글버튼에 대해서)
+
+		// 총 5번안에 해결가능 한 10문제를 제시.
+		button1.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton4.performClick();
+				tbutton8.performClick();
+				tbutton12.performClick();
+				tbutton16.performClick();
+				
+				check();
+
+			}
+		}); // column 4를 클릭시킨다.
+
+		button2.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton3.performClick();
+				tbutton7.performClick();
+				tbutton11.performClick();
+				tbutton15.performClick();
+				
+				check();
+
+			}
+		}); // column 3을 클릭시킨다.
+
+		button3.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton2.performClick();
+				tbutton6.performClick();
+				tbutton10.performClick();
+				tbutton14.performClick();
+				
+				check();
+
+			}
+		}); // column 2를 클릭시킨다.
+
+		button4.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton1.performClick();
+				tbutton5.performClick();
+				tbutton9.performClick();
+				tbutton13.performClick();
+
+				check();
+			}
+		}); // column 1을 클릭시킨다.
+
+		button5.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton1.performClick();
+				tbutton6.performClick();
+				tbutton11.performClick();
+				tbutton16.performClick();
+
+				check();
+			}
+		}); // 대각선을 클릭시킨다.
+
+		button6.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton1.performClick();
+				tbutton2.performClick();
+				tbutton3.performClick();
+				tbutton4.performClick();
+
+				check();
+			}
+		}); // row 4를 클릭시킨다.
+
+		button7.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton5.performClick();
+				tbutton6.performClick();
+				tbutton7.performClick();
+				tbutton8.performClick();
+
+				check();
+			}
+		}); // row 3을 클릭시킨다.
+
+		button8.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton9.performClick();
+				tbutton10.performClick();
+				tbutton11.performClick();
+				tbutton12.performClick();
+
+				check();
+			}
+		}); // row 2를 클릭시킨다.
+
+		button9.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				tbutton13.performClick();
+				tbutton14.performClick();
+				tbutton15.performClick();
+				tbutton16.performClick();
+
+				check();
+			}
+		}); // row 1을 클릭시킨다.
+
+		int k = (int) (Math.random() * 10); // 5번의 클릭으로 생성된 난수
+
+		switch (k) { // 10번 클릭으로 만글 수 있는 난수들 중 배열 - 즉, 5번안에 해결가능한 문제
+
+		case 0:
+			button1.performClick();
+			button2.performClick();
+			button3.performClick();
+			button5.performClick();
+			button6.performClick();
+			button7.performClick();
+			button9.performClick();
 			
-		int k = (int)(Math.random()*10); // 5번의 클릭으로 생성된 난수
-		
-		switch(k)	{ // 10번 클릭으로 만글 수 있는 난수들 중 배열 - 즉, 5번안에 해결가능한 문제
-		case 0 :
-			button1.callOnClick();
-			button2.callOnClick();
+
+			break;
+
+		case 1:
+			button1.performClick();
+			button2.performClick();
+			button4.performClick();
+			button5.performClick();
+			button6.performClick();
+			button7.performClick();
+			button8.performClick();
 			
-			button5.callOnClick();
+			break;
+
+		case 2:
+			button1.performClick();
+			button2.performClick();
+			button5.performClick();
+			button8.performClick();
 			
-			button7.callOnClick();
-			button8.callOnClick();
-		
-		
-		case 1 :
-			button2.callOnClick();
-			button4.callOnClick();
+			break;
+
+		case 3:
+			button3.performClick();
+			button5.performClick();
+
+			button1.performClick();
+
+
+
+			button2.performClick();
+			button9.performClick();
 			
-			button5.callOnClick();
+			break;
+
+		case 4:
+			button8.performClick();
+			button3.performClick();
+
+			button2.performClick();
+
+
+			button4.performClick();
+			button7.performClick();
 			
-			button6.callOnClick();
-			button9.callOnClick();
+			break;
+
+		case 5:
+			button3.performClick();
+			button9.performClick();
+
+			button5.performClick();
+
+
 			
-		case 2 :
-			button3.callOnClick();
-			button4.callOnClick();
+			button1.performClick();
+			button6.performClick();
 			
-			button5.callOnClick();
+			break;
+
+		case 6:
+			button7.performClick();
+			button2.performClick();
+			button9.performClick();
+
+
+
+			button5.performClick();
+			button8.performClick();
 			
-			button7.callOnClick();
-			button9.callOnClick();
+			break;
+
+		case 7:
+			button8.performClick();
+			button3.performClick();
+			button4.performClick();
+
+
+
+			button5.performClick();
+			button6.performClick();
 			
-		case 3 :
-			button1.callOnClick();
-			button3.callOnClick();
+			break;
+
+		case 8:
+			button1.performClick();
+			button9.performClick();
+			button8.performClick();
+
+
+
+			button5.performClick();
+			button7.performClick();
 			
-			button5.callOnClick();
+			break;
+
+		case 9:
+			button8.performClick();
+			button6.performClick();
+
+			button6.performClick();
+
+
+			button4.performClick();
+			button5.performClick();
 			
-			button6.callOnClick();
-			button7.callOnClick();
+			break;
+
+		default:
+			button2.performClick();
+			button3.performClick();
+
+			button6.performClick();
+
+
+			button5.performClick();
+			button3.performClick();
 			
-			
-		case 4 :
-			button2.callOnClick();
-			button3.callOnClick();
-			
-			button5.callOnClick();
-			
-			button6.callOnClick();
-			button8.callOnClick();
-			
-		case 5 :
-			button2.callOnClick();
-			button3.callOnClick();
-			
-			button5.callOnClick();
-			
-			button7.callOnClick();
-			button9.callOnClick();
-			
-		case 6 :
-			button1.callOnClick();
-			button2.callOnClick();
-			button3.callOnClick();
-			
-			button7.callOnClick();
-			button9.callOnClick();
-			
-		case 7 :
-			button2.callOnClick();
-			button3.callOnClick();
-			button4.callOnClick();
-			
-			button7.callOnClick();
-			button8.callOnClick();
-			
-		case 8 :
-			button1.callOnClick();
-			button3.callOnClick();
-			button4.callOnClick();
-			
-			button8.callOnClick();
-			button9.callOnClick();
-			
-		case 9 :
-			button1.callOnClick();
-			button2.callOnClick();
-			
-			button6.callOnClick();
-			button7.callOnClick();
-			button8.callOnClick();
-			
-		case 10 :
-			button2.callOnClick();
-			button3.callOnClick();
-			
-			button6.callOnClick();
-			button7.callOnClick();
-			button9.callOnClick();
-			
-		}	// 총 5번안에 해결가능 한 10문제를 제시.
-			button1.setOnClickListener(new View.OnClickListener() {
-					public void onClick(View v) {
-		                tbutton4.callOnClick();
-		                tbutton8.callOnClick();
-		                tbutton12.callOnClick();
-		                tbutton16.callOnClick();
-		                
-					}
-			});		// column 4를 클릭시킨다.
-		
-			button2.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton3.callOnClick();
-	                tbutton7.callOnClick();
-	                tbutton11.callOnClick();
-	                tbutton15.callOnClick();
-	                
-				}
-			});     // column 3을 클릭시킨다.
-		
-			button3.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton2.callOnClick();
-	                tbutton6.callOnClick();
-	                tbutton10.callOnClick();
-	                tbutton14.callOnClick();
-	                
-				}
-			});    // column 2를 클릭시킨다. 
-		
-			button4.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton1.callOnClick();
-	                tbutton5.callOnClick();
-	                tbutton9.callOnClick();
-	                tbutton13.callOnClick();
-	                
-				}
-			}); // column 1을 클릭시킨다.
-		
-			button5.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton1.callOnClick();
-	                tbutton6.callOnClick();
-	                tbutton11.callOnClick();
-	                tbutton16.callOnClick();
-	                
-				}
-			});     // 대각선을 클릭시킨다.
-		
-			button6.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton1.callOnClick();
-	                tbutton2.callOnClick();
-	                tbutton3.callOnClick();
-	                tbutton4.callOnClick();
-	                
-				}
-			});     // row 4를 클릭시킨다.
-		
-			button7.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton5.callOnClick();
-	                tbutton6.callOnClick();
-	                tbutton7.callOnClick();
-	                tbutton8.callOnClick();
-	                
-				}
-			});     // row 3을 클릭시킨다.
-		
-			button8.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton9.callOnClick();
-	                tbutton10.callOnClick();
-	                tbutton11.callOnClick();
-	                tbutton12.callOnClick();
-	                
-				}
-			});     // row 2를 클릭시킨다.
-		
-			button9.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-	                tbutton13.callOnClick();
-	                tbutton14.callOnClick();
-	                tbutton15.callOnClick();
-	                tbutton16.callOnClick();
-	                
-				}
-			});     // row 1을 클릭시킨다.
-		
-			
-		if(f==true)	{
-			Intent intent = new Intent(getBaseContext(), FinishActivity.class);
-            startActivity(intent);
+			break;
+
 		}
 
-		 
-	 }
+	
+	}
 
+	public void check()	{
+		boolean f; // 게임의 종료를 위한 조건 f선언
+
+		f = tbutton1.isChecked() & tbutton2.isChecked() & tbutton3.isChecked()
+				& tbutton4.isChecked() & tbutton5.isChecked()
+				& tbutton6.isChecked() & tbutton7.isChecked()
+				& tbutton8.isChecked() & tbutton9.isChecked()
+				& tbutton10.isChecked() & tbutton11.isChecked()
+				& tbutton12.isChecked() & tbutton13.isChecked()
+				& tbutton14.isChecked() & tbutton15.isChecked()
+				& tbutton16.isChecked();
+		// f는 토글버튼의 황성화 여부의 값을 저장 (1부터 16까지의 모든 토글버튼에 대해서)
+
+		if (f == true) {
+			Intent intent = new Intent(getBaseContext(), FinishActivity.class);
+			startActivity(intent);
+		}
+		
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -409,258 +458,10 @@ public class GameActivity extends Activity {
 
 }
 
-2. xml
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".GameActivity" >
+3. FinishActivity :: GameActivity에서 승리 조건을 만족하면 넘어감.
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="312dp"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/background" />
+package com.example.pjh3390;
 
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignRight="@+id/imageView1"
-        android:text="1" />
-
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button1"
-        android:layout_toLeftOf="@+id/button1"
-        android:text="2" />
-
-    <Button
-        android:id="@+id/button3"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button2"
-        android:layout_toLeftOf="@+id/button2"
-        android:text="3" />
-
-    <Button
-        android:id="@+id/button4"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_toLeftOf="@+id/button3"
-        android:text="4" />
-
-    <Button
-        android:id="@+id/button5"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button4"
-        android:layout_alignBottom="@+id/button4"
-        android:layout_toLeftOf="@+id/button4"
-        android:text="5" />
-
-    <Button
-        android:id="@+id/button8"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button7"
-        android:layout_toLeftOf="@+id/button4"
-        android:text="8" />
-
-    <Button
-        android:id="@+id/button9"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button8"
-        android:layout_alignRight="@+id/button8"
-        android:text="9" />
-
-    <Button
-        android:id="@+id/button6"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button5"
-        android:layout_alignLeft="@+id/button5"
-        android:text="6" />
-
-    <Button
-        android:id="@+id/button7"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button6"
-        android:layout_toLeftOf="@+id/button4"
-        android:text="7" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_alignTop="@+id/button6"
-        android:text="1-1" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignTop="@+id/toggleButton1"
-        android:text="2-1" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignTop="@+id/toggleButton2"
-        android:layout_toRightOf="@+id/button3"
-        android:text="3-1" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_alignTop="@+id/toggleButton3"
-        android:layout_toRightOf="@+id/button2"
-        android:text="4-1" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton1"
-        android:layout_alignLeft="@+id/toggleButton1"
-        android:layout_alignRight="@+id/toggleButton1"
-        android:text="1-2" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton2"
-        android:layout_alignLeft="@+id/toggleButton2"
-        android:layout_alignRight="@+id/toggleButton2"
-        android:text="2-2" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton3"
-        android:layout_alignLeft="@+id/toggleButton3"
-        android:layout_alignRight="@+id/toggleButton3"
-        android:text="3-2" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toggleButton7"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_toRightOf="@+id/toggleButton7"
-        android:text="4-2" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton5"
-        android:layout_alignLeft="@+id/toggleButton5"
-        android:layout_alignRight="@+id/toggleButton5"
-        android:text="1-3" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toggleButton9"
-        android:layout_alignLeft="@+id/toggleButton6"
-        android:layout_alignRight="@+id/toggleButton6"
-        android:text="2-3" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toggleButton10"
-        android:layout_alignRight="@+id/toggleButton7"
-        android:layout_toRightOf="@+id/toggleButton10"
-        android:text="3-3" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton8"
-        android:layout_alignLeft="@+id/toggleButton8"
-        android:layout_alignRight="@+id/imageView1"
-        android:text="3-4" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button9"
-        android:layout_alignLeft="@+id/toggleButton9"
-        android:layout_alignRight="@+id/toggleButton9"
-        android:text="4-1" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toggleButton13"
-        android:layout_toLeftOf="@+id/toggleButton11"
-        android:layout_toRightOf="@+id/toggleButton13"
-        android:text="4-2" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton11"
-        android:layout_alignLeft="@+id/toggleButton11"
-        android:layout_alignRight="@+id/toggleButton11"
-        android:text="4-3" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleButton12"
-        android:layout_alignLeft="@+id/toggleButton12"
-        android:layout_alignRight="@+id/imageView1"
-        android:text="4-4" />
-
-</RelativeLayout>
-
-- Finish activity
-1. Java
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
@@ -698,38 +499,6 @@ public class FinishActivity extends Activity {
 	}
 
 }
-
-2. xml
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".FinishActivity" >
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.15"
-        android:scaleType="fitXY"
-        android:src="@drawable/background" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:text="You Win !" />
-
-</RelativeLayout>
 
 
 
