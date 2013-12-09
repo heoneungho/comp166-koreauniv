@@ -1845,7 +1845,7 @@ public class ManagerSound {
 
  * 어플리케이션 소스 파일 압축 자료
 
-http://comp166-koreauniv.googlecode.com/files/MatchingGame (3).zip
+http://comp166-koreauniv.googlecode.com/files/MatchingGame(3).zip
 
 
  * 프로그램의 실행만을 원하시면 apk파일을 다운받아주세요.
