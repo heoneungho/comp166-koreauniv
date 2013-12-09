@@ -1,4 +1,6 @@
+#summary 기숙사 식당 어플, 안암학사에서 밥먹자!
 #labels 2013190720김건희
+
 http://comp166-koreauniv.googlecode.com/files/unnamed.png
 
 === 기숙사 식당을 이용하는 학생들을 위한 어플, ===
