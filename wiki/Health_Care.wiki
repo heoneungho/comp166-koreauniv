@@ -112,7 +112,9 @@ public class MainActivity extends Activity {
 
 			
 		});
-/* setonClickListener을 이용해서 이 버튼이 클릭이 발생했을 때 어떤 사건이 발생할 지 알려주는 코드입니다. 여기서는 Intent를 이용해서 새로운 Intent객체를 만들고 클릭이 발생했을 때 Intent를 이용해서 메인화면에서 breast라는 클래스로 화면이 이동하게 합니다. 밑에 나와있는 다른 5개의 코드도 같은 원리입니다.*/ 		
+/* setonClickListener을 이용해서 이 버튼이 클릭이 발생했을 때 어떤 사건이 발생할 지 알려주는 코드입니다. 
+여기서는 Intent를 이용해서 새로운 Intent객체를 만들고 클릭이 발생했을 때 Intent를 이용해서 메인화면에서 breast라는 클래스로 화면이 이동하게 합니다. 
+밑에 나와있는 다른 5개의 코드도 같은 원리입니다.*/ 		
 			
 			bt2.setOnClickListener(new OnClickListener(){
 				
