@@ -262,7 +262,8 @@ public class GameStart extends Activity {
 			public void onClick(View v)
 			{
 				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle1"); //Easy버튼을 누를시 "com.PocketPuzzle1"이라는 어플이 실행되도록 구동했습니다.
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle1"); 
+//Easy버튼을 누를시 "com.PocketPuzzle1"이라는 어플이 실행되도록 구동했습니다.
 				intent.setAction(Intent.ACTION_MAIN);
 				startActivity(intent);
 			}
@@ -273,7 +274,8 @@ public class GameStart extends Activity {
 			public void onClick(View v)
 			{
 				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle2"); //Normal버튼을 누를시 "com.PocketPuzzle2"이라는 어플이 실행되도록 구동했습니다.
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle2"); 
+//Normal버튼을 누를시 "com.PocketPuzzle2"이라는 어플이 실행되도록 구동했습니다.
 
 				intent.setAction(Intent.ACTION_MAIN);
 				startActivity(intent);
@@ -285,7 +287,8 @@ public class GameStart extends Activity {
 			public void onClick(View v)
 			{
 				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle3"); //Hard버튼을 누를시 "com.PocketPuzzle3"이라는 어플이 실행되도록 구동했습니다.
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle3"); 
+//Hard버튼을 누를시 "com.PocketPuzzle3"이라는 어플이 실행되도록 구동했습니다.
 
 				intent.setAction(Intent.ACTION_MAIN);
 				startActivity(intent);
@@ -297,7 +300,8 @@ public class GameStart extends Activity {
 			public void onClick(View v)
 			{
 				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle4"); //Very Hard버튼을 누를시 "com.PocketPuzzle4"이라는 어플이 실행되도록 구동했습니다.
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle4"); 
+//Very Hard버튼을 누를시 "com.PocketPuzzle4"이라는 어플이 실행되도록 구동했습니다.
 
 				intent.setAction(Intent.ACTION_MAIN);
 				startActivity(intent);
