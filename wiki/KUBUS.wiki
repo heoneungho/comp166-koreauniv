@@ -4,7 +4,8 @@
 = Introduction =
 
 학교 셔틀이 언제 올지 알려주는 아주 혁신적인 어플입니다. 
-http://code.google.com/p/comp166-koreauniv/downloads/detail?name=KUBUSicon.png&can=2&q=#makechanges
+
+http://code.google.com/p/comp166-koreauniv/downloads/detail?name=KUBUSicon.png&can=2&q=
 
 = Details =
 
