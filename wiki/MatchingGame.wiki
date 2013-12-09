@@ -87,6 +87,14 @@ http://comp166-koreauniv.googlecode.com/files/설정화면.png
 
  * 랭킹 리셋 버튼을 누르면 랭킹에 있던 목록이 모두 설정된 초기값으로 초기화된다.
 
-   
+== 카드의 종류별 게임 화면 ==
+
+
+http://comp166-koreauniv.googlecode.com/files/교수님카드.png
+
+http://comp166-koreauniv.googlecode.com/files/동물카드.png
+
+http://comp166-koreauniv.googlecode.com/files/숫자카드.png
+  
 
  
