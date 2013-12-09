@@ -13,6 +13,8 @@ Player1을 미현. Player2를 수현(동생ㅎ)이라고 하고 게임을 해보
 
 http://comp166-koreauniv.googlecode.com/files/Player1win.png Player1이 이길경우. http://comp166-koreauniv.googlecode.com/files/Player2win.png Player2가 이길경우. http://comp166-koreauniv.googlecode.com/files/Gamedraw.png 게임이 비길경우.
 
+자세히 보면 밑에 scoreboard에 1이 증가되는 것을 볼 수 있다.ㅎㅎ
+
 
 = 소스코드 =
 
