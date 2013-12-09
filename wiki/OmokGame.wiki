@@ -1,4 +1,5 @@
 #summary 오목게임
+#labels 2013190718장유리
 = Introduction =
 
 많은 사람들이 흔히 아는 오목게임 어플이다.
