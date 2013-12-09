@@ -1243,3 +1243,39 @@ http://comp166-koreauniv.googlecode.com/files/aaa.PNG/
 
 
 }}}
+
+*4.videoview 없는 단순한 xml들*
+
+이미지 뷰를 통해 운동정보를 제공하는 xml들입니다.
+소스코드는 다 동일하므로 이 역시 대표적인 xml(breast_1.xml)의 코드만 적었습니다.
+
+{{{
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+//이미지가 많이 있지 않는 한 위치 조정이 쉬운 Absoulute 레이아웃을 사용하는 
+것이 좋은 것 같습니다.
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AbsoluteLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/black" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/exercise" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="236dp"
+        android:layout_x="2dp"
+        android:layout_y="99dp"
+        android:src="@drawable/breastbigex" />
+   
+</AbsoluteLayout>
+
+}}}
