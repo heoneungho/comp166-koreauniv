@@ -839,7 +839,6 @@ public class Calendercheck
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
-{{{
 class StaticSuper{
 
 	static { //ststic 메소드. 딱 한번 실행됨.
@@ -878,9 +877,7 @@ static block 3
 in main
 super constructor
 constructor
-
 }}}
-
 = 11. 위험한 행동:예외처리  =
 
 *357p try/catch* _구현후 주석달기_
