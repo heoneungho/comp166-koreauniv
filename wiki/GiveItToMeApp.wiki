@@ -34,6 +34,101 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
 
 {{{
 
+package com.apk.GiveItToMe;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+
+public class Database extends SQLiteOpenHelper{
+	static final String DB = "DBscrooge.db";
+	static final String TABLE_SCROOGE = "scrooge";
+	static final int DB_VERSION = 1;
+	
+	// 테이블 생성 SQL
+	static final String CREATE_TABLE_SCROOGE =
+		"create table scrooge (" +
+		"_id integer primary key autoincrement, " +
+		"giveorget text not null, " +
+		"name text not null, " +
+		"phoneNum text not null, " +
+		"time text not null, " +
+		"money text not null);";
+	
+	// 테이블 삭제 SQL
+	static final String DROP_TABLE_SCROOGE = "drop table scrooge;";
+	
+	// 참고 열 이름 (scrooge)
+	static final String giveorget = "giveorget";
+	static final String name = "name";
+	static final String phoneNum = "phoneNum";
+	static final String time = "time";
+	static final String money = "money";
+	
+	public Database(Context context) {
+		super(context, DB, null, DB_VERSION);
+		// TODO Auto-generated constructor stub
+	}
+
+	// 데이터베이스를 새로 만든 다음 호출
+	public void onCreate(SQLiteDatabase db){
+		// 내부에 테이블 만들기
+		db.execSQL(CREATE_TABLE_SCROOGE);
+	}
+	
+	// 존재하는 데이터베이스로 정의하고 있는 버전이 다를 때
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+		db.execSQL(DROP_TABLE_SCROOGE);
+		onCreate(db);
+	}
+	
+	/*scrooge에 쓰이는 테이블에 접근하는 메서드*/
+	
+	// 추가
+	public void DBAdd(SQLiteDatabase db, String a, String b, String c, String d, String e){
+		ContentValues values = new ContentValues();
+		values.put(giveorget, a);
+		values.put(name, b);
+		values.put(phoneNum, c);
+		values.put(time, d);
+		values.put(money, e);
+		db.insert(TABLE_SCROOGE, null, values);
+	}
+	
+	// 수정
+	public void DBUpdate(SQLiteDatabase db, int a, String b, String c, String d, String e, String f){
+		db.execSQL("update scrooge set giveorget = '" + b + "', " +
+				"name = '" + c + "', " +
+				"phoneNum = '" + d + "', " +
+				"time = '" + e + "'" +
+				"money = '" + f + "'" +
+				"where _id = " + a + ";");
+	}
+	
+	// 모두 삭제
+	public void DBDel(SQLiteDatabase db){
+		db.execSQL("delete from scrooge;");
+	}
+	
+	// 삭제
+	public void DBDel(SQLiteDatabase db, int a){
+		db.execSQL("delete from scrooge where _id = " + a + ";");
+	}
+	
+	// 전체 행 커서 ID의 내림차순으로 호출
+	public Cursor fetchAll(SQLiteDatabase db){
+		return db.query(TABLE_SCROOGE, new String[] {BaseColumns._ID, 
+				giveorget, name, phoneNum, time, money},
+				null, null, null, null, "_id DESC");
+	}
+	
+}
+
+}}}
+
 === List.java ===
 
 {{{
