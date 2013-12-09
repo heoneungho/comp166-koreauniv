@@ -224,6 +224,7 @@ public class GameActivity extends Activity implements OnClickListener{
 	public static final int TURN_CARD_TIME=1500;
 	
 	GameManager GM;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -442,7 +443,11 @@ public class GameActivity extends Activity implements OnClickListener{
 }
 }}}
 
+ * 마지막에 기재된 참고 사이트에서 카드 게임의 논리를 참고했다. 논리만 참고하고 지난 1학기때 배운 C언어의 기본 개념을 최대한 활용하여 구성하였다. 핸드폰을 연결하여 계속해서 게임을 해보면서 동작을 제어하기 위한 변수를 하나씩 추가하면서 동작의 오류를 하나 하나 수정해나갔다.
 
+ * 일단 각 카드는 버튼으로 구성하여 터치를 인식할 수 있게 구성 하였고, 변수를 만들어 mod 계산을 통해 카드 자체를 난수 배열할 수 있는 구조로 짰다. 카드에 대한 정보는 난수 배열을 통해 얻은 수에 따라서 정보를 넘겨주게 하였다.
+
+ *  
 
 
 
