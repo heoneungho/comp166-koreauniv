@@ -265,7 +265,7 @@ import android.widget.ImageButton;
 
 
 public class breast extends Activity {
-    /** Called when the activity is first created. */
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -314,7 +314,258 @@ public class breast extends Activity {
        });
 }
 }
-/* 메인 클래스와 상당히 흡사합니다. 이 클래스는 단순히 사용자가 버튼 3개로 자신의 운동 단계를 선택하는 것을 목적으로 합니다. 
+/** 메인 클래스와 상당히 흡사합니다. 이 클래스는 단순히 사용자가 버튼 3개로 자신의 운동 단계를 선택하는 것을 목적으로 합니다. 
 따라서 이 클래스는 메인과 비슷하게 이미지 버튼을 설정해 주고 그 버튼이 클릭 될 때 Intent를 이용한 화면전환 사건이 일어나게 합니다.*/
+
+}}}
+
+나머지 동일한 4개의 코드는 주석을 생략합니다.
+
+{{{
+//Arm class
+
+package com.example.healthcare;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+
+
+public class arm extends Activity {
+    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    
+        setContentView(R.layout.breast);
+        
+        
+      
+    
+        ImageButton bt1 = (ImageButton) findViewById(R.id.imageButton1);
+        ImageButton bt2 = (ImageButton) findViewById(R.id.imageButton2);
+	ImageButton bt3 = (ImageButton) findViewById(R.id.imageButton3);
+    
+    
+   bt1.setOnClickListener(new OnClickListener()
+{
+			
+	@Override
+	public void onClick(View v){
+        Intent intetn1 = new Intent(arm.this, arm1.class);
+	startActivity(intetn1);
+
+					
+}
+
+			
+});
+		
+			
+   bt2.setOnClickListener(new OnClickListener(){
+				
+	@Override
+	public void onClick(View v){
+        Intent intetn2 = new Intent(arm.this, arm2.class);
+	startActivity(intetn2);
+
+					
+
+}
+});
+		
+				
+   bt3.setOnClickListener(new OnClickListener(){
+					
+	@Override
+	public void onClick(View v){
+        Intent intetn3 = new Intent(arm.this, arm3.class);
+	startActivity(intetn3);
+
+							
+
+}
+});
+}
+}
+
+}}}
+
+{{{
+//Below class
+
+package com.example.healthcare;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+
+
+
+
+public class below extends Activity {
+    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.below);
+        
+        
+    ImageButton bt1 = (ImageButton) findViewById(R.id.imageButton1);
+    ImageButton bt2 = (ImageButton) findViewById(R.id.imageButton2);
+    ImageButton bt3 = (ImageButton) findViewById(R.id.imageButton3);
+    
+    
+    bt1.setOnClickListener(new OnClickListener()
+{
+			
+    @Override
+    public void onClick(View v){
+    Intent intetn1 = new Intent(below.this, below1.class);
+    startActivity(intetn1);
+
+}
+});
+		
+			
+    bt2.setOnClickListener(new OnClickListener(){
+				
+    @Override
+    public void onClick(View v){
+    Intent intetn2 = new Intent(below.this, below2.class);
+    startActivity(intetn2);
+
+}
+});
+		
+				
+    bt3.setOnClickListener(new OnClickListener(){
+					
+    @Override
+    public void onClick(View v){
+    Intent intetn3 = new Intent(below.this, below3.class);
+    startActivity(intetn3);
+
+							
+
+}
+});
+}
+}
+
+}}}
+
+{{{
+//Heap Class
+
+public class heap extends Activity {
+    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.heap);
+        
+        
+    ImageButton bt1 = (ImageButton) findViewById(R.id.imageButton1);
+    ImageButton bt2 = (ImageButton) findViewById(R.id.imageButton2);
+    ImageButton bt3 = (ImageButton) findViewById(R.id.imageButton3);
+    
+    
+    bt1.setOnClickListener(new OnClickListener()
+{
+			
+    @Override
+    public void onClick(View v){
+    Intent intetn1 = new Intent(heap.this, heap1.class);
+    startActivity(intetn1);
+
+}
+});
+		
+			
+    bt2.setOnClickListener(new OnClickListener(){
+				
+    @Override
+    public void onClick(View v){
+    Intent intetn2 = new Intent(heap.this, heap2.class);
+    startActivity(intetn2);
+
+}
+});
+		
+				
+    bt3.setOnClickListener(new OnClickListener(){
+					
+    @Override
+    public void onClick(View v){
+    Intent intetn3 = new Intent(heap.this, heap3.class);
+    startActivity(intetn3);
+
+							
+
+}
+});
+}
+}
+
+}}}
+
+{{{
+//Back class
+public class back extends Activity {
+    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.back);
+        
+        
+    ImageButton bt1 = (ImageButton) findViewById(R.id.imageButton1);
+    ImageButton bt2 = (ImageButton) findViewById(R.id.imageButton2);
+    ImageButton bt3 = (ImageButton) findViewById(R.id.imageButton3);
+    
+    
+    bt1.setOnClickListener(new OnClickListener()
+{
+			
+    @Override
+    public void onClick(View v){
+    Intent intetn1 = new Intent(back.this, back1.class);
+    startActivity(intetn1);
+
+}
+});
+		
+			
+    bt2.setOnClickListener(new OnClickListener(){
+				
+    @Override
+    public void onClick(View v){
+    Intent intetn2 = new Intent(back.this, back2.class);
+    startActivity(intetn2);
+
+}
+});
+		
+				
+    bt3.setOnClickListener(new OnClickListener(){
+					
+    @Override
+    public void onClick(View v){
+    Intent intetn3 = new Intent(back.this, back3.class);
+    startActivity(intetn3);
+
+							
+
+}
+});
+}
+}
 
 }}}
