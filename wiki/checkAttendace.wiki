@@ -151,7 +151,7 @@ public class LectureList {
 			}
 
 			if (curLectureStatus.dailyAttendanceList.containsKey(date)) {
-				//현재 과목에서 해당 date의 출석부가 있으면 그 출석부를 가죠온다.
+				//현재 과목에서 해당 date의 출석부가 있으면 그 출석부를 가져온다.
 				curDailyAttendance = curLectureStatus.dailyAttendanceList
 						.get(date);
 			} else {
@@ -418,6 +418,191 @@ public class MainActivity extends Activity {
 
 * Wth.java
 
+{{{
+
+package com.example.attendancebook;
+
+import java.util.Locale;
+
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class Wth extends FragmentActivity implements ActionBar.TabListener {
+
+	/**
+	 * The {@link android.support.v4.view.PagerAdapter} that will provide
+	 * fragments for each of the sections. We use a
+	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+	 * will keep every loaded fragment in memory. If this becomes too memory
+	 * intensive, it may be best to switch to a
+	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+	 */
+	SectionsPagerAdapter mSectionsPagerAdapter;
+
+	/**
+	 * The {@link ViewPager} that will host the section contents.
+	 */
+	ViewPager mViewPager; 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_wth);
+
+		// Set up the action bar.
+		final ActionBar actionBar = getActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS); //Tab을 사용한다!
+
+		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setTitle("Check Attendance");
+
+		// Create the adapter that will return a fragment for each of the three
+		// primary sections of the app.
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getApplicationContext(), 
+				getSupportFragmentManager());
+
+		// Set up the ViewPager with the sections adapter.
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
+
+		// When swiping between different sections, select the corresponding
+		// tab. We can also use ActionBar.Tab#select() to do this if we have
+		// a reference to the Tab.
+		mViewPager
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						actionBar.setSelectedNavigationItem(position);
+					}
+				});
+
+		// For each of the sections in the app, add a tab to the action bar.
+		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+			// Create a tab with text corresponding to the page title defined by
+			// the adapter. Also specify this Activity object, which implements
+			// the TabListener interface, as the callback (listener) for when
+			// this tab is selected.
+			actionBar.addTab(actionBar.newTab()
+					.setText(mSectionsPagerAdapter.getPageTitle(i))
+					.setTabListener(this));
+		}
+
+	}
+
+
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//actionbar 부분
+		
+		Intent intent;
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		case R.id.Home: //Home버튼을 누르면 MainActivity로 이동한다
+			intent = new Intent(getBaseContext(), MainActivity.class);		
+			startActivity(intent);	
+			break;
+		case R.id.Add_stu: //Add_stu버튼을 누르면 학생추가화면(AddStudent)으로 이동한다
+			intent = new Intent(getBaseContext(), AddStudent.class);		
+			startActivity(intent);	
+			break;
+
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.wth, menu);//버튼들은 res/menu/wth에 있다
+		return true;
+	}
+
+	@Override
+	public void onTabSelected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+		// When the given tab is selected, switch to the corresponding page in
+		// the ViewPager.
+		mViewPager.setCurrentItem(tab.getPosition());
+	}
+
+	@Override
+	public void onTabUnselected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+	}
+
+	@Override
+	public void onTabReselected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+	}
+
+	/**
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+	 * one of the sections/tabs/pages.
+	 */
+	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+		Context mContext; //Tab형식이라 기존의 액티비티와는 좀 다름
+
+		public SectionsPagerAdapter(Context context, FragmentManager fm) {
+			super(fm);
+			mContext = context;
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			switch (position) {
+			case 0:
+				return new Student(mContext); //첫번째 탭은 Student 액티비티를 보여줌
+			case 1:
+				return new Student(mContext); //두번쨰 탭은 Result 액티비티를 보여줌. 현재 약간 오류가있어 임시적으로 Student에 연결함
+			case 2:
+				return new Assignment(mContext);//마지막 탭은 Assignment 액티비티를 보여줌
+			}
+			return null;
+		}
+		
+		@Override
+		public int getCount() {
+			// Show 3 total pages.
+			return 3;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			//Tab의 이름 지정
+			Locale l = Locale.getDefault();
+			switch (position) {
+			case 0:
+				return "Attendance";
+			case 1:
+				return "Result";
+			case 2:
+				return "Assignment";
+			}
+			return null;
+		}
+
+	}
+
+
+}
+
+}}}
 
 * Student.java(Attendance)
 **MyAdapter.java
