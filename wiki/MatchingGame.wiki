@@ -1838,6 +1838,21 @@ public class ManagerSound {
  * 핸들러를 이용한 타이머 참고 : http://androidmetro.blogspot.kr/2011/06/blog-post_23.html
 
  * 랭킹 사항 저장, 카드 변경 사항 저장, 사운드 세팅 및 변경 사항 등을 DB를 사용하지 않고 영속적으로 저장하기 위한 Shared Preferences 구성 참고 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://muzesong.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-SharedPreferences-%EA%B9%94%EB%81%94%ED%95%98%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
+
+= 어플리케이션 소스 파일 압축 자료 및 apk파일=
+
+
+ * 어플리케이션 소스 파일 압축 자료
+
+http://comp166-koreauniv.googlecode.com/files/MatchingGame (3).zip
+
+
+ * 프로그램의 실행만을 원하시면 apk파일을 다운받아주세요.
+
+
+
+
  
 
  
