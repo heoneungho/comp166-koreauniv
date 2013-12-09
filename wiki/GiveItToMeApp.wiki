@@ -9,6 +9,8 @@ _돈을 빌리거나 빌려줬을 때 이름, 전화번호, 시간, 가격을 �
 
 어플리케이션의 이름은 '돈 내놔!'의 느낌으로 'Give it to me'를 생각했고, 마침 씨스타의 노래 중 똑같은 제목의 노래가 있어 아이콘을 앨범 자켓에서 차용해옴
 
+
+
 = Details =
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
@@ -117,7 +119,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		va = new ValueAdapter(this, R.layout.giveittomelist_list, list);
 		lv.setAdapter(va);
 	}
-	private void init() { // 		*목록 보기*에서 빌려준 돈, 빌린 돈, 모두를 선택해서 볼 수 있음
+	private void init() { // *목록 보기*에서 빌려준 돈, 빌린 돈, 모두를 선택해서 볼 수 있음
 		// TODO Auto-generated method stub
 		linear = (LinearLayout)findViewById(R.id.linear);
 		select_mode = (TextView)findViewById(R.id.select_mode);
@@ -136,7 +138,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		rootin();
 	}
 
-	private void getValue() { // 		*목록 보기*에서 빌려준 돈, 빌린 돈, 모두를 선택해서 볼 수 있음
+	private void getValue() { // *목록 보기*에서 빌려준 돈, 빌린 돈, 모두를 선택해서 볼 수 있음
 		// TODO Auto-generated method stub 
 		linear.setVisibility(View.VISIBLE);
 		nocontent.setVisibility(View.GONE);
@@ -190,7 +192,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		}
 
 		public View getView(int position, View v, ViewGroup parent){
-			//View를 넘기기 위해서 layout 파일을 초기화 시켜야 함
+			// View를 넘기기 위해서 layout 파일을 초기화 시켜야 함
 			LayoutInflater li=
 				(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v=li.inflate(R.layout.giveittomelist_list, null);
@@ -230,24 +232,24 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		}
 	}
 
-	private void sendMessage(String a, String b) throws Exception{ // 		문자 보내기 기능
+	private void sendMessage(String a, String b) throws Exception{ // 문자 보내기 기능
 		// TODO Auto-generated method stub
 		SmsManager sms = SmsManager.getDefault();
 		sms.sendTextMessage(a, null, b, null, null);
 	}
 
-	//	옵션 메뉴
+	// 옵션 메뉴
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {	// 메뉴 옵션은 두 개를 만듦
+	public boolean onCreateOptionsMenu(Menu menu) {	// 메뉴 옵션은 두 개를 만듬
 		menu.add(1, 1, 1, "삭제하기");
 		menu.add(2, 2, 2, "모두삭제");
 		menu.add(3, 3, 3, "삭제취소");
 		return true;
 	}
 
-	//	옵션 메뉴 호출
+	// 옵션 메뉴 호출
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item){ // 		목록 삭제 기능
+	public boolean onOptionsItemSelected(MenuItem item){ // 목록 삭제 기능
 		if(item.getItemId() == 1){
 			Toast.makeText(this, "touch touch.", 1000).show();
 			deleteMode = true;
@@ -290,7 +292,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int posion, long posion_) { // 		문자 내용 설정
+	public void onItemClick(AdapterView<?> parent, View view, int posion, long posion_) { // 문자 내용 설정
 		// TODO Auto-generated method stub
 		ScroogeList.posion = posion;
 		
@@ -430,3 +432,78 @@ class Value{
 }
 
 }}}
+
+
+
+== 레이아웃 소개 ==
+
+
+== 구동 스크린 샷 ==
+
+*빌려주기* & *빌리기*
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-27-00.png
+
+빌려준 & 빌린 사람의 연락처를 주소록에서 불러올지, 새로 입력할지를 선택
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-27-17.png
+
+_주소록에서 불러오기_
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-27-29.png
+
+_새로 입력_
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-27-40.png
+
+_새로 입력_ 이름이 뭐에요?
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-28-17.png
+
+_새로 입력_ '이름' 입력
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-29-22.png
+
+_새로 입력_ 전화번호 뭐에요?
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-29-28.png
+
+_새로 입력_ '전화번호' 입력
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-29-35.png
+
+_새로 입력_ 시간을 적어줘요
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-29-59.png
+
+_새로 입력_ '년, 월, 일' 입력
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-30-09.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-30-22.png
+
+_새로 입력_ '시, 분, '오전&오후' 입력
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-30-34.png
+
+_새로 입력_ Show me the money
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-30-54.png
+
+_새로 입력_ '가격' 입력
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-31-02.png
+
+_새로 입력_ '저장 완료'
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
+http://comp166-koreauniv.googlecode.com/files/.png
