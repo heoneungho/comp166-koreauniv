@@ -77,7 +77,10 @@ public class MainActivity extends Activity {
         tv1.setText("Health Care!!! 단계적이고 체계적인 이 앱을 통해서 당신의 몸을 가꾸세요!!!");
 		((TextView) findViewById(R.id.textView1)).setSelected(true);
 
-/*onCreate메소드는 이 클래스가 실행되었을때 바로 실행되는 메소드를 말합니다. 뒤에 TextVIiew 에 대한 코드 설명은 뒤에서 하겠습니다.지금은 marquee를 쓰기 위해, 즉 문자열이 흐르는 기능을 보여주기 위해 써놓은 코드라고 간략하게 설명하고 넘어가겠습니다.*/ 
+/*onCreate메소드는 이 클래스가 실행되었을때 바로 실행되는 메소드를 말합니다. 
+뒤에 TextVIiew 에 대한 코드 설명은 뒤에서 하겠습니다.
+지금은 marquee를 쓰기 위해, 즉 문자열이 흐르는 기능을 보여주기 위해 써놓은 
+코드라고 간략하게 설명하고 넘어가겠습니다.*/ 
 
 		
 		ImageButton bt1 = (ImageButton) findViewById(R.id.imageButton1);
@@ -112,8 +115,10 @@ public class MainActivity extends Activity {
 
 			
 		});
-/* setonClickListener을 이용해서 이 버튼이 클릭이 발생했을 때 어떤 사건이 발생할 지 알려주는 코드입니다. 
-여기서는 Intent를 이용해서 새로운 Intent객체를 만들고 클릭이 발생했을 때 Intent를 이용해서 메인화면에서 breast라는 클래스로 화면이 이동하게 합니다. 
+/* setonClickListener을 이용해서 이 버튼이 클릭이 발생했을 때 
+어떤 사건이 발생할 지 알려주는 코드입니다. 
+여기서는 Intent를 이용해서 새로운 Intent객체를 만들고 클릭이 발생했을 때 
+Intent를 이용해서 메인화면에서 breast라는 클래스로 화면이 이동하게 합니다. 
 밑에 나와있는 다른 5개의 코드도 같은 원리입니다.*/ 		
 			
 			bt2.setOnClickListener(new OnClickListener(){
@@ -123,7 +128,7 @@ public class MainActivity extends Activity {
 			    	
 			    	
 						
-						//페이지 이동 구문
+					
 						Intent intetn2 = new Intent(MainActivity.this, heap.class);
 						startActivity(intetn2);
 
@@ -141,7 +146,7 @@ public class MainActivity extends Activity {
 				    	
 				    	
 							
-							//페이지 이동 구문
+							
 							Intent intetn3 = new Intent(MainActivity.this, below.class);
 							startActivity(intetn3);
 
@@ -158,7 +163,7 @@ public class MainActivity extends Activity {
 					    	
 					    	
 								
-								//페이지 이동 구문
+								
 								Intent intetn4 = new Intent(MainActivity.this, arm.class);
 								startActivity(intetn4);
 
@@ -175,7 +180,7 @@ public class MainActivity extends Activity {
 						    	
 						    	
 									
-									//페이지 이동 구문
+									
 									Intent intetn5 = new Intent(MainActivity.this, back.class);
 									startActivity(intetn5);
 
@@ -191,7 +196,7 @@ public class MainActivity extends Activity {
 								@Override
 								public void onClick(View v)
 								{
-					                    //페이지 이동 구문
+					                    
 										Intent intetn6 = new Intent(MainActivity.this, run.class);
 										startActivity(intetn6);
 										
