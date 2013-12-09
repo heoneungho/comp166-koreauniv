@@ -850,3 +850,4 @@ CarActivity.java와 activity_car.xml코드와 이미지(차량의 이미지)만 
  * http://android-town.org/
  * 프로세스와 쓰레드 - http://blog.naver.com/PostView.nhn?blogId=ghostlast2&logNo=125619058
  * 자동차 image - http://www.canstockphoto.co.kr/illustration/truck-car.html
+
