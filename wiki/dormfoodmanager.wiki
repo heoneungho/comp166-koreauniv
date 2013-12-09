@@ -46,6 +46,7 @@ _불편했던 점, 개선하고 싶은 점._
 == class ==
 
 http://comp166-koreauniv.googlecode.com/files/클래스.png
+(↑깨알 만든이 guni(거니)라고 적어봤는데 짤렸네요..ㅠㅠ)
 
 클래스는 총 6개입니다.
  
