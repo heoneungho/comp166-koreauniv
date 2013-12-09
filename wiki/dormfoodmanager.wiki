@@ -120,7 +120,7 @@ activity_main.xml
         android:layout_height="match_parent"
         android:layout_weight="1.32"
         android:scaleType="fitXY"
-        android:src="@drawable/main" />
+        android:src="@drawable/main" /> //파워포인트를 이용하여 이미지를 만들고, 이미지뷰를 사용하여 넣었습니다.
 
 </LinearLayout>
 }}}
