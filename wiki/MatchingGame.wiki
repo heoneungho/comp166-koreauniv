@@ -945,10 +945,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class ManagerPreference {
-	private static ManagerPreference singleton = null; // Preference 관리자는 하나만
-														// 있다는 뜻, 객체가 해당 정보를 가지고
-														// 있어야하므로 생성한 뒤 계속 살아있게
-														// 한 것이다.
+	private static ManagerPreference singleton = null; // Preference 관리자는 하나만 있다는 뜻, 객체가 해당 정보를 가지고 있어야하므로 생성한 뒤 계속 살아있게 한 것이다.
 	private static SharedPreferences prefs = null; // 실제 관리하는 sharedPreference
 	private static final String TEMP_NAME = "나잡아봐라";
 
@@ -1094,9 +1091,9 @@ import android.content.Context;
 import android.media.MediaPlayer;
 
 public class ManagerSound {
-	private static ManagerSound singleton = null; // 노래 관리자는 어플단에서 하나만 써야하기 때문에
-													// 싱글톤으로 구현하였음.
-	private static MediaPlayer mPlayer = null; // 실제 음악을 재생하는 Media Player
+	private static ManagerSound singleton = null; // 노래 관리자는 어플단에서 하나만 써야하기 때문에싱글톤으로 구현하였음.
+
+													 	private static MediaPlayer mPlayer = null; // 실제 음악을 재생하는 Media Player
 
 	/**
 	 * 맨 처음 노래를 로드하는 함수 버퍼링
@@ -1124,7 +1121,6 @@ public class ManagerSound {
 			mPlayer = MediaPlayer.create(context, R.raw.sound); // mPlayer가 혹시
 																// 안만들어졌을 경우
 																// 만들어주는 함수,
-																// 일반적으로는 안들어간다.
 		}
 		mPlayer.start();
 	}
