@@ -90,9 +90,9 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 	String giveorget = "";			// 빌렸거나 or 빌려주었거나
 	String giveorget_ = "";			// 값을게요 or 갚아주세요
 
-	@Override 		//Android ActionProvider를 이용한 액션바 아이템 액션에 대한 커스텀뷰 생성
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+	@Override 
+	protected void onCreate(Bundle savedInstanceState) { //http://unikys.tistory.com/276 참고
+		//TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.giveittomelist);
 
