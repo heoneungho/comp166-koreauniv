@@ -9,8 +9,8 @@
 
 = Details =
 
-=== 소스 코드 ===
-
+=== MainActivity.java ===
+{{{
 package com.example.racingapp;
 
 import android.app.Activity;
@@ -83,10 +83,10 @@ public class MainActivity extends Activity {
 	}
 
 }
-
+}}}
 
 === CarActivity.java ===
-
+{{{
 package com.example.racingapp;
 
 import android.app.Activity;
@@ -403,10 +403,11 @@ public class CarActivity extends Activity {
 		}
 	};
 }
-
+}}}
 
 
 === activity_car.xml ===
+{{{
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -706,3 +707,4 @@ public class CarActivity extends Activity {
     </LinearLayout>
 
 </RelativeLayout>
+}}}
