@@ -1562,9 +1562,33 @@ public class FontApplication extends Application {
 
 
 = Resources =
+기타 애니메이션 xml, 폰트, 사용된 이미지 등↓
+http://comp166-koreauniv.googlecode.com/files/resources.zip
 
 
 = Screenshot =
 
 <b>Main Title</b><br>
-<img src="http://comp166-koreauniv.googlecode.com/files/sp_main.png" width="300px" height="400px"><br><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_main.png" width="300px" height="450px"><br><br>
+
+<b>How to Play</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_explain.png" width="300px" height="450px"><br><br>
+
+<b>Player Set</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_playerset.png" width="300px" height="450px"><br><br>
+
+<b>Gaming</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_game.png" width="300px" height="450px"><br><br>
+
+<b>Win</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_win.png" width="300px" height="450px"><br><br>
+
+<b>Lose</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_lose.png" width="300px" height="450px"><br><br>
+
+<b>End</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_end.png" width="300px" height="450px"><br><br>
+
+<b>Email</b><br>
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_email.png" width="300px" height="450px">
+<img src="http://comp166-koreauniv.googlecode.com/files/sp_selectemail.png" width="300px" height="450px"><br><br>
