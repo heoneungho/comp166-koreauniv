@@ -8,8 +8,19 @@
 
 = Details =
 
+http://comp166-koreauniv.googlecode.com/files/슌1.png
 
 어플을 실행시키면 위와 같은 화면이 초기화면으로 뜬다.
+
+http://comp166-koreauniv.googlecode.com/files/슌2.png
+
+http://comp166-koreauniv.googlecode.com/files/슌3.png
+
+http://comp166-koreauniv.googlecode.com/files/슌4.png
+
+http://comp166-koreauniv.googlecode.com/files/슌5.png
+
+http://comp166-koreauniv.googlecode.com/files/슌6.png
 
 
 = 출처 =
