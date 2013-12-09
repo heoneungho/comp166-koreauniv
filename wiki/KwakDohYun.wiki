@@ -50,7 +50,11 @@
 
 [*http://suein1209.tistory.com/546 가로화면 구현]
 
-https://code.google.com/p/comp166-koreauniv/downloads/detail?name=bookpic.png&can=2&q=#makechanges 헬로 안드로이드 책 사용
+https://code.google.com/p/comp166-koreauniv/downloads/detail?name=bookpic.png&can=2&q=#makechanges
+
+
+헬로 안드로이드 책 참조
+
 
 =main.xml=
 
