@@ -43,7 +43,8 @@ http://comp166-koreauniv.googlecode.com/files/상미메인.png
 
 * 출결관리
 
-http://comp166-koreauniv.googlecode.com/files/상미출석.png http://comp166-koreauniv.googlecode.com/files/상미출석날짜.png
+http://comp166-koreauniv.googlecode.com/files/상미출석.png 
+http://comp166-koreauniv.googlecode.com/files/상미출석날짜.png
 
 과목 선택후 맨 첫번째 탭이 선택된 상태에서 들어온다.
 순서대로 [출석 - 결과 - 과제]이다.
