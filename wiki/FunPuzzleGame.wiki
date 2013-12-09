@@ -11,3 +11,7 @@
 HOW TO PLAY 버튼을 누를 경우 나오게 되는 화면입니다.
 
 [http://comp166-koreauniv.googlecode.com/files/게임시작메뉴.jpg] 메인메뉴에서 GAME START 버튼을 누를 경우 나오게 되는 화면입니다. 난이도를 Easy, Normal, Hard, Very Hard 네 단계로 나누었습니다. 
+
+[http://comp166-koreauniv.googlecode.com/files/이지모드시작전.jpg] 난이도를 Easy로 선택했을 때 뜨는 화면입니다.
+
+[http://comp166-koreauniv.googlecode.com/files/이지모드시작후.jpg] 게임시작버튼을 클릭했을 때 퍼즐조각이 섞인 화면입니다.
