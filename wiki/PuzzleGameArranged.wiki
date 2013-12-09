@@ -15,7 +15,7 @@ Add your content here.  Format your content with:
 
 우선, 그림을 준비합니다. 그리고 칸을 나눔니다 ...
 
-5x5 또는 7x7 난이도는 노말에서 어려움이겠죠 ?
+4x4로 설정하겠습니다.
 
 그리고 x축 y축 대각선 / 방향으로 클릭 기능을 설정합니다.
 
