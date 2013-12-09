@@ -32,6 +32,8 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
 
 === Database.java ===
 
+어플케이션의 기본이 되는 DB 관련 class
+
 {{{
 
 package com.apk.GiveItToMe;
@@ -125,6 +127,186 @@ public class Database extends SQLiteOpenHelper{
 				null, null, null, null, "_id DESC");
 	}
 	
+}
+
+}}}
+
+
+=== Help.java ===
+
+package com.apk.GiveItToMe;
+
+import com.apk.giveittome.R;
+
+import android.app.Activity;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class Help extends Activity{
+	
+	Typeface font;
+	TextView help_text;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.giveittome_help);
+		
+		init();
+		
+		help_text.setText("Give It To Me\n\n" +
+				"돈을 빌리거나 빌려줬을 때 이름, 전화번호, 시간, 가격을 기록한 뒤 안내 문자나 전화를 보내는 어플\n\n" + 
+				"Show Me The Money");
+	}
+
+	private void init() {
+		// TODO Auto-generated method stub
+		help_text = (TextView)findViewById(R.id.help_help_text);
+		font = Typeface.createFromAsset(getAssets(), "MOM.otf");
+		help_text.setTypeface(font);
+	}
+}
+
+
+== Main.java ==
+
+{{{
+
+package com.apk.GiveItToMe;
+
+import com.apk.giveittome.R;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+
+public class Main extends Activity implements OnClickListener {
+    /** Called when the activity is first created. */
+	
+	ImageView main_give, main_get, main_list, main_help, main_exit;
+	String putString = "";
+	AlertDialog.Builder ad;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.giveittome_main);
+        
+        init();
+        setEvent();
+	}
+
+	private void init() {
+		// TODO Auto-generated method stub
+		main_give = (ImageView)findViewById(R.id.main_give);
+		main_get = (ImageView)findViewById(R.id.main_get);
+		main_list = (ImageView)findViewById(R.id.main_list);
+		main_help = (ImageView)findViewById(R.id.main_help);
+		main_exit = (ImageView)findViewById(R.id.main_exit);
+	}
+	
+	private void setEvent() {
+		// TODO Auto-generated method stub
+		main_give.setOnClickListener(this);
+		main_get.setOnClickListener(this);
+		main_list.setOnClickListener(this); 
+		main_help.setOnClickListener(this);
+		main_exit.setOnClickListener(this);
+	}
+	
+	private void startIntent(String a, String b){
+		Intent intent = new Intent();
+		intent.setClassName(Main.this, "com.apk.giveittome." + a);
+		intent.putExtra("giveorget", b);
+		startActivity(intent);
+	}
+
+	@Override
+	public void onClick(View view) {
+		// TODO Auto-generated method stub
+		if(view == main_give){
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("불러오기");
+			ad.setIcon(R.drawable.giveittomeicon);
+			ad.setMessage("어떻게 불러오시겠습니까?");
+			ad.setPositiveButton("주소록에서 불러오기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					startIntent("MoneyContacts", "give");
+				}
+			});
+			ad.setNegativeButton("새로 입력하기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					startIntent("MoneyActivity", "give");
+				}
+			});
+			ad.show();
+		}
+		else if(view == main_get){
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("불러오기");
+			ad.setIcon(R.drawable.giveitomeicon);
+			ad.setMessage("어떻게 불러오시겠습니까?");
+			ad.setPositiveButton("주소록에서 불러오기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					startIntent("MoneyContacts", "get");
+				}
+			});
+			ad.setNegativeButton("새로 입력하기", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					startIntent("MoneyActivity", "get");
+				}
+			});
+			ad.show();
+		}
+		else if(view == main_list){
+			startIntent("List","");
+		}
+		else if(view == main_help){
+			startIntent("Help","");
+		}
+		else if(view == main_exit){ 
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("종료하기");
+			ad.setIcon(R.drawable.giveittomeicon);
+			ad.setMessage("종료하시겠습니까?");
+			ad.setPositiveButton("네", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					java.lang.System.exit(0);
+				}
+			});
+			ad.setNegativeButton("아니오", null);
+			ad.show();
+		}
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		switch(keyCode){
+		case KeyEvent.KEYCODE_BACK:
+			ad = new AlertDialog.Builder(this);
+			ad.setTitle("종료하기");
+			ad.setIcon(R.drawable.giveittomeicon);
+			ad.setMessage("종료하시겠습니까?");
+			ad.setPositiveButton("네", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					java.lang.System.exit(0);
+				}
+			});
+			ad.setNegativeButton("아니오", null);
+			ad.show();
+			break;
+		}
+		return true;
+	}
 }
 
 }}}
