@@ -707,4 +707,4 @@ _/ [http://mainia.tistory.com/506 구글에서 gmail이용한 메일보내기 �
 
 클릭하시면 apk파일을 다운로드 하실 수 있습니다.
 
-*[http://comp166-koreauniv.googlecode.com/files/AnamDorm_food[1].apk 긱사식당어플, 안암학사에서 밥먹자!! 최종apk파일 다운]*
+* http://comp166-koreauniv.googlecode.com/files/AnamDorm_food[1].apk *
