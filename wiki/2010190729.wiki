@@ -1414,28 +1414,71 @@ class SimUnit{
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: 클래스의 인스턴스 없이 메소드 실행가능. 클래스만있으면 됨.
+ * 정적 메소드를 선언하는 방법: method에 static을 붙임
+ * static final: 상수. 그값을 바꾸는 것이 불가능
+ * 널 레퍼런스: 아무 것도 가르키지 않는것. 레퍼런스에 NULL
+ * 오토 박싱:  옛 버전에서는 원시변수와 객체 레퍼선스가 엄격하게 구분되어 있었기에 절대로 서로 맞바꿔 사용이 불가능했지만 오토박싱을 통해 경계를 없앨수 있다.
+ * 정적 임포트: 정적 임포트를 사용하면 코드를 짧게 쓸 수 있다. 
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
-
+public Class Calendar   {
+        public static void main(String[] args)  {
+                Calendar c = Calendar.getInstance();
+                c.set(2013,12,25,00,00); //2013.12.25. 00:00로 set
+                long day1 = c.getTimeInMillis(); //밀리초 단위로 표현한 값을 리턴
+                day += 1000 * 60 * 60;
+                c.setTimeInMillis(day1); // 한 시간에 해당하는 밀리초 만큼의 시간더하고 시각을 갱신
+                System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35); //35일을 더함
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35); //35일 뒤로 넘김 
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1); //날짜를 1로 설정
+                System.out.println("set to 1" + c.getTime());
+        }
+}
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 정적 변수는 상수에 불과, 정적 변수는 객체지향적이지 않으며, 전역 변수와 다를 바 없다. 정적 메소드는 프로그래머가 고유한 객체의 상태를 바탕으로 객체가 어떤 식으로 일을 처리하는지를 생각할 때 쓰는 것이 아니고 프로시저 위주로 생각할 때 쓴다.
+ * 지역 변수: API에 정적 변수가 많다, 상수만 들어있는 클래스도 있다. SwingConstants 같은 클래스에는 상수만 가득하다. Color 클래스는 파란, 보라, 하얀, 빨간색 같은 색을 상수로 지정했다. System.out의 out은 System 클래스의 정적 변수이다. 정적 변수는 클래스마다 하나씩 존재한다. 정적 변수는 클래스 안에서 살고 있고, 객체지향적이며, 한 클래스 내의 모든 인스턴스에 의해 공유된다. 또한, 시스템에 필수적인 것이 있다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{
 
+        static { 
+        System.out.println("super static block");
+        }
+
+        StaticSuper() { //생성자
+        System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper {
+
+        static int rand; 
+
+        static { 
+        rand=(int_ (Math.random()*6);
+        System.out.println("static block " + rand);
+        }
+
+        StaticTests(){ 
+        System.out.println("constructor");
+        {
+
+        public static void main(String [] args) {
+        System.out.println("in main");
+        StaticTests st = new StaticTests ();// 인스턴스 생성
+        }
+}
 }}}
 
 = 11. 위험한 행동:예외처리  =
@@ -1443,7 +1486,27 @@ class SimUnit{
 *357p try/catch* _구현후 주석달기_
 
 {{{
+예외처리 구현을 위한 클래스 Exception
 
+public class Exception {
+        public static void main(String[] args) {
+                
+                public void takeRisk() throws BadException{ // BadException을 throw
+                        if(abandonAllHope){
+                                throw new BadException(); // 새로운 Exception객체
+                        }
+                }
+                
+                public void crossFigners(){
+                        try{
+                                anObject.takeRisk();
+                        }catch(BadException ex){
+                                System.out.println("Aaargh!");
+                                ex.printStackTrace(); //스택 트레이스 출력
+                        }
+                }
+        }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
