@@ -991,3 +991,31 @@ public class run extends Activity {
 }
 
 }}}
+
+다음은 *나는 class다 고로 존재한다*는 class들입니다.
+즉 말그대로 존재를 위한 class들입니다.
+
+{{{
+//breast_1 class
+
+package com.example.healthcare;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+
+public class breast_1 extends Activity{
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+         setContentView(R.layout.breast_1);
+        
+}
+}
+
+/*정말 존재만 합니다.*/
+}}}
+
+나머지 클래스들도 모두 동일한 코드를 가지고 있으므로 이 쓸모없는 클래스들은
+특별히 생략하겠습니다.
