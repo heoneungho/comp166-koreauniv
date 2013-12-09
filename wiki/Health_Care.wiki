@@ -1361,13 +1361,15 @@ http://comp166-koreauniv.googlecode.com/files/aaaa.PNG/
 
 http://comp166-koreauniv.googlecode.com/files/a6.jpg/
 
-http://comp166-koreauniv.googlecode.com/files/a5.jpg/
-
-http://comp166-koreauniv.googlecode.com/files/a3.jpg/
+시작 화면입니다. 밑에 textview가 흐르고 있습니다.
 
 http://comp166-koreauniv.googlecode.com/files/a4.jpg/
 
+운동 단계를 선택하는 화면입니다.
+
+http://comp166-koreauniv.googlecode.com/files/a3.jpg/
+
+http://comp166-koreauniv.googlecode.com/files/a5.jpg/
+
 http://comp166-koreauniv.googlecode.com/files/a2.jpg/
-
-
 
