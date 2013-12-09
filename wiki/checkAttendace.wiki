@@ -78,7 +78,9 @@ public class MainActivity extends Activity {
 		BufferedReader reader;
 
 		try {
-
+// 프로그램을 실행하자마자 다음 함수들이 실행됨.
+// Lecture, Student, Attendance, Assignment 정보들을 Load함
+			
 			LectureList.InitDirectory();
 
 			LectureList.LoadLecture();
@@ -94,22 +96,24 @@ public class MainActivity extends Activity {
 		list = new ArrayList<String>();
 		for (Entry<String, LectureStatus> entry : LectureList.list.entrySet()) {
 			list.add(entry.getKey());
-		}
+		}//Lecture 목록들을 불러옴
 
 		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, list);
+				android.R.layout.simple_list_item_1, list);//어댑터 생성
 
 		ListView listView = (ListView) findViewById(R.id.listView1);
-		listView.setAdapter(adapter);
+		listView.setAdapter(adapter);//리스트에 어댑터를 지정해준다
 
 		listView.setOnItemClickListener(new OnItemClickListener() {
+			//리스트에 있는 항목을 클릭하면 해당 lecture로 이동한다
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					final int pos, long id) {
-				String lec = list.get(pos);
-				LectureList.curLectureStatus = LectureList.list.get(lec);
+					final int pos, long id) {//위치를 받고
+				String lec = list.get(pos);//그 위치의 리스트에 있는 lecture
+				LectureList.curLectureStatus = LectureList.list.get(lec); 
+				//앞으로 curLectureStatus 즉 현재 과목상태를 리스트에서 선택한 것으로 지정해준다!
 
-				Intent intent = new Intent(getBaseContext(), Wth.class);
+				Intent intent = new Intent(getBaseContext(), Wth.class);//화면이동
 				intent.putExtra("pos", pos);
 				startActivity(intent);
 			}
@@ -126,12 +130,12 @@ public class MainActivity extends Activity {
 					// 추가 버튼
 					if (et.getText().length() != 0) {
 						lecName = et.getText().toString();
-						list.add(lecName);
+						list.add(lecName);//입력한 문자열, 즉 과목을 리스트에 추가한다
 
 						et.setText("");
 						adapter.notifyDataSetChanged();
-						try {
-							LectureList.list.put(lecName,new LectureStatus());
+						try {//추가한 것을 txt파일에 저장함. 앞으로 껐다키면 수정한 사항이 반영됨
+							LectureList.list.put(lecName,new LectureStatus()); 
 							LectureList.SaveLecture();
 						} catch (Exception e) {
 
@@ -145,7 +149,6 @@ public class MainActivity extends Activity {
 
 	}
 }
-
 }}}
 
 * Wth.java
