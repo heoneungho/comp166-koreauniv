@@ -377,7 +377,7 @@ public class CarActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 
-			// RESET
+			// 다시시작
 			case R.id.btn1:
 
 				// 초기화
@@ -385,7 +385,7 @@ public class CarActivity extends Activity {
 				btn2.setEnabled(true);
 				break;
 
-			// START
+			// 시작하기
 			case R.id.btn2:
 
 				// 버튼 비활성화
