@@ -244,3 +244,9 @@ information 혹은 word 라는 클래스로 화면이 이동하게 됩니다.*/
 }
  
 }}}
+
+다음은 메인 화면에서 넘어가 다음 화면을 맡게 될 클래스들입니다.
+
+먼저 비슷한 5개의 클래스(Breast,Arm.Below,Heap,Back class)를 살펴보겠습니다.
+
+*2.Breast,Arm.Below,Heap,Back class*
