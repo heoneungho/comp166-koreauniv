@@ -1374,3 +1374,8 @@ http://comp166-koreauniv.googlecode.com/files/a5.jpg/
 사용자는 동영상을 볼 수 있습니다.
 
 http://comp166-koreauniv.googlecode.com/files/a2.jpg/
+
+
+==추가적인 기능==
+
+<wiki:video url="http://www.youtube.com/watch?v=zgyUbCxToUw&feature=youtu.be"/>
