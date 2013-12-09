@@ -30,10 +30,11 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-26-51.png
 == Class 소개 ==
 
 
-=== 메인 클래스 ===
+=== Database.java ===
 
+{{{
 
-=== List class ===
+=== List.java ===
 
 {{{
 
@@ -514,7 +515,7 @@ _빌려준 돈_
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-32-55.png
 
 빌려준 & 빌린 사람에게 전화하기 & 문자하기 & 취소하기를 선택
- 
+
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-33-48.png
 
 _전화하기_
