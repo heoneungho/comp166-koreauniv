@@ -322,3 +322,6 @@ public class MenuActivity extends Activity {
 }}}
 
 =RESULT=
+==1. 성별&이름입력==
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-29-41.png
