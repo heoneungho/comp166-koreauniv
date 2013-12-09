@@ -18,7 +18,7 @@ http://comp166-koreauniv.googlecode.com/files/KUBUSicon.png
 http://comp166-koreauniv.googlecode.com/files/Main.jpg
 
 *xml 
-
+{{{
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -132,3 +132,4 @@ http://comp166-koreauniv.googlecode.com/files/Main.jpg
         android:text="		" />
 
 </RelativeLayout>
+}}}
