@@ -36,16 +36,56 @@ http://comp166-koreauniv.googlecode.com/files/클래스.png
 
 클래스는 총 6개입니다.
  
-# 메인화면 - MainActivity
-# 메뉴화면 - Information
-# 공지사항 - Inform
-# 오늘의메뉴 - Menu
-# 개인식수 - Number
-# 건의사항 - Talk
+ # 메인화면 - MainActivity
+ # 메뉴화면 - Information
+ # 공지사항 - Inform
+ # 오늘의메뉴 - Menu
+ # 개인식수 - Number
+ # 건의사항 - Talk
 
 == 메인화면 ==
 
 http://comp166-koreauniv.googlecode.com/files/main.jpg
+
+MainActivity.java
+{{{
+package com.example.anamdorm_food;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity {
+
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		ImageView button = (ImageView) findViewById(R.id.imageView1);
+                // 배경전체를 이미지뷰로 넣어 다음화면 이동을 위한 버튼으로 설정하였습니다.
+		button.setOnClickListener(new View.OnClickListener() {
+	        public void onClick(View v) {
+	        		Log.i("onClick","Information");
+	                Intent intent = new Intent(getBaseContext(), Information.class);
+	                startActivity(intent);
+	        }
+	}); //클릭하면 Information 클래스로 넘어갑니다.
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
+}}}
 
 == 메뉴 ==
 
