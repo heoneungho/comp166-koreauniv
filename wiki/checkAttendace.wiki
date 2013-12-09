@@ -24,7 +24,7 @@
 
 후에 유고결석인 학생을 추가로 수정할 수 있음.
 
-http://comp166-koreauniv.googlecode.com/files/Player1win.png
+http://comp166-koreauniv.googlecode.com/files/상미클래스.png
 
 
 http://comp166-koreauniv.googlecode.com/files/상미클래스.PNG/
