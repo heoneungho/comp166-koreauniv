@@ -44,13 +44,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
 public class Database extends SQLiteOpenHelper{
-	static final String DB = "DBscrooge.db";
-	static final String TABLE_SCROOGE = "scrooge";
+	static final String DB = "DBgiveittome.db";
+	static final String TABLE_GIVEITTOME = "giveittome";
 	static final int DB_VERSION = 1;
 	
 	// 테이블 생성 SQL
-	static final String CREATE_TABLE_SCROOGE =
-		"create table scrooge (" +
+	static final String CREATE_TABLE_GIVEITTOME =
+		"create table giveittome (" +
 		"_id integer primary key autoincrement, " +
 		"giveorget text not null, " +
 		"name text not null, " +
@@ -59,9 +59,9 @@ public class Database extends SQLiteOpenHelper{
 		"money text not null);";
 	
 	// 테이블 삭제 SQL
-	static final String DROP_TABLE_SCROOGE = "drop table scrooge;";
+	static final String DROP_TABLE_GIVEITTOME = "drop table giveittome;";
 	
-	// 참고 열 이름 (scrooge)
+	// 참고 열 이름 (giveittome)
 	static final String giveorget = "giveorget";
 	static final String name = "name";
 	static final String phoneNum = "phoneNum";
@@ -76,16 +76,16 @@ public class Database extends SQLiteOpenHelper{
 	// 데이터베이스를 새로 만든 다음 호출
 	public void onCreate(SQLiteDatabase db){
 		// 내부에 테이블 만들기
-		db.execSQL(CREATE_TABLE_SCROOGE);
+		db.execSQL(CREATE_TABLE_GIVEITTOME);
 	}
 	
 	// 존재하는 데이터베이스로 정의하고 있는 버전이 다를 때
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-		db.execSQL(DROP_TABLE_SCROOGE);
+		db.execSQL(DROP_TABLE_GIVEITTOME);
 		onCreate(db);
 	}
 	
-	/*scrooge에 쓰이는 테이블에 접근하는 메서드*/
+	/*giveittome에 쓰이는 테이블에 접근하는 메서드*/
 	
 	// 추가
 	public void DBAdd(SQLiteDatabase db, String a, String b, String c, String d, String e){
@@ -95,12 +95,12 @@ public class Database extends SQLiteOpenHelper{
 		values.put(phoneNum, c);
 		values.put(time, d);
 		values.put(money, e);
-		db.insert(TABLE_SCROOGE, null, values);
+		db.insert(TABLE_GIVEITTOME, null, values);
 	}
 	
 	// 수정
 	public void DBUpdate(SQLiteDatabase db, int a, String b, String c, String d, String e, String f){
-		db.execSQL("update scrooge set giveorget = '" + b + "', " +
+		db.execSQL("update giveittome set giveorget = '" + b + "', " +
 				"name = '" + c + "', " +
 				"phoneNum = '" + d + "', " +
 				"time = '" + e + "'" +
@@ -110,17 +110,17 @@ public class Database extends SQLiteOpenHelper{
 	
 	// 모두 삭제
 	public void DBDel(SQLiteDatabase db){
-		db.execSQL("delete from scrooge;");
+		db.execSQL("delete from giveittome;");
 	}
 	
 	// 삭제
 	public void DBDel(SQLiteDatabase db, int a){
-		db.execSQL("delete from scrooge where _id = " + a + ";");
+		db.execSQL("delete from giveittome where _id = " + a + ";");
 	}
 	
 	// 전체 행 커서 ID의 내림차순으로 호출
 	public Cursor fetchAll(SQLiteDatabase db){
-		return db.query(TABLE_SCROOGE, new String[] {BaseColumns._ID, 
+		return db.query(TABLE_GIVEITTOME, new String[] {BaseColumns._ID, 
 				giveorget, name, phoneNum, time, money},
 				null, null, null, null, "_id DESC");
 	}
@@ -358,9 +358,9 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 			ad.setPositiveButton("삭제하기", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
 					con.DBDel(db);
-					Toast.makeText(ScroogeList.this, "삭제완료", 100).show();
+					Toast.makeText(List.this, "삭제완료", 100).show();
 					getValue();
-					va = new ValueAdapter(ScroogeList.this, R.layout.scroogelist_list, list);
+					va = new ValueAdapter(List.this, R.layout.giveittomelist_list, list);
 					lv.setAdapter(va);
 				}
 			});
@@ -390,9 +390,9 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int posion, long posion_) { // 문자 내용 설정
 		// TODO Auto-generated method stub
-		ScroogeList.posion = posion;
+		List.posion = posion;
 		
-		if(list.get(ScroogeList.posion).getGiveOrGet().equals("빌려준 돈")){
+		if(list.get(List.posion).getGiveOrGet().equals("빌려준 돈")){
 			giveorget = "저에게 빌리셨으니, ";
 			giveorget_ = "갚아주세요";
 		}
@@ -403,25 +403,25 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		if(!deleteMode){			// 일반모드일 때
 			ad = new AlertDialog.Builder(this);
 			ad.setTitle("연락하기");
-			ad.setIcon(R.drawable.scroogeicon);
+			ad.setIcon(R.drawable.giveittomeicon);
 			ad.setMessage(list.get(posion).getName()+"에게 연락을 취하시겠습니까?");
 			ad.setPositiveButton("전화하기", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + list.get(ScroogeList.posion).getPhoneNum()));
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + list.get(List.posion).getPhoneNum()));
 					startActivity(intent);
 				}
 			});
 			ad.setNeutralButton("문자하기", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
 					try{
-						sendMessage(list.get(ScroogeList.posion).getPhoneNum(), 
-								list.get(ScroogeList.posion).getName()+"님, " +
-								list.get(ScroogeList.posion).getTime()+"에 " +
-								list.get(ScroogeList.posion).getMoney()+"을 " + 
+						sendMessage(list.get(List.posion).getPhoneNum(), 
+								list.get(List.posion).getName()+"님, " +
+								list.get(List.posion).getTime()+"에 " +
+								list.get(List.posion).getMoney()+"을 " + 
 								giveorget + giveorget_);
-						Toast.makeText(ScroogeList.this, "전송 성공", 100).show();
+						Toast.makeText(List.this, "전송 성공", 100).show();
 					}catch(Exception e){
-						Toast.makeText(ScroogeList.this, "전송 실패", 100).show();
+						Toast.makeText(List.this, "전송 실패", 100).show();
 					}
 				}
 			});
