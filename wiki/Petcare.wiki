@@ -21,6 +21,11 @@ http://comp166-koreauniv.googlecode.com/files/cat.jpg
 
 = Main =
 
+
+메인 화면에서 'Welcome!'이라는 버튼을 누르고 어플으로 들어간다!
+위에 'A pet can change your life. Adopt one.'이라는 문구가 있다. 이처럼 애완동물들을 기르라는 메세지를 담긴 어플이라는 것을 확인할 수 있다.
+
+
 http://comp166-koreauniv.googlecode.com/files/nakmain.png
 
 
@@ -117,4 +122,179 @@ public class MainActivity extends Activity {
 }}}
 
 
+= List =
+
+
+6가지 동물들의 사진들이 있다(고양이, 강아지, 햄스터, 물고기, 거북이, 새). 가장 대표적인 6가지 애완동물들이다. 이 6가지 애완동물 중 자신이 기르는 애완동물의 사진을 누르면 그 애완동물에 관한 정보들이 있는 화면으로 갈 수 있다. 
+
+
 http://comp166-koreauniv.googlecode.com/files/naklist.png
+
+
+● xml
+
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ListActivity" >
+
+    <ImageView
+        android:id="@+id/Cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/a" />
+
+    <ImageView
+        android:id="@+id/Dog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Cat"
+        android:layout_alignRight="@+id/Cat"
+        android:layout_below="@+id/Cat"
+        android:src="@drawable/b" />
+
+    <ImageView
+        android:id="@+id/Hamster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Dog"
+        android:layout_alignRight="@+id/Dog"
+        android:layout_below="@+id/Dog"
+        android:src="@drawable/c" />
+
+    <ImageView
+        android:id="@+id/Fish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="33dp"
+        android:layout_toRightOf="@+id/Cat"
+        android:src="@drawable/d" />
+
+    <ImageView
+        android:id="@+id/Turtle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Fish"
+        android:layout_below="@+id/Fish"
+        android:src="@drawable/e" />
+
+    <ImageView
+        android:id="@+id/Bird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Turtle"
+        android:layout_below="@+id/Turtle"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/f" />
+
+</RelativeLayout>
+}}}
+
+
+● java
+
+{{{
+package com.example.petworld;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+
+
+public class ListActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_list);
+	
+		ImageView button1 = (ImageView)findViewById(R.id.Cat);
+        button1.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Cat.class);
+        		startActivity(intent);        	
+        	}
+        });
+        
+        ImageView button2 = (ImageView)findViewById(R.id.Dog);
+        button2.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Dog.class);
+        		startActivity(intent);        	
+        	}
+        });
+        
+        ImageView button3 = (ImageView)findViewById(R.id.Hamster);
+        button3.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Hamster.class);
+        		startActivity(intent);        	
+        	}
+        });
+        
+        ImageView button4 = (ImageView)findViewById(R.id.Fish);
+        button4.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Fish.class);
+        		startActivity(intent);        	
+        	}
+        });
+        
+        ImageView button5 = (ImageView)findViewById(R.id.Turtle);
+        button5.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Turtle.class);
+        		startActivity(intent);        	
+        	}
+        });
+        
+        ImageView button6 = (ImageView)findViewById(R.id.Bird);
+        button6.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Bird.class);
+        		startActivity(intent);        	
+        	}
+        });
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.list, menu);
+		return true;
+	}
+
+}
+}}}
