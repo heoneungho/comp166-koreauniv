@@ -61,7 +61,7 @@ http://comp166-koreauniv.googlecode.com/files/클래스.png
 
 http://comp166-koreauniv.googlecode.com/files/main.jpg
 
-(깨알 만든이 ↑ guni(거니)라고 적어봤는데 짤렸네요..ㅠㅠ 그냥그렇다구요..)
+(깨알 만든이 ↑ ®Guni(거니)라고 적어봤는데 짤렸네요..ㅠㅠ 그냥그렇다구요..)
 
 MainActivity.java
 {{{
