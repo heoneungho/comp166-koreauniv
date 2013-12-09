@@ -29,9 +29,9 @@
 
 = Details =
 
-<font size='5'><b>Attendance book</b></font>
+==<font size='5'><b>Attendance book</b></font>==
 
-* <font size='3'>메인화면<font>
+=== 메인화면 ===
 
 http://comp166-koreauniv.googlecode.com/files/sangmimain.jpg
 
