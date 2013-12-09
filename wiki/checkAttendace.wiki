@@ -39,7 +39,7 @@ http://comp166-koreauniv.googlecode.com/files/sangmimain.jpg
 
 === 출결관리 ===
 
-http://comp166-koreauniv.googlecode.com/files/sangmiattendance.jpg  http://comp166-koreauniv.googlecode.com/files/sangmidate.jpg  http://comp166-koreauniv.googlecode.com/files/sangmistdadd.jpg
+http://comp166-koreauniv.googlecode.com/files/sangmiattendance.jpg  http://comp166-koreauniv.googlecode.com/files/sangmidate.jpg  
 
 과목 선택후 맨 첫번째 탭이 선택된 상태에서 들어온다.<br>
 순서대로 [출석 - 결과 - 과제]이다.<br>
@@ -47,6 +47,9 @@ http://comp166-koreauniv.googlecode.com/files/sangmiattendance.jpg  http://comp1
 첫번째 버튼을 누르면 날짜를 바꿀 수 있다.<br>
 원하는 날짜에 출결을 한 후 Save버튼을 누르면 저장된다.<br>
 출결 목록은 Attendance.txt에 저장된다.<br>
+<br>
+
+http://comp166-koreauniv.googlecode.com/files/sangmistdadd.jpg
 <br>
 오른쪽 상단에 보면 학생추가버튼이 있다.<br>
 이 버튼을 누르면 학생추가 화면이 뜨며 과목추가와 동일한 방법으로 학생을 추가할 수 있다.<br>
