@@ -716,7 +716,7 @@ public class StartTimeActivity extends Activity {
 		final int end = intent.getIntExtra("end", -1);
 		final int h = intent.getIntExtra("h", -1);
 		final int m = intent.getIntExtra("m", -1);
-
+/* 출발역, 도착역, 설정한 시각에 대한 정보를 받아옴. final은 이클립스의 추천 */
 		int time;
 
 		time = 60 * h + m;
@@ -729,6 +729,106 @@ public class StartTimeActivity extends Activity {
 		TextView Text3 = (TextView)findViewById(R.id.textView2);
 		Text3.setText("도착" + time / 60 + "시 " + time % 60 + "분") ;
 		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.start_time, menu);
+		return true;
+	}
+
+}
+}}}
+
+= 결과 2 (도착시각이 궁금한 경우) =
+http://comp166-koreauniv.googlecode.com/files/EndTime.jpg
+
+ * xml
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prebg2"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".StartTimeActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+/* 분명히 텍스트뷰는 하나만 만들었는데 왜 두개가 나오는지 이유를 모르겠음. */
+</RelativeLayout>
+}}}
+
+ * java
+{{{
+package com.example.kubus;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.TextView;
+
+@SuppressLint({ "CutPasteId", "ShowToast" })
+public class EndTimeActivity extends Activity {
+/* 출발시각 설정과 거의 유사함, 중간중간 다른 코드는 도착역에 맞게 바꾼 것. */
+	public int expt_time(int time, int dest, int now) {
+		int i, j;
+
+		int[] interval = { 2, 3, 4, 5, 5, 1, 1, 1 };
+
+		for (i = now - 2; i >= 0; i--)
+
+			time -= interval[i];
+		for (i = 570, j = 10; i < 1070; i += j) {
+			if (time <= i)
+				break;
+			if (i == 730)
+				j = 20;
+			if (i == 810)
+				j = 10;
+		}
+		time = i-j;
+		for (i = 0; i < dest - 1; i++) 
+			time += interval[i];
+			
+		return time;
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_start_time);
+		Intent intent = getIntent();
+		final int start = intent.getIntExtra("start", -1);
+		final int end = intent.getIntExtra("end", -1);
+		final int h = intent.getIntExtra("h", -1);
+		final int m = intent.getIntExtra("m", -1);
+
+		int time;
+
+		time = 60 * h + m;
+		if (start <= end)
+			time = expt_time(time, start, end);
+		else
+			time = expt_time(expt_time(time, 1, end), start, 9);
+		TextView Text3 = (TextView)findViewById(R.id.textView1);
+		Text3.setText("출발 : " + time / 60 + "시 " + time % 60 + "분") ;
+
 	}
 
 	@Override
