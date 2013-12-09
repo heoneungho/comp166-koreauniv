@@ -2,6 +2,8 @@
 
 = Introduction =
 
+슬라이딩 그림 퍼즐 맞추기 게임입니다.
+
 Add your content here.
 
 
