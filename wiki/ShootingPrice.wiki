@@ -1562,7 +1562,7 @@ public class FontApplication extends Application {
 
 
 = Resources =
-기타 애니메이션 xml, 폰트, 사용된 이미지 등↓
+기타 애니메이션 xml, 폰트, 사용된 이미지, apk파일->
 http://comp166-koreauniv.googlecode.com/files/resources.zip
 
 
