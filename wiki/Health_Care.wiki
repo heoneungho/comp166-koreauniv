@@ -1371,5 +1371,6 @@ http://comp166-koreauniv.googlecode.com/files/a3.jpg/
 
 http://comp166-koreauniv.googlecode.com/files/a5.jpg/
 
-http://comp166-koreauniv.googlecode.com/files/a2.jpg/
+사용자는 동영상을 볼 수 있습니다.
 
+http://comp166-koreauniv.googlecode.com/files/a2.jpg/
