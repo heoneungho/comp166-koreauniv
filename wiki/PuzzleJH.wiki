@@ -35,9 +35,11 @@
  * 저는 이 게임을 만들면서 Project를 총 3개 만들었습니다. 먼저 맨 처음 메인 화면과 HowToPlay 화면, Level선택화면을 연결해 주는 project인 FastGameJH (전에 만들던 순발력 게임 프로젝트를 사용하여 이름이 FastGameJH입니다.) 와 TetrisPuzzle 프로젝트, TetrisPuzzle2 프로젝트 입니다.
  * Easymode,Hardmode 버튼을 눌렀을 때 이클립스 내에 있는 다른 프로젝트의 package로 바로 연결될 수 있게 만들었습니다.
 
+------------------------------------------------------------------------
+
 1. FastGameJH 코드
  * 그럼 맨 처음으로 각각의 화면을 연결 시켜주는 프로젝트인 FastGameJH를 살펴보겠습니다.
-[http://comp166-koreauniv.googlecode.com/files/fastgame.jpg]
+[http://comp166-koreauniv.googlecode.com/files/fastgame.png]
 
 1.MainActivity 코드
 
@@ -190,4 +192,77 @@ public class Level extends Activity {
 		return true;
 	}
 
+}
+------------------------------------------------------------------------
+ * TetrisPuzzle 프로젝트와 TetrisPuzzle2 프로젝트의 코드는 사이즈 조절에만 차이가 있으므로 TetrisPuzzle의 코드를 설명하겠습니다.
+
+[http://comp166-koreauniv.googlecode.com/files/tetrisgame1.png]
+[http://comp166-koreauniv.googlecode.com/files/tetrisgame2.png]
+
+1. app.main패키지
+ 1) Block 코드
+
+package app.main;
+
+import ryulib.graphic.Boundary;
+import android.graphics.Point;
+
+public class Block {
+	
+	public Block(int x, int y) {
+		super();
+		
+		_Point.set(x, y);
+		updateBoundary();
+	}
+	
+	private Point _Point = new Point();
+	private Boundary _Boundary = new Boundary(1, 1, Global.blockSize-2, Global.blockSize-2);
+	
+	public Point getPoint() {
+		return _Point;
+	}
+	
+	public int getX() {
+		return _Point.x;
+	}
+	
+	public int getY() {
+		return _Point.y;
+	}
+	
+	private void updateBoundary() {
+		_Boundary.setBoundary(
+			(_Point.x * Global.blockSize) + 1,
+			(_Point.y * Global.blockSize) + 1,
+			((_Point.x+1) * Global.blockSize) - 2,
+			((_Point.y+1) * Global.blockSize) - 2
+		);
+	}
+
+	public void decX(int value) {
+		_Point.x = _Point.x - value;
+		updateBoundary();
+	}
+
+	public void decY(int value) {
+		_Point.y = _Point.y - value;
+		updateBoundary();
+	}
+
+	public Boundary getBoundary() {
+		return _Boundary;
+	}
+
+	private Boundary _BoundaryCopy = new Boundary(_Boundary);
+	
+	public Boundary getBoundary(int x, int y) {
+		_BoundaryCopy.setBoundary(_Boundary);
+		_BoundaryCopy.incLeft(x * Global.blockSize);
+		_BoundaryCopy.incTop (y * Global.blockSize);
+		
+		return _BoundaryCopy;
+	}
+
+//blockSize는 퍼즐만들때 조각들을 이루는 작은 정사각형의 변의 크기이고, boardSize는 처음의 사각형이 배열될때 전체 정사각형의 
 }
