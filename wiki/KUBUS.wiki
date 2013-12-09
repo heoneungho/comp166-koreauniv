@@ -490,7 +490,7 @@ public class StopActivity extends Activity {
 }
 }}}
 
-= SetTime =
+= 시간설정 =
 http://comp166-koreauniv.googlecode.com/files/SetTime.jpg
 
  * xml
@@ -723,7 +723,8 @@ public class StartTimeActivity extends Activity {
 		if (start <= end)
 			time = expt_time(time, start, end); // 위의 함수를 이용함
 		else
-			time = expt_time(expt_time(time, start, 9), 1, end); //8에서 1로 가게 되면 처음 출발역에서 1까지오고 다시 1에서 도착역까지가게 계산
+			time = expt_time(expt_time(time, start, 9), 1, end); 
+//8에서 1로 가게 되면 처음 출발역에서 1까지오고 다시 1에서 도착역까지가게 계산
 	
 		TextView Text3 = (TextView)findViewById(R.id.textView2);
 		Text3.setText("도착" + time / 60 + "시 " + time % 60 + "분") ;
@@ -738,4 +739,4 @@ public class StartTimeActivity extends Activity {
 	}
 
 }
-}}}}
+}}}
