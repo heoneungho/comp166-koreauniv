@@ -67,6 +67,9 @@ http://comp166-koreauniv.googlecode.com/files/obesity2.jpg
 ②보통 여성 : 0.7 ~ 0.85
 
 == 4)음식 칼로리 ==
+http://comp166-koreauniv.googlecode.com/files/칼로리1.png
+http://comp166-koreauniv.googlecode.com/files/칼로리2.png
+http://comp166-koreauniv.googlecode.com/files/칼로리3.png
 
 
 = PROJECT =
