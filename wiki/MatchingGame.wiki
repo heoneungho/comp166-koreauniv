@@ -173,6 +173,10 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
 
  * layout 폴더 내에는 기본 패키지내의 클래스를 구성하는 화면에 대한 xml 파일이 들어 있다.
 
+ * 마지막으로 raw 폴더에는 BGM으로 재생되는 음악 파일이 담겨 있다.
+
+
+
 
 
 
