@@ -183,15 +183,14 @@ bt5.setOnClickListener(new OnClickListener()
 	}
 							
 });
-						
 bt6.setOnClickListener(new OnClickListener()
 {
 								
-								@Override
+	@Override
 	public void onClick(View v)
 	{
 					                    
-										Intent intetn6 = new Intent(MainActivity.this, run.class);
+  Intent intetn6 = new Intent(MainActivity.this, run.class);
         startActivity(intetn6);
 										
 	}
