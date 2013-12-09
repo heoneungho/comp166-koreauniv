@@ -553,3 +553,4 @@ activity_talk.xml
 }}}
 
 _출처 : [http://blog.naver.com/PostView.nhn?blogId=junhwen&logNo=130151732452&categoryNo=86&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=&userTopListOpen=true&userTopListCount=5&userTopListManageOpen=false&userTopListCurrentPage=1 안드로이드 이메일보내기 블로그 참조]_
+_ [http://mainia.tistory.com/506 구글에서 gmail이용한 메일보내기 블로그 참조]_
