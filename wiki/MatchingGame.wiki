@@ -159,6 +159,13 @@ http://comp166-koreauniv.googlecode.com/files/실패화면.png
 http://comp166-koreauniv.googlecode.com/files/패키지클래스.png
 
 
+ * 패키지는 게임 화면을 구성하는 클래스들이 담긴 기본 패키지, 게임 화면 내의 동작과 관련된 패키지, 그리고 그 밖의 기능을 담당하는 유틸리티 패키지로 구성되어 있다.
+
+
+http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
+
+
+
  
 
  
