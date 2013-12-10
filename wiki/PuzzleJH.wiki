@@ -42,7 +42,7 @@
 [http://comp166-koreauniv.googlecode.com/files/fastgame.png]
 
 1.MainActivity 코드
-
+{{{
 package com.example.fastgamejh;
 
 import android.app.Activity;
@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
 	}
 
 }
-
+}}}
 2. HowToPlay 코드
 
 package com.example.fastgamejh;
