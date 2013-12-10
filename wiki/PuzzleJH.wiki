@@ -240,6 +240,7 @@ public class Block {
 			((_Point.y+1) * Global.blockSize) - 2
 		);
 	}
+        //위치가 변경될 때마다 실제 좌표를 계산하게 된다.
 
 	public void decX(int value) {
 		_Point.x = _Point.x - value;
@@ -282,7 +283,7 @@ public class Global {
 		screenHeight = height;
 		
 		blockSize = screenHeight / boardSize;
-	}
+	}//화면 크기 설정
 
 	public static int screenWidth = 480;
 
@@ -297,7 +298,7 @@ public class Global {
 	
 	public static int getRandom(int n) {
 		return _Random.nextInt(n);
-	}
+	}//랜덤을 사용하기 위해 객체를 생성하는 번거로움 피하기 위해 미리 만들어 둔다.
 
 }
 }}}
@@ -360,17 +361,20 @@ public class Piece extends GameControl {
 		super(gameControlGroup);
 		
 		gameControlGroup.addControl(this);
-	}
+
+	}//모든 GameControl은 GameControlGroup에 addControl()메소드로 등록이 되어야만 화면에 표시되거나 동작이 이루어 질 수 있다.
 	
 	private HitArea _HitArea = new HitArea();
-	
+	//HitArea 객체가 자신의 영역을 알리는 역할을 한다.
+
 	@Override
 	protected HitArea getHitArea() {
 		return _HitArea;
-	}
+	}//GameControlBase에 선언되어 있는 getHitArea()메소드를 재정의하고 있다.
 
 	private int _X = 0;
 	private int _Y = 0;
+        //Piece의 현재 위치를 나타낸다.화면을 블록 크기로 나누어진 바둑판 모양으로 보았다.
 	private int _MinLeft = 0xFFFF;
 	private int _MinTop = 0xFFFF;
 	private int _MaxLeft = -1;
@@ -402,7 +406,7 @@ public class Piece extends GameControl {
 		
 		Block block = new Block(x, y);
 		_Blocks.add(block);
-	}
+	}//PieceFactory를 통해 묶어 사용할 Block의 좌표를 입력받으면, 실제 Block 객체를 생성해서 묶어주는 역할을 담당한다.
 
 	public void arrange() {
 		for (Block block : _Blocks) {
@@ -411,21 +415,24 @@ public class Piece extends GameControl {
 		}
 
 		afterMoved();
-	}
+	}// arrange() 메소드를 통해서 좌측 상단의 블록의 좌표가 (0,0)이 되도록 모든 블록들의 좌표를 줄여 나간다.
 
 	private int _A = 255;
 	private int _R = (int) (Math.random() * 100) + 155;
 	private int _G = (int) (Math.random() * 100) + 155;
 	private int _B = (int) (Math.random() * 100) + 155;
-	
+	// Piece의 색상을 랜덤하게 결정한다.
+        
 	@Override
 	protected void onDraw(GamePlatformInfo platformInfo) {
 		Paint paint  = platformInfo.getPaint();
 		
 		if (_isMoving) {
+                // 움직이는 도중인지 확인한다.
 			paint.setARGB(100, _R, _G, _B);
 		} else {
 			if ((checkCollision(this) != null)) {
+                        //다른 Piece들과 충돌하는 가를 파악한다.
 				paint.setARGB(100, _R, _G, _B);
 			} else {
 				paint.setARGB(_A, _R, _G, _B);
@@ -441,7 +448,7 @@ public class Piece extends GameControl {
 					paint
 			);
 		}
-	}
+	}//Piece에 포함된 블록 전체를 그린다.
 	
 	// Action Down, Move 일 때, event 발생 위치
 	private Point _TouchDown = new Point();
@@ -450,31 +457,39 @@ public class Piece extends GameControl {
     private void doActionDown(int x, int y) {
     	_TouchDown.set(x, y);
     	_TouchMove.set(x, y);
-    }
+    }//터치가 되었을 때 실행된다. 최초에 터치된 곳을 _TouchDown에 저장한다. _TouchMove는 터치 이후에 이동 이벤트가 발생할 때마다 해당 위치를 저장한다.
+
     
     private void doActionUp(int x, int y) {
     	int cx = (_X*Global.blockSize) + (x - _TouchDown.x) + (Global.blockSize / 2);
-    	int cy = (_Y*Global.blockSize) + (y - _TouchDown.y) + (Global.blockSize / 2); 
+    	int cy = (_Y*Global.blockSize) + (y - _TouchDown.y) + (Global.blockSize / 2);
+        //내려진 Piece의 픽셀 단위의 좌표 (cx, cy)를 구한다. 이때, (Global.blockSize/2)만큼 더해서 바둑판 모양의 격자에서 중앙을 표시하도록 한다. 
 
     	_TouchDown.set(0, 0);
     	_TouchMove.set(0, 0);
+        //최초의 터치 위치와 이동 중 위치를 초기화 한다.
 
     	cx = (cx / Global.blockSize);
     	cy = (cy / Global.blockSize);
-    	
+   
+
     	if (cx < 0) cx = 0;
     	if (cy < 0) cy = 0;
+        //화면의 범위를 못넘어가게 한다.
     	
     	if (cx > (Global.screenWidth  - getWidth()))  cx = Global.screenWidth  - getWidth(); 
     	if (cy > (Global.screenHeight - getHeight())) cy = Global.screenHeight - getHeight(); 
 
     	setPoint(cx, cy);
+        //실제 위치를 변경한다.
     }
     
 	private void doActionMove(int x, int y) {
 		_TouchMove.set(x, y);
-    }
-    
+    }//터치 이후에 이동 이벤트가 발생할 때마다 그 위치를 _TouchMove에 저장한다. TouchMove의 좌표를 기준으로 Piece가 그려지게 된다. 이동 중에 Piece의 좌표는 그대로 두고 _TouchMove를 통해 현재 이동 중인 곳의 좌표를 이용한다.
+  
+     // Piece를 이동하다가 내려 놓게 되는 동작이다.
+   
 	private boolean _isMoving = false;
 	
     @Override
@@ -511,14 +526,14 @@ public class Piece extends GameControl {
     	}
     	
     	return result;
-    }
+    }//실제 터치 이벤트를 처리하는 부분이다. 상황에 따라 doActionDown, doActionUp, doActionMove를 실행한다.
 
 	private boolean getIsMyArea(int x, int y) {
 		for (Block block : _Blocks) {
 			if (block.getBoundary(_X, _Y).isMyArea(x, y)) return true;
 		}
 		return false;
-	}
+	}//지정한 좌표가 Piece 영역인지 확인한다.
 	
 	private OnNotifyEventListener _OnMoved = null;
 	
@@ -534,10 +549,10 @@ public class Piece extends GameControl {
 		_HitArea.clear();
 		for (Block block : _Blocks) {			
 			_HitArea.add(block.getBoundary(_X, _Y));
-		}
+		}//block.getBoundary(_X,_Y)에서 (_X, _Y)는 모든 Boundary가 상대 좌표를 사용하고 있어 Piece의 현재 좌표를 더해주어야지만 실제 좌표가 된다.
 		
 		if (_OnMoved != null) _OnMoved.onNotify(this);
-	}
+	}//Piece가 이동되면 HitArea 안의 Boundary 위치를 다시 지정한다. OnMoved 이벤트 발생하여 외부 리스너에게 알려준다.
 	
 	public void setPoint(int x, int y) {		
 		_X = x;
@@ -591,14 +606,14 @@ public class PieceFactory extends GameControl {
 	public void slice() {
 		createCells();
 		makePieces();
-	}
+	}//사각형 조각내기
 
 	private void makePieces() {
 		_BoundriesCount = Global.boardSize * Global.boardSize;
 		while (_BoundriesCount > 0) {
 			makePiece();
 		}
-	}
+	}//정사각형의 조각 개수만큼 반복하면서 이것들을 랜덤한 모양과 랜덤한 개수로 묶어준다. 이 묶음을 Piece라 부른다.
 	
 	private void makePiece() {
 		int pieceSize  = getRandomPieceSize();
@@ -631,7 +646,7 @@ public class PieceFactory extends GameControl {
 		}
 		
 		if (_OnNewPiece != null) _OnNewPiece.onNotify(piece);
-	}
+	}//실제 조각을 Piece로 묶어 준다. 묶어진 Piece를 이벤트를 발생시켜 리스너에게 알려준다.
 
 	private void createCells() {
 		_Boundaries = new Boundary[Global.boardSize][Global.boardSize];
@@ -641,12 +656,12 @@ public class PieceFactory extends GameControl {
 				_Boundaries[x][y] = new Boundary(x*Global.blockSize, y*Global.blockSize, (x+1)*Global.blockSize, (y+1)*Global.blockSize);
 			}
 		}
-	}
+	}//조각 내기 전에 Global.boardSize의 2차원 배열로 Boundary 객체를 생성한다. 최초의 사각형을 boardSize*boardSize 개수만큼의 정사각형으로 조각 낸다.
 	
 	private void addBoundaryToPiece(Point point, Piece piece) {
-		_Boundaries[point.x][point.y] = null;
-		piece.addBlock(point.x, point.y);
-	}
+		_Boundaries[point.x][point.y] = null;//Piece로 구성될 위치의 정사각형이 이미 사용되었음을 선언한다. null로 표시하여 더 이상 사용할 수 없음을 알린다.
+		piece.addBlock(point.x, point.y);//해당 블록을 Piece에 구성시킨다.
+	}//Piece는 복수 개의 Block들로 구성되어 있다. 
 	
 	private Point getRandomPointChoice() {
 		int x = Global.getRandom(Global.boardSize);
@@ -658,7 +673,7 @@ public class PieceFactory extends GameControl {
 		}
 		
 		return new Point(x, y);
-	}
+	}//Boundaries에서 아무 정사각형이나 선택한다.
 	
 	// 해당 좌표에 Boundary를 가져 올 수 있는 가?  있으면 좌표를 리턴한 
 	private Point getPoint(int x, int y) {
@@ -695,12 +710,12 @@ public class PieceFactory extends GameControl {
 			int index = Global.getRandom(points.size());
 			return points.get(index);
 		}
-	}
+	}//전후/좌우에 있는 정사각형 중 null이 아닌 하나를 선별하여 Piece에 묶어 준다.
 
 	private int getRandomPieceSize() {
 		// TODO Auto-generated method stub
 		return 5;
-	}
+	}//Piece에 묶여 질 수 있는 정사각형의 최대 개수를 나타낸다. 
 
 	public void setOnNewPiece(OnNotifyEventListener _OnNewPiece) {
 		this._OnNewPiece = _OnNewPiece;
@@ -734,14 +749,14 @@ public class PieceList {
 	private OnNotifyEventListener _OnPieceMoved = new OnNotifyEventListener() {
 		@Override
 		public void onNotify(Object sender) {
-			checkGameEnd();
+			checkGameEnd();//각 Piece들이 움직일 때 마다 실행되어 소스가 생략된다.
 		}
 	};
 	
 	public void add(Piece piece) {
 		_List.add(piece);
 		piece.setOnMoved(_OnPieceMoved);
-	}
+	}//PieceFactory에 의해 만들어진 조각들을 _List 목록에 포함시키면서 이벤트 리스너를 지정한다.
 	
 	private void checkGameEnd() {
 		Block[][] blocks = new Block[Global.boardSize][Global.boardSize];
@@ -770,8 +785,8 @@ public class PieceList {
 			}
 		}
 		
-		if (_OnGameEnd != null) _OnGameEnd.onNotify(this);
-	}
+		if (_OnGameEnd != null) _OnGameEnd.onNotify(this);//리스너를 호출한다.
+	}//모든 조각들이 제 위치에 있는 지를 확인한다.
 	
 	private OnNotifyEventListener _OnGameEnd = null;
 	
@@ -786,7 +801,7 @@ public class PieceList {
 }
 }}}
 
- 7) TetrisBoeard 코드
+ 7) TetrisBoard 코드
 {{{
 package app.main;
 
@@ -808,12 +823,13 @@ public class TetrisBoard extends GameControl {
 		
         _PieceFactory = new PieceFactory(gameControlGroup);
         _PieceFactory.setOnNewPiece(_OnNewPiece);
-        
-        _PieceList.setOnGameEnd(_OnGameEnd);
+        //PieceFactory 객체를 생성하고 OnnewPiece 이벤트를 처리할 리스너를 지정한다.        
+
+        _PieceList.setOnGameEnd(_OnGameEnd);//OngameEnd 이벤트를 처리할 리스너를 지정한다.
 	}
 	
 	private PieceFactory _PieceFactory = null;
-	private PieceList _PieceList = new PieceList();
+	private PieceList _PieceList = new PieceList();//PieceList는 객체를 생성한다.
 
 	private OnNotifyEventListener _OnNewPiece = new OnNotifyEventListener() {
 		@Override
@@ -821,14 +837,14 @@ public class TetrisBoard extends GameControl {
 			getGameControlGroup().addControl((Piece) sender);
 			_PieceList.add((Piece) sender);
 		}
-	};
+	};//PieceFactory가 처음의 사각형을 조각 내어 조각 객체를 생성할 때마다 발생하는 OnNewPiece 이벤트를 처리할 리스너를 구현하고 있다.
 	
 	private OnNotifyEventListener _OnGameEnd = new OnNotifyEventListener() {
 		@Override
 		public void onNotify(Object sender) {
-			System.exit(0);
+			System.exit(0);//모든 조각들이 제 위치에 있을 경우 프로그램 종료한다.
 		}
-	};
+	};//Piece들이 이동할 때마다 모든 조각들이 제 위치에 있는 지 확인하고 모두 제 위치에 있을 경우 발생하는 OnGameEnd 이벤트를 처리할 리스너이다.
 	
 	private Bitmap _BoardBitmap = Bitmap.createBitmap(1, 1, Config.ARGB_8888);
 	private Canvas _BoardCanvas = new Canvas();
@@ -839,16 +855,18 @@ public class TetrisBoard extends GameControl {
 	public void startGame() {
 		_PieceList.clear();
 		_PieceFactory.slice();
-	}
+	}//게임이 시작되면 PieceList를 초기화 하고 PieceFactory를 통해서 처음의 사각형을 조각 낸다.
 	
 	@Override
 	protected void onStart(GamePlatformInfo platformInfo) {
 		_Canvas = platformInfo.getCanvas();
 
         Global.setScreenSize(_Canvas.getWidth(), _Canvas.getHeight());
+               //프로그램이 시작되면 Global.setScreenSize() 메소드를 호출하여 게임 엔진의 화면 크기를 지정한다. 이 때 필요한 모든 변수들이 초기화 된다.
+
 		setBoardSize(Global.blockSize * Global.boardSize);
 		
-		startGame();
+		startGame();//게임을 시작한다.
 	}
 	
 	@Override
@@ -885,7 +903,7 @@ public class TetrisBoard extends GameControl {
 		}
 	}
 
-}
+}//배경에 쓰일 Bitmap이미지를 작성한다. 
 }}}
 
 2. ryulib 패키지
