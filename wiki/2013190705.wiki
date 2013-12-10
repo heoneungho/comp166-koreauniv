@@ -486,7 +486,56 @@ public class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A.
 
+public class XCopy {
+        public static void main(String[] args) {
+                int orig=42;
+                
+                XCopy x= new XCopy();
+                int y = x.go(orig);
+                
+                System.out.println(orig+" "+ y);
+        }
+                int go(int arg) {
+                        arg = arg*2;
+                        
+                        return arg;
+                
+        }
+
+}
+/* 아무 문제없이 실행된다. */
+
+B.
+
+class Clock {
+        String time;
+        
+        void setTime(String t) {
+                time=t;
+                
+        }
+        
+        String getTime() { // time 값을 return해야 하는데 그 유형이 String 이므로
+                return time;
+        }
+        
+}
+
+__________________________________________________________________________________
+
+class ClockTestDrive {
+        public static void main(String [] args) {
+                
+                Clock c= new Clock();
+                
+                c.setTime("1245");
+                String tod= c.getTime();
+                System.out.println("time: "+tod);
+        }
+
+}
 }}}
 
 
@@ -913,47 +962,54 @@ class Animal {
         
 }
 
-
+__________________________________________________________________________________
 
 class Feline extends Animal{
         void roam(){}
 }
 
+__________________________________________________________________________________
 
 class Lion extends Feline{
         void makeNoise(){}
         void eat{}
 }
 
+__________________________________________________________________________________
 
 class Tiger extends Feline{
         void makeNoise(){}
         void eat{}
 }
 
+__________________________________________________________________________________
 
 class Cat extends Feline{
         void makeNoise(){}
         void eat{}
 }
 
+__________________________________________________________________________________
 
 class Hippo extends Animal{
         void makeNoise(){}
         void eat(){}
 }
 
+__________________________________________________________________________________
 
 class Canine extends Animal{
         void roam(){}
 }
 
+__________________________________________________________________________________
 
 class Wolf extends Canine{
         void makeNoise(){}
         void eat(){}
 }
 
+__________________________________________________________________________________
 
 class Dog extends Canine{
         void makeNoise(){}
