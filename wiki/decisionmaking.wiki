@@ -5,6 +5,8 @@
 
 식사메뉴를 추천해줍니다.
 
+[[https://drive.google.com/folderview?id=0BzNZQlQUTmZAbTFwWEszOHc2ajg&usp=sharing프로젝트]]
+[[https://drive.google.com/file/d/0BzNZQlQUTmZATGFNMWVlMFRySWc/edit?usp=sharing파일]]
 
 = Details =
 
