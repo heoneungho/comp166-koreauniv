@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
 }
 }}}
 2. HowToPlay 코드
-
+{{{
 package com.example.fastgamejh;
 
 import android.os.Bundle;
@@ -130,9 +130,9 @@ public class HowToPlay extends Activity {
 	}
 
 }
-
+}}}
 3. Level 코드
-
+{{{
 package com.example.fastgamejh;
 
 import android.app.Activity;
@@ -193,6 +193,7 @@ public class Level extends Activity {
 	}
 
 }
+}}}
 ------------------------------------------------------------------------
  * TetrisPuzzle 프로젝트와 TetrisPuzzle2 프로젝트의 코드는 사이즈 조절에만 차이가 있으므로 TetrisPuzzle의 코드를 설명하겠습니다.
 
@@ -201,7 +202,7 @@ public class Level extends Activity {
 
 1. app.main패키지
  1) Block 코드
-
+{{{
 package app.main;
 
 import ryulib.graphic.Boundary;
@@ -266,3 +267,825 @@ public class Block {
 
 //blockSize는 퍼즐만들때 조각들을 이루는 작은 정사각형의 변의 크기이고, boardSize는 처음의 사각형이 배열될때 전체 정사각형의 
 }
+}}}
+
+ 2) Global 코드
+{{{
+package app.main;
+
+import java.util.Random;
+
+public class Global {
+	
+	public static void setScreenSize(int width, int height) {
+		screenWidth = width;
+		screenHeight = height;
+		
+		blockSize = screenHeight / boardSize;
+	}
+
+	public static int screenWidth = 480;
+
+	public static int screenHeight = 320;
+	
+	public static int blockSize = 24;
+
+	// BoardSize*BoardSize 크기의 배열
+	public static int boardSize  = 6;
+	
+	private static final Random _Random = new Random();
+	
+	public static int getRandom(int n) {
+		return _Random.nextInt(n);
+	}
+
+}
+}}}
+
+ 3) Main 코드
+{{{
+package app.main;
+
+import ryulib.game.GamePlatform;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+public class Main extends Activity {
+	
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        _GamePlatform = new GamePlatform(this);
+        _GamePlatform.setUseMotionEvent(true);
+        _GamePlatform.setLayoutParams(
+        		new LinearLayout.LayoutParams(
+        				ViewGroup.LayoutParams.FILL_PARENT,
+        				ViewGroup.LayoutParams.FILL_PARENT,
+        				0.0F
+        		)
+        );
+        setContentView(_GamePlatform);
+        
+        _TetrisBoard = new TetrisBoard(_GamePlatform.getGameControlGroup());
+    }
+        
+	private GamePlatform _GamePlatform = null;
+	private TetrisBoard _TetrisBoard = null;
+	
+}
+}}}
+
+ 4)Piece 코드
+{{{
+package app.main;
+
+import java.util.ArrayList;
+
+import ryulib.OnNotifyEventListener;
+import ryulib.game.GameControl;
+import ryulib.game.GameControlGroup;
+import ryulib.game.GamePlatformInfo;
+import ryulib.game.HitArea;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.view.MotionEvent;
+
+public class Piece extends GameControl {
+
+	public Piece(GameControlGroup gameControlGroup) {
+		super(gameControlGroup);
+		
+		gameControlGroup.addControl(this);
+	}
+	
+	private HitArea _HitArea = new HitArea();
+	
+	@Override
+	protected HitArea getHitArea() {
+		return _HitArea;
+	}
+
+	private int _X = 0;
+	private int _Y = 0;
+	private int _MinLeft = 0xFFFF;
+	private int _MinTop = 0xFFFF;
+	private int _MaxLeft = -1;
+	private int _MaxTop = -1;
+
+	ArrayList<Block> _Blocks = new ArrayList<Block>();
+	
+	public int getWidth() {
+		return _MaxLeft - _MinLeft + 1;
+	}
+		
+	public int getHeight() {
+		return _MaxTop - _MinTop + 1;
+	}
+		
+	public void clearBlocks() {
+		_MinLeft = 0xFFFF;
+		_MinTop = 0xFFFF;
+		
+		_Blocks.clear();
+	}
+
+	public void addBlock(int x, int y) {
+		if (x < _MinLeft) _MinLeft = x;
+		if (y < _MinTop ) _MinTop  = y;
+		
+		if (x > _MaxLeft) _MaxLeft = x;
+		if (y > _MaxTop ) _MaxTop  = y;
+		
+		Block block = new Block(x, y);
+		_Blocks.add(block);
+	}
+
+	public void arrange() {
+		for (Block block : _Blocks) {
+			block.decX(_MinLeft);
+			block.decY(_MinTop);
+		}
+
+		afterMoved();
+	}
+
+	private int _A = 255;
+	private int _R = (int) (Math.random() * 100) + 155;
+	private int _G = (int) (Math.random() * 100) + 155;
+	private int _B = (int) (Math.random() * 100) + 155;
+	
+	@Override
+	protected void onDraw(GamePlatformInfo platformInfo) {
+		Paint paint  = platformInfo.getPaint();
+		
+		if (_isMoving) {
+			paint.setARGB(100, _R, _G, _B);
+		} else {
+			if ((checkCollision(this) != null)) {
+				paint.setARGB(100, _R, _G, _B);
+			} else {
+				paint.setARGB(_A, _R, _G, _B);
+			}
+		}
+
+		int left = _X*Global.blockSize + _TouchMove.x-_TouchDown.x;
+		int top  = _Y*Global.blockSize + _TouchMove.y-_TouchDown.y;
+			
+		for (Block block : _Blocks) {
+			platformInfo.getCanvas().drawRect(
+					block.getBoundary().getRect(left, top), 
+					paint
+			);
+		}
+	}
+	
+	// Action Down, Move 일 때, event 발생 위치
+	private Point _TouchDown = new Point();
+	private Point _TouchMove = new Point();
+	
+    private void doActionDown(int x, int y) {
+    	_TouchDown.set(x, y);
+    	_TouchMove.set(x, y);
+    }
+    
+    private void doActionUp(int x, int y) {
+    	int cx = (_X*Global.blockSize) + (x - _TouchDown.x) + (Global.blockSize / 2);
+    	int cy = (_Y*Global.blockSize) + (y - _TouchDown.y) + (Global.blockSize / 2); 
+
+    	_TouchDown.set(0, 0);
+    	_TouchMove.set(0, 0);
+
+    	cx = (cx / Global.blockSize);
+    	cy = (cy / Global.blockSize);
+    	
+    	if (cx < 0) cx = 0;
+    	if (cy < 0) cy = 0;
+    	
+    	if (cx > (Global.screenWidth  - getWidth()))  cx = Global.screenWidth  - getWidth(); 
+    	if (cy > (Global.screenHeight - getHeight())) cy = Global.screenHeight - getHeight(); 
+
+    	setPoint(cx, cy);
+    }
+    
+	private void doActionMove(int x, int y) {
+		_TouchMove.set(x, y);
+    }
+    
+	private boolean _isMoving = false;
+	
+    @Override
+    protected boolean onTouchEvent(GamePlatformInfo platformInfo, MotionEvent event) {
+    	boolean result = false;
+    	
+    	int x = (int) event.getX();
+    	int y = (int) event.getY();
+    	
+    	switch (event.getAction()) {
+	    	case MotionEvent.ACTION_DOWN: 
+	    		if (getIsMyArea(x, y))	{
+		    		doActionDown(x, y);
+	    	    	_isMoving = true;
+		    		result = true;
+	    		    bringToFront();
+	    		}
+	    		break;
+	    		
+	    	case MotionEvent.ACTION_UP: 
+	    		if (_isMoving) {
+		    		doActionUp(x, y); 
+	    			_isMoving = false;
+		    		result = true;
+	    		}
+	    		break;
+	    		
+	    	default: 
+	    		if (_isMoving) {
+	    			doActionMove(x, y); 
+		    		result = true;
+	    		}
+	    		break;
+    	}
+    	
+    	return result;
+    }
+
+	private boolean getIsMyArea(int x, int y) {
+		for (Block block : _Blocks) {
+			if (block.getBoundary(_X, _Y).isMyArea(x, y)) return true;
+		}
+		return false;
+	}
+	
+	private OnNotifyEventListener _OnMoved = null;
+	
+	public OnNotifyEventListener getOnMoved() {
+		return _OnMoved;
+	}
+
+	public void setOnMoved(OnNotifyEventListener _OnMoved) {
+		this._OnMoved = _OnMoved;
+	}
+
+	private void afterMoved() {
+		_HitArea.clear();
+		for (Block block : _Blocks) {			
+			_HitArea.add(block.getBoundary(_X, _Y));
+		}
+		
+		if (_OnMoved != null) _OnMoved.onNotify(this);
+	}
+	
+	public void setPoint(int x, int y) {		
+		_X = x;
+		_Y = y;
+		afterMoved();
+	}
+
+	public void setX(int _X) {
+		this._X = _X;
+		afterMoved();
+	}
+
+	public int getX() {
+		return _X;
+	}
+
+	public void setY(int _Y) {
+		this._Y = _Y;
+		afterMoved();
+	}
+
+	public int getY() {
+		return _Y;
+	}
+    
+}
+}}}
+
+ 5)PieceFactory 코드
+{{{
+package app.main;
+
+import java.util.ArrayList;
+
+import ryulib.OnNotifyEventListener;
+import ryulib.game.GameControl;
+import ryulib.game.GameControlGroup;
+import ryulib.graphic.Boundary;
+import android.graphics.Point;
+
+public class PieceFactory extends GameControl {
+	
+	public PieceFactory(GameControlGroup gameControlGroup) {
+		super(gameControlGroup);
+
+	}
+
+	private Boundary[][] _Boundaries = null;
+	private int _BoundriesCount;
+	
+	public void slice() {
+		createCells();
+		makePieces();
+	}
+
+	private void makePieces() {
+		_BoundriesCount = Global.boardSize * Global.boardSize;
+		while (_BoundriesCount > 0) {
+			makePiece();
+		}
+	}
+	
+	private void makePiece() {
+		int pieceSize  = getRandomPieceSize();
+		Piece piece = new Piece(getGameControlGroup());
+		Point point = getRandomPointChoice();
+		
+		addBoundaryToPiece(point, piece);
+		pieceSize--;
+		_BoundriesCount--;
+
+		while ((pieceSize > 0) && (_BoundriesCount > 0)) {
+			point = getNextRandomPoint(point);
+			if (point == null) break;
+			
+			addBoundaryToPiece(point, piece);
+			pieceSize--;
+			_BoundriesCount--;
+		}
+		
+		piece.arrange();
+		
+		// 랜덤하게 배치하면서 서로 겹치지 않도록 100번 정도 노력 한다.
+		int x, y;
+		for (int i=0; i<100; i++) {
+			x = Global.getRandom((Global.screenWidth  / Global.blockSize) - piece.getWidth()); 
+			y = Global.getRandom((Global.screenHeight / Global.blockSize) - piece.getHeight()); 
+
+			piece.setPoint(x, y);
+			if (checkCollision(piece) == null) break;
+		}
+		
+		if (_OnNewPiece != null) _OnNewPiece.onNotify(piece);
+	}
+
+	private void createCells() {
+		_Boundaries = new Boundary[Global.boardSize][Global.boardSize];
+		
+		for (int y=0; y<Global.boardSize; y++) {
+			for (int x=0; x<Global.boardSize; x++) {
+				_Boundaries[x][y] = new Boundary(x*Global.blockSize, y*Global.blockSize, (x+1)*Global.blockSize, (y+1)*Global.blockSize);
+			}
+		}
+	}
+	
+	private void addBoundaryToPiece(Point point, Piece piece) {
+		_Boundaries[point.x][point.y] = null;
+		piece.addBlock(point.x, point.y);
+	}
+	
+	private Point getRandomPointChoice() {
+		int x = Global.getRandom(Global.boardSize);
+		int y = Global.getRandom(Global.boardSize);
+		
+		while (_Boundaries[x][y] == null) {
+			x = Global.getRandom(Global.boardSize);
+			y = Global.getRandom(Global.boardSize);
+		}
+		
+		return new Point(x, y);
+	}
+	
+	// 해당 좌표에 Boundary를 가져 올 수 있는 가?  있으면 좌표를 리턴한 
+	private Point getPoint(int x, int y) {
+		if ((x < 0) || (x >= Global.boardSize)) return null;
+		if ((y < 0) || (y >= Global.boardSize)) return null;
+		
+		if (_Boundaries[x][y] != null) {
+			return new Point(x, y);
+		} else {
+			return null;
+		}
+	}
+
+	private Point getNextRandomPoint(Point basePoint) {
+		ArrayList<Point> points = new ArrayList<Point>();
+		
+		Point point;
+		
+		point = getPoint(basePoint.x-1, basePoint.y);
+		if (point != null) points.add(point); 
+		
+		point = getPoint(basePoint.x+1, basePoint.y);
+		if (point != null) points.add(point); 
+		
+		point = getPoint(basePoint.x, basePoint.y-1);
+		if (point != null) points.add(point); 
+		
+		point = getPoint(basePoint.x, basePoint.y+1);
+		if (point != null) points.add(point); 
+		
+		if (points.size() == 0) {
+			return null;
+		} else {
+			int index = Global.getRandom(points.size());
+			return points.get(index);
+		}
+	}
+
+	private int getRandomPieceSize() {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	public void setOnNewPiece(OnNotifyEventListener _OnNewPiece) {
+		this._OnNewPiece = _OnNewPiece;
+	}
+
+	public OnNotifyEventListener getOnNewPiece() {
+		return _OnNewPiece;
+	}
+
+	private OnNotifyEventListener _OnNewPiece = null;
+
+}
+}}}
+
+ 6)PieceList 코드
+{{{
+package app.main;
+
+import java.util.ArrayList;
+
+import ryulib.OnNotifyEventListener;
+
+public class PieceList {
+	
+	private ArrayList<Piece> _List = new ArrayList<Piece>();
+	
+	public void clear() {
+		_List.clear();
+	}
+	
+	private OnNotifyEventListener _OnPieceMoved = new OnNotifyEventListener() {
+		@Override
+		public void onNotify(Object sender) {
+			checkGameEnd();
+		}
+	};
+	
+	public void add(Piece piece) {
+		_List.add(piece);
+		piece.setOnMoved(_OnPieceMoved);
+	}
+	
+	private void checkGameEnd() {
+		Block[][] blocks = new Block[Global.boardSize][Global.boardSize];
+		
+		for (int y=0; y<Global.boardSize; y++) {
+			for (int x=0; x<Global.boardSize; x++) {
+				blocks[x][y] = null;
+			}
+		}
+		
+		for (Piece piece : _List) {
+			for (Block block : piece._Blocks) {
+				int x = piece.getX() + block.getX();
+				int y = piece.getY() + block.getY();
+				boolean isInRange =
+					(x >= 0) && (x < Global.boardSize) &&
+					(y >= 0) && (y < Global.boardSize);
+					
+				if (isInRange) blocks[x][y] = block;
+			}
+		}
+		
+		for (int y=0; y<Global.boardSize; y++) {
+			for (int x=0; x<Global.boardSize; x++) {
+				if (blocks[x][y] == null) return; 
+			}
+		}
+		
+		if (_OnGameEnd != null) _OnGameEnd.onNotify(this);
+	}
+	
+	private OnNotifyEventListener _OnGameEnd = null;
+	
+	public void setOnGameEnd(OnNotifyEventListener _OnGameEnd) {
+		this._OnGameEnd = _OnGameEnd;
+	}
+
+	public OnNotifyEventListener getOnGameEnd() {
+		return _OnGameEnd;
+	}
+
+}
+}}}
+
+ 7) TetrisBoeard 코드
+{{{
+package app.main;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Bitmap.Config;
+import ryulib.OnNotifyEventListener;
+import ryulib.game.GameControl;
+import ryulib.game.GameControlGroup;
+import ryulib.game.GamePlatformInfo;
+
+public class TetrisBoard extends GameControl {
+
+	public TetrisBoard(GameControlGroup gameControlGroup) {
+		super(gameControlGroup);
+		
+		gameControlGroup.addControl(this);
+		
+        _PieceFactory = new PieceFactory(gameControlGroup);
+        _PieceFactory.setOnNewPiece(_OnNewPiece);
+        
+        _PieceList.setOnGameEnd(_OnGameEnd);
+	}
+	
+	private PieceFactory _PieceFactory = null;
+	private PieceList _PieceList = new PieceList();
+
+	private OnNotifyEventListener _OnNewPiece = new OnNotifyEventListener() {
+		@Override
+		public void onNotify(Object sender) {
+			getGameControlGroup().addControl((Piece) sender);
+			_PieceList.add((Piece) sender);
+		}
+	};
+	
+	private OnNotifyEventListener _OnGameEnd = new OnNotifyEventListener() {
+		@Override
+		public void onNotify(Object sender) {
+			System.exit(0);
+		}
+	};
+	
+	private Bitmap _BoardBitmap = Bitmap.createBitmap(1, 1, Config.ARGB_8888);
+	private Canvas _BoardCanvas = new Canvas();
+
+	private Canvas _Canvas = null;
+	private Paint _Paint = new Paint();
+	
+	public void startGame() {
+		_PieceList.clear();
+		_PieceFactory.slice();
+	}
+	
+	@Override
+	protected void onStart(GamePlatformInfo platformInfo) {
+		_Canvas = platformInfo.getCanvas();
+
+        Global.setScreenSize(_Canvas.getWidth(), _Canvas.getHeight());
+		setBoardSize(Global.blockSize * Global.boardSize);
+		
+		startGame();
+	}
+	
+	@Override
+	protected void onDraw(GamePlatformInfo platformInfo) {
+		_Paint.setARGB(255, 0, 0, 0);
+		_Canvas.drawRect(platformInfo.getRect(), _Paint);
+		
+		_Canvas.drawBitmap(_BoardBitmap, 0, 0, _Paint);		
+	}
+	
+	private int _BoardSize = 0;
+
+	public int getBoardSize() {
+		return _BoardSize;
+	}
+
+	public void setBoardSize(int _BoardSize) {
+		this._BoardSize = _BoardSize;
+		doPrepareBoardBitmap(_BoardSize);		
+	}
+
+	private void doPrepareBoardBitmap(int boardSize) {
+		_BoardBitmap = Bitmap.createBitmap(boardSize+1, boardSize+1, Config.ARGB_8888);
+		_BoardCanvas.setBitmap(_BoardBitmap);		
+		
+		_Paint.setARGB(255, 55, 55, 55);
+
+		for (int x=0; x<=Global.boardSize; x++) {
+			_BoardCanvas.drawLine(x*Global.blockSize, 0, x*Global.blockSize, boardSize, _Paint);
+		}
+		
+		for (int y=0; y<=Global.boardSize; y++) {
+			_BoardCanvas.drawLine(0, y*Global.blockSize, boardSize, y*Global.blockSize, _Paint);
+		}
+	}
+
+}
+}}}
+
+2. ryulib 패키지
+ 1) Direction 코드
+{{{
+package ryulib;
+
+public enum Direction {
+	NoWhere,
+	Left, Right,
+	Up, Down
+}
+}}}
+
+ 2) OnHandlerMessageListener 코드
+{{{
+package ryulib;
+
+import android.os.Message;
+
+public interface OnHandlerMessageListener {
+
+	public void onReceived(Message msg);
+	
+}
+}}}
+
+ 3) OnNotifyEventListener 코드
+{{{
+package ryulib;
+
+public interface OnNotifyEventListener {
+
+	public void onNotify(Object sender);
+	
+}
+}}}
+
+ 4) OnTimerListener 코드
+{{{
+package ryulib;
+
+public interface OnTimerListener {
+
+	public void onTime(long ATick);
+	
+}
+}}}
+
+ 5) ThreadRepeater 코드
+{{{
+package ryulib;
+
+import android.util.Log;
+
+public class ThreadRepeater implements Runnable {
+	
+	private Boolean _Active = false; 
+	private Boolean _Pause = false; 
+	private Thread _Thread = null;
+	
+	// Property
+	private long _Interval = 0;
+	
+	// Event
+	private OnNotifyEventListener _OnNotifyEvent = null;
+
+	public final void start() {
+		_Active = true;
+		_Thread = new Thread(this);
+		_Thread.start();
+	}
+	
+	public final void pause() {
+		_Pause = true;
+	}
+	
+	public final void resume() {
+		_Pause = false;
+	}
+	
+	public final void stop() {
+        _Active = false;
+        if (_Thread == null) return;
+
+        boolean retry = true;
+        while (retry) {
+            try {
+            	_Thread.join();
+                retry = false;
+            } catch (InterruptedException e) {
+            }
+        }
+	}
+
+	public final void run() {
+		while (_Active) {
+			if ((_Pause == false) && (_OnNotifyEvent != null)) {
+				_OnNotifyEvent.onNotify(this);
+				
+        		if (_Interval > 0)  {
+        			try {
+		        		Thread.sleep(_Interval);
+					} catch (InterruptedException e) {
+						Log.w("GamePlatform Class", "Thread.sleep Exception.");
+					}       		
+        		}
+			}				
+		}		
+	}
+	
+	public final void setOnNotifyEvent(OnNotifyEventListener value) {
+		_OnNotifyEvent = value;
+	}
+
+	public final void setInterval(long value) {
+		_Interval = value;
+	}
+
+	public final long getInterval() {
+		return _Interval;
+	}
+
+}
+}}}
+
+ 6) Timer 코드
+{{{
+package ryulib;
+
+import android.os.Handler;
+
+public class Timer {
+	
+	public void start() {
+		_OldTick = System.currentTimeMillis();
+		_Active = true;
+		_Handler.postDelayed(_Runnable, _Interval);
+	}
+	
+	public void stop() {
+		_Active = false;
+	}
+
+	// Interval Property
+	private int _Interval = 1000;
+	public int getInterval() {
+		return _Interval;
+	}
+	public void setInterval(int AValue) {
+		_Interval = AValue;
+	}
+	
+	// Active Property
+	private boolean _Active = false;
+	public boolean getActive() {
+		return _Active;
+	}
+
+	// OnTimer Event
+	private OnTimerListener _OnTimer = null;
+	public void setOnTimer(OnTimerListener AValue) {
+		_OnTimer = AValue;
+	}
+	
+    private long _OldTick = System.currentTimeMillis();
+    
+    private Handler _Handler = new Handler();
+    private Runnable _Runnable = new Runnable() {
+    	public void run() {
+    		if (getActive() == false) return;
+
+    		long _Tick = System.currentTimeMillis();
+  			if (_OnTimer != null) _OnTimer.onTime(_Tick-_OldTick);
+    		_OldTick = _Tick;
+
+  			if (_Interval > 0) _Handler.postDelayed(this, _Interval);
+  			else _Handler.post(this);
+    	}
+    };
+    
+}
+}}}
+
+ 7)ValueList 소스
+{{{
+package ryulib;
+
+import java.util.HashMap;
+
+public class ValueList extends HashMap<String, String> {
+
+	private static final long serialVersionUID = 1065478499595139080L;
+	
+	public void put(String AKey, int AValue) {
+		put(AKey, Integer.toString(AValue));
+	}
+	
+	public int getInt(String AKey) {
+		return Integer.parseInt(get(AKey));
+	}
+}
+}}}
