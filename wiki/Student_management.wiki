@@ -17,7 +17,18 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 3. 문제가 넘어갈 때 마다 정답 여부 확인창을 띄어주어 긴장감 조성
 
 4. 게임이 끝나면 채점 결과 확인 가능
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-41-36.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-41-47.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-41-57.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-42-05.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-42-16.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-41-28.png
+
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-41-45.png
