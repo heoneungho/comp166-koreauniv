@@ -253,7 +253,7 @@ public class Main extends Activity implements OnClickListener {
 		}
 	}
 	
-	@Override
+	@Override // '종료하기' 버튼을 누르지 않고 '뒤로가기' 버튼을 눌러서 종료할 수 있음
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		switch(keyCode){
@@ -377,7 +377,7 @@ public class MoneyActivity extends Activity implements OnClickListener{
 		name = getIntent.getStringExtra("name");
 		phoneNum = getIntent.getStringExtra("phoneNum");
 
-		setDate = new DatePickerDialog.OnDateSetListener() {
+		setDate = new DatePickerDialog.OnDateSetListener() { // 날짜 설정
 			@Override
 			public void onDateSet(DatePicker view, int year, int month, int day) {
 				// TODO Auto-generated method stub
@@ -390,7 +390,7 @@ public class MoneyActivity extends Activity implements OnClickListener{
 			}
 		};
 
-		setTime = new TimePickerDialog.OnTimeSetListener() {
+		setTime = new TimePickerDialog.OnTimeSetListener() { // 시간 설정
 			@Override
 			public void onTimeSet(TimePicker view, int hour, int minute) {
 				// TODO Auto-generated method stub
@@ -459,7 +459,7 @@ public class MoneyActivity extends Activity implements OnClickListener{
 		}
 	}
 
-	@Override
+	@Override // *새로 입력*
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
 		if(view == edit_time){
@@ -467,13 +467,13 @@ public class MoneyActivity extends Activity implements OnClickListener{
 		}
 		else if(view == submit){
 			if(edit_name.getText().toString().equals(""))
-				Toast.makeText(this, "이름이 뭐에요?", 100).show();
+				Toast.makeText(this, "이름이 뭐에요?", 100).show(); // 4minute의 '이름이 뭐에요?'
 			else if(edit_phoneNum.getText().toString().equals(""))
-				Toast.makeText(this, "전화번호 뭐에요?", 100).show();
+				Toast.makeText(this, "전화번호 뭐에요?", 100).show(); // 4minute의 '이름이 뭐에요?'
 			else if(edit_time.getText().toString().equals(""))
-				Toast.makeText(this, "시간 좀 적어줘요", 100).show();
+				Toast.makeText(this, "시간 좀 적어줘요", 100).show(); // 4minute의 '이름이 뭐에요?'
 			else if(edit_money.getText().toString().equals(""))
-				Toast.makeText(this, "Show Me The Money", 100).show();
+				Toast.makeText(this, "Show Me The Money", 100).show(); // 스타 치트키
 			else{ // 데이터베이스를 쓰기 위한 열
 				con = new Database(getApplicationContext());
 
@@ -713,7 +713,7 @@ public class List extends Activity implements AdapterView.OnItemSelectedListener
 		}
 	}
 
-	private void sendMessage(String a, String b) throws Exception{ // 문자 보내기 기능
+	private void sendMessage(String a, String b) throws Exception{ // *문자하기* 기능
 		// TODO Auto-generated method stub
 		SmsManager sms = SmsManager.getDefault();
 		sms.sendTextMessage(a, null, b, null, null);
