@@ -600,6 +600,7 @@ activity_result.xml
 = 소스코드 =
 
 코드 출처 : http://blog.naver.com/PostList.nhn?from=postList&blogId=nobless_05&categoryNo=28&currentPage=2
-참고해서 안드로이드 앱에서 쓸 수 있는 코드로 수정했다.
+참고해서 안드로이드 앱에서 쓸 수 있는 코드로 수정했습니다.
+
 apk 파일입니다.
 https://comp166-koreauniv.googlecode.com/files/Baskinrabbins31.apk
