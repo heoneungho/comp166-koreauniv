@@ -1071,11 +1071,20 @@ System.out.println("set to 1" + c.getTime())
 
 {{{
 
+
+public void takeRisk() throws BadException{ /예외선언을 통해서BadException을 던질수 있다는 것을 알린다
+if (abandonAllHope) {
+throw new BadException();//새로운 exception개채를 만들고던진다
+}
+}
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
