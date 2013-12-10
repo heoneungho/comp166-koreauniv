@@ -21,11 +21,11 @@
 
 먼저 무슨 파일들이 있는지 살펴보면 다음 화면과 같다.
 
-[http://comp166-koreauniv.googlecode.com/files/list.jpg]
+[http://comp166-koreauniv.googlecode.com/files/Omok_game.jpg]
 
 * 위의 사진에서 알 수 있듯이 총 6개의 파일이 있다. 그를 차근차근 살펴보면 다음과 같다.
 
-'''MainActivity.java''' 메인 화면에 대한 코드이다. 두개의 버튼이 있는데, 하나는 게임페이지로 넘어가고, 다른 하나는 앱을 종료시킨다.
+MainActivity.java 메인 화면에 대한 코드이다. 두개의 버튼이 있는데, 하나는 게임페이지로 넘어가고, 다른 하나는 앱을 종료시킨다.
 
 
 {{{
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 }}}
 
 
-'''NewGame.java''' 이는 게임실행과 관련된 파일이다.
+NewGame.java 이는 게임실행과 관련된 파일이다.
 
 {{{
 package com.example.game;
@@ -360,7 +360,7 @@ public class NewGame extends Activity implements OnClickListener {
 
 }}}
 
-'''OmokView.java''' 이는 게임 화면 구현에 관한 것이다. 
+OmokView.java 이는 게임 화면 구현에 관한 것이다. 
 {{{
 package com.example.game;
 
@@ -495,7 +495,7 @@ public class OmokView extends View {
 }}}
 
 
-'''TurnThread.java''' 여기서는 바둑돌 색을 바꿔준다.
+TurnThread.java 여기서는 바둑돌 색을 바꿔준다.
 
 {{{
 package com.example.game;
@@ -573,7 +573,7 @@ public class TurnThread extends Thread {
 } // 이 클래스는 자동으로 바둑돌의 색을 바꿔주는 것이다. 흑색다음은 백색차례이므로 그를 바꿔 줄 필요가 있기 때문이다.
 }}}
 
-'''Dol.java''' 여기서는 바둑판 위에서 찍은 점의 좌표를 구해준다.
+Dol.java 여기서는 바둑판 위에서 찍은 점의 좌표를 구해준다.
 
 {{{
 package com.example.game;
@@ -604,7 +604,7 @@ class Dol {
 
 }}}
 
-'''Music.java''' 마지막으로, 여기서는 게임실행할 때 자동으로 배경음악을 재생해 준다.
+Music.java 마지막으로, 여기서는 게임실행할 때 자동으로 배경음악을 재생해 준다.
 
 {{{
 package com.example.game;
@@ -637,7 +637,125 @@ public class Music {
 } // 이 클래스는 앱을 실행하였을때 설정된 음악을 재생해주는 클래스이다.
 }}}
 
+activity_main.xml
+{{{
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/Button_exit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="22dp"
+        android:text="Exit" />
+
+    <Button
+        android:id="@+id/Button_newgame"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Button_exit"
+        android:layout_alignLeft="@+id/Button_exit"
+        android:layout_marginBottom="19dp"
+        android:text="NewGame" />
+
+</RelativeLayout>
+
+}}}
+
+
+newgame.xml
+
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="@color/puzzle_background"
+	>
+	<LinearLayout 
+		android:id="@+id/LinearLayout01"
+		android:layout_width="fill_parent" 
+		android:layout_height="0dp" 
+		android:layout_weight="8"
+		android:orientation="horizontal"
+		/>
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="0dp"
+		android:orientation="horizontal"
+		android:layout_weight="2" 
+	>
+		<Button 
+			android:id="@+id/btnFirst" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent" 
+			android:text="MoveFirst" 
+			android:textSize="10sp"
+			android:layout_weight="1"
+			/>
+		<Button 
+			android:id="@+id/btnUndo" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent" 
+			android:text="Undo" 
+			android:textSize="10sp"
+			android:layout_weight="1"
+			/>
+		<Button 
+			android:id="@+id/btnRedo" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent" 
+			android:text="Redo" 
+			android:textSize="10sp"
+			android:layout_weight="1"
+			/>
+		<Button 
+			android:id="@+id/btnLast" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent" 
+			android:text="MoveLast" 
+			android:textSize="10sp"
+			android:layout_weight="1"
+			/>
+	</LinearLayout>
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="0dp"
+		android:orientation="horizontal"
+		android:layout_weight="2" 
+	>
+		<Button 
+			android:id="@+id/btnNewGame" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent" 
+			android:text="NewGame" 
+			android:textSize="10sp"
+			android:layout_weight="1"
+			/>
+		<Button 
+			android:id="@+id/btnExit" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent" 
+			android:text="Exit" 
+			android:textSize="10sp"
+			android:layout_weight="1"
+			/>
+	</LinearLayout>
+</LinearLayout>
+}}}
 참고
 -만들면서 배우는 Android Game Programming<한빛미디어>-황동윤지음 에서 가장 많이 참고하였고,
 
