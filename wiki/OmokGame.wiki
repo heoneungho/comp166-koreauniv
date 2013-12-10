@@ -20,7 +20,70 @@
 
 
 이 앱의 코드는 다음과 같다.
-{{{
-a
-}}}
 
+
+먼저 무슨 파일들이 있는지 살펴보면 다음 화면과 같다.
+
+[Image:capture_picture.png]
+
+
+위의 사진에서 알 수 있듯이 총 6개의 파일이 있다. 그를 차근차근 살펴보면 다음과 같다.
+
+'''MainActivity.java''' 메인 화면에 대한 코드이다. 두개의 버튼이 있는데, 하나는 게임페이지로 넘어가고, 다른 하나는 앱을 종료시킨다.
+
+
+{{{
+package com.example.game;
+
+
+import android.os.Bundle;
+import java.util.Stack;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends Activity {
+
+	 @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_main);
+	        
+	        Button newgame_btn = (Button)findViewById(R.id.Button_newgame);
+	        Button exit_btn = (Button)findViewById(R.id.Button_exit);
+	        
+	        newgame_btn.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+
+					Intent i = new Intent(MainActivity.this,NewGame.class);
+					startActivity(i);
+					
+				}
+			}); // button(newgame)을 누르면 NewGame.class로 넘어간다.
+
+	        
+	        exit_btn.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					finish();
+				}
+			}); // button(exit)을 누르면 끝난다.
+	    }
+	 @Override
+	 protected void onResume(){
+		 super.onResume();
+		 Music.play(this,R.raw.main);
+	 } //main에서 main이라는 노래가 나온다.
+	 @Override
+	 protected void onPause(){
+		 super.onPause();
+		 Music.stop(this);
+	 }
+}
+
+}}}
