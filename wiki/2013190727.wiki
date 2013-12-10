@@ -1610,7 +1610,7 @@ public class MiniMusicCmdline { // 첫번째
 
         public void play(int instrument, int note) {
                 try {
-                        Sequencer player = MidiSystem.getSequencer();//시퀀서를 생성
+                        Sequencer player = MidiSystem.getSequencer();
                         player.open();
                         Sequence seq = new Sequence(Sequence.PPQ,4);
                         Track track = seq.createTrack();
