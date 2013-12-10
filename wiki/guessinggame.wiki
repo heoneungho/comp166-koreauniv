@@ -1,0 +1,14 @@
+#summary 가장 가까운 숫자를 맞추는 사람이 이기는게임
+#labels 2013190725
+
+= Introduction =
+
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
