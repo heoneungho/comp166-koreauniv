@@ -1393,6 +1393,8 @@ http://stackoverflow.com/questions/6545792/error-in-using-calendar-in-android --
 
 http://susemi99.tistory.com/1290 --> 음악 앱을 위해 참조함
 
+책: 안드로이드 앱 개발 완벽 가이드 -->전반적인 것은 이 책에서 참조함
+
 ==동영상 라이센스에 대한 부분==
 
 이 앱에서 사용하고 있는 동영상 종류는 총 3가지로 나눌 수 있는데
@@ -1407,3 +1409,6 @@ http://susemi99.tistory.com/1290 --> 음악 앱을 위해 참조함
 
 ==APK 파일 제출== 
 http://comp166-koreauniv.googlecode.com/files/healthcare.apk/
+
+==소스 코드 제출 ==
+http://comp166-koreauniv.googlecode.com/files/healthcare.zip/
