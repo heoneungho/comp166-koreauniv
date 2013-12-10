@@ -632,7 +632,6 @@ public class GameHelper {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
-{{{
 
 public class FirstSimpleDotCom
 {
@@ -671,7 +670,9 @@ public class FirstSimpleDotCom
 
         }
 }
-//사용자가 맞출 때마다 두번째 배열('hitCells' 배열)의 상태를 바꿔야 합니다. 그 리고 그 전에 'hitCells' 배열을 확인하여 이미 맞춘 적이 있는지 확인해야 합니다. 이 때문에 작업이 복잡해집니다.
+//사용자가 맞출 때마다 두번째 배열('hitCells' 배열)의 상태를 바꿔야 합니다.
+//그리고 그 전에 'hitCells' 배열을 확인하여 이미 맞춘 적이 있는지 확인해야 합니다. 
+//이 때문에 작업이 복잡해집니다.
 
 public class SimpleDotComGame {          //SimpleDotComGame 클래스입니다(5단원의 코드와 동일합니다.)
 
