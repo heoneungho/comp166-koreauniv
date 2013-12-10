@@ -636,7 +636,7 @@ public class GameHelper {
 		return inputLine;
 	}
 }
-//마지막 클래스인 gamehelper는 책에서 그냥 그대로 입력하라고 나옴. 
+//마지막 클래스인 gamehelper는 책에서 그대로 입력하라고 나옴. 
 
 //결과
 enter a number 3
@@ -776,7 +776,7 @@ class SimpleDotCom {
                         if(guess == locationCells[i] && locationCells[i]!=-1){ 
                                 result = "hit";
                                 numOfHits++;
-                                locationCells[i]=-1; // 맞춘 배열은 -1값으로 교체
+                                locationCells[i]=-1; // 맞춘 배열 -1값으로 교체
                                 break;
 
                         }
@@ -806,7 +806,7 @@ public class DotCom
      private ArrayList<String> locationCells;
      // ArrayList를 사용
      // private int numOfHits;
-      // 없어도 상관 ㄴㄴ
+      // 없어도 상관 x
 
      public void setLocationCells(ArrayList<String>loc)
    
@@ -815,20 +815,20 @@ public class DotCom
      }
  
      public String checkYourself(String userInput)
-     // 새로 바뀐 인자 이름을 넣어 줍니다.
+     // 새로 바뀐 이름을 넣어 줍니다.
     {
           String result = "miss";
   
           int index = locationCells.indexOf(userInput);
-          // 사용자가 추측한 위치가 ArrayList에 들어있는지 확인, 들어있으면 인덱스 번호가, 그렇지 않으면 리턴
+          // 사용자의 추측 위치가 ArrayList에 들어있는지 확인하고 들어있으면 인덱스 번호, 그렇지 않으면 리턴
   
           if(index >= 0)
           {
                 locationCells.remove(userInput);
-                // 인덱스가 0 이상이면 사용자가 추측한 위치가 목록에 들어있는 것이므로 제거
+                // 인덱스가 0이상이면 사용자의 추측위치에 들어와 있는 것이므로 없앤다
    
               if(locationCells.isEmpty())
-              // 목록이 비어짔다면 그 닷컴이 죽었다는 것을 알수 있습니다.
+              // 목록이 비었으면 닷컴이 죽었습니다.
              {
                    result = "Kill";
              }
@@ -1028,6 +1028,29 @@ class Dog extends Canine{
 *339p Calendar* _구현후 주석달기_
 
 {{{
+
+Calendar c = Calender.getInstance();
+
+c.set(2013.11.10.12.16);
+
+long day1 = c.getTimeInMillis();
+
+day1 += 1000 * 60 * 60
+
+System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+
+c.add(c.DATE, 40);
+
+System.out.println("add 40 days" + c.getTime());
+
+c.roll(c.DATE, 40);
+
+System.out.println("roll 40 days" + c.getTime());
+
+c.set(c.DATE, 1);
+
+System.out.println("set to 1" + c.getTime())
+;
 
 }}}
 
