@@ -583,11 +583,11 @@ public static void main(String[] args) {
 
         int randomNum = (int) (Math.random() * 5);
         int[] locations = {randomNum, randomNum+1, randomNum+2};
-                              // 난수를 만들어 셀 위치 배열을 만든다
+                              // 난수를 만들어 셀 위치 배열을 만듭니다.
 
         theDotCom.setLocationCells(locations);
 
-        boolean isAlive = true;
+        boolean isAlive = true;  //게임의 상태를 나타내는 isAlive라는 부울변수를 선언하고 true로 설정합니다.
 
         while(isAlive == true) {
                 String guess = helper.getUserInput("enter a number");
@@ -596,9 +596,9 @@ public static void main(String[] args) {
                 numOfGuesses++;
 
                 if(result.equals("kill")) {
-                        isAlive = false;
+                        isAlive = false;  //순환문이 중단됩니다.
                         System.out.println(numOfGuesses + "guesses");
-                }
+                } //만약 결과가 kill이면 사용자가 추측한 횟수를 출력합니다.
         }
 }
 }                                                    // 클래스 끝
