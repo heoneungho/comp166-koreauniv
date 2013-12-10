@@ -1249,6 +1249,64 @@ class StaticSuper {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class TestExceptions {
+	
+	public static void main(String[] args) {
+		String test = "아니오"; // '예'로 하면 어떻게 될까? 는 아래에
+		try {
+			System.out.println("try 블록 시작");
+			doRisky(test);
+			System.out.println("try 블록 끝");
+		} catch (ScaryException se) {
+			System.out.println("예외 발생");
+		} finally {
+			System.out.println("finally 블록");
+		}
+		System.out.println("main 끝");
+	}
+	
+	static void doRisky(String test) throws ScaryException {
+		System.out.println("위험한 메소드 시작");
+		if("예".equals(test)) {
+			throw new ScaryException();
+		}
+		System.out.println("위험한 메소드 끝");
+		return;
+	}
+}
+
+__________________________________________________________________________________
+
+public class ScaryException extends Exception {
+	
+}
+
+/* Output
+
+try 블록 시작
+
+위험한 메소드 시작
+
+위험한 메소드 끝
+
+try 블록 끝
+
+finally 블록
+
+main 끝
+
+ * String test = "예"; 로 바꾸면??
+
+try 블록 시작
+
+위험한 메소드 시작
+
+예외 발생
+
+finally 블록
+
+main 끝 */
+
 
 }}}
 
