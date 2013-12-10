@@ -1233,8 +1233,8 @@ class Vampire extends Monster { // Vampire는 Monster를 상속받음
 
  * 힙에서의 변수: 힙은 모든 객체가 사는 곳이다. 
  * 스택에서의 변수: 스택은 메소드 호출과 지역 변수가 사는 곳이다. 메소드 안에서 선언한 것을 지역 변수라고 부르는데, 메소드 매개변수도 지역 변수에 포함된다. 지역 변수는 임시 변수며 메소드가 스택에 들어있는 동안만 (즉, 메소드 전체를 감싸는 오른쪽 중괄호가 나타나기 전까지만) 살아있다.
- * 생성자:
- * 널 레퍼런스:
+ * 생성자: 생성자는 겉으로 보기에는 메소드와 거의 똑같지만 메소드가 아니다. new라는 키워드를 사용했을 때 실행할 코드가 들어있다. 즉, 어떤 클래스 유형의 인스턴스를 만들 때 실행할 코드가 들어있다. 직접 클래스에 대한 생성자를 만들 수도 있지만 생성자를 만들지 않더라도 컴파일러에서 알아서 만들어준다.
+ * 널 레퍼런스: 프로그래머가 직접 기본값을 지정하지 않아도 인스턴스 변수에는 자동으로 기본값이 지정된다. 원시 유형의 기본값은 0/0.0/false고 객체에 대한 레퍼런스의 기본값은 null이다.
  
 *298p 집중토론* _요약_
 
@@ -1244,6 +1244,21 @@ class Vampire extends Monster { // Vampire는 Monster를 상속받음
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+import java,util.*;
+class V2Radiator {
+	V2Radiator(ArrayList list {
+		for (int x=0; x<5; x++) {
+			list.add(new SimUnit("V2Radiator));
+		}
+	}
+}
+
+class V3Radiator extends V2Radiator {
+	V3Radiator(ArrayList lglist) {
+		super(lglist);
+		for (int g=0; g<10; g++) {
+			lglist.add(new SimU
 
 }}}
 
