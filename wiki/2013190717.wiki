@@ -10,7 +10,7 @@
 public class BeerSong{
 	public static void main(String[] args){
 		int beerNum = 99;
-		String word = "bottles";//plural
+		String word = "bottles";//여러병
  
     		while (beerNum>0){ 
 			System.out.println(beerNum + " " + word + " of beer on the wall"); 
@@ -18,7 +18,7 @@ public class BeerSong{
 			System.out.println("Pass it around"); beerNum -= beerNum; 
 
     			if (beerNum==1){
-				word = "bottle";//singular 
+				word = "bottle";//한병
 		   	} 
 
     			if(beerNum>0){
@@ -46,11 +46,11 @@ public class PhraseOMatic{
         String[] wordListTwo = {"fancy", "giant", "huge", "irritating", "junior"};
         String[] wordListThree = {"anteater", "bear", "cat", "dog", "elphant"};
 
-        int oneLength = wordListOne.length;
+        int oneLength = wordListOne.length; //각 단어 리스트의 길이
         int twoLength = wordListTwo.length;
         int threeLength = wordListThree.length;
 
-        int rand1 = (int)(Math.random()*oneLength);
+        int rand1 = (int)(Math.random()*oneLength); //Math 클래스를 사용하여 난수 발생
         int rand2 = (int)(Math.random()*twoLength);
         int rand3 = (int)(Math.random()*threeLength);
 
@@ -166,7 +166,7 @@ public class GuessGame{
 		boolean correct3=false;
 		boolean correct4=false;
 
-		int answer=(int)(Math.random() * 10);
+		int answer=(int)(Math.random() * 10); //0~9의 난수
 		System.out.println("Guess the number(0~9)");
 		
 		while(true){
@@ -175,7 +175,8 @@ public class GuessGame{
 			p2.guess();
 			p3.guess();
 			p4.guess();
-
+                        
+                        //Player 클래스의 랜덤 넘버를 불러옴
 			guess1 = p1.number;
 			System.out.println("P1 : " + guess1);
 
@@ -188,8 +189,8 @@ public class GuessGame{
 			guess4 = p4.number;
 			System.out.println("P4 : " + guess4);
 
-
-			if(guess1 == answer)
+                        //답이 맞으면 true
+			if(guess1 == answer) 
 				correct1 = true;
 
 			if(guess2 == answer)
@@ -201,7 +202,7 @@ public class GuessGame{
 			if(guess4 == answer)
 				correct4 = true;
 
-
+                        //아무나 정답자가 있으면 -> 누가 정답인지 체크
 			if(correct1 || correct2 || correct3 || correct4) {
 				System.out.println("Congratulation!");
 				System.out.println("P1 : " + correct1);
@@ -212,7 +213,7 @@ public class GuessGame{
 				System.out.println("The end of the game");
 				break;		
 			}
-			
+			//정답자가 없으면 재시도
 			else 
 				System.out.println("Try again");
 
@@ -226,7 +227,7 @@ Player
 {{{
 public class Player{
 	int number=0;
-
+        //플레이어의 숫자를 랜덤 발생
 	public void guess(){
 		number=(int)(Math.random() * 10);
 		//System.out.println("The Guessed number : " + number);
@@ -312,15 +313,15 @@ class DVDPlayerTest{
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
-class Dog96{
+class Dog96{//이름이 96인 이유는 이미 같은 프로젝트에 Dog이 있어서...
 	String name;
 	public static void main(String[] args){
 		Dog96 dog1 = new Dog96();
 		dog1.bark();
 		dog1.name = "Bart";
 
-		Dog96[] myDogs = new Dog96[3];
-		myDogs[0] = new Dog96();
+		Dog96[] myDogs = new Dog96[3]; //Dog 개체에 대한 레퍼런스를 3개 생성
+		myDogs[0] = new Dog96(); //각 레퍼런스에 개체 생성
 		myDogs[1] = new Dog96();
 		myDogs[2] = dog1;
 
@@ -339,7 +340,7 @@ class Dog96{
 		}
 
 	}
-
+        //Dog96 개체의 메소드 
 	public void bark(){
 		System.out.println(name + " barks.");
 	}
@@ -443,7 +444,7 @@ class Dog{
 	String name;
 
 	void bark(){
-		if(size>60) 
+		if(size>60) //사이즈가 60이상이면
 			System.out.println("Woof! Woof");
 		else if(size>14)
 			System.out.println("Ruff! Ruff!");
@@ -537,27 +538,27 @@ class ClockTest{
 
 {{{
 public class SimpleDotCom{
-	int[] locationCells;
+	int[] locationCells; //생성된 닷컴의 위치를 저장할 인스턴스 변수
 	int hits = 0;
 
 	void setLocationCell(int[] cellLocations){
-		locationCells = cellLocations;
+		locationCells = cellLocations; //세터로 설정
 
 	}
 
 	public String checkYourself(String userGuess){
-		int guess = Integer.parseInt(userGuess);
-		String result = "miss";
+		int guess = Integer.parseInt(userGuess); //String으로 받아온 userGuess를 int로 변환
+		String result = "miss"; //default 결과는 miss
 
 		for(int cell : locationCells){
-			if(guess == cell){
+			if(guess == cell){//맞으면
 				result = "hit";
 				hits++;
 				break;
 			}
 		}
 		
-		if(hits==locationCells.length)
+		if(hits==locationCells.length)//히트 수가 배정된 닷컴의 길이와 같으면
 			result = "kill";
 		
 		return result;
@@ -565,7 +566,7 @@ public class SimpleDotCom{
 	}
 }
 
-import java.util.Scanner;
+import java.util.Scanner; //스캐너로 유저 입력값 받아옴
 
 public class SimpleDotComTest{
 	
@@ -594,21 +595,23 @@ public class SimpleDotComTest{
 
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
+<b>중복되는 주석은 한번만 적음</b>
+
 {{{
-<Test_First.java>
+<Test_First.java> //첫번째 옵션
 import java.util.ArrayList;
 
 public class Test_First {
 	int[] locationCells;
-	boolean[] checkCells;
+	boolean[] checkCells; //각 셀이 맞았는지를 체크하기 위한 boolean 배열
 	
 	int hits = 0;
 
 	void setLocationCell(int[] cellLocations){
-		locationCells = cellLocations;
+		locationCells = cellLocations; 
 	}
 	
-	void setCheckedCell(boolean[] checked){
+	void setCheckedCell(boolean[] checked){ //맞은 셀을 위한 세터
 		checkCells = checked;
 		
 	}
@@ -622,7 +625,7 @@ public class Test_First {
 				if(checkCells[i]==false){
 					result = "hit";
 					hits++;
-					checkCells[i] = true;
+					checkCells[i] = true; //맞았으면 그 셀을 true
 					break;	
 				}
 				else
@@ -644,26 +647,26 @@ public class Test_First {
 
 
 
-<TEST1.java>
+<TEST1.java>//첫번째 옵션을 위한 테스트 드라이브
 public class TEST1{
 	public static void main(String[] args){
 		int numOfGuess = 0;
 		GameHelper helper = new GameHelper();
 
 		Test_First dot = new Test_First();
-		int randomNum = (int)(Math.random()*5);
+		int randomNum = (int)(Math.random()*5); //0~4의 난수 생성
 
 		int[] locations = {randomNum, randomNum+1, randomNum+2};
 		dot.setLocationCell(locations);
-		boolean isAlive = true;
+		boolean isAlive = true; //죽었는지 체크하기 위한 변수
 		
-		boolean[] checked = {false,false,false};
+		boolean[] checked = {false,false,false}; //초기화
 		dot.setCheckedCell(checked);
 
 		while(isAlive == true){
 			String guess = helper.getUserInput("enter a number");
 			String result = dot.checkYourself(guess);
-			numOfGuess++;
+			numOfGuess++; //추정 수 카운터
 			if(result.equals("kill")){
 				isAlive = false;
 				System.out.println(numOfGuess + " guesses");
@@ -704,7 +707,7 @@ public class Test_Second{
 			if(guess == locationCells[i]){
 				result = "hit";
 				hits++;
-				locationCells[i]=-1;
+				locationCells[i]=-1; //맞으면 맞은 셀을 -1로 처리
 				break;
 			}
 		}
@@ -757,7 +760,7 @@ public class TEST2{
 import java.util.ArrayList;
 
 public class Test_Third{
-	private ArrayList<String> locationCells;
+	private ArrayList<String> locationCells; //ArrayList의 유틸리티를 사용하기 위해
 	private int hits = 0;
 
 	void setLocationCell(ArrayList<String> cellLocations){
@@ -769,12 +772,12 @@ public class Test_Third{
 		int guess = Integer.parseInt(userGuess);
 		String result = "miss";
 		
-		int index = locationCells.indexOf(userGuess);
+		int index = locationCells.indexOf(userGuess); //인덱스를 구하는 메소드
 		
-		if(index>=0){
-			locationCells.remove(index);
+		if(index>=0){ //맞으면(맞지 않으면 index가 null이다)
+			locationCells.remove(index); //해당 인덱스의 데이터를 지워주는 메소드(size도 줄어든다)
 			
-			if(locationCells.isEmpty())
+			if(locationCells.isEmpty())//사이즈가 줄어들어 0이 되면
 				result = "kill";
 			else
 				result = "hit";
@@ -799,7 +802,7 @@ public class TEST3{
 		int randomNum = (int)(Math.random()*5);
 
 		ArrayList<String> locations = new ArrayList();
-		locations.add(Integer.toString(randomNum));
+		locations.add(Integer.toString(randomNum)); //난수를 발생시켜 add
 		locations.add(Integer.toString(randomNum+1));
 		locations.add(Integer.toString(randomNum+2));
 		dot.setLocationCell(locations);
