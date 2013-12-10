@@ -633,6 +633,100 @@ public class GameHelper {
 
 {{{
 
+public class DotcomFirstOption
+{
+                public static void main(String[] args) 
+                {
+                        int numOfGuesses = 0;
+                        GameHelper helper = new GameHelper();
+                        
+                        SimpleDotCom theDotCom = new SimpleDotCom();
+                        int randomNum = (int) (Math.random() * 5);
+                        int[] locations = {randomNum, randomNum + 1,randomNum + 2};
+                        theDotCom.setLocationCells(locations);
+                        boolean isAlive = true;
+                        
+                        while(isAlive == true)
+                        {
+                                String guess = helper.getUserInput("enter a number");
+                                String result = theDotCom.checkYourself(guess);
+                                numOfGuesses++;
+                                
+                                if(result.equals("kill"))
+                                {
+                                        isAlive = false;
+                                        System.out.println(numOfGuesses + " guesses");
+                                }
+                        }
+                        
+                }
+
+        }
+
+public class SimpleDotCom
+{
+        int[] locationCells;
+        int numOfHits = 0;
+        boolean[] hitCells = {false, false, false};//hitCells 배열을 선언하고 모두 false로 초기화해줍니다.
+        
+        public void setLocationCells(int [] locs)
+        {
+                locationCells = locs;
+        }
+        
+        public String checkYourself(String stringGuess)
+        {
+                int guess = Integer.parseInt(stringGuess);
+                String result = "miss";
+                for(int i = 0 ;i < locationCells.length; i++)
+                {
+                        if(guess == locationCells[i]&& hitCells[i] == false)
+                        {
+                        //guess와 locationCells가 같고 맞춘 셀이 아닐때에만
+                                result = "hit";
+                                hitCells[i] = true;//hitCells을 true로 설정해줍니다
+                                numOfHits++;
+                                break;
+                        }
+                }
+
+        
+        if(numOfHits == locationCells.length)
+        {
+                result = "kill";
+        }
+        System.out.println(result);
+        return result;
+
+        }
+}
+
+import java.io.*;
+//가져오기를 선언해줍니다. System.in을 사용하기 위함입니다.
+
+public class GameHelper 
+{
+        public String getUserInput(String prompt)
+        {
+                String inputLine = null;
+                System.out.println(prompt + " ");
+                try
+                {
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if(inputLine.length() == 0)
+                                return null;
+                        
+                }
+                catch (IOException e)
+                {
+                        System.out.println("IOException: " + e);
+                        
+                }
+                return inputLine;
+        }
+}
+
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
