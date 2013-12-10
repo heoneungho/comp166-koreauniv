@@ -1,4 +1,3 @@
-
 #summary 변진우의 실습 페이지입니다.
 
 <wiki:toc max_depth="1" />
@@ -120,17 +119,16 @@ class Exercise1b{
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 객체에서 자신에 대해 아는 것
+ * 메소드: 객체에서 자신이 하는 것
+ * 클래스: 객체를 만들기 위한 청사진
+ * 테스트용 클래스: 새로운 클래스 유형의 객체에 들어있는 메소드
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
-
+ * 인스턴스 변수: Volume, Channel
+ * 메소드: UpVolume?, DownVolume?, UpChannel?, DownChannel? 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
@@ -233,13 +231,71 @@ public class GameLauncher{
 
 {{{
 
+class TapeDeck
+{
+        boolean canRecord = false;
+
+        void playTape() // 테이프 플레이 
+        {
+                System.out.println("tape playing"); // tape playing 출력
+        }
+
+        void recoredTape() // 테이프 녹음
+        {
+                System.out.println("tape recording"); // tape recording 출력
+        {
+}
+
+class TapeDeckTestDrive
+{
+        public static void main(String [] args)
+        {
+                TapeDeck t = new TapeDeck(); //테이프 객체 생성
+                t.canrecord = true; // record가 참
+                t.playTape(); // 그래서 재생
+
+                if(t.canRecord == true) // 플레이 없음 녹음
+                        t.recordTape();
+        }
+}
+
+
+
+class DVDPlayer 
+{
+        boolean canRecord = false;
+        
+        void playDVD()
+        {
+                System.out.println("DVD playing");
+        }
+        
+        void recordDVD()
+        {
+                System.out.println("DVD recording");
+        }
+}
+
+class DVDPlayerTestDrive
+{
+        public static void main(String [] args)
+        {
+                DVDPlayer d = new DVDPlayer(); // DVD 객체 생성
+                d.canRecord = true;
+                d.playDVD();
+        
+                if(d.canRecord == true)
+                        d.recordDVD(); // 실행할 것이 없음 녹음
+        }
+}
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수:원시 변수( 정수, 부울, 부동소수점 수와 같은 기초적인 값 - 단순한 비트 패턴으로 나타낼 수 있는 값 ) 
+                         레퍼런스변수( 객체에 대한 레퍼선스가 들어
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
@@ -343,27 +399,109 @@ class Hobbits {
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
-
+ * 누가 이겼나요?: bob이 이겼습니다.
+ * 문제가 된 부분은 어딘가요?: 객체를 형성하지 않았습니다.
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+     캡슐화:모든 인스턴스 변수에 대해 세터 메소드를 만들고 다른 코드에서는 데이터를 절대 직접 접근할 수 없도록, 반드시 세터 메소드를 사용해야한다.
+    게터와 세터:게터(액세서) : 인스턴스 변수의 값 등을 가져옴 
+
+세터(뮤테이터): 인스턴스 변수의 값 등을 설정
+
+    인스턴스 변수 vs 지역 변수:지역 변수에는 기본값이 없다. 따라서 지역 변수를 초기화하기 전에 사용하려고 하면 컴파일 과정에서 오류 
  
 *107p Dog* _실행_
 
 {{{
+class Dog
+{
+        int size;
+        String name;
 
+        void bark()
+        {
+                if ( size > 60 )
+                        System.out.println("Wooof! Wooof!");
+                else if ( size > 14)
+                        System.out.println("Ruff! Ruff!");
+                else
+                        System.out.println("Yip! Yip!");
+        {
+{
+
+class DogTestDrive
+{
+
+        public static void main(String[] args)
+        {
+                Dog one = new Dog();
+                one.size = 70;
+                Dog two = new Dog();
+                two.size = 8;
+                Dog three = new Dog();
+                three.size = 35;
+
+                one.bark();
+                two.bark();
+                three.bark();
+        }
+}
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class XCopy
+{
+        public static void main(String [] args)
+        {
+                int orig = 42; //orig 에 42를 넣어보자 !
 
+                XCopy x = new XCopy(); //XCopy 란 변수를 만들어보자 !
+
+                int y = x.go(orig); // y는 XCopy 변수로 만들고 42를 넣자 그리고 곱하기 2 !
+
+                System.out.println(orig + " " + y);
+        }
+
+        int go(int arg)
+        {
+
+                arg = arg * 2;  // arg 를 2배하자 !
+
+                return arg;
+        }
+}
+
+
+class Clock
+{
+        String time;
+
+        void setTime(String t) //시간설정을 해보자!
+        {
+                time = t;
+        }
+
+        String getTime()  // 시간을 보내버리자 ! 값으로
+        {
+                return time;
+        }
+}
+
+class ClockTestDrive
+{
+        public static void main(String [] args)
+        {
+        Clock c = new Clock(); //Clock 변수를 만들어보자 !
+
+        c.setTime("1245"); // time에 1245를 넣어보자 !!
+        String tod = c.getTime(); // tod 넌 time 이걸로 정했다 !
+        System.out.println("time: " + tod); // 시간을 tod 참고 출력!!
+        }
+}
 }}}
 
 
@@ -371,12 +509,94 @@ class Hobbits {
 
 *135p XP* _요약_
 
- * 익스트림 프로그래밍이란?
+ *익스트림 프로그래밍이란? 소프트웨어 개발 방법. 프로그래머들이 정말 원하는 방법. 90년대 말에 등장, 여러 회사에서 다양한 규모의 회사에 사용됨. 스펙이 변경되어도 고객이 원하는 것을 고객이 원하는 기한에 맞춰서 제공할 수 있는 장점. 
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class simpledotcomtestdrive {
+        
+    public static void main(String[] args)  {
+        int numofGuesses = 0;
+        GameHelper helper = new GameHelper();
+        
+        simpledotcom thedotcom = new simpledotcom();
+        
+        int randomNum = (int)(Math.random()*5);
+        
+        int[] locations = {randomNum, randomNum+1, randomNum+2};
+        thedotcom.setLocationCells(locations);
+        boolean isAlive = true;
+        
+        while(isAlive == true)  {
+                String guess = helper.getUserInput("enter a number");
+                String result = thedotcom.checkYourself(guess);
+                numofGuesses++;
+                
+                if(result.equals("kill"))       {
+                        isAlive = false;
+                        
+                        System.out.println(numofGuesses + " guesses");
+                }
+        }
+    }
+}
 
+
+
+public class simpledotcom {
+
+        int[] locationCells;
+        int numOfHits = 0; // number of answer that you correct the target.
+
+public void setLocationCells (int[] locs)       {
+        locationCells = locs;
+}
+
+public String checkYourself (String stringGuess)        {
+        int guess = Integer.parseInt(stringGuess); // string 변수를 int형으로
+        String result = "miss";
+        for(int i=0; i < locationCells.length; i++)     {
+                if(guess == locationCells[i])   {
+                        result = "hit";
+                        numOfHits++;
+                        break;
+                }
+        }
+
+        if (numOfHits == locationCells.length)  {
+                result = "kill";
+        }
+
+        System.out.println(result);
+        
+        return result;
+        }       
+}
+             
+
+
+import java.io.*;
+
+public class GameHelper {
+        public String getUserInput(String prompt)       {
+                String inputLine = null;
+                
+                System.out.print(prompt + " ");
+                
+                try{
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        
+                        if(inputLine.length() == 0 )
+                                return null;
+                }       catch (IOException e)   {
+                        System.out.println("IOException: " + e);
+                }
+                
+                return inputLine;
+        }
+}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
@@ -384,78 +604,479 @@ class Hobbits {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+public class DotcomFirstOption {                 public static void main(String[] args)                  {                         int Guessnumber = 0;                         GameHelper helper = new GameHelper();                         SimpleDotCom theDotCom = new SimpleDotCom(); // Making new object                         int randomNum = (int) (Math.random() * 5);                         int[] locations = {randomNum, randomNum + 1,randomNum + 2};                         theDotCom.setLocationCells(locations);                         boolean Alivedotcom = true;                                                  while(Alivedotcom == true)                         {                                 String guess = helper.getUserInput("enter a number");                                 String result = theDotCom.checkYourself(guess);                                 Guessnumber++;                                                                  if(result.equals("kill"))                                 {                                         Alivedotcom = false;                                         System.out.println(Guessnumber + " guesses");                                 }                         }                                          }          }
 
-}}}
 
-*163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
+                        {
+                                if(grid[location] == 0)//아직 사용하지 않았으면
+                                {
+                                        coords[x++] = location;//위치 저장
+                                        location += incr;//다음 칸 확인
+                                        if(location >= gridSize)//경계를 벗어난 경우
+                                                success = false;//실패
+                                        if(x > 0 & (location % gridLength == 0))//경계를 벗어난 경우(오른쪽)
+                                                success = false;//실패
+                                        else//이미 사용중인 경우
+                                                //System.out.print(" used " + location)
+                                                success = false;//실패
+                                }
+                        }
+                        
+                }//while 끝
 
-{{{
-
-}}}
-
-*173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
-
-{{{
-
-}}}
-
-*174p 진짜 닷컴 게임* _구현후 주석달기_
-
-{{{
-
+        int x = 0;
+        int row = 0;
+        int column = 0;
+        
+        while(x < comSize)
+        {
+                grid[coords[x]] = 1;//기본 그리드 좌표를 사용중 으로 표시
+                row = (int) (coords[x] / gridLength);//행 값을 구함
+                column = coords[x]&gridLength;//열 값을 구함
+                temp = String.valueOf(alphabet.charAt(column));//숫자가 된 열을 알파벳으로 변환
+                
+                alphaCells.add(temp.concat(Integer.toString(row)));
+                x++;
+                //System.out.println("   coord  " + x + " = "  + alphaCells.get(x-1));
+                //DotCom의 위치를 알려주는 메소드
+                                
+        }
+        
+        return alphaCells;
+        }
+        
+}
 }}}
 
 = 07. 객체마을에서의 더 나은 삶:미래를 준비합시다  =
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속:공통적인 코드를 어떤 클래스에 넣은 다음,다른 더 구체적인 클래스에 공통적인(더 추상적인) 클래스가 상위클래스라는 것을 알려주면 됩니다. 한 클래스가 다른 클래스를 상속하는 것을 하위클래스가 상위클래스로부터 상속받는다고 말합니다.
+ * 다형성: 다형성을 사용하면 레퍼런스 유형을 실제 객체 유형의 상위클래스 유형으로 지정할 수 있습니다. 다형성은 하나의 변수와 메소드가 다양한 의미로 사용 가능하다는 것이고 인자와 리턴 유형에 대해서도 다형성을 적용할 수 있습니다.
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
 
+class Animal
+{
+        String picture; //그 동물의 모습을 보여주는 JPEG파일명
+        Boolean food;//그 동물이 먹는 음식의 형식,초식과 육식
+        int hunger;//동물이 배고픈 정도
+        float boundaries;//동물이 돌아다니는 공간
+        float location;//동물의 위치를 나타내는 좌표
+
+        void makeNoise()
+        {
+//동물이 소리를 낼 떄의 행동
+        }
+
+        void eat()
+        {
+//동물이 음식을 접했을 때의 행동
+        }
+
+        void sleep()
+        {
+//동물이 잠들어 있을 때의 행동
+        }
+
+        void roam()
+        {
+//동물이 배회할때의 행동
+        }
+
+}
+//Animal을 상속받습니다.
+class Feline extends Animal
+{
+        void roam()
+        {
+            // roam를 오버라이드합니다.
+        }
+}
+//Animal을 상속받습니다.
+class Canine extends Animal
+{
+        void roam()
+        {
+             // roam을 오버라이드합니다.
+        }
+}
+//Feline을 상속받습니다.
+class Lion extends Feline
+{
+        void makeNoise()
+        {
+              // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+              //eat를 오버라이드합니다.
+        }
+}
+//Feline을 상속받습니다.
+class Tiger extends Feline
+{
+        void makeNoise()
+        {
+           // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+           // eat를 오버라이드합니다.
+        }
+}
+
+
+//Feline을 상속받습니다.
+class Cat extends Feline
+{
+        void makeNoise()
+        {
+              
+        }
+
+        void eat()
+        {
+             //eat를 오버라이드합니다.
+        }
+}
+//Animal을 상속받습니다.
+class Hiippo extends Animal
+{
+        void makeNoise()
+        {
+             // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+              //eat를 오버라이드합니다.
+        }
+}
+//Canine을 상속받습니다.
+class Wolf extends Canine
+{
+        void makeNoise()
+        {
+           // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+           //eat를 오버라이드합니다.
+        }
+}
+//Canine을 상속받습니다.
+class Dog extends Canine
+{
+        void makeNoise()
+        {
+           // makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+            //eat를 오버라이드합니다.
+        }
+}
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 오버라이드를 사용하여 상위클래스의 메소드를 하위클래스에서 재 정의하여 사용할수 있습니다.
+
+오버라이드를 사용하기 위해서는
+
+1. 인자는 똑같아야 하고, 리턴 유형은 호환 가능해야 합니다.
+
+2.메소드를 더 접근하기 어렵게 만들면 안 됩니다.
+상위클래스에서 public으로 선언하던것을 private로 선언하여 더 접근하게 어렵게 하면 안됩니다.
+
+ * 오버로딩: 메소드 오버로딩은 이름이 같고 인자 목록이 다른 메소드 두개를 만드는 것입니다. 오버로드된 메소드는 다형성과 전혀 관계가 없습니다. 오버로딩을 활용하여 같은 메소드를 서로 다른 인자 목록을 가진 여러 버전으로 만들 수 있습니다. 
+오버로딩의 경우는 리턴 유형이 달라도 되지만 리턴 유형만 달라서는 안됩니다. 또한 접근 단계를 마음대로 바꿀 수 있습니다.
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
 
+1.
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return true;
+}
+}
+
+class Vampire extends Monster {
+
+boolean frighten(int x){
+	System.out.println("a bite?");
+	return false;
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+제대로 작동합니다.
+
+결과값 : 
+a bite?
+breath fire
+arrrgh
+}}}
+
+{{{
+
+2.
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return true;
+}
+}
+
+class Vampire extends Monster {
+
+int frighten(int x){
+	System.out.println("a bite?");
+	return 1;//return 유형이 int인데 상위클래스는 boolean이기 때문에 오버로딩 불가
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+}}}
+
+{{{
+
+3.
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return false;
+}
+}
+
+class Vampire extends Monster {
+
+boolean scare(int x){//메소드가 frighten이 아닌 scare입니다. 따라서 본 클래스에서 
+상위클래스의 메소드를 사용하게 됩니다.
+	System.out.println("a bite?");
+	return true;
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+결과값 : 
+
+arrrgh
+breath fire
+arrrgh
+
+}}}
+
+{{{
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return false;
+}
+}
+
+class Vampire extends Monster {
+
+boolean frighten(byte b){//상위클래스의 메소드와 매개변수가 다릅니다. 따라서 오버
+로드 하지 않습니다.
+	System.out.println("a bite?");
+	return true;
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+결과값 : 
+arrrgh
+breath fire
+arrrgh
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ * 인터페이스:100% 추상클래스 이다. 인터페이스를 사용하면 다중 상속으로 인한 죽음의 다이아몬드라는 부작용을 없애 다중 상속의 효과를 누릴 수 있습니다. 모든 메소드를 추상 메소드로 정의하여 자식 클래스에서는 무조건 오버라이드 해야합니다.
+ * 다형성:: 다형성을 사용하면 레퍼런스 유형을 실제 객체 유형의 상위클래스 유형으로 지정할 수 있습니다. 다형성은 하나의 변수와 메소드가 다양한 의미로 사용 가능하다는 것이고 인자와 리턴 유형에 대해서도 다형성을 적용할 수 있습니다.
+ * 추상 클래스: 추상 클래스를 지정하면 인스턴스를 만들수가 없다. 추상 메소드를 만들기 위해서는 클래스 또한 추상 클래스이어야 한다.추상 클래스는 확장하지 않으면 쓸모가 없습니다.
+ * 추상 메소드: 추상 클래스처럼 메소드도 추상 메소드로 지정할수 있다. 이러한 추상 메소드는 반드시 오버라이드 해야한다는 특징이 있다. 추상 메소드를 사용하는 이유는 반드시 오버라이드 해야한다는 특징으로 하위클래스에서 필요한 메소드를 강제로 지정함으로 인하여 놓치지 않고 지정할수 있다는 장점이 있다.
+ * 다중 상속: 여러 부모 객체에게 상속을 받는것 자바는 지원하지 않는다. 따라서 이를 하기 위해서는 인터페이스를 사용해야한다. 다중 상속을 지원하게 되면 상위클래스의 메소드에 접근을 할때 그 위치가 불분명하게 되는 '죽음의 다이아몬드'라는 문제가 생기게 됩니다.
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수: 힙은 모든 객제가 사는곳 입니다. 인스턴스 변수는 객체안에 존재하
+므로 힙에 산다고 할수 있습니다.
+ * 스택에서의 변수: 메소드를 호출하면 그 메소드는 호출스택 맨위에 올라갑니다. 실제로는 스택 프레임이 올라가며 모든 지역변수를 포함한 메소드가 들어있습니다. 지역변수가 객체에대한 레퍼런스인 경우에는 레퍼런스만 스택에 들어가고 객체 자체는 힙안에 들어갑니다.
+ * 생성자:생성자는 메소드와 비슷한 형태로 객체를 만드는 역할을 합니다. 생성자는 컴파일러에서 알아서 만들어 줍니다. 생성자는 new를 한후 호출해줍니다.생성자를 통해서 객체의 상태를 초기화합니다.즉 객체의 인스턴스 변수에 값을 대입하는 작업을 합니다.
+ * 널 레퍼런스: 레퍼런스에 NULL을 대입하여 가리키는 레퍼런스가 없게합니다. 이때 이 레퍼런스는 점 연산자를 사용할수 없게되며 사용하려고 할시에는 에러를 출력합니다.
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 객제를 지원하는 역할,객체와 함께 힙에 존재,객체의 상태를 저장
+자신이 속한 객체가 가비지 컬렉터에의하여 삭제되면 같이 삭제됨, 객체를 참조하는 인스턴스가 지역변수에만 존재하면 지역변수가 끝날시에 같이 사라진다.
+ * 지역 변수: 메소드에 존재,기간이 짧아서 임시 변수라고도 함, 스택 프레임에 빼곡 쌓여있음, 프레임이 맨 위로 올라갈때까지 기다리고 있음,메소드가 끝나면 스택에서 튕겨나감
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+import java.util.*;
+class V2Radiator
+{
+        V2Radiator(ArrayList<SimUnit> list) //ㅣist를 받아옵니다.
+        {
+                for(int x = 5; x < 5 ; x++) 
+                {
+                        list.add(new SimUnit("V2Radiator"));//받아온 List에 5번 SimUnit을 추가하고 V2Radiator를 줍니다.
+                }
+        }
+}
+
+class V3Radiator //extends V2Radiator 불필요한 부분입니다.
+{
+        V3Radiator(ArrayList<SimUnit> lglist)//lglist를 받아옵니다.
+        {
+                //super(lglist); 불필요한 부분입니다. 이부분에서 불필요하게 5개의 SimUnit이 생성됩니다.
+                for(int g = 0; g < 10 ; g++)
+                {
+                        lglist.add(new SimUnit("V3Radiator"));//lglist에 10번 SimUnit을 추가하고 V3Radiator를 줍니다.
+                }
+        }
+}
+
+class RetentionBot
+{
+        RetentionBot(ArrayList<SimUnit> rlist)
+        {
+                rlist.add(new SimUnit("Rention"));
+        }
+}
+
+public class TestLifeSupportSim 
+{
+        public static void main(String[] args)
+        {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();//aList의 ArrayList생성
+                V2Radiator v2 = new V2Radiator(aList);//v2객체 생성
+                V3Radiator v3 = new V3Radiator(aList);//v3객체 생성
+                for(int z = 0 ; z < 20 ; z++)
+                {
+                        RetentionBot ret = new RetentionBot(aList); //20번 ret객체를 생성합니다.
+                }
+        }
+}
+
+class SimUnit
+{
+        String botType;
+        SimUnit(String type)
+        {
+                botType = type;
+        }
+        int powerUse()
+        {
+                if("Retention".equals(botType))
+                {
+                        return 2;                       
+                }
+                else
+                {
+                        return 4;
+                }
+        }
+}
 
 }}}
 
@@ -463,27 +1084,90 @@ class Hobbits {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드:클래스의 인스턴스없이 메소드를 실행할 수 있습니다. 인스턴스 변수에 따라 행동이 달라지지 않기 때문에 인스턴스나 객체가필요하지 않습니다. 클래스만 있어도 됩니다.
+
+ * 정적 메소드를 선언하는 방법:메소드에 static이라는 키워드를 붙여줍니다.
+
+ * static final:static final 로 선언된 변수는 상수입니다. 초기화되고나면 절대 그 값을 바꿀 수 없습니다.static으로 선언되어 있기때문에 인스턴스를 만들지 않아도 됩니다. 보통 상수의 변수명은 모두 대문자로 씁니다.
+
+ * 널 레퍼런스:레퍼런스에 NULL을 대입하여 아무것도 가르키지 않게합니다. NULL을 가리키는 레퍼런스는 점 연산자를 사용할수 없습니다.
+
+ * 오토 박싱:자바 5.0이전에는 원시변수와 객체 레퍼선스가 엄격하게 구분되어 있었기에 절대로 서로 맞바꿔 사용 불가능했습니다. 사용하려면 원시값을 감싸고 포장을 풀어야했습니다. 자바 5.0부터 도입된 오토박싱을 통하여 이러한 과정을 손쉽게 할수 있게 되었습니다. 
+
+ * 정적 임포트: 자바 5.0에서 도입된 개념으로 모든 코드를 다 쓰지 않고 짧게 쓸수 있습니다. 하지만 가독성이 떨어질수 있습니다.
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
 
+import java.util.*;
+public class CalendarII/*클래스 이름을 Calendar라고하면 객체생성에 에러가 떠서 II
+를 붙였습니다.*/
+{
+        public static void main(String[] args)
+        {
+                Calendar c = Calendar.getInstance();
+                c.set(2004,0,7,15,40);//시각을 2004년 1월 7일 15:40 으로 설정
+                long day1 = c.getTimeInMillis();//1970년 1월1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴합니다.
+                day1 += 1000 * 60 * 60;
+                c.setTimeInMillis(day1);//한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시각을 갱신합니다.
+                System.out.println("new hour" + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);//35일을 더합니다.
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);//35일 뒤로 넘깁니다. 하지만 달은 바뀌지 않습니다.
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);//날짜를 1로 설정합니다.
+                System.out.println("set to 1 " + c.getTime());
+                
+        
+        }
+}
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+정적 변수에 대한 토론
+
+ * 인스턴스 변수: 정적 변수는 상수에 불가, 특변한 경우에만 많이 사용, 디버깅할때에
+만 특별한경우로 사용, 객체지향적이 아님, 전역변수랑 비슷함, 옛 관습에 익숙한 사람
+들만 사용함, 가끔 익숙하긴 하지만 여전히 옛습관의 폐해, 프로시저 위주
+
+ * 정적 변수: API에서 많이 사용, 상수만 사용하는 클래스도 존재 특별한 경우라도 중
+요함 정적변수가 더 효율적, 전역변수가 아님, 클래스 안에서 존재,필수적인것도 있음
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class StaticSuper{
+
+        static { 
+        System.out.println("super static block");
+        }
+
+        StaticSuper() { //생성자이므로 ()를 붙입니다.
+        System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper {//StaticSuper를 상속
+
+        static int rand; 
+
+        static { 
+        rand=(int_ (Math.random()*6);
+        System.out.println("static block " + rand);
+        }
+
+        StaticTests(){ 
+        System.out.println("constructor");
+        {
+
+        public static void main(String [] args) {
+        System.out.println("in main");
+        StaticTests st = new StaticTests ();//객체 생성
+        }
+}
 
 }}}
 
@@ -493,11 +1177,76 @@ class Hobbits {
 
 {{{
 
+
+public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)//만약 모든 희망을 버리면으로 오류가 생기는 부분입니다.
+                {
+                        throw new BadException();//BadException이라는 오류를 throw합니다.
+                }
+        }
+        
+ public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();//오류가 발생할수 있는 부분입니다.
+                }
+                catch(BadException ex)//BadException을 잡습니다. 오류가 뜨면 밑의 
+부분이 실행됩니다.
+                {
+                        System.out.println("Aaargh!");
+                        ex.printStackTrace();
+/*예외 상황을 해결할수 없을때 모든 예외 객체에서 물려받는 printStackTrace()메소드
+를 써서 스택 트레이스를 출력합니다.*/
+                }
+        
+        
+        }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;//미디 패키지를 import합니다.
+
+public class MiniMiniMusicApp {
+ 
+	public static void main(String[] args) {
+		MiniMiniMusicApp mini = new MiniMiniMusicApp();
+		mini.play();
+	}
+
+	
+	public void play() {
+		try{
+/*Sequencer를 받아서 엽니다.그래야만 열립니다.*/
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();
+/*Sequencer 생성자로 넘기는 인자에 대해서는 신경 쓰지 않아도 됩니다.*/
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+/*Sequence에 Track을 요청합니다.*/
+			Track track = seq.createTrack();
+/*Track에 MidiEvent를 집어넣습니다.*/
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 1, 44, 100);
+			MidiEvent noteon = new MidiEvent(a,1);
+			track.add(noteon);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128,1,44,100);
+			MidiEvent noteOff = new MidiEvent(b,16);
+/*Sequencer에 Sequence를 보냅니다.*/
+			player.setSequence(seq);
+/*Sequencer의 start()메소드를 호출합니다.*/
+			player.start();
+		} catch ( Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+}
 
 }}}
 
@@ -505,8 +1254,62 @@ class Hobbits {
 
 {{{
 
-}}}
+import javax.sound.midi.*;
 
+
+public class MiniMusicCmdLine
+{//첫번째
+        public static void main(String[] args)
+        {
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();
+                
+                if(args.length < 2 )
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                else
+                {
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument,note);
+                        
+                }
+        }
+        
+        public void play(int instrument, int note)
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//시퀀서를 생성
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();//track 을 생성
+                        
+                        MidiEvent event = null;//event 생성, null값을 대입
+                        
+                        ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+                }
+                
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                }
+        }//play 메소드 끝
+}//클래스 끝
+}}}
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
 
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
