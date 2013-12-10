@@ -5,8 +5,9 @@
 
 식사메뉴를 추천해줍니다.
 
-프로젝트https://drive.google.com/folderview?id=0BzNZQlQUTmZAbTFwWEszOHc2ajg&usp=sharing
-apk파일https://drive.google.com/file/d/0BzNZQlQUTmZATGFNMWVlMFRySWc/edit?usp=sharing
+프로젝트 https://drive.google.com/folderview?id=0BzNZQlQUTmZAbTFwWEszOHc2ajg&usp=sharing
+
+apk파일 https://drive.google.com/file/d/0BzNZQlQUTmZATGFNMWVlMFRySWc/edit?usp=sharing
 
 = Details =
 
