@@ -929,6 +929,10 @@ public class DotComBust
 import java.io.*;
 import java.util.*;
 
+//이 클래스는 게임을 위한 보조 클래스입니다.
+//사용자가 입력한 것을 받아들이는(즉, 명령행에 프롬프트를 띄우고 사용자가 입력한 것을 읽어오는) 임무를 띠고 있습니다.
+//또한 DotCom의 위치를 만들어내는 중요한 임무를 띠고 있습니다.
+
 public class GameHelper
 {
         private static final String alphabet = "abcdefg";
@@ -959,7 +963,7 @@ public class GameHelper
         
         public ArrayList<String> placeDotCom(int comSize)
         {
-                ArrayList<String> alphaCells = new ArrayList<String>();//F6과 같은 좌표가 들어감
+                ArrayList<String> alphaCells = new ArrayList<String>();//'f6'과 같은 좌표가 들어감
                 String temp = null;//나중에 연결하기 위한 임시 String배열
                 int[] coords = new int[comSize];//현재 후보 좌표
                 int attempts = 0;//시도 횟수를 세기 위한 카운터
@@ -976,7 +980,7 @@ public class GameHelper
                 while(!success & attempts++ < 200)//주 검색 순환문(32)
                 {
                         location = (int) (Math.random() * gridSize);//임의 시작 위치를 구함
-                        //System.out.print(" try " + location);
+                        System.out.print(" try " + location);
                         
                         int x = 0;//위치시킬 닷컴의 n번째 위치
                         success = true;//성공할 것으로 가정함
@@ -991,7 +995,7 @@ public class GameHelper
                                         if(x > 0 & (location % gridLength == 0))//경계를 벗어난 경우(오른쪽)
                                                 success = false;//실패
                                         else//이미 사용중인 경우
-                                                //System.out.print(" used " + location)
+                                                System.out.print(" used " + location)
                                                 success = false;//실패
                                 }
                         }
@@ -1011,8 +1015,8 @@ public class GameHelper
                 
                 alphaCells.add(temp.concat(Integer.toString(row)));
                 x++;
-                //System.out.println("   coord  " + x + " = "  + alphaCells.get(x-1));
-                //DotCom의 위치를 알려주는 메소드
+                System.out.println("   coord  " + x + " = "  + alphaCells.get(x-1));
+                //DotCom의 위치를 알려주는 코드입니다. 주석을 해제하여 테스트 용도로 사용하였습니다.
                                 
         }
         
