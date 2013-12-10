@@ -1449,6 +1449,10 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 }}}
 
 
+=APK download=
+
+http://comp166-koreauniv.googlecode.com/files/Attendancebook.apk
+
 
 = Reference =
 
