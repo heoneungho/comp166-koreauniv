@@ -566,8 +566,8 @@ public class SimpleDotComTestDrive1 {
                 } 
         }  
 
-}}}
-{{{
+
+
 클래스 SimpleDotCom1 
  
 public class SimpleDotCom1 { 
