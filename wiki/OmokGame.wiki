@@ -7,10 +7,9 @@
 
 = Details =
 
-[Image:main_page.jpg]
+[http://comp166-koreauniv.googlecode.com/files/main_page.jpg]
 
-
-위는 먼저 앱을 실행했을 때 가장 먼저 나오는 main화면이다. 이 화면에는 버튼이 2개 있는데, Newgame버튼을 누르면 게임화면으로 넘어가고, Exit버튼을 누르면 앱이 종료된다.
+* 위는 먼저 앱을 실행했을 때 가장 먼저 나오는 main화면이다. 이 화면에는 버튼이 2개 있는데, Newgame버튼을 누르면 게임화면으로 넘어가고, Exit버튼을 누르면 앱이 종료된다.
 
 
 [Image:game_page.jpg]
