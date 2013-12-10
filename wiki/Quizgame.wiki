@@ -175,7 +175,7 @@ public class Guess {
 }}}
 
 *3.start activity*
-
+ㅋㅋㅋㅋㅋㅋㅋ
 {{{
 package com.example.guessinggame_;
 
@@ -192,7 +192,7 @@ public class StartActivity extends Activity {
 	private TextView numberText, winnerText;
 	private EditText p1Text, p2Text, p3Text, p4Text, p5Text;
 
-	@Override
+	@Overrㅋㅋㅋㅋㅋㅋide
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
@@ -210,7 +210,7 @@ public class StartActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
+	}ㅋㅋㅋㅋㅋㅋㅋ
 	
 	public void gButtonClick(View view) {
 		final String p1Value = p1Text.getText().toString();
@@ -226,7 +226,7 @@ public class StartActivity extends Activity {
 	
 	public String getWinText(int id) {
 		String winner = null;
-		if (id == 1) {
+		if (idㅋㅋㅋㅋㅋㅋ == 1) {
 			winner = getResources().getString(R.string.player1_title);
 		}
 		if (id == 2) {
@@ -246,7 +246,7 @@ public class StartActivity extends Activity {
 		return winner;
 	}
 
-}
+}ㅋㅋㅋㅋㅋㅋ
 
 }}}
 
@@ -265,7 +265,7 @@ public class StartActivity extends Activity {
         android:layout_height="wrap_content"
         android:layout_x="126dp"
         android:layout_y="314dp"
-        android:text="Start" />
+        android:text="ㅋㅋㅋㅋㅋㅋStart" />
 
 </AbsoluteLayout>
 
@@ -289,7 +289,7 @@ public class StartActivity extends Activity {
         android:id="@+id/p1Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_aㅋㅋㅋㅋㅋㅋignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="28dp"
         android:layout_marginRight="10dp"
@@ -311,7 +311,7 @@ public class StartActivity extends Activity {
         android:id="@+id/p2Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_aligㅋㅋㅋㅋㅋㅋnParentLeft="true"
         android:layout_below="@+id/p1Title"
         android:layout_marginBottom="28dp"
         android:layout_marginRight="10dp"
@@ -333,7 +333,7 @@ public class StartActivity extends Activity {
         android:id="@+id/p3Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_aliㅋㅋㅋㅋㅋㅋㅋㅋgnParentLeft="true"
         android:layout_below="@+id/p2Title"
         android:layout_marginBottom="28dp"
         android:layout_marginRight="10dp"
@@ -355,7 +355,7 @@ public class StartActivity extends Activity {
         android:id="@+id/p4Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alㅋㅋㅋㅋㅋㅋㅋignParentLeft="true"
         android:layout_below="@+id/p3Title"
         android:layout_marginBottom="28dp"
         android:layout_marginRight="10dp"
@@ -377,7 +377,7 @@ public class StartActivity extends Activity {
         android:id="@+id/p5Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_aㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋlignParentLeft="true"
         android:layout_below="@+id/p4Title"
         android:layout_marginBottom="28dp"
         android:layout_marginRight="10dp"
@@ -396,7 +396,7 @@ public class StartActivity extends Activity {
         android:singleLine="true" />
 
     <TextView
-        android:id="@+id/numberLabel"
+        android:id=ㅋㅋㅋㅋㅋㅋ"@+id/numberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/guessButton"
@@ -415,7 +415,7 @@ public class StartActivity extends Activity {
     <TextView
         android:id="@+id/ownerLabel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layoutㅋㅋㅋㅋㅋㅋ_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -440,13 +440,14 @@ public class StartActivity extends Activity {
         android:onClick="gButtonClick"
         android:text="@string/guessButton"
         android:textSize="24sp" />
-
+ㅋㅋㅋㅋㅋ
 </RelativeLayout>
 
 }}}
 
 ==참조==
 http://www.java2s.com/Open-Source/Android_Free_Code/Game_Guess/Download_Free_code_Guessing_Game.htm
-
+지랄 그냥 베낀 거임ㅋㅋㅋㅋㅋ
+플레이어 늘리는것도 영기가 해준거임 ㅋㅋㅋㅋㅋ
 코드를 따왔지만 player 5를 더 생성하고 메인 액티비티 전 시작 화면을 만들었습니다.
     
