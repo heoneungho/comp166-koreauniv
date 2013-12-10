@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
 			        }
 			});
 	}
+//버튼 하나를 생성합니다. setOnClickListener를 이용해서 버튼을 클릭했을 때 생기는 사건을 정의합니다. 클릭이 되면 intent를 통해서 StartActivity로 넘어가게 합니다.
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,7 +117,7 @@ public class Guess {
 				winner = getClosest(p1Number, p2Number, p3Number, p4Number, p5Number, rNumber);
 			}
 			return winner;
-		}
+		}//p1~5까지 가장 가까운 숫자를 비교해서 winner에 집어넣고 그 값을 return 합니다.
 		
 		public static int getClosest(int p1Num, int p2Num, int p3Num, int p4Num, int p5Num,final int rNum) {
 			int closest = 1;
@@ -145,7 +146,7 @@ public class Guess {
 				
 			}
 			return closest;
-		}
+		}//if구문을 거치면서 결정된 closest값을 리턴합니다.
 		
 		public static int randomInteger(int Start, int End) {
 	        Random random = new Random();
@@ -201,7 +202,7 @@ public class StartActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+	
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
