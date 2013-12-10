@@ -3,6 +3,7 @@
 
 슬라이딩 그림 퍼즐 맞추기 게임입니다.(발표때 한 게임을 수정했습니다.)
 
+[http://www.youtube.com/watch?v=7R1SD9mLm-U&feature=youtu.be]
 
 = Details =
 
