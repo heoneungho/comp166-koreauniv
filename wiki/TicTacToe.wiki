@@ -28,6 +28,8 @@ http://comp166-koreauniv.googlecode.com/files/Player1win.png Player1이 이길�
 
 전체파일 : http://comp166-koreauniv.googlecode.com/files/Linematch.zip 
 
+apk파일 : https://comp166-koreauniv.googlecode.com/files/Linematch%5B1%5D.apk
+
 = 클래스 =
 
 http://comp166-koreauniv.googlecode.com/files/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83.PNG
