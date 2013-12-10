@@ -11,3 +11,7 @@ http://comp166-koreauniv.googlecode.com/files/baskin.png
 = Details =
 
 https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21607b04cbc79e24.jpg 메인화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21fe31ca0264a707.jpg 게임 설명 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_51d7df1d393a4b28.jpg 레벨 선택 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_e624138b09c08313.jpg https://comp166-koreauniv.googlecode.com/files/KakaoTalk_b9a8b896fca2832a.jpg 게임 중 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_5175c4ec89e57e3b.jpg 게임 결과 화면 입니다.
+
+apk 파일입니다.
+
+https://comp166-koreauniv.googlecode.com/files/Baskinrabbins31.apk
