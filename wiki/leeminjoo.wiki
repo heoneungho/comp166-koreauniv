@@ -2252,4 +2252,4 @@ public class HELP extends Activity {
 }}}
 
 =apk 파일=
-https://comp166-koreauniv.googlecode.com/files/min's apk.apk
+https://comp166-koreauniv.googlecode.com/files/MIN'SBASEBALLGAME.apk 
