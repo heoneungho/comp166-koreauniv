@@ -782,44 +782,50 @@ import java.util.*;
 
 public class DotCom
 {
-        private ArrayList<String> locationCells;//DotCom의 인스턴스 변수 -셀위치
-        private String name;//DotCom의 인스턴스 변수  -DotCom의 이름
+        private ArrayList<String> locationCells;  // 셀위치를 나타내는 인스턴스 변수입니다.
+        private String name;  //DotCom의 이름을 나타내는 인스턴스 변수입니다.
 
         public void setLocationCells(ArrayList<String> loc)
         {
-                locationCells = loc;//DotCom의 위치를 갱신합니다.
+                locationCells = loc;  //DotCom의 위치를 갱신하는 세터 메소드입니다.
+//(GameHelperV2.placeDotCom()메소드에서 제공하는 무작위로 만든 위치입니다.)
         }
         
         public void setName(String n)
         {
-                name = n;//이름을 설정합니다
+                name = n;  //기초적인 세터 메소드로 이름을 설정합니다
         }
         
         public String checkYourself(String userInput)
         {
-                String status = "miss";//처음에 miss로 초기화합니다.
+                String status = "miss";
                 int index = locationCells.indexOf(userInput);
-                //ArrayList의 indexOf()메소드를 사용하여  사용자가 추측한 위치가 ArrayList에 들어있으면 인덱스를 그렇지 않으면 -1을 리턴합니다.
+                //ArrayList의 indexOf()메소드를 쓰고 있습니다. 
+                //사용자가 추측한 위치가 ArrayList에 들어있으면 indexOf()에서 그 항목의 인덱스를 리턴합니다.
+                // 그렇지 않으면 -1을 리턴합니다.
+                
                 if(index >= 0)
                 {
                         locationCells.remove(index);
-                        //ArrayList의 remove 메소드를 써서 그 항목을 지웁니다.
-                        if(locationCells.isEmpty())//isEmpty를 써서 모든 위치를 맞췄는지 확인합니다.
+                        //인덱스의 값이 -1이 아니면 ArrayList의 remove() 메소드를 써서 그 항목을 지웁니다.
+                        if(locationCells.isEmpty())  
+                        //isEmpty를 써서 모든 위치를 맞췄는지 확인합니다.
+                        //목록이 비어있다면 그 닷컴이 죽었다는 것을 알 수 있습니다.
                         {
                                 status = "kill";
                                 System.out.println("Ouch! You sunk " + name + "    : ( ");
-                                //DotCom이 가라앉았다고 알려줍니다.
+                                //DotCom이 가라앉았음을 알려줍니다.
                         }
                         else
                         {
-                                status = "hit";//아니면 hit
+                                status = "hit"; // 목록이 비어있지 않으면 hit입니다.
                         }
                 }//if문 끝
 
-        return status;
-        }
-        //miss or hit or kill을 리턴합니다.
-}
+        return status;  //miss or hit or kill을 리턴합니다.
+        } // 메소드 끝
+        
+} // 클래스 끝
 
 import java.util.*;
 
