@@ -6,7 +6,7 @@
 4x4 칸의 카드들(8쌍)이 랜덤으로 뒤집은 채로 배치한 뒤, 게임 시작과 동시에 타이머가 작동합니다. 같은 그림의 카드를 연속으로 눌러서 모든 쌍을 찾아내는 게임입니다. 옵션 변경을 통해서 원하시는 그림 이미지로도 게임을 하실 수 있습니다.   
 
 저는 게임도 게임이지만 어플리케이션 내의 부가적인 기능들에 초점을 맞추어 보았습니다. 실제 마켓에서 게임을 받게 되면 여러가지 옵션들이 게임 내에 존재하며, 각 옵션들은 단순 게임자체가 주는 재미에 버금가는 추가적인 흥미를 더해줍니다. 바로 이러한 점에 저의 이번 어플리케이션 개발 의도가 담겨있습니다. 
-<br>
+<br><br><br><br>
 = 개발의 목적 및 필요성 =
 
 http://comp166-koreauniv.googlecode.com/files/잉여.png
@@ -21,7 +21,7 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
  게다가 기억력 강화에 도움을 줄 수 있기 때문에 치매를 예방하고자하시는 어르신들이나 갱년기를 앞두고 기억력 감퇴가 걱정되시는 부모님들께 상당히 유용한 게임입니다. 물론 유아들의 기억력 강화에도 도움이 되겠죠? 
 
  이와 같은 장점들만 모았습니다. "모두의 매칭"을 여러분께 소개합니다.     
-
+<br><br><br><br>
 = Requirment = 
  
  * Start Game 버튼 : 
@@ -49,7 +49,7 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
 1. Ranking Activity로 이동한다.
 
 2. 1위부터 7위까지의 랭커들의 닉네임을 순서대로 제공한다.  
-
+<br><br><br><br>
 
 
 
@@ -59,7 +59,7 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
 
 자! 이제 본격적으로 본인이 만든 게임의 화면 구성 살펴보도록 하겠다.
 
-
+<br><br><br>
 
 == 메인 화면(Main Activity) == 
 
@@ -79,7 +79,7 @@ http://comp166-koreauniv.googlecode.com/files/메인화면2.png
  * 추가적으로 좋아하는 배경음악을 BGM으로 설정해보았다. 노래 정보 : Better Together-Jack Johnson
 
 
-
+<br><br><br>
 == 옵션 화면(Option Activity) ==
 
 
@@ -95,7 +95,7 @@ http://comp166-koreauniv.googlecode.com/files/옵화.png
  * 각 카드의 종류에 따라 게임 화면의 카드가 변경된다. 
 
  * 랭킹 리셋 버튼을 누르면 랭킹에 있던 목록이 모두 설정된 초기값으로 초기화된다.
-
+<br><br><br>
 
 
 == 카드의 종류별 게임 화면 ==
@@ -112,7 +112,7 @@ http://comp166-koreauniv.googlecode.com/files/동물카드.png
 
 http://comp166-koreauniv.googlecode.com/files/숫자카드.png
   
-
+<br><br><br>
 
 == 랭킹화면과 랭킹 리셋 버튼의 동작 확인 ==
 
@@ -127,7 +127,7 @@ http://comp166-koreauniv.googlecode.com/files/랭킹화면.png
 
 
 http://comp166-koreauniv.googlecode.com/files/랭초화.png
-
+<br><br><br>
 
 
 == 게임 화면(Game Activity) ==
@@ -141,7 +141,7 @@ http://comp166-koreauniv.googlecode.com/files/동물카드.png
  * 타이머는 게임 시작과 동시에 작동하고, 모든 8쌍의 카드를 맞추면 바로 정지하도록 설정되어 있다. 
 
  * 각 버튼들에 의해 급한 일이 생긴 경우 정지할 수 있고, 일이 마무리되고 나면 다시 재개가 가능하며, 패가 좋지 않다고 생각되면 새 게임을 진행할 수 있다.
-
+<br><br><br>
 
 
 == 게임 화면 내에서 랭킹 진입 성공과 실패 시 결과 화면 ==
@@ -163,13 +163,13 @@ http://comp166-koreauniv.googlecode.com/files/성공화면.png
 
 http://comp166-koreauniv.googlecode.com/files/실패화면.png
 
-
+<br><br><br><br>
 
 
 
 = 패키지와 클래스 그리고 레이아웃 =
 
-
+<br><br><br>
 
 == 패키지와 클래스 ==
 
@@ -179,7 +179,7 @@ http://comp166-koreauniv.googlecode.com/files/패키지클래스.png
 
  패키지는 게임 화면을 구성하는 클래스들이 담긴 기본 패키지, 게임 화면 내의 동작과 관련된 패키지, 그리고 그 밖의 기능을 담당하는 유틸리티 패키지로 구성되어 있다.
 
-
+<br><br><br>
 
 == res 폴더 내의 구성 ==
 
@@ -195,12 +195,12 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
 
  * 마지막으로 raw 폴더에는 BGM으로 재생되는 음악 파일이 담겨 있다.
 
-
+<br><br><br><br>
 
 
 
 = 각 클래스에 대한 설명 =
-
+<br><br><br>
 
 == 게임 클래스와 xml ==
 
@@ -737,7 +737,7 @@ public class GameActivity extends Activity implements OnClickListener{
 </RelativeLayout>
 }}}
 
-
+<br><br><br>
 
 
 == 메인 클래스와 xml ==
@@ -879,7 +879,7 @@ public class MainActivity extends Activity implements OnClickListener {
 }}}
 
 
-
+<br><br><br>
 
 == 옵션 클래스와 xml ==
 
@@ -1080,7 +1080,7 @@ public class OptionActivity extends Activity implements OnCheckedChangeListener,
  </RelativeLayout>
 }}}
 
-
+<br><br><br>
 
 
 == 랭킹 클래스와 xml ==
@@ -1423,7 +1423,7 @@ public class RankingActivity extends Activity implements OnClickListener {
 </RelativeLayout>
 }}}
 
-
+<br><br><br>
 
 
 == 카드 매니저 클래스 ==
@@ -1500,7 +1500,7 @@ public class CardManager {
 }
 }}}
 
-
+<br><br><br>
 
 
 == 게임 매니저 클래스 ==
@@ -1594,7 +1594,7 @@ public class GameManager {
 }
 }}}
 
-
+<br><br><br>
 
 
 == 난수 생성 클래스 ==
@@ -1634,7 +1634,7 @@ public class GenerateRandom {
 }
 }}}
 
-
+<br><br><br>
 
 
 == 타임 매니저 클래스 ==
@@ -1676,7 +1676,7 @@ public class TimeManager {
 }
 }}}
 
-
+<br><br><br>
 
 
 == 매니저 프리퍼런스 클래스 ==
@@ -1815,7 +1815,7 @@ public class ManagerPreference {
 }
 }}}
 
-
+<br><br><br>
 
 
 == 매니저 사운드 클래스 ==
@@ -1871,7 +1871,7 @@ public class ManagerSound {
 
 
 
-
+<br><br><br><br>
 
 = 참고 문헌 및 사이트 =
 
@@ -1887,7 +1887,7 @@ public class ManagerSound {
  * 랭킹 사항 저장, 카드 변경 사항 저장, 사운드 세팅 및 변경 사항 등을 DB를 사용하지 않고 영속적으로 저장하기 위한 Shared Preferences 구성 참고 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://muzesong.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-SharedPreferences-%EA%B9%94%EB%81%94%ED%95%98%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
 
 
-
+<br><br><br><br>
 
 
 = 어플리케이션 소스 파일 압축 자료 및 apk파일=
