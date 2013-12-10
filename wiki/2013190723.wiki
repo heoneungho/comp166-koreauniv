@@ -301,7 +301,7 @@ public class DVDPlayerTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수: 원시 변수에는 정수, 부울, 부동소수점 수와 같은 기초적인 값(단순한 비트 패턴으로 나타낼 수 있는 값)이 들어간다. 레퍼런스 변수는 객체 레퍼런스로써 객체에 대한 레퍼런스가 들어간다.
+ * 원시변수 vs 레퍼런스변수: 원시 변수에는 정수와 부동소수점 수와 같은 기초적인 값이 들어간다. 레퍼런스 변수는 객체 레퍼런스이다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
@@ -343,7 +343,7 @@ public class Dog
 	
 	public void bark()
 	{
-		System.out.println(name+ "이(가) 왈!하고 짖습니다.");
+		System.out.println(name+ "이(가) 왈와와오아왈!하고 짖습니다.");
 	}
 	public void eat() {}
 	public void chaseCat() {}
@@ -432,9 +432,9 @@ class Hobbits
 
 *105p~ 객체* _요약_
 
- * 캡슐화: 인스턴스 변수를 부적적한 값으로 설정하지 못하게 인스턴스 변수 주변에 방어막 같은 것을 만드는 것. 모든 인스턴스 변수에 대해 세터 메소드를 만들고 다른 코드에서는 그 데이터를 절대 직접 접근할 수 없도록 반드시 세터 메소드를 사용하는 것.
- * 게터와 세터: 정식 명칭은 액세서(accessor)와 뮤테이터(mutator)이다. 게터는 단지 그 게터가 가져오기로 되어있는 값을 리턴값 형태로 가져오고(get) 세터는 그 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하는(set) 역할을 한다.
- * 인스턴스 변수 vs 지역 변수: 인스턴스 변수는 클래스 내에서 선언된다. 메소드 내에서 선언되는 것이 아니다. 지역 변수는 메소드 내에서 선언된다. 사용하기 전에 반드시 초기화해야 한다.
+ * 캡슐화: 인스턴스 변수를 이상한 값으로 변경하지 못하게 방어막을 만드는 것이다.모든 인스턴스 변수에 대해 세터 메소드를 만들고 다른 코드에서는 그 데이터를 절대 직접 접근할 수 없도록 무조건 세터 메소드를 사용하는 것.
+ * 게터와 세터: 정식 명칭은 accessor와 mutator). 게터는 단지 그 게터가 가져오기로 되어있는 값을 리턴값 형태로 get하고 세터는 그 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 set하는 역할을 한다.
+ * 인스턴스 변수 vs 지역 변수: 인스턴스 변수는 메소드 내가 아닌 클래스 내에서 선언된다.지역 변수는 메소드 내에서 선언된다. 사용하기 전에 반드시 초기화해야 한다.
  
 *107p Dog* _실행_
 
@@ -541,22 +541,16 @@ class ClockTestDrive
 *135p XP* _요약_
 
  * 익스트림 프로그래밍이란? 
-    최근의 소프트웨어 개발 방법론 분야에 새로 등장.
 
-    최근에는 높은 사람들을 위한 방법론이다.
- 
-    테스트를 많이 만드는 것은 xp패러다임에 따른 것이다.
+   등장하지 얼마 안된 프로그래밍방법
 
-    많은 사람들이 "프로그래머들이 정말 원하는 방법"이라고 함. 
+   프로그래머들이 정말 원하는 방법"이라고 함.
 
 
-    90년대 말에 등장
+   마지막에 스펙이 변경되는 일이 있어도 커스터머가 원하는 것을 그가 원하는 기한에 맞춰서 제공 할 수 있다.
 
 
-     가장 큰 장점은 막판에 스펙이 변경되는 일이 있어도 고객이 원하는 것을 고객이 원하는 기한에 맞춰서 제공 할 수 있다는 점임.
-
-
-    규칙 중에 야근은 하지 마라는 아주 좋은 규칙이 있음.
+   
  
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
@@ -571,7 +565,7 @@ public class SimpleDotCom {
 		locationCells = locs;
 	}
 	
-	public String checkYourself(String stringGuess){//배열이 맞았나 체크
+	public String checkYourself(String stringGuess){//배열 체크
 		int guess = Integer.parseInt(stringGuess);
 		String result = "miss";
 		for(int i = 0 ; i < locationCells.length; i++){
@@ -583,7 +577,7 @@ public class SimpleDotCom {
 		}//순환문 끝
 		
 		if (numOfHits == locationCells.length){
-			result = "kill";//다 맞추면 kill이라고 나타나게 함
+			result = "kill";//다 맞추면 kill
 	 	}
 		System.out.println(result) ;
 			return result ;
@@ -601,18 +595,18 @@ public class SimpleDotComGame {
 		
 		int randomNum = (int)(Math.random()*5);//첫번째 셀 위치를 정하기 위한 난수를 생성하고 그 값을 써서 셀 위치 배열을 만듦
 		
-		int[] locations = {randomNum, randomNum+1, randomNum+2};//첫번째 셀 위치를 정하기 위한 난수를 생성하고 그 값을 써서 셀 위치 배열을 만듦
-		theDotCom.setLocationCells(locations);//닷컴의 위치를 지정(배열사용)
-		boolean isAlive = true ;//닷컴이 살아있는지 추적하기 위한 부울 변수를 만듦
+		int[] locations = {randomNum, randomNum+1, randomNum+2};//첫번째 셀 위치를 정하기 위한 난수를 생성하고 그 값으로 셀 위치 배열을 만듦
+		theDotCom.setLocationCells(locations);//배열을 이용한 닷컴의 위치 설정ㅈ
+		boolean isAlive = true ;//닷컴의 생존을 추적하기 위한 부울 변수를 생성
 		
 		while (isAlive == true){//살아 있으면 반복
 			String guess = helper.getUserInput("enter a number");//사용자가 입력한 string을 받아옴
 			
 			String result = theDotCom.checkYourself(guess);
-			//닷컴 객체를 통해 추측한 값이 맞는지 확인. 리턴된 결과는 string에 저장
+			
 			numOfGuesses++;
 			//추측횟수 증가
-			if (result.equals("kill")){//kill이면 isAlive를 false로 설정 ->순환문 탈출
+			if (result.equals("kill")){//kill이면 isAlive를 false로 설정
 				isAlive = false ;
 				
 				System.out.println(numOfGuesses + "guesses");
@@ -636,7 +630,7 @@ public class GameHelper {
 		return inputLine;
 	}
 }
-//마지막 클래스인 gamehelper는 책에서 그대로 입력하라고 나옴. 
+// gamehelper는그대로 입력한다.
 
 //결과
 enter a number 3
@@ -931,7 +925,7 @@ class Dog extends Canine{
 *224p 오버라이드와 오버로딩* _요약_
 
  * 오버라이드: 부모의 메소드를 자식의 메소드에서 다시 정의 하는 것
- * 오버로딩: 하나의 클래스 내에 인수의 개수나 형식이 다른 동일한 이름의 메소드를 여러개 정의하는 것, 즉 이름이 같은 메소드라도 안에 있는 인수만 다르다면 얼마든지 만들 수 있다는 것
+ * 오버로딩: 하나의 클래스 내에 인수의 개수나 형식이 다른 동일한 이름의 메소드를 여러개 정의하는 것, 이름이 같은 메소드라도 안에 있는 인수가 다르면 얼마든지 만드는 것이 가능
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
@@ -945,50 +939,43 @@ class Dog extends Canine{
 
  * 인터페이스:
 
- 모든 메소드가 추상 메소드입니다.
+ 100%추상 메소드
 
- 하위 클래스에서 반드시 구현(상속)해야만 하므로 상속받은 것 중에 어떤 것을 호출해야 할지 결정할 수 없게 되는 문제가 생기지 않습니다.
+  중복문제를 해결 못한다
+
+ 서로다른 상속트리에서 인터페이스를 구현할 수있다
+
+ 여러개 생성이 가능하다
+
+
+* 다형성: 하나의 형태를 다양하게 사용 할 수 있다.
  
- 여러개가 되어도 상관 없다.
 
- 중복문제를 해결하지 못함
- 
- 다른 클래스들한테 내가 이런 메소드를 갖고있다 라는 것을 알려주기위해 사용.
+* 추상 클래스:
 
- 인터페이스는 실제로 아무것도 제공해 주지 못한다.
-
- 서로다른 상속트리에서 인터페이스를 구현할 수 있다.
-
- * 다형성: 하나의 형태를 다르게 사용 할 수 있다.
- * 추상 클래스:
 
  인스턴스를 만들 수 없는 클래스
 
- 반드시 확장해야 함
-
  추상 유형을 레퍼런스로 사용할 수는 있음
 
- 다형적인 인자, 리턴 유형, 배열 등에 활용
+ 확장이 필수이다
+ 
 
  * 추상 메소드:
 
  몸통이 없는 메소드
 
- 반드시 오버라이드해야 합니다.
+ 반드시 오버라이드
 
- 추상 메소드를 만들 때는 클래스도 반드시 추상 클래스로 만들어야 합니다.
-
-
- 추상 클래스가 아닌 클래스에는 추상 메소드를 집어 넣을 수 없습니다.
-
- 아무일도 일어나지 않는 메소드에요.
+ 추상 메소드를 만들 때 =클래스 반드시 추상 클래스
 
  얘로부터 상속받은 클래스에서는 이 메소드 이름으로 다른 행동을 하게 만들 수 있다.
 
  상속받은 클래스에서 무조건 상속받은 메소드를 구현해 놓아야 한다.
 
  반복을 시킬 수 있다.
- * 다중 상속:
+
+* 다중 상속:
 상위클래스가 두개 이상.
 자바는 할 수 없다
 
@@ -1056,12 +1043,36 @@ System.out.println("set to 1" + c.getTime())
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수:정적변수는 상수에 불과한 것으로 객체지향적이지 않다. 프로시저 위주의 프로그래밍이다.
+ * 지역 변수:클래스당 하나씩 있어서 메모리가 절약된다. 한 클래스에 속하는 모든 인스턴스에 의해 공유된다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class StaticSuper{ 
+        static{
+                System.out.println("super static block");
+        }
+        StaticSuper(){ 
+                System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper { 
+        static int rand;
+        static{
+                rand=(int)(Math.random()*6);
+                System.out.println("static block"+rand);
+        }
+        StaticTests(){
+                System.out.println("constructor");
+        }
+        public static void main(String[]args){
+                System.out.println("in main");
+        }
+        StaticTests st=new StaticTests(); 
+}
 
 }}}
 
@@ -1071,11 +1082,35 @@ System.out.println("set to 1" + c.getTime())
 
 {{{
 
+public class Test
+{
 
-public void takeRisk() throws BadException{ /예외선언을 통해서BadException을 던질수 있다는 것을 알린다
-if (abandonAllHope) {
-throw new BadException();//새로운 exception개채를 만들고던진다
-}
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
 }
 
 }}}
@@ -1084,13 +1119,112 @@ throw new BadException();//새로운 exception개채를 만들고던진다
 
 {{{
 
+import javax.sound.midi.*;
 
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();
+        }
+        
+        public void play()
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        
+                        Track track = seq.createTrack();
+                        
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn);
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff);
+                        
+                        player.setSequence(seq);
+                        
+                        player.start();
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }
+}
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;
+
+
+public class MiniMusicCmdLine
+{
+        public static void main(String[] args)
+        {
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();
+                
+                if(args.length < 2 )//input숫자가 2개보다 작으면
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                else
+                {
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument,note);
+                        
+                }
+        }
+        
+        public void play(int instrument, int note)
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();
+                        
+                        MidiEvent event = null;
+                        
+                        ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+                }
+                
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                }
+        }
+}
 
 }}}
 
