@@ -123,6 +123,8 @@ https://comp166-koreauniv.googlecode.com/files/board.jpg
 
 </AbsoluteLayout>
 
+
+//메인화면에 대한 코드입니다. 버튼4개를 정의하였고 각 버튼을 누르면 각자 다른 엑티비티로 전환됩니다. 
 }}}
 
 
@@ -140,6 +142,8 @@ https://comp166-koreauniv.googlecode.com/files/board.jpg
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/sudosudo" />
+
+//스도쿠 게임에대한 설명을 넣은 about화면입니다
 
 </LinearLayout>
 }}}
@@ -165,6 +169,7 @@ https://comp166-koreauniv.googlecode.com/files/board.jpg
       <Button android:id="@+id/keypad_3"
          android:text="3">
       </Button>
+//키보드의 첫째줄에 1,2,3
    </TableRow>
    <TableRow>
       <Button android:id="@+id/keypad_4"
@@ -176,6 +181,7 @@ https://comp166-koreauniv.googlecode.com/files/board.jpg
       <Button android:id="@+id/keypad_6"
          android:text="6">
       </Button>
+//키보드의 둘째줄에 4,5,6
    </TableRow>
    <TableRow>
       <Button android:id="@+id/keypad_7"
@@ -187,6 +193,7 @@ https://comp166-koreauniv.googlecode.com/files/board.jpg
       <Button android:id="@+id/keypad_9"
          android:text="9">
       </Button>
+//키보드의 셋째줄에 7,8,9
    </TableRow>
 </TableLayout>
 }}}
@@ -208,6 +215,7 @@ public class About extends Activity {
    }
 }
 
+//about버튼과 about화면을 연결해주는 코드
 }}}
 
 
@@ -325,7 +333,7 @@ public class Game extends Activity {
    }
    
 
-   /** Convert an array into a puzzle string */
+   
    static private String toPuzzleString(int[] puz) {
       StringBuilder buf = new StringBuilder();
       for (int element : puz) {
@@ -403,8 +411,7 @@ public class Game extends Activity {
       for (int x = 0; x < 9; x++) {
          for (int y = 0; y < 9; y++) {
             used[x][y] = calculateUsedTiles(x, y);
-            // Log.d(TAG, "used[" + x + "][" + y + "] = "
-            // + toPuzzleString(used[x][y]));
+            
          }
       }
    }
@@ -412,7 +419,7 @@ public class Game extends Activity {
    
    private int[] calculateUsedTiles(int x, int y) {
       int c[] = new int[9];
-      // horizontal
+      //수편방향
       for (int i = 0; i < 9; i++) {
          if (i == y)
             continue;
@@ -420,7 +427,7 @@ public class Game extends Activity {
          if (t != 0)
             c[t - 1] = t;
       }
-      // vertical
+      // 수직방향
       for (int i = 0; i < 9; i++) {
          if (i == x)
             continue;
@@ -440,7 +447,7 @@ public class Game extends Activity {
                c[t - 1] = t;
          }
       }
-      // compress
+      
       int nused = 0;
       for (int t : c) {
          if (t != 0)
@@ -575,54 +582,6 @@ public class Keypad extends Dialog {
 }}}
 
 
-=options.java=
-
-{{{
-package com.example.sudoku;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-
-public class Options {
-
-   private static final String SUDOKU_OPTIONS = Sudoku.class.getName(); 
-   private static final String OPT_MUSIC = "music"; 
-   private static final boolean OPT_MUSIC_DEF = true;
-   private static final String OPT_HINTS = "hints";
-   private static final boolean OPT_HINTS_DEF = true;
-
-   private static SharedPreferences getSudokuPreferences( 
-         Context context) {
-      return context.getSharedPreferences(SUDOKU_OPTIONS,
-            Context.MODE_PRIVATE);
-   }
-
-   public static boolean getMusic(Context context) { 
-      return getSudokuPreferences(context).getBoolean(
-            OPT_MUSIC, OPT_MUSIC_DEF);
-   }
-
-   public static boolean getHints(Context context) {
-      return getSudokuPreferences(context).getBoolean(
-            OPT_HINTS, OPT_HINTS_DEF);
-   }
-
-   public static boolean putMusic(Context context, boolean value) { 
-      return getSudokuPreferences(context)
-            .edit()
-            .putBoolean(OPT_MUSIC, value)
-            .commit();
-   }
-
-   public static boolean putHints(Context context, boolean value) {
-      return getSudokuPreferences(context)
-            .edit()
-            .putBoolean(OPT_HINTS, value)
-            .commit();
-   }
-}
-
-}}}
 
 =puzzleview.java=
 
@@ -659,10 +618,10 @@ public class PuzzleView extends View {
    private static final int ID = 42; 
 
    
-   private float width;    // width of one tile
-   private float height;   // height of one tile
-   private int selX;       // X index of selection
-   private int selY;       // Y index of selection
+   private float width;    // 타이틀 길이
+   private float height;   // 타이틀 높이
+   private int selX;       
+   private int selY;       
    private final Rect selRect = new Rect();
 
    private final Game game;
@@ -674,7 +633,7 @@ public class PuzzleView extends View {
       setFocusable(true);
       setFocusableInTouchMode(true);
       
-      // ...
+     
       setId(ID); 
    }
 
@@ -710,7 +669,7 @@ public class PuzzleView extends View {
 
    @Override
    protected void onDraw(Canvas canvas) {
-      // Draw the background...
+      // 배경 그리기
       Paint background = new Paint();
       background.setColor(getResources().getColor(
             R.color.puzzle_background));
@@ -862,7 +821,7 @@ public class PuzzleView extends View {
       if (game.setTileIfValid(selX, selY, tile)) {
          invalidate();// may change hints
       } else {
-         // Number is not valid for this tile
+         
          Log.d(TAG, "setSelectedTile: invalid: " + tile);
          startAnimation(AnimationUtils.loadAnimation(game,
                R.anim.shake));
@@ -918,7 +877,7 @@ public class Sudoku extends Activity implements OnClickListener {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.main);
 
-      // Set up click listeners for all the buttons
+      
       View continueButton = findViewById(R.id.continue_button);
       continueButton.setOnClickListener(this);
       View newButton = findViewById(R.id.new_button);
@@ -949,13 +908,13 @@ public class Sudoku extends Activity implements OnClickListener {
       case R.id.continue_button:
          startGame(Game.DIFFICULTY_CONTINUE);
          break;
-         // ...
+         
          
       case R.id.about_button:
          Intent i = new Intent(this, About.class);
          startActivity(i);
          break;
-      // More buttons go here (if any) ...
+      
       case R.id.new_button:
          openNewGameDialog();
          break;
