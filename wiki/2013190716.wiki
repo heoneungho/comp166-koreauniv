@@ -998,8 +998,8 @@ class Dragon extends Monster {
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
+ * 인터페이스:추상클래스, 즉 인스턴스를 만들 수없는 클래스
+ * 다형성:부모의 레퍼런스 변수가 자식을 가리키도록 하는 것이 다형성이다. 다형성을 활용하면 새로운 하위클래스 형식을 프로그램에 추가할 때 코드를 굳이 바꿀 필요가 없다.
  * 추상 클래스:상속 관계에 있는 클래스 중에서 상위 클래스에서는 특별한 구현 없이 사용하고자 하는 메소드만 기술하고 구체적인 구현은 하위 클래스에서 하도록 할 수 있습니다.
  * 추상 메소드:부모클래스에서 메소드명 앞에 abstract(추상)이라고 붙이기만 하고 실제로 메소드 내의 선언문(statement)내용이 없는 것을 추상메소드라고 합니다. 부모클래스(parentclass)를 상속 받은 자식클래스(subclass)에서는 반드시 이 추상메소드에 대해서 메소드를 정의해야 합니다.
  * 다중 상속:두개 이상의 부모클래스에서 상속 받는 것
@@ -1104,16 +1104,58 @@ class SimUnit
 
 {{{
 
+import java.util.*;
+public class Calender{
+        public static void main(String[] args){
+                Calendar c = Calendar.getInstance();
+                c.set(2004,0,7,15,40);
+                   long day1 = c.getTimeInMillis(); 
+                   day1 += 1000*60*60;
+                c.setTimeInMillis(day1); 
+                System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35);
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35);
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1);
+                   System.out.println("set to 1 " + c.getTime());
+}
+}
+
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수:정적변수는 상수에 불과한 것으로 객체지향적이지 않다. 프로시저 위주의 프로그래밍이다.
+ * 지역 변수:클래스당 하나씩 있어서 메모리가 절약된다. 한 클래스에 속하는 모든 인스턴스에 의해 공유된다.
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class StaticSuper{ 
+        static{
+                System.out.println("super static block");
+        }
+        StaticSuper(){ 
+                System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper { 
+        static int rand;
+        static{
+                rand=(int)(Math.random()*6);
+                System.out.println("static block"+rand);
+        }
+        StaticTests(){
+                System.out.println("constructor");
+        }
+        public static void main(String[]args){
+                System.out.println("in main");
+        }
+        StaticTests st=new StaticTests(); 
+}
 
 }}}
 
@@ -1123,17 +1165,149 @@ class SimUnit
 
 {{{
 
+public class Test
+{
+
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
+}
+
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
 
+import javax.sound.midi.*;
+
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();
+        }
+        
+        public void play()
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        
+                        Track track = seq.createTrack();
+                        
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn);
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff);
+                        
+                        player.setSequence(seq);
+                        
+                        player.start();
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }
+}
+
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;
+
+
+public class MiniMusicCmdLine
+{
+        public static void main(String[] args)
+        {
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();
+                
+                if(args.length < 2 )//input숫자의 개수가 2개보다 작으면
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                else
+                {
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument,note);
+                        
+                }
+        }
+        
+        public void play(int instrument, int note)
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();
+                        
+                        MidiEvent event = null;
+                        
+                        ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+                }
+                
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                }
+        }
+}
 
 }}}
 
