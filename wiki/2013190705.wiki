@@ -1295,7 +1295,7 @@ finally 블록
 
 main 끝
 
- * String test = "예"; 로 바꾸면??
++++ String test = "예"; 로 바꾸면?? +++
 
 try 블록 시작
 
