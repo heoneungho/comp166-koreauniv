@@ -21,10 +21,312 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 = 자바 파일 =
 
+== MainActivity.Java ==
+
+package comp.fin.comedu16;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import comp.fin.comedu16.constants.Constants;
+import comp.fin.comedu16.listener.SeekBarListener;
+//import android.os.StrictMode;
+
+public class MainActivity extends Activity {
+	
+	MediaPlayer mp;
+	
+	private int gameTime;
+	private SeekBarListener seekBarListener;
+	private int gameLevel = 2;		// 1:Easy, 2:Normal, 3:Hard 로 일단 2의 값을 주었습니다.
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+//		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//		StrictMode.setThreadPolicy(policy);
+		mp = MediaPlayer.create(getApplicationContext(), R.raw.bgm);
+		mp.setLooping(true);
+		mp.start();
+		
+		SeekBar  timeSeekBar = (SeekBar)  findViewById(R.id.seekBar);			// 게임 시간을 설정하는 SeekBar
+		TextView selectTime  = (TextView) findViewById(R.id.selectTime);		// 설정된 시간을 보여주는 TextView
+		
+		seekBarListener = new SeekBarListener(timeSeekBar, selectTime);			// SeekBar Listener 등록
+		
+	}
+	
+	public void mOnClick(View v) throws InterruptedException		// Start Button이 눌렸을 때
+	{
+		gameTime  = seekBarListener.getProgressVal();		// 게임 play 시간
+		System.out.println("게임시작(Play 시간 : " + gameTime + ", Level : " + gameLevel + ")");		// 게임 start 버튼이 눌렸을 때 호출
+		
+		// Intent Class 이용해서 게임 화면 Activity로 이동
+		Intent intent = new Intent(this, GameStartActivity.class);
+		intent.putExtra(Constants.GAMETIME, gameTime);
+		intent.putExtra(Constants.GAMELEVEL, gameLevel);
+		startActivity(intent);
+	}
+	
+	public void rOnSelect(View v)		// 난이도를 정하는 Radio Button
+	{
+		if(v.getId() == R.id.radioBtn1){
+			gameLevel = 1;		// Easy
+		} else if(v.getId() == R.id.radioBtn2) {
+			gameLevel = 2;		// Normal
+		} else if(v.getId() == R.id.radioBtn3) {
+			gameLevel = 3;		// Hard
+		}
+	}
+}
+
+== GameStartActivity.Java ==
+
+package comp.fin.comedu16;
+
+import android.R.color;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import comp.fin.comedu16.constants.Constants;
+import comp.fin.comedu16.game.GameGenerator;
+
+@SuppressLint("HandlerLeak")
+public class GameStartActivity extends Activity
+{	
+	private int gameTime;
+	private int gameLevel;
+	private int rightCount = 0;
+	private int wrongCount = 0;
+	
+	private long realAnswer;
+	
+	private TextView remainTimeView;
+	private TextView gameEquation;
+	private TextView answerView;
+	
+	private Toast toast;
+	
+	private Intent intent;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_game);
+		
+		Intent intent = getIntent();
+		gameTime = intent.getExtras().getInt(Constants.GAMETIME);
+		gameLevel = intent.getExtras().getInt(Constants.GAMELEVEL);
+		
+		System.out.println("gameTime : " + gameTime);		// MainActivity에서 받아온 게임 시간
+		System.out.println("gameLevel : " + gameLevel);		// MainActivity에서 받아온 게임 레벨
+	
+		remainTimeView = (TextView) findViewById(R.id.gameTime);		// 게임의 남은 시간 보여주는 TextView
+		gameEquation = (TextView) findViewById(R.id.gameEquation);		// 게임 식
+		answerView = (TextView) findViewById(R.id.answerView);			// 답 입력
+		
+		remainTimeView.setTextColor(Color.RED);
+		answerView.setText(Constants.ANSWER);
+		answerView.setBackgroundColor(color.holo_blue_bright);
+		
+		generate();		// 문제 생성 및 화면에 출력
+		
+		new Counter().start();						// 카운터 시작
+		System.out.println(Constants.COUNTSTART);
+	}
+    private void generate() 
+    {
+		GameGenerator gg = new GameGenerator(gameLevel);
+		
+		gg.gameProblems();							// 문제 생성
+		gameEquation.setText(gg.getEquation());		// 생성한 문제 화면에 Set
+		realAnswer = gg.getAnswer();					// 생성한 문제의 답
+	}
+	class Counter extends Thread 
+    {
+        @Override
+        public void run()		// 핸들러로 카운터를 보낸다.
+        { 
+            while(true) {
+            	mHandler.sendEmptyMessage(gameTime);
+            	System.out.println("" + gameTime);
+                gameTime--;		// 1초 마다 1씩 작아진다.
+                if ( gameTime == -1) 
+                    break;
+                SystemClock.sleep(1000L);
+            }
+        }
+    }
+    
+	private final Handler mHandler = new Handler() 		 //핸들러를 통해 UI스레드에 접근한다.
+    {
+        public void handleMessage(Message msg) 
+        {
+            super.handleMessage(msg);
+            System.out.println(Constants.CALLHANDLER);
+            remainTimeView.setText(msg.what + "");
+            if(msg.what == 0) 
+            {
+            	remainTimeView.setText("Game Over!!!");
+            	// 게임 시간이 끝나면 결과 화면으로 이동
+        		intent = new Intent(getApplicationContext(), ResultActivity.class);
+        		intent.putExtra(Constants.RIGHT, rightCount);		// 맞은 개수
+        		intent.putExtra(Constants.WRONG, wrongCount);		// 틀린 개수
+        		startActivity(intent);								// 결과 화면으로 이동
+            }
+        }
+    };
+    
+	public void mOnClick(View v) {
+		if( answerView.getText().toString().equals(Constants.ANSWER) )
+		{
+			answerView.setText("");		// 값을 최초로 입력하면 TextView에 입력된 글자를 없앤다
+		}
+		switch(v.getId()){
+		case R.string.btn0:
+			answerView.append(Constants.btn0);
+			break;
+		case R.string.btn1:
+			answerView.append(Constants.btn1);
+			break;
+		case R.string.btn2:
+			answerView.append(Constants.btn2);
+			break;
+		case R.string.btn3:
+			answerView.append(Constants.btn3);
+			break;
+		case R.string.btn4:
+			answerView.append(Constants.btn4);
+			break;
+		case R.string.btn5:
+			answerView.append(Constants.btn5);
+			break;
+		case R.string.btn6:
+			answerView.append(Constants.btn6);
+			break;
+		case R.string.btn7:
+			answerView.append(Constants.btn7);
+			break;
+		case R.string.btn8:
+			answerView.append(Constants.btn8);
+			break;
+		case R.string.btn9:
+			answerView.append(Constants.btn9);
+			break;
+		case R.string.restart:
+			intent = new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(intent);
+			break;
+		case R.string.del:
+			String beforeDelStr = answerView.getText().toString();
+			if(beforeDelStr.equals(Constants.BLANK)) break;
+			int answerLen = beforeDelStr.length();
+			String afterDelStr = beforeDelStr.substring(0, (answerLen-1));
+			answerView.setText(afterDelStr);
+			break;
+		case R.string.enter:
+			long chkAns;
+			try 
+			{
+				chkAns = Integer.parseInt(answerView.getText().toString());
+			} 
+			catch(Exception e)
+			{
+				// String 값으로 답을 입력한 경우
+				toast = Toast.makeText(getApplicationContext(), Constants.NORESULT, Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.RIGHT, 0, 0);
+				toast.show();
+				break;		
+			}
+			if(chkAns == realAnswer)				// 정답이면
+			{
+				rightCount++;						// 맞은 개수 1 증가
+				dispResult(Constants.RIGHT);		// 결과 Toast
+			} else {								// 오답이면
+				wrongCount++;						// 틀린 개수 1 증가
+				dispResult(Constants.WRONG);		// 결과 Toast
+			}
+			break;
+		}
+	}
+	private void dispResult(String result) 
+	{
+		toast = Toast.makeText(getApplication(), result, Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.RIGHT, 0, 0);
+		toast.show();
+		answerView.setText(Constants.BLANK);
+		generate();			// 새로운 문제 생성	
+	}
+}
+
+== ResultActivity.Java ==
+
+package comp.fin.comedu16;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import comp.fin.comedu16.constants.Constants;
+
+public class ResultActivity extends Activity
+{	
+	Intent intent;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_result);
+		
+		TextView rightCountView = (TextView) findViewById(R.id.Right);
+		TextView wrongCountView = (TextView) findViewById(R.id.wrong);
+		
+		intent = getIntent();
+		
+		int rightCount = intent.getExtras().getInt(Constants.RIGHT);		// 맞은 개수
+		int wrongCount = intent.getExtras().getInt(Constants.WRONG);		// 틀린 개수
+		
+		rightCountView.setText("맞은 개수 : " + rightCount);
+		wrongCountView.setText("틀린 개수 : " + wrongCount);
+	}
+	
+	public void mOnClick(View v) {
+		switch(v.getId()){
+	
+		case R.string.restart:
+			intent = new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(intent);
+			break;
+		}
+	}
+}
+
 
 = 레이아웃 =
 
 인터페이스를 꾸미는 데 편리한 relative layout을 이용했습니다.
+
 
 = 실행 화면 =
 
