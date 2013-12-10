@@ -1384,29 +1384,100 @@ class Dragon extends Monster {
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ * 인터페이스:100% 추상클래스로 자바에서 정말 필수불가결한 부분이다.
+ * 다형성:'여러형태'를 의미한다.
+ * 추상 클래스:클래스 선언시 앞에 abstract만 붙이면 된다. 추상클래스란, 아무도 그 클래스의 새로운 인스턴스를 만들 수 없는 클래스를 의미하고 반드시 확장해야하는 클래스를 의미한다.
+ * 추상 메소드:반드시 오버라이드해야하는 메소드를 의미한다. 중괄호없이 세미콜론을 써서 선언을 끝낸다. 추상 메소드를 만들 때는 클래스도 반드시 추상클래스여야한다.
+ * 다중 상속:상위클래스를 두 개 사용하는 접근법이다. 하지만 여기에는 '죽음의 다이아몬드'라고 알려져 있는 문제가 있다.
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수:힙은 모든 객체가 사는 곳이다. 인스턴스 변수는 객체 안에 살기 때문에 즉 인스턴스 변수가 힙 안에 살고 있는 것이다. 
+
+ * 스택에서의 변수:스택은 메소드 호출과 지역 변수가 사는 곳이다. 지역 변수가 객체에 대한 레퍼런스인 경우에는 변수만 스택에 들어간다. 객체 자체는 힙 안에 있다.
+ * 생성자:객체를 생성할 때 실행되는 코드가 들어있다. 즉 어떤 클래스 유형에 대해 new 키워드를 사용했을 때 실행되는 코드가 들어있다. 우리가 직접 만들지 않아도 된다. 
+
+ * 널 레퍼런스:레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException? 이 생긴다. 
+
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수:객체를 지원하는 역할을 하며 항상 객체와 함께 하나이다. 객체에 상태가 없으면 쓸모가 없는데 그 상태가 바로 인스턴스변수에 저장된 값이다. 객체와 함께 힙에 산다. 정확히는 객체 안에 산다. 객체가 가비지 컬렉터에 의해 처리된다면 인스턴스 변수도 없어지고 만다. 
+
+ * 지역 변수: 객체가 중요한데 행동이 없으면 쓸모가 없다. 거기서 행동이란 것은 메소드에 들어있는 알고리즘이며 이 알고리즘을 작동시키려면 메소드에 지역변수가 있어야 한다. 지역 변수는 인스턴스 변수에 비해서 수명이 짧다. 지역 변수는 자신의 프레임이 스택 맨 위로 올라갈 때 까지 아무것도 하지 않는다. 인스턴스가 변수가 들어있는 객체를 지역 변수에서만 참조할 수도 있다 
+
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+
+class V2Radiator 
+{ 
+        V2Radiator(ArrayList<SimUnit> list) 
+        { 
+                for(int x = 5; x < 5 ; x++) 
+                { 
+                        list.add(new SimUnit("V2Radiator"));//list에 SimUnit 객체를 더한다. 
+                } 
+        } 
+} 
+ 
+class V3Radiator //extends V2Radiator 
+{ 
+        V3Radiator(ArrayList<SimUnit> lglist) 
+        { 
+                //super(lglist); 
+                for(int g = 0; g < 10 ; g++) 
+                { 
+                        lglist.add(new SimUnit("V3Radiator"));//lglist에 SimUnit객체를 더한다. 
+                } 
+        } 
+} 
+ 
+class RetentionBot 
+{ 
+        RetentionBot(ArrayList<SimUnit> rlist) 
+        { 
+                rlist.add(new SimUnit("Rention"));//rlist에 SimUnit객체를 더한다. 
+        } 
+} 
+ 
+public class TestLifeSupportSim  
+{ 
+        public static void main(String[] args) 
+        { 
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();//ArrayList를 만든다. 
+                V2Radiator v2 = new V2Radiator(aList);//V2Radiator객체 생성한다. 
+                V3Radiator v3 = new V3Radiator(aList);//V3Radiator객체 생성한다. 
+                for(int z = 0 ; z < 20 ; z++) 
+                { 
+                        RetentionBot ret = new RetentionBot(aList);//RententionBot객체 생성한다. 
+                } 
+        } 
+} 
+ 
+class SimUnit 
+{ 
+        String botType;//문자열 선언한다.
+        SimUnit(String type) 
+        { 
+                botType = type;
+        } 
+        int powerUse() 
+        { 
+                if("Retention".equals(botType)) 
+                { 
+                        return 2;                        
+                } 
+                else 
+                { 
+                        return 4; 
+                } 
+        } 
+} 
+
 
 }}}
 
