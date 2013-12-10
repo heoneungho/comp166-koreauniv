@@ -10,6 +10,7 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 
 = Details =
+
 1. 누가누가 더 많이 맞추나~제한시간 설정 가능
 
 2. 난이도 조절 가능~누구나 할 수 있는 게임
@@ -18,6 +19,15 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 4. 게임이 끝나면 채점 결과 확인 가능
 
+
+= 자바 파일 =
+
+
+= 레이아웃 =
+
+인터페이스를 꾸미는 데 편리한 relative layout을 이용했습니다.
+
+= 실행 화면 =
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-41-36.png
 
