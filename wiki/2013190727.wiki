@@ -1548,11 +1548,98 @@ public void crossFingers() {
 
 {{{
 
+import javax.sound.midi.*; // 미디 패키지를 반드시 불러와야 함
+
+public class MiniMiniMusicApp {
+	MiniMiniMusicApp mini = new MiniMiniMusicApp ();
+	mini.play()l;
+} // main 메소드 끝
+
+public void play() {
+	try {
+		Sequencer player = MidiSystem.getSequencer(); // Sequencer를 받아서 염(Sequencer는 자동으로 열리지 않으므로 그래야만 쓸 수 있음)
+		player.open();
+
+		Sequence seq = new Sequence(Sequence.PPQ, 4) ; // Sequencer 생성자로 넘기는 인자에 대해서는 신경 쓰지 않아도 됨
+
+		Track track = seq.createTrack(); // Sequence에 Track을 요청. Track은 Sequence에 들어있고 미디 데이터는 Track에 들어있기 때문
+
+		ShortMessage a = new ShortMessage();
+		a.setMessage(144, 1, 44, 100);
+		MidiEvent noteOn = new MidiEvent(a, 1);
+		track.add(noteOn);
+
+		ShortMessage b = new ShortMessage();
+		b.setMessage(128, 1, 44, 100);
+		MidiEvent noteoff = new MidiEvent(b, 16);
+		track.add(noteOff);
+
+		// Track에 MidiEvent를 집어넣음. 이 부분은 거의 인스턴트 코드라고 보면 됨
+
+		player.setSequence(seq); // Sequencer에 Sequence를 보냄
+
+		player.start(); // Sequencer의 start() 메소드를 호출
+
+		}
+		
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	} // play 메소드 끝
+} // 클래스 끝
+
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;
+
+public class MiniMusicCmdline { // 첫번째
+	public static void main(String p[ args) {
+		MiniMusicCmdLine mini = new MiniMusicCmdLine()
+		if ( args.length < 2) {
+			System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+		} else {
+			int instrument = Integer.parseInt(args[0]);
+			int note = Integer.parseInt(args[1]);
+			mini.play(instrument, note);
+		}
+	} // main 끝
+
+        public void play(int instrument, int note) {
+                try {
+                        Sequencer player = MidiSystem.getSequencer();//시퀀서를 생성
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();
+                        
+                        MidiEvent event = null;
+                        
+                        ShortMessage first = new ShortMessage();
+       			first.setMessage(192,1,instrument,0);
+         		MidiEvent changeInstrument = new MidiEvent(first, 1);
+ 		        track.add(changeInstrument);
+
+ 		        ShortMessage a = new ShortMessage();
+		        a.setMessage(144,1,note,100);
+		        MidiEvent noteOn = new MidiEvent(a,1);
+		        track.add(noteOn);
+
+      			ShortMessage b = new ShortMessage();
+       			a.setMessage(128,1,note,100);
+	                MidiEvent noteOff = new MidiEvent(b,16);
+      	    	        track.add(noteOff);
+   	                player.setSequence(seq);
+  	                player.start();
+                }
+                
+                catch(Exception ex) {
+                        ex.printStackTrace();
+                }
+        } // play 메소드 끝
+} // 클래스 끝
 
 }}}
 
