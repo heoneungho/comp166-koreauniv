@@ -38,7 +38,7 @@
 = APK file =
 1. apk 압축 파일 : [http://comp166-koreauniv.googlecode.com/files/APK.zip]
 
-2. 소스 코드 파일 : [http://comp166-koreauniv.googlecode.com/files/]
+2. 소스 코드 파일 : [http://comp166-koreauniv.googlecode.com/files/PuzzleJH]
 
 ------------------------------------------------------------------------
 
