@@ -322,5 +322,14 @@ public class Puzzleactivity extends Activity {
        android:id="@+id/Btn15"></Button>
     // 그림들을 버튼에 맞게 하자씩 지정합니다. 그림의 있는 빈칸도 버튼으로 지정해 줍니다.
 
+==참조==
+
+어플의 양식을 참조했습니다.
+http://www.happycampus.com/doc/11290987
+http://ryulib.tistory.com/149 
+
+==어플의 APK파일입니다==
+http://comp166-koreauniv.googlecode.com/files/puzzl (2).zip/
+
 </AbsoluteLayout>
 </LinearLayout>
