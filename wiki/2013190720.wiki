@@ -1293,7 +1293,35 @@ public class Calender
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{
 
+        static { 
+        System.out.println("super static block");
+        }
+
+        StaticSuper() { //StaticSuper는 생성자이므로 반드시 ()가 있어야합니다.
+        // 두 클래스의 정적 초기화 블록은 생성자가 실행되기 전에 실행됩니다.
+        System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper { 
+        static int rand; 
+
+        static { 
+        rand=(int_ (Math.random()*6);
+        System.out.println("static block " + rand);
+        }
+
+        StaticTests(){ 
+        System.out.println("constructor");
+        {
+
+        public static void main(String [] args) {
+        System.out.println("in main");
+        StaticTests st = new StaticTests (); 
+        }
+}
 }}}
 
 = 11. 위험한 행동:예외처리  =
