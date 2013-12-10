@@ -627,8 +627,6 @@ public class GameHelper {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
-
-import java.io.*; 
  
 public class GameHelper { 
          
@@ -645,7 +643,7 @@ public class GameHelper {
                         new InputStreamReader(System.in)); 
                          
                 inputLine = is.readLine(); 
-         
+        
                 if(inputLine.length()==0) return null; 
                          
                 } catch (IOException e) { 
@@ -731,8 +729,6 @@ public class SimpleDotComTestDrive {
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
-
-import java.io.*; 
  
 public class GameHelper { 
          
@@ -824,8 +820,6 @@ public class SimpleDotComTestDrive {
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
-
-import java.util.ArrayList; 
  
 public class DotCom { 
  
@@ -864,8 +858,6 @@ public class DotCom {
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
-
-import java.util.*; 
  
 public class DotCom 
 { 
@@ -1103,24 +1095,289 @@ public class GameHelper
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속:
- * 다형성:
+ * 상속:하위클래스가 상위클래스의 멤버(인스턴스 변수와 메소드)를 물려받는다는 것을 의미한다. 
+ * 다형성:일련의 클래스에 대한 상위클래스를 만들면 그 상위클래스 형식이 들어갈 수 있는 모든 자리에 해당 상위클래와 임의 하위클래스에 속하는 객체를 마음대로 사용할 수 있다. 다형성을 사용하면 레퍼런스 유형을 실제 객체 유형의 상위클래스 유형으로 지정할 수 있다. 다형성을 활용하면 새로운 하위클래스 형식을 프로그램에 추가하더라도 코드를 굳이 바꿀 필요가 없다. 
+
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
 
+class Animal 
+{ 
+        String picture; 
+        Boolean food; 
+        int hunger; 
+        float boundaries; 
+        float location; 
+ 
+        void makeNoise() 
+        { 
+                //소리를 낼 때의 행동 
+        } 
+ 
+        void eat() 
+        { 
+                //그 동물이 음식을 접했을 때의 행동 
+        } 
+ 
+        void sleep() 
+        { 
+                //그 동물이 잠들어 있을 때의 행동 
+        } 
+ 
+        void roam() 
+        { 
+                //그 동물이 먹거나 자고 있지 않을 때의 행동 
+        } 
+ 
+} 
+class Feline extends Animal//Feline은 Animal을 상속받는다. 
+{ 
+        void roam() 
+        { 
+                //roam을 오버라이드한다. 
+        } 
+} 
+ 
+class Canine extends Animal//Canine은 Animal을 상속받는다. 
+{ 
+        void roam() 
+        { 
+                //roam을 오버라이드한다. 
+        } 
+} 
+ 
+class Lion extends Feline//Lion은 Feline을 확장한다. 
+{ 
+        void makeNoise() 
+        { 
+                //makeNoise를 오버라이드한다. 
+        } 
+ 
+        void eat() 
+        { 
+                //eat를 오버라이드한다. 
+        } 
+} 
+ 
+class Tiger extends Feline//Tiger은 Feline을 확장한다. 
+{ 
+        void makeNoise() 
+        { 
+                //makeNoise를 오버라이드한다. 
+        } 
+ 
+        void eat() 
+        { 
+                //eat를 오버라이드한다. 
+        } 
+} 
+ 
+ 
+ 
+class Cat extends Feline//Cat은 Feline을 확장한다. 
+{ 
+        void makeNoise() 
+        { 
+                //makeNoise를 오버라이드한다. 
+        } 
+ 
+        void eat() 
+        { 
+                //eat를 오버라이드한다. 
+        } 
+} 
+ 
+class Hiippo extends Animal//Hippo는 Animal을 확장한다. 
+{ 
+        void makeNoise() 
+        { 
+                //makeNoise를 오버라이드한다. 
+        } 
+ 
+        void eat() 
+        { 
+                //eat를 오버라이드한다. 
+        } 
+} 
+ 
+class Wolf extends Canine//Wolf는 Canine를 확장한다. 
+{ 
+        void makeNoise() 
+        { 
+                //makeNoise를 오버라이드한다. 
+        } 
+ 
+        void eat() 
+        { 
+                //eat를 오버라이드한다. 
+        } 
+} 
+ 
+class Dog extends Canine//Dog는 Canine를 확장한다. 
+{ 
+        void makeNoise() 
+        { 
+                //makeNoise를 오버라이드한다. 
+        } 
+ 
+        void eat() 
+        { 
+                //eat를 오버라이드한다. 
+        } 
+}
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드:오버라이드하는 메소드의 인자와 리턴 형식은 외부에서 보기에 상위클래스에 있는 오버라이드를 당하는 메소드와 완벽하게 일치해야 한다. 
+
+ * 오버로딩:메소드 오버로딩은 이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것이다. 이를 활용하면 호출하는 쪽의 편의를 위해 같은 메소드를 서로 다른 인자 목록을 가진 여러 버전으로 만들 수 있다.
+
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
 
+1. 
+public class MonsterTestDrive { 
+        public static void main(String []args) { 
+                Monster [] ma= new Monster[3]; 
+                ma[0]=new Vampire(); 
+                ma[1]=new Dragon(); 
+                ma[2]=new Monstere(); 
+                for(int x=0;,x<3;x++) { 
+                        ma[x].fighten(x); 
+                } 
+        } 
+} 
+ 
+class Monster { 
+        boolean frighten(int d) { 
+                System.out.println("arrrgh"); 
+                return true; 
+        } 
+} 
+ 
+class Vampire extends Monster { 
+        boolean frighten (int x) { 
+                System.out.println("a bite?"); 
+                return false; 
+        } 
+} 
+ 
+class Dragon extends Monster { 
+        boolean frighten (int degree) { 
+                System.out.println("breath fire"); 
+                return true; 
+        } 
+} 
+---------------------------------------------------------------------
+2. 
+public class MonsterTestDrive { 
+        public static void main(String []args) { 
+                Monster [] ma= new Monster[3]; 
+                ma[0]=new Vampire(); 
+                ma[1]=new Dragon(); 
+                ma[2]=new Monstere(); 
+                for(int x=0;,x<3;x++) { 
+                        ma[x].fighten(x); 
+                } 
+        } 
+} 
+ 
+class Monster { 
+        boolean frighten(int x) { 
+                System.out.println("arrrgh"); 
+                return true; 
+        } 
+} 
+ 
+class Vampire extends Monster { 
+        boolean frighten (int f) { 
+                System.out.println("a bite?"); 
+                return 1; //Vampire의 리턴유형이 int여서 컴파일이 안됨 
+        } 
+} 
+ 
+class Dragon extends Monster { 
+        boolean frighten (int degree) { 
+                System.out.println("breath fire"); 
+                return true; 
+        } 
+} 
+---------------------------------------------------------------------
+3. 
+public class MonsterTestDrive { 
+        public static void main(String []args) { 
+                Monster [] ma= new Monster[3]; 
+                ma[0]=new Vampire(); 
+                ma[1]=new Dragon(); 
+                ma[2]=new Monstere(); 
+                for(int x=0;,x<3;x++) { 
+                        ma[x].fighten(x); 
+                } 
+        } 
+} 
+ 
+class Monster { 
+        boolean frighten(int x) { 
+                System.out.println("arrrgh"); 
+                return false; 
+        } 
+} 
+ 
+class Vampire extends Monster { 
+        boolean frighten (int x) { 
+                System.out.println("a bite?"); 
+                return true; 
+        } 
+} 
+ 
+class Dragon extends Monster { 
+        boolean frighten (int degree) { 
+                System.out.println("breath fire"); 
+                return true; 
+        } 
+} 
+---------------------------------------------------------------------
+4. 
+public class MonsterTestDrive { 
+        public static void main(String []args) { 
+                Monster [] ma= new Monster[3]; 
+                ma[0]=new Vampire(); 
+                ma[1]=new Dragon(); 
+                ma[2]=new Monstere(); 
+                for(int x=0;,x<3;x++) { 
+                        ma[x].fighten(x); 
+                } 
+        } 
+} 
+ 
+class Monster { 
+        boolean frighten(int z) { 
+                System.out.println("arrrgh"); 
+                return true; 
+        } 
+} 
+ 
+class Vampire extends Monster { 
+        boolean frighten (byte b) //int가 아닌 byte로 인자를 받아서  
+         { 
+                System.out.println("a bite?"); 
+                return true; 
+        } 
+} 
+ 
+class Dragon extends Monster { 
+        boolean frighten (int degree) { 
+                System.out.println("breath fire"); 
+                return true; 
+        } 
+} 
+ 
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
