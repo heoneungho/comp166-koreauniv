@@ -426,19 +426,102 @@ class Hobbits {
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
- * 인스턴스 변수 vs 지역 변수:
+ * 캡슐화: 외부에 노출되어있는 변수를 보호하기 위하여 인스턴스 변수를 private로 지정하고 접근 제어를 위해 public으로 지정된 게터와 세터를 만든다.
+ * 게터와 세터:게터는 게터가 가져오기로 한 값을 리턴값 형태로 받아오기 위한 용도이고 세터는 세터가 설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도이다.
+ * 인스턴스 변수 vs 지역 변수:인스턴스 변수는 클래스 내에서 선언되야 하고 지역변수는 메소드 내에서 선언되며, 사용하기 전에 반드시 초기화 해야한다.
  
 *107p Dog* _실행_
 
 {{{
+
+public class Dog2 {
+        int size;
+        String name;
+        
+        void bark() {
+                if(size>60) {
+                        System.out.println("Wooof! Wooof!");
+                }else if (size >14) {
+                        System.out.println("Ruff! Ruff!");
+                }else {
+                        System.out.println("Yip! Yip!");
+                }
+        }
+
+}
+
+-----------------------------------------------------------------
+
+public class DogTestDrive {
+
+                public static void main (String[] args) {
+                        Dog2 one = new Dog2();
+                        one.size=70;
+                        Dog2 two = new Dog2();
+                        two.size=8;
+                        Dog2 three = new Dog2();
+                        three.size=35;
+                        
+                        one.bark();
+                        two.bark();
+                        three.bark();
+                }
+}
+
 
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+A
+
+class XCopy {
+        
+        public static void main(String []args) {
+        
+                int orig = 42;
+        
+                XCopy x = new XCopy(); // XCopy유형의 객체 x를 선언한다.
+
+                int y = x.go(orig);//객체x에서 go를 호출하고 이때 orig값을 보낸후 메소드를 실행해 y에 그값을 리턴한다.
+        
+                System.out.println(orig + " " + y );
+        }
+        
+        int go(int arg) { //함수를 int값으로 리턴을 받게된다.
+        
+                arg=arg*2;
+                
+                return arg;//arg를 리턴한다.
+        }
+} //결과 : 42 84
+
+B
+
+class Clock {
+        String time;
+        
+        void setTime(String t) {
+                time = t;
+        }
+        
+        String getTime() { //time을 리턴받는 게터이고 받을 time은 String이므로 String으로 선언한다.
+                return time;
+        }
+}
+
+class ClockTestDrive {
+        public static void main(String [] args) {
+        
+                Clock c = new Clock();
+                
+                c.setTime("1245");
+                String tod = c.getTime();
+                System.out.println("time :  "  + tod);
+        }
+} // 결과 time : 1245
 
 }}}
 
