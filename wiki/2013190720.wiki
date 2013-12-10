@@ -1102,6 +1102,38 @@ class Dog extends Canine{
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class MonsterTestDrive {
+	public static void main(String []args) {
+		Monster [] ma= new Monster[3];
+		ma[0]=new Vampire();
+		ma[1]=new Dragon();
+		ma[2]=new Monstere();
+		for(int x=0;,x<3;x++) {
+			ma[x].fighten(x);
+		}
+	}
+}
+
+class Monster {
+	boolean frighten(int d) {
+		System.out.println("arrrgh");
+		return true;
+	}
+} //"arrgh"를 출력합니다. frighthen 메소드를 오버라이드 합니다.
+
+class Vampire extends Monster {
+	boolean frighten (int x) {
+		System.out.println("a bite?");
+		return false;
+	}
+} //"a bite?"를 출력합니다. frighten 메소드를 오버라이드 합니다.
+
+class Dragon extends Monster {
+	boolean frighten (int degree) {
+		System.out.println("breath fire");
+		return true;
+	}
+} //"breath fire"를 출력합니다.
 
 }}}
 
