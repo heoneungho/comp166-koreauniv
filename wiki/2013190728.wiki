@@ -12,12 +12,12 @@ public class BeerSong {
 
      public static void main (String[] args) {
           int beerNum = 99;
-          String word = "bottles";
+          String word = "bottles";//복수형이 사용되었다.
 
      while (beerNum > 0) {
 
      if (beerNum == 1) {
-          word = "bottle";
+          word = "bottle";//한 병, 즉 단수형을 의미한다.
      }
 
      System.out.println(beerNum + " " + word + " of beer on the wall");
@@ -88,24 +88,29 @@ class Exercise1b {
      int x = 1;
 
      while (x < 10) {
-          if (x > 3) {
+          if (x > 3) 
                System.out.println("big x");
-               }
+                  
+               x++; //while문 내에서 x를 증가 시켜 무한루프를 방지한다.
           }
      }
 }
 
 <B>
 
-class Exercise1b {
+public class Exercise1b { //Exercise1b 클래스에 대한 선언을 해준다.
 public static void main(String [] args) {
 
 	int x = 5;
 
-	while (x > 1) {
+	while (x > 1) 
+        {
 		x = x - 1;
-	if (x <3) {
+	
+        if (x <3) 
+        {
 		System.out.println("small x");
+
 		}
 	}
 }
@@ -113,8 +118,9 @@ public static void main(String [] args) {
 
 <C>
 
-class Exercise1b {
-	public static void main(String [] args) {
+public class Exercise1b { // Exercise1b 클래스를 선언한다.
+
+	public static void main(String [] args) { //메인 메소드에 대한 선언을 한다.
 	
 	int x = 5;
 
@@ -151,7 +157,8 @@ class Exercise1b {
 
 {{{
 
-public class GuessGame {
+public class GuessGame { //GuessGame 클래스를 선언한다.
+
 	Player p1;
 	Player p2;
 	Player p3;
@@ -256,12 +263,14 @@ class TapeDeck {
 
 	boolean canRecord = false;
 	
-	void playTape() {
-	  System.out.println("tape playing");
+	void playTape() {//tape를 실행한다.
+
+	  System.out.println("tape playing"); //tape playing을 출력한다.
 	}
 
-	void recordTape() {
-	  System.out.println("tape recording");
+	void recordTape() { // tape를 기록한다.
+
+	  System.out.println("tape recording");//tape recording을 출력한다.
 	}
   }
 
@@ -272,11 +281,43 @@ class TapeDeckTestDrive {
 	t.canRecord = true;
 	t.playTape();
 
-	if (t.canRecord == true) {
+	if (t.canRecord == true) { //플레이 되지 않는다면 기록된다.
 	  t.recordTape();
 	  }
 	}
 }
+class DVDPlayer {
+
+    boolean canRecord = false; 
+
+    void playDVD() {
+
+        System.out.println("DVD playing"); 
+
+    } 
+
+    void recordDVD() {
+
+        System.out.println("DVD recording"); 
+
+    } 
+
+}
+
+class DVDPlayerTestDrive {
+
+    public static void main(String args) {
+
+        DVDPlayer d = new DVDPlayer(); // DVD class를 만든다.
+ d.canRecord = true; d.playDVD(); 
+
+    if(d.canRecord == true)
+
+        d.recordDVD(); // 플레이 되지 않으면 기록한다.
+
+    } 
+
+} 
 
 }}}
 
@@ -293,16 +334,43 @@ class TapeDeckTestDrive {
 class Dog {
 	String name;
 	public static void main (String[] args) {
+        //Dog라는 객체를 만들고 접근한다.
 
 	Dog dog1 = new Dog();
 	dog1.bark();
 	dog1.name = "Bart";
 
 	Dog[] myDogs = new Dog[3];
+        //Dog 배열을 만든다.
 	
 	myDogs[0] = new Dog();
 	myDogs[1] = new Dog();
 	myDogs[2] = dog1;
+        //개를 여러 마리 집어 넣는다.
+
+	//배열 레퍼런스를 써서 Dog 객체에 접근합니다.
+	myDogs[0].name = "Fred";
+	myDogs[1].name = "Marge";
+	myDogs[2].name = "BaBo";
+
+	//myDogs[3]의 이름이 궁금하다.
+	System.out.print("마지막 개의 이름:");
+	System.out.println("myDogs[3].name");
+	
+	int x =0;
+	while(x <myDogs.length){
+		myDogs[x].bark();
+		x = x+1;
+		}
+	}
+
+	pubilc void bark() {
+		System.out.println(name + "이(가) 왈!하고 짖습니다.");
+	}
+	public void eat(){}
+	public void chaseCat(){}
+	}
+
 
 	
 }}}
@@ -317,7 +385,7 @@ class Books {
 	String author;
 	}
 
-class BooksTestDrive {
+public class BooksTestDrive {
 		public static void main(String [] args) {
 
 		Books [] myBooks = new Books[3];
@@ -491,7 +559,7 @@ public class SimpleDotCom {
 			locationCells = locs;
 	}
 	
-	public String checkYourself(String stringGuess) {
+	public String checkYourself(String stringGuess) {//배열을 확인한다.
 		int guess = Integer.parseInt(stringGuess);
 		String result = "miss";
 		for(int i = 0; i < locationCells.length; i++) {
@@ -560,15 +628,85 @@ public class GameHelper {
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
 
-*162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
-
+*162p 닷컴 게임:첫번째 옵션* _구현후 주석달기
 {{{
+public class DotcomFirstOption
+{
+                public static void main(String[] args) 
+                {
+                        int Guessnumber = 0;
+                        GameHelper helper = new GameHelper();
+                        SimpleDotCom theDotCom = new SimpleDotCom(); // Making new object
+                        int randomNum = (int) (Math.random() * 5);
+                        int[] locations = {randomNum, randomNum + 1,randomNum + 2};
+                        theDotCom.setLocationCells(locations);
+                        boolean Alivedotcom = true;
+                        
+                        while(Alivedotcom == true)
+                        {
+                                String guess = helper.getUserInput("enter a number");
+                                String result = theDotCom.checkYourself(guess);
+                                Guessnumber++;
+                                
+                                if(result.equals("kill"))
+                                {
+                                        Alivedotcom = false;
+                                        System.out.println(Guessnumber + " guesses");
+                                }
+                        }
+                        
+                }
+
+        }
+
+
+
 
 }}}
 
-*163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
+*163p 닷컴 게임:두번째 옵션*
 
 {{{
+public class DotComSecondoption
+{
+        int[] locationCells;
+        int numOfHits = 0;
+        boolean[] hitCells = {false, false,false };//Define hitCells
+        
+        public void setLocationCells(int [] locs)
+        {
+                locationCells = locs;
+        }
+        
+        public String checkYourself(String stringGuess)
+        {
+                int guess = Integer.parseInt(stringGuess);
+                String result = "miss";
+                for(int i = 0 ;i < locationCells.length; i++)
+                {
+                        if(guess == locationCells[i]&& hitCells[i] == false)
+                        {
+                        
+                                result = "hit";
+                                hitCells[i] = -1; //false -> -1
+                                numOfHits++;
+                                break;
+                        }
+                }
+
+        
+        if(numOfHits == locationCells.length)
+        {
+                result = "kill";
+        }
+        System.out.println(result);
+        return result;
+
+        }
+}
+
+import java.io.*;
+
 
 }}}
 
@@ -583,13 +721,18 @@ public class DotCom {
 
      public void setLocationCells(ArrayList<String> loc) {
           locationCells = loc;
-     }//배열 대신 string이 들어가는 ArrayList를 사용
+     }//배열 말고 string이 들어가는 ArrayList를 사용한다.
+
+     public void setLocationCells(ArrayList<String>loc)
+    {
+                locationCells = loc;
+    }
 
      public String checkYourself(String userInput) {
 
           String result = "miss";
           
-               int index = locationCells.indexOf(userInput);
+               int index = locatios 나름 훈훈 nCells.indexOf(userInput);
 
                if (index >= 0 ) {
 
@@ -613,6 +756,240 @@ public class DotCom {
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
+import java.util.*;
+
+public class DotCom
+{
+        private ArrayList<String> locationCells;//DotCom의 인스턴스 변수 -셀위치
+        private String name;//DotCom의 인스턴스 변수  -DotCom의 이름
+
+        public void setLocationCells(ArrayList<String> loc)
+        {
+                locationCells = loc;//DotCom의 위치를 갱신합니다.
+        }
+        
+        public void setName(String n)
+        {
+                name = n;//이름을 설정합니다
+        }
+        
+        public String checkYourself(String userInput)
+        {
+                String status = "miss";//처음에 miss로 초기화합니다.
+                int index = locationCells.indexOf(userInput);
+                //ArrayList의 indexOf()메소드를 사용하여  사용자가 추측한 위치가 ArrayList에 들어있으면 인덱스를 그렇지 않으면 -1을 리턴합니다.
+                if(index >= 0)
+                {
+                        locationCells.remove(index);
+                        //ArrayList의 remove 메소드를 써서 그 항목을 지웁니다.
+                        if(locationCells.isEmpty())//isEmpty를 써서 모든 위치를 맞췄는지 확인합니다.
+                        {
+                                status = "kill";
+                                System.out.println("Ouch! You sunk " + name + "    : ( ");
+                                //DotCom이 가라앉았다고 알려줍니다.
+                        }
+                        else
+                        {
+                                status = "hit";
+                        }
+                }
+
+        return status;
+        }
+        //어떤 값이 나왔는지 알려줍니다. hit 인지 miss 인지 kill인지
+}
+
+import java.util.*;
+
+public class DotComBust 
+{
+        private GameHelper helper = new GameHelper();//GameHelper객체를 생성합니다.
+        private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>();//DotCom객체로 이루어진 ArrayList를 만듭니다.
+        private int numOfGuesses = 0;//추측한 숫자를 나타내는 변수를 선언하고 0으로 초기화합니다.
+        
+        private void setUpGame()//닷컴 객체 몇 개를 만들고 위치를 지정합니다.
+        {
+                DotCom one = new DotCom();
+                one.setName("Pets.com");
+                DotCom two = new DotCom();
+                two.setName("eToys.com");
+                DotCom three = new DotCom();
+                three.setName("Go2.com");
+                dotComsList.add(one);
+                dotComsList.add(two);
+                dotComsList.add(three);
+                //DotCom 객체 세 개를 만들고 각각 이름을 부여하고 ArrayList에 저장합니다.
+                
+                System.out.println("Your goal is to sink three dot coms.");
+                System.out.println("Pets.com, eToys.com, Go2.com");
+                System.out.println("Try to sink them all in the fewest number of guesses");
+                //간단한 게임 방법을 설명합니다.
+                
+                for(DotCom dotComToSet : dotComsList)//목록에 있는 각 DotCom에 대해 반복합니다.
+                {
+                        ArrayList<String> newLocation = helper.placeDotCom(3);
+                        //DotCom의 위치를 지정하기 위한 보조 메소드를 호출합니다.
+                        dotComToSet.setLocationCells(newLocation);
+                        //이 DOtCom 객체의 세터 메소드를 호출하여 방금 보조 메소드에서 받아온 위치를 지정합니다.
+                        
+                }
+        }
+        
+        private void startPlaying()
+        {
+                while(!dotComsList.isEmpty())//dotComsList가 비어있지 않으면 계속 반복합니다.
+                {
+                        String userGuess = helper.getUserInput("Enter a guess");
+                        //사용자의 입력을 받습니다.
+                        checkUserGuess(userGuess);
+                        //메소드를 호출합니다.
+                        
+                }
+                finishGame();
+        }
+
+        private void checkUserGuess(String userGuess)
+        {
+                numOfGuesses++;//메소드가 호출되면 사용자 추측 횟수를 증가시킵니다.
+                String result = "miss";//miss라고 일단 설정을 해놓습니다.
+                
+                for(DotCom dotComToTest : dotComsList)//목록의 모든 DotCom 객체에 대해 반복합니다.
+                {
+                        result = dotComToTest.checkYourself(userGuess);
+                        //DotCom 객체에 사용자가 입력한 위치가 맞는지 또는 객체가 죽었는지 물어봅니다.
+                        if(result.equals("hit"))//결과가 hit 면 break
+                        {
+                                break;
+                        }
+                        if(result.equals("kill"))//결과가 kill이면 
+                        {
+                                dotComsList.remove(dotComToTest);//DotCom 목록에서 빼고
+                                break;//순환문을 빠져나옵니다.
+                        }
+                }
+        }
+        
+        private void finishGame()//게임 결과를 알려주는 메시지를 출력합니다.
+        {
+                System.out.println("All Dot Coms are dead! Your stock is now worthless");
+                if(numOfGuesses <= 18)
+                {
+                        System.out.println("It only took you " + numOfGuesses + " guesses.");
+                        System.out.println("You got out before your options sank");
+                }
+                else
+                {
+                        System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
+                        System.out.println("Fish are dancing with your options");
+                }
+        }
+
+        public static void main(String[] args)
+        {
+                DotComBust game = new DotComBust();//DotComBust 객체를 만듭니다.
+                game.setUpGame();//게임 객체에 게임을 설정하라는 명령을 내립니다.
+                game.startPlaying();
+                //게임 객체에서 주 게임 진행 순환문을 돌리라는 명령을 내립니다
+        }
+
+}
+
+
+import java.io.*;
+import java.util.*;
+
+public class GameHelper
+{
+        private static final String alphabet = "abcdefg";
+        private int gridLength = 7;
+        private int gridSize = 49;
+        private int[] grid = new int[gridSize];
+        private int comCount = 0;
+        
+        public String getUserInput(String prompt)
+        {
+                String inputLine = null;
+                System.out.println(prompt +" ");
+                try
+                {
+                        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+                        inputLine = is.readLine();
+                        if(inputLine.length() == 0)
+                                return null;    
+                }
+                catch(IOException e)
+                {
+                        System.out.println("IOException: " + e);
+                }
+        
+                return inputLine.toLowerCase();
+                
+        }
+        
+        public ArrayList<String> placeDotCom(int comSize)
+        {
+                ArrayList<String> alphaCells = new ArrayList<String>();//F6과 같은 좌표가 들어감
+                String temp = null;//나중에 연결하기 위한 임시 String배열
+                int[] coords = new int[comSize];//현재 후보 좌표
+                int attempts = 0;//시도 횟수를 세기 위한 카운터
+                boolean success = false;//적당한 위치를 찾았느지 표시하기 위한 플래그
+                int location = 0;//현재 시작 위치
+                
+                comCount++;//n번째 닷컴
+                int incr = 1;//수평 방향으로 증가시킬 값 설정
+                if((comCount % 2)==1)//홀수 번째 닷컴인 경우
+                {
+                        incr = gridLength;//수직 방향으로 증가시킬 값 결정
+                }
+                
+                while(!success & attempts++ < 200)//주 검색 순환문(32)
+                {
+                        location = (int) (Math.random() * gridSize);//임의 시작 위치를 구함
+                        //System.out.print(" try " + location);
+                        
+                        int x = 0;//위치시킬 닷컴의 n번째 위치
+                        success = true;//성공할 것으로 가정함
+                        while(success && x < comSize)//닷컴이 들어갈 자리가 비었는지 확인
+                        {
+                                if(grid[location] == 0)//아직 사용하지 않았으면
+                                {
+                                        coords[x++] = location;//위치 저장
+                                        location += incr;//다음 칸 확인
+                                        if(location >= gridSize)//경계를 벗어난 경우
+                                                success = false;//실패
+                                        if(x > 0 & (location % gridLength == 0))//경계를 벗어난 경우(오른쪽)
+                                                success = false;//실패
+                                        else//이미 사용중인 경우
+                                                //System.out.print(" used " + location)
+                                                success = false;//실패
+                                }
+                        }
+                        
+                }//while 끝
+
+        int x = 0;//위치를 알파벳 좌표로 바꿈
+        int row = 0;
+        int column = 0;
+        
+        while(x < comSize)
+        {
+                grid[coords[x]] = 1;//기본 그리드 좌표를 사용중 으로 표시
+                row = (int) (coords[x] / gridLength);//행 값을 구함
+                column = coords[x]&gridLength;//열 값을 구함
+                temp = String.valueOf(alphabet.charAt(column));//숫자가 된 열을 알파벳으로 변환
+                
+                alphaCells.add(temp.concat(Integer.toString(row)));
+                x++;
+                //System.out.println("   coord  " + x + " = "  + alphaCells.get(x-1));
+                //DotCom의 위치를 알려주는 메소드
+                                
+        }
+        
+        return alphaCells;
+        }
+        
+}
+
 
 }}}
 
@@ -620,12 +997,137 @@ public class DotCom {
 
 *199p~ 상속과 다형성* _요약_
 
- * 상속: 
- * 다형성:
+ * 상속:하위 클래스가 상위 클래스의 멤버를 물려받는다는 의미이다.
+ * 다형성:여러가지 형태의 변수들이나 객체를 하나의 배열같은 것 안에서 나타낼 수 있다. 부모의 레퍼런스 변수가 자식을 가리키도록 하는 것이다. 
+
 
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+class Animal
+{
+        String picture;
+        Boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise()
+        {
+                //소리를 낼 때의 행동
+        }
+
+        void eat()
+        {
+                //그 동물이 음식을 접했을 때의 행동
+        }
+
+        void sleep()
+        {
+                //그 동물이 잠들어 있을 때의 행동
+        }
+
+        void roam()
+        {
+                //그 동물이 먹거나 자고 있지 않을 때의 행동
+        }
+
+}
+class Feline extends Animal//Feline은 Animal을 상속받습니다.
+{
+        void roam()
+        {
+                //roam을 오버라이드합니다.
+        }
+}
+
+class Canine extends Animal//Canine은 Animal을 상속받습니다.
+{
+        void roam()
+        {
+                //roam을 오버라이드합니다.
+        }
+}
+
+class Lion extends Feline//Lion은 Feline을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Tiger extends Feline//Tiger은 Feline을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+
+
+class Cat extends Feline//Cat은 Feline을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Hiippo extends Animal//Hippo는 Animal을 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Wolf extends Canine//Wolf는 Canine를 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
+
+class Dog extends Canine//Dog는 Canine를 확장합니다.
+{
+        void makeNoise()
+        {
+                //makeNoise를 오버라이드합니다.
+        }
+
+        void eat()
+        {
+                //eat를 오버라이드합니다.
+        }
+}
 
 }}}
  
@@ -639,67 +1141,249 @@ public class DotCom {
 {{{
 public class MonsterTestDrive {
 	public static void main(String [] args) {
-	  Monster [] ma = new Monster[3];
+	  Monster [] ma = new Monster[3];//Monster 배열을 만든다.
 	  ma[0] = new Vampire();
 	  ma[1] = new Dragon();
 	  ma[2] = new Monster();
 	  for(int x = 0; x <3; x++) {
-		ma[x].frighten(x);
+		ma[x].frighten(x);//배열이 각각 frighten을 하도록 만드는 반복문 입니다.
 	  }
 	}
 }
 
 class Monster {
 	boolean frighten(int d) {
-	  System.out.println("arrrgh");
+	  System.out.println("arrrgh");//"arrrgh"를 출력한다
 	  return true;
 	}
 }
 
-class Vampire extends Monster {
+class Vampire extends Monster { //Vampire는 Monster를 확장한 것이다.
 	boolean frighten(int x) {
-	  System.out.println("a bite?");
+	  System.out.println("a bite?");//"a bite?"를 출력한다.
 	  return false;
 	}
 }
 
-class Dragon extends Monster {
+class Dragon extends Monster {//Dragon은 Monster를 확장한 것이다.
 	boolean frighten(int degree) {
-	  System.out.println("breath fire");
+	  System.out.println("breath fire");//"breath fire"를 출력한다.
 	  return true;
 	}
 }
 
+//결과적으로 
+a bite?
+breath fire
+arrrgh
+가 출력된다.
+}}}
+
+public class MonsterTestDrive {
+        public static void main(String [] args) {
+                Monster [] ma = new Monster[3];
+                ma[0] = new Vampire();
+                ma[1] = new Dragon();
+                ma[2] = new Monster();
+                for(int x = 0 ;x<3;x++) {
+                        ma[x].frighten(x);
+                }
+        }
+}
+
+class Monster {
+
+boolean frighten(int d) {
+        System.out.println("arrrgh");
+        return true;
+}
+}
+
+class Vampire extends Monster {
+
+int frighten(int x){
+        System.out.println("a bite?");
+        return 1;//1번과 차이점!!!!!return 유형이 int인데(1) 상위클래스는 boolean이기 때문에 오버로딩 불가합니다!!!
+}
+}
+
+class Dragon extends Monster {
+        boolean fighten (int degree ) {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+}}}
+
+{{{
+3.
+
+public class MonsterTestDrive {
+        public static void main(String [] args) {
+                Monster [] ma = new Monster[3];
+                ma[0] = new Vampire();
+                ma[1] = new Dragon();
+                ma[2] = new Monster();
+                for(int x = 0 ;x<3;x++) {
+                        ma[x].frighten(x);
+                }
+        }
+}
+
+class Monster {
+
+boolean frighten(int d) {
+        System.out.println("arrrgh");
+        return false;
+}
+}
+
+class Vampire extends Monster {
+
+boolean scare(int x){//차이점 등장!!!!!메소드가 frighten이 아닌 scare. 때문에 이 클래스에서는 상위클래스의 메소드를 사용하게 된다.! 
+        System.out.println("a bite?");
+        return true;
+}
+}
+
+class Dragon extends Monster {
+        boolean fighten (int degree ) {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+
+결과값 : 
+
+arrrgh
+breath fire
+arrrgh
 
 }}}
+
+{{{
+4. public class MonsterTestDrive {
+        public static void main(String [] args) {
+                Monster [] ma = new Monster[3];
+                ma[0] = new Vampire();
+                ma[1] = new Dragon();
+                ma[2] = new Monster();
+                for(int x = 0 ;x<3;x++) {
+                        ma[x].frighten(x);
+                }
+        }
+}
+
+class Monster {
+
+boolean frighten(int d) {
+        System.out.println("arrrgh");
+        return false;
+}
+}
+
+class Vampire extends Monster {
+
+boolean frighten(byte b){//차이점!!!!상위클래스의 메소드와 매개변수가 다르다. 때문에 오버로드 하지 않는다!!!
+
+        System.out.println("a bite?");
+        return true;
+}
+}
+
+class Dragon extends Monster {
+        boolean fighten (int degree ) {
+                System.out.println("breath fire");
+                return true;
+        }
+}
+
+결과값 : 
+arrrgh
+breath fire
+arrrgh
+}}}
+
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
 
 *231p~ 심각한 다형성* _요약_
 
- * 인터페이스:
- * 다형성:
- * 추상 클래스:
- * 추상 메소드:
- * 다중 상속:
+ * 인터페이스:추상 클래스를 의미합니다.
+ * 다형성:여러가지 형태를 의미합니다.
+ * 추상 클래스:아무도 그 클래스의 새로운 인스턴스를 만들 수 없는 클래스이다.
+ * 추상 메소드:추상 메소드는 반드시 오버라이드해야만 하는 메소드이다. 추상메소드를 만들 때에는 클래스도 반드시 추상 클래스로 만들어야 한다. 추상 클래스가 아닌 클래스에 추상 메소드를 집어넣을 수는 없다.
+ * 다중 상속:상위 클래스를 두 개 사용하는 접근법이다.
 
 = 09. 객체의 삶과 죽음:생성자와 메모리 관리  =
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수:
- * 스택에서의 변수:
- * 생성자:
- * 널 레퍼런스:
+ * 힙에서의 변수:힙은 모든 객체가 사는 곳이다.
+ * 스택에서의 변수:스택은 메소드가 호출되면 쌓이는 곳이다.
+ * 생성자:생성자에는 객체를 생성할 때 실행되는 코드가 들어있다.
+ * 널 레퍼런스:널 레퍼런스를 설정하면 리모컨의 기능을 해제하는 것과 같다. 널 레퍼런스에는 널(아무것도 없음)을 나타내는 비트들이 들어있다. 
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ 
+ * 인스턴스 변수: 인스턴스 변수는 객체의 상태를 저장하는 변수이다.
+ * 지역 변수: 지역 변수는 인스턴스 변수에 비해서 수명이 짧다. 지역 변수는 자신의 프레임이 스택 맨 위로 올라갈 때 까지 아무것도 하지 않는다. 인스턴스가 변수가 들어있는 객체를 지역 변수에서만 참조할 수도 있다.
+
 
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+import java.util.*;
+class V2Radiator{ // V2Radiator 클래스 선언
+        V2Radiator(ArrayList list){
+                for(int x=0; x<5; x++){ // 심플유닛 생성
+                        list.add(new SimUnit("V2Radiator"));
+                }
+        }
+}
+
+class V3Radiator extends V2Radiator{ // V3Radiator 클래스 선언
+        V3Radiator(ArrayList lglist){
+                super(lglist); // 상위클래스에서 가져옴
+                for(int g=0; g<10; g++){ // 심플유닛 생성
+                        lglist.add(new SimUnit("V3Radiator"));
+                }
+        }
+}
+
+class RetentionBot{ // Retention Bot 클래스 선언
+        RetentionBot(ArrayList rlist){ 
+                rlist.add(new SimUnit("Retention"));//심플유닛 생성
+        }
+}
+
+public class TestLifeSupportSim{
+        public static void main(String [] args){
+                ArrayList aList = new ArrayList(); // 배열을 생성
+                V2Radiator v2 = new V2Radiator(aList);
+                V3Radiator v3 = new V3Radiator(aList);
+                for(int z=0; z<20; z++){ // 실행될때마다 메세지를 출력
+                        RetentionBot ret = new RetentionBot(aList);
+                        System.out.println(z+1 + "unit");
+                }
+        }
+}
+
+class SimUnit{
+        String botType;
+        SimUnit(String type){
+                botType = type;
+        }
+        int powerUse(){
+                if("Retention".equals(botType)){
+                        return 2;
+                }else{
+                        return 4;
+                }
+        }
+}
+
 
 }}}
 
@@ -707,27 +1391,78 @@ class Dragon extends Monster {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+  * 정적 메소드:클래스의 인스턴스없이 메소드를 실행할 수 있는 메소드이다.
+ * 정적 메소드를 선언하는 방법:static을 붙여줍니다.
+ * static final: static final 로 선언된 변수는 상수입니다. 한번 초기화되고 나면 절대 바꿀 수 없습니다. 
+ * 널 레퍼런스:레퍼런스 변수에 NULL을 대입함으로써 아무것도 참조하지 않는 레퍼런스이다.
+ * 오토 박싱:원시값과 래퍼 객체 사이의 변환을 자동으로 처리해주는 기능이다.
+ * 정적 임포트:정적 클래스, 정적 변수, enum값 등을 사용할 때 정적 임포트를 활용해서 타이핑을 더 적게 함을 위한 것이다.
+
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
+import java.util.*;
+public class Calender{
+        public static void main(String[] args){
+                Calendar c = Calendar.getInstance();
+                c.set(2004,0,7,15,40); // 시각을 2004년 1월 7일 15:40으로 설정
+                   long day1 = c.getTimeInMillis(); // 1970년 1월 1일부터 경과한 시간을 밀리초 단위로 표현한 값을 리턴
+                   day1 += 1000*60*60;
+                c.setTimeInMillis(day1); // 한 시간에 해당하는 밀리초 만큼의 시간을 더하고 시간을 갱신합니다.
+                System.out.println("new hour " + c.get(c.HOUR_OF_DAY));
+                c.add(c.DATE, 35); // 35일을 더합니다.
+                System.out.println("add 35 days " + c.getTime());
+                c.roll(c.DATE, 35); // 35일 뒤로 넘깁니다.
+                System.out.println("roll 35 days " + c.getTime());
+                c.set(c.DATE, 1); // 날짜를 더하는게 아닙니다. 날짜를 1로 설정
+                   System.out.println("set to 1 " + c.getTime());
+}
+}
+
 
 }}}
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 인스턴스마다 하나씩 있다. 
+ * 지역 변수: 클래스마다 하나씩 있어서 메모리가 많이 절약된다. 한 클래스에 속하는 모든 인스턴스에 의해서 공유된다. 
+
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class StaticSuper{ // 클래스 선언
+
+  static{
+    System.out.println("super static block");
+  }
+
+  StaticSuper{
+    System.out.println(
+      "super constructor");
+  }
+}
+
+public class StaticTests extends StaticSuper{ // 클래스 확장
+  static int rand;
+
+  static{
+    rand = (int) (Math.random() * 6);
+    System.out.println("static block " + rand);
+  }
+
+  staticTests(){
+    System.out.println("constructor");
+  }
+
+  public static void main(String [] args){ // 메인메소드
+    System.out.println("in main");
+    StaticTests st = new StaticTests();
+  }
+}
+
+
 
 }}}
 
@@ -736,18 +1471,146 @@ class Dragon extends Monster {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class Test
+{
+
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();//오류가 발생할 수 있는 부분입니다.
+                }
+                catch(BadException ex)//오류가 뜨면 밑에 부분이 실행되도록 합니다.
+                {
+                        System.out.println("Aaargh!");
+                        ex.printStackTrace();
+                }
+        }
+        
+        }
+}
+
+
 
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;//먼저 import하고 시작합니다.
+
+public class MiniMiniMusicApp
+{
+        public static void main(String[] args)
+        {
+                MiniMiniMusicApp mini = new MiniMiniMusicApp();
+                mini.play();
+        }
+        
+        public void play()
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();//Sequencer를 엽니다.
+                        
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        
+                        //Sequence에 Track을 요청합니다.
+                        Track track = seq.createTrack();
+                        //MidiEvent를 집어넣습니다.
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144, 1, 44, 100);
+                        MidiEvent noteOn = new MidiEvent(a, 1);
+                        track.add(noteOn);
+                        
+                        ShortMessage b = new ShortMessage();
+                        b.setMessage(128, 1, 44, 100);
+                        MidiEvent noteOff = new MidiEvent(b, 16);
+                        track.add(noteOff);
+                        
+                 
+                      
+              
+                        
+                        player.setSequence(seq);//Sequencer에 Sequence를 보냅니다.~!
+                        
+                        player.start();
+                        
+                }
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                        
+                }
+                
+        }
+}
+
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+import javax.sound.midi.*;
+
+public class MiniMusicCmdLine { 
+
+        public static void main(String[]args){
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();//MiniMusicCmdLine의 새로운 객체를 생성합니다.
+                if(args.length<2){
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                }else{
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument, note);//인자 전달과 동시에  play 메소드를 호출합니다.
+                }
+        } 
+
+         
+        public void play (int instrument, int note){
+                try{
+                        Sequencer player = MidiSystem.getSequencer();
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ, 4);
+                        Track track = seq.createTrack();//Track을 생성합니다.
+
+                        MidiEvent event = null; //null값을 집어 넣습니다.
+
+                        ShortMessage first = new ShortMessage();
+                        first.setMessage(192,1,instrument,0);
+                        MidiEvent changeInstrument = new MidiEvent(first, 1);
+                        track.add(changeInstrument);
+
+                        ShortMessage a = new ShortMessage();
+                        a.setMessage(144,1,note,100);
+                        MidiEvent noteOn = new MidiEvent(a,1);
+                        track.add(noteOn);
+
+                        ShortMessage b = new ShortMessage();
+                        a.setMessage(128,1,note,100);
+                        MidiEvent noteOff = new MidiEvent(b,16);
+                        track.add(noteOff);
+                        player.setSequence(seq);
+                        player.start();
+                }catch(Exception ex){ex.printStackTrace();}
+        } 
+}
+
+
 
 }}}
 
