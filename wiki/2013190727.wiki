@@ -1189,31 +1189,179 @@ class Dog extends Canine {
 
 {{{
 
+1.
+
 public class MonsterTestDrive {
 	public static void main(String [] args) {
 		Monster [] ma = new Monster[3];
-		ma [0] = new Vampire();
-		ma [1] = new Dragon();
-		ma [2] = new Monster();
-		for(int x = 0; x < 3; x++) {
-			ma [x].frighten(x);
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
 		}
 	}
 }
 
 class Monster {
-	boolean frighten(int d) {
-		System.out.println("arrrgh");
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return true;
+}
+}
+
+class Vampire extends Monster {
+
+boolean frighten(int x){
+	System.out.println("a bite?");
+	return false;
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
 		return true;
 	}
 }
 
-class Vampire extends Monster { // Vampire는 Monster를 상속받음
-	boolean frighten(int x) {
-		System.out.println("a bite?");
-		return false;
+제대로 작동
+
+결과값 : 
+a bite?
+breath fire
+arrrgh
+}}}
+
+{{{
+
+2.
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
 	}
 }
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return true;
+}
+}
+
+class Vampire extends Monster {
+
+int frighten(int x){
+	System.out.println("a bite?");
+	return 1;//return 유형이 int인데 상위클래스는 boolean이기 때문에 오버로딩 불가
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+}}}
+
+{{{
+
+3.
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return false;
+}
+}
+
+class Vampire extends Monster {
+
+boolean scare(int x){//메소드가 frighten이 아닌 scare. 따라서 본 클래스에서 상위클래스의 메소드를 사용하게 됨.
+	System.out.println("a bite?");
+	return true;
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+결과값 : 
+arrrgh
+breath fire
+arrrgh
+
+}}}
+
+{{{
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for(int x = 0 ;x<3;x++) {
+			ma[x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+
+boolean frighten(int d) {
+	System.out.println("arrrgh");
+	return false;
+}
+}
+
+class Vampire extends Monster {
+
+boolean frighten(byte b){//상위클래스의 메소드와 매개변수가 다름. 따라서 오버로드 하지 않음
+	System.out.println("a bite?");
+	return true;
+}
+}
+
+class Dragon extends Monster {
+	boolean fighten (int degree ) {
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+결과값 : 
+arrrgh
+breath fire
+arrrgh
 
 }}}
 
@@ -1247,9 +1395,9 @@ class Vampire extends Monster { // Vampire는 Monster를 상속받음
 
 import java,util.*;
 class V2Radiator {
-	V2Radiator(ArrayList list {
+	V2Radiator(ArrayList list) {
 		for (int x=0; x<5; x++) {
-			list.add(new SimUnit("V2Radiator));
+			list.add(new SimUnit("V2Radiator)); // 5번 추가함
 		}
 	}
 }
@@ -1258,7 +1406,41 @@ class V3Radiator extends V2Radiator {
 	V3Radiator(ArrayList lglist) {
 		super(lglist);
 		for (int g=0; g<10; g++) {
-			lglist.add(new SimU
+			lglist.add(new SimUnit("V3Radiator")); // 10번 추가함
+		}
+	}
+}
+
+class RetentionBot {
+	RetentionBot(ArrayList rlist) {
+		rlist.add(new SimUnit("Retention"));
+	}
+}
+
+public class TestlifeSupportSim {
+	public static void main(String [] args) {
+		ArrayList aList = new ArryList ();
+		V2Radiator v2 = new V2Radiator (aList);
+		V3Radiator v3 = new V3Radiator (aList);
+		for(int z=0; z<20; z++) {
+			RetentionBot ret = new RetentionBot(aList); // 20번 실행
+		}
+	}
+}
+
+class SimUnit {
+	String botType;
+	SimUnit(String type) {
+		botType = type;
+	}
+	int powerUse() {
+		if("Retention".equals(botType)) {
+			return 2;
+		} else {
+			return 4;
+		}
+	}
+}
 
 }}}
 
@@ -1266,16 +1448,18 @@ class V3Radiator extends V2Radiator {
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
+ * 정적 메소드: "인스턴스 변수에 따라 행동이 달라지지 않기 때문에 인스턴스나 객체가 필요하지 않고 클래스만 있어도 된다"를 의미
+ * 정적 메소드를 선언하는 방법: static이라는 키워드를 사용하면 클래스의 인스턴스없이 메소드를 실행할 수 있다.
+ * static final: final로 지정한 변수는 (일단 초기화되고 나면) 절대 그 값을 바꿀 수 없다. 즉, static final로 선언한 변수는 클래스가 로딩되어있는 동안 계속 똑같은 값을 유지한다.
+ * 널 레퍼런스: 프로그래머가 직접 기본값을 지정하지 않아도 인스턴스 변수에는 자동으로 기본값이 지정된다. 원시 유형의 기본값은 0/0.0/false고 객체에 대한 레퍼런스의 기본값은 null이다.
+ * 오토 박싱: 자바 5.0부터 도입된 오토박싱(autoboxing)은 원시값과 래퍼 객체 사이의 변환을 자동으로 처리해주는 기능
+ * 정적 임포트: 정적 클래스, 정적 변수, enum 값 등을 사용할 때 정적 임포트를 활용해서 타이핑을 더 적게 해보자는 것으로 자바 5.0에 새로 추가된 기능이다.
 
 *339p Calendar* _구현후 주석달기_
 
 {{{
+
+
 
 }}}
 
