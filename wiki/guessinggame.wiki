@@ -8,7 +8,7 @@
 
 = Details =
 
-<wiki:url="http://www.youtube.com/watch?v=YSX1sW-Fdbs&feature=youtu.be"/>
+<wiki:video url="http://www.youtube.com/watch?v=YSX1sW-Fdbs&feature=youtu.be"/>
 동영상
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-10[1].png/
 start버튼을 누르면 게임 메인화면으로 넘어갑니다.
