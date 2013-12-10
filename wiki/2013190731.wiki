@@ -532,7 +532,7 @@ class ClockTestDrive {
 
  * 익스트림 프로그래밍이란? <br>
 익스트림 프로그래밍이란 소프트웨어 개발 방법중의 하나로 가장 큰 장점은 스펙이 변경되어도 고객이 원하는 것을 고객이 원하는 기한에 맞춰서 제공할 수 있다는것이다. 
- 
+ <br>
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
@@ -570,7 +570,7 @@ public class simpledotcomtestdrive {
 public class simpledotcom {
 
         int[] locationCells;
-        int numOfHits = 0; // number of answer that you correct the target.
+        int numOfHits = 0;
 
 public void setLocationCells (int[] locs)       {
         locationCells = locs;
