@@ -24,7 +24,9 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 == MainActivity.Java ==
 
+package comp.fin.comedu16;
 
+import android.app.Activity;
 
 == GameStartActivity.Java ==
 
