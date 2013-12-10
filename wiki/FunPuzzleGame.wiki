@@ -29,15 +29,14 @@ HOW TO PLAY 버튼을 누를 경우 나오게 되는 화면입니다.
 
 [http://comp166-koreauniv.googlecode.com/files/베리하드모드시작후.jpg] 게임시작 버튼을 클릭했을 때 퍼즐조각이 섞인 화면입니다.
 
+= 코드 리스트 =
+
+[http://comp166-koreauniv.googlecode.com/files/CodeList.jpg]
 
 
-= 코드출처 =
+= FunPuzzle 코드 =
 
-원본 소스 : [http://newworlds.tistory.com/1389]
-
-게임코드는 그대로 사용했습니다. 하지만 원본 소스는 5X6의 그림 퍼즐만 제공하였지만 저는 이 소스를 응용하여 3X4, 4X5, 5X6, 6X7 총 4가지의 그림 퍼즐들을 만들어 난이도를 나눴습니다. 물론 사용된 사진도 바꿨습니다. 난이도에 맞춰 피츄, 피카츄, 라이츄,피츄와 피카츄와 라이츄가 같이 있는 사진들을 이용했습니다.
-
-= 메인메뉴 코드 =
+메인 메뉴, 버튼 구성 등을 구현한 코드입니다.
 
 = R.java =
 
@@ -321,8 +320,11 @@ public class GameStart extends Activity {
 }}}
 
 = 게임코드 =
+= 코드출처 =
 
-네가지 난이도중 이지모드로 코드를 쓰겠습니다. 제 미천한 실력으로 게임 코드에 대한 주석은 못달았습니다. ㅠㅠ 이 코드를 응용하여 난이도를 여러개 만들었다는 것에 대해 의의를... 두어 주시기 바랍니다.
+원본 소스 : [http://newworlds.tistory.com/1389]
+
+게임코드는 그대로 사용했습니다. 하지만 원본 소스는 5X6의 그림 퍼즐만 제공하였지만 저는 이 소스를 응용하여 3X4, 4X5, 5X6, 6X7 총 4가지의 그림 퍼즐들을 만들어 난이도를 나눴습니다. 물론 사용된 사진도 바꿨습니다. 난이도에 맞춰 피츄, 피카츄, 라이츄,피츄와 피카츄와 라이츄가 같이 있는 사진들을 이용했습니다. 네가지 난이도중 이지모드로 코드를 쓰겠습니다. 
 
 = CPocketPuzzle.java =
 
@@ -352,7 +354,7 @@ public class CPocketPuzzle extends Activity
 = CPpBtnExit.java = 
 
 {{{
-package com.PocketPuzzle1;
+package com.PocketPuzzle1; //easy모드의 이름은 pocketPuzzle1이고 normal모드의 이름은 pocketPuzzle2 이런 식으로 정했습니다.
 
 import com.PocketPuzzle.R;
 
@@ -365,7 +367,7 @@ import android.graphics.Paint;
 public class CPpBtnExit
 {
 
-    private int _x;
+    private int _x; 
     private int _y;
 
     private int _bx;
@@ -394,8 +396,8 @@ public class CPpBtnExit
 
     public void doMoveTo(int x, int y)
     {
-        this._bx = x;
-        this._by = y;
+        this._bx = x;   //_bx를 x로!
+        this._by = y;   //_by를 y로!
     }
 
     public void doDrawExit(Canvas canvas, Paint p, boolean enabled)
@@ -419,8 +421,8 @@ public class CPpBtnExit
         boolean by = (_by + _y <= py) && (_by + _y + _height > py);
 
         return (bx && by);
-    }
-}  
+    } //메소드끝
+}  //클래스 끝
 }}}
 
 = CPpBtnStart.java =
@@ -438,16 +440,17 @@ import android.graphics.Paint;
 
 public class CPpBtnStart
 {
-    private int _x;
-    private int _y;
+    private int _x;  //x변수 놓기
+    private int _y;  //y변수 놓기
 
     private int _bx;
     private int _by;
 
-    private int _width = 144;
-    private int _height = 40;
+    private int _width = 144;   //이차원배열의 가로길이
+    private int _height = 40;   //이차원 배열의 세로 길이
 
-    private boolean _bStarted=false;
+    private boolean _bStarted=false;  //boolean은 참거짓을 뜻하는 타입
+//_bStarted를 false로 놓는다!
 
     private Bitmap _btnStart_e;
     private Bitmap _btnStart_d;
@@ -512,7 +515,7 @@ public class CPpBtnStart
         boolean bx = (_bx + _x <= px) && (_bx + _x + _width > px);
         boolean by = (_by + _y <= py) && (_by + _y + _height > py);
 
-        return (bx && by);
+        return (bx && by); // bx와 by 값을 리턴
     }
 
     /**
