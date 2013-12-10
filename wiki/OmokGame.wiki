@@ -21,7 +21,7 @@
 
 먼저 무슨 파일들이 있는지 살펴보면 다음 화면과 같다.
 
-[http://comp166-koreauniv.googlecode.com/files/Omok_game.jpg]
+[http://comp166-koreauniv.googlecode.com/files/Omok_list.jpg]
 
 * 위의 사진에서 알 수 있듯이 총 6개의 파일이 있다. 그를 차근차근 살펴보면 다음과 같다.
 
