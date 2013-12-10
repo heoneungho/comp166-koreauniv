@@ -440,14 +440,12 @@ public class StartActivity extends Activity {
         android:onClick="gButtonClick"
         android:text="@string/guessButton"
         android:textSize="24sp" />
-ㅋㅋㅋㅋㅋ
+
 </RelativeLayout>
 
 }}}
 
 ==참조==
 http://www.java2s.com/Open-Source/Android_Free_Code/Game_Guess/Download_Free_code_Guessing_Game.htm
-지랄 그냥 베낀 거임ㅋㅋㅋㅋㅋ
-플레이어 늘리는것도 영기가 해준거임 ㅋㅋㅋㅋㅋ
 코드를 따왔지만 player 5를 더 생성하고 메인 액티비티 전 시작 화면을 만들었습니다.
     
