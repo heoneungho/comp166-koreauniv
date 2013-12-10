@@ -7,7 +7,14 @@
 
 
 = Details =
+<wiki:url="http://www.youtube.com/watch?v=YSX1sW-Fdbs&feature=youtu.be"/>
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-10[1].png/
+start버튼을 누르면 게임 메인화면으로 넘어갑니다.
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-15[1].png/
+플레이어 1부터 5까지 숫자 하나씩을 입력합니다
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-28[1].png/
+이런식으로
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-32[1].png/
+정답인 숫자와 가장 가까운 숫자를 선택한 사람이 승리하게 됩니다.
 
-<wiki:video url="http://www.youtube.com/watch?v=YSX1sW-Fdbs&feature=youtu.be"/>
