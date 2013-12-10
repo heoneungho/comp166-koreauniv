@@ -22,7 +22,7 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 = 자바 파일 =
 
-== MainActivity.Java ==
+1. MainActivity.Java
 
 package comp.fin.comedu16;
 
