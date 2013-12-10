@@ -22,6 +22,8 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 = 자바 파일 =
 
+http://comp166-koreauniv.googlecode.com/files/jfjfjf.jpg
+
 1. MainActivity.Java
 
 {{{
@@ -362,3 +364,21 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-42-28.png
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-42-45.png
 
 제한 시간이 끝나면 결과를 알려줍니다.
+
+<<apk 파일 다운>>
+
+http://comp166-koreauniv.googlecode.com/files/oapko.rar
+
+<<출처>>
+
+배경음악 넣기
+
+http://blog.naver.com/kalsnim1?Redirect=Log&logNo=90155484278
+
+기본 아이디어(계산기)
+
+http://blog.naver.com/rudwnflwkd?Redirect=Log&logNo=40188147643
+
+seekbarlistener
+
+http://mainia.tistory.com/713
