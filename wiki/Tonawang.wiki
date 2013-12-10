@@ -85,7 +85,9 @@ http://seungngil.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C
 
 대부분의 소스 코드는 위 사이트에서 참조했으며
 
-http://147.46.109.56:9090/town/projects.jsp?sort=1&dir=%5Cbook04%5CSampleCalendarMonthView
+      *http://147.46.109.56:9090/town/projects.jsp?sort=1&dir=%5Cbook04%5CSampleCalendarMonthView
+
+      *http://blog.naver.com/PostView.nhn?blogId=injadark&logNo=50153776369
 
 책에 나온 소스코드를 조금 참고하기 위해 위 사이트를 이용했다.
 
