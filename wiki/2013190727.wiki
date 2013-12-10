@@ -1263,7 +1263,7 @@ class Vampire extends Monster {
 
 int frighten(int x){
 	System.out.println("a bite?");
-	return 1;//return 유형이 int인데 상위클래스는 boolean이기 때문에 오버로딩 불가
+	return 1; // return 유형이 int인데 상위클래스는 boolean이기 때문에 오버로딩 불가
 }
 }
 
@@ -1302,7 +1302,7 @@ boolean frighten(int d) {
 
 class Vampire extends Monster {
 
-boolean scare(int x){//메소드가 frighten이 아닌 scare. 따라서 본 클래스에서 상위클래스의 메소드를 사용하게 됨.
+boolean scare(int x){ // 메소드가 frighten이 아닌 scare. 따라서 본 클래스에서 상위클래스의 메소드를 사용하게 됨.
 	System.out.println("a bite?");
 	return true;
 }
@@ -1346,7 +1346,7 @@ boolean frighten(int d) {
 
 class Vampire extends Monster {
 
-boolean frighten(byte b){//상위클래스의 메소드와 매개변수가 다름. 따라서 오버로드 하지 않음
+boolean frighten(byte b){ // 상위클래스의 메소드와 매개변수가 다름. 따라서 오버로드 하지 않음
 	System.out.println("a bite?");
 	return true;
 }
@@ -1474,7 +1474,7 @@ public class Calendar {
                 System.out.println("add 35 days " + c.getTime());
                 c.roll(c.DATE, 35); // 35일 뒤로 감. 달은 바뀌지 않음.
                 System.out.println("roll 35 days " + c.getTime());
-                c.set(c.DATE, 1); / /날짜를 1로 설정
+                c.set(c.DATE, 1); // 날짜를 1로 설정
                 System.out.println("set to 1 " + c.getTime());
         }
 }
@@ -1483,12 +1483,40 @@ public class Calendar {
 
 *342p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 인스턴스 변수에 대한 내용은 별로 없다.
+ * 정적 변수: (지역 변수가 아닌 정적 변수에 대한 이야기가 전개된다) 정적 변수는 더 효율적인데 인스턴스마다 하나씩 있는 게 아니고 클래스마다 하나씩 있기 때문에 메모리가 많이 절약된다.즉 한 클래스에 속하는 모든 인스턴스에 의해서 공유된다. 
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class StaticSuper {
+	static {
+		System.out.println("super static block");
+	}
+
+	StaticSuper() { //StaticSuper는 생성자이므로 반드시 ()가 있어야 한다. 두 클래스의 정적 초기화 블록은 생성자가 실행되기 전에 실행된다.
+		System.out.println("super constructor");
+	}
+}
+
+public class StaticTests extends StaticSuper {
+	static int rand;
+
+	static {
+		rand = (int) (Math.random() * 6);
+		System.out.println("static block " + rand);
+	}
+
+	StaticTest() {
+		System.out.println("constructor");
+	}
+	
+	public static void main(String [] args) {
+		System.out.println("in main");
+		StaticTest st = new StaticTest();
+	}
+}
 
 }}}
 
