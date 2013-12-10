@@ -7,6 +7,7 @@
 
 
 = Details =
+
 <wiki:url="http://www.youtube.com/watch?v=YSX1sW-Fdbs&feature=youtu.be"/>
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-10[1].png/
@@ -17,4 +18,3 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-28[1].
 이런식으로
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-32[1].png/
 정답인 숫자와 가장 가까운 숫자를 선택한 사람이 승리하게 됩니다.
-
