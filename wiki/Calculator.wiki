@@ -1,5 +1,5 @@
 #summary 계산기
-#labels 2013190715
+#labels 2013190715임태완
 
 = Introduction =
 
