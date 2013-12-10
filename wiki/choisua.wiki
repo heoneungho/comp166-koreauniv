@@ -5,7 +5,9 @@
 베스킨라빈스31(업그레이드)
 http://comp166-koreauniv.googlecode.com/files/baskin.png
 
-= Details =
-
 1부터31까지 숫자를 순서대로 말하고 마지막에 31을 말하는사람이 지는것
 단,숫자는 1개부터 3개까지 말할 수 있고 전 사람이 말한 갯수만큼은 못 말한다
+
+= Details =
+
+https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21607b04cbc79e24.jpg 메인화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21fe31ca0264a707.jpg 게임 설명 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_51d7df1d393a4b28.jpg 레벨 선택 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_e624138b09c08313.jpg https://comp166-koreauniv.googlecode.com/files/KakaoTalk_b9a8b896fca2832a.jpg 게임 중 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_5175c4ec89e57e3b.jpg 게임 결과 화면 입니다.
