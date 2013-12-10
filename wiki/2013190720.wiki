@@ -551,18 +551,21 @@ public class SimpleDotCom {                //SimpleDotCom 클래스 입니다.
         //사용자가 추측한 위치를 string으로 받아들이고 그 값을 확인하고 결과를 리턴하는 메소드입니다.
 
                 int guess = Integer.parseInt(stringGuess); //사용자가 추측한 위치를 string 매개변수 형태로 받아와 int로 변환합니다.
+                
                 String result = "miss";
+                
                 for (int i=0 ; i<locationCells.length; i++) {
                         if(guess == locationCells[i]) {
                                 result = "hit";
                                 numOfHits++;
                                 break;
-                        }
+                        } // 만약 추측한 것이 맞으면 맞춘 갯수를 증가시킵니다.
                 }
 
                 if (numOfHits == locationCells.length) {
                         result = "kill";
-                }
+                } // 만약 맞춘 횟수가 3이면 kill을 결과로 리턴합니다.
+
                 System.out.println(result);
                         return result;
         } 
