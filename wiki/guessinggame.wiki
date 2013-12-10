@@ -302,8 +302,7 @@ public class StartActivity extends Activity {
         android:layout_toRightOf="@+id/p1Title"
         android:hint="@string/textHint"
         android:inputType="number"
-        android:singleLine="true" />
-//player 1의 숫자입력값을 받습니다
+        android:singleLine="true" />//player 1의 숫자입력값을 받습니다
 
     <TextView
         android:id="@+id/p2Title"
@@ -325,8 +324,7 @@ public class StartActivity extends Activity {
         android:layout_toRightOf="@+id/p2Title"
         android:hint="@string/textHint"
         android:inputType="number"
-        android:singleLine="true" />
-//player2의 숫자입력값을 받습니다
+        android:singleLine="true" />//player2의 숫자입력값을 받습니다
     <TextView
         android:id="@+id/p3Title"
         android:layout_width="wrap_content"
@@ -336,8 +334,7 @@ public class StartActivity extends Activity {
         android:layout_marginBottom="28dp"
         android:layout_marginRight="10dp"
         android:text="@string/player3_title"
-        android:textSize="24sp" />
-//player3의 숫자입력값을 받습니다
+        android:textSize="24sp" />//player3의 숫자입력값을 받습니다
 
     <EditText
         android:id="@+id/p3Text"
@@ -348,8 +345,7 @@ public class StartActivity extends Activity {
         android:layout_toRightOf="@+id/p3Title"
         android:hint="@string/textHint"
         android:inputType="number"
-        android:singleLine="true" />
-//player4의 숫자입력값을 받습니다
+        android:singleLine="true" />//player4의 숫자입력값을 받습니다
     <TextView
         android:id="@+id/p4Title"
         android:layout_width="wrap_content"
@@ -370,8 +366,7 @@ public class StartActivity extends Activity {
         android:layout_toRightOf="@+id/p4Title"
         android:hint="@string/textHint"
         android:inputType="number"
-        android:singleLine="true" />
-//player4의 숫자입력값을 받습니다
+        android:singleLine="true" />//player4의 숫자입력값을 받습니다
 
     <TextView
         android:id="@+id/p5Title"
@@ -393,8 +388,7 @@ public class StartActivity extends Activity {
         android:layout_toRightOf="@+id/p5Title"
         android:hint="Enter a number"
         android:inputType="number"
-        android:singleLine="true" />
-//player5의 숫자입력값을 받습니다
+        android:singleLine="true" />//player5의 숫자입력값을 받습니다
     <TextView
         android:id="@+id/numberLabel"
         android:layout_width="wrap_content"
@@ -402,8 +396,7 @@ public class StartActivity extends Activity {
         android:layout_below="@+id/guessButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:textSize="24sp" />
-//랜덤한 한숫자를 나타냅니다
+        android:textSize="24sp" />//랜덤한 한숫자를 나타냅니다
 
     <TextView
         android:id="@+id/winnerLabel"
@@ -411,8 +404,7 @@ public class StartActivity extends Activity {
         android:layout_height="wrap_content"
         android:layout_below="@+id/numberLabel"
         android:layout_centerHorizontal="true"
-        android:textSize="24sp" />
-//가장가까운숫자를적은 winner를 표시합니다
+        android:textSize="24sp" />//가장가까운숫자를적은 winner를 표시합니다
 
     <TextView
         android:id="@+id/ownerLabel"
@@ -436,8 +428,7 @@ public class StartActivity extends Activity {
     <Button
         android:id="@+id/guessButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-//모든 플레이어의 숫자입력이 끝나면 답에가장가까운사람을찾아내는 버튼
+        android:layout_height="wrap_content"//모든 플레이어의 숫자입력이 끝나면 답에가장가까운사람을찾아내는 버튼
         android:layout_alignLeft="@+id/ownerLabel"
         android:layout_below="@+id/p5Title"
         android:onClick="gButtonClick"
