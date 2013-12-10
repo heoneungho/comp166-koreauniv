@@ -496,7 +496,8 @@ public class OmokView extends View {
 
 } // 이 클래스는 게임 화면을 그려주는 클래스이다.
 
-}}
+}}}
+
 
 '''TurnThread.java''' 여기서는 바둑돌 색을 바꿔준다.
 
