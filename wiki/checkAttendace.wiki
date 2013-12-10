@@ -8,20 +8,15 @@
 
 출석체크를 핸드폰에 하여 휴대성을 용이하게 함
 
+맨처음 어느 그룹의 출석체크를 할 것인지 선택하는 항목을 넣음 (ex. 선형대수, 컴퓨터프로그래밍 ...)
 
-- 맨처음 어느 그룹의 출석체크를 할 것인지 선택하는 항목을 넣음
-  (ex. 선형대수, 컴퓨터프로그래밍 ...)
+선택시 다이어리가 뜸. 기본적으로 오늘의 날짜가 설정되어 있으며 변경가능.
 
-- 선택시 다이어리가 뜸. 기본적으로 오늘의 날짜가 설정되어 있으며 변경가능.
+다이어리에서 날짜를 선택하면 학생들의 명단이 뜸. 
 
-- 다이어리에서 날짜를 선택하면 학생들의 명단이 뜸. 
+출석/지각/결석 으로 표기.
 
-# 출석/지각/결석 으로 표기.
-
-- 마지막에 통계 기능도 추가. 지각, 결석 등의 현황을 그래프로도 보여주고 
-  score = 100 + 결석횟수*(-3) * (int)지각횟수/3*(-3) ;
-  이런식으로 출석점수도 환산 가능.
-  정보가 전산화되어 있기 때문에 바로 인터넷에 공유하기도 쉽다!
+<br>
 
 
 = Details =
@@ -29,6 +24,7 @@
 ==Screenshot==
 
 === 메인화면 ===
+
 
 http://comp166-koreauniv.googlecode.com/files/sangmimain.jpg
 
@@ -1451,7 +1447,7 @@ http://comp166-koreauniv.googlecode.com/files/상미xml.png
 
 =APK download=
 
-http://comp166-koreauniv.googlecode.com/files/Attendancebook.apk
+http://comp166-koreauniv.googlecode.com/files/AttendanceBook.apk
 
 
 = Reference =
