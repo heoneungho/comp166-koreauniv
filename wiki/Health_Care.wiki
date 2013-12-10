@@ -1379,3 +1379,31 @@ http://comp166-koreauniv.googlecode.com/files/a2.jpg/
 ==추가적인 기능==
 
 <wiki:video url="http://www.youtube.com/watch?v=zgyUbCxToUw&feature=youtu.be"/>
+
+==출처==
+http://blog.naver.com/PostView.nhn?
+blogId=space5084&logNo=60137851539&categoryNo=15&viewDate=&currentPage=1&listtype=0 --> marquee효과를 위해 참조함
+
+http://www.wikihow.com/Do-a-Push-Up --> Push up에 대한 내용과 사진을 참조함
+
+http://blog.naver.com/kenji_seo?Redirect=Log&logNo=20146709799
+--> 옵션 메뉴에 대한 내용을 참조함
+
+http://stackoverflow.com/questions/6545792/error-in-using-calendar-in-android --> 일정 앱의 연동을 위해 참조함
+
+http://susemi99.tistory.com/1290 --> 음악 앱을 위해 참조함
+
+==동영상 라이센스에 대한 부분==
+
+이 앱에서 사용하고 있는 동영상 종류는 총 3가지로 나눌 수 있는데
+
+가장 많이 나오는 외국 동영상들은 사실 작년에 체대 입시를 준비하면서 학원에서 받은 
+
+동영상입니다. 이에 학원에 문의해서 물어본 결과 미국 헬스 클럽 홍보? 그런 동영상이라
+
+사용해도 무관하다는 답을 받았습니다. 또 이 외에 다른 동영상들 역시 홍보용 동영상으로 
+
+찍은 것이라 사용에 큰 지장이 없는 것 같습니다.
+
+ 
+
