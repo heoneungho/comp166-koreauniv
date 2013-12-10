@@ -22,7 +22,7 @@ http://comp166-koreauniv.googlecode.com/files/wikiimg.jpg
 
 = 자바 파일 =
 
-http://comp166-koreauniv.googlecode.com/files/jfjfjf.jpg
+http://comp166-koreauniv.googlecode.com/files/jfjf.jpg
 
 크게 게임 설정 화면(1)과 플레이 화면(2), 그리고 결과 화면(3)으로 이루어져 있습니다.
 
