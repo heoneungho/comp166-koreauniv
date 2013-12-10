@@ -1391,42 +1391,48 @@ arrrgh
  * 생성자: 객체를 생성할 때 실행되는 코드가 들어있다. 즉 어떤 클래스 유형에 대해 new 키워드를 사용했을 때 실행되는 코드가 들어있다. 우리가 직접 만들지 않아도 된다.
  * 널 레퍼런스: 레퍼런스를 null로 설정하는 것은 리모컨의 기능을 해제하는 것과 같다. 널 레퍼런스에는 '널'을 나타내는 비트들이 들어있다. 널 레퍼런스에 대해 점 연산자를 사용하면 실행 중에 NullPointerException? 이 생긴다. 
  
-*298p 집중토론* _요약_
+정적 변수에 대한 토론
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 정적 변수는 상수에 불가, 특변한 경우에만 많이 사용, 디버깅할때에
+만 특별한경우로 사용, 객체지향적이 아님, 전역변수랑 비슷함, 옛 관습에 익숙한 사람
+들만 사용함, 가끔 익숙하긴 하지만 여전히 옛습관의 폐해, 프로시저 위주
 
-*302p 5분 미스터리* _구현후 주석달기_
-
-{{{
-
-}}}
-
-= 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
-
-*307p~ 숫자* _요약_
-
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
- * 오토 박싱:
- * 정적 임포트:
-
-*339p Calendar* _구현후 주석달기_
-
-{{{
-
-}}}
-
-*342p 집중토론* _요약_
-
- * 인스턴스 변수:
- * 지역 변수: 
+ * 정적 변수: API에서 많이 사용, 상수만 사용하는 클래스도 존재 특별한 경우라도 중
+요함 정적변수가 더 효율적, 전역변수가 아님, 클래스 안에서 존재,필수적인것도 있음
 
 *344p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+class StaticSuper{
+
+        static { 
+        System.out.println("super static block");
+        }
+
+        StaticSuper() { //생성자이므로 ()를 붙입니다.
+        System.out.println("super constructor");
+        }
+}
+
+public class StaticTests extends StaticSuper {//StaticSuper를 상속
+
+        static int rand; 
+
+        static { 
+        rand=(int_ (Math.random()*6);
+        System.out.println("static block " + rand);
+        }
+
+        StaticTests(){ 
+        System.out.println("constructor");
+        {
+
+        public static void main(String [] args) {
+        System.out.println("in main");
+        StaticTests st = new StaticTests ();//객체 생성
+        }
+}
 
 }}}
 
@@ -1436,11 +1442,76 @@ arrrgh
 
 {{{
 
+
+public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)//만약 모든 희망을 버리면으로 오류가 생기는 부분입니다.
+                {
+                        throw new BadException();//BadException이라는 오류를 throw합니다.
+                }
+        }
+        
+ public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();//오류가 발생할수 있는 부분입니다.
+                }
+                catch(BadException ex)//BadException을 잡습니다. 오류가 뜨면 밑의 
+부분이 실행됩니다.
+                {
+                        System.out.println("Aaargh!");
+                        ex.printStackTrace();
+/*예외 상황을 해결할수 없을때 모든 예외 객체에서 물려받는 printStackTrace()메소드
+를 써서 스택 트레이스를 출력합니다.*/
+                }
+        
+        
+        }
+}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
+
+import javax.sound.midi.*;//미디 패키지를 import합니다.
+
+public class MiniMiniMusicApp {
+ 
+	public static void main(String[] args) {
+		MiniMiniMusicApp mini = new MiniMiniMusicApp();
+		mini.play();
+	}
+
+	
+	public void play() {
+		try{
+/*Sequencer를 받아서 엽니다.그래야만 열립니다.*/
+			Sequencer player = MidiSystem.getSequencer();
+			player.open();
+/*Sequencer 생성자로 넘기는 인자에 대해서는 신경 쓰지 않아도 됩니다.*/
+			Sequence seq = new Sequence(Sequence.PPQ,4);
+/*Sequence에 Track을 요청합니다.*/
+			Track track = seq.createTrack();
+/*Track에 MidiEvent를 집어넣습니다.*/
+			ShortMessage a = new ShortMessage();
+			a.setMessage(144, 1, 44, 100);
+			MidiEvent noteon = new MidiEvent(a,1);
+			track.add(noteon);
+			
+			ShortMessage b = new ShortMessage();
+			b.setMessage(128,1,44,100);
+			MidiEvent noteOff = new MidiEvent(b,16);
+/*Sequencer에 Sequence를 보냅니다.*/
+			player.setSequence(seq);
+/*Sequencer의 start()메소드를 호출합니다.*/
+			player.start();
+		} catch ( Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+}
 
 }}}
 
@@ -1448,6 +1519,61 @@ arrrgh
 
 {{{
 
+import javax.sound.midi.*;
+
+
+public class MiniMusicCmdLine
+{//첫번째
+        public static void main(String[] args)
+        {
+                MiniMusicCmdLine mini = new MiniMusicCmdLine();
+                
+                if(args.length < 2 )
+                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
+                else
+                {
+                        int instrument = Integer.parseInt(args[0]);
+                        int note = Integer.parseInt(args[1]);
+                        mini.play(instrument,note);
+                        
+                }
+        }
+        
+        public void play(int instrument, int note)
+        {
+                try
+                {
+                        Sequencer player = MidiSystem.getSequencer();//시퀀서를 생성
+                        player.open();
+                        Sequence seq = new Sequence(Sequence.PPQ,4);
+                        Track track = seq.createTrack();//track 을 생성
+                        
+                        MidiEvent event = null;//event 생성, null값을 대입
+                        
+                        ShortMessage first = new ShortMessage();
+            first.setMessage(192,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(first, 1);
+            track.add(changeInstrument);
+
+            ShortMessage a = new ShortMessage();
+            a.setMessage(144,1,note,100);
+            MidiEvent noteOn = new MidiEvent(a,1);
+            track.add(noteOn);
+
+            ShortMessage b = new ShortMessage();
+            a.setMessage(128,1,note,100);
+            MidiEvent noteOff = new MidiEvent(b,16);
+            track.add(noteOff);
+            player.setSequence(seq);
+            player.start();
+                }
+                
+                catch(Exception ex)
+                {
+                        ex.printStackTrace();
+                }
+        }//play 메소드 끝
+}//클래스 끝
 }}}
 
 = 12. 그래픽이야기:GUI, 이벤트처리, 내부 클래스에 대한 소개  =
