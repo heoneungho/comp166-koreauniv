@@ -329,6 +329,187 @@ public class ResultActivity extends Activity
 }
 }}}
 
+4. Constants.java
+
+{{{
+package comp.fin.comedu16.constants;
+
+public class Constants 
+{
+	public static final String GAMETIME = "GAMETIME";
+	public static final String GAMELEVEL = "GAMELEVEL";
+	public static final String RIGHT = "딩동댕!! 정답! 정답!";
+	public static final String WRONG = "땡!!! 틀렸습니다.";
+	public static final String BLANK = "";
+	public static final String NORESULT = "값을 입력하세요!";
+	public static final String COUNTSTART = "카운터 시작...";
+	public static final String CALLHANDLER = "Handler 호출";
+	public static String ANSWER = "답 입력!";
+	public static String btn0 = "0";
+	public static String btn1 = "1";
+	public static String btn2 = "2";
+	public static String btn3 = "3";
+	public static String btn4 = "4";
+	public static String btn5 = "5";
+	public static String btn6 = "6";
+	public static String btn7 = "7";
+	public static String btn8 = "8";
+	public static String btn9 = "9";
+	
+}
+}}}
+
+5. GameGenerator.java
+
+문제를 냅니다.
+
+{{{
+package comp.fin.comedu16.game;
+
+import java.util.Random;
+
+public class GameGenerator 
+{
+	public int gameLevel;		// Game 난이도
+	public int num1;
+	public int num2;
+	public int answer;
+	
+	public String operator;		// 연산자(0:+, 1:-, 2:*)
+	public String equation;		// 문제로 낼 수학 식
+	
+	
+	public Random ran;			// 계산할 숫자와 연산자를 생성할 Random Class
+	
+	public GameGenerator(int gameLevel)
+	{
+		this.gameLevel = gameLevel;
+	}
+	
+	public void gameLevel(int gameLevel){}		// 1:Easy, 2:Normal, 3:Hard (게임 난이도 Default 는 Normal) 
+	
+	public void setGameTitle(){}				// 레벨에 따른 Title 
+	
+	public void gameProblems() 					// 레벨에 따른 문제 생성
+	{
+		ran = new Random();			// Level에 따른 난수 크기 조절
+		num1 = ran.nextInt(pow(10, gameLevel));
+		num2 = ran.nextInt(pow(10, gameLevel));
+		int operInt = (ran.nextInt(10) % 2);
+		
+		solveProbles(num1, num2, operInt);
+	
+		operator = determinOper(operInt);	// 연산자 결정
+		if(num1 > num2)
+		{
+			equation = num1 + " " + operator + " " + num2 + " = ";		// 화면에 띄울 식
+		}
+		else 
+		{
+			equation = num2 + " " + operator + " " + num1 + " = ";		
+		}
+	}
+	public String getEquation()
+	{
+		return equation;		// 문제로 낼 식 
+	}
+	
+	public int getAnswer()
+	{
+		return answer;			// 문제의 답
+	}
+	
+	private void solveProbles(int num1, int num2, int operator) 
+	{
+		switch (operator) {
+		case 0 : answer = num1 + num2;
+			break;
+		case 1 : 
+			// 큰 수에서 작은 수를 빼게합니다.
+			if(num1 > num2)
+			{
+				answer = num1 - num2;
+			} else 
+			{
+				answer = num2 - num1;
+			}
+			break;
+		case 2 : answer = num1 * num2;
+			break;
+		}
+	}
+
+	private String determinOper(int oper)			// int형의 값을 비교해 String형의 연산자로 변환합니다.
+	{
+		String retStr = null;
+		switch (oper) 
+		{
+			case 0 : retStr = "+";
+			break;
+			case 1 : retStr = "-";
+			break;
+			case 2 : retStr = "*";
+			break;
+		}
+		return retStr;
+	}
+
+	public int pow(int lowerNum, int upperNum)			// Easy : 한자리수, Normal : 한 자리수, 두자리수, Hard : 한자리수, 두자리수, 세자리수 계산
+	{
+		int retVal = 1;
+		for (int i = 0; i < upperNum; i++) 
+		{
+			retVal *= lowerNum;
+		}
+		return retVal;
+	}
+}
+}}}
+
+6. seekbarlistener.java
+
+게임 시간을 설정합니다.
+
+{{{
+package comp.fin.comedu16.listener;
+
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+public class SeekBarListener 
+{
+	private int progressVal = 90; 		// 초기값은 90초
+	
+	public int getProgressVal()		// 게임 시간 Getter 
+	{
+		return progressVal;
+	}
+
+	public SeekBarListener(SeekBar timeSeekBar, final TextView selectTime) 
+	{
+		timeSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() 
+		{
+			@Override
+			// SeekBar에서 Touch 떼었을 때 호출
+			public void onStopTrackingTouch(SeekBar seekBar) {}
+			
+			@Override
+			// SeekBar에서 Touch 했을 때 호출
+			public void onStartTrackingTouch(SeekBar seekBar) {}
+			
+			@Override
+			// SeekBar 의 값이 바뀔 때마다 호출
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) 
+			{
+				selectTime.setText("" + progress);
+				progressVal = progress;		// 게임 시간
+			}
+		});
+	}
+}
+}}}
+
 
 = 레이아웃 =
 
