@@ -10,8 +10,137 @@ http://comp166-koreauniv.googlecode.com/files/baskin.png
 
 = Details =
 
-https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21607b04cbc79e24.jpg 메인화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21fe31ca0264a707.jpg 게임 설명 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_51d7df1d393a4b28.jpg 레벨 선택 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_e624138b09c08313.jpg https://comp166-koreauniv.googlecode.com/files/KakaoTalk_b9a8b896fca2832a.jpg 게임 중 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_5175c4ec89e57e3b.jpg 게임 결과 화면 입니다.
+1. 메인화면 
+https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21607b04cbc79e24.jpg 
 
+MainActivity.java
+{{{
+package com.example.baskinrabbins31;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		getActionBar().setTitle("Menu");
+		
+		ImageView button1 = (ImageView)findViewById(R.id.imageView3);
+	    button1.setOnClickListener(new OnClickListener() {
+	    	
+	    	@Override
+	    	public void onClick(View v){
+	    		Toast.makeText(getApplicationContext(),  "선택화면으로 ", Toast.LENGTH_LONG).show();
+	    		
+	    		Intent intent = new Intent(getApplicationContext(),SelectActivity.class);
+	    		startActivity(intent);
+	}
+ });
+	    
+	    ImageView button2 = (ImageView)findViewById(R.id.imageView4);
+	    button2.setOnClickListener(new OnClickListener() {
+	    	
+	    	@Override
+	    	public void onClick(View v){
+	    		Toast.makeText(getApplicationContext(),  "선택화면으로 ", Toast.LENGTH_LONG).show();
+	    		
+	    		Intent intent = new Intent(getApplicationContext(),SelectActivity.class);
+	    		startActivity(intent);
+	    	}
+	    });
+	    
+	    ImageView button3 = (ImageView)findViewById(R.id.imageView2);
+	    button3.setOnClickListener(new OnClickListener() {
+	    	
+	    	@Override
+	    	public void onClick(View v){
+	    		Toast.makeText(getApplicationContext(),  "설명화면으로 ", Toast.LENGTH_LONG).show();
+	    		
+	    		Intent intent = new Intent(getApplicationContext(),IntroActivity.class);
+	    		startActivity(intent);
+	    	}
+	    });
+	}
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
+}}}
+
+activity_main.xml
+{{{
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#A5D2E7"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="318dp"
+        android:layout_height="120dp"
+        android:src="@drawable/a" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kakao" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="272dp"
+        android:layout_height="78dp"
+        android:src="@drawable/b" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="272dp"
+        android:layout_height="78dp"
+        android:src="@drawable/c" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="272dp"
+        android:layout_height="78dp"
+        android:src="@drawable/e" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="272dp"
+        android:layout_height="78dp"
+        android:src="@drawable/d" />
+
+</LinearLayout>
+}}}
+ https://comp166-koreauniv.googlecode.com/files/KakaoTalk_21fe31ca0264a707.jpg 게임 설명 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_51d7df1d393a4b28.jpg 레벨 선택 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_e624138b09c08313.jpg https://comp166-koreauniv.googlecode.com/files/KakaoTalk_b9a8b896fca2832a.jpg 게임 중 화면 입니다. https://comp166-koreauniv.googlecode.com/files/KakaoTalk_5175c4ec89e57e3b.jpg 게임 결과 화면 입니다.
+
+= 소스코드 =
+
+코드 출처 : http://blog.naver.com/PostList.nhn?from=postList&blogId=nobless_05&categoryNo=28&currentPage=2
+참고해서 안드로이드 앱에서 쓸 수 있는 코드로 수정했다.
 apk 파일입니다.
-
 https://comp166-koreauniv.googlecode.com/files/Baskinrabbins31.apk
+
+
