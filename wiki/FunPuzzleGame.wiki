@@ -33,6 +33,10 @@ HOW TO PLAY 버튼을 누를 경우 나오게 되는 화면입니다.
 
 [http://comp166-koreauniv.googlecode.com/files/CodeList.jpg]
 
+= 전체 코드 =
+
+[http://comp166-koreauniv.googlecode.com/files/AllCode.zip]
+
 
 = FunPuzzle 코드 =
 
