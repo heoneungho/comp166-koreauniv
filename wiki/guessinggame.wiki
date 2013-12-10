@@ -9,3 +9,5 @@
 = Details =
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-19-44-10[1].png/
+
+<wiki:video url="http://www.youtube.com/watch?v=YSX1sW-Fdbs&feature=youtu.be"/>
