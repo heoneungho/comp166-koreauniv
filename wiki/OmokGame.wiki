@@ -576,3 +576,34 @@ public class TurnThread extends Thread {
 	
 } // 이 클래스는 자동으로 바둑돌의 색을 바꿔주는 것이다. 흑색다음은 백색차례이므로 그를 바꿔 줄 필요가 있기 때문이다.
 }}}
+
+'''Dol.java''' 여기서는 바둑판 위에서 찍은 점의 좌표를 구해준다.
+
+{{{
+package com.example.game;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+class Dol {
+
+	int x;
+	int y;
+	boolean isBlack; 
+	boolean isPlace; 
+
+	Dol() 
+	{
+		this.x = 0;
+		this.y = 0;
+	}
+
+	Dol(int x, int y) 
+	{
+		this.x = x;
+		this.y = y;
+	}
+} // 이 클래스는 찍은 점의 좌표를 구해주는 클래스이다. 
+
+}}}
