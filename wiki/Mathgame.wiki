@@ -367,7 +367,7 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-42-45.png
 
 <<apk 파일 다운>>
 
-http://comp166-koreauniv.googlecode.com/files/oapko.rar
+http://comp166-koreauniv.googlecode.com/files/origin.rar
 
 <<출처>>
 
