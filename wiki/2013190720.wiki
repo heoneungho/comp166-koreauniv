@@ -1171,8 +1171,80 @@ class Dragon extends Monster {
 
 *302p 5분 미스터리* _구현후 주석달기_
 
-{{{
 
+톰은 V2Radiator 클래스의 생성자에서 ArraylList를 받아들인다는 점에 주목하였다. V3Radiator를 호출할 때마다 super()을 통해 V2Radiator 생성자를 호출할 때 ArrayList를 전달하게 됩니다.
+따라서 불필요하게 V2Radiator의 SimUnit다섯 개가 추가로 만들어집니다. 톰이 맞았다면 총 전력 소모량이 사라가 예상한 비율대로 100이 아니라 120이 된다고 예상했을 것입니다. 
+모든 Bot 클래스에서 SimUnit을 만들기 때문에 SimUnit 클래스에 SimUnit이 생성될 때마다 메시지를 출력하는 생성자를 만들면 문제를 더 빨리 찾을 수 있습니다.
+
+{{{
+import java.util.*;
+class V2Radiator
+{
+        V2Radiator(ArrayList<SimUnit> list) //ArrayList<SimUnit>을 넘깁니다.
+        {
+                for(int x = 5; x < 5 ; x++)
+                {
+                        list.add(new SimUnit("V2Radiator"));
+                        //list에 SimUnit "V2Radiator" 객체를 더합니다.
+                }
+        }
+}
+
+class V3Radiator //extends V2Radiator 를 제거합니다.
+{
+        V3Radiator(ArrayList<SimUnit> lglist)
+        {
+                //super(lglist);을 제거합니다.
+                for(int g = 0; g < 10 ; g++)
+                {
+                        lglist.add(new SimUnit("V3Radiator"));
+                        //lglist에 SimUnit "V2Radiator" 객체를 더합니다.
+                }
+        }
+}
+
+class RetentionBot
+{
+        RetentionBot(ArrayList<SimUnit> rlist)
+        {
+                rlist.add(new SimUnit("Rention"));
+                //rlist에 SimUnit "Rention" 객체를 더합니다.
+        }
+}
+
+public class TestLifeSupportSim 
+{
+        public static void main(String[] args)
+        {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>();//ArrayList를 만듭니다.
+                V2Radiator v2 = new V2Radiator(aList);//V2Radiator객체를 만듭니다.
+                V3Radiator v3 = new V3Radiator(aList);//V3Radiator객체를 만듭니다.
+                for(int z = 0 ; z < 20 ; z++)
+                {
+                        RetentionBot ret = new RetentionBot(aList);//RententionBot객체를 만듭니다.
+                }
+        }
+}
+
+class SimUnit
+{
+        String botType;//문자열을 선언합니다.
+        SimUnit(String type)
+        {
+                botType = type;
+        }
+        int powerUse()
+        {
+                if("Retention".equals(botType))
+                {
+                        return 2;                       
+                }
+                else
+                {
+                        return 4;
+                }
+        }
+}
 }}}
 
 = 10. 숫자는 정말 중요합니다:수학, 포매팅, 래퍼, 통계  =
