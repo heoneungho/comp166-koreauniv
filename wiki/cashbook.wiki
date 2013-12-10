@@ -11,3 +11,142 @@
 
 1. 돈을 헛되이 쓰지 않도록 용돈기입장을 씁시다.
 2. 지출과 수입을 표시해줍니다.
+
+=클래스=
+
+*EmptyListException.java*
+
+{{{
+
+/** 클래스 EmptyListException 
+      용도 : stack이 비어있을 경우에 pop등의 명령 수행시 예외처리를 위한 클래스
+*/
+package com.example.calculator_v2;
+class EmptyListException extends RuntimeException
+{
+	public EmptyListException()
+	{
+		this("List");
+	}
+
+	public EmptyListException(String name)
+	{
+		super(name + " is empty");
+	}
+}
+
+
+}}}
+
+*ListNode.java*
+
+{{{
+
+/** 클래스 ListNode
+      용도 : Stack에 쓰일 각 노드들의 정의.
+*/
+package com.example.calculator_v2;
+
+class ListNode
+{
+	// 각 노드에는 내용과 그다음 노드의 위치를 기억시킨다.
+	String data;
+	ListNode nextNode;
+
+	ListNode(String object)
+	{
+		this(object, null);
+	}
+
+	ListNode(String object, ListNode Node)  // 생성자
+	{
+		data = object;
+		nextNode = Node;
+	}
+
+	Object getObject()
+	{
+		return data;
+	}
+
+	ListNode getnextNode()
+	{
+		return nextNode;
+	}
+
+}
+
+}}}
+
+*StackInheritanca.jaca*
+
+{{{
+
+/** 클래스 StackInheritance 
+      용도 : stack자료구조를 클래스로 구현. 
+*/
+package com.example.calculator_v2;
+public class StackInheritance 
+{
+	private ListNode firstNode;    // 첫 노드
+	private ListNode lastNode;    // 마지막 노드
+	private String name;
+	
+	public StackInheritance()
+	{
+		this("stack");
+	}
+
+	public StackInheritance(String listName)		// 생성자
+	{
+		name = listName;											// 스택의 이름과
+		firstNode = lastNode = null;						// 초기의 첫노드와 마지막노드는 null값으로
+	}
+
+	/* 메소드 : public void push(String)
+	    스택의 push를 구현. 
+	 */
+	public void push(String insertItem) 
+	{
+		if (isEmpty()) 
+			firstNode = lastNode = new ListNode(insertItem);
+		else
+			firstNode = new ListNode(insertItem, firstNode);
+	}
+
+	/* 메소드 : public String pop()
+	    스택의 pop를 구현. 호출시 스택의 맨 위 내용을 pop해주고 스택에서 삭제한다.
+	 */
+	public String pop() throws EmptyListException
+	{
+		if (isEmpty()) 
+			throw new EmptyListException(name);
+
+		String removedItem = firstNode.data;
+
+		if (firstNode == lastNode)		//	첫노드와 마지막노드가 같으면 pop해주는 동시에 비어있게 되므로
+			firstNode = lastNode = null;	// 전부 null로 처리
+		else
+			firstNode = firstNode.nextNode;
+
+		return removedItem;
+	}	
+
+	/* 메소드 : public String stackTop()
+	    스택의 맨 위의 값을 보여줌.
+	 */
+	public String stackTop() 
+	{
+		return firstNode.data;
+	}
+	
+	/* 메소드 : public boolean isEmpty()
+	    스택이 비어있는지 알려주는 메소드. 비어있으면 true 반환.
+	 */
+	public boolean isEmpty()
+	{
+		return firstNode == null;
+	}
+}
+
+}}}
