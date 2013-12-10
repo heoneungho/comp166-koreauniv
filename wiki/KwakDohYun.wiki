@@ -57,6 +57,20 @@ https://comp166-koreauniv.googlecode.com/files/bookpic.jpg
 헬로 안드로이드 책 참조
 
 
+
+https://comp166-koreauniv.googlecode.com/files/sudokukumain.jpg
+
+메인화면 입니다
+
+https://comp166-koreauniv.googlecode.com/files/level.jpg
+
+레벨선택 창 입니다
+
+https://comp166-koreauniv.googlecode.com/files/board.jpg
+게임화면 입니다
+
+
+
 =main.xml=
 
 {{{
