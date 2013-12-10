@@ -35,6 +35,11 @@
  * 저는 이 게임을 만들면서 Project를 총 3개 만들었습니다. 먼저 맨 처음 메인 화면과 HowToPlay 화면, Level선택화면을 연결해 주는 project인 FastGameJH (전에 만들던 순발력 게임 프로젝트를 사용하여 이름이 FastGameJH입니다.) 와 TetrisPuzzle 프로젝트, TetrisPuzzle2 프로젝트 입니다.
  * Easymode,Hardmode 버튼을 눌렀을 때 이클립스 내에 있는 다른 프로젝트의 package로 바로 연결될 수 있게 만들었습니다.
 
+= APK file =
+1. apk 압축 파일 : [http://comp166-koreauniv.googlecode.com/files/APK.zip]
+
+2. 소스 코드 파일 : [http://comp166-koreauniv.googlecode.com/files/]
+
 ------------------------------------------------------------------------
 
 1. FastGameJH 코드
