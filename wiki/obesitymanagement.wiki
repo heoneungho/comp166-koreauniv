@@ -1021,4 +1021,9 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-00-29-48.png
 ==4. 체중 결과를 알려주는 화면 ==
 ==5. 음식을 선택했을 때 화면 ==
 ==6. HELP를 눌렀을 때 화면 ==
+http://comp166-koreauniv.googlecode.com/files/음식칼로리.png
 ==7. 운동을 선택했을 때 화면 ==
+http://comp166-koreauniv.googlecode.com/files/weightmeny.png
+
+-어려운동작-
+http://comp166-koreauniv.googlecode.com/files/어려운동작.png
