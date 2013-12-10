@@ -46,6 +46,8 @@ HOW TO PLAY 버튼을 누를 경우 나오게 되는 화면입니다.
 
 [http://comp166-koreauniv.googlecode.com/files/PuzzleGameAPK.zip]
 
+다섯개 파일 모두 다운받으신후 FunPuzzle이라는 어플을 실행시키시면 됩니다.
+
 
 = FunPuzzle 코드 =
 
@@ -164,8 +166,8 @@ public class MainActivity extends Activity {
 	
 	ImageButton imageButton;
 
-	private ImageButton GameStart_btn;
-	private ImageButton HowToPlay_btn;
+	private ImageButton GameStart_btn;  //GameStart 버튼
+	private ImageButton HowToPlay_btn;  //HowToPlay 버튼
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -243,24 +245,24 @@ package com.example.funpuzzle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
+
+
 public class GameStart extends Activity {
 	
-	ImageButton imageButton;
-
-	private ImageButton Easy_btn;
-	private ImageButton Normal_btn;
-	private ImageButton Hard_btn;
-	private ImageButton VeryHard_btn; //GameStart버튼을 누를시 나오게 되는 네가지 버튼들을 정의한 것입니다.
+	private ImageButton Easy_btn;      //Easy 버튼
+	private ImageButton Normal_btn;    //Normal 버튼
+	private ImageButton Hard_btn;      //Hard 버튼
+	private ImageButton VeryHard_btn;  //Very Hard 버튼
 
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_start);
 
@@ -268,58 +270,46 @@ public class GameStart extends Activity {
 		Normal_btn=(ImageButton)findViewById(R.id.imageButton2);
 		Hard_btn=(ImageButton)findViewById(R.id.imageButton3);
 		VeryHard_btn=(ImageButton)findViewById(R.id.imageButton4);
-		
+		//각각의 버튼들 생성
 		Easy_btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v)
 			{
-				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle1"); 
-//Easy버튼을 누를시 "com.PocketPuzzle1"이라는 어플이 실행되도록 구동했습니다.
-				intent.setAction(Intent.ACTION_MAIN);
-				startActivity(intent);
+			Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle1");
+			startActivity(intent);
 			}
 		});
-		
+	//Easy 버튼을 클릭시 "com.PocketPuzzle1"이라는 어플이 실행됨
+
 		Normal_btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v)
 			{
-				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle2"); 
-//Normal버튼을 누를시 "com.PocketPuzzle2"이라는 어플이 실행되도록 구동했습니다.
-
-				intent.setAction(Intent.ACTION_MAIN);
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle2");
 				startActivity(intent);
 			}
 		});
-		
+	//Normal 버튼을 클릭시 "com.PocketPuzzle2"이라는 어플이 실행됨
+
 		Hard_btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v)
 			{
-				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle3"); 
-//Hard버튼을 누를시 "com.PocketPuzzle3"이라는 어플이 실행되도록 구동했습니다.
-
-				intent.setAction(Intent.ACTION_MAIN);
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle3");
 				startActivity(intent);
 			}
 		});
-		
+ 	//Hard 버튼을 클릭시 "com.PocketPuzzle3"이라는 어플이 실행됨	
+
 		VeryHard_btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v)
 			{
-				Log.i("onClick","Food");
-				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle4"); 
-//Very Hard버튼을 누를시 "com.PocketPuzzle4"이라는 어플이 실행되도록 구동했습니다.
-
-				intent.setAction(Intent.ACTION_MAIN);
+				Intent intent = getPackageManager().getLaunchIntentForPackage("com.PocketPuzzle4");
 				startActivity(intent);
 			}
 		});
-		
+	//Very Hard 버튼을 클릭시 "com.PocketPuzzle4"이라느 어플이 실행됨	
 	}
 
 	@Override
@@ -330,10 +320,11 @@ public class GameStart extends Activity {
 	}
 
 }
+
 }}}
 
 = 게임코드 =
-= 코드출처 =
+
 
 원본 소스 : [http://newworlds.tistory.com/1389]
 
@@ -342,9 +333,8 @@ public class GameStart extends Activity {
 = CPocketPuzzle.java =
 
 {{{
-     package com.PocketPuzzle1;
+     package com.PocketPuzzle1;    //패키지의 이름을 com.PocketPuzzle1이라 지정
 
-import com.PocketPuzzle.R;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -369,7 +359,6 @@ public class CPocketPuzzle extends Activity
 {{{
 package com.PocketPuzzle1; //easy모드의 이름은 pocketPuzzle1이고 normal모드의 이름은 pocketPuzzle2 이런 식으로 정했습니다.
 
-import com.PocketPuzzle.R;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -442,8 +431,6 @@ public class CPpBtnExit
 
 {{{
 package com.PocketPuzzle1;
-
-import com.PocketPuzzle.R;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -531,10 +518,8 @@ public class CPpBtnStart
         return (bx && by); // bx와 by 값을 리턴
     }
 
-    /**
-     * @param _bStarted the _bStarted to set
-     */
-    public void set_bStarted(boolean _bStarted)
+
+     public void set_bStarted(boolean _bStarted)
     {
         this._bStarted = _bStarted;
     }
@@ -547,15 +532,13 @@ public class CPpBtnStart
         return _bStarted;
     }
 
-}
+}//클래스 끝
 }}}
 
 = CPpInfo.java = 
 
 {{{
 package com.PocketPuzzle1;
-
-import com.PocketPuzzle.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -584,6 +567,8 @@ public class CPpInfo
     public int _XNUM = 3; // 가로줄에 있는 사각형의 개수
     public int _YNUM = 4; // 세로줄에 있는 사각형의 개수
 
+    //위 XNUM과 YNUM을 변환하여 글미을 몇 개로 나눌 수 있을지 결정할 수 있다.
+
     public int _nMoveCnt = -1;
 
     public int _BaseX;
@@ -610,12 +595,6 @@ public class CPpInfo
         return BitmapFactory.decodeResource(_context.getResources(), rImg);
     }
 
-    /**
-     * 
-     * 
-     * @param width
-     * @param height
-     */
     public void setSurfaceSize(int width, int height)
     {
         _nCanvasWidth = width;
@@ -626,9 +605,9 @@ public class CPpInfo
         _BaseX = Math.round((width - (_SIZE * _XNUM)) / 2);
         _BaseY = 20; 
 
-        for (int i = 0; i < _XNUM; i++)
+        for (int i = 0; i < _XNUM; i++)  //i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
         {
-            for (int j = 0; j < _YNUM; j++)
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
             {
                 _cPpTagOrg[i][j].doMoveTo(_BaseX, _BaseY);
             }
@@ -642,10 +621,6 @@ public class CPpInfo
         _btnExit.doMoveTo(_BaseX, _BaseY);
     }
 
-    /**
-     * 
-     * @param context
-     */
     public CPpInfo(Context context)
     {
         _context = context;
@@ -666,19 +641,21 @@ public class CPpInfo
 
         int x, y;
 
-        for (int i = 0; i < _XNUM; i++)
-        {
-            for (int j = 0; j < _YNUM; j++)
-            {
-                x = i * _SIZE;
-                y = j * _SIZE;
+        for (int i = 0; i < _XNUM; i++) //i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
 
-                if ((i != _XNUM - 1) || (j != _YNUM - 1))
+        {
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
+
+            {
+                x = i * _SIZE;  //x 는 i 곱하기 _size
+                y = j * _SIZE;  //y 는 i 곱하기 _size
+
+                if ((i != _XNUM - 1) || (j != _YNUM - 1)) //i 가 XNUM - 1과 같지 않거나 j가 YNUM-1과 같지 않다면
                 {
                     _cPpTagOrg[i][j] = new CPpTag(_cPpTagOrg, _allBody, i, j, _BaseX, _BaseY, x, y, _SIZE, true, p);
 
                 }
-                else
+                else //그 외의 경우
                 {
                     _cPpTagOrg[i][j] = new CPpTag(_cPpTagOrg, _allBody, i, j, _BaseX, _BaseY, x, y, _SIZE, false, p);
                 }
@@ -690,9 +667,11 @@ public class CPpInfo
     
     public void doTagsUpdating()
     {
-        for (int i = 0; i < _XNUM; i++)
+        for (int i = 0; i < _XNUM; i++) ////i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
+
         {
-            for (int j = 0; j < _YNUM; j++)
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
+
             {
                 _cPpTagOrg[i][j].doUpdating(this);
             }
@@ -702,11 +681,13 @@ public class CPpInfo
     private void doClaerBack()
     {
 
-        for (int i = 0; i < _XNUM; i++)
+        for (int i = 0; i < _XNUM; i++) //i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
+
         {
-            for (int j = 0; j < _YNUM; j++)
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
+
             {
-                _cPpTagBak[i][j] = null;
+                _cPpTagBak[i][j] = null; //값은 null!
             }
         }
 
@@ -717,11 +698,13 @@ public class CPpInfo
     {
         doClaerBack();
 
-        for (int i = 0; i < _XNUM; i++)
+        for (int i = 0; i < _XNUM; i++) //i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
+
         {
-            for (int j = 0; j < _YNUM; j++)
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
+
             {
-                if (_cPpTagOrg[i][j].chkMove() == true)
+                if (_cPpTagOrg[i][j].chkMove() == true) //true라면
                 {
                     Point mv = _cPpTagOrg[i][j].getMoveVar();
 
@@ -733,17 +716,21 @@ public class CPpInfo
                 }
             }
         }
-        for (int i = 0; i < _XNUM; i++)
+        for (int i = 0; i < _XNUM; i++) //i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
+
         {
-            for (int j = 0; j < _YNUM; j++)
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
+
             {
                 _cPpTagOrg[i][j] = _cPpTagBak[i][j];
 
             }
         }
-        for (int i = 0; i < _XNUM; i++)
+        for (int i = 0; i < _XNUM; i++) //i는 0부터 1씩 증가하면서 XNUM보다 크거나 같아지지 않을 때까지
+
         {
-            for (int j = 0; j < _YNUM; j++)
+            for (int j = 0; j < _YNUM; j++) //j는 0부터 1씩 증가하면서 YNUM보다 크거나 같아지지 않을 때까지
+
             {
                 _cPpTagOrg[i][j].clearMoveVar();
             }
@@ -784,7 +771,7 @@ public class CPpInfo
     public boolean doChkSuccess()
     {
         int x, y;
-        boolean result = true;
+        boolean result = true; //result의 값이 true
 
         for (int i = 0; i < _XNUM; i++)
         {
@@ -792,9 +779,9 @@ public class CPpInfo
             {
                 Point point = _cPpTagOrg[i][j].getIJ();
 
-                if ((i != point.x) || (j != point.y))
+                if ((i != point.x) || (j != point.y)) //i가 point.x가 아니거나 j가 point.y가 아니면
                 {
-                    result = false;
+                    result = false; //result는 false!
                 }
             }
         }
@@ -865,12 +852,12 @@ public class CPpInfo
                 {
                     if (_cPpTagOrg[i][j].chkSelectin(i, j, x, y))
                     {
-                        if (_nMoveCnt == -1)
+                        if (_nMoveCnt == -1) //nMoveCnt가 -1이라면
                         {
                             _cPpTagOrg[i][j].setAlpha(0x33);
 
-                            nSelectX = i;
-                            nSelectY = j;
+                            nSelectX = i;  //nSelectX를 i로 지정
+                            nSelectY = j;  //nSelectY를 j로 지정
                         }
                         else
                         {
@@ -884,9 +871,9 @@ public class CPpInfo
                 }
             }
 
-            if ((nSelectX > -1) && (nSelectY > -1))
+            if ((nSelectX > -1) && (nSelectY > -1)) //nSelectX가 -1보다크고 nSelectY가 -1보다 크면
             {
-                doTagSelecting(nSelectX, nSelectY);
+                doTagSelecting(nSelectX, nSelectY); //이차원배열을 이렇게 놓는다
             }
         }
 
@@ -898,7 +885,9 @@ public class CPpInfo
 
             doInitialization();
 
-            _nMixingCount = 20; 
+            _nMixingCount = 20; //20번 섞는다
+
+            //위 숫자를 변화시키면 섞는 횟수를 변경할 수 있다.
 
             _btnStart.set_bStarted(true);
 
@@ -922,7 +911,7 @@ public class CPpInfo
         {
             if (_cPpTagOrg[_i][nSelectY].isBitmapNull() == true)
             {
-                nEmptX = _i; 
+                nEmptX = _i; //cPpTagOrg[_i][nSelectY].isBitmapNull()이 true라면 nEmptX를 _i라 놓는다.
             }
         }
 
@@ -930,13 +919,13 @@ public class CPpInfo
         {
             if (_cPpTagOrg[nSelectX][_j].isBitmapNull() == true)
             {
-                nEmptY = _j; 
+                nEmptY = _j; //cPpTagOrg[nSelectX][_j].isBitmapNull()가 true라면 nEmptY를 _j라 놓는다. 
             }
         }
 
-        if ((nEmptX > -1) || (nEmptY > -1)) 
+        if ((nEmptX > -1) || (nEmptY > -1)) //nEmptX가 -1보다 크거나 nEmptY가 -1보다 크다면
         {
-            int nCnt = 0;
+            int nCnt = 0;  //nCnt를 0이라 놓는다.
 
             if (nEmptX > -1) 
             {
@@ -951,7 +940,7 @@ public class CPpInfo
                     if (nEmptX > nSelectX) _cPpTagOrg[k][nSelectY].doMoveRight(k, nSelectY);
                 }
 
-                nCnt++;
+                nCnt++; //위 if절을 실행하고 1증가
                 _cPpTagOrg[nEmptX][nSelectY].doJumpTo(nSelectX, nSelectY);
             }
             if (nEmptY > -1) 
@@ -971,14 +960,18 @@ public class CPpInfo
                 _cPpTagOrg[nSelectX][nEmptY].doJumpTo(nSelectX, nSelectY);
             }
 
+   //한 블록을 선택했을때 어느 쪽이로든 빈 슬롯이 있으면 그 빈 슬롯이 있는 쪽으로 슬라이드 시키는 코드이다.
+
             _nMoveCnt = nCnt;
         }
     }
+        //블록을 이동하는 방법을 설명한 코드이다
+
 
     public void doMixing()
     {
-        int nEmptX = -1;
-        int nEmptY = -1;
+        int nEmptX = -1;  //nEmptX를 -1
+        int nEmptY = -1;  //nEmptY를 -1
 
         for (int i = 0; i < _XNUM; i++)
         {
@@ -998,7 +991,7 @@ public class CPpInfo
 
         do
         {
-            dir = (int) (Math.random() * 2);
+            dir = (int) (Math.random() * 2);  //랜덤하게
         }
         while (dir == _nMixDir);
         _nMixDir = dir;
@@ -1024,9 +1017,11 @@ public class CPpInfo
             doTagSelecting(nEmptX, ry);
         }
 
-        _nMixingCount--;
+        _nMixingCount--; //위 실행을 하면 카운트를 하나씩 줄인다
     }
 }
+
+//섞는 것에 대한 코드이다.
 }}}
 
 = CPpTag.java = 
