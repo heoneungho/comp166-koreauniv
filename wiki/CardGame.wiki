@@ -655,7 +655,7 @@ https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-17-03.pn
 https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-17-34.png
 https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-17-40.png
 <br>
-게임 실행 영상
+어플 실행 영상
 <br> 
 <wiki:video url="http://www.youtube.com/watch?feature=player_detailpage&v=xmfVIYWfuok"/>
 <br>
