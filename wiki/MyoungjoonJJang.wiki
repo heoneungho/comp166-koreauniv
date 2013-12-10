@@ -1525,3 +1525,7 @@ https://comp166-koreauniv.googlecode.com/files/%EA%B5%AC%EB%8F%99%EC%82%AC%EC%A7
 *소스코드 제출*
 
 https://comp166-koreauniv.googlecode.com/files/Hi.zip
+
+*apk 파일 제출*
+
+https://comp166-koreauniv.googlecode.com/files/Hi.apk
