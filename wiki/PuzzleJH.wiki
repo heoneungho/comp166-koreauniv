@@ -196,8 +196,8 @@ public class Level extends Activity {
 ------------------------------------------------------------------------
  * TetrisPuzzle 프로젝트와 TetrisPuzzle2 프로젝트의 코드는 사이즈 조절에만 차이가 있으므로 TetrisPuzzle의 코드를 설명하겠습니다.
 
-[http://comp166-koreauniv.googlecode.com/files/tetrisgame1.png]
-[http://comp166-koreauniv.googlecode.com/files/tetrisgame2.png]
+[http://comp166-koreauniv.googlecode.com/files/tetrispuzzle1.png]
+[http://comp166-koreauniv.googlecode.com/files/tetrispuzzle2.png]
 
 1. app.main패키지
  1) Block 코드
