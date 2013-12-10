@@ -1329,7 +1329,40 @@ public class StaticTests extends StaticSuper {
 *357p try/catch* _구현후 주석달기_
 
 {{{
+public class Test
+{
 
+        public static void main()
+        {
+                
+        
+        public void takeRisk() throws BadException
+        {
+                if(abandonAllHope)
+                {
+                        throw new BadException();
+                }
+        }
+        
+        public void crossFingers()
+        {
+                try
+                {
+                        anObject.takeRisk();    //오류가 발생할 수 있는 행동입니다.
+                }
+                catch(BadException ex)
+                {
+                        System.out.println("Aaargh!");//오류를 잡으면 출력합니다.
+                        ex.printStackTrace();
+                        // 예외 상황을 해결할 수 없다면 적어도 모든 예외 객체에서 물려받는 printStackTrace() 메소드를 써서 
+                        //스택 트레이스(stack trace)를 출력하는 정도는 해줘야합니다. 
+                }
+        }
+        
+        }
+}//한 메소드에서 던진 것을 다른 메소드에서 잡아야 합니다.
+//예외는 언제나 그 메소드를 호출한 곳으로 던져집니다.
+//예외를 던지는 메소드에서는 반드시 그 메소드에서 예외를 던질 수 있다는 것을 선언해야만 합니다.
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
