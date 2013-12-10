@@ -1,9 +1,5 @@
-#summary 사진을 보고 그 이름을 맞추는 게임
 #labels 2013190725유기태
 
-= Introduction =
-
- = Details =
 
 #summary 가장 가까운 숫자를 맞추는 사람이 이기는게임
 
