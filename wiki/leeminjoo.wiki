@@ -2250,6 +2250,7 @@ public class HELP extends Activity {
 
 
 }}}
-
+=전체 소스코드=
+https://comp166-koreauniv.googlecode.com/files/proguard-project.zip
 =apk 파일=
 https://comp166-koreauniv.googlecode.com/files/MINJOO.apk 
