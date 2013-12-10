@@ -624,7 +624,7 @@ public class SimpleDotCom
 
 {{{
 
-public class SimpleDotComTestDrive1 {
+public class SimpleDotComTestDrive1 { // 배열을 하나 더 만들고 사용자가 위치를 맞출 때마다 그 맞춘 위치를 두 번째 배열에 집어넣음. 사용자가 위치를 맞출 때마다 그 배열을 확인하여 그 셀을 이미 맞췄는지 확인
         
         public static void main (String args[]) {
                 
@@ -660,7 +660,7 @@ public class SimpleDotCom1 {
         int[] locationCells;
         int numOfHits = 0; 
 
-        boolean[] checkCells; // 눌린 위치를 체크하기 위한 boolean형의 배열 선언
+        boolean[] checkCells; // 체크된 셀을 확인하기 위한 boolean형의 배열 선언
         
         public void setLocationCells (int[] locs) {
                 
@@ -686,7 +686,7 @@ public class SimpleDotCom1 {
                                 result = "hit";  
                                 numOfHits++;
 
-                                checkCells[i] = true; // 누른 번호가 맞다면 checkCells[i]를 true로 나타냄
+                                checkCells[i] = true; // 배열의 특정 인덱스에 '참(true)'이 들어있으면 다른 배역(locationCells)의 그 인덱스에 해당하는 셀 위치를 이미 맞췄음을 알 수 있음
 
                                 break;
                                 
@@ -727,7 +727,7 @@ public class GameHelper1 {
 
 {{{
 
-public class SimpleDotComTestDrive2 {
+public class SimpleDotComTestDrive2 { // 원래 배열을 그냥 사용하면서 맞춘 셀의 값은 모두 -1로 바꿈. 굳이 배열 두 개를 쓰지 않아도 됨.
         
         public static void main (String args[]) {
                 
@@ -773,7 +773,7 @@ public class SimpleDotCom2 {
                         if(guess == locationCells[i]) {
                                 result = "hit";  
                                 
-                                locationCells[i] = -1; // locationCells[i]의 값을 음수로 넣어주어 맞춘 칸을 표시
+                                locationCells[i] = -1; // 특정 셀 위치에 -1이 들어있으면 그 셀을 이미 맞췄음을 알 수 있음. 따라서 배열에서 음이 아닌 숫자만 찾으면 됨.
                                                        
                                 numOfHits++;
                                 break;
@@ -817,7 +817,7 @@ public class GameHelper2 {
 
 import java.util.ArrayList; 
 
-public class SimpleDotComTestDrive3 {
+public class SimpleDotComTestDrive3 { // 맞출 때마다 각 셀 위치를 삭제하고 배열을더 작게 고침. 하지만 배열의 크기를 바꿀 수가 없기 대문에 새로운 배열을 만들고, 이전 배열에 남아있는 셀을 복사하고 새로 만든 작은 배열로 옮김.
         
         public static void main (String args[]) {
                 
@@ -828,7 +828,7 @@ public class SimpleDotComTestDrive3 {
                 int randomNum = (int) (Math.random()*5); 
                 
                 ArrayList<String> locations = new ArrayList();
-                location.add(String.valueOf(randomNum)); // add하게되면 ArrayList의 공간 하나가 추가되면서 임의의 숫자값이 들어감
+                location.add(String.valueOf(randomNum)); // ArrayList에 추가된 space에 임의의 숫자값이 삽입됨
                 location.add(String.valueOf(randomNum+1));
                 location.add(String.valueOf(randomNum+2));                                      
 
@@ -851,7 +851,7 @@ public class SimpleDotComTestDrive3 {
 import java.util.ArrayList;
 
 public class SimpleDotCom3 {
-                private ArrayList<String> locationCells; // locationCells에 대한 정보를 숨기기 위해 private로 선언
+                private ArrayList<String> locationCells;
                 
         public void setLocationCells (ArrayList<String> locs) {
                 
@@ -932,22 +932,22 @@ public class GameHelper {
         
         public ArrayList<String> placeDotCom(int comSize){
                 ArrayList<String> alphaCells = new ArrayList<String>(); // 배열에 좌표값이 들어감
-                String temp = null; // 나중에 연결하기 위한 임시 String 배열
+                String temp = null; // 임시로 String에 null 값을 설정
                 int[] coords = new int[comSize]; // 현재 후보 좌표
                 int attempts = 0; // 시도 횟수를 세기 위한 카운터
-                boolean success = false; // 적당한 위치를 찾았는지 표시
+                boolean success = false; // 맞는 위치를 찾았는지 표시
                 int location = 0; // 현재 시작 위치
                 
                 comCount++; // n번째 닷컴
                 int incr = 1; // 수평 방향으로 증가시킬 값 설정
-                if((comCount%2)==1){ // 홀수 번째 닷컴인 경우(수직으로 배치)
+                if((comCount%2)==1){ // 홀수 번째 닷컴인 경우 수직으로 배열
                         incr = gridLength; // 수직 방향으로 증가시킬 값 설정
                 }
                 
                 while(!success & attempts<200){ // 주 검색 순환문(32)
                         location = (int)(Math.random()*gridSize); // 임의 시작 위치를 구함
-                        int x = 0; // 위치시킬 닷컴의 n번째 위치
-                        success = true; // 성공할 것으로 가정함
+                        int x = 0; // 위치시킬 n번째 닷컴
+                        success = true; // 맞을 것으로 가정함
                         while(success && x<comSize){ 
                                 if(grid[location]==0){
                                         coords[x++] = location; // 위치 저장
@@ -1099,16 +1099,167 @@ public class DotCom {
 
 {{{
 
+class Animal
+{
+        String picture;
+        Boolean food;
+        int hunger;
+        float boundaries;
+        float location;
+
+        void makeNoise()
+        {
+                //소리를 낼 때
+        }
+
+        void eat()
+        {
+                //먹잇감을 찾았을 때
+        }
+
+        void sleep()
+        {
+                //잘 때
+        }
+
+        void roam()
+        {
+                //떠돌아다닐 때
+        }
+
+}
+class Feline extends Animal
+{
+        void roam()
+        {
+                //roam을 override
+        }
+}
+
+class Canine extends Animal
+        void roam()
+        {
+                //roam을 override
+        }
+}
+
+class Lion extends Feline
+{
+        void makeNoise()
+        {
+                //makeNoise를 override
+        }
+
+        void eat()
+        {
+                //eat를 override
+        }
+}
+
+class Tiger extends Feline
+{
+        void makeNoise()
+        {
+                //makeNoise를 override
+        }
+
+        void eat()
+        {
+                //eat를 override
+        }
+}
+
+
+
+class Cat extends Feline
+{
+        void makeNoise()
+        {
+                //makeNoise를 override
+        }
+
+        void eat()
+        {
+                //eat를 override
+        }
+}
+
+class Hiippo extends Animal
+{
+        void makeNoise()
+        {
+                //makeNoise를 override
+        }
+
+        void eat()
+        {
+                //eat를 override
+        }
+}
+
+class Wolf extends Canine
+{
+        void makeNoise()
+        {
+                //makeNoise를 override
+        }
+
+        void eat()
+        {
+                //eat를 override
+        }
+}
+
+class Dog extends Canine
+{
+        void makeNoise()
+        {
+                //makeNoise를 override
+        }
+
+        void eat()
+        {
+                //eat를 override
+        }
+}
+
+
 }}}
  
 *224p 오버라이드와 오버로딩* _요약_
 
- * 오버라이드:
- * 오버로딩:
+ * 오버라이드: 상위클래스의 메소드를 오버라이드할 때는 규칙을 따라야 한다. 즉, 오버라이드하는 메소드의 인자와 리턴 형식은 외부에서 보기에 상위클래스에 있는 오버라이드를 당하는 메소드와 완벽하게 일치해야 한다는 것이다.
+ * 오버로딩: 메소드 오버로딩(overloading)은 이름이 같고 인자 목록이 다른 메소드 두 개를 만드는 것이다. 오버로드된 메소드는 다형성과는 전혀 관계가 없다. 오버로딩을 활용하면 호출하는 쪽의 편의를 위해 같은 메소드를 서로 다른 인자 목록을 가진 여러 버전으로 만들 수 있다. 오버로드하는 메소드에서는 상위클래스에서 정의한 다형성 계약을 이행하지 않아도 되기 때문에 메소드 오버로딩은 훨씬 더 융통성이 좋다고 할 수 있다.
 
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+public class MonsterTestDrive {
+	public static void main(String [] args) {
+		Monster [] ma = new Monster[3];
+		ma [0] = new Vampire();
+		ma [1] = new Dragon();
+		ma [2] = new Monster();
+		for(int x = 0; x < 3; x++) {
+			ma [x].frighten(x);
+		}
+	}
+}
+
+class Monster {
+	boolean frighten(int d) {
+		System.out.println("arrrgh");
+		return true;
+	}
+}
+
+class Vampire extends Monster { // Vampire는 Monster를 상속받음
+	boolean frighten(int x) {
+		System.out.println("a bite?");
+		return false;
+	}
+}
 
 }}}
 
@@ -1133,8 +1284,8 @@ public class DotCom {
  
 *298p 집중토론* _요약_
 
- * 인스턴스 변수:
- * 지역 변수: 
+ * 인스턴스 변수: 객체를 지원하는 역할을 하며 보통 객체가 살아있는 동안 항상 객체와 함께 함. 객체와 함께 힙에 있다. 정확하게 말하자면 객체와 함께 있다기 보다는 객체 안에 있다. 그리고 그 객체의 상태를 저장하고 있다.
+ * 지역 변수: 알고리즘을 작동시키기위해 메소드에 반드시 있어야 함. 다른 여러 지역 변수와 함께 스택 프레임에 빼곡하게 들어가 있다. 그리고 속해있는 메소드에서 다른 메소드를 호출하면 다른 프레임이 올라오고 그 메소드에서 다른 메소드를 호출하면 새로운 프레임이 올라온다. 심지어 위에 있는 다른 메소드가 끝날 때까지 한참 동안을 아무 것도 안 하고 기다려야 할 때도 있다.
 
 *302p 5분 미스터리* _구현후 주석달기_
 
