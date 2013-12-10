@@ -640,3 +640,23 @@ public class Music {
 	
 } // 이 클래스는 앱을 실행하였을때 설정된 음악을 재생해주는 클래스이다.
 }}}
+
+
+참고
+-만들면서 배우는 Android Game Programming<한빛미디어>-황동윤지음 에서 가장 많이 참고하였고,
+
+
+오목게임에 대한 전체적인 아이디어는
+
+-http://blog.naver.com/rkddusgns?Redirect=Log&logNo=172773988
+
+-http://blog.naver.com/PostView.nhn?blogId=hataekyong&logNo=10067068403
+
+
+에서 참고하였고,
+
+오목게임 화면 구현 아이디어는 
+
+-http://blog.naver.com/PostView.nhn?blogId=ehdcks2491&logNo=100065005653
+
+에서 참고하였다.
