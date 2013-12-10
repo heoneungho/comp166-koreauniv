@@ -8,6 +8,7 @@
 학교 셔틀이 언제 올지 알려주는 아주 혁신적인 어플입니다. 
 
 http://comp166-koreauniv.googlecode.com/files/KUBUSicon.png
+
 어플 아이콘
 
 = Details =
@@ -720,7 +721,8 @@ public class StartTimeActivity extends Activity {
 /* 출발역, 도착역, 설정한 시각에 대한 정보를 받아옴. final은 이클립스의 추천 */
 		int time;
 
-		time = 60 * h + m;
+		time = 60 * h + m; 
+                /* 시간 관리를 보다 쉽게 하기 위해서 시간을 전부 분으로 고침 */
 		if (start <= end)
 			time = expt_time(time, start, end); // 위의 함수를 이용함
 		else
