@@ -31,13 +31,20 @@ HOW TO PLAY 버튼을 누를 경우 나오게 되는 화면입니다.
 
 [http://comp166-koreauniv.googlecode.com/files/베리하드모드시작후.jpg] 게임시작 버튼을 클릭했을 때 퍼즐조각이 섞인 화면입니다.
 
+
 = 코드 리스트 =
 
 [http://comp166-koreauniv.googlecode.com/files/CodeList.jpg]
 
+
 = 전체 코드 =
 
 [http://comp166-koreauniv.googlecode.com/files/AllCode.zip]
+
+
+= APK 파일 =
+
+[http://comp166-koreauniv.googlecode.com/files/PuzzleGameAPK.zip]
 
 
 = FunPuzzle 코드 =
