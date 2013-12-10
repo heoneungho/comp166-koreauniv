@@ -279,7 +279,7 @@ public class GameStart extends Activity {
 			startActivity(intent);
 			}
 		});
-	//Easy 버튼을 클릭시 "com.PocketPuzzle1"이라는 어플이 실행됨
+	//Easy 버튼을 클릭시 "com.PocketPuzzle1"이라는 패키지가 실행됨
 
 		Normal_btn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -289,7 +289,7 @@ public class GameStart extends Activity {
 				startActivity(intent);
 			}
 		});
-	//Normal 버튼을 클릭시 "com.PocketPuzzle2"이라는 어플이 실행됨
+	//Normal 버튼을 클릭시 "com.PocketPuzzle2"이라는 패키지가 실행됨
 
 		Hard_btn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -299,7 +299,7 @@ public class GameStart extends Activity {
 				startActivity(intent);
 			}
 		});
- 	//Hard 버튼을 클릭시 "com.PocketPuzzle3"이라는 어플이 실행됨	
+ 	//Hard 버튼을 클릭시 "com.PocketPuzzle3"이라는 패키지가 실행됨	
 
 		VeryHard_btn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -309,7 +309,7 @@ public class GameStart extends Activity {
 				startActivity(intent);
 			}
 		});
-	//Very Hard 버튼을 클릭시 "com.PocketPuzzle4"이라느 어플이 실행됨	
+	//Very Hard 버튼을 클릭시 "com.PocketPuzzle4"이라느 패키지가 실행됨	
 	}
 
 	@Override
@@ -568,6 +568,7 @@ public class CPpInfo
     public int _YNUM = 4; // 세로줄에 있는 사각형의 개수
 
     //위 XNUM과 YNUM을 변환하여 글미을 몇 개로 나눌 수 있을지 결정할 수 있다.
+    Easy모드인 경위 위처럼 3X4로 하였고 Normal은 위를 4X5, Hard는 5X6, Very Hard는 6X7로 변경하였다.
 
     public int _nMoveCnt = -1;
 
@@ -625,7 +626,9 @@ public class CPpInfo
     {
         _context = context;
 
-        _smallBody = Bitmap.createScaledBitmap(GetRImage(R.drawable.d), _XNUM * 18, _YNUM * 18, false);
+        _smallBody = Bitmap.createScaledBitmap(GetRImage(R.drawable.d), _XNUM * 18, _YNUM * 18, false); 
+
+        //R.drawable.d에서 d는 사진 파일의 이름이다.
         
         Bitmap _tmp = BitmapFactory.decodeResource(_context.getResources(), R.drawable.success);
         _Success  = Bitmap.createScaledBitmap(_tmp, 200, 100, false);
@@ -1000,13 +1003,13 @@ public class CPpInfo
         {
             rx = (int) (Math.random() * _XNUM);
         }
-        while (rx == nEmptX);
+        while (rx == nEmptX); //rx 가 nEmptX와 같아질때까지
 
         do
         {
             ry = (int) (Math.random() * _YNUM);
         }
-        while (ry == nEmptY);
+        while (ry == nEmptY); //ry가 nEmptY와 같아질때까지
 
         if (dir == 0)
         {
@@ -1064,7 +1067,7 @@ public class CPpTag
 
             for (int i = 0; i < size; i++)
             {
-                this._cArrScene[i] = new CScene();
+                this._cArrScene[i] = new CScene(); //new CScene을 size 크기 수대로 만듬
             }
         }
 
@@ -1077,13 +1080,13 @@ public class CPpTag
        
         public boolean doOut()
         {
-            if (_cArrScene[_nHead]._now != 0)
+            if (_cArrScene[_nHead]._now != 0) //(_cArrScene[_nHead]._now가 0이 아니라면
             {
-                _cArrScene[_nHead]._now = 0;
-                _cArrScene[_nHead]._x = -1;
-                _cArrScene[_nHead]._y = -1;
+                _cArrScene[_nHead]._now = 0; //(_cArrScene[_nHead]._now 는 0
+                _cArrScene[_nHead]._x = -1; //(_cArrScene[_nHead]._x는 -1
+                _cArrScene[_nHead]._y = -1; //(_cArrScene[_nHead]._y는 -1
 
-                _nNum--;
+                _nNum--; //nNum은 1씩 줄어듬
 
                 doNextHead();
 
@@ -1098,11 +1101,11 @@ public class CPpTag
        
         private boolean doNextHead()
         {
-            if (_nHead != _nTail)
+            if (_nHead != _nTail) //nHead가 nTail이 아니라면
             {
-                _nHead++;
+                _nHead++; //nHead를 1씩 증가
 
-                if (_nHead >= _nSize) _nHead = 0;
+                if (_nHead >= _nSize) _nHead = 0; //nHead가 nHead보다 크거나 같다면 nHead는 0
 
                 return true;
             }
@@ -1116,9 +1119,9 @@ public class CPpTag
        
         public boolean doIn(long now, int x, int y)
         {
-            if (_cArrScene[_nTail]._now == 0)
+            if (_cArrScene[_nTail]._now == 0) //(_cArrScene[_nTail]._now이 0이 아니라면
             {
-                _cArrScene[_nTail]._now = now;
+                _cArrScene[_nTail]._now = now; //(_cArrScene[_nTail]._now의 값을 now로 
                 _cArrScene[_nTail]._x = x;
                 _cArrScene[_nTail]._y = y;
 
@@ -1147,14 +1150,14 @@ public class CPpTag
 
                 private boolean doNextTail()
         {
-            int nOldTail = _nTail;
+            int nOldTail = _nTail; //nOldTail의 값을 nTail로
 
-            _nTail++;
-            if (_nTail >= _nSize) _nTail = 0;
+            _nTail++; //1씩 증가
+            if (_nTail >= _nSize) _nTail = 0; //nTail이 nSize보다 크거나 같으면 nTail은 0
 
-            if (_nHead == _nTail)
+            if (_nHead == _nTail) //nHead가 nTail이라면
             {
-                _nTail = nOldTail;
+                _nTail = nOldTail; //nTail은 nOldTail
 
                 return false;
             }
@@ -1244,7 +1247,7 @@ public class CPpTag
 
     public void doDraw(Canvas canvas, Paint p)
     {
-        if (_bitmap != null)
+        if (_bitmap != null) //bitmap의 값이 존재하면
         {
             p.setAlpha(_Alpha);
 
@@ -1254,8 +1257,8 @@ public class CPpTag
 
     public void doUpdating(CPpInfo cGame2Ifo)
     {
-        if (_Alpha < 0xee) _Alpha += 8;
-        if (_Alpha > 0xee) _Alpha = 0xee;
+        if (_Alpha < 0xee) _Alpha += 8; //Alpha가 0xee보다 작으면 알파값에 +8을 해준다
+        if (_Alpha > 0xee) _Alpha = 0xee; //Alpha가 0xee보다 크면 Alpha 는 0xee 
 
         if (_cSceneQeue.getNum() > 0)
         {
@@ -1266,14 +1269,14 @@ public class CPpTag
 
             long now = System.currentTimeMillis();
 
-            if (now >= cPiece._now)
+            if (now >= cPiece._now) //now가 cPiece._now보다 크거나 같다면
             {
                 _cSceneQeue.doOut();
             }
 
-            if (_cSceneQeue.getNum() == 0)
+            if (_cSceneQeue.getNum() == 0) //cSceneQeue.getNum()이 0이라면
             {
-                cGame2Ifo._nMoveCnt--; 
+                cGame2Ifo._nMoveCnt--; //cGame2Ifo._nMoveCnt의 값에서 하나 뺀 겂을 리턴
             }
         }
     }
@@ -1328,13 +1331,14 @@ public class CPpTag
 
         for (int i = 0; i < 5; i++)
         {
-            dNow += 50;
-            nAdd += nGap;
+            dNow += 50;  //dNow = dNow + 50
+            nAdd += nGap; //nAdd = nAdd + nGap
 
-            nTmp -= nAdd;
+            nTmp -= nAdd; /nTmp = nTmp - nAdd
             if (nTmp < _cArrTag[k - 1][nSelectY]._x)
             {
-                nTmp = _cArrTag[k - 1][nSelectY]._x;
+                nTmp = _cArrTag[k - 1][nSelectY]._x; 
+            //nTmp가 _cArrTag[k - 1][nSelectY]._x보다 작으면 nTmp를 _cArrTag[k - 1][nSelectY]._x로! 
             }
 
             _cSceneQeue.doIn(dNow, nTmp, _cArrTag[k][nSelectY]._y);
@@ -1358,15 +1362,15 @@ public class CPpTag
 
         for (int i = 0; i < 5; i++)
         {
-            dNow += 50;
-            nAdd += nGap;
+            dNow += 50; //dNow = dNow + 50
+            nAdd += nGap; //nAdd = nAdd + nGap
 
-            nTmp += nAdd;
+            nTmp += nAdd; //nTmp = nTmp + nAdd
             if (nTmp > _cArrTag[k + 1][nSelectY]._x)
             {
                 nTmp = _cArrTag[k + 1][nSelectY]._x;
             }
-
+            //nTmprk _cArrTag[k + 1][nSelectY]._x보다 크면 nTmp를 _cArrTag[k + 1][nSelectY]._x로!! 
             _cSceneQeue.doIn(dNow, nTmp, _cArrTag[k][nSelectY]._y);
 
             nGap >>= 1;       
@@ -1388,15 +1392,15 @@ public class CPpTag
 
         for (int i = 0; i < 5; i++)
         {
-            dNow += 50;
-            nAdd += nGap;
+            dNow += 50;  //dNow = dNow + 50
+            nAdd += nGap; //nAdd = nAdd + nGap
 
-            nTmp -= nAdd;
+            nTmp -= nAdd; //nTmp = nTmp - nAdd
             if (nTmp < _cArrTag[nSelectX][k - 1]._y)
             {
                 nTmp = _cArrTag[nSelectX][k - 1]._y;
             }
-
+            //nTmp가 _cArrTag[nSelectX][k - 1]._y보다 작으면 nTmp를 _cArrTag[nSelectX][k - 1]._y로!!
             _cSceneQeue.doIn(dNow, _cArrTag[nSelectX][k]._x, nTmp);
 
             nGap >>= 1;         }
@@ -1417,15 +1421,15 @@ public class CPpTag
 
         for (int i = 0; i < 5; i++)
         {
-            dNow += 50;
-            nAdd += nGap;
-
-            nTmp += nAdd;
+            dNow += 50;  //dNow = dNow + 50
+            nAdd += nGap; //nAdd = nAdd + nGap
+ 
+            nTmp += nAdd;  //nTmp = nTmp + nAdd
             if (nTmp > _cArrTag[nSelectX][k + 1]._y)
             {
                 nTmp = _cArrTag[nSelectX][k + 1]._y;
             }
-
+            //nTmp가  _cArrTag[nSelectX][k + 1]._y보다 크면 nTmp를  _cArrTag[nSelectX][k + 1]._y로!!
             _cSceneQeue.doIn(dNow, _cArrTag[nSelectX][k]._x, nTmp);
 
             nGap >>= 1; 
@@ -1507,7 +1511,7 @@ public class CPpThread extends Thread
     {
         long now = System.currentTimeMillis();
 
-        if (_LastTime > now) return;
+        if (_LastTime > now) return; //만약 _LastTime이 now보다 크면 리턴
 
         _LastTime = now;
 
@@ -1525,12 +1529,15 @@ public class CPpThread extends Thread
                 if (_cInfo._nMixingCount > 0)
                 {
                     _cInfo.doMixing();
+
+                //만약 (_cInfo._GameMode이 CPpInfo._GMSTARTING와 같고 _cInfo._nMixingCount가 0보다 크면 섞어주는 코드를 실행한다.  
                 }
                 else
                 {
                     _cInfo._nMixingCount = -1;
 
                     _cInfo._GameMode = CPpInfo._GMSTARTED;
+                //그외면 게임모드가 시작된 게임모드
                 }
             }
 
@@ -1545,6 +1552,7 @@ public class CPpThread extends Thread
             }
         }
     }
+    //위 코드는 게임의 모드가 어떤 모든지를 결정해주는 코드이다.
 
     private void doDraw(Canvas canvas)
     {
