@@ -16,9 +16,9 @@
 
 https://comp166-koreauniv.googlecode.com/files/%ED%81%B4%EB%9E%98%EC%8A%A4.PNG
 
-맨 첫화면인 First.java
-게임의 난이도를 설정하는 두번째 화면인 Second.java
-세가지 난이도의 HomeWork6.java/ HomeWork6_1.java/ HomeWork6_2.java
+맨 첫화면인 First.java <br>
+게임의 난이도를 설정하는 두번째 화면인 Second.java <br>
+세가지 난이도의 HomeWork6.java/ HomeWork6_1.java/ HomeWork6_2.java <br>
 
 첫화면인 First.java의 코드는 다음과 같습니다.
 
@@ -512,5 +512,135 @@ public class HomeWork6 extends Activity {
 		return result;
 	}
 }
+
+}}}
+
+다른 난이도의 HomeWork6_1.java 와 HomeWork6_2.java 는 카드의 갯수에 관련된 코드를 제외하고는 HomeWork6.java 와 같습니다. <br><br>
+
+다음으로 레이아웃에는 이러한 것들이 있습니다.
+
+https://comp166-koreauniv.googlecode.com/files/xml.PNG
+
+첫번째 화면인 activity_first.xml은 다음과 같은 화면을 나타내줍니다.
+
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-08-59.png
+
+코드는 다음과 같습니다.
+
+{{{
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".First" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/start" />
+                 // 화투그림
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/title" />
+                 // 카드 뒤집기 게임 타이틀
+    <ImageView
+        android:id="@+id/ImageView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="94dp"
+        android:src="@drawable/startbutton" />
+                 // 시작! 버튼
+</RelativeLayout>
+
+}}}
+
+난이도 설정하는 두번째 화면인 Second.xml은 다음과 같습니다.
+
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-09-04.png
+
+코드는 다음과 같습니다.
+
+{{{
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Second" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="146dp"
+        android:src="@drawable/u1" />
+           //어린이용 버튼
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/u3" />
+           //청소년용 버튼
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/u2" />
+           //어른용 버튼
+</RelativeLayout>
+
+}}}
+
+main.xml은 기본적으로 있었던 파일로 게임의 기본적인 배경화면을 만들어주기만 하는 xml 입니다. 코드는 다음과 같습니다.
+
+{{{
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    android:id="@+id/text"
+    android:textColor="#ff0000ff"
+    android:textSize="12pt"
+    />
+    <LinearLayout
+	android:id="@+id/main_linear"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    />
+</LinearLayout>
 
 }}}
