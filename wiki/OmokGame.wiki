@@ -607,3 +607,36 @@ class Dol {
 } // 이 클래스는 찍은 점의 좌표를 구해주는 클래스이다. 
 
 }}}
+
+'''Music.java''' 마지막으로, 여기서는 게임실행할 때 자동으로 배경음악을 재생해 준다.
+
+{{{
+package com.example.game;
+
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class Music {
+	private static MediaPlayer mp = null;
+	
+	public static void play(Context context, int resource){
+		stop(context);
+		
+		mp = MediaPlayer.create(context, resource);
+		mp.setLooping(true);
+		mp.start();
+	}
+	
+	public static void stop(Context context) {
+		if(mp!=null){
+			mp.stop();
+			mp.release();
+			mp = null;
+		}
+	}
+	
+} // 이 클래스는 앱을 실행하였을때 설정된 음악을 재생해주는 클래스이다.
+}}}
