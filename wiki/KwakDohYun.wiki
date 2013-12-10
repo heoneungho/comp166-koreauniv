@@ -1008,3 +1008,7 @@ public class Sudoku extends Activity implements OnClickListener {
    }
 }
 }}}
+
+https://comp166-koreauniv.googlecode.com/files/Sudokuku.apk
+
+어플파일입니다.
