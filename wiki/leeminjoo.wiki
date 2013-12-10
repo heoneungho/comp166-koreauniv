@@ -13,9 +13,8 @@ playstore에 나온 기존의 야구게임앱은 '대결 숫자야구', '숫자�
 
 = 어플 내용 =
 1. 처음 시작화면입니다.
-http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-
+http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-47.png
 
-http://comp166-koreauniv.googlecode.com/files/minjooooo.png
 2. start를 누르면 stage가 3개가 나타납니다. 
 stage1는 3자리 숫자, stage2는 4자리 숫자, stage3는 5자리 숫자를 맞추는 게임입니다. 
 
@@ -23,7 +22,10 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-18-14-56.png
 
 3.stage1 입니다. 빈칸 3개에 서로 다른 숫자를 입력하면 됩니다.
 3-2. 입력 한 모양입니다.
+http://comp166-koreauniv.googlecode.com/files/minjooooo.png
+
 3-3. 입력을 했을때 결과를 알려줍니다. 0strike 1ball 2out 이네요
+
 3-4. 게임은 10번 까지 할수 있고 이 게임에서는 4판만에 이겼습니다.
 3-5. 게임을 이기면 결과가 뜹니다.
 
