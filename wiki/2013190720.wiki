@@ -540,15 +540,17 @@ XP의 규칙에는 다음이 있다. -조금씩, 자주 발표한다 -사이클�
 {{{
 public class SimpleDotCom {                //SimpleDotCom 클래스 입니다.
 
-        int[] locationCells;
-        int numOfHits = 0;
+        int[] locationCells;  //셀의 위치를 저장하기 위한 int 배열을 선언합니다.
+        int numOfHits = 0;     //맞춘 셀의 개수를 저장하기 위한 int를 선언합니다.
 
         public void setLocationCells(int[] locs) {
                 locationCells = locs;
-        }
+        }  // int배열(셀 위치 세 개를 나타냄)을 받아들이는 세터 메소드입니다.
 
-        public String checkYourself(String stringGuess) {
-                int guess = Integer.parseInt(stringGuess);
+        public String checkYourself(String stringGuess) { 
+        //사용자가 추측한 위치를 string으로 받아들이고 그 값을 확인하고 결과를 리턴하는 메소드입니다.
+
+                int guess = Integer.parseInt(stringGuess); //사용자가 추측한 위치를 string 매개변수 형태로 받아와 int로 변환합니다.
                 String result = "miss";
                 for (int i=0 ; i<locationCells.length; i++) {
                         if(guess == locationCells[i]) {
@@ -563,7 +565,7 @@ public class SimpleDotCom {                //SimpleDotCom 클래스 입니다.
                 }
                 System.out.println(result);
                         return result;
-        }
+        } 
 }                                             //클래스 끝
 
 
