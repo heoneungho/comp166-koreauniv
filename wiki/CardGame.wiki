@@ -644,3 +644,21 @@ main.xml은 기본적으로 있었던 파일로 게임의 기본적인 배경화
 </LinearLayout>
 
 }}}
+
+게임 실행 화면은 다음과 같슴니다.
+
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-09-07.png
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-16-50.png
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-16-54.png
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-16-57.png
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-17-03.png
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-17-34.png
+https://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-10-16-17-40.png
+
+게임 실행 영상
+
+http://www.youtube.com/watch?feature=player_detailpage&v=xmfVIYWfuok
+
+
+어플의 기본적인 소스코드 출처:<br>
+http://blog.naver.com/PostView.nhn?blogId=sukjun40&logNo=100127545341
