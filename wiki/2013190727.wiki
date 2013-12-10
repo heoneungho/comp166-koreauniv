@@ -1393,53 +1393,54 @@ arrrgh
 
 {{{
 
-import java,util.*;
+import java.util.*;
 class V2Radiator {
-	V2Radiator(ArrayList list) {
-		for (int x=0; x<5; x++) {
-			list.add(new SimUnit("V2Radiator)); // 5번 추가함
-		}
-	}
+        V2Radiator(ArrayList<SimUnit> list) {
+                for(int x = 5; x < 5 ; x++) {
+                        list.add(new SimUnit("V2Radiator"));// 받아온 List에 5번 SimUnit을 추가하고 V2Radiator를 넘김
+                }
+        }
 }
 
-class V3Radiator extends V2Radiator {
-	V3Radiator(ArrayList lglist) {
-		super(lglist);
-		for (int g=0; g<10; g++) {
-			lglist.add(new SimUnit("V3Radiator")); // 10번 추가함
-		}
-	}
+class V3Radiator extends V2Radiator{ // 불필요한 부분 
+        V3Radiator(ArrayList<SimUnit> lglist) {
+                super(lglist); // 불필요한 부분. 이부분에서 불필요하게 5개의 SimUnit이 생성.
+                for(int g = 0; g < 10 ; g++) {
+                        lglist.add(new SimUnit("V3Radiator")); // lglist에 10번 SimUnit을 추가하고 V3Radiator를 넘김.
+                }
+        }
 }
 
 class RetentionBot {
-	RetentionBot(ArrayList rlist) {
-		rlist.add(new SimUnit("Retention"));
-	}
+        RetentionBot(ArrayList<SimUnit> rlist) {
+                rlist.add(new SimUnit("Rention"));
+        }
 }
 
-public class TestlifeSupportSim {
-	public static void main(String [] args) {
-		ArrayList aList = new ArryList ();
-		V2Radiator v2 = new V2Radiator (aList);
-		V3Radiator v3 = new V3Radiator (aList);
-		for(int z=0; z<20; z++) {
-			RetentionBot ret = new RetentionBot(aList); // 20번 실행
-		}
-	}
+public class TestLifeSupportSim {
+        public static void main(String[] args) {
+                ArrayList<SimUnit> aList = new ArrayList<SimUnit>(); // aList의 ArrayList생성
+                V2Radiator v2 = new V2Radiator(aList); // V2객체 생성
+                V3Radiator v3 = new V3Radiator(aList); // V3객체 생성
+                for(int z = 0 ; z < 20 ; z++) {
+                        RetentionBot ret = new RetentionBot(aList); // 20번 ret객체를 생성
+                }
+        }
 }
 
-class SimUnit {
-	String botType;
-	SimUnit(String type) {
-		botType = type;
-	}
-	int powerUse() {
-		if("Retention".equals(botType)) {
-			return 2;
-		} else {
-			return 4;
-		}
-	}
+class SimUnit{
+        String botType;
+        SimUnit(String type) {
+                botType = type;
+        }
+        int powerUse() {
+                if("Retention".equals(botType)) {
+                        return 2;                       
+                }
+                else {
+                        return 4;
+                }
+        }
 }
 
 }}}
