@@ -1573,7 +1573,7 @@ _모두삭제_ '모두 삭제하시겠습니까?'
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-01-17-35-54.png
 
-_삭제하기_ '삭제완료
+_삭제하기_ '삭제완료'
 
 
 *종료하기*
@@ -1587,6 +1587,8 @@ http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-22-28-16.png
 
 http://comp166-koreauniv.googlecode.com/files/Screenshot_2013-12-09-22-28-19.png
 
-Give It To Me
+'Give It To Me
+
 돈을 빌리거나 빌려줬을 때 이름, 전화번호, 시간, 가격을 기록한 뒤 안내 문자나 전화를 보내는 어플리케이션
-Show Me The Money
+
+Show Me The Money'
