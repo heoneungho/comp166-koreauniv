@@ -363,3 +363,137 @@ public class NewGame extends Activity implements OnClickListener {
 }
 
 }}}
+
+'''OmokView.java''' 이는 게임 화면 구현에 관한 것이다. 
+{{{
+package com.example.game;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
+
+public class OmokView extends View {
+	private Context context;
+	private int LINE_WIDTH = 0;
+	private int STONE_SIZE = 0;
+	private int X0;
+	private int Y0;
+	private NewGame newGame = null;
+
+	public void init() {
+		Display display = ((WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		int width = display.getWidth();
+
+		LINE_WIDTH = width / NewGame.LINE_NUM;
+		STONE_SIZE = (int) (LINE_WIDTH * 0.8);
+
+	} // 이는 화면의 너비를 구하여 그를 그려줄 줄 수로 나눠서 한 칸의 간격을 정하고, 놓을 바둑돌의 크기도 정하는 것이다.
+
+	public OmokView(Context context) {
+		super(context);
+		this.context = context;
+		newGame = (NewGame) context;
+		init();
+	} // 새로운 게임을 시작할 때 마다 init메소드를 실행시킨다.
+
+	public void onDraw(Canvas canvas) {
+		X0 = getWidth() / 2 - NewGame.LINE_NUM / 2 * LINE_WIDTH; //(0,0)의 x좌표
+
+		Y0 = getWidth() / 2 - NewGame.LINE_NUM / 2 * LINE_WIDTH; //(0,0)의 y좌표
+
+		Paint background = new Paint();
+		background.setColor(getResources().getColor(R.color.puzzle_background)); // 배경색을 칠한다.
+
+		canvas.drawRect(0, 0, getWidth(), getHeight(), background);
+
+		for (int i = 0; i < 9; i++) {
+			canvas.drawLine(X0, i * LINE_WIDTH + Y0, (NewGame.LINE_NUM - 1)
+					* LINE_WIDTH + X0, i * LINE_WIDTH + Y0, new Paint());
+			canvas.drawLine(i * LINE_WIDTH + X0, Y0, i * LINE_WIDTH + X0,
+					(NewGame.LINE_NUM - 1) * LINE_WIDTH + Y0, new Paint());
+		} // 바둑판을 그린다.
+
+		Paint selected = new Paint();
+
+		for (int i = 0; i < ((NewGame) context).getBack().size(); i++) {
+			if (newGame.getBack().get(i).isBlack == true)
+				selected.setColor(Color.BLACK);
+
+			else
+				selected.setColor(Color.WHITE); // 검은색차례가 맞으면 검은색을 그리고, 아니면 흰색으로 설정
+
+			canvas.drawCircle(newGame.getBack().get(i).x * LINE_WIDTH + X0,
+					newGame.getBack().get(i).y * LINE_WIDTH + Y0,
+					STONE_SIZE / 2, selected); // 선택된 좌표에 바둑돌을 그린다.
+
+		}
+		selected.setColor(Color.RED);
+
+		if (!newGame.getBack().isEmpty())
+			canvas.drawCircle(newGame.getLastDol().x * LINE_WIDTH + X0,
+					newGame.getLastDol().y * LINE_WIDTH + Y0, 5, selected);
+	}
+
+	public boolean onTouchEvent(MotionEvent e) {
+		int x = (int) e.getX(); // 화면을 터치했을 때 터치한 점의 x좌표를 가져온다.
+		int y = (int) e.getY(); // 화면을 터치했을 때 터치한 점의 y좌표를 가져온다.
+
+		if (x < X0 - LINE_WIDTH / 2
+				|| x > X0 + (NewGame.LINE_NUM - 1) * LINE_WIDTH + LINE_WIDTH
+						/ 2)
+			return false; 
+		if (y < Y0 - LINE_WIDTH / 2
+				|| y > Y0 + (NewGame.LINE_NUM - 1) * LINE_WIDTH + LINE_WIDTH
+						/ 2)
+			return false; // 그린 바둑판의 밖을 터치했을 경우 false를 넘겨준다.
+
+		x = (x - X0 + LINE_WIDTH / 2) / LINE_WIDTH * LINE_WIDTH + X0;
+		y = (y - Y0 + LINE_WIDTH / 2) / LINE_WIDTH * LINE_WIDTH + Y0;
+
+		int ArrX = (x - X0) / LINE_WIDTH;
+		int ArrY = (y - Y0) / LINE_WIDTH; // 배열로 표현하기 위해 화면의 좌표값을 바둑판의 좌표값으로 바꾼다.
+
+		if (!newGame.dolArr[ArrX][ArrY].isPlace) {
+			invalidate();
+
+			newGame.dolArr[ArrX][ArrY].x = ArrX;
+			newGame.dolArr[ArrX][ArrY].y = ArrY;
+
+			if (((NewGame) context).tThread.isBlack())
+				newGame.dolArr[ArrX][ArrY].isBlack = true;
+
+			else
+				((NewGame) context).dolArr[ArrX][ArrY].isBlack = false; // 화면에 그릴 바둑돌의 색이 검은색차례인지 아닌지 넘겨준다.
+
+			((NewGame) context).tThread.turnChange(); // 색을 바꾼다.
+			((NewGame) context).tThread.initSecond(); // 다음 차례를 위해 시간도 다시 세팅한다.
+
+			newGame.dolArr[ArrX][ArrY].isPlace = true; // 놓은 자리에 바둑돌이 놓였다고 표시한다.
+
+			newGame.putDol(newGame.dolArr[ArrX][ArrY]);
+
+			newGame.getLastDol().x = ArrX;
+			newGame.getLastDol().y = ArrY; // 가장 최근에 놓았던 자리의 좌표를 저장한다(Undo버튼 이용하기 위해)
+
+			boolean isVictory = newGame
+					.checkVictory(newGame.dolArr[ArrX][ArrY]); // 이겼으면 어느 색이 이겼는지 넘긴다.
+
+			if (isVictory) {
+				((NewGame) context).showDialog(1);
+			}
+
+			invalidate();
+
+		}
+		return super.onTouchEvent(e);
+	}
+
+} // 이 클래스는 게임 화면을 그려주는 클래스이다.
+
+}}
