@@ -9,9 +9,318 @@
 
  * 기존에 있는 게임을 프로그램을 만든 것입니다
 
+ * 게임실행화면 입니다
 <wiki:video url="http://www.youtube.com/watch?v=yCKyuNZo51s&feature=youtu.be"/>
 
+ * 게임의 메인페이지입니다
 
 http://comp166-koreauniv.googlecode.com/files/main.png/
 
+ * start를 누르면 사진이 섞이고 순서대로 모자 그림을 맞추면 됩니다
+
 http://comp166-koreauniv.googlecode.com/files/play.png/
+
+=======================================================================
+
+ * 게임의 메인페이지
+
+package com.example.lastgame;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ImageButton;
+import android.view.View.OnClickListener;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		ImageButton bt1 = (ImageButton) findViewById(R.id.imageButton1);
+		
+		bt1.setOnClickListener(new OnClickListener()
+		{
+		
+				@Override
+				public void onClick(View v){
+			
+			Intent intetn1 = new Intent (MainActivity.this, Puzzleactivity.class); // 게임으로 넘김.
+			startActivity(intetn1);
+				}
+		});
+		
+	}		
+		//메인 페이지에서 게임 페이지로 넘기는 버튼입니다.
+		
+		
+		
+		
+	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// 아이템 을 액션바에 추가합니다. 
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
+
+ * 메인의 XML
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/AbsoluteLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/hat"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="77dp"
+        android:layout_y="310dp"
+        android:src="@drawable/start" />
+ // 이미지 버튼을 넣어줍니다.
+</AbsoluteLayout>
+
+ * 게임화면의 페이지입니다.
+
+package com.example.lastgame;
+
+import java.util.Random;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+ // android.app.Activity와 android.os.Bundle와 android.view.View와 android.widget.Button를 import합니다.
+public class Puzzleactivity extends Activity {
+
+	/** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_puzzleactivity);
+        
+        _buttons[0]=(Button)findViewById(R.id.Btn01);
+        _buttons[1]=(Button)findViewById(R.id.Btn02);
+        _buttons[2]=(Button)findViewById(R.id.Btn03);
+        _buttons[3]=(Button)findViewById(R.id.Btn04);
+        _buttons[4]=(Button)findViewById(R.id.Btn05);
+        _buttons[5]=(Button)findViewById(R.id.Btn06);
+        _buttons[6]=(Button)findViewById(R.id.Btn07);
+        _buttons[7]=(Button)findViewById(R.id.Btn08);
+        _buttons[8]=(Button)findViewById(R.id.Btn09);
+        _buttons[9]=(Button)findViewById(R.id.Btn10);
+        _buttons[10]=(Button)findViewById(R.id.Btn11);
+        _buttons[11]=(Button)findViewById(R.id.Btn12);
+        _buttons[12]=(Button)findViewById(R.id.Btn13);
+        _buttons[13]=(Button)findViewById(R.id.Btn14);
+        _buttons[14]=(Button)findViewById(R.id.Btn15);
+        _buttons[15]=(Button)findViewById(R.id.Blank);
+        //버튼들을 16개 만듭니다.
+
+        for(int i=0;i<15;i++)_buttons[i].setOnClickListener(On_Click);
+        
+        ((Button)findViewById(R.id.start)).setOnClickListener(On_Start);
+        }
+    
+        private Button[]_buttons=new Button[16];
+        
+        private void do_swap(Button A, Button B){
+        	int Aleft=A.getLeft(); //Aleft를 왼쪽으로 이동하게 지정
+        	int Atop=A.getTop(); //Atop를 위쪽으로 이동하게 지정
+        	int Aright=A.getRight(); //Aright를 오른쪽으로 이동하게 지정
+        	int Abottom=A.getBottom(); //Abottom을 아래로 이동하게 지정
+        	A.layout(B.getLeft(), B.getTop(), B.getRight(), B.getBottom());
+        	B.layout(Aleft,Atop,Aright,Abottom);
+        }
+        
+        private boolean do_width(Button A, Button B){
+        	return (A.getLeft()==B.getLeft())&&(Math.abs(A.getTop()-B.getTop())<102);
+        }
+        private boolean do_high(Button A, Button B){
+        	return (A.getTop()==B.getTop())&&(Math.abs(A.getLeft()-B.getLeft())<102);
+        }
+        //자리를 바꿉니다.
+        private View.OnClickListener On_Click = new View.OnClickListener() {
+			
+            public void onClick(View v) {
+				Button Blank = (Button)findViewById(R.id.Blank);
+				if(do_high((Button)v,Blank)||do_width((Button)v,Blank))do_swap((Button)v,Blank);
+				
+			}
+		}; //blank와 위치를 바꿉니다.
+		
+		private View.OnClickListener On_Start = new View.OnClickListener() {
+			
+	        public void onClick(View v) {
+				int x,y;
+				for(y=0;y<4;y++){
+					for(x=0;x<4;x++){
+						_buttons[y*4+x].layout((x*100)+40,(y*100)+50,x*100+140,y*100+150);
+					}
+				}
+				Random _Random = new Random();// 랜덤으로 배열을 하게 합니다.
+				for(int i=0;i<1000;i++)On_Click.onClick(_buttons[_Random.nextInt(15)]);
+			}
+		};
+
+}
+
+ * 퍼즐액티비티의 XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+<LinearLayout 
+        android:id="@+id/Layout01" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content">
+<Button 
+        android:text="start" 
+    	android:id="@+id/start" 
+        android:layout_width="100px" 
+        android:layout_height="100px"
+    	android:layout_weight="1"	
+        android:textSize="20sp"></Button> // start버튼입니다. 랜덤으로 그림을 섞어주는 버튼입니다.
+</LinearLayout>
+  
+<AbsoluteLayout 
+       android:id="@+id/Layout02" 
+       android:layout_height="fill_parent" 
+       android:layout_width="fill_parent">
+
+<Button 
+       android:background="@drawable/a1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="40px"
+       android:layout_y="50px"
+       android:id="@+id/Btn01"></Button>
+<Button 
+       android:background="@drawable/b1" 
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="140px"
+       android:layout_y="50px"
+       android:id="@+id/Btn02"></Button> 
+<Button 
+       android:background="@drawable/c1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="240px"
+       android:layout_y="50px"
+       android:id="@+id/Btn03"></Button>
+<Button 
+       android:background="@drawable/d1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="340px"
+       android:layout_y="50px"
+       android:id="@+id/Btn04"></Button>
+<Button 
+       android:background="@drawable/e1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="40px"
+       android:layout_y="150px"
+       android:id="@+id/Btn05"></Button>
+<Button 
+       android:background="@drawable/f1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="140px"
+       android:layout_y="150px"
+       android:id="@+id/Btn06"></Button>
+<Button 
+       android:background="@drawable/g1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="240px"
+       android:layout_y="150px"
+       android:id="@+id/Btn07"></Button>
+<Button 
+       android:background="@drawable/h1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="340px"
+       android:layout_y="150px"
+       android:id="@+id/Btn08"></Button>
+<Button 
+       android:background="@drawable/i1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="40px"
+       android:layout_y="250px"
+       android:id="@+id/Btn09"></Button>
+<Button 
+       android:background="@drawable/j1" 
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="140px"
+       android:layout_y="250px"
+       android:id="@+id/Btn10"></Button>
+<Button 
+       android:background="@drawable/k1" 
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="240px"
+       android:layout_y="250px"
+       android:id="@+id/Btn11"></Button>
+<Button 
+       android:background="@drawable/l1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="340px"
+       android:layout_y="250px"
+       android:id="@+id/Btn12"></Button>
+<Button 
+       android:background="@drawable/m1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="40px"
+       android:layout_y="350px"
+       android:id="@+id/Blank"></Button>
+<Button 
+       android:background="@drawable/n1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="140px"
+       android:layout_y="350px"
+       android:id="@+id/Btn13"></Button>
+<Button 
+       android:background="@drawable/o1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="240px"
+       android:layout_y="350px"
+       android:id="@+id/Btn14"></Button>
+     
+<Button 
+       android:background="@drawable/p1"
+       android:layout_height="100px" 
+       android:layout_width="100px" 
+       android:layout_x="340px"
+       android:layout_y="350px"
+       android:id="@+id/Btn15"></Button>
+    // 그림들을 버튼에 맞게 하자씩 지정합니다. 그림의 있는 빈칸도 버튼으로 지정해 줍니다.
+
+</AbsoluteLayout>
+</LinearLayout>
