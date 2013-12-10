@@ -298,3 +298,195 @@ public class ListActivity extends Activity {
 
 }
 }}}
+
+
+
+이제 List 페이지에서 동물들의 사진을 누르게 되면 그 동물에 관한 정보들이 써져 있는 화면으로 가게 된다.
+
+
+예를 들어 고양이를 눌렀을 때를 보여주겠다.
+
+
+= Cat =
+
+http://comp166-koreauniv.googlecode.com/files/catpage.PNG
+
+
+● xml
+
+{{{
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Cat" >
+
+   
+	<EditText
+        android:id="@+id/cattxt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cattxt2"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt1" >
+        
+       
+    </EditText>
+    
+   
+   <EditText
+        android:id="@+id/cattxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cattxt3"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView1"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt2" />
+   
+    <EditText
+        android:id="@+id/cattxt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cattxt4"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView1"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt3" />
+   
+    <EditText
+        android:id="@+id/cattxt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cattxt5"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView1"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt4" />
+ 
+    <EditText
+        android:id="@+id/cattxt5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cattxt6"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView1"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt5" />
+        
+    <EditText
+        android:id="@+id/cattxt6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cattxt7"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView1"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt6" />
+
+   <EditText
+        android:id="@+id/cattxt7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Catinfo"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:inputType=""
+        android:text="@string/cattxt7" />
+
+
+
+    <Button
+        android:id="@+id/Catinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:text="@string/catinfo" />
+
+ 
+ 	<ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:alpha="0.5"
+        android:scaleType="fitXY"
+        android:src="@drawable/cat" />
+ 
+
+    
+
+</RelativeLayout>
+}}}
+
+
+● java
+
+{{{
+package com.example.petworld;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+
+public class Cat extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_cat);
+	
+		ImageView button1 = (ImageView)findViewById(R.id.Catinfo);
+        button1.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Catinfo.class);
+        		startActivity(intent);        	
+        	}
+        });
+       
+        ImageView button2 = (ImageView)findViewById(R.id.cattxt1);
+        button2.setOnClickListener(new OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		
+        		Intent intent = new Intent(getApplicationContext(), Textcat.class);
+        		startActivity(intent);        	
+        	}
+        });  
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.cat, menu);
+		return true;
+	}
+
+}
+}}}
+
+
+이러한 화면이 뜨게된다. 그 후 자세한 내용을 알아보기 위해서는 텍스트 중 가장 위에 있는 텍스트를 누르면 그 동물에 관한 더 자세한 내용이 나온다. 또한 밥 먹는 시간을 알고 알람을 맞추기 위해서는 밑에 있는 'Feeding Time'이라는 버튼을 누르면 된다. 그 버튼을 누르면 새로운 화면이 나오고 시간을 입력하면 각각 동물에 알맞게 몇시간 뒤에 알람이 울리게 된다.
