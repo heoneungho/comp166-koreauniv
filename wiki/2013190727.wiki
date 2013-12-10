@@ -1099,130 +1099,84 @@ public class DotCom {
 
 {{{
 
-class Animal
-{
+class Animal {
         String picture;
         Boolean food;
         int hunger;
         float boundaries;
         float location;
 
-        void makeNoise()
-        {
-                //소리를 낼 때
+        void makeNoise() { //소리를 낼 때
         }
 
-        void eat()
-        {
-                //먹잇감을 찾았을 때
+        void eat() { //먹잇감을 찾았을 때
         }
 
-        void sleep()
-        {
-                //잘 때
+        void sleep() { //잘 때
         }
 
-        void roam()
-        {
-                //떠돌아다닐 때
+        void roam() { //떠돌아다닐 때
         }
 
 }
-class Feline extends Animal
-{
-        void roam()
-        {
-                //roam을 override
+
+class Feline extends Animal {
+        void roam() { //roam을 override
         }
 }
 
 class Canine extends Animal
-        void roam()
-        {
-                //roam을 override
+        void roam() { //roam을 override
         }
 }
 
-class Lion extends Feline
-{
-        void makeNoise()
-        {
-                //makeNoise를 override
+class Lion extends Feline {
+        void makeNoise() { //makeNoise를 override
         }
 
-        void eat()
-        {
-                //eat를 override
+        void eat() { //eat를 override
         }
 }
 
-class Tiger extends Feline
-{
-        void makeNoise()
-        {
-                //makeNoise를 override
+class Tiger extends Feline {
+        void makeNoise() { //makeNoise를 override
         }
 
-        void eat()
-        {
-                //eat를 override
+        void eat() { //eat를 override
         }
 }
 
-
-
-class Cat extends Feline
-{
-        void makeNoise()
-        {
-                //makeNoise를 override
+class Cat extends Feline {
+        void makeNoise() { //makeNoise를 override
         }
 
-        void eat()
-        {
-                //eat를 override
+        void eat() { //eat를 override
         }
 }
 
-class Hiippo extends Animal
-{
-        void makeNoise()
-        {
-                //makeNoise를 override
+class Hiippo extends Animal { 
+        void makeNoise() { //makeNoise를 override
         }
 
-        void eat()
-        {
-                //eat를 override
+        void eat() { //eat를 override
         }
 }
 
-class Wolf extends Canine
-{
-        void makeNoise()
-        {
-                //makeNoise를 override
+class Wolf extends Canine {
+        void makeNoise() { //makeNoise를 override
         }
 
-        void eat()
-        {
-                //eat를 override
+        void eat() { //eat를 override
         }
 }
 
-class Dog extends Canine
-{
-        void makeNoise()
-        {
-                //makeNoise를 override
+class Dog extends Canine { 
+        void makeNoise() { //makeNoise를 override
         }
 
-        void eat()
-        {
-                //eat를 override
+        void eat() { //eat를 override
         }
 }
-
 
 }}}
  
@@ -1277,7 +1231,7 @@ class Vampire extends Monster { // Vampire는 Monster를 상속받음
 
 *269p~ 객체의 삶과 죽음* _요약_
 
- * 힙에서의 변수: 힙은 모든 객체가 사는 곳이다.
+ * 힙에서의 변수: 힙은 모든 객체가 사는 곳이다. 
  * 스택에서의 변수: 스택은 메소드 호출과 지역 변수가 사는 곳이다. 메소드 안에서 선언한 것을 지역 변수라고 부르는데, 메소드 매개변수도 지역 변수에 포함된다. 지역 변수는 임시 변수며 메소드가 스택에 들어있는 동안만 (즉, 메소드 전체를 감싸는 오른쪽 중괄호가 나타나기 전까지만) 살아있다.
  * 생성자:
  * 널 레퍼런스:
