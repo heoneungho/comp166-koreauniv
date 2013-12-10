@@ -50,9 +50,16 @@ http://comp166-koreauniv.googlecode.com/files/잉여.png
 
 2. 1위부터 7위까지의 랭커들의 닉네임을 순서대로 제공한다.  
 
+
+
+
+
 = 게임의 구성(각 화면 구성 설명 및 버튼들의 기능 설명) =
 
+
 자! 이제 본격적으로 본인이 만든 게임의 화면 구성 살펴보도록 하겠다.
+
+
 
 == 메인 화면(Main Activity) == 
 
@@ -71,6 +78,8 @@ http://comp166-koreauniv.googlecode.com/files/메인화면2.png
 
  * 추가적으로 좋아하는 배경음악을 BGM으로 설정해보았다. 노래 정보 : Better Together-Jack Johnson
 
+
+
 == 옵션 화면(Option Activity) ==
 
 
@@ -87,6 +96,8 @@ http://comp166-koreauniv.googlecode.com/files/옵화.png
 
  * 랭킹 리셋 버튼을 누르면 랭킹에 있던 목록이 모두 설정된 초기값으로 초기화된다.
 
+
+
 == 카드의 종류별 게임 화면 ==
 
  * 교수님카드
@@ -101,6 +112,7 @@ http://comp166-koreauniv.googlecode.com/files/동물카드.png
 
 http://comp166-koreauniv.googlecode.com/files/숫자카드.png
   
+
 
 == 랭킹화면과 랭킹 리셋 버튼의 동작 확인 ==
 
@@ -117,6 +129,7 @@ http://comp166-koreauniv.googlecode.com/files/랭킹화면.png
 http://comp166-koreauniv.googlecode.com/files/랭초화.png
 
 
+
 == 게임 화면(Game Activity) ==
 
  
@@ -128,6 +141,7 @@ http://comp166-koreauniv.googlecode.com/files/동물카드.png
  * 타이머는 게임 시작과 동시에 작동하고, 모든 8쌍의 카드를 맞추면 바로 정지하도록 설정되어 있다. 
 
  * 각 버튼들에 의해 급한 일이 생긴 경우 정지할 수 있고, 일이 마무리되고 나면 다시 재개가 가능하며, 패가 좋지 않다고 생각되면 새 게임을 진행할 수 있다.
+
 
 
 == 게임 화면 내에서 랭킹 진입 성공과 실패 시 결과 화면 ==
@@ -150,10 +164,14 @@ http://comp166-koreauniv.googlecode.com/files/성공화면.png
 http://comp166-koreauniv.googlecode.com/files/실패화면.png
 
 
+
+
+
 = 패키지와 클래스 그리고 레이아웃 =
 
 
- * 패키지와 클래스
+
+== 패키지와 클래스 ==
 
 
 http://comp166-koreauniv.googlecode.com/files/패키지클래스.png
@@ -162,7 +180,9 @@ http://comp166-koreauniv.googlecode.com/files/패키지클래스.png
  패키지는 게임 화면을 구성하는 클래스들이 담긴 기본 패키지, 게임 화면 내의 동작과 관련된 패키지, 그리고 그 밖의 기능을 담당하는 유틸리티 패키지로 구성되어 있다.
 
 
- * res 폴더 내의 구성
+
+== res 폴더 내의 구성 ==
+
 
 http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
 
@@ -174,6 +194,9 @@ http://comp166-koreauniv.googlecode.com/files/리쏘쓰.png
  * layout 폴더 내에는 기본 패키지내의 클래스를 구성하는 화면에 대한 xml 파일이 들어 있다.
 
  * 마지막으로 raw 폴더에는 BGM으로 재생되는 음악 파일이 담겨 있다.
+
+
+
 
 
 = 각 클래스에 대한 설명 =
@@ -714,6 +737,9 @@ public class GameActivity extends Activity implements OnClickListener{
 </RelativeLayout>
 }}}
 
+
+
+
 == 메인 클래스와 xml ==
 
 {{{
@@ -851,6 +877,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 </RelativeLayout>
 }}}
+
+
+
 
 == 옵션 클래스와 xml ==
 
@@ -1050,6 +1079,8 @@ public class OptionActivity extends Activity implements OnCheckedChangeListener,
     
  </RelativeLayout>
 }}}
+
+
 
 
 == 랭킹 클래스와 xml ==
@@ -1392,6 +1423,9 @@ public class RankingActivity extends Activity implements OnClickListener {
 </RelativeLayout>
 }}}
 
+
+
+
 == 카드 매니저 클래스 ==
 
 {{{
@@ -1465,6 +1499,8 @@ public class CardManager {
 	}
 }
 }}}
+
+
 
 
 == 게임 매니저 클래스 ==
@@ -1559,6 +1595,8 @@ public class GameManager {
 }}}
 
 
+
+
 == 난수 생성 클래스 ==
 
 {{{
@@ -1595,6 +1633,8 @@ public class GenerateRandom {
 	}
 }
 }}}
+
+
 
 
 == 타임 매니저 클래스 ==
@@ -1635,6 +1675,8 @@ public class TimeManager {
 
 }
 }}}
+
+
 
 
 == 매니저 프리퍼런스 클래스 ==
@@ -1774,6 +1816,8 @@ public class ManagerPreference {
 }}}
 
 
+
+
 == 매니저 사운드 클래스 ==
 
 {{{
@@ -1827,7 +1871,10 @@ public class ManagerSound {
 
 
 
+
+
 = 참고 문헌 및 사이트 =
+
 
  * 카드 게임 논리 참고 : http://manong.tistory.com/199
  
@@ -1838,6 +1885,9 @@ public class ManagerSound {
  * 핸들러를 이용한 타이머 참고 : http://androidmetro.blogspot.kr/2011/06/blog-post_23.html
 
  * 랭킹 사항 저장, 카드 변경 사항 저장, 사운드 세팅 및 변경 사항 등을 DB를 사용하지 않고 영속적으로 저장하기 위한 Shared Preferences 구성 참고 : http://blog.naver.com/PostView.nhn?blogId=ljsk139&logNo=30177409995<br>http://muzesong.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-SharedPreferences-%EA%B9%94%EB%81%94%ED%95%98%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
+
+
 
 
 = 어플리케이션 소스 파일 압축 자료 및 apk파일=
