@@ -72,10 +72,12 @@ http://comp166-koreauniv.googlecode.com/files/슌6.png
 
 = 추가 사항 =
 
-
+http://comp166-koreauniv.googlecode.com/files/슌7.png
 
 
 === 앱을 시작하면 다음과 같이 아이콘이 커다랗게 등장한다. ===
+
+      * 시작화면을 생성했다!
 
 = 출처 =
 
