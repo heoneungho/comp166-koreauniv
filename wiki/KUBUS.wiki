@@ -11,8 +11,7 @@ http://comp166-koreauniv.googlecode.com/files/KUBUSicon.png
 
 어플 아이콘
 
-http://comp166-koreauniv.googlecode.com/files/KUBUS.apk
-apk파일
+apk파일 : http://comp166-koreauniv.googlecode.com/files/KUBUS.apk
 
 = Details =
 
