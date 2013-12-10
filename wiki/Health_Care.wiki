@@ -1391,8 +1391,7 @@ More Apps는 운동 계획을 빠르고 쉽게 세울 수 있게 일정앱과 �
 운동하면서 음악을 손쉽게 들을 수 있도록 음악앱과 연동시켰습니다.
 
 ==출처==
-http://blog.naver.com/PostView.nhn?
-blogId=space5084&logNo=60137851539&categoryNo=15&viewDate=&currentPage=1&listtype=0 --> marquee효과를 위해 참조함
+http://blog.naver.com/PostView.nhn?blogId=space5084&logNo=60137851539&categoryNo=15&viewDate=&currentPage=1&listtype=0 --> marquee효과를 위해 참조함
 
 http://www.wikihow.com/Do-a-Push-Up --> Push up에 대한 내용과 사진을 참조함
 
