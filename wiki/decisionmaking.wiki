@@ -7,3 +7,5 @@
 
 
 = Details =
+
+https://comp166-koreauniv.googlecode.com/files/decisionmaking.png
