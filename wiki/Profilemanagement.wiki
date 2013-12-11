@@ -1,4 +1,6 @@
+#summary 벽돌깨기 게임
 #labels 201190714김동환
+
 = Introduction =
 벽돌깨기 게임
 
@@ -893,5 +895,3 @@ public class About extends Activity {
 }}}
 
 _출처 : [도서] 실전 앱 프로젝트 안드로이드 게임 개발편 (박승제 저/ 제이펍 출판)
-
-
