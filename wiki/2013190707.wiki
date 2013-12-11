@@ -919,105 +919,12 @@ public class Test
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
-import javax.sound.midi.*;
-
-public class MiniMiniMusicApp
-{
-        public static void main(String[] args)
-        {
-                MiniMiniMusicApp mini = new MiniMiniMusicApp();
-                mini.play();//play 메소드 호출
-        }
-        
-        public void play()//play 메소드
-        {
-                try
-                {
-                        Sequencer player = MidiSystem.getSequencer();//Sequencer를 얻음
-                        player.open();//Sequencer를 연다
-                        
-                        Sequence seq = new Sequence(Sequence.PPQ, 4);
-                        
-                        
-                        Track track = seq.createTrack();//Track를 생성
-                        
-                        ShortMessage a = new ShortMessage();
-                        a.setMessage(144, 1, 44, 100);
-                        MidiEvent noteOn = new MidiEvent(a, 1);
-                        track.add(noteOn);
-                        
-                        ShortMessage b = new ShortMessage();
-                        b.setMessage(128, 1, 44, 100);
-                        MidiEvent noteOff = new MidiEvent(b, 16);
-                        track.add(noteOff);
-                        
-                 
-                      
-              
-                        
-                        player.setSequence(seq);//Sequencer에 Sequence를 보냅니다.
-                        
-                        player.start();//Sequencer의 start()메소드를 호출.
-                        
-                }
-                catch(Exception ex)
-                {
-                        ex.printStackTrace();
-                        
-                }
-                
-        }//play 메소드 끝
-}// 클래스 끝
 
 }}}
 
 *380p~ 두번째 사운드 애플리케이션* _구현후 주석달기_
 
 {{{
-import javax.sound.midi.*;
-
-public class MiniMusicCmdLine { 
-
-        public static void main(String[]args){
-                MiniMusicCmdLine mini = new MiniMusicCmdLine();//MiniMusicCmdLine 생성
-                if(args.length<2){
-                        System.out.println("악기와 음 높이를 지정하는 인자를 입력하세요.");
-                }else{
-                        int instrument = Integer.parseInt(args[0]);
-                        int note = Integer.parseInt(args[1]);
-                        mini.play(instrument, note);//인자를 전달하면서 play메소드호출
-                }
-        } //main 끝
-
-         
-        public void play (int instrument, int note){//play메소드
-                try{
-                        Sequencer player = MidiSystem.getSequencer();
-                        player.open();
-                        Sequence seq = new Sequence(Sequence.PPQ, 4);
-                        Track track = seq.createTrack();
-
-                        MidiEvent event = null;
-
-                        ShortMessage first = new ShortMessage();
-                        first.setMessage(192,1,instrument,0);
-                        MidiEvent changeInstrument = new MidiEvent(first, 1);
-                        track.add(changeInstrument);
-
-                        ShortMessage a = new ShortMessage();
-                        a.setMessage(144,1,note,100);
-                        MidiEvent noteOn = new MidiEvent(a,1);
-                        track.add(noteOn);
-
-                        ShortMessage b = new ShortMessage();
-                        a.setMessage(128,1,note,100);
-                        MidiEvent noteOff = new MidiEvent(b,16);
-                        track.add(noteOff);
-                        player.setSequence(seq);
-                        player.start();
-                }catch(Exception ex){ex.printStackTrace();}
-        } // play 메소드 끝
-} // 클래스 끝
 
 }}}
 
