@@ -37,6 +37,7 @@
 
 = APK file =
 1. apk 압축 파일 : [http://comp166-koreauniv.googlecode.com/files/APK.zip]
+  - 제가 게임을 구현할 때 어플 내에서 다른 어플을 구동하도록 만들었기 때문에 3가지 파일을 다 다운받으셔야 할 거 같아요.
 
 2. 소스 코드 파일 : [http://comp166-koreauniv.googlecode.com/files/PuzzleJH]
 
@@ -3549,3 +3550,8 @@ public class RemoveObserver implements Runnable {
 	
 }
 }}}
+
+= Reference =
+게임 소스 : http://ryulib.tistory.com/121
+게임 자체의 소스의 출처입니다. 맨처음 메인화면에서 버튼을 눌러 다른 액티비티로 이동하고 어플 내의 버튼을 누르면 다른 어플이 실행되는 상황은 제가 구현했습니다.^_^
+게임 자체의 소스도 변경하여 easy모드와 hard모드로 나누어서 퍼즐의 크기를 다르게 하여 난이도 조절을 했습니다.
