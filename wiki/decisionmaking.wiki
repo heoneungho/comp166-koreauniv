@@ -962,6 +962,332 @@ public class DiceActivity extends Activity {
 }}}
 
 
+FoodDatabase.java
+{{{
+
+package com.example.decisionmaking;
+
+import java.io.File;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
+
+public class FoodDatabase {
+	private static final String DATABASE_NAME = "/sdcard/android/data/com.example.decisionmaking/food.db";
+	private static final String TABLE_NAME = "FoodTable";
+	private static final String dbCreateString = "create table IF NOT EXISTS "
+			+ TABLE_NAME
+			+ " (_id integer primary key autoincrement,"
+			+ "name text,image text,foodgroup integer,calories integer,preference float);";
+
+	public static SQLiteDatabase myDatabase;
+
+	public static void createDatabase() {
+
+		File dbfile = new File(DATABASE_NAME);
+
+		// db파일이 없으면 생성함.
+		if (!CheckDatabase("/sdcard/android/data/com.example.decisionmaking/food.db")) {
+			myDatabase = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+
+			myDatabase.execSQL(dbCreateString);
+			// 찌개 국 탕
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"된장찌개\",\"dwinjangjjigae\",1,124,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"김치찌개\",\"gimchijjigae\",1,276,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"곰탕\",\"gomtang\",1,190,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"해장국\",\"haejangguk\",1,254,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"만두국\",\"manduguk\",1,480,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"순대국\",\"sundaeguk\",1,341,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"순두부찌개\",\"sundubujjigae\",1,253,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"비지찌개\",\"bijijjigae\",1,293,0);");
+			// 죽.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"죽\",\"juk\",2,348,0);");
+			// 찜 삶음 전.
+			// myDatabase.execSQL("insert into FoodTable values (null,\"해물파전\",\"haemulpajeon\",3,831,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"파전\",\"pajeon\",3,369,0);");
+			// 구이.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"삼겹살\",\"samgyeopsal\",4,662,0);");
+			// 비빔밥 볶음밥 오믈렛.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"비빔밥\",\"bibimbap\",5,559,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"오므라이스\",\"omurice\",5,420,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"제육복음\",\"jeyukbokkum\",5,557,0);");
+			// 국수, 우동, 냉면
+			// myDatabase.execSQL("insert into FoodTable values (null,\"칼국수\",\"kalguksu\",6,422,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"냉면\",\"nangmyeon\",6,542,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"우동\",\"udong\",6,702,0);");
+			// 낙지볶음, 불닭, 쭈꾸미 볶음, 불면.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"낚지볶음\",\"nakjibokkum\",7,366,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"불닭\",\"buldak\",7,665,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"쭈꾸미볶음\",\"jukumibokkum\",7,448,0);");
+			// 사시미, 롤, 스시.
+			// myDatabase.execSQL("insert into FoodTable values (null,\"롤\",\"rollfood\",8,725,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"스시\",\"sushi\",8,725,0);");
+			// myDatabase.execSQL("insert into FoodTable values (null,\"물회\",\"mulhoe\",8,335,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"회\",\"hoe\",8,228,0);");
+			// 짜장면, 짬뽕, 탕수육, 중국음식.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"짜장면\",\"jjajangmyeon\",9,864,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"짬뽕\",\"jjambbong\",9,788,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"탕수육\",\"tangsuyuk\",9,481,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"류산슬밥\",\"ryusansulbap\",9,600,0);");
+			// 스테이크.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"스테이크\",\"steak\",10,897,0);");
+			// 피자, 파스타, 이탈리아음식.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"피자\",\"pizza\",11,269,0);");
+			// myDatabase.execSQL("insert into FoodTable values (null,\"오일파스타\",\"oilpasta\",11,270,0);");
+			// 쌀국수, 카레, 에스닉푸드.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"쌀국수\",\"ssalguksu\",12,565,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"카레\",\"curry\",12,417,0);");
+			// 떡볶이, 순대, 김밥, 라면, 만두.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"떡볶이\",\"ddukbbokki\",13,280,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"순대\",\"sundae\",13,517,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"김밥\",\"gimbap\",13,484,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"라면\",\"ramyeon\",13,540,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"만두\",\"mandu\",13,595,0);");
+			// 햄버거, 샌드위치, 빵, 패스트푸드.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"햄버거\",\"hamburger\",14,422,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"샌드위치\",\"sandwichi\",14,474,0);");
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"핫도그\",\"hotdog\",14,109,0);");
+			// 치킨.
+			myDatabase
+					.execSQL("insert into FoodTable values (null,\"치킨\",\"chicken\",15,269,0);");
+		} else {
+			myDatabase = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+		}
+
+	}
+
+	/** 음식 선택 메소드 */
+	public static String Select_by(int option) {
+		String food = "";
+		if (option == 1) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE foodgroup=11 OR foodgroup=4 OR foodgroup=8 OR foodgroup=10 OR foodgroup=15 OR foodgroup=1 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		} else if (option == 2) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE foodgroup=1 OR foodgroup=14 OR foodgroup=13 OR foodgroup=3 OR foodgroup=6 OR foodgroup=11 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+
+		else if (option == 3) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE foodgroup=1 OR foodgroup=13 OR foodgroup=3 OR foodgroup=2 OR foodgroup=5 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+
+		else if (option == 4) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE foodgroup=7 OR foodgroup=13 OR foodgroup=3 OR foodgroup=5 OR foodgroup=1 OR foodgroup=15 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+
+		else if (option == 300) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE calories<301 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+
+		else if (option == 400) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE calories<401 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+
+		else if (option == 500) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE calories<501 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		} else if (option == 3000) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE preference>3.0 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		} else if (option == 4000) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE preference>4.0 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		} else if (option == 5000) {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE preference=5.0 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+
+		else {
+			Cursor cursor = myDatabase
+					.rawQuery(
+							"SELECT image FROM FoodTable WHERE foodgroup=1 ORDER BY RANDOM()",
+							null);
+			cursor.moveToFirst();
+			if (cursor.getCount() > 0)
+				food = cursor.getString(0);
+			cursor.close();
+		}
+		return food;
+
+	}
+
+	/** image로 name 찾는 함수 */
+	public static String get_name(String image) {
+		String name = "";
+		Cursor cursor = myDatabase.rawQuery(
+				"SELECT name FROM FoodTable WHERE image=\"" + image + "\"",
+				null);
+		cursor.moveToFirst();
+		if (cursor.getCount() > 0)
+			name = cursor.getString(0);
+		cursor.close();
+		return name;
+	}
+
+	/** image로 calories 찾는 함수 */
+	public static String get_calories(String image) {
+		String calories = "";
+		Cursor cursor = myDatabase.rawQuery(
+				"SELECT calories FROM FoodTable WHERE image=\"" + image + "\"",
+				null);
+		cursor.moveToFirst();
+		if (cursor.getCount() > 0)
+			calories = cursor.getString(0);
+		cursor.close();
+		return calories;
+	}
+
+	/** image로 preference 찾는 함수 */
+	public static float get_preference(String image) {
+		float preference = 0;
+		Cursor cursor = myDatabase.rawQuery(
+				"SELECT preference FROM FoodTable WHERE image=\"" + image
+						+ "\"", null);
+		cursor.moveToFirst();
+		if (cursor.getCount() > 0)
+			preference = Float.parseFloat(cursor.getString(0));
+		cursor.close();
+		return preference;
+	}
+
+	/** db파일 있나 체크하는 함수 */
+	public static boolean CheckDatabase(String DB_FULL_PATH) {
+		SQLiteDatabase checkDB = null;
+		try {
+			checkDB = SQLiteDatabase.openDatabase(DB_FULL_PATH, null,
+					SQLiteDatabase.OPEN_READONLY);
+			checkDB.close();
+		} catch (SQLiteException e) {
+			// database doesn't exist yet.
+			return false;
+		}
+		return checkDB != null ? true : false;
+	}
+
+	/** 업로드 함수 */
+	public static void InsertData(String name, String image, String group,
+			String calories) {
+		myDatabase.execSQL("insert into FoodTable values (null,\"" + name
+				+ "\",\"" + image + "\"," + group + "," + calories + ",1);");
+
+	}
+
+	/** 업데이트 함수 */
+	public static void UpdateData(String image, float preference) {
+		myDatabase.execSQL("update FoodTable set preference="
+				+ Float.toString(preference) + " where image=\"" + image
+				+ "\";");
+
+	}
+
+}
+
+}}}
+
+
 
 activity_main.xml
 {{{
