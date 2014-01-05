@@ -1862,9 +1862,9 @@ class MyDrawPanel extends JPanel implements ControllerEventListener {
 	               repaint();  
 	           }  
 	             
-	           public void paintComponent(Graphics2D g) {// ControllerEvent가 발생한 경우에만 그림을 다시 그려야하므로 플래그를 씁니다.
+	           public void paintComponent(Graphics2D g) {
   
-	               if (msg) {  
+	               if (msg) {//색 설정이랑 직사각형 설정  
 	                   Graphics2D g2 = (Graphics2D) g;  
 	                   int r = (int) (Math.random() * 250);  
 	                   int gr = (int) (Math.random() * 250);  
@@ -1883,7 +1883,7 @@ class MyDrawPanel extends JPanel implements ControllerEventListener {
 	           }  
 	       }  
 
-//근데 겁나 인터넷 찾아가면서 했는데 뮤직비디오는 안뜨고 음악만 떠서 짜증
+//구글 보면서 했는데 뮤직비디오는 안뜨고 음악만 뜬건 함정 ㅎ
 }}}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
