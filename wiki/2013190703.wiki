@@ -1525,6 +1525,24 @@ public class MiniMusicCmdLine {
 *389p~ 첫번째 GUI:버튼* _구현후 주석달기_
 
 {{{
+import javax.swing.*; //반드시 불러와야 하는 스윙 패키지
+
+public class SimpleGui1 {
+	public static void main (String[] args){
+		JFrame frame = new JFrame(); //프레임생성
+		JButton button = new JButton("click me"); //버튼생성, 버튼 텍스트 : click me
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//창을 닫았을 때 프로그램이 바로 종료 되게 하는 코드
+		
+		frame.getContentPane().add(button);
+		//버튼을 프레임의 내용 틀에 추가
+		frame.setSize(300,300);
+		//프레임의 크기를 픽셀 단위로 지정
+		frame.setVisible(true);
+		//화면에 표시되도록 설정
+	}
+}
 
 }}}
 
