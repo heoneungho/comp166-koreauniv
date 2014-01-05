@@ -1583,18 +1583,200 @@ public class SimpleGui1B implements ActionListener {
 *405p 버튼과 원의색* _구현후 주석달기_
 
 {{{
+package circle;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleGui3C implements ActionListener{
+	JFrame frame; // 프레임 생성
+
+    public static void main(String [] args){
+            SimpleGui3C gui=new SimpleGui3C();
+            gui.go();
+    }
+
+    public void go() {
+            frame=new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JButton button = new JButton("Change colors"); 
+            button.addActionListener(this); // 액션 리스너 설정
+
+            MyDrawPanel drawPanel = new MyDrawPanel(); // drawPanel 객체를 생성
+
+            frame.getContentPane().add(BorderLayout.SOUTH,button); // 버튼을 프레임에 추가
+            frame.getContentPane().add(BorderLayout.CENTER, drawPanel); // 그림 패널을 프레임에 추가
+            frame.setSize(300,300); 
+            frame.setVisible(true);
+    }
+    public void actionPerformed(ActionEvent event){
+            frame.repaint(); // 사용자가 버튼을 클릭하면 repaint메소드를 호출합니다. 그러면 그 프레임에 들어있는 모든 위젯의 paintComponent가 호출됩니다.
+    }
+
+}
+package circle;
+
+import java.awt.*;
+import javax.swing.JPanel;
+
+/* 원을 무작위적으로 선택한 색으로 칠하기 위한 코드 */
+public class MyDrawPanel extends JPanel{
+	 public void paintComponent(Graphics g){
+         
+		g.fillRect(0, 0, this.getWidth(), this.getHeight()); //배경  : 검은색
+
+         int red = (int)(Math.random()*256); 
+         int green = (int)(Math.random()*256);
+         int blue = (int)(Math.random()*256);
+         
+         Color randomColor = new Color(red,green,blue);
+         g.setColor(randomColor);
+         g.fillOval(70,70,100,100); //왼쪽에서 70픽셀, 위에서 70픽셀 떨어진 곳에 너비와 높이가 각각 100픽셀인 (타)원을 만듦
+ }
+
+}
 
 }}}
 
 *413p 두개의 버튼과 원의색* _구현후 주석달기_
 
 {{{
+package twobuttons;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class TwoButtons {
+	 JFrame frame; 
+     JLabel label; 
+
+     public static void main(String args[]){
+             TwoButtons gui = new TwoButtons();
+             gui.go();
+     }
+
+     public void go(){
+             frame=new JFrame();
+             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+             JButton labelButton = new JButton ("Change Label");
+             labelButton.addActionListener(new LabelListener());
+             // 버튼의 리스너 등록 메소드에 this가 아닌 다른 리스너 클래스를 갖고 만든 객체를 전달 합니다.
+
+             JButton colorButton = new JButton ("Change Circle");
+             colorButton.addActionListener(new ColorListener());
+             // 버튼의 리스너 등록 메소드에 this가 아닌 다른 리스너 클래스를 갖고 만든 객체를 전달 합니다.
+
+             label = new JLabel("I'm a lebel");
+             MyDrawPanel drawPanel = new MyDrawPanel();
+
+             // 프레임에서 각 버튼과 판넬의 위치를 설정
+             frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+             frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+             frame.getContentPane().add(BorderLayout.EAST, labelButton);
+             frame.getContentPane().add(BorderLayout.WEST, label);
+
+             frame.setSize(300,300);
+             frame.setVisible(true);
+     }
+
+}
+
+class LabelListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        label.setText("Ouch!"); // 내부 클래스에서도 label 변수를 사용할 수 있습니다.
+                }
+        } // 내부 클래스 끝
+
+class ColorListener implements ActionListener{
+                public void actionPerformed(ActionEvent event){
+                        frame.repaint(); // 내부 클래스에서 외부 클래스 객체에 대한 레퍼런스 없이 그냥 frame 인스턴스 변수를 사용하면 됩니다.
+                }
+        } // 내부 클래스 끝
+
+package twobuttons;
+
+import java.awt.*;
+import javax.swing.JPanel;
+
+public class MyDrawPanel extends JPanel{
+	 public void paintComponent(Graphics g){
+         
+		g.fillRect(0, 0, this.getWidth(), this.getHeight()); 
+
+         int red = (int)(Math.random()*256); 
+         int green = (int)(Math.random()*256);
+         int blue = (int)(Math.random()*256);
+         
+         Color randomColor = new Color(red,green,blue);
+         g.setColor(randomColor);
+         g.fillOval(70,70,100,100); 
+ }
+
+}
 
 }}}
 
 *418p 간단한 애니메이션* _구현후 주석달기_
 
 {{{
+import javax.swing.*;
+import java.awt.*;
+
+public class SimpleAnimation{
+
+        int x=70;
+        int y=70;
+        // 원의 x와 y좌표를 저장하기 위한 인스턴스 변수 두 개를 만듭니다.
+        
+        public static void main(String args[]){
+                SimpleAnimation gui = new SimpleAnimation();
+                gui.go();
+        }
+
+        public void go(){
+
+                JFrame frame=new JFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                MyDrawPanel drawPanel = new MyDrawPanel();
+                // 위젯을 만들고, 프레임에 집어 넣습니다.
+                frame.getContentPane().add(drawPanel);
+                frame.setSize(300,300);
+                frame.setVisible(true);
+
+                for(int i=0;i<300;i++){
+
+                // 애니메이션을 수행하는 부분입니다. 300번 반복합니다.
+                        x++;
+                        y++;
+                        //x와 y 좌표를 증가시킵니다.
+
+                        drawPanel.repaint(); // 스스로 다시 칠하도록 패널에게 말합니다.
+                        try{
+                                Thread.sleep(50); //속도를 약간 줄입니다.
+                        }catch(Exception ex){}
+                }
+        } // go()메소드 끝
+
+        @SuppressWarnings("serial") // 컴파일러에 명령하여 오류를 수정했습니다.
+        // 내부클래스입니다.
+        class MyDrawPanel extends JPanel{
+                public void paintComponent(Graphics g){
+                        g.setColor(Color.white);
+                        
+                        g.fillRect(0,0,this.getWidth(),this.getHeight()); //getWidth(), getHeight()는 JPanel로부터 상속 받은 메소드입니다.
+
+                        g.setColor(Color.green);
+                        //지속적으로 갱신되는 외부클래스의 x, y 좌표를 사용합니다.
+                        g.fillOval(x, y, 40, 40); 
+                }
+        } // 내부 클래스 끝
+}
 
 }}}
 
