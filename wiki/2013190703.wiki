@@ -1883,7 +1883,6 @@ class MyDrawPanel extends JPanel implements ControllerEventListener {
 	           }  
 	       }  
 
-
 }}}
 
 = 13. 스윙을 알아봅시다:레이아웃 관리와 구성요소  =
