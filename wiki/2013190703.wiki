@@ -2316,7 +2316,7 @@ public class BeatBox {
         			ex.printStackTrace();
         		}
         	}
-        }
+        }//내부클래스 끝
         
         
         /* 비트박스 프로그램 패턴 복구입니다. */
