@@ -2370,6 +2370,5 @@ public class BeatBox {
 
         }
         
-
 }//클래스 끝
 }}}
