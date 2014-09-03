@@ -7,6 +7,32 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
+public class BeerSong {
+    public static void main(String[] args) {
+        int beerNum = 99;  // beerNum이란 변수에 99 저장
+        String word = "bottles"; // word란 문자열에 bottles 저장
+        while (beerNum > 0) // beerNum이 0보다 크면 반복
+        {
+            if (beerNum == 1) // beerNum이 1이면 word에 bottle 저장
+            {
+                word = "bottle";
+            }
+            System.out.println(beerNum + " " + word + " of beer on the wall");// 현재 beerNum 수와 word에 저장 된 값 과 함께 문자열 출력
+            System.out.println(beerNum + " " + word + " of beer");// 현재 beerNum 수와 word에 저장 된 값 과 함께 문자열 출력
+            System.out.println("Take one down.");// 출력
+            System.out.println("Pass it around.");//출력
+            beerNum = beerNum - 1;//beerNum에 1을 뺀다.
+            if (beerNum > 0) // beerNum수가 0보다 크면 현재 beerNum 수와 word에 저장 된 값 과 함께 문자열 출력
+            {
+                System.out.println(beerNum +  " " + word + " of beer on the wall");
+            }
+            else // beerNum의 수가 0 이면 문자열 출력
+            {
+                System.out.println("No more bottles of beer on the wall");
+            }
+        }
+    }
+}
 
 }}}
 
