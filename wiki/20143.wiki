@@ -57,12 +57,64 @@ public class PhraseOMatic {
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 프로그램을 실행시키고 유형의 변경이 일어날때도 문제가 일어났다는 classcast exception을 발생시킨다. 바이트 코트가 만들어진 다음 바이트코드가 실행되기 전까지 다른 누군가가 그걸 건드리지 않았는지 확인하는 역활도 한다.
+ * 컴파일러: 일일이 바이트코드(기계어)를 짜지 않아도 되게 해주는 것이다. 인간이 보기에 편한 언어를 기계어로 바꿔주는 역활을 하며, 문법적 오류, 유형 위반사항 , 보안상의 메소드 변경 등을 미리 찾아낸다.
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+
+public class Exercise1a {
+
+	public static void main(String[] args) {
+		int x = 1;
+		while ( x<10)
+		{
+			x = x + 1 ; //숫자 변화를 줬습니다! //
+			if (x >3)
+			{
+			System.out.println("big x");	
+			}
+		}
+
+	}
+
+}
+
+//클래스를 추가해주었지요!//
+public class Tobecompilerer {
+
+	public static void main(String[] args) {
+		int x = 5;
+		while (x > 1) {
+			x = x - 1;
+			if( x<3) {
+				System.out.println("small x");
+			}
+		}
+	}
+
+}
+
+
+public class Exercise1c {
+
+	public static void main(String[] args) {
+		int x = 5; //메소드를 만들어 주었습니다! //
+		while ( x> 1)
+		{
+			x = x - 1;
+			if (x <3) 
+			{
+				System.out.println("small x");
+			}
+		}
+
+	}
+
+}
+
+
 
 }}}
 
