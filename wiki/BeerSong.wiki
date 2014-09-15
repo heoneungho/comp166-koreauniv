@@ -26,7 +26,7 @@ public class BeerSong  //어디에서든 접근가능한 BeerSong 클래스 선�
 			
 
 			//if(beerNum >0)
-			//{
+			{
 				//System.out.println(beerNum + " " + word + " of beer on the wall\n"); 
 			//} 이 if문은 while문의 조건인 'beerNum>0'과 겹친다. if문의 조건을 'beerNum<1'로 수정한다.
              if(beerNum<1) 
