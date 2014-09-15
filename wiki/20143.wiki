@@ -7,7 +7,31 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-
+//일단 비어송이라는 클래스를 퍼블릭 형식으로 만듭니다.//
+public class BeerSong {
+    public static void main(String[] args) {
+        int beerNum = 99;
+        String word = "bottles";
+        while (beerNum > 0)
+        {
+            if (beerNum == 1)
+            {
+                word = "bottle";
+            } 
+            System.out.println(beerNum + " " + word + " of beer on the wall");
+            System.out.println(beerNum + " " + word + " of beer");
+            System.out.println("Take one down.");
+            System.out.println("Pass it around.");
+            
+            beerNum = beerNum - 1;
+            //비어넘에는 현재 남아있는 병 숫자, word에는 비어넘이 2~99일때는 bottles 1되면 bottle, 그리고 of beer on the wall 이라는 숫자가 붙어서 출력되겠네요//
+            if (beerNum == 0) //beer 송 노래가 뭔지는 잘 모르겠는데요, 보통 한국노래가 4줄씩이니까 이렇게 해야되지 않을까요? 한국식으로 바꿔보았습니다 ㅎ//
+            {
+               System.out.println("No more bottle of beer on the wall");
+            }
+        }
+    }
+}
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
