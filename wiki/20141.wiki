@@ -58,27 +58,155 @@ public class BeerSong {
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 클래스 내에서 쓰이는 변수, 객체가 알고 있는 것
+ * 메소드: 절차적언어에서 함수의 개념, 클래스 내에서 쓰이는 함수, 객체가 직접 하는 것.
+ * 클래스: 비슷한 요소를 가진 각각의 객체를 만들기 위한 설계도
+ * 테스트용 클래스: 클래스가 잘 돌아가는지 테스트하는 클래스이다. main이 들어 가있다.
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: 전원변수, 채널변수, 볼륨변수등
+ * 메소드: 전원켜기, 채널 바꾸기, 볼륨 바꾸기 등등
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+public class GuessGame {
+
+   Player p1;
+   Player p2;
+   Player p3;
+   Player p4;
+   
+   public void startGame() {
+       p1 = new Player();
+       p2 = new Player();
+       p3 = new Player();
+       p4 = new Player();
+       
+       int guessp1 = 0;
+       int guessp2 = 0;
+       int guessp3 = 0;
+       int guessp4 = 0;
+       
+       boolean p1isRight = false;
+       boolean p2isRight = false;
+       boolean p3isRight = false;
+       boolean p4isRight = false;
+       
+       int targetNumber = (int) (Math.random() * 10);
+       System.out.println("I'm thinking of a number between 0 and 9...");
+       
+       while(true) {
+           System.out.println("Number to guess is " + targetNumber);
+           
+           p1.guess();
+           p2.guess();
+           p3.guess();
+           p4.guess();
+           
+           guessp1 = p1.number;
+           System.out.println("Player one guessed " + guessp1);
+           guessp2 = p2.number;
+           System.out.println("Player two guessed " + guessp2);
+           guessp3 = p3.number;
+           System.out.println("Player three guessed " + guessp3);
+           guessp4 = p4.number;
+           System.out.println("Player four guessed " + guessp4);
+           
+           if (guessp1 == targetNumber) {
+               p1isRight = true;
+           }
+           if (guessp2 == targetNumber) {
+               p2isRight = true;
+           }
+           if (guessp3 == targetNumber) {
+               p3isRight = true;
+           }
+           if (guessp4 == targetNumber) {
+               p3isRight = true;
+           }
+           
+           if (p1isRight || p2isRight || p3isRight)
+           {
+               System.out.println("We have a winner!");
+               System.out.println("Player one got it right? " + p1isRight);
+               System.out.println("Player two got it right? " + p2isRight);
+               System.out.println("Player three got it right? " + p3isRight);
+               System.out.println("Player four got it right? " + p4isRight);
+               System.out.println("Game is over");
+               break;
+           }
+           else
+           {
+               System.out.println("Players will have to try again.");
+           }
+       }
+   }
+}
 
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class TapeDeck {
+	
+	boolean canRecord = false; // 녹음 할 수 없는 테이프
+	
+	void playTape(){
+		System.out.println("tape playing"); // 테이프 재생
+	}
+	
+	void recordTape(){
+		System.out.println("tape recording"); // 테이프 녹음
+	}
+
+}
+
+public class TapeDeckTestDrive {
+	public static void main(String [] args){
+		TapeDeck t = new TapeDeck(); // 테이프 객체 만듦
+		
+		t.canRecord = true; // 테이프 녹음 가능 지정
+		t.playTape(); // 테이프 재생
+		
+		if(t.canRecord == true){
+			t.recordTape();
+		} // 테이프 녹음 가능하면 녹음
+	}
+
+}
+
+public class DVDPlayer {
+	
+	boolean canRecord = false; // DVD 기록 불가
+	
+	void playDVD(){
+		System.out.println("DVD playing");
+	} // DVD 재생
+	
+	void recordDVD(){
+		System.out.println("DVD recording");
+	} // DVD 녹음
+}
+
+
+public class DVDPlayerTestDrive {
+	public static void main(String [] args){
+		DVDPlayer d = new DVDPlayer(); // DVD 객체 생성
+		
+		d.canRecord = true; // DVD 기록 가능 지정
+		d.playDVD(); // DVD 재생
+		
+		if(d.canRecord == true){
+			d.recordDVD();
+		} // DVD 기록 가능하면 기록
+	}
+
+}
 
 }}}
 
