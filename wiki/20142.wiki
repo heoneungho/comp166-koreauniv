@@ -7,7 +7,7 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-ublic class BeerSong {
+public class BeerSong {
 
     public static void main(String args) {
         int beerNum = 99; String word = "bottles"; // 복수형                                                                                                             
