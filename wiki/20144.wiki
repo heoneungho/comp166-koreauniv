@@ -36,6 +36,26 @@ public class Beersong {
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
 
 {{{
+package gjkkj;
+
+public class PhraseOMatic {
+	public static void main (String[] args) {
+		String[] wordlistone = {"dota2","league of legends","hearthstone","diablo3","starcraft2"};
+		String[] wordlisttwo = {"had","empowered","shared","focused","aligned"};
+		String[] wordlistthree = {"solution","creativity","power","point"};
+		
+		int onelength = wordlistone.length;
+		int twolength = wordlisttwo.length;
+		int threelength = wordlistthree.length;
+		
+		int rand1 = (int) (Math.random() * onelength);
+		int rand2 = (int) (Math.random() * twolength);
+		int rand3 = (int) (Math.random() * threelength);
+		String phrase = wordlistone[rand1]+" "+wordlisttwo[rand2]+" "+wordlistthree[rand3];
+		System.out.println("What we need is a "+ phrase);
+		}
+
+}
 
 }}}
 
