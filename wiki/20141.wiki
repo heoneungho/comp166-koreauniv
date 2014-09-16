@@ -235,8 +235,7 @@ public class DVDPlayerTestDrive {
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수: 원시변수는 해당변수의 크기를 나타내는 비트들이 저장 ex) boolean, char, byte, short, int, long, float, double
-레퍼럿느 변수는 객체에 접근하는 방법을 알려주는 비트가 들어있다. 객체 자체가 저장되는 것이 아니라 접근을 가능하게 해주는 리모컨과 같은 역할이다.
+ * 원시변수 vs 레퍼런스변수: 원시변수는 해당변수의 크기를 나타내는 비트들이 저장 ex) boolean, char, byte, short, int, long, float, double등이 있다. 레퍼런스 변수는 객체에 접근하는 방법을 알려주는 비트가 들어있다. 객체 자체가 저장되는 것이 아니라 접근을 가능하게 해주는 리모컨과 같은 역할이다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
