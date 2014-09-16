@@ -71,7 +71,43 @@ public class PhraseOMatic {
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class Exercis1b {
+	public static void main(String [] args){
+		int x =1;
+		while(x < 10){
+			if ( x > 3){
+				System.out.println("big x");
+			}
+			x+=1; // 이것이 없었다면 무한루프에서 스스로 빠져나오지 못한다.
+		}
+	}
+}
 
+public class Exercise1b // 클래스 밖에있는 메소드는 없다. 클래스로 감싸줘야한다.
+{
+	public static void main(String [] args){
+		int x =5;
+		while(x>1){
+			x=x-1;
+			if(x<3){
+				System.out.println("small x");
+			}
+		}
+	}
+}
+
+public class Exercise1b {
+	public static void main(String [] args) // class 안에 당연히 메소드도 있어야한다.
+{
+	int x = 5;
+	while(x>1){
+		x = x-1;
+		if ( x<3){
+			System.out.println("small x");
+			}
+		}
+	}
+}
 }}}
 
 
