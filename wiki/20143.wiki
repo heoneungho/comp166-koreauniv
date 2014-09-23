@@ -307,10 +307,44 @@ public class DVDPlayerTestDrive {
  * 원시변수 vs 레퍼런스변수:
 원시변수 : 정수 , 부울 , 부동소수점 수와 같은 기초적인 값
 레퍼런스변수 : 객체에 대한 레퍼런스가 있는 것.
+
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+public class Dog {
+    String name;
+    public static void main(String[] args) {
+        Dog dog1 = new Dog(); //객체 생성//
+        dog1.bark();
+        dog1.name = "Bart";
+        
+        Dog[] myDogs = new Dog[3];//배열을 만듭니다//
+        myDogs[0] = new Dog(); 
+        myDogs[1] = new Dog();
+        myDogs[2] = dog1; //각 배열에 개 이름을 넣고요//
+        
+        myDogs[0].name = "Fred";  //개이름이죠//
+        myDogs[1].name = "Marge";
+        
+        System.out.print("last don't name is ");
+        System.out.println(myDogs[2].name);
+        
+        int x = 0;
+        while (x < myDogs.length) { //책을 보니까 배열에 length 변수는 자동으로 있다네요//
+            myDogs[x].bark();
+            x = x+1;
+        }
+    }
+    public void bark() {
+        System.out.println(name + " says Ruff!"); //짖죠//
+    }
+    
+    public void eat() { }
+    
+    public void chaseCat() { }
+}
+
 
 }}}
 
