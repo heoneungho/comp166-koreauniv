@@ -10,7 +10,8 @@
 public class BeerSong {
 
     public static void main(String args) {
-        int beerNum = 99; String word = "bottles"; // 복수형                                                                                                             
+        int beerNum = 99; 
+        String word = "bottles"; // 복수형                                                                                                             
         while (beerNum>0) {
             System.out.println(beerNum + " " + word + " of beer on the wall");
             System.out.println(beerNum + " " + word + " of beer.");
