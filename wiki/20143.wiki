@@ -236,6 +236,67 @@ public class GameLauncher {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+package p78;
+
+class TapeDeck {
+	boolean canRecord = false; //참 거짓 구분기 만들기//
+	
+	void playTape(){
+		System.out.println("tape playing");
+	}
+	
+	void recordTape(){
+		System.out.println("tape recording");
+	}
+
+}
+package p78;
+
+public class TapeDackTestDrive {
+	public static void main(String arg[]){
+		TapeDeck t = new TapeDeck(); //이 부분을 추가해줍니다.//
+		t.canRecord = true;
+		t.playTape();
+		
+		if (t.canRecord == true) {
+			t.recordTape();
+		}
+		
+	}
+
+}
+package p78;
+
+class DVDPlayer {
+
+	public boolean canRecord = false; //앞에 public 붙이고요//
+
+	
+	
+	void recordDVD() {
+		System.out.println("DVD  recording");
+	}
+	void playDVD() {
+		System.out.println("DVD playing");
+	} //이부분 추가해줍니다//
+}
+package p78;
+
+public class DVDPlayerTestDrive {
+
+	public static void main(String[] args) {
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD();
+		
+		if(d.canRecord == true){
+			d.recordDVD();
+		}
+
+	}
+
+}
+
 
 }}}
 
