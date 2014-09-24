@@ -351,6 +351,80 @@ public class Dog {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+package p97;
+
+public class Books{
+	
+public String title;
+public String author;
+
+}
+package p97;
+
+
+
+public class BooksTestDrive {
+	
+	
+	public static void main(String[] args) {
+		
+		Books [] myBooks = new Books[3];
+		
+		myBooks[0] = new Books();
+		myBooks[1] = new Books();
+		myBooks[2] = new Books(); //객체를 넣어줍니다!//
+		
+		int x = 0;
+		myBooks[0].title = "The Grapes of Java";
+		myBooks[1].title = "The Java Gatsby";
+		myBooks[2].title = "The Java Cookbook";
+		myBooks[0].author = "bob";
+		myBooks[1].author = "sue";
+		myBooks[2].author = "ian";
+		
+		while(x<3){
+			System.out.println(myBooks[x].title);
+			System.out.print("by");
+			System.out.println(myBooks[x].author);
+			x = x+1;
+								
+		}
+		
+	}
+
+}
+package p97;
+
+public class Hobbits {
+	
+	public String name;
+	
+	public static void main(String [] args) {
+		
+		Hobbits [] h = new Hobbits [3];
+		int z = -1; //0부터 시작해야되니까 바꿔줍니다!//
+		
+		while (z<2) { //3까지 되면 배열을 초과하니까 2로 줄여주구요//
+			z = z + 1;
+			h[z] = new Hobbits();
+			h[z].name = "bilbo";
+			if (z == 1) {
+				h[z].name = "fredo";
+				
+			}
+			if (z ==2 ) {
+				h[z].name = "sam";
+				
+			}
+			System.out.println(h[z].name + " is a");
+			System.out.println("good Hobbit name");
+			
+		}
+	}
+	
+
+}
+
 
 }}}
 
