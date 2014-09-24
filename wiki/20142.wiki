@@ -70,6 +70,43 @@ public class PhraseOMatic {
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Exercise1b {
+    public static void main(String[] args) {
+	int x =	1;
+	while(x < 10) {
+            x =	x + 1;	   // 이 행이 없으면 while문이 영원히 반복되어 버립니다                                                                                          
+            if (x > 3) {
+		System.out.println("big x");
+            }
+	}
+    }
+}
+
+
+class Exercise1b {    // 클래스를 나타내주는 행과 중괄호가 있어야합니다                                                                                                
+    public static void main(String[] args) {
+	int 5;
+	while (x > 1) {
+            x =	x - 1;
+            if (x < 3) {
+		System.out.println("small x");
+            }
+	}
+    }
+} // 클래스의 마지막을 나타내는 중괄호입니다
+
+
+class Exercise1b {
+    public static void main(String[] args) {  // main()메소드가 필요합니다                                                                                             
+	int x =	5;
+	while (x > 1) {
+            x =	x - 1;
+            if (x < 3) {
+		System.out.println("small x");
+            }
+	}
+    } // main()메소드의 마지막을 나타내는 중괄호입니다                                                                                                                 
+}
 
 }}}
 
