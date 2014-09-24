@@ -73,11 +73,11 @@ public class PhraseOMatic {
 class Exercise1b {
     public static void main(String[] args) {
 	int x =	1;
-	while(x < 10) {
-            x =	x + 1;	   // 이 행이 없으면 while문이 영원히 반복되어 버립니다                                                                                          
+	while(x < 10) {                                                                                     
             if (x > 3) {
 		System.out.println("big x");
             }
+            x =	x + 1;	   // 이 행이 없으면 while문이 영원히 반복되어 버립니다     
 	}
     }
 }
