@@ -3,7 +3,7 @@
 <wiki:toc max_depth="1" />
 
 = 01. 껍질을 깨고:간단한 소개 =
-s
+
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
@@ -226,6 +226,50 @@ public class GuessGame {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class TapeDeck {
+	boolean canRecord = false;
+	void playTape() {
+		System.out.println("tape playing");
+	}
+	void recordTape() {
+		System.out.println("tape recording");
+	}
+
+}
+
+class TapeDeckTestDrive {
+	public static void main(String [] args) {
+		TapeDeck t = new TapeDeck(); //객체가 없어 오류가 난다. 객체 TapeDeck을 추가 해야함
+		t.canRecord =true;
+		t.playTape();
+		
+		if(t.canRecord == true) {
+			t.recordTape();
+		}
+	}
+}
+
+class DVDPlayer {
+	boolean canRecord = false;
+	void recordDVD() {
+		System.out.println("DVD recording");
+	}
+	void playDVD() {
+		System.out.println("DVD playing"); //아래 클래스에 있는 d.playDVD를 실행시키기위해 필요하다.
+	}
+
+}
+
+class DVDPlayerTestDrive {
+	public static void mai(String [] args) {
+		DVDPlayer d = new DVDPlayer();
+		d.canRecord = true;
+		d.playDVD();
+		if(d.canRecord == true) {
+			d.recordDVD();
+		}
+	}
+}
 
 }}}
 
