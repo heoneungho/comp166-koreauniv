@@ -488,7 +488,76 @@ public class Clock {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotComGame {
 
+	public static void main(String[] args) {
+		int numOfGuesses =0; //사용자의 추측횟수에 0을 초기화
+		GameHelper helper = new GameHelper(); //게임헬퍼 객체생성	
+		SimpleDotCom theDotCom = new SimpleDotCom(); //심플닷컴 객체생성
+		int randomNum=(int)(Math.random()*5); //0이상 5미만의 랜덤한 수 선택
+		
+		int[]locations = {randomNum, randomNum+1, randomNum+2};// 랜덤한 수 포함해서 앞으로 세칸까지를 지정
+		theDotCom.setLocationCells(locations);// 닷컴 장소를 보내줌
+		boolean isAlive = true; 아직 생존해있는 닷컴이
+		
+		while(isAlive == true){
+			String guess = helper.getUserInput("enter a number"); 헬퍼에 번호입력을 보냄
+			String result = theDotCom.checkYourself(guess); 헬퍼를 통해 얻은 번호를 닷컴에 보내서 결과반환
+			numOfGuesses++; 추측횟수 1증가
+			
+			if(result.equals("kill")){
+				isAlive = false;
+				System.out.println(numOfGuesses + " guesses");
+			}// 만약 모든 닷컴이 죽었으면 닷컴이 죽었다고 초기화 한 후 몇회 추측했는지 출력
+		}// 닷컴이가 죽을 때까지 추측한다.
+
+	}
+
+}
+
+import java.io.*;\
+public class GameHelper {
+	public String getUserInput(String prompt){
+		String inputLine = null;
+		System.out.println(prompt + " ");
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)return null;}
+		catch(IOException e){
+			System.out.println("IOException: "+e);
+		}
+		return inputLine;
+	}
+}
+
+public class SimpleDotCom {
+	int [] locationCells; 
+	int numOfHits =0;
+	
+	public void setLocationCells(int [] locs){
+		locationCells = locs;
+	}
+	
+	public String checkYourself (String stringGuess){
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i=0; i<locationCells.length;i++){
+			if(guess == locationCells[i]){
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length){
+			result = "kill";
+		}
+		System.out.println(result);
+		return result;
+		}
+
+}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
