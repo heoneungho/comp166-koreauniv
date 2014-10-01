@@ -213,6 +213,60 @@ public class GuessGame {
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class TapeDeck {
+
+    boolean canRecord =	false;
+
+    void playTape() {
+	System.out.println("tape playing");
+    }
+
+    void recordTape() {
+	System.out.println("tape recording");
+    }
+}
+
+class TapeDeckTestDrive	{
+    public static void main(String[] args) {
+	
+	TapeDeck t = new TapeDeck;  // 실제로 객체를 만듭니다                                                                                                          
+
+	t.canRecord = true;
+	t.playTape();
+
+	if (t.canrecord	== true) {
+            t.recordTape();
+	}
+    }
+}
+
+###################################################################################
+
+class DVDPlayer	{
+
+    boolean canRecord =	false;
+
+    void playDVD() {
+	System.out.println("DVD playing");   // 메소드를 정의해야 합니다                                                                                               
+    }
+    void recordDVD() {
+        System.out.println("DVD recording");
+    }
+}
+
+
+class DVDPlayerTestDrive {
+    public static void main(String[] args) {
+
+	DVDPlayer d = new DVDPlayer();
+	d.canRecord = true;
+	d.playDVD();
+
+	if (d.canRecord	== ture) {
+            d.recordDVD();
+	}
+    }
+}
 
 }}}
 
