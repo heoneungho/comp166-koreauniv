@@ -75,12 +75,50 @@ System.out.println("What we need is a " + phrase); //구문을 추출한다.   
 
 *52p 집중토론* _요약_
 
- * 자바 가상 머신:
- * 컴파일러:
+ * 자바 가상 머신: 컴파일러가 파일을 주면 그 파일을 실행시킨다. 보안 관련 작업을 처리한다. 바이트코드가 만들어진 다음 바이트코드가 실행되기 전까지 다른 접근이 일어나지 않는지 확인하는 작업을 한다.
+ * 컴파일러: 파일을 자바 가상 머신에게 넘겨준다. 소스 코드를 해석하여 문법이 맞는지 여부를 확인한다. 
 
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A. 
+class Exercise1b {
+public static void main(String [] args) {
+int x = 1;
+while (x<10){
+x=x+1; // 무한루프 방지
+if(x>3) {
+System.out.println("big x");
+}
+}
+}
+}
+
+B.
+class Exerciselb{ // 클래스를 정의해줘야한다.
+public static void main(String [] args){
+int x = 5;
+while (x>1) {
+x = x-1;
+if(x<3) {
+System.out.println("small x");
+}
+}
+}
+}
+
+C.
+class Exercise1b{
+public static void main(String [] args) { // while문은 클래스 안의 메소드 안에 있어야 한다.
+int x = 5;
+while (x>1) {
+x = x-1;
+if(x<3) {
+System.out.println("small x");
+}
+}
+}
+}
 
 }}}
 
@@ -89,21 +127,115 @@ System.out.println("What we need is a " + phrase); //구문을 추출한다.   
 
 *68p~ 클래스* _요약_
 
- * 인스턴스 변수:
- * 메소드:
- * 클래스:
- * 테스트용 클래스:
+ * 인스턴스 변수: 객체의 상태(데이터)를 나타내며 그 유형에 속하는 각 객체마다 값이 다르다.
+ * 메소드: 객체에서 할 수 있는 일
+ * 클래스: 가상머신에 그 유형의 객체를 만드는 방법을 알려준다.
+ * 테스트용 클래스: 새로운 클래스를 테스트하기 위한 클래스
  
 
 *68p Television* _채워넣기_
 
- * 인스턴스 변수:
- * 메소드:
+ * 인스턴스 변수: channel, volume
+ * 메소드: setChannel(), setVolume()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+GuessGame.java
+
+public class GuessGame {
+
+   Player p1;
+   Player p2;
+   Player p3;
+   Player p4;
+   
+   public void startGame() {
+       p1 = new Player();
+       p2 = new Player();
+       p3 = new Player();
+       p4 = new Player();
+       int guessp1 = 0;
+       int guessp2 = 0;
+       int guessp3 = 0;
+       int guessp4 = 0;
+       boolean p1isRight = false;
+       boolean p2isRight = false;
+       boolean p3isRight = false;
+       boolean p4isRight = false;
+       int targetNumber = (int) (Math.random() * 10);
+       System.out.println("I'm thinking of a number between 0 and 9...");
+       while(true) {
+           System.out.println("Number to guess is " + targetNumber);
+           
+           p1.guess();
+           p2.guess();
+           p3.guess();
+           p4.guess();
+
+           guessp1 = p1.number;
+           System.out.println("Player one guessed " + guessp1);
+           guessp2 = p2.number;
+           System.out.println("Player two guessed " + guessp2);
+           guessp3 = p3.number;
+           System.out.println("Player three guessed " + guessp3);
+           guessp4 = p4.number;
+           System.out.println("Player four guessed " + guessp4);
+           
+           if (guessp1 == targetNumber) {
+               p1isRight = true;
+           }
+           if (guessp2 == targetNumber) {
+               p2isRight = true;
+           }
+           if (guessp3 == targetNumber) {
+               p3isRight = true;
+           }
+           if (guessp4 == targetNumber) {
+               p4isRight = true;
+           }
+
+           if (p1isRight || p2isRight || p3isRight || p4isRight)
+           {
+               System.out.println("We have a winner!");
+               System.out.println("Player one got it right? " + p1isRight);
+               System.out.println("Player two got it right? " + p2isRight);
+               System.out.println("Player three got it right? " + p3isRight);
+               System.out.println("Player four got it right? " + p4isRight);
+               System.out.println("Game is over");
+               break;
+           }
+           else
+           {
+               System.out.println("Players will have to try again.");
+           }
+       }
+   }
+}
+
+
+GameLauncher.java
+
+public class GameLauncher {
+    public static void main (String[] args) {
+        GuessGame game = new GuessGame();
+        game.startGame();
+    }
+}
+
+
+Player.java
+
+public class Player {
+    int number = 0;
+    public void guess()
+    {
+        number = (int) (Math.random() * 10);
+        System.out.println("I'm guessing " + number);
+    }
+}
+
 
 }}}
 
@@ -111,17 +243,105 @@ System.out.println("What we need is a " + phrase); //구문을 추출한다.   
 
 {{{
 
+A.
+class TapeDeck {
+
+boolean canRecord = false;
+
+void playTape() {
+   System.out.println("tape playing");
+}
+
+void recordTape() {
+   System.out.println("tape recording");
+}
+}
+
+class TapeDeckTestDrive {
+ public static void main(String [] args) {
+  TapeDeck t = new TapeDeck(); //TapeDeck 객체를 선언해주어야 접근가능
+  t.canRecord = true;
+  t.playTape();
+
+  if (t.canRecord == true) {
+   t.recordTape();
+  }
+}
+}
+
+B.
+class DVDPlayer {
+ 
+ boolean canRecord = false;
+
+ void recordDVD() {
+   System.out.println("DVD recording");
+ }
+ void playDVD() { //playDVD 메소드 생성해주어야 함
+   System.out.println("DVD playing");
+ }
+}
+
+class DVDPlayerTestDrive {
+ public static void main(String [] args) {
+
+  DVDPlayer d = new DVDPlayer();
+  d.canRecord = true;
+  d.playDVD();
+
+  if (d.canRecord == true) {
+   d.recordDVD();
+  }
+ }
+}
 }}}
 
 = 03. 네 변수를알라:원시 변수와 레퍼런스  =
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시 변수 vs 레퍼런스변수:
+변수는 원시 변수(primitive variable)와 객체 레퍼런스(objectreference)로 나눌 수 있다. 원시 변수에는 정수, 부울, 부동소수점 수와 같은 기초적인 값(단순한 비트 패턴으로 나타낼 수 있는 값)이 들어가고, 객체 레퍼런스에는 객체에 대한 레퍼런스가 들어간다. 변수에는 유형과 이름이 있어야한다.
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+public class Dog {
+    String name;
+    public static void main(String[] args) {
+        //Dog 객체를 만들고 접근한다.
+        Dog dog1 = new Dog();
+        dog1.bark();
+        dog1.name = "Bart";
+        
+        //Dog 배열을 만든다.
+        Dog[] myDogs = new Dog[3];
+        //개를 집어넣는다.
+        myDogs[0] = new Dog();
+        myDogs[1] = new Dog();
+        myDogs[2] = dog1;
+        
+        myDogs[0].name = "Fred";
+        myDogs[1].name = "Marge";
+        
+        System.out.print("last don't name is ");
+        System.out.println(myDogs[2].name);
+        
+        int x = 0;
+        while (x < myDogs.length) {
+            myDogs[x].bark();
+            x = x+1;
+        }
+    }
+    public void bark() {
+        System.out.println(name + " says Ruff!");
+    }
+    
+    public void eat() { }
+    
+    public void chaseCat() { }
+}
+
 
 }}}
 
