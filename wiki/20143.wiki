@@ -488,6 +488,53 @@ public class DogTestDrive {
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+package com122page;
+
+public class XCopy {
+	public static void main(String [] args) {
+		int orig = 42 ;
+		XCopy x = new XCopy (); 
+		int y = x.go(orig);
+		System.out.println(orig + " " + y);
+	}
+	int go(int arg) { // 안에 있는 값을 두배로 만드는 함수이다.//
+		arg = arg * 2;
+		return arg;
+		
+	}
+
+}
+
+package com122page;
+
+public class Clock {
+	String time;
+	
+	void setTime(String t) {
+		time = t;
+		
+	}
+
+	String getTime() { //sting 형식으로 반납해야 되기 때문이다.
+		return time;
+	
+	}
+}
+package com122page;
+
+public class ClockTestDrive {
+	
+	public static void main(String [] args){
+		
+		Clock c = new Clock() ;
+		
+		c.setTime("1245"); //1245를 time 에 저장하고
+		String tod = c.getTime(); //time 에 저장된 1245가 tod에 저장되고
+		System.out.println("time: " + tod); //tod 값이 출력된다.
+		
+	}
+
+}
 
 }}}
 
