@@ -320,7 +320,7 @@ class Dog {
 
 
     public void	bark() {
-	System.out.println(name	+ "said: Woof! Woof!");
+	System.out.println(name	+ "barks: Woof! Woof!");
     }
     public void	eat(){}
     public void	chaseCat(){}
