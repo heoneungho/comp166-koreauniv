@@ -279,6 +279,52 @@ class DVDPlayerTestDrive {
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog {
+    String name;
+    public static void main (String[] args) {
+	//Dog 객체를 만들고 접근                                                                                                                                         
+	Dog dog1 = new Dog();
+	dog1.bark();
+	dog1.name = "Bart";
+
+	//이번에는 Dog 배열을 만든다                                                                                                                                     
+	Dog[] myDogs = new Dog[10];
+	//for문을 이용해 객체 대량 생산                                                                                                                                  
+	for(int	i = 0 ; i<10 ; ) {
+            myDog[i] = new Dog();
+	}
+
+	//name이 String이라서 어쩔 수 없이 하나하나 이름을 넣어야 됨                                                                                                     
+	Dog[0].name = "Ony";
+	Dog[1].name = "Twy";
+	Dog[2].name = "Thry";
+	Dog[3].name = "Foury";
+	Dog[4].name = "Fivy";
+	Dog[5].name = "Sixy";
+	Dog[6].name = "Seveny";
+	Dog[7].name = "Eighty";
+	Dog[8].name = "Niny";
+	Dog[9].name = "Teny";
+
+	//myDog[5]의 이름을 알아봄                                                                                                                                       
+	System.out.println("What's the name of the fifth dog?: ");
+	System.out.println(myDog[5].name);
+
+	//모든 개가 짖도록 하자                                                                                                                                          
+	int x =	0;
+	while( x < myDogs.length) {
+            myDogs[x].bark();
+            x =	x + 1;
+	}
+    }
+
+
+    public void	bark() {
+	System.out.println(name	+ "said: Woof! Woof!");
+    }
+    public void	eat(){}
+    public void	chaseCat(){}
+}
 
 }}}
 
