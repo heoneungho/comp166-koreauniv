@@ -550,39 +550,39 @@ public class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
-public class SimpleDotCom {
-    int[] locationCells;
-    int numOfHits = 0;
-    
-    public void setLocationCells(int[] locs)
+package javabook;
+
+public class Game {
+    public static void main(String[] args)
     {
-        locationCells = locs;
-    }
-    
-    public String checkYourself(String stringGuess) {
-        int guess = Integer.parseInt(stringGuess);
-        String result = "miss";
-        for (int i = 0 ; i < locationCells.length ; i++)
-        {
+        int numOfGuesses = 0;
+        GameHelper helper = new GameHelper();
         
-            if (guess ==locationCells[i]) {
-                result = "hit";
-                numOfHits++;
-                break;
+        SimpleDotCom theDotCom = new SimpleDotCom(); //닷컴 객체를 생성합니다.
+        int randomNum = (int) (Math.random() * 5); //랜덤하게 0과5 사이의 수를 뽑아 랜드넘에 저장합니다.//
+        
+        int[] locations = {randomNum, randomNum+1, randomNum+2}; //위에서 저장된 값보다 1,2 씩 큰 값들을 셀로 만듭니다.//
+        theDotCom.setLocationCells(locations); //닷컴의 위치를 저장합니다.
+        boolean isAlive = true;
+        while (isAlive == true)
+        {
+            String guess = helper.getUserInput("enter a number");//enter a nunmer라는 메세지를 띄우고 값을 받습니다.
+            String result = theDotCom.checkYourself(guess); //guess 값을 확인하고 그 결과를 result 에 저장합니다.
+            numOfGuesses++; //추측횟수를 증가시킵니다.
+            if (result.equals("kill")) { // 만약 result가 kill이라면 isAlive 내용을 아래와 같이 바꾸고 전체 결과를 출력합니다
+                isAlive = false;
+                System.out.println("You took " + numOfGuesses + " guesses");
             }
         }
-        if (numOfHits == locationCells.length)
-        {
-            result = "kill";
-        }
-        System.out.println(result);
-        return result;
     }
 }
+package javabook;
+
 
 import java.io.*;
 
 public class GameHelper {
+
 
   public String getUserInput(String prompt) {
      String inputLine = null;
@@ -597,33 +597,40 @@ public class GameHelper {
      }
      return inputLine;
   }
-}
+}//게임 작동원리는 나중에 배우라고 하네요 ㅜㅜ
 
-  
-  public class Game {
-    public static void main(String[] args)
+  package javabook;
+
+public class SimpleDotCom {
+    int[] locationCells;
+    int numOfHits = 0;
+    
+    public void setLocationCells(int[] locs)
     {
-        int numOfGuesses = 0;
-        GameHelper helper = new GameHelper();
-        
-        SimpleDotCom theDotCom = new SimpleDotCom();
-        int randomNum = (int) (Math.random() * 5);
-        
-        int[] locations = {randomNum, randomNum+1, randomNum+2};
-        theDotCom.setLocationCells(locations);
-        boolean isAlive = true;
-        while (isAlive == true)
+        locationCells = locs; //locationCess 에 locs값을 넣습니다.
+    }
+    
+    public String checkYourself(String stringGuess) {
+        int guess = Integer.parseInt(stringGuess); //string 을 int 형으로 변환한다.
+        String result = "miss";
+        for (int cells : locationCells) //int 배열에 있는 각 셀에 대해 다음 작업을 반복합니다.
         {
-            String guess = helper.getUserInput("enter a number");
-            String result = theDotCom.checkYourself(guess);
-            numOfGuesses++;
-            if (result.equals("kill")) {
-                isAlive = false;
-                System.out.println("You took " + numOfGuesses + " guesses");
+        
+            if (guess == cells) { //사용자가 추측한 값을 배열에 들어있는 원소와 비교합니다.
+                result = "hit";
+                numOfHits++;
+                break;
             }
         }
+        if (numOfHits == locationCells.length)
+        {
+            result = "kill"; //모두 다 쳤을 경우.
+        }
+        System.out.println(result);
+        return result;
     }
 }
+
 
 }}}
 
