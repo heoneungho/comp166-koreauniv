@@ -1,4 +1,4 @@
-#summary 단이열
+ #summary 단이열
 
 <wiki:toc max_depth="1" />
 
@@ -331,6 +331,62 @@ class Dog {
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+class Books {
+    String title;
+    String author;
+}
+
+class BooksTestDrive {
+    public static void main(String[] args) {
+
+	Books[] myBooks	= new Books[3];
+	int x =	0;
+	Books[0] = new Books();
+	Books[1] = new Books();	// new Books[3]를 했을 때 객체는 만들어지지 않으므로 각 레퍼런스마다 객체를 만들어줘야 한다                                            
+	Books[2] = new Books();
+	myBooks[0].title = "The Grapes of Java";
+	myBooks[1].title = "The Java Gatsby";
+	myBooks[2].title = "The Java Cookbook";
+	myBooks[0].author = "bob";
+	myBooks[1].author = "sue";
+	myBooks[2].author = "ian";
+
+	while (	x < 3 ) {
+            System.out.print(myBooks[x].title);
+            System.out.print(" by ");
+            System.out.println(myBooks[x].author);
+            x =	x + 1;
+	}
+    }
+}
+
+
+class Hobbits {
+
+    String name;
+
+    public static void main(String[] args) {
+	
+	Hobbits[] h = new Hobbits[3];
+	
+	int z =	-1; // 수를 바꿔줘야 한다                                                                                                                              
+
+	while( Z < 2 ) {
+            z =	z + 1;
+            h[z] = new Hobbits();
+            h[z].name =	"bilbo";
+            if ( z == 1	) {
+		h[z].name = "frodo";
+            }
+            if ( z == 2	) {
+		h[z].name = "sam";
+            }
+
+            System.out.print(h[z].name + " is a ");
+            System.out.println("good Hobbit name");
+	}
+    }
+}
 
 }}}
 
