@@ -583,6 +583,177 @@ public class SimpleDotCom {
 *174p 진짜 닷컴 게임* _구현후 주석달기_
 
 {{{
+/*닷컴게임을 관리하는 사회자 dotcombust와 닷컴 위치 설정을 도와주는 gamehelper 각 닷컴 객체를 만들 클래스를 만들어준다.*/
+import java.util.*;//arraylist의 편리한 사용을 위해 import
+public class DotComBust {
+	private GameHelper helper = new GameHelper();//게임 진행에 도움을 주는 도우미 객체선언
+	private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>(); // 여러 닷컴문장들이 들어 있는 arraylist선언
+	private int numOfGuesses =0; // 사용자의 추측 횟수를 기록하는 변수 선언
+	/* 게임 시작을 위한 기본 설정을 하는 메소드*/
+	private void setUpGame(){
+		DotCom one = new DotCom();
+		one.setName("Pets.com");
+		DotCom two = new DotCom();
+		two.setName("eToys.com");
+		DotCom three = new DotCom();
+		three.setName("Go2.com");// 우선 책에 나온대로 3개의 닷컴 문장객체 선언.
+		dotComsList.add(one);
+		dotComsList.add(two);
+		dotComsList.add(three); //세개의 닷컴 객체를 닷컴객체 arraylist에 전달
+		
+		System.out.println("Your goal is to sink three dot coms."); // 
+		System.out.println("Pets.com, eToys, Go2.com");
+		System.out.println("Try to sink them all in the fewest number of guesses");// 간단히 게임에 대해 사용자한테 설명 해준다.
+		
+		for(DotCom dotComToSet : dotComsList){
+			ArrayList<String> newLocation = helper.placeDotCom(3);
+			dotComToSet.setLocationCells(newLocation);
+		}// 세 개의 닷컴들을 게임 도우미를 통해 표의 일정 위치에 배치 하기 위한 준비단계입니다.
+	}
+	/*게임을 시작합니다.*/
+	private void startPlaying(){
+		while(!dotComsList.isEmpty()){
+			String userGuess = helper.getUserInput("Enter a guess");
+			checkUserGuess(userGuess);
+		}// 닷컴리스트안에 무엇인가 들어있으면 계속 추측하는 작업을 반복합니다, 닷컴리스트 안의 모든 닷컴을 죽이면 게임이 끝납니다.
+/*게임을 끝내는 메소드입니다.*/
+		finishGame();
+	}
+	/*사용자가 추측한 위치가 맞는지 체크하는 메소드입니다.*/
+	private void checkUserGuess(String userGuess)
+	{
+		numOfGuesses++;// 한번 추측할 때 마다 추측 횟수가 증가 합니다.
+		String result = "miss"; //일단 결과에 miss를 저장합니다.
+		
+		for(DotCom dotComToTest : dotComsList){
+			result = dotComToTest.checkYourself(userGuess);// 추측 결과에 따라서 miss가 hit으로 바뀔 수도 있습니다. 또는 kill로 바뀔 수도 있습니다.
+			if(result.equals("kill")){
+				dotComsList.remove(dotComToTest);
+				break;
+			}// 한 개의 닷컴을 죽이면 닷컴리스트에서 제거 합니다.
+		}
+		System.out.println(result); //결과를 출력 해줍니다.
+	}
+	
+	private void finishGame(){
+		System.out.println("All Dot Coms are dead! Your stock is now worthless");
+		if(numOfGuesses <= 18){
+			System.out.println("It only took you" + numOfGuesses + " guessses.");
+			System.out.println("You got out before your options sank");
+		} else{
+			System.out.println("Took you long enough. "+ numOfGuesses + " guesses.");
+			System.out.println("Fish are dancing with your option");
+		}
+	}// 추측횟수에 따라 서로 다른 엔딩멘트를 말해 줍니다.
+		public static void main(String[] args) {
+		DotComBust game = new DotComBust();//닷컴버스트 객체를 만듭니다.
+		game.setUpGame();// 게임을 준비합니다.
+		game.startPlaying();// 게임을 시작합니다.
+	}
+}
+
+import java.util.ArrayList; // array list를 편하게 사용하기 위해 import합니다.
+/*닷컴들을 관리하는 클래스입니다.*/
+public class DotCom {
+	private ArrayList<String> locationCells;// 닷컴의 위치를 저장하는 arraylist를 만듭니다.
+	private String name; // dotcom의 이름변수를 선언합니다.
+	
+	public void setLocationCells(ArrayList<String> locs){
+		locationCells = locs;
+	}// 닷컴의 위치를 초기화합니다.
+	
+	public void setName(String n){
+		name = n;
+	}// 닷컴의 이름을 초기화합니다.
+	/* 유저의 추측이 맞는지 체크하는 메소드입니다.*/
+	public String checkYourself(String userInput){
+		String status = "miss"; // 우선은 상태를 miss라고 저장해둡니다.
+		int index = locationCells.indexOf(userInput); // user한테 받은 위치가 닷컴의 위치에 속해 있는지 체크합니다. 있으면 index값을 없다면 -1을 저장 할 것입니다.
+		if(index>=0){
+			locationCells.remove(index);// 인덱스 값에 해당하는 닷컴위치를 지웁니다.
+			
+			if(locationCells.isEmpty()){
+				status ="kill";
+				System.out.println("OucH! You sunk" + name + " : ( ");// 만약 닷컴의 위치가 모두 hit당했으면 상태는 kill로 바뀌고 사용자에게 알려줍니다.
+			}else{
+				status="hit";
+			}// 모든 위치를 맞춘 것이 아니면 hit만 반환합니다.
+		}
+		return status;
+	}
+}
+/* 게임도우미 클래스입니다.*/
+import java.io.*;
+import java.util.ArrayList;
+import java.util.*;
+
+public class GameHelper {
+	private static final String alphabet = "abcdefg";
+	private int gridLength = 7; //격자 길이는 7
+	private int gridSize = 49; // 격자 크기는 49
+	private int [] grid = new int[gridSize]; // 격자 크기만큼 1개짜리격자 생성
+	private int comCount = 0;// 
+	
+	
+	public String getUserInput(String prompt){
+		String inputLine = null; //입력값 변수 선언
+		System.out.println(prompt + " "); // 입력값을 
+		try{
+			BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+			inputLine = is.readLine();
+			if(inputLine.length() == 0)return null;}
+		catch(IOException e){
+			System.out.println("IOException: "+e);
+		}
+		return inputLine.toLowerCase(); // 입력값을 소문자로 변환
+	}
+	/*닷컴들 위치 정하는 메소드*/
+	public ArrayList<String> placeDotCom(int comSize){
+		ArrayList<String> alphaCells = new ArrayList<String>();//알파셀 string arraylist 선언
+		String [] alphacoords = new String[comSize]; // comsize만큼의 string 생성
+		String temp = null; // 임시 string 변수 생성
+		int [] coords = new int[comSize]; // comsize만큼의 int변수 생성
+		int attempts = 0; // attempt 변수 생성
+		boolean success = false; // 성공여부에 일단 false 저장
+		int location = 0; // 위치에 일단 0 저장
+		
+		comCount++; //comcount 증가 시킨다
+		int incr =1; // 닷컴들의 1차이로 서로 붙어있다.
+		if((comCount%2) ==1) incr = gridLength;// comcount가 홀수일 때 증가량을 7로한다. 즉 세로로 닷컴을 배치
+		
+		while(!success & attempts++ < 200)
+{
+			location = (int) (Math.random() *gridSize); // 임의 시작위치를 랜덤으로 지정한다.
+			int x =0;
+			success = true;//일단 성공적으로 위치를 정할 것이라고 가정한다. 닷컴길이만큼 위치를 설정한다.
+			while(success && x<comSize){
+				if(grid[location]==0)/*만약 격자 안이 비어있으면*/{
+					coords[x++] = location;// coords 에 위치 저장
+					location +=incr ;//세로냐 가로냐에 따라서 위치를 배치한다.
+					if(location >=gridSize){
+						success = false;
+					}// 격자 밖으로 위치가 벗어나면 실패로 바꿈.
+					if(x>0 & (location % gridLength ==0))success = false;//0~6까지 이기 때문에 7로 나누어 떨어진다면 실패로 저장한다.
+				} else success = false;// 이미 자리에 닷컴이 있으면 실패로 저장한다.
+		}
+	}
+	/*격자를 완성한다.*/
+	int x =0;
+	int row =0;
+	int column =0;
+	while(x<comSize){
+		grid[coords[x]] =1;//저장해논 위치를 진짜 격자에 넣는다.
+		row = (int)(coords[x] / gridLength); //행을 구한다.
+		column = coords[x]%gridLength; //열을 구한다.
+		temp = String.valueOf(alphabet.charAt(column)); // 열을 알파벳으로 바꾼다.
+		
+		alphaCells.add(temp.concat(Integer.toString(row)));// 알파벳 위치에 temp와 row를 합친 값을 집어 넣는다.
+		x++; x를 증가 시킨다.
+	}
+	return alphaCells;
+	}
+}
+
 
 }}}
 
