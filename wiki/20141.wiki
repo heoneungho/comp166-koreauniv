@@ -516,6 +516,7 @@ public class SimpleDotComGame {
 }
 
 import java.io.*;\
+/*사용자의 입력을 사용하도록 도와줍니다.*/
 public class GameHelper {
 	public String getUserInput(String prompt){
 		String inputLine = null;
@@ -530,7 +531,7 @@ public class GameHelper {
 		return inputLine;
 	}
 }
-
+/*닷컴 객체를 만듭니다. 닷컴의 위치 지정 및 닷컴의 생사여부를 변화 시킵니다.*/
 public class SimpleDotCom {
 	int [] locationCells; 
 	int numOfHits =0;
@@ -565,6 +566,38 @@ public class SimpleDotCom {
 *162p 닷컴 게임:첫번째 옵션* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
+	int [] locationCells; boolean [] locells;
+	int numOfHits =0;
+	
+	public void setLocationCells(int [] locs){
+		locationCells = locs;
+		locells = new boolean[locationCells.length];// 책에있는대로 location만큼 부울배열을 만듭니다.
+		for(int i=0;i<locationCells.length;i++)
+			locells[i]=true;
+	}
+	
+	public String checkYourself (String stringGuess){
+		int guess = Integer.parseInt(stringGuess);
+		String result = "miss";
+		for(int i=0; i<locationCells.length;i++){
+			if(guess == locationCells[i] && locells[i]==true){
+				result = "hit";
+				locells[i]=false;// 이미 한번 hit되면 다시 hit 할 수 없습니다.
+				numOfHits++;
+				break;
+			}
+		}
+		
+		if(numOfHits == locationCells.length){
+			result = "kill";
+		}
+		System.out.println(result);
+		return result;
+		}
+
+}
+
 
 }}}
 
