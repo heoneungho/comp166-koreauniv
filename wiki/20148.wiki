@@ -54,21 +54,21 @@ public class BeerSong  //어디에서든 접근가능한 BeerSong 클래스 선�
 {{{
 public class PhraseOMatic
 {   
-public static void main (String[] args){
-String [] wordListOne = {"one-to-one", "powerful","energetic","universal","100%"}; 
+   public static void main (String[] args){
+      String [] wordListOne = {"one-to-one", "powerful","energetic","universal","100%"}; 
 //wordListOne이라는 String 배열을 선언하고 그 안에 구성원소를 저장한다.            
-String [] wordListTwo = {"associated", "assembled", "adhesive", "viscous", "awkward"};      
+      String [] wordListTwo = {"associated", "assembled", "adhesive", "viscous", "awkward"};      
 
-String [] wordListThree = {"promise","love","computer science","land","operating system","spaghetti","sea","morning"};           
-int oneLength = wordListOne.length; //int형 변수 oneLength를 선언하고 wordListOne배열 안의 원소개수를 oneLength에 대입한다.      
-int twoLength = wordListTwo.length;      
-int threeLength = wordListThree.length;      
-int rand1 = (int) (Math.random() * oneLength); //oneLength배열의 크기 보다 같거나 작은 수 중 임의 수를 불러내는 함수를 이용하고 rand1이라는 int형 변수를 선언 후 대입한다.       
-int rand2 = (int) (Math.random() * twoLength);      
-int rand3 = (int) (Math.random() * threeLength);      
-String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3]; // phrase라는 String 변수를 선언한 후 위에서 대입된 rand1, rand2, rand3 번째수에 해당하는 단어를 각각의 wordListOne,two,three에서 불러내어 phrase에 대입한다.      
-System.out.println("What we need is a " + phrase); //구문을 추출한다.           
-} //main 클래스 끝  
+      String [] wordListThree = {"promise","love","computer science","land","operating system","spaghetti","sea","morning"};           
+      int oneLength = wordListOne.length; //int형 변수 oneLength를 선언하고 wordListOne배열 안의 원소개수를 oneLength에 대입한다.      
+      int twoLength = wordListTwo.length;      
+      int threeLength = wordListThree.length;      
+      int rand1 = (int) (Math.random() * oneLength); //oneLength배열의 크기 보다 같거나 작은 수 중 임의 수를 불러내는 함수를 이용하고 rand1이라는 int형 변수를 선언 후 대입한다.       
+      int rand2 = (int) (Math.random() * twoLength);      
+      int rand3 = (int) (Math.random() * threeLength);      
+      String phrase = wordListOne[rand1] + " " + wordListTwo[rand2] + " " + wordListThree[rand3]; // phrase라는 String 변수를 선언한 후 위에서 대입된 rand1, rand2, rand3 번째수에 해당하는 단어를 각각의 wordListOne,two,three에서 불러내어 phrase에 대입한다.      
+      System.out.println("What we need is a " + phrase); //구문을 추출한다.           
+   } //main 클래스 끝  
 } // 클래스 끝
 
 }}}
@@ -258,41 +258,41 @@ void recordTape() {
 }
 
 class TapeDeckTestDrive {
- public static void main(String [] args) {
-  TapeDeck t = new TapeDeck(); //TapeDeck 객체를 선언해주어야 접근가능
-  t.canRecord = true;
-  t.playTape();
+   public static void main(String [] args) {
+      TapeDeck t = new TapeDeck(); //TapeDeck 객체를 선언해주어야 접근가능
+      t.canRecord = true;
+      t.playTape();
 
-  if (t.canRecord == true) {
-   t.recordTape();
-  }
-}
+      if (t.canRecord == true) {
+         t.recordTape();
+      }
+   }
 }
 
 B.
 class DVDPlayer {
  
- boolean canRecord = false;
+   boolean canRecord = false;
 
- void recordDVD() {
-   System.out.println("DVD recording");
- }
- void playDVD() { //playDVD 메소드 생성해주어야 함
-   System.out.println("DVD playing");
- }
+   void recordDVD() {
+      System.out.println("DVD recording");
+   }
+   void playDVD() { //playDVD 메소드 생성해주어야 함
+      System.out.println("DVD playing");
+   }
 }
 
 class DVDPlayerTestDrive {
- public static void main(String [] args) {
+   public static void main(String [] args) {
 
-  DVDPlayer d = new DVDPlayer();
-  d.canRecord = true;
-  d.playDVD();
+      DVDPlayer d = new DVDPlayer();
+      d.canRecord = true;
+      d.playDVD();
 
-  if (d.canRecord == true) {
-   d.recordDVD();
-  }
- }
+      if (d.canRecord == true) {
+         d.recordDVD();
+      }
+   }
 }
 }}}
 
