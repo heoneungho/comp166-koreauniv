@@ -38,7 +38,7 @@ public class BeerSong  //어디에서든 접근가능한 BeerSong 클래스 선�
                         {
                                 System.out.println(beerNum + " " + word + " of beer on the wall\n"); 
                         } 이 if문은 while문의 조건인 'beerNum>0'과 겹친다. if문의 조건을 'beerNum<1'로 수정한다.*/
-             if(beerNum<1) 
+                        if(beerNum<1) 
                         {
                                 System.out.println("No more bottles of beer on the wall"); //출력하고 줄바꿈
                         }     
@@ -136,7 +136,7 @@ class Exercise1b{
 *68p Television* _채워넣기_
 
  * 인스턴스 변수: channel, volume
- * 메소드: setChannel(), setVolume()
+ * 메소드: select_Channel(), setVolume()
 
 
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
@@ -785,62 +785,60 @@ public class DotComBust{
       return inputLine.toLowerCase();
                         }
                         
-                        public ArrayList<String> placeDotCom(int comSize){
-                                ArrayList<String> alphaCells = new ArrayList<String>();
-                                String temp = null;
-                                int[] coords = new int[comSize];
-                                int attempts = 0;
-                                boolean success = false;
-                                int location = 0;
+      public ArrayList<String> placeDotCom(int comSize){
+         ArrayList<String> alphaCells = new ArrayList<String>();
+         String temp = null;
+         int[] coords = new int[comSize];
+         int attempts = 0;
+         boolean success = false;
+         int location = 0;
 
-                                comCount++;
-                                int incr = 1;
-                                if((comCount % 2)== 1){
-                                        incr = gridLength;
-                                }
+         comCount++;
+         int incr = 1;
+         if((comCount % 2)== 1){
+            incr = gridLength;
+         }
 
-                                while(!success&attempts++ < 200){
-                                        location = (int) (Math.random() * gridSize);
-                                        //System.out.print("try" + location);
-                                        int x = 0;
-                                                success = true;
-                                                while(success && x < comSize){
-                                                        if(grid[location] == 0){
-                                                                coords[x++] = location;
-                                                                location += incr;
-                                                                if(location >= gridSize){
-                                                                        success = false;
-                                                                }
-                                                                if(x>0 & (location % gridLength == 0)){
-                                                                        success = false;
-                                                                }
-                                                        } else{
-                                                                //System.out.print("used" + location);
-                                                                success = false;
-                                                        }
-                                                }
-                                }
-
-                                int x = 0;
-                                int row = 0;
-                                int column = 0;
-                                //System.out.println("\n");
-                                while(x<comSize){
-                                        grid[coords[x]] = 1;
-                                        row = (int) (coords[x] / gridLength);
-                                        column = coords[x] % gridLength;
-                                        temp = String.valueOf(alphabet.charAt(column));
-
-                                        alphaCells.add(temp.concat(Integer.toString(row)));
-                                        x++;
-                                        //System.out.print(" coord " + x + " = " + alphaCells.get(x-1));
-                                }                               
-
-                                        //System.out.println("\n?");
-
-                                        return alphaCells;
-                        }
+         while(!success&attempts++ < 200){
+            location = (int) (Math.random() * gridSize);
+            //System.out.print("try" + location);
+            int x = 0;
+            success = true;
+            while(success && x < comSize){
+               if(grid[location] == 0){
+                  coords[x++] = location;
+                  location += incr;
+                  if(location >= gridSize){
+                     success = false;
+                  }
+                  if(x>0 & (location % gridLength == 0)){
+                     success = false;
+                  }
+                } else{
+                  //System.out.print("used" + location);
+                    success = false;
+                  }
                 }
+            }
+            int x = 0;
+            int row = 0;
+            int column = 0;
+            //System.out.println("\n");
+            while(x<comSize){
+               grid[coords[x]] = 1;
+               row = (int) (coords[x] / gridLength);
+               column = coords[x] % gridLength;
+               temp = String.valueOf(alphabet.charAt(column));
+
+               alphaCells.add(temp.concat(Integer.toString(row)));
+               x++;
+              //System.out.print(" coord " + x + " = " + alphaCells.get(x-1));
+            }                            
+            //System.out.println("\n?");
+
+             return alphaCells;
+         }
+   }
 
 }
 }}}
