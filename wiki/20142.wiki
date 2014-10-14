@@ -656,6 +656,35 @@ import java.io.*;
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+import java.util.ArrayList;
+
+public class DotCom {
+
+    private ArrayList<String> locationCells; // 컵이 String인 ArrayList를 사용        
+
+    public void	setLocationCells(ArrayList<String> loc)	{
+	locationCells = loc;
+    }
+
+    public String checkYourself(String playerGuess) { // 새로운 인자이름              
+
+	String result =	"miss!";
+
+	int index = locationCells.indexOf(playerGuess);
+
+	if ( index>=0 ) {
+            locationCells.remove(index); // index가 제거되면서                          
+
+            if ( locationCells.isEmpty() ) {
+		result = "kill"; // 비어있다면 kill                                     
+            }else {
+		result = "hit!"; // 들어있다면 hit!!!                                   
+            }
+	}
+
+	return result;
+    }
+}
 
 }}}
 
