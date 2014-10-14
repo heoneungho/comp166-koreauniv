@@ -622,7 +622,7 @@ public class SimpleDotCom {
 			if(guess == locationCells[i]) {
 				result = "hit";
 				numOfHits++;
-				locationCells[i] = -1;
+				locationCells[i] = -1; //맞은 locationCells배열에 -1을 넣는다.
 				break;
 			}
 		}
