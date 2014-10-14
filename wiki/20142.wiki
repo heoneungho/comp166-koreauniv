@@ -619,7 +619,38 @@ public class DotComFirstOption
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
 
 {{{
+public class DotComSecondOption	{
 
+    int[] locationCells;
+    int	numofHits = 0;
+    boolean[] hitCells = {false, false,	false};	// hitCells를 정의함                    
+
+    public void	setLocationCells (int[] locs) {
+	locationCells =	locs;
+    }
+
+    public String checkYourself (String stringGuess) {
+
+	int guess = Integer.parseInt(stringGuess);
+	String result =	"miss!";
+	for ( int i=0; i<locationCells.length; i++ ) {
+            if ( guess == locationCells[i] && hitCells[i] == false ) {
+		result = "hit!";
+		hitCells[i] = -1;
+		numofHits++;
+		break;
+            }
+	}
+	
+	if ( numofHits == locationCells.length ) {
+            result = "kill";
+	}
+	System.out.println(result);
+	return result;
+    }
+}
+
+import java.io.*;
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
