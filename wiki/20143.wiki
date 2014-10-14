@@ -676,11 +676,48 @@ public class SimpleDotCom {
 
 {{{
 
+package 옵션구현2;
+
+public class SimpleDotCom {
+    int[] locationCells;
+    int numOfHits = 0;
+    
+    public void setLocationCells(int[] locs)
+    {
+        locationCells = locs; //locationCess 에 locs값을 넣습니다.
+    }
+    
+    public String checkYourself(String stringGuess) {
+        int guess = Integer.parseInt(stringGuess); //string 을 int 형으로 변환한다.
+        String result = "miss";
+        for(int i = 0 ;i < locationCells.length; i++)
+        {
+                if(guess == -1)//만약에 사용자가 입력한 숫자에 해당하는 배열 값이 -1이면  넘버 힛을 안 늘리게 합니다..
+                        break;
+                else if(guess == locationCells[i])
+                {
+                        result = "hit";
+                        locationCells[i] = -1;//맞췄을 경우 해당 배열의 값을 -1로 바꿔줍니다.
+                        numOfHits++;
+                        break;
+                }
+        }
+
+        if (numOfHits == locationCells.length)
+        {
+            result = "kill"; //모두 다 쳤을 경우.
+        }
+        System.out.println(result);
+        return result;
+    }
+}
+
 }}}
 
 *173p 닷컴 게임:세번째 옵션* _구현후 주석달기_
 
 {{{
+
 
 }}}
 
