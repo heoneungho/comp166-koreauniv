@@ -666,11 +666,11 @@ public class DotComThirdOption {
 	locationCells = loc;
     }
 
-    public String checkYourself(String playerGuess) { // 새로운 인자이름              
+    public String checkYourself(String userInput) { // 새로운 인자이름              
 
 	String result =	"miss!";
 
-	int index = locationCells.indexOf(playerGuess);
+	int index = locationCells.indexOf(userInput);
 
 	if ( index>=0 ) {
             locationCells.remove(index); // index가 제거되면서                          
