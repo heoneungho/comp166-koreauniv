@@ -640,6 +640,36 @@ public class SimpleDotCom {
 
 {{{
 
+다 바꿀 필요는 없고, 이 클래스만 바꿔줍니다.
+public class SimpleDotCom {
+	int[] locationCells;
+	int numOfHits = 0;
+	boolean[] hitCells = { false, false, false }; // hitCells 를 만들어 줍니다.
+
+	public void setLocationCells(int[] locs) {
+		locationCells = locs; // locationCess 에 locs 값을 넣습니다.
+	}
+
+	public String checkYourself(String stringGuess) {
+		int guess = Integer.parseInt(stringGuess); // string 을 int 형으로 변환한다.
+		String result = "miss";
+		for (int i = 0; i < locationCells.length; i++) {
+			if (guess == locationCells[i] && hitCells[i] == false) {
+				// guess와 locationCells가 같고 맞춘 셀이 아닐때에만
+				result = "hit";
+				hitCells[i] = true; // hitCells에 true값을 넣어줍니다.
+				numOfHits++;
+				break;
+			}
+		}
+
+		if (numOfHits == locationCells.length) {
+			result = "kill";
+		}
+		System.out.println(result);
+		return result;
+	}
+}
 }}}
 
 *163p 닷컴 게임:두번째 옵션* _구현후 주석달기_
