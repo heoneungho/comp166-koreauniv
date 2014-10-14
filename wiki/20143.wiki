@@ -718,6 +718,36 @@ public class SimpleDotCom {
 
 {{{
 
+import java.util.ArrayList;
+
+public class SimpleDotCom {
+
+	private ArrayList<String> locationCells; // int[] locationCells; 대신입니다.
+
+	// int numOfHits = 0; 필요 없어지죠
+
+	public void setLocationCells(ArrayList<String> loc) {
+		locationCells = loc; // locationCess 에 loc값을 넣습니다.
+	}
+
+	public String checkYourself(String userInput) { // 새로바뀐 인자명 입니다.
+		String result = "miss";
+		int index = locationCells.indexOf(userInput); // 사용자가 추측한 위치가 ArrayList에
+														// 들어있는지 확인합니다. 들어있으면
+														// 인덱스 번호가, 그렇지 않으면 -1 이
+														// 리턴됩니다.
+		if (index >= 0) {
+			locationCells.remove(index);
+			if (locationCells.isEmpty()) {
+				result = "kill"; // 모두 다 쳤을 경우.
+			} else {
+				result = "hit";
+			}
+		}
+
+		return result;
+	}
+}
 
 }}}
 
