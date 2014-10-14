@@ -511,7 +511,75 @@ class ClockTestDrive {
 *137p~ 간단한 닷컴 게임* _구현후 주석달기_
 
 {{{
+public class SimpleDotCom {
 
+    int [] locationCells;
+    int numofHits = 0;
+
+    public void setLocationCells (int[] locs) {
+	locatrionCells = locs;
+    }
+
+    public String checkYourself (String stringGuess) {
+	int guess = Integer.parsInt(stringGuess);
+	String result = "miss!";
+	for ( int i=0 ; i<locationCells.length; i++ ) {
+	    if ( guess == locationCells[i] ) {
+		result = "hit!";
+		numofHits++;
+		break;
+	    }
+	} //맞추면 반복 끝
+
+	if ( numofHits == locationCells.length ) {
+	    result = "kill";
+	}
+	System.out.println(result); // 기회를 다쓰고 못맞추면 kill
+    }
+} // SimpleDotCom class 끝
+
+public class SimpleDotComGame {
+
+    public static void main(String[] args) {
+	int numofGuesses = 0;
+	GameHelper helper = new GameHelper();
+	SimpleDotCome theDotCom = new SimpleDotCom();
+	int randomNum = (int) (Math.random() * 5);
+	int[] locations = {randomNum, randomNum+1, randomNum+2};
+
+	theDotCom.setlocationCells(locations);
+	boolean isAlive = true;
+
+	while ( isAlive == true ) { // 살아있는 상태에서 게임 시작
+	    String guess = helper.getUserInput("guess a number");
+	    String result = theDotCom.checkYourself(guess);
+
+	    numofGuesses++; // guess할수록 numofGuesses가 추가됨
+	    
+	    if ( result.equals("kill") ) {
+		isAlive = false;
+
+		System.out.println(numofGuesses + "guesses");
+	    }
+	}
+    }
+}
+
+import java.io.*;
+public class GameHelper {
+    public String getUserInput(String prompt) {
+	String inputline = null;
+	System.out.print(prompt + " ");
+	try {
+	    BufferedRedder is = new BufferedReader(new InputStreamReader(System.in));
+	    inputline = is.readLine();
+	    if ( inputLine.length() == 0 ) return null;
+	} catch( IOException e ) {
+	    System.out.println("IOException: " + e);
+	}
+	return inputline;
+    }
+}
 }}}
 
 = 06. 자바 라이브러리:전부 다 직접 만들어서 쓸 필요는 없습니다  =
