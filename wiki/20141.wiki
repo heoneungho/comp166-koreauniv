@@ -880,6 +880,119 @@ public class GameHelper {
 *208p 클래스 계층 구조* _클래스로 구현_
 
 {{{
+public class Animal {
+	String picture;
+	String food;
+	int hunger;
+	int[] boundaries;
+	int[] location;
+
+	void makeNoise() {
+		System.out.println("Kyaoooo");
+	}
+
+	void eat(String food) {
+		if (food.equals("meet"))
+			System.out.println("yamyam");
+		else
+			System.out.println("leafleaf");
+	}
+
+	void sleep() {
+		System.out.println("zzzzZZZ");
+	}
+
+	void roam() {
+		System.out.println("aslung aslung");
+	}
+
+}
+public class Feline extends Animal {
+	void roam(){
+		System.out.println("cat aslung cat aslung");
+	}
+
+}
+public class Canine extends Animal{
+	void roam(){
+		System.out.println("dog aslung dog aslung");
+	}
+}
+class Hippo extends Animal{
+	void makeNoise(){
+		System.out.println("Hee Hee Hee Hee");
+	}
+	void eat(String food){
+		if(food.equals("weed"))
+			System.out.println("attack");
+		else
+			System.out.println("yamyamyam");
+	}
+}
+class Lion extends Feline {
+	void makeNoise(){
+		System.out.println("uhoung uhoung");
+	}
+	void eat(String food){
+		if(food.equals("leaf"))
+			System.out.println("Kyaauauau");
+		else
+			System.out.println("yamyamyam");
+	}
+
+}
+class Tiger extends Feline {
+	void makeNoise(){
+		System.out.println("urrong uuruurung");
+	}
+	void eat(String food){
+		if(food.equals("leaf"))
+			System.out.println("Kyaauauau");
+		else
+			System.out.println("yamyamyam");
+	}
+
+}
+class Cat extends Feline {
+	void makeNoise(){
+		System.out.println("yaong yaong");
+	}
+	void eat(String food){
+		if(food.equals("leaf"))
+			System.out.println("Kyaauauau");
+		else
+			System.out.println("yamyamyam");
+	}
+
+}
+
+class Wolf extends Canine {
+	void makeNoise(){
+		System.out.println("auuuuuu auuuuu");
+	}
+	void eat(String food){
+		if(food.equals("leaf"))
+			System.out.println("Kyaauauau");
+		else
+			System.out.println("yamyamyam");
+	}
+
+}
+
+class Dog extends Canine {
+	void makeNoise(){
+		System.out.println("war war");
+	}
+	void eat(String food){
+		if(food.equals("leaf"))
+			System.out.println("Kyaauauau");
+		else
+			System.out.println("yamyamyam");
+	}
+
+}
+
+
 
 }}}
  
