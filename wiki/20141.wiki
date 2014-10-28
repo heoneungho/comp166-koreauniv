@@ -1004,6 +1004,43 @@ class Dog extends Canine {
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class MonsterTestDrive {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Monster [] ma = new Monster[3]; // 몬스터 레퍼런스 담을 그릇 생성
+		ma[0] = new Vampire(); // vampire 객체 담음
+		ma[1] = new Dragon(); // 드래곤 객체 담음
+		ma[2] = new Monster(); // 몬스터 객체 담음
+		for(int x=0;x<3;x++){
+			ma[x].frighten(x); // 각 객체의 frighten 결과
+		}
+	}
+
+}
+class Monster {
+	boolean frighten(int d){
+		System.out.println("arrrgh"); // return boolean input int method name frighten
+		return true;
+	}
+
+}
+// 뱀파이어 몬스터에 상속
+class Vampire extends Monster{
+	boolean frighten (int x){
+		System.out.println("a bite?"); // input int return boolean a bite print 
+		return false;
+	}
+}
+// 드래곤 몬스터에 상속
+class Dragon extends Monster {
+	boolean frighten(int degree){
+		System.out.println("breath fire"); // input int return boolean 숨 불 출력
+		return true;
+	}
+}
+
+
 
 }}}
 
