@@ -293,37 +293,223 @@ class DVDPlayerTestDrive {
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
 {{{
+class Dog {
+        String name;
+        public static void main (String[] args) {
+                //Dog 객체를 만들고 접근합니다.
+                Dog dog1 = new Dog();
+                dog1.bark() ;
+                dog1.name = "멍1" ;
+                
+                //이번에는 Dog 배열을 만듭니다.
+                Dog[] myDogs = new Dog[5];
+                //그리고 개 5 마리를 집어넣습니다.
+                myDogs[0] = new Dog() ;
+                myDogs[1] = new Dog() ;
+                myDogs[2] = new Dog() ;
+                myDogs[3] = new Dog() ;
+                myDogs[4] = dog1;
+        
+
+                //배열 레퍼런스를 써서 Dog 객체에
+                //접근합니다.
+                myDogs[0].name = "멍2";
+                myDogs[1].name = "멍3";
+                myDogs[2].name = "멍4";
+                myDogs[3].name = "멍5";
+                //마지막 개의 이름이 뭐였지?
+                System.out.print("마지막 개의 이름: ");
+                System.out.println(myDogs[4].name);
+                
+        
+                //이제 순환문을 써서 배열에 들어있는
+                //모든 개가 짖도록 합시다.
+                int x = 0;
+                while(x < myDogs.length) {
+                        myDogs[x].bark();
+                        x = x + 1;
+                }
+        }
+        public void bark() {
+                System.out.println(name);
+        }
+        public void eat() { }
+        public void chaseCat() { }
+}
 
 }}}
 
 *97p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+class Books {
+        String title ;
+        String author ;
+}
+
+class BooksTestDrive {
+        public static void main(String [] args) {
+        
+                Books [] myBooks = new Books[3] ;
+                myBooks[0] = new Books();
+                myBooks[1] = new Books();
+                myBooks[2] = new Books(); //Books라는 객체를 생성
+                int x = 0;
+                myBooks[0].title = "The Grapes of Java";
+                myBooks[1].title = "The Java Gatsby";
+                myBooks[2].title = "The Java Cookbook";
+                myBooks[0].author = "bob";
+                myBooks[1].author = "sue";
+                myBooks[2].author = "ian";
+        
+                while(x<3) {
+                        System.out.print(myBooks[x].title);
+                        System.out.print(" by ");
+                        System.out.println(myBooks[x].author);
+                        x = x + 1;
+                }
+        }
+}
+
+B
+class Hobbits {
+        
+        String name ;
+        
+        public static void main(String [] args) {
+        
+                Hobbits [] h = new Hobbits[3];
+                int z = 0 ;
+
+                while(z<3) {//이름의 갯수는 3개이므로 3으로 조절
+        
+                        h[z] = new Hobbits();
+                        h[z].name = "bilbo";
+                        if(z==1) {
+                                h[z].name = "frodo";
+                        }
+                        if(z==2) {
+                                h[z].name = "sam";
+                        }
+                        System.out.print(h[z].name + " is a " );
+                        System.out.println("good Hobbit name");
+                        z=z+1;//맨앞에 있으면 0번째가 의미가 없으므로 맨 밑으로 내림
+                }
+        }
+}
 
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
 
- * 누가 이겼나요?:
- * 문제가 된 부분은 어딘가요?:
+ * 누가 이겼나요?: 밥
+ * 문제가 된 부분은 어딘가요?: 켄트의 코드는 메모리를 약간 절약할수는 있다. 하지만 켄트의 코드는 매번 순환문을 돌때마다 새로운 값으로 초기화 시키기 때문에 결국 밥의 코드보다 효용성이 없는 코드가 된다
 
 = 04. 객체의 행동:객체의 상태가 메소드의 속성에 미치는 영향  =
 
 *105p~ 객체* _요약_
 
- * 캡슐화:
- * 게터와 세터:
+ * 캡슐화: 외부에 노출되어있는 변수를 보호하기 위하여 인스턴스 변수를 private로 지정하고 접근 제어를 위해 public으로 지정된 게터와 세터를 만든다. 
+ * 게터와 세터: 어떤것을 가져오고 설정하는 역할 
+
+게터:  가져오기로 되어있는값을 리턴값 형태로 받아오기 위한 용도 
+
+세터:  설정할 값을 인자로 받아서 인스턴스 변수를 그 값으로 설정하기 위한 용도 
+
  * 인스턴스 변수 vs 지역 변수:
+
+인스턴스변수: 클래스 내에서 선언 
+
+지역변수:  메소드 내에서 선언, 사용전에 초기화를 해야됨 
+
  
 *107p Dog* _실행_
 
 {{{
+class Dog {
+        int size ;
+        String name;
+
+        void bark() {
+                if(size > 60) {
+                        System.out.println("Wooof! Wooof!");
+                } else if (size > 14) {
+                        System.out.println("Ruff! Ruff!");
+                } else {
+                        System.out.println("Yip! Yip!");
+                }
+        }
+}
+
+class DogTestDrive {
+        
+        public static void main(String [] args) {
+                Dog one = new Dog();
+                one.size = 70;
+                Dog two = new Dog();
+                two.size = 8;
+                Dog three = new Dog();
+                three.size = 35;
+        
+                one.bark();
+                two.bark();
+                three.bark();
+        }
+}
 
 }}}
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+A
+
+class XCopy {
+        
+        public static void main(String []args) {
+        
+                int orig = 42;
+        
+                XCopy x = new XCopy(); // XCopy유형의 객체 x선언
+
+                int y = x.go(orig);//객체x에서 go를 호출 이때 orig값을 보낸후 메소드를 실행해 y에 그값을 리턴
+        
+                System.out.println(orig + " " + y );
+        }
+        
+        int go(int arg) { //함수를 int값으로 리턴을 받게됨
+        
+                arg=arg*2;
+                
+                return arg;//arg를 리턴
+        }
+} //결과는 42 84
+
+B
+
+class Clock {
+        String time;
+        
+        void setTime(String t) {  //String의 t를받아 이를 time으로 보내주는 세터
+                time = t;
+        }
+        
+        String getTime() {  //time을 리턴받는 게터이고 받을 time은 String이므로 String으로 선언
+                return time;
+        }
+}
+
+class ClockTestDrive {
+        public static void main(String [] args) {
+        
+                Clock c = new Clock();
+                
+                c.setTime("1245");
+                String tod = c.getTime();
+                System.out.println("time :  "  + tod);
+        }
+}
 
 }}}
 
