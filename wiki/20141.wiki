@@ -1085,6 +1085,61 @@ abstract로 클래스를 선언한다.
 *302p 5분 미스터리* _구현후 주석달기_
 
 {{{
+/* 한 군데 주 석을 제외한 나머지부분 책과 유사*/
+import java.util.*;
+class V2Radiator{
+V2Radiator(ArrayList list){
+for(int x=0;x<5;x++){
+list.add(new SimUnit("V2Radiator"))
+}
+}
+}
+
+class V3Radiator /*extends V2Radiator*/{
+V3Radiator(ArrayList lglist){
+/*super(lglist);* V2Radiator
+for(int g=0;g<10;g++){
+lglist.add(new SimUnit("V3Radiator"))
+}
+}
+}
+
+class RetentionBot{
+RetentionBot(ArrayList rlist){
+rlist.add(new SimUnit("retention"))
+}
+}
+
+
+public class TestLifeSupportSim {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub\
+ArrayList aList = new ArrayList();
+V2Radiator v2 = new V2Radiator(aList);
+V3Radiator v3 = new V3Radiator(aList);
+for(int z=0;z<20;z++){
+RetentionBot ret = new RetentionBot(aList);
+}
+}
+
+}
+
+class SimUnit{
+String botType
+SimUnit(String type){
+botType = type;
+}
+int powerUse(){
+if("Retention".equals(botType)){
+return 2;
+}else{
+return 4;
+}
+}
+
+}
+
 
 }}}
 
@@ -1092,10 +1147,10 @@ abstract로 클래스를 선언한다.
 
 *307p~ 숫자* _요약_
 
- * 정적 메소드:
- * 정적 메소드를 선언하는 방법:
- * static final:
- * 널 레퍼런스:
+ * 정적 메소드: Math내의 메소드와 같이 객체의 인스턴스와 관련 될 필요가 없으며 객체와 무관하게 메소드만 사용 하는 것, 객체가 필요하지 않고 메소드만 사용 가능하다.
+ * 정적 메소드를 선언하는 방법: static을 붙여주면 된다.
+ * static final: static final로 선언된 변수는 상수이다. 예를들어, PI나 e 와 같은 것들을 초기화 할 때 사용한다.
+ * 널 레퍼런스: 객체를 사용 할 수 있는 레퍼런스 이지만 아무런 객체와도 연결되어 있지 않은 레퍼런스 이다.
  * 오토 박싱:
  * 정적 임포트:
 
