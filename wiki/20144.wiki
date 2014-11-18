@@ -992,7 +992,20 @@ public class GameHelper
 *357p try/catch* _구현후 주석달기_
 
 {{{
-
+	public void takeRisk() throws BadException {
+		if(abandonAllHope) {
+			throw new BadException();
+		}
+	}
+	
+	public void crossFingers() {
+		try {
+			anObject.takeRisk();
+		} catch (BadException ex) {
+			System.out.println("Aaargh!");
+			ex.printStackTrace();
+		}
+	}
 }}}
 
 *376p~ 첫번째 사운드 애플리케이션* _구현후 주석달기_
