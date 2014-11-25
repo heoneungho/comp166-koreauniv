@@ -1137,8 +1137,190 @@ class Dog extends Canine//Dog는 Canine를 확장한다.
 *227p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+1. 제데로 된다.
+package p227;
 
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Monster[] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for (int x = 0; x < 3; x++) {
+			ma[x].frighten(x);
 
+		}
+	}
+
+}
+
+package p227;
+
+public class Monster {
+
+	boolean frighten (int d) {
+		System.out.println("arrrgh");
+		return true;
+	}
+
+}
+package p227;
+
+public class Vampire extends Monster {
+	boolean frighten(int b) { 
+		System.out.println("a bite?");
+		return false; 
+	}
+
+}
+package p227;
+
+public class Dragon extends Monster {
+	boolean frighten(int degree) { 
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+2. 안된다.
+package p227;
+
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Monster[] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for (int x = 0; x < 3; x++) {
+			ma[x].frighten(x);
+
+		}
+	}
+
+}
+
+package p227;
+
+public class Monster {
+
+	boolean frighten (int x) {
+		System.out.println("arrrgh");
+		return true;
+	}
+
+}
+package p227;
+
+public class Vampire extends Monster {
+	int frighten(int f) { 상속 되는거랑 함수 타입이 다르다.
+		System.out.println("a bite?");
+		return 1; 
+	}
+
+}
+package p227;
+
+public class Dragon extends Monster {
+	boolean frighten(int degree) { 
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+3. 안된다.
+package p227;
+
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Monster[] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for (int x = 0; x < 3; x++) {
+			ma[x].frighten(x);
+
+		}
+	}
+
+}
+
+package p227;
+
+public class Monster {
+
+	boolean frighten (int x) {
+		System.out.println("arrrgh");
+		return false;
+	}
+
+}
+package p227;
+
+public class Vampire extends Monster {
+	boolean scare(int x) { // 함수가 frighten이 아니라 몬스터의 frighten이 실행된다.
+		System.out.println("a bite?");
+		return true;
+	}
+
+}
+package p227;
+
+public class Dragon extends Monster {
+	boolean frighten(int degree) { 
+		System.out.println("breath fire");
+		return true;
+	}
+}
+
+4. 안된다
+
+package p227;
+
+public class MonsterTestDrive {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Monster[] ma = new Monster[3];
+		ma[0] = new Vampire();
+		ma[1] = new Dragon();
+		ma[2] = new Monster();
+		for (int x = 0; x < 3; x++) {
+			ma[x].frighten(x);
+
+		}
+	}
+
+}
+
+package p227;
+
+public class Monster {
+
+	boolean frighten (int z) {
+		System.out.println("arrrgh");
+		return true;
+	}
+
+}
+package p227;
+
+public class Vampire extends Monster {
+	boolean frighten(byte b) { // 주는건 인트로 주기때문에 실행이 안됨.
+		System.out.println("a bite?");
+		return true;
+	}
+
+}
+package p227;
+
+public class Dragon extends Monster {
+	boolean frighten(int degree) { 
+		System.out.println("breath fire");
+		return true;
+	}
+}
 }}}
 
 = 08. 심각한 다형성:추상 클래스와 인터페이스  =
