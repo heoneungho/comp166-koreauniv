@@ -7,7 +7,10 @@
 *48p BeerSong* _문제해결하기, 주석달기_
 
 {{{
-public class BeerSong  //어디에서든 접근가능한 BeerSong 클래스 선언{        public static void main(String[] args) //리턴값이 없는 'args'라는 이름의 String형 배열을 인자값으로 받는 main 메소드선언        
+public class BeerSong  //어디에서든 접근가능한 
+BeerSong 클래스 선언{        
+public static void main(String[] args) 
+//리턴값이 없는 'args'라는 이름의 String형 배열을 인자값으로 받는 main 메소드선언        
 { int beerNum = 99;//beerNum이라는 int형 변수 선언과 99값 대입                String word = "bottles";      // 복수형                
 while (beerNum>0)                
 {                if (beerNum ==1) //change String "word" right after changing "beerNum"                        {                                
@@ -50,7 +53,36 @@ System.out.println(phrase);    }}
 *55p 컴파일러가 되어봅시다* _구현후 주석달기_
 
 {{{
+public class Exercis1b {        
+public static void main(String [] args){                
+int x =1;                
+while(x < 10){                        
+if ( x > 3){                                
+System.out.println("big x");                        }                        
+x+=1; // 무한루프               }        }}
 
+public class Exercise1b // 클래스로 감싸줘야한다.
+{        public static void main(String [] args)
+{                int x =5;                
+while(x>1){                        
+x=x-1;                        
+if(x<3){                                
+System.out.println("small x");                        
+}                
+}        
+}}
+public class Exercise1b 
+{        
+public static void main(String [] args) // class 안에 당연히 메소드도 있어야한다.
+{        
+int x = 5;        
+while(x>1){               
+ x = x-1;               
+ if ( x<3){                       
+ System.out.println("small x");                       
+ }               
+ }       
+ }}
 }}}
 
 
