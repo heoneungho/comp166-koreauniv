@@ -223,7 +223,7 @@ public class DVDPlayerTestDrive
 
 *83p~ 변수* _요약_
 
- * 원시변수 vs 레퍼런스변수:
+ * 원시변수 vs 레퍼런스변수: 
  
 *96p Dog* _수많은 개를 만들어 난장판 만들기_
 
@@ -321,6 +321,8 @@ public class DogTestDrive {
 
 *122p 컴파일러가 되어봅시다* _구현후 주석달기_
  
+
+{{{
 public class XCopy {
         public static void main(String[] args) 
 {                int orig = 42;    
