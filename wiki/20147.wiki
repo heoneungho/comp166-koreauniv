@@ -259,6 +259,48 @@ String name;
 
 {{{
 
+
+public class Books {   
+     String title;     
+   String author;}
+public class BooksTestDrive {  
+      public static void main(String [] args){                       
+         Books [] myBooks = new Books[3];          
+      int x=0;          
+      while (x<3){            
+            myBooks[x] = new Books();         
+               x = x+1;            
+    } // new Books[3]은 객체 레퍼런스만 3개를 만들었을 뿐 각각의 객체 레퍼런스와 연결되는 객체는 따로 생성해야한다. 
+               myBooks[0].title = "The Grapes of Java";                myBooks[1].title = "The Java Gastsby";    
+            myBooks[2].title = "The Java Cookbook";                myBooks[0].author = "bob";       
+         myBooks[1].author = "sue";  
+              myBooks[2].author = "ian";                x=0;               
+ while(x<3){             
+           System.out.print(myBooks[x].title);   
+                     System.out.print(" by ");   
+                     System.out.println(myBooks[x].author);          
+       
+       x = x+1;          
+                      }        }}
+
+public class Hobbits {     
+   String name;          
+      public static void main(String [] args)
+{                          
+      Hobbits [] h = new Hobbits[3];       
+         int z = -1; 
+// 배열의 인덱스는 0부터 시작하기 때문에 while 처음에 z에 +1을 해주고 사용하기 때문에 초기 z값은 -1 이어야한다.   
+                             while(z<2)
+ // z값이 -1,0,1 이어야지 0, 1, 2 로 작용해서 3번 반복 해서 각 이름을 다 넣을 수 있다.             
+   {                        z=z+1;     
+                   h[z]=new Hobbits();   
+                     h[z].name = "bilbo";  
+                      if(z==1){              
+                  h[z].name = "frodo";            
+            }         
+               if(z==2){      
+                          h[z].name="sam";                        }                        System.out.print(h[z].name + " is a ");                        System.out.println("good Hobbit name");                }        }}
+
 }}}
 
 *101p 레퍼런스 도용사건* _요약_
