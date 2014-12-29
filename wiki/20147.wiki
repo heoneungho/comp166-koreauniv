@@ -11,17 +11,25 @@ public class BeerSong  //어디에서든 접근가능한
 BeerSong 클래스 선언{        
 public static void main(String[] args) 
 //리턴값이 없는 'args'라는 이름의 String형 배열을 인자값으로 받는 main 메소드선언        
-{ int beerNum = 99;//beerNum이라는 int형 변수 선언과 99값 대입                String word = "bottles";      // 복수형                
+{ int beerNum = 99;//beerNum이라는 int형 변수 선언과 99값 대입  
+              String word = "bottles";      // 복수형                
 while (beerNum>0)                
 {                if (beerNum ==1) //change String "word" right after changing "beerNum"                        {                                
-word = "bottle";)                        }                                                System.out.println(beerNum + " " + word + " of beer on the wall");  //출력하고 줄바꿈                        System.out.println(beerNum + " " + word + " of beer.");
+word = "bottle";)                        }                                                System.out.println(beerNum + " " + word + " of beer on the wall");  //출력하고 줄바꿈                    
+    System.out.println(beerNum + " " + word + " of beer.");
 System.out.println("Take one down."); 
 System.out.println("Pass it around");
 beerNum = beerNum - 1;           
-beerNum에 저장된 값에서 1을 뺀 값을 beerNum에대입입                                                
+beerNum에 저장된 값에서 1을 뺀 값을 beerNum에대입
+                                                
 if(beerNum >0)                        
-{System.out.println(beerNum + " " + word + " of beer on the wall\n");} 이 if문은 while문의 조건인 'beerNum>0'과 겹친다. if문의 조건을 'beerNum<1'로 수정한다.*/            
-if(beerNum<1)                         {                                System.out.println("No more bottles of beer on the wall"); //출력하고 줄바꿈                        }                     }      // while 순환문 끝        }      // main 클래스 끝}      // 클래스 끝
+{System.out.println(beerNum + " " + word + " of beer on the wall\n");} 
+/*이 if문은 while문의 조건인 'beerNum>0'과 겹친다. if문의 조건을 'beerNum<1'로 수정한다.*/            
+if(beerNum<1)                         {                                System.out.println("No more bottles of beer on the wall"); 
+//출력하고 줄바꿈               
+         }             
+        }      // while 순환문 끝   
+     }      // main 클래스 끝}      // 클래스 끝
 }}}
 
 *50p PhraseOMatic* _wordListOne, wordListTwo, wordListThree를 변경_
@@ -105,7 +113,59 @@ while(x>1){
 *72p GuessGame* _게임에 참여하는 사람 수를 4명으로 변경_
 
 {{{
+public class GuessGame
+ {    
+   Player p1; 
+   Player p2;
+    Player p3;
+    Player p4;
+    public void startGame() 
+{        p1 = new Player();
+        p2 = new Player();
+        p3 = new Player();
+        p4 = new Player();
+        int guessp1 = 0;
+        int guessp2 = 0; 
+       int guessp3 = 0;  
+      int guessp4 = 0; 
+       boolean p1isRight = false; 
+       boolean p2isRight = false; 
+       boolean p3isRight = false; 
+       boolean p4isRight = false; 
+       int targetNumber = (int) 
+(Math.random() * 10);  
+      System.out.println("0 이상 9 이하의 숫자를 맞춰보세요.");
+        while(true)
+ {            System.out.println("맞춰야 할 숫자는 " + targetNumber + "입니다.");
+            p1.guess();    
+        p2.guess();     
+       p3.guess();   
+         p4.guess();    
+        guessp1 = p1.number;  
+          
+System.out.println("1번 선수가 찍은 숫자: " + guessp1); 
+           guessp2 = p2.number; 
+           
+System.out.println("2번 선수가 찍은 숫자: " + guessp2);    
+        guessp3 = p3.number;            
+System.out.println("3번 선수가 찍은 숫자: " + guessp3);   
+         guessp4 = p4.number;            
+System.out.println("4번 선수가 찍은 숫자: " + guessp4);   
+         if (guessp1 == targetNumber) 
+{                p1isRight = true;            }               
+if (guessp2 == targetNumber) 
+{                p2isRight = true;            }           
+ if (guessp3 == targetNumber)
 
+ {                p3isRight = true;            } 
+           if (guessp4 == targetNumber) 
+{                p4isRight = true;            }  
+          if (p1isRight || p2isRight || p3isRight || p4isRight) {                
+System.out.println("맞춘 선수가 있습니다.");                System.out.println("1번 선수: "    + p1isRight);                System.out.println("2번 선수: "    + p2isRight);                System.out.println("3번 선수: "    + p3isRight);                System.out.println("4번 선수: "    + p4isRight);                System.out.println("게임 끝.");                break;              } else 
+{               
+ 
+System.out.println("다시 시도해야 합니다.");         
+   }        }    }   }
 }}}
 
 *76p 컴파일러가 되어봅시다* _구현후 주석달기_
